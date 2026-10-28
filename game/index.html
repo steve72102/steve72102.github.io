@@ -10,8 +10,11 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./combat.css">
   <script defer src="./bank.js"></script>
   <script defer src="./engine.js"></script>
+  <script defer src="./combat.js"></script>
+  <script defer src="./combat-ui.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -25,17 +28,19 @@
       <div class="profile"><div class="avatar" aria-hidden="true">✦</div><p class="eyebrow">THE CURIOUS ONE</p><h2>知識旅人</h2><p id="level" class="muted"></p><progress id="xp-bar" max="100" value="0" aria-label="升級經驗進度"></progress><small id="xp-label"></small></div>
       <nav id="nav" aria-label="遊戲選單">
         <button data-page="home" class="nav-button active"><span>⌂</span>冒險營地</button>
+        <button data-page="arena" class="nav-button"><span>⚔</span>每週積分賽</button>
+        <button data-page="shop" class="nav-button"><span>▱</span>補給商城</button>
         <button data-page="review" class="nav-button"><span>◎</span>錯題修練<span id="wrong-badge" class="badge">0</span></button>
         <button data-page="inventory" class="nav-button"><span>◇</span>裝備圖鑑</button>
         <button data-page="draw" class="nav-button"><span>✧</span>星願寶箱</button>
         <button data-page="settings" class="nav-button"><span>⚙</span>存檔與說明</button>
       </nav>
       <div class="sidebar-note"><span>✺</span><p>每一個懂了的瞬間，<br>都會成為你的裝備。</p></div>
-      <p class="version">PERSONAL LEARNING WORLD / V1.0</p>
+      <p class="version">PERSONAL LEARNING WORLD / V2.0</p>
     </aside>
     <main id="main" tabindex="-1">
       <div id="storage-warning" class="notice danger" hidden></div>
-      <div class="page-top"><div><p class="eyebrow" id="page-kicker">YOUR LITTLE ADVENTURE</p><h1 id="page-title">今天，也前進一點。</h1></div><div class="wallet"><span class="ticket-icon">▤</span><div><strong id="tickets">0</strong><small>星願券</small></div></div></div>
+      <div class="page-top"><div><p class="eyebrow" id="page-kicker">YOUR LITTLE ADVENTURE</p><h1 id="page-title">今天，也前進一點。</h1></div><div class="currency-strip"><div class="wallet coin-wallet"><span class="ticket-icon">◉</span><div><strong id="coins">0</strong><small>金幣</small></div></div><div class="wallet"><span class="ticket-icon">▤</span><div><strong id="tickets">0</strong><small>星願券</small></div></div></div></div>
       <div id="view"></div>
       <footer class="game-footer"><span>源自「我的思維資料夾」</span><span>知識會留下來，冒險也是。</span></footer>
     </main>

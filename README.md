@@ -23,3 +23,6 @@
 [開始遊玩](https://steve72102.github.io/game/) · [下載離線版](https://steve72102.github.io/downloads/mind-quest-offline.zip)
 
 獨立學習遊戲，包含 3,221 題、每日知識裝備、答題獎勵、保底寶箱、錯題複習與 JSON 備份。無需 ChatGPT 訂閱或 API。詳細規則與限制見 [game/README.md](game/README.md)。
+
+
+V2 已新增兩回合知識打怪、銅銀金鑽石個人週賽、每日 80 金幣與補給商城。補給券能在回合前參閱答案與解析。保留舊存檔；刷卡購買依目前規劃暫未開放。

@@ -3,7 +3,7 @@ import zipfile
 root=Path(__file__).resolve().parents[1]
 out=root/'downloads'
 out.mkdir(exist_ok=True)
-files=['index.html','style.css','app.js','engine.js','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md']
+files=['index.html','style.css','app.js','engine.js','combat.js','combat-ui.js','combat.css','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md']
 with zipfile.ZipFile(out/'mind-quest-offline.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
     for name in files:
         data=(root/'game'/name).read_bytes()
