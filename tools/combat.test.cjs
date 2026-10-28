@@ -2,6 +2,28 @@ const test=require('node:test'),assert=require('node:assert/strict');
 const E=require('../game/engine.js'),C=require('../game/combat.js');
 const qs=Array.from({length:12},(_,i)=>({id:'q'+i,subject:'pharmaceutics',answer:i%4}));
 const day='2026-10-28';
+test('supply study cards explain answer references and keep full negative-question context',()=>{
+ const q={title:'理解條件',question:'下列何者錯誤？',options:['完整內容一','完整內容二','錯誤敘述的完整內容','完整內容四'],answer:2,explanation:'本題選C，所以C錯。選項A正確；B把條件換成另一種情況。',memory:'C 先辨識條件→C錯'};
+ const card=C.studyCard(q);
+ assert.equal(card.question,q.question);assert.equal(card.answer,q.options[2]);
+ assert(card.explanation.includes('本題選「錯誤敘述的完整內容」'));
+ assert(card.explanation.includes('所以「錯誤敘述的完整內容」錯'));
+ assert(card.explanation.includes('選項「完整內容一」正確'));
+ assert(card.explanation.includes('「完整內容二」把條件換成另一種情況'));
+ assert(!card.memory.startsWith('C '));assert(card.memory.includes('→「錯誤敘述的完整內容」錯'));
+ assert.deepEqual(card.options,q.options);assert.equal(q.memory,'C 先辨識條件→C錯');
+});
+test('supply formatting preserves scientific abbreviations, receptor labels and variables',()=>{
+ const text='AUC、BCS、DNA、Vitamin D、維生素 A、D2 受體；C0=濃度。C是濃度；D為劑量。選AUC而不是其他指標。';
+ for(const memory of ['AUC 與 BCS','B細胞與T細胞','D2 訊號','C0=初始濃度']) {
+  const q={title:'學科名詞',question:'保留完整題目',options:['一','二','三','四'],answer:memory[0]==='B'?1:memory[0]==='D'?3:2,explanation:text,memory};
+  const card=C.studyCard(q);assert.equal(card.explanation,text);assert.equal(card.memory,memory);
+ }
+});
+test('numeric answer mnemonic loses option prefix without losing its calculation',()=>{
+ const card=C.studyCard({title:'計算',question:'數值為何？',options:['1','2','7.52','8'],answer:2,explanation:'計算得7.52，選C。',memory:'C7.52μg/mL；7.5/[1−e^(−1.034×6)]'});
+ assert.equal(card.memory,'7.52μg/mL；7.5/[1−e^(−1.034×6)]');assert(card.explanation.includes('選「7.52」'));
+});
 function player(){const s=E.fresh(day);s.arena=C.fresh(day);return s;}
 function restore(s){const raw=JSON.parse(JSON.stringify(s)),out=E.restore(raw,qs);out.arena=C.restore(raw.arena,qs);return out;}
 function run(s,mask,enemy='diamond',finishDay=day,startDay=day){

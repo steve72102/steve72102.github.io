@@ -102,6 +102,23 @@
     return true;
   }
   function advance(a) {const b=a.battle;if(!b||b.phase!=='recap'||b.round!==0)return false;b.round=1;b.cursor=0;b.phase='prep';return true;}
+  function studyCard(q) {
+    const option = letter => '「' + q.options[letter.charCodeAt(0)-65] + '」';
+    // Expand explicit answer references only. AUC, BCS, vitamin D, D2 and
+    // concentration symbols are subject knowledge, not option labels.
+    function explain(text) {
+      return String(text || '')
+        .replace(/(答案(?:是|為)?|正解(?:是|為)?|(?:本題)?(?:應選|選擇|選)|本題|因此|所以|故)\s*[（(]?([ABCD])[）)]?(?![A-Za-z0-9])/g, (_,prefix,letter) => prefix + option(letter))
+        .replace(/選項\s*[（(]?([ABCD])[）)]?(?![A-Za-z0-9])/g, (_,letter) => '選項' + option(letter))
+        .replace(/(^|[，。；;：:\n])\s*([ABCD])(?=(?:為|是)(?:正確|錯誤|答案)|正確|錯誤|錯|對|把|將|寫|敘述)/g, (_,prefix,letter) => prefix + option(letter))
+        .replace(/→\s*([ABCD])(?=\s*(?:[，。；;、）)]|$|錯|對))/g, (_,letter) => '→' + option(letter));
+    }
+    const letter=String.fromCharCode(65+q.answer),answer=q.options[q.answer];
+    let memory=String(q.memory || '');
+    if(answer.length>1 && memory.startsWith(letter+answer)) memory=memory.slice(1);
+    else if(!/^[ABCD](?:型|類|群|細胞|受體|蛋白|鏈|端|肽|環|位|核|肝炎)/.test(memory)) memory=memory.replace(new RegExp('^'+letter+'(?:\\s+|(?=[\\u4e00-\\u9fff]))'),'');
+    return {title:q.title,question:q.question,answer,explanation:explain(q.explanation),memory:explain(memory),options:q.options.slice()};
+  }
   function restore(raw,questions) {
     if(raw===undefined)return fresh();
     const invalid=()=>{throw new Error('戰鬥或商城存檔不正確。');};
@@ -145,5 +162,5 @@
     }
     return a;
   }
-  return {ENEMIES,RANKS,GOODS,GEAR_ATTACK,GEAR_HP,GEAR_GUARD,weekId,addDays,fresh,score,rank,rollWeek,claimCoins,buy,stats,heroStats,begin,useSupply,startRound,answer,calculateRound,totals,next,advance,restore};
+  return {ENEMIES,RANKS,GOODS,GEAR_ATTACK,GEAR_HP,GEAR_GUARD,weekId,addDays,fresh,score,rank,rollWeek,claimCoins,buy,stats,heroStats,begin,useSupply,startRound,answer,calculateRound,totals,next,advance,studyCard,restore};
 });

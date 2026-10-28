@@ -64,4 +64,9 @@
 
 V2 使用 `mind-quest-save-v2` 儲存鍵。首次載入若沒有 V2 存檔，會讀取原 `mind-quest-save-v1`，保留題目、等級、裝備與星願券，為新增系統建立空白進度。舊鍵保留，避免仍開著的 V1 分頁覆寫 V2 的金幣與比賽進度。備份 JSON 包含新 `arena` 欄位；舊備份也可匯入，但會以空白商城與週賽進度取代現有新增系統。
 
-戰鬥與商城邏輯位於 combat.js；畫面位於 combat-ui.js 與 combat.css。測試：`node tools/combat.test.cjs`，連同 `node tools/engine.test.cjs` 共 20 項。
+戰鬥與商城邏輯位於 combat.js；畫面位於 combat-ui.js 與 combat.css。測試：`node tools/combat.test.cjs`，連同 `node tools/engine.test.cjs` 共 23 項。
+
+
+### 補給知識預習
+
+補給以知識卡呈現：概念標題、完整題意、這題應選的完整內容、判斷解析與記憶重點。明確的「選C」「所以B」等代號會展開為選項文字，避免只記字母。保留完整題意，避免將否定題的錯誤敘述誤當一般知識；也可展開對照全部選項。AUC、BCS、維生素與受體名稱等學科縮寫不會被一律刪除。

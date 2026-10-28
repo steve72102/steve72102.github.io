@@ -1,5 +1,5 @@
 'use strict';
-const CACHE = 'mind-quest-v2-20261028-r2';
+const CACHE = 'mind-quest-v2-20261028-r4';
 const ASSETS = ['./', './index.html', './style.css', './engine.js', './app.js', './combat.js', './combat-ui.js', './combat.css', './bank.js', './icon.svg', './manifest.webmanifest'];
 self.addEventListener('install', event => event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()).catch(async error => { await caches.delete(CACHE); throw error; })));
 self.addEventListener('activate', event => event.waitUntil(Promise.all([caches.keys().then(keys => Promise.all(keys.filter(key => key.startsWith('mind-quest-') && key !== CACHE).map(key => caches.delete(key)))), self.clients.claim()])));
