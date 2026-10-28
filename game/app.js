@@ -1,11 +1,11 @@
 (() => {
   'use strict';
-  const E = window.MindEngine, C = window.MindCombat, bank = window.MIND_BANK;
+  const E = window.MindEngine, C = window.MindCombat, A = window.MindAcademy, bank = window.MIND_BANK;
   const view = document.getElementById('view');
-  if (!E || !C || !window.MindBattleUI || !bank?.questions?.length) { view.textContent = '題庫尚未載入，請重新整理。離線版請先完整解壓縮整個資料夾。'; return; }
+  if (!E || !C || !A || !window.MindAcademyUI || !window.MindLesson || !window.MindBattleUI || !bank?.questions?.length) { view.textContent = '題庫尚未載入，請重新整理。離線版請先完整解壓縮整個資料夾。'; return; }
   const questions = bank.questions, byId = new Map(questions.map(q => [q.id, q]));
-  const KEY = 'mind-quest-save-v2';
-  let state = Object.assign(E.fresh(), { arena: C.fresh() }), page = 'home', subjectYear = 'all', calculations = false, selected = null, blockedSave = false, originalSave = null, toastTimer;
+  const KEY = 'mind-quest-save-v3';
+  let state = Object.assign(E.fresh(), { arena: C.fresh(), appearance: A.fresh() }), page = 'home', subjectYear = 'all', calculations = false, selected = null, blockedSave = false, originalSave = null, toastTimer;
   const $ = id => document.getElementById(id);
   function node(tag, attrs = {}, ...children) {
     const n = document.createElement(tag);
@@ -25,9 +25,9 @@
   const symbol = item => node('div', { class: 'item-symbol', 'aria-hidden': 'true' }, ['◈', '✧', '❋'][Object.keys(E.SUBJECTS).indexOf(item.subject)]);
   function random() { if (window.crypto?.getRandomValues) { const x = new Uint32Array(1); crypto.getRandomValues(x); return x[0] / 4294967296; } return Math.random(); }
   function warn(message) { $('storage-warning').textContent = message; $('storage-warning').hidden = false; }
-  function restoreSave(raw) { const restored = E.restore(raw, questions); restored.arena = C.restore(raw.arena, questions); return restored; }
+  function restoreSave(raw) { const restored = E.restore(raw, questions); restored.arena = C.restore(raw.arena, questions); restored.appearance = A.restore(raw.appearance); return restored; }
   try {
-    originalSave = localStorage.getItem(KEY) || localStorage.getItem('mind-quest-save-v1');
+    originalSave = localStorage.getItem(KEY) || localStorage.getItem('mind-quest-save-v2') || localStorage.getItem('mind-quest-save-v1');
     if (originalSave) state = restoreSave(JSON.parse(originalSave));
   } catch (_) {
     if (originalSave) { blockedSave = true; warn('原有存檔無法讀取，已保留原始資料。請到「存檔與說明」下載救援備份或匯入有效備份；目前進度暫存在本頁。'); }
@@ -41,6 +41,7 @@
   }
   function toast(text) { clearTimeout(toastTimer); $('toast').textContent = text; $('toast').hidden = false; toastTimer = setTimeout(() => { $('toast').hidden = true; }, 4200); }
   function header() {
+    $('profile-avatar').replaceChildren(academyUI.portrait(state.appearance, 'sidebar')); $('profile-name').textContent = A.character(state.appearance.character).name;
     $('tickets').textContent = state.tickets; $('coins').textContent = state.arena.coins;
     $('level').textContent = `Lv. ${Math.floor(state.xp / 100) + 1} · ${state.xp < 500 ? '見習探索者' : state.xp < 2000 ? '知識守望者' : '星光學者'}`;
     $('xp-bar').value = state.xp % 100;
@@ -48,22 +49,23 @@
     $('wrong-badge').textContent = state.wrong.length;
     document.querySelectorAll('[data-page]').forEach(b => { const active = b.dataset.page === (page === 'battle' ? 'arena' : page); b.classList.toggle('active', active); if (active) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); });
   }
-  function go(nextPage, focus = true) { if(nextPage!=='duel'&&duelUI.active()){toast('你正在雙人連線中，請先在對戰頁取消或離開連線。');return;} page = nextPage; selected = null; render(); if (focus) { $('main').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); } }
+  function go(nextPage, focus = true) { if(nextPage!=='duel'&&duelUI.active()){toast('你正在雙人連線中，請先在對戰頁取消或離開連線。');return;} if(nextPage!=='home')academyUI.leave(); page = nextPage; selected = null; render(); if (focus) { $('main').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); } }
   function title(text, kicker) { $('page-title').textContent = text; $('page-kicker').textContent = kicker; }
   function openModal(...children) { $('modal-content').replaceChildren(...children); if (!$('modal').open) $('modal').showModal(); }
   function closeModal() { $('modal').close(); }
   function knowledgeFor(item) {
-    const pool = questions.filter(q => q.subject === item.subject);
+    const pool = questions.filter(q => !q.needsReview && q.subject === item.subject);
     const terms = item.subject === 'pharmaceutics' ? ['溶離', '擴散', '半衰期', '生體可用率'] : item.subject === 'pharmacology' ? ['受體', '訊息', '標靶', '作用機轉'] : ['生藥', '鑑別', '分析', '成分'];
     return pool.find(q => (q.title + q.explanation).includes(terms[item.tier])) || pool[item.tier];
   }
   function lore(item, claimAction = false) {
     const q = knowledgeFor(item), tier = E.TIERS[item.tier];
-    openModal(symbol(item), node('p', { class: 'eyebrow' }, `${tier.name}裝備 · ${E.SUBJECTS[item.subject].name}`), node('h2', {}, item.name), node('h3', {}, q.title), node('p', {}, q.explanation), node('div', { class: 'memory' }, '記憶線索｜' + q.memory), node('p', { class: 'source' }, q.source + ` · 第 ${q.number} 題`), note(`裝備效果：此科每題首次答對 +${tier.bonus} XP。戰鬥攻擊 +${C.GEAR_ATTACK[item.tier]}、生命 +${C.GEAR_HP[item.tier]}，同科再 +6 攻擊。重複裝備保留收藏次數。`), node('div', { class: 'modal-actions' }, claimAction ? btn('讀過知識，領取裝備', () => { const got = E.claim(state), coins = C.claimCoins(state.arena); closeModal(); save(); render(); toast((got ? '獲得 ' + got.name + '！' : '今日知識已收下。') + (coins ? '金幣 +80。' : '今日金幣已領取。')); }) : btn('挑戰這張知識卡', () => { closeModal(); start([q], item.name + ' · 知識試煉'); }), !claimAction && state.inventory[item.id] ? btn(state.equipped === item.id ? '已裝備' : '裝備它', () => { state.equipped = item.id; save(); closeModal(); render(); toast('已裝備 ' + item.name); }, 'secondary', state.equipped === item.id) : null));
+    openModal(symbol(item), node('p', { class: 'eyebrow' }, `${tier.name}裝備 · ${E.SUBJECTS[item.subject].name}`), node('h2', {}, item.name), node('h3', {}, q.title), window.MindLesson.render(q, node, {question:true}), node('p', { class: 'source' }, q.source + ` · 第 ${q.number} 題`), note(`裝備效果：此科每題首次答對 +${tier.bonus} XP。戰鬥攻擊 +${C.GEAR_ATTACK[item.tier]}、生命 +${C.GEAR_HP[item.tier]}，同科再 +6 攻擊。重複裝備保留收藏次數。`), node('div', { class: 'modal-actions' }, claimAction ? btn('讀過知識，領取裝備', () => { const got = E.claim(state), coins = C.claimCoins(state.arena); closeModal(); save(); render(); toast((got ? '獲得 ' + got.name + '！' : '今日知識已收下。') + (coins ? '金幣 +80。' : '今日金幣已領取。')); }) : btn('挑戰這張知識卡', () => { closeModal(); start([q], item.name + ' · 知識試煉'); }), !claimAction && state.inventory[item.id] ? btn(state.equipped === item.id ? '已裝備' : '裝備它', () => { state.equipped = item.id; save(); closeModal(); render(); toast('已裝備 ' + item.name); }, 'secondary', state.equipped === item.id) : null));
   }
   function todayItem() { const day = E.today(); return E.ITEMS.filter(i => i.tier === 0)[Math.floor(Date.parse(day + 'T00:00:00Z') / 86400000) % 3]; }
   function sectionHeading(text, description) { return node('div', { class: 'section-title' }, node('h2', {}, text), node('p', {}, description)); }
   function start(pool, label) {
+    pool = pool.filter(q => !q.needsReview);
     if (!pool.length) { toast('這個篩選沒有可用題目，請試試其他年份。'); return; }
     if (state.session && state.session.index < state.session.ids.length) {
       openModal(node('h2', {}, '還有一場進行中的冒險'), note('可以繼續原本的題目，或結束這次關卡後開新一場。已獲得的獎勵與錯題都會保留。'), node('div', { class: 'modal-actions' }, btn('繼續原關卡', () => { closeModal(); go('quiz'); }), btn('開始新關卡', () => { E.begin(state, pool, label, random); save(); closeModal(); go('quiz'); }, 'secondary')));
@@ -71,7 +73,8 @@
     }
     E.begin(state, pool, label, random); save(); go('quiz');
   }
-  function home() {
+  function home() { return academyUI.home(); }
+  function practice() {
     title('今天，也前進一點。', 'YOUR LITTLE ADVENTURE');
     const item = todayItem(), claimed = state.claimed === E.today() && state.arena.login === E.today();
     const hero = node('section', { class: 'hero-card' }, node('div', { class: 'hero-copy' }, node('span', { class: 'pill' }, '✦ 每一份好奇，都算數'), node('h2', {}, '把知識收進行囊，', node('br'), '展開你的冒險。'), node('p', {}, '一次 5 題，一點新的理解。', node('br'), '從你的思維筆記，走向三座知識秘境。'), btn(state.session && state.session.index < state.session.ids.length ? '繼續冒險 →' : '開始今日冒險 →', () => state.session && state.session.index < state.session.ids.length ? go('quiz') : start(questions, '今日綜合冒險'))), node('div', { class: 'world-art', 'aria-hidden': 'true' }, node('div', { class: 'orbital' }), node('span', { class: 'spark a' }, '✦'), node('span', { class: 'spark b' }, '✧'), node('span', { class: 'spark c' }, '✺'), node('div', { class: 'book' }, node('div', { class: 'book-leaf' }, '❋'), node('div', { class: 'book-leaf' }, '✧')), node('span', { class: 'world-caption' }, 'A WORLD BUILT FROM YOUR MIND')));
@@ -81,7 +84,7 @@
     year.value = subjectYear;
     const filter = node('div', { class: 'filters' }, node('label', { for: 'exam-year' }, '試題年份'), year, node('label', {}, node('input', { type: 'checkbox', checked: calculations, onChange: e => { calculations = e.target.checked; render(); } }), '計算相關題'));
     const realms = node('div', { class: 'realm-grid' }, Object.entries(E.SUBJECTS).map(([key, s], i) => {
-      const pool = questions.filter(q => q.subject === key && (subjectYear === 'all' || q.exam === subjectYear) && (!calculations || q.calculation));
+      const pool = questions.filter(q => !q.needsReview && q.subject === key && (subjectYear === 'all' || q.exam === subjectYear) && (!calculations || q.calculation));
       return node('article', { class: 'realm ' + s.color }, node('div', { class: 'realm-top' }, node('span', { class: 'realm-icon', 'aria-hidden': 'true' }, s.icon), node('span', { class: 'realm-number' }, '0' + (i + 1))), node('p', { class: 'eyebrow' }, s.name), node('h3', {}, s.realm), node('p', {}, `${pool.length.toLocaleString()} 題知識碎片 · 每次最多 5 題`), btn('進入秘境 →', () => start(pool, s.name + (subjectYear === 'all' ? '' : ' · ' + subjectYear)), '', !pool.length));
     }));
     return [hero, combatUI.banner(), node('div', { class: 'two-col' }, daily, track), sectionHeading('選一座秘境，開始探索', '三門學科 / 同一段成長旅程'), filter, realms, node('div', { class: 'mini-stats' }, node('span', {}, node('strong', {}, state.mastered.length), '題曾答對'), node('span', {}, node('strong', {}, state.wrong.length), '題等待複習'), node('span', {}, node('strong', {}, questions.length.toLocaleString()), '題附筆記解析'))];
@@ -99,20 +102,20 @@
     panel.append(answers);
     if (answered) {
       const rewardText = answered.correct ? answered.repeated ? '今天這題已領過獎勵，理解再加深一點。' : `+${answered.xp} XP` + (answered.ticket ? ' · 獲得 1 張星願券！' : ` · 星願進度 ${state.progress}/5`) : '已加入錯題修練，讀懂原因就有收穫。';
-      panel.append(node('section', { class: 'feedback' + (answered.correct ? '' : ' wrong'), 'aria-live': 'polite' }, node('h3', {}, answered.correct ? '✦ 答對了！' : '再想一次，也是一種前進。'), node('p', { class: 'note' }, rewardText), node('h3', {}, q.title), node('p', {}, q.explanation), node('div', { class: 'memory' }, '記憶線索｜' + q.memory), node('small', {}, q.source + ` · 第 ${q.number} 題`)));
+      panel.append(node('section', { class: 'feedback' + (answered.correct ? '' : ' wrong'), 'aria-live': 'polite' }, node('h3', {}, answered.correct ? '✦ 答對了！' : '再想一次，也是一種前進。'), node('p', { class: 'note' }, rewardText), node('h3', {}, q.title), window.MindLesson.render(q, node), node('small', {}, q.source + ` · 第 ${q.number} 題`)));
     }
-    panel.append(node('div', { class: 'question-actions' }, btn('暫回營地', () => go('home'), 'secondary'), answered ? btn(run.index + 1 === run.ids.length ? '完成這次冒險 →' : '下一題 →', () => { E.next(state); selected = null; save(); render(); $('main').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); }) : btn('確認答案', () => { if (selected === null) return; E.answer(state, q, selected); save(); render(); const feedback = view.querySelector('.feedback'); if (feedback) feedback.scrollIntoView({ block: 'nearest', behavior: 'instant' }); }, '', selected === null)));
+    panel.append(node('div', { class: 'question-actions' }, btn('返回學院', () => go('home'), 'secondary'), answered ? btn(run.index + 1 === run.ids.length ? '完成這次冒險 →' : '下一題 →', () => { E.next(state); selected = null; save(); render(); $('main').focus({ preventScroll: true }); window.scrollTo({ top: 0, behavior: 'instant' }); }) : btn('確認答案', () => { if (selected === null) return; E.answer(state, q, selected); save(); render(); const feedback = view.querySelector('.feedback'); if (feedback) feedback.scrollIntoView({ block: 'nearest', behavior: 'instant' }); }, '', selected === null)));
     panel.append(note('每題每天只會發放一次答對獎勵；讀完解析再繼續，錯題可隨時重練。'));
     return [panel];
   }
   function summary() {
     title('知識，已成為你的裝備。', 'EXPEDITION COMPLETE');
     const run = state.session, correct = run.answers.filter(a => a.correct).length;
-    return [node('section', { class: 'panel summary' }, node('div', { class: 'result-icon', 'aria-hidden': 'true' }, '✦'), node('p', { class: 'eyebrow' }, 'ONE SMALL STEP, WELL TAKEN'), node('h2', {}, correct === run.ids.length ? '這一段旅程，收穫滿滿。' : '每一次理解，都值得慶祝。'), note('答對的題目累積實力，錯題也會成為下一段冒險的方向。'), node('div', { class: 'summary-stats' }, [['答對題數', `${correct}/${run.ids.length}`], ['獲得經驗', '+' + run.answers.reduce((n, a) => n + a.xp, 0)], ['獲得星願券', '+' + run.answers.reduce((n, a) => n + a.ticket, 0)]].map(([label, value]) => node('div', {}, node('strong', {}, value), node('small', {}, label)))), btn('回到營地', () => go('home')), btn('複習錯題', () => go('review'), 'secondary'), state.tickets ? btn('去開寶箱 ✧', () => go('draw'), 'gold') : null)];
+    return [node('section', { class: 'panel summary' }, node('div', { class: 'result-icon', 'aria-hidden': 'true' }, '✦'), node('p', { class: 'eyebrow' }, 'ONE SMALL STEP, WELL TAKEN'), node('h2', {}, correct === run.ids.length ? '這一段旅程，收穫滿滿。' : '每一次理解，都值得慶祝。'), note('答對的題目累積實力，錯題也會成為下一段冒險的方向。'), node('div', { class: 'summary-stats' }, [['答對題數', `${correct}/${run.ids.length}`], ['獲得經驗', '+' + run.answers.reduce((n, a) => n + a.xp, 0)], ['獲得星願券', '+' + run.answers.reduce((n, a) => n + a.ticket, 0)]].map(([label, value]) => node('div', {}, node('strong', {}, value), node('small', {}, label)))), btn('回到學院', () => go('home')), btn('複習錯題', () => go('review'), 'secondary'), state.tickets ? btn('去開寶箱 ✧', () => go('draw'), 'gold') : null)];
   }
   function review() {
     title('再遇見，就更懂一點。', 'THE PRACTICE GARDEN');
-    const pool = state.wrong.map(id => byId.get(id));
+    const pool = state.wrong.map(id => byId.get(id)).filter(q => !q.needsReview);
     if (!pool.length) return [node('section', { class: 'empty' }, node('span', { class: 'empty-icon', 'aria-hidden': 'true' }, '◎'), node('h2', {}, '錯題花園，正在等你探索'), node('p', {}, '答錯的題目會留在這裡。重新答對後，就能帶著理解離開。'), btn('開始探索', () => go('home')))];
     return [node('section', { class: 'panel' }, node('h3', {}, `${pool.length} 道題目，值得再想一次`), note('答對後會自動移出錯題清單。每天首次答對同一題，仍可獲得經驗與星願進度。'), btn('開始錯題修練 →', () => start(pool, '錯題修練'))), sectionHeading('從一個疑問開始', '點選題目可單獨練習'), node('div', { class: 'review-list' }, pool.slice(0, 40).map(q => node('button', { class: 'review-card', onClick: () => start([q], '單題修練') }, node('small', {}, E.SUBJECTS[q.subject].name + ' · ' + q.exam), node('p', {}, q.question)))), pool.length > 40 ? note('先列出前 40 題；開始錯題修練時會從完整清單抽題。') : null];
   }
@@ -152,14 +155,15 @@
     return [node('div', { class: 'settings-grid' },
       node('section', { class: 'panel' }, node('h3', {}, '存檔跟著你走'), note('進度自動保存在此裝置、此瀏覽器。清除瀏覽資料、使用無痕模式或換裝置可能失去進度；網站版與離線版的存檔各自獨立，可透過匯出、匯入轉移。'), btn('匯出遊戲存檔 ↓', exportSave), node('label', { class: 'button secondary file-label' }, '匯入備份', input), blockedSave ? btn('下載原始存檔救援檔', () => download(originalSave, 'mind-quest-recovery.json'), 'secondary') : null),
       node('section', { class: 'panel' }, node('h3', {}, '不用訂閱，也能繼續玩'), note('所有題目、解析與遊戲規則都已放在網頁檔案裡，沒有呼叫 ChatGPT 或付費 API。單人模式可離線；雙人模式需網路與連線服務，不需 ChatGPT 訂閱。也建議下載完整離線版備份。'), location.protocol === 'file:' ? note('你正在使用獨立離線版。記得定期備份存檔。') : node('a', { class: 'button gold', href: '../downloads/mind-quest-offline.zip', download: 'mind-quest-offline.zip' }, '下載完整離線版 ↓'), note('電腦下載後先完整解壓縮，再開啟資料夾內的 index.html。網站服務若日後有變動，已下載的版本仍可執行。手機建議使用已快取的網站。')),
-      node('section', { class: 'panel wide' }, node('h3', {}, '冒險規則'), node('ul', { class: 'rules' }, node('li', {}, '每日補給：以台北時間午夜換日，讀完當日知識卡可領一件普通裝備與 80 金幣（金幣也可在商城領取，每日僅一次）。不必連續登入，沒有斷簽懲罰。'), node('li', {}, '答題獎勵：每道題目每天第一次答對可得 10 XP，對應裝備可加成；每累積 5 道獲獎題目得到 1 張星願券。進度可跨日累積。'), node('li', {}, '錯題修練：答錯不扣分，會留下題目等待複習。重練答對後移出錯題清單。'), node('li', {}, '裝備與等級：每 100 XP 升一級；穿戴 1 件裝備獲得學科加成。稀有度也增加戰鬥攻擊、生命與減傷，同科裝備另加 6 攻擊。戰鬥等級加成上限為 Lv. 20。'), node('li', {}, '週賽：每場 2 回合、每回合 3 題。台北時間週一 00:00 換季；每日每隻怪只計最佳積分，刷新時補發差額。銅 0、銀 600、金 1800、鑽石 3600 分。這是本機個人賽，不提供真人線上排名。'), node('li', {}, '補給：在商城用金幣買臨時補給券，於回合開始前消耗 1 張可預習本回合 3 題的概念、完整題意、答案內容與記憶重點。開始作答後不可再查看；兩回合各需一張。刷卡購買尚未開放。'), node('li', {}, '抽獎：普通 60%、稀有 30%、史詩 9%、極品 1%，連續 30 抽內至少獲得一次極品。沒有付費購買。'))),
-      node('section', { class: 'panel' }, node('h3', {}, '題庫從哪裡來？'), note(`目前收錄 ${questions.length.toLocaleString()} 題，來自「我的思維資料夾」108–115 年的 ${bank.packs.length} 組主題教學筆記。涵蓋藥劑生物藥劑、藥理藥化，以及藥物分析與生藥學。`), note('僅轉入可取得完整文字、單一答案與解析的題目；缺圖、已標記爭議或缺少結構化筆記的題目未收錄。115-1 藥物分析與生藥學暫未收錄。計算相關篩選以題幹關鍵字輔助分類。'), note('每題作答後顯示原筆記來源。內容供國考複習，不作臨床處方依據；仍可能有原筆記誤差，遇到疑義請回看原題與正式答案。')),
+      node('section', { class: 'panel wide' }, node('h3', {}, '冒險規則'), note('藥學學院各樓館與樓層可進入原有關卡。人物與器皿夥伴是免費外觀，不影響能力；可在「人物與夥伴」更換，選擇會隨存檔備份。'), node('ul', { class: 'rules' }, node('li', {}, '每日補給：以台北時間午夜換日，讀完當日知識卡可領一件普通裝備與 80 金幣（金幣也可在商城領取，每日僅一次）。不必連續登入，沒有斷簽懲罰。'), node('li', {}, '答題獎勵：每道題目每天第一次答對可得 10 XP，對應裝備可加成；每累積 5 道獲獎題目得到 1 張星願券。進度可跨日累積。'), node('li', {}, '錯題修練：答錯不扣分，會留下題目等待複習。重練答對後移出錯題清單。'), node('li', {}, '裝備與等級：每 100 XP 升一級；穿戴 1 件裝備獲得學科加成。稀有度也增加戰鬥攻擊、生命與減傷，同科裝備另加 6 攻擊。戰鬥等級加成上限為 Lv. 20。'), node('li', {}, '週賽：每場 2 回合、每回合 3 題。台北時間週一 00:00 換季；每日每隻怪只計最佳積分，刷新時補發差額。銅 0、銀 600、金 1800、鑽石 3600 分。這是本機個人賽，不提供真人線上排名。'), node('li', {}, '補給：在商城用金幣買臨時補給券，於回合開始前消耗 1 張可預習本回合 3 題的概念、完整題意、答案內容與記憶重點。開始作答後不可再查看；兩回合各需一張。刷卡購買尚未開放。'), node('li', {}, '抽獎：普通 60%、稀有 30%、史詩 9%、極品 1%，連續 30 抽內至少獲得一次極品。沒有付費購買。'))),
+      node('section', { class: 'panel' }, node('h3', {}, '題庫從哪裡來？'), note(`目前收錄 ${questions.length.toLocaleString()} 題，來自「我的思維資料夾」108–115 年的 ${bank.packs.length} 組主題教學筆記。涵蓋藥劑生物藥劑、藥理藥化，以及藥物分析與生藥學。`), note('僅轉入可取得完整文字、單一答案與解析的題目；缺圖、已標記爭議或缺少結構化筆記的題目未收錄。115-1 藥物分析與生藥學暫未收錄。計算相關篩選以題幹關鍵字輔助分類。'), note(bank.lessonReview.scope), note('每題作答後顯示原筆記來源。內容供國考複習，不作臨床處方依據；仍可能有原筆記誤差，遇到疑義請回看原題與正式答案。')),
       node('section', { class: 'panel' }, node('h3', {}, '讓遊戲單純，也讓資料安心'), note('無帳號、無追蹤碼、無廣告，不上傳整份存檔。程式檔案由本站提供。雙人連線使用 PeerJS 配對，向對手交換暱稱、等級、裝備與本場答題資料；不開啟鏡頭或麥克風。匯入備份與連線資料都會檢查格式，不執行收到的文字。'), note('網頁無法代替系統防毒軟體，也不會假裝掃描你的電腦。請維持作業系統、瀏覽器與 Windows Defender 更新。單人進度保存在本機，雙人模式為友誼賽；目前不提供伺服器防作弊或真人排行榜。'), node('a', { class: 'quiet-link', href: 'https://github.com/steve72102/steve72102.github.io/tree/main/game', target: '_blank', rel: 'noopener noreferrer' }, '查看遊戲程式碼 ↗'))
     )];
   }
-  function render() { E.rollDay(state, E.today()); if (C.rollWeek(state.arena)) save(); header(); const routes = { home, quiz, review, inventory, draw, settings, arena: combatUI.arena, battle: combatUI.battle, shop: combatUI.shop, duel: duelUI.page }; const content = (routes[page] || home)(); view.replaceChildren(...content.filter(Boolean)); }
-  const combatUI = window.MindBattleUI({ E, C, node, btn, note, go, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random });
-  const duelUI = window.MindDuelUI({ E, C, node, btn, note, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random, isVisible: () => page === 'duel' });
+  function render() { E.rollDay(state, E.today()); if (C.rollWeek(state.arena)) save(); header(); const routes = { home, practice, wardrobe: academyUI.wardrobe, quiz, review, inventory, draw, settings, arena: combatUI.arena, battle: combatUI.battle, shop: combatUI.shop, duel: duelUI.page }; const content = (routes[page] || home)(); view.replaceChildren(...content.filter(Boolean)); }
+  const combatUI = window.MindBattleUI({ E, C, node, btn, note, go, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random, appearance: () => academyUI.portrait(state.appearance, 'fighter') });
+  const duelUI = window.MindDuelUI({ E, C, node, btn, note, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random, portrait: (look,variant) => academyUI.portrait(look,variant), isVisible: () => page === 'duel' });
+  const academyUI = window.MindAcademyUI({ node, btn, note, title, go, render, save, toast, start, questions, getState: () => state, openModal, daily: () => lore(todayItem(), !(state.claimed === E.today() && state.arena.login === E.today())) });
   $('nav').addEventListener('click', event => { const target = event.target.closest('[data-page]'); if (target) go(target.dataset.page); });
   window.addEventListener('storage', event => {
     if (event.key !== KEY || !event.newValue) return;

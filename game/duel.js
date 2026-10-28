@@ -1,25 +1,25 @@
 (function(root,factory){
-  const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./combat.js'):root.MindCombat);
+  const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./combat.js'):root.MindCombat,typeof module==='object'&&module.exports?require('./academy.js'):root.MindAcademy);
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MindDuel=api;
-})(typeof window==='object'?window:globalThis,function(E,C){
+})(typeof window==='object'?window:globalThis,function(E,C,A){
   'use strict';
-  const VERSION='mq-duel-1', BANK='notes-3221-r4';
+  const VERSION='mq-duel-1', BANK='notes-3221-r5';
   function profile(raw) {
     if(!raw||typeof raw!=='object'||typeof raw.name!=='string'||!Number.isInteger(raw.level)||raw.level<1||raw.level>1000001)throw Error('角色資料不正確');
     const name=raw.name.trim();
     if(!/^[\p{L}\p{N} _-]{1,16}$/u.test(name))throw Error('暱稱請使用 1–16 個文字、數字、空格或底線');
     if(raw.gearId!==null&&!E.ITEMS.some(i=>i.id===raw.gearId))throw Error('裝備資料不正確');
-    return {name,level:raw.level,gearId:raw.gearId};
+    return {name,level:raw.level,gearId:raw.gearId,appearance:A.restore(raw.appearance)};
   }
   function match(raw,questions,subject) {
     if(!raw||raw.version!==VERSION||raw.bank!==BANK||!E.SUBJECTS[raw.subject]||(subject&&subject!==raw.subject)||!Array.isArray(raw.ids)||raw.ids.length!==6||new Set(raw.ids).size!==6)throw Error('對戰版本或題目不一致，請雙方更新網頁');
     const byId=new Map(questions.map(q=>[q.id,q]));
-    if(!raw.ids.every(id=>typeof id==='string'&&byId.get(id)?.subject===raw.subject))throw Error('對戰題目不正確');
+    if(!raw.ids.every(id=>typeof id==='string'&&byId.get(id)?.subject===raw.subject&&!byId.get(id).needsReview))throw Error('對戰題目不正確或待複核，請雙方更新網頁');
     return {version:VERSION,bank:BANK,subject:raw.subject,ids:raw.ids.slice(),opponent:profile(raw.profile)};
   }
   function create(subject,questions,random) {
     if(!E.SUBJECTS[subject])throw Error('科目不正確');
-    const ids=E.shuffle(questions.filter(q=>q.subject===subject),random).slice(0,6).map(q=>q.id);
+    const ids=E.shuffle(questions.filter(q=>!q.needsReview&&q.subject===subject),random).slice(0,6).map(q=>q.id);
     if(ids.length!==6)throw Error('題目不足');
     return {version:VERSION,bank:BANK,subject,ids};
   }

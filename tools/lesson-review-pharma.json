@@ -1,0 +1,315 @@
+{
+  "reviewerScope": "藥劑、藥理各 15 題代表性詳解的人工逐題閱讀與原創改寫；不是全題庫事實驗證。保留題幹、選項與答案。公式題重新核算；藥理主要機轉以官方仿單、EMA 或研究原文交叉查核。",
+  "reviewedAt": "2026-10-29",
+  "entries": [
+    {
+      "id": "pharmaceutics-115-2-1",
+      "explanation": "一階分解的意思是：每隔相同時間，留下的「比例」相同，不是減少的量相同。先算分解常數 k＝ln(500/300)÷20＝0.02554 day⁻¹，再用 t½＝0.693/k，得到約 27.1 天，因此選 27 天。也可先估算：20 天時還有 300，尚未降到起始量的一半 250，所以半衰期一定超過 20 天。",
+      "memory": "一階先算比例與對數，再用 0.693 除以 k。",
+      "focus": "由起始量、剩餘量和經過時間，求一階半衰期。",
+      "pitfall": "把少掉的 200 units/mL 平均分成每天 10，是零階的固定減量想法，不能套在本題。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-2",
+      "explanation": "把「1→10」想成配方的終點標示：本題是取 1 g 固體藥物，最後配成 10 mL 溶液。先把 1 g 換成 1,000 mg，濃度就是 100 mg/mL；要取得 200 mg，需取 200÷100＝2 mL。關鍵在「配成的總體積」，而非加入多少溶劑。若原料是液體，原始量的表示要另依藥典定義判讀。",
+      "memory": "1 g 配到 10 mL；每毫升 100 mg，200 mg 取 2 mL。",
+      "focus": "先讀懂濃度表示，再用藥量除以濃度求體積。",
+      "pitfall": "「配成 10 mL」和「再加 10 mL 水」不同；也不能把所有箭頭濃度都當成固體重量。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-3",
+      "explanation": "酏劑（elixir）像讓水和酒精一起分工的溶媒：水幫助親水成分，酒精幫助較喜歡醇的成分，所以題目應選「較能兼顧水溶性與醇溶性成分」。糖漿通常較甜、較黏。製備時把水溶液慢慢加進醇溶液並攪拌，較能避免局部酒精濃度突然下降而析出成分；最終配方仍須有足夠溶解能力。",
+      "memory": "酏劑水醇分工；水慢慢入醇，避免局部析出。",
+      "focus": "從溶媒組成，推理解釋酏劑與糖漿的差別。",
+      "pitfall": "含酒精不代表蔗糖更容易溶解；高酒精比例反而可能降低蔗糖溶解度。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-7",
+      "explanation": "PEG 是聚乙二醇，名稱後的 6000 代表平均分子量等級，所以確實比 PEG 1000 大。它的分子鏈含有可與水作用的醚氧，屬親水性聚合物；PEG 6000 在室溫呈固體，較低分子量品項則常是液體。可以把數字當成「鏈的平均大小標籤」，不能當成黏度數值，也不是所有 PEG 都有相同的外觀。",
+      "memory": "PEG 的數字看平均分子量；6000 比 1000 大，室溫為固體。",
+      "focus": "辨認 PEG 編號所代表的物理性質。",
+      "pitfall": "6000 不是黏度，也不表示聚合物厭水；親水性和固體外觀可以同時存在。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-8",
+      "explanation": "這題要找錯誤敘述：「安息角與測試方式無關」不成立。粉堆越陡，通常越不容易流動；敲實後密度增加越多，也常代表粉體原先較鬆、顆粒間作用較強。Carr 指數＝100×(振實密度－鬆密度)/振實密度，Hausner 比＝振實密度/鬆密度，兩者越高通常流動越差。漏斗高度、底面與振動都會影響安息角。",
+      "memory": "角度、Carr 指數、Hausner 比越高，通常越難流；比較前先固定測法。",
+      "focus": "分清粉體流動的趨勢，與測試條件造成的差異。",
+      "pitfall": "安息角不是脫離方法就固定不變的數值，不能拿不同測法的結果直接排名。",
+      "sources": [
+        "https://www.usp.org/sites/default/files/usp/document/harmonization/gen-chapter/20230428HSm99885.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-9",
+      "explanation": "Capping 是錠片頂部像帽子脫開，lamination 則是錠片裂成幾層。打錠太快時，粉末受壓的時間變短，空氣來不及排出，顆粒間也可能還沒形成足夠結合；卸壓回彈後就容易裂開。因此本題最符合的是「打錠機速度過快」。這是在四個選項中找最可能原因，並不表示含水量、細粉與配方等因素完全無關。",
+      "memory": "錠片帽裂、分層，先想排氣不足與卸壓回彈。",
+      "focus": "由錠片的裂開型態，推理壓錠過程發生什麼事。",
+      "pitfall": "不要把最可能原因背成唯一原因；實際排查還要一起看粉體和製程條件。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-11",
+      "explanation": "可以把口服錠劑想成要經過幾道門：先散開，藥物再進入溶液，之後才有機會穿過腸壁。溶離試驗（dissolution test）測的是藥物溶出的速度與程度，因此在本題四項試驗中最接近吸收前的關鍵步驟。崩散只看錠片有沒有散開，含量均一性看每單位藥量，脆度看耐磨損。溶離良好仍不等於保證完全吸收。",
+      "memory": "崩散是拆開，溶離是進水，吸收是過腸壁。",
+      "focus": "比較各項錠劑品質試驗與生體可用率的關係。",
+      "pitfall": "崩散、溶離、吸收是不同步驟；體外溶離和體內表現的關係仍須驗證。",
+      "sources": [
+        "https://www.fda.gov/regulatory-information/search-fda-guidance-documents/dissolution-testing-immediate-release-solid-oral-dosage-forms"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-12",
+      "explanation": "本題問「不是主要成長因素」，應選「製造過程容易，產量高」。生物藥常借助活細胞生產，再經純化及品質控制；細胞狀態、培養環境或蛋白質結構稍有改變，都可能影響成品。因此需求增加、技術進步或法規更明確可以促進發展，卻不能推論製造變得簡單。也不能把整個類別概括成一定比其他藥更安全、有效。",
+      "memory": "細胞能製造藥物，但穩定做出同樣品質並不容易。",
+      "focus": "區分市場成長的可能原因與製造流程的難度。",
+      "pitfall": "市場成長不等於製造容易；類別受到重視，也不代表每個品項都有相同療效或安全性。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-14",
+      "explanation": "判讀這題要留意「通常」兩字。多數金屬氫氧化物與氧化物的水溶性低，鹼金屬相關化合物是重要例外，因此第三個敘述最合適。鈉、鉀的一般鹽類常能溶於水，不能反過來記成通常不溶。溶解規則是分類捷徑，不是只看價數就能決定所有物質；例如氯化銀、硫酸鋇都有需要另記的低溶特性。",
+      "memory": "先用溶解規則分類，再替銀、鋇等常見例外留位置。",
+      "focus": "用一般溶解趨勢排除過度概括的敘述。",
+      "pitfall": "不能把硫酸鹽、亞硫酸鹽和硫代硫酸鹽全部歸為同一種溶解性。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-15",
+      "explanation": "題目要找的是「酒精可以大量使用」這個錯誤說法。糖漿中的高糖濃度會減少微生物可利用的水，因此 85%（w/v）蔗糖糖漿可考慮不另加防腐劑；但一經稀釋，就得重新評估。酒精雖能作溶媒與防腐成分，過量卻可能影響適用性，並使蔗糖較難溶解、產生結晶。防腐的目標是有效且與配方相容，不是越多越好。",
+      "memory": "糖漿一稀釋，防腐重評估；酒精有效，也不是越多越好。",
+      "focus": "從可利用水分與配方相容性，判斷糖漿防腐。",
+      "pitfall": "85%（w/v）是每 100 mL 含 85 g，不能誤讀成重量百分比；高糖也不免除製造品質控制。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-16",
+      "explanation": "先把 W/O 讀成「水滴分散在油中」：斜線後的油是連續外相。要穩住這種系統，通常選較親油、HLB 較低的乳化劑，因此本題選 3～6。HLB 是親水與親油平衡的指標，數字較高通常較親水；O/W 的選擇方向便相反。這個範圍是配方篩選的起點，最後仍要配合油相需求與實際安定性試驗。",
+      "memory": "斜線後面看外相：外油選低 HLB，外水偏高 HLB。",
+      "focus": "由乳劑外相，推理乳化劑需要偏親油還是偏親水。",
+      "pitfall": "W/O 不是油滴泡在水裡；不要只看到 W 就選高 HLB。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-17",
+      "explanation": "微乳劑的關鍵不只是「顆粒很小」，而是油、水和界面活性劑在適當比例與條件下，可形成熱力學安定的系統，所以「必須給外在能量才能形成」最不合適。它可有水包油、油包水或雙連續結構。微乳劑能幫助某些難溶藥增溶，但能否改善吸收仍取決於藥物與配方，不能理解為所有藥都保證吸收更快、更好。",
+      "memory": "微乳重點是配方合適可形成安定系統，不只是把乳滴打得更小。",
+      "focus": "從形成方式和安定性，辨認微乳劑的特徵。",
+      "pitfall": "別把微乳劑與一般靠高能量打散的細小乳劑完全混為一談。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-18",
+      "explanation": "本題須在相同溫度下比較，答案是 propane（丙烷）。丙烷的常壓沸點約 −42°C，比題目其他推進劑低；在這組物質中，它較容易轉成氣相，也有較高蒸氣壓。把蒸氣壓想成密閉容器中液體與蒸氣達到平衡時，蒸氣施加的壓力。溫度改變，數值就會跟著變，因此不能拿不同溫度的資料直接比較。",
+      "memory": "這組推進劑記丙烷蒸氣壓最高；比較時溫度必須相同。",
+      "focus": "利用同溫條件下的揮發傾向，判斷推進劑蒸氣壓。",
+      "pitfall": "不要只依分子量大小推斷；分子間作用力也會影響蒸氣壓。",
+      "sources": [
+        "https://www.cdc.gov/niosh/npg/npgd0524.html",
+        "https://webbook.nist.gov/cgi/cbook.cgi?ID=C74986&Type=TBOIL"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-20",
+      "explanation": "凝絮是讓小粒子聚成鬆鬆的大團；團塊的有效尺寸變大，通常沉降較快，因此「高度凝絮會沉降緩慢」是本題的錯誤敘述。好處是沉澱較疏鬆，通常比較容易搖回均勻，不像緊密結塊那麼難分散。助懸劑則主要改變介質的黏度或結構，以減慢下沉；凝絮和助懸處理的是不同問題，配方常需一起考量。",
+      "memory": "凝絮鬆團下得快，沉後較容易搖回來。",
+      "focus": "區分沉降快慢與沉澱能否重新分散。",
+      "pitfall": "沉得慢不一定好，沉得快也不一定壞；還要看會不會形成難以搖散的硬塊。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmaceutics-115-2-21",
+      "explanation": "Stokes 式 v＝d²(ρ粒－ρ液)g/(18η) 告訴我們：粒徑或密度差越大，沉降通常越快；黏度越大則越慢。但實際懸液還得能搖勻、倒出，不能只追求黏度無限增加。本題四個選項中，以粒子比介質重、避免漂浮的敘述較合適。這不是所有懸液必須下沉的通則；理想設計仍需平衡潤濕、流動與再分散。",
+      "memory": "公式看趨勢，配方看平衡：放得住，也要搖得勻、倒得出。",
+      "focus": "把 Stokes 沉降趨勢與實際懸液使用需求一起考量。",
+      "pitfall": "Stokes 式有稀分散、理想粒子等前提，不能把降低沉降速率當成配方唯一目標。",
+      "sources": [],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-1",
+      "explanation": "菸鹼性乙醯膽鹼受體本身就是離子通道。乙醯膽鹼一結合，通道便打開，離子移動使細胞膜去極化，接著引發骨骼肌的反應。因此本題選這組受體與功能。其他選項的直接傳訊需要酵素：胰島素受體具有酪胺酸激酶活性，α1 與 β1 受體則經 G 蛋白啟動下游酵素。題目問的是起始傳訊，不是整個收縮過程。",
+      "memory": "菸鹼性受體像直接開門；其他選項先啟動酵素接力。",
+      "focus": "分辨受體是直接開啟離子通道，還是透過酵素傳訊。",
+      "pitfall": "受體起始步驟不需酵素，不代表肌肉收縮的全部過程都不需酵素或能量。",
+      "sources": [
+        "https://www.guidetopharmacology.org/GRAC/FamilyIntroductionForward?familyId=76"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-2",
+      "explanation": "肝素帶負電，protamine 帶正電，兩者直接結合成較不具抗凝活性的複合物，因此屬於「化學性拮抗」。想像兩者先在藥物分子層次互相抓住，而不是搶同一個受體的位置。藥理性拮抗常發生在受體層次；生理性或功能性拮抗則可透過不同路徑，最後產生方向相反的生理效果。",
+      "memory": "直接抓住藥物形成複合物，先想化學性拮抗。",
+      "focus": "依兩種藥如何互相抵消，判斷拮抗類型。",
+      "pitfall": "看到「拮抗」不一定就是受體競爭；本題重點是正負電性形成複合物。",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=7a31fc4c-579f-45cc-9559-39cfad9a57b3&type=display"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-5",
+      "explanation": "題目指定「生長激素受體拮抗劑」，因此答案是 pegvisomant。它阻擋生長激素在受體處傳訊，讓下游的 IGF-1 降低。Octreotide 也與肢端肥大症治療有關，但主要是抑制生長激素分泌，攔截的位置不同；somatropin 是補充生長激素，levothyroxine 則是甲狀腺素。先找機轉，再看用途，較不容易被同病用藥混淆。",
+      "memory": "Pegvisomant 擋 GH 受體；octreotide 讓 GH 少分泌。",
+      "focus": "辨別抑制激素分泌與阻斷激素受體的差異。",
+      "pitfall": "用於同一疾病，不表示作用在同一個位置；題目指定的受體機轉比疾病名稱更關鍵。",
+      "sources": [
+        "https://www.ema.europa.eu/en/documents/product-information/somavert-epar-product-information_en.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-6",
+      "explanation": "Oxytocin 是催產素，受體被啟動時會促進子宮平滑肌收縮。Atosiban 在受體處阻擋這個訊號，所以是本題答案。把其他藥依標的分開：tolvaptan 擋腎臟 V2 受體，bromocriptine 刺激多巴胺 D2 受體，abarelix 擋 GnRH 受體。名稱都出現在內分泌單元，卻不是同一條訊息路線。",
+      "memory": "題目說催產素受體拮抗，對應 atosiban。",
+      "focus": "由子宮收縮與催產素受體，找到相符的拮抗劑。",
+      "pitfall": "不要只因藥名熟悉或都與激素有關就配對；先核對受體名稱和致效、拮抗方向。",
+      "sources": [
+        "https://www.ema.europa.eu/en/documents/product-information/atosiban-sun-epar-product-information_en.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-8",
+      "explanation": "Abiraterone 抑制 CYP17，這個酵素具有 17α-hydroxylase 和 17,20-lyase 活性，是雄性素製造路徑的重要步驟。抑制它就像在原料加工線上關掉一站，讓後續雄性素產量下降，因此符合題意。重點是「減少製造」，不是直接阻斷雄性素受體。其他選項分屬不同激素或受體相關藥物，並非本題指定的酵素抑制劑。",
+      "memory": "Abiraterone 關 CYP17 製造站，雄性素來源變少。",
+      "focus": "辨認抑制雄性素生合成的酵素標的。",
+      "pitfall": "抑制激素合成和拮抗激素受體是不同策略；也不要把 CYP17 看成所有 CYP 酵素。",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=445e70a1-25bd-8fc1-e063-6394a90a1a43"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-10",
+      "explanation": "題目把標的寫得很明確：GABA_B 受體，因此應選 baclofen。它會抑制脊髓層次的反射活動，減少痙攣。四種藥都可能出現在肌肉鬆弛相關章節，但位置不同：diazepam 增強 GABA_A 作用，tizanidine 作用於中樞 α2 受體，dantrolene 則減少骨骼肌內的鈣釋放。先把受體或位置分開，便不用死背一串藥名。",
+      "memory": "Baclofen 對應 GABA_B；dantrolene 則走到肌肉放鈣那一端。",
+      "focus": "用受體種類與作用位置區分肌肉鬆弛藥。",
+      "pitfall": "GABA_A 與 GABA_B 名稱相近，卻是不同受體；diazepam 不等於 GABA_B 致效劑。",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c73ed3af-8e8a-4a18-90fc-a0f2dcc641d0"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-11",
+      "explanation": "急性支氣管收縮的關鍵，是讓氣道的平滑肌放鬆。Albuterol 刺激 β2 受體，使細胞內 cAMP 增加，促進支氣管舒張，因此符合本題。Dobutamine 的典型考點是心臟 β1，mirabegron 是膀胱 β3，tizanidine 則是中樞 α2。可以用器官幫助分類，但受體不只分布在單一器官，不能把記憶口訣當成完整分布圖。",
+      "memory": "Albuterol 找 β2、放鬆氣道；一心、二氣、三儲尿只作典型提示。",
+      "focus": "把支氣管舒張的受體作用與藥名配對。",
+      "pitfall": "快速舒張支氣管不等於已處理氣喘的所有長期問題；本題只在辨認作用機轉。",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=264e2145-c7d4-4f4f-aa5b-9fe48a7c5b47"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-15",
+      "explanation": "Rifampin 本身即可結合細菌的 RNA 聚合酶，因此不必先由微生物把它變成活性形式。相對地，isoniazid 需要菌體 KatG 活化，pyrazinamide 需轉成 pyrazinoic acid；acyclovir 的第一個磷酸則主要由病毒胸苷激酶加上。這題是在問「藥效開關由誰打開」，不是問藥物最後由肝臟或腎臟如何清除。",
+      "memory": "Rifampin 原藥可作用；其他三藥先經活化步驟。",
+      "focus": "區分原藥直接作用與需經微生物活化的藥物。",
+      "pitfall": "人體代謝、清除與微生物活化是不同問題；不要把 isoniazid 的人體乙醯化當成本題答案。",
+      "sources": [
+        "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d7131853-8850-45bd-9227-c4b1916dd28d"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-16",
+      "explanation": "這題問主要機轉「不是細胞膜」，可先抓住 cycloserine。它干擾 alanine racemase 與 D-Ala-D-Ala ligase，讓細菌難以備齊製造肽聚糖的原料，因此重點在細胞壁。細胞壁像支撐外牆，細胞膜則控制物質與離子進出。原題把 pyrazinamide 也放入膜機轉的比較，但其活化產物的作用有多種研究模型，不宜背成唯一已確定的膜作用。",
+      "memory": "Cycloserine 卡住 D-alanine 原料線，影響細胞壁。",
+      "focus": "辨認細胞壁合成抑制與細胞膜作用的差別。",
+      "pitfall": "題目中的 pyrazinamide 機轉分類較簡化，需保留研究限制；別由選項推成所有機轉已完全確定。",
+      "sources": [
+        "https://pubmed.ncbi.nlm.nih.gov/23286234/",
+        "https://pubmed.ncbi.nlm.nih.gov/29208891/"
+      ],
+      "needsReview": true
+    },
+    {
+      "id": "pharmacology-115-2-19",
+      "explanation": "這題的錯誤敘述是「pravastatin 主要經 CYP3A4 代謝」。Statins 共同抑制 HMG-CoA reductase，降低肝細胞內膽固醇，促使 LDL 受體增加；但代謝途徑並不完全相同。Simvastatin、lovastatin 和 atorvastatin 與 CYP3A4 有關，pravastatin 則不以此為主要途徑。Simvastatin 也是需開環成活性酸型的前驅藥。",
+      "memory": "同為 statin，機轉相近，代謝未必相同；pravastatin 不是主要走 CYP3A4。",
+      "focus": "分開記憶同類藥的共同機轉與個別代謝差異。",
+      "pitfall": "不要把一種 statin 的代謝與交互作用，直接套用到整個類別。",
+      "sources": [
+        "https://www.accessdata.fda.gov/drugsatfda_docs/label/2002/19898s052lbl.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-22",
+      "explanation": "Esmolol 的特色是作用時間很短，消除半衰期約 9 分鐘。原因在結構中的酯鍵容易被紅血球內酯酶水解，原藥因此迅速失活，所以符合題目指定的短效靜脈用 β 阻斷劑。它主要偏向 β1 受體，但選擇性不是絕對。這裡的水解是「讓藥失活」，與某些前驅藥水解後才開始作用，方向剛好相反。",
+      "memory": "Esmolol 的酯鍵容易拆，原藥失活快，所以短效。",
+      "focus": "把分子結構的快速水解，連到藥物作用時間。",
+      "pitfall": "水解不一定是活化；本題水解後主要是失活，也不是主要靠血漿膽鹼酯酶。",
+      "sources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=60b10020-f802-4fef-a487-0f11eca246c5"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-23",
+      "explanation": "內生性擬交感活性（ISA）表示部分致效性：藥物可以擋住較強的刺激，自己卻仍留下少量受體活性。想像把強光調暗，卻沒有完全關燈。題目擔心心臟仍受到刺激，便是在指這種特性。因此應選有 intrinsic sympathomimetic activity 的 β 阻斷劑。注意 mimetic 是模仿、致效方向，lytic 則偏向抑制，不能只看前半段相同。",
+      "memory": "ISA 是部分致效：能擋強刺激，但會保留一點亮度。",
+      "focus": "讀懂 β 阻斷劑的部分致效性，而非只背英文縮寫。",
+      "pitfall": "具有 ISA 不代表純粹的完全致效劑；實際效果也與當時的交感刺激強度有關。",
+      "sources": [
+        "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f529ff35-f82b-4a3a-96b4-096bfc8e81b5"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-25",
+      "explanation": "保鉀型利尿劑主要作用在腎元後段，本題應選皮質集尿管。這裡的主細胞回收鈉時，會形成有利於鉀排出的條件；減少鈉回收，就能減少鉀的流失。Amiloride、triamterene 直接阻擋 ENaC 鈉通道，spironolactone、eplerenone 則阻擋醛固酮受體。兩種方法入口不同，最後都影響這段鈉、鉀處理。",
+      "memory": "保鉀看腎元後段：少回收鈉，也少把鉀排出去。",
+      "focus": "由鈉回收和鉀分泌的關係，定位保鉀型利尿劑。",
+      "pitfall": "「主要定位在皮質集尿管」不是只有這個點能作用；藥品資料也描述遠端小管與集尿管。",
+      "sources": [
+        "https://www.dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=2b70cf0c-45be-428f-b396-5001ed4e30fc&type=display"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-26",
+      "explanation": "把這組藥分成兩件事：valsartan 擋住血管張力素 II 的 AT1 受體；sacubitril 活化後抑制 neprilysin 的酵素活性。Neprilysin 像分解胜肽的剪刀，抑制它可讓利鈉胜肽等作用保留較久。因此答案是「受體拮抗＋酵素活性抑制」。Valsartan 不是 ACE 抑制劑；sacubitril 也不是阻止 neprilysin 被製造出來。",
+      "memory": "Valsartan 擋 AT1 受體；sacubitril 活化後收起 neprilysin 剪刀。",
+      "focus": "逐一核對兩種成分的作用標的和作用方式。",
+      "pitfall": "抑制酵素活性，不等於減少酵素生成，更不等於抑制酵素本身被分解。",
+      "sources": [
+        "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=000dc81d-ab91-450c-8eae-8eb74e72296f"
+      ],
+      "needsReview": false
+    },
+    {
+      "id": "pharmacology-115-2-27",
+      "explanation": "這題找最不合適的藥，應選 albuterol。它的典型作用是刺激 β2 受體、舒張支氣管，並非這組用於降低眼壓的藥。Timolol 與 betaxolol 屬 β 阻斷劑，主要考點是減少房水生成；apraclonidine 則主要經 α2 作用降低房水生成。可把眼球想成持續進水與排水的容器，再辨認藥物是在調整哪一端。",
+      "memory": "Albuterol 用 β2 放鬆氣道；這題的眼壓藥多從房水生成端著手。",
+      "focus": "比較交感相關藥物在氣道與眼睛的作用方向。",
+      "pitfall": "致效與阻斷方向相反；不能因為都提到 β 受體，就把 albuterol 和眼用 β 阻斷劑歸為同一功能。",
+      "sources": [
+        "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=874bcb9b-3b51-1375-e053-2a95a90ad559",
+        "https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=7a1ea848-5b55-4038-afb1-029645ee0925"
+      ],
+      "needsReview": false
+    }
+  ]
+}

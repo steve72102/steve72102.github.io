@@ -52,7 +52,7 @@
   }
   function stats(s, subject) { return heroStats(Math.floor(s.xp/100)+1,s.equipped,subject); }
   function begin(s, enemyId, subject, questions, random = Math.random, day = E.today()) {
-    const a=s.arena, enemy=ENEMIES.find(e=>e.id===enemyId), pool=questions.filter(q=>q.subject===subject);
+    const a=s.arena, enemy=ENEMIES.find(e=>e.id===enemyId), pool=questions.filter(q=>!q.needsReview&&q.subject===subject);
     if(!enemy || !E.SUBJECTS[subject] || pool.length<6 || a.battle&&a.battle.phase!=='done') return false;
     rollWeek(a,day);
     a.battle={enemyId,subject,day,week:weekId(day),ids:E.shuffle(pool,random).slice(0,6).map(q=>q.id),hero:stats(s,subject),round:0,cursor:0,phase:'prep',prepared:[false,false],answers:[],rounds:[],result:null};
@@ -110,7 +110,7 @@
       return String(text || '')
         .replace(/(答案(?:是|為)?|正解(?:是|為)?|(?:本題)?(?:應選|選擇|選)|本題|因此|所以|故)\s*[（(]?([ABCD])[）)]?(?![A-Za-z0-9])/g, (_,prefix,letter) => prefix + option(letter))
         .replace(/選項\s*[（(]?([ABCD])[）)]?(?![A-Za-z0-9])/g, (_,letter) => '選項' + option(letter))
-        .replace(/(^|[，。；;：:\n])\s*([ABCD])(?=(?:為|是)(?:正確|錯誤|答案)|正確|錯誤|錯|對|把|將|寫|敘述)/g, (_,prefix,letter) => prefix + option(letter))
+        .replace(/(^|[，。；;：:\n])\s*([ABCD])(?=(?:為|是)(?:正確|錯誤|答案|主要理由|關鍵|本題)|正確|錯誤|錯|對|把|將|寫|敘述)/g, (_,prefix,letter) => prefix + option(letter))
         .replace(/→\s*([ABCD])(?=\s*(?:[，。；;、）)]|$|錯|對))/g, (_,letter) => '→' + option(letter));
     }
     const letter=String.fromCharCode(65+q.answer),answer=q.options[q.answer];

@@ -64,6 +64,7 @@
   }
   function shuffle(list, random = Math.random) { const out = list.slice(); for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; } return out; }
   function begin(s, questions, label, random = Math.random) {
+    questions = questions.filter(q => !q.needsReview);
     if (!questions.length) return false;
     s.session = { ids: shuffle(questions, random).slice(0, 5).map(q => q.id), index: 0, answers: [], label: String(label).slice(0, 60) };
     return true;

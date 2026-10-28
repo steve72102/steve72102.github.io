@@ -1,0 +1,125 @@
+{
+  "encoding": "WebP quality 90, original dimensions, lossless alpha; PNG masters retained locally",
+  "assets": [
+    {
+      "file": "campus-taiwan.webp",
+      "width": 1536,
+      "height": 1024,
+      "sourceBytes": 3969618,
+      "priorWebpBytes": 2880120,
+      "webpBytes": 732042,
+      "alphaPreserved": true,
+      "sha256": "1c9e451d4326dd98ed25d77b53650718d68700444038516997862efad9f5432b"
+    },
+    {
+      "file": "hall-ntu.webp",
+      "width": 1536,
+      "height": 1024,
+      "sourceBytes": 2580000,
+      "priorWebpBytes": 1878302,
+      "webpBytes": 355574,
+      "alphaPreserved": true,
+      "sha256": "5c6680ba61a448a951d01153581f38ef245f34cab459f23fcedbf7947e620314"
+    },
+    {
+      "file": "hall-nthu.webp",
+      "width": 1536,
+      "height": 1024,
+      "sourceBytes": 2537117,
+      "priorWebpBytes": 1769652,
+      "webpBytes": 328178,
+      "alphaPreserved": true,
+      "sha256": "918ae4f86dd7022192a0ff1127369ff745a94127e8b73ceaa8894c9b234222b0"
+    },
+    {
+      "file": "hall-ncku.webp",
+      "width": 1536,
+      "height": 1024,
+      "sourceBytes": 3105863,
+      "priorWebpBytes": 2155958,
+      "webpBytes": 481904,
+      "alphaPreserved": true,
+      "sha256": "5d0755e4ece96f5802839b1a65b6447a505bc048a138a441d02e28e623ce75f2"
+    },
+    {
+      "file": "doctor-inspired.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1963611,
+      "priorWebpBytes": 1242610,
+      "webpBytes": 196482,
+      "alphaPreserved": true,
+      "sha256": "4f72784de49bde19cd9163f5f788c2f3afccf0476361705086d9f0f8571d50ad"
+    },
+    {
+      "file": "professor-inspired.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1864762,
+      "priorWebpBytes": 1144928,
+      "webpBytes": 174290,
+      "alphaPreserved": true,
+      "sha256": "39d2caf2003dc54491b09380f9d38692eb45c4a13960764b4948485c6e85f32f"
+    },
+    {
+      "file": "graduate-inspired.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1751941,
+      "priorWebpBytes": 1062398,
+      "webpBytes": 147978,
+      "alphaPreserved": true,
+      "sha256": "79dac67a241b1424d5f4b06d0b4dfc3b10e049405b5b2b14c34be50b52b56c3d"
+    },
+    {
+      "file": "researcher-inspired.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1845809,
+      "priorWebpBytes": 1147892,
+      "webpBytes": 176312,
+      "alphaPreserved": true,
+      "sha256": "969147d44fa36814615a3118c2518ce3373b55752d9ff37737dadca82c7beb8e"
+    },
+    {
+      "file": "beaker.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 1209426,
+      "priorWebpBytes": 850952,
+      "webpBytes": 218696,
+      "alphaPreserved": true,
+      "sha256": "a95281797d0e6dfdabf2a758c42181dd5625807897ffb7332876e10cfe8f4a5e"
+    },
+    {
+      "file": "flask.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 1145604,
+      "priorWebpBytes": 787702,
+      "webpBytes": 195144,
+      "alphaPreserved": true,
+      "sha256": "083579cb8e7912c1cf26ad3af863089de3075fbbeb7bc52711b7223b672d5c69"
+    },
+    {
+      "file": "cylinder.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 746912,
+      "priorWebpBytes": 515862,
+      "webpBytes": 137766,
+      "alphaPreserved": true,
+      "sha256": "00d801927388b05b134dc1082d8347afd92e67002bb10302b50e432dbb489c86"
+    },
+    {
+      "file": "mortar.webp",
+      "width": 1254,
+      "height": 1254,
+      "sourceBytes": 1126713,
+      "priorWebpBytes": 758686,
+      "webpBytes": 179258,
+      "alphaPreserved": true,
+      "sha256": "62d7e1c02fd029be4017f2508418eda91b970cacfe34a7a6683101226ec3f636"
+    }
+  ]
+}
