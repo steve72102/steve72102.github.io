@@ -22,9 +22,9 @@
   const FLOORS={
     study:[{id:'practice',level:'1F',name:'知識教室',description:'隨機 5 題，從今天的一點理解開始。'},{id:'calculation',level:'2F',name:'計算研究室',description:'練習題庫中與計算相關的題目。'},{id:'exam',level:'3F',name:'歷屆試煉室',description:'選一份歷屆試題，逐步讀懂每個觀念。'}],
     battle:[{id:'arena',level:'1F',name:'怪物試煉場',description:'兩回合打怪，累積個人每週銅、銀、金、鑽石積分。'},{id:'duel',level:'2F',name:'雙人競技場',description:'自動配對或房號邀請，和真人進行兩回合知識友誼賽。'}],
-    life:[{id:'shop',level:'1F',name:'補給商店',description:'用金幣購買回合前知識補給券。'},{id:'draw',level:'2F',name:'星願工坊',description:'用答題取得的星願券，抽取戰鬥裝備。'},{id:'wardrobe',level:'3F',name:'造型研究室',description:'自由選擇人物與器皿夥伴，所有外觀皆可直接使用。'}]
+    life:[{id:'shop',level:'1F',name:'補給商店',description:'用金幣購買回合前知識補給券。'},{id:'draw',level:'2F',name:'星願工坊',description:'用答題取得的星願券，抽取戰鬥裝備。'},{id:'wardrobe',level:'3F',name:'造型研究室',description:'自由更換人物外觀；完成新手任務後，與器皿夥伴一起成長。'}]
   };
-  function fresh(){return {version:1,character:'graduate',pet:'beaker'};}
+  function fresh(){return {version:1,character:'graduate',pet:null};}
   function restore(raw){
     if(raw===undefined)return fresh();
     if(!raw||Array.isArray(raw)||typeof raw!=='object'||raw.version!==1||!CHARACTERS.some(c=>c.id===raw.character)||(raw.pet!==null&&!PETS.some(p=>p.id===raw.pet)))throw Error('人物或夥伴的外觀資料不正確。');
@@ -34,7 +34,7 @@
   function pet(id){return PETS.find(p=>p.id===id)||null;}
   function choose(state,kind,id){
     if(kind==='character'&&CHARACTERS.some(c=>c.id===id)){state.appearance.character=id;return true;}
-    if(kind==='pet'&&(id===null||PETS.some(p=>p.id===id))){state.appearance.pet=id;return true;}
+    if(kind==='pet'&&(id===null||PETS.some(p=>p.id===id))&&(id===null||state.companion?.unlocked)){state.appearance.pet=id;return true;}
     return false;
   }
   function floors(id){return FLOORS[id]||FLOORS.study;}

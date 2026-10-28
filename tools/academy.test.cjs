@@ -16,6 +16,7 @@ test('unknown appearances, paths and wrong shape are rejected',()=>{
 });
 test('every cosmetic choice leaves combat stats, XP, currency and equipment unchanged',()=>{
   const s=Object.assign(E.fresh(),{arena:C.fresh(),appearance:A.fresh()});s.xp=300;s.arena.coins=80;s.inventory['pharmacology-2']=1;s.equipped='pharmacology-2';
+  s.companion={version:1,unlocked:true,base:0};
   const stats=C.stats(s,'pharmacology'), original={...s};delete original.appearance;
   for(const c of A.CHARACTERS)for(const p of [...A.PETS.map(x=>x.id),null]){
     assert.ok(A.choose(s,'character',c.id));assert.ok(A.choose(s,'pet',p));assert.deepEqual(C.stats(s,'pharmacology'),stats);

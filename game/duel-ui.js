@@ -2,10 +2,10 @@ window.MindDuelUI=function(ctx){
   'use strict';
   const {E,C,node,btn,note,title,render,toast,save,openModal,closeModal,questions,getState,random,isVisible,portrait}=ctx,D=window.MindDuel;
   const byId=new Map(questions.map(q=>[q.id,q]));
-  let nickname='知識旅人',subject='pharmaceutics',code='',selected=null,lastIndex=-1,lastGame=null;
+  let nickname='',subject='pharmaceutics',code='',selected=null,lastIndex=-1,lastGame=null;
   const net=window.MindDuelNetwork({questions,random,onChange:data=>{if(data.status==='error')closeModal();if(data.game!==lastGame||data.game?.index!==lastIndex){selected=null;lastGame=data.game;lastIndex=data.game?.index??-1;}if(isVisible())render();},onAnswer:(q,correct)=>{E.reward(getState(),q,correct);save();}});
   function start(mode){
-    const s=getState();net.start({mode,subject,code:code.toUpperCase().replace(/\s/g,''),profile:{name:nickname,level:Math.floor(s.xp/100)+1,gearId:s.equipped,appearance:s.appearance}});
+    const s=getState();net.start({mode,subject,code:code.toUpperCase().replace(/\s/g,''),profile:{name:nickname||s.profile?.name||'知識旅人',level:Math.floor(s.xp/100)+1,gearId:s.equipped,appearance:s.appearance}});
   }
   function exit(){openModal(node('h2',{},'離開目前的連線？'),note('離開後本場不判勝負，已獲得的經驗會保留。使用過的補給券不會退回。'),btn('離開連線',()=>{closeModal();net.leave();},'secondary'));}
   function preview(){
@@ -18,9 +18,9 @@ window.MindDuelUI=function(ctx){
     }));
     const modal=document.getElementById('modal'),h=modal.querySelector('h2');h.setAttribute('tabindex','-1');h.focus({preventScroll:true});modal.scrollTop=0;
   }
-  function rules(){return node('section',{class:'panel duel-rules'},node('h3',{},'一起讀懂，再一決高下。'),node('ul',{class:'rules'},node('li',{},'同科目、相同 6 題，分成 2 回合。每回合 3 題，以兩回合累積傷害決勝；相同傷害為平手。'),node('li',{},'等級與裝備在配對時鎖定。答對越多，知識傷害加成越高，弱裝備也有逆轉機會。'),node('li',{},'準備階段可用補給券閱讀完整知識。雙方各自準備好才開打，交卷後等雙方作答再公布答案。'),node('li',{},'每次準備限 180 秒；每題作答、解析等待各限 120 秒。請保持分頁在前景；離開或斷線會結束本場。'),node('li',{},'這是友誼賽，不計入每週打怪積分，也不另發勝負金幣。每天首次答對的經驗、星願進度與錯題照常累積。')),node('details',{},node('summary',{},'連線與資料說明'),note('只有按下連線按鈕才會使用 PeerJS 免費配對服務，之後由兩個瀏覽器直接交換暱稱、等級、裝備、題號與作答資料。網路位址會用於連線，不上傳整份存檔，不使用麥克風或鏡頭。'),note('雙人模式需要網路及同時在線的另一位玩家。部分公司／校園網路或 NAT 設定可能無法直連，這時可以換網路重試。免費連線服務可能中斷；單人與已下載的離線遊戲不受影響。'),note('雙人模式無 ChatGPT API 或訂閱檢查；目前沒有帳號驗證與伺服器防作弊，請把結果當作友誼切磋。')));}
+  function rules(){return node('section',{class:'panel duel-rules'},node('h3',{},'一起讀懂，再一決高下。'),node('ul',{class:'rules'},node('li',{},'同科目、相同 6 題，分成 2 回合。每回合 3 題，以兩回合累積傷害決勝；相同傷害為平手。'),node('li',{},'等級與裝備在配對時鎖定。答對越多，知識傷害加成越高，弱裝備也有逆轉機會。'),node('li',{},'準備階段可用補給券閱讀完整知識。雙方各自準備好才開打，交卷後等雙方作答再公布答案。'),node('li',{},'每次準備限 180 秒；每題作答、解析等待各限 120 秒。請保持分頁在前景；離開或斷線會結束本場。'),node('li',{},'這是友誼賽，不計入每週打怪積分，也不另發勝負金幣。每天首次答對的經驗、星願進度與錯題照常累積。')),node('details',{},node('summary',{},'連線與資料說明'),note('只有按下連線按鈕才會使用 PeerJS 免費配對服務，之後由兩個瀏覽器直接交換暱稱、等級、裝備、題號與作答資料。網路位址會用於連線，不上傳整份存檔，不使用麥克風或鏡頭。'),note('雙人模式需要網路及同時在線的另一位玩家。部分公司／校園網路或 NAT 設定可能無法直連，這時可以換網路重試。免費連線服務可能中斷；單人與已下載的離線遊戲不受影響。'),note('雙人模式無 ChatGPT API 或訂閱檢查；Google 登入用於雲端存檔，雙人友誼賽目前沒有伺服器防作弊，請把結果當作友誼切磋。')));}
   function lobby(data){
-    const nameInput=node('input',{id:'duel-name',type:'text',maxlength:16,autocomplete:'off',value:nickname,onInput:e=>{nickname=e.target.value;}});
+    const nameInput=node('input',{id:'duel-name',type:'text',maxlength:16,autocomplete:'off',value:nickname||getState().profile?.name||'知識旅人',onInput:e=>{nickname=e.target.value;}});
     const select=node('select',{id:'duel-subject',onChange:e=>{subject=e.target.value;}} ,Object.entries(E.SUBJECTS).map(([key,s])=>node('option',{value:key},s.name)));select.value=subject;
     const room=node('input',{id:'duel-code',type:'text',maxlength:14,autocomplete:'off',autocapitalize:'characters',spellcheck:'false',placeholder:'朋友的 10 碼房號',value:code,onInput:e=>{code=e.target.value;}});
     return [node('section',{class:'duel-hero'},node('div',{},node('p',{class:'eyebrow'},'TWO MINDS. ONE ARENA.'),node('h2',{},'讓知識，遇見另一位旅人。'),note('自動配對同科玩家，或邀請朋友。兩回合，用理解決勝。')),node('div',{class:'duel-emblem','aria-hidden':'true'},node('span',{},'✦'),node('b',{},'VS'),node('span',{},'✧'))),data.status==='error'?node('div',{class:'notice danger',role:'alert'},data.message):null,node('section',{class:'panel'},node('div',{class:'duel-fields'},node('div',{},node('label',{for:'duel-name'},'對戰暱稱'),nameInput),node('div',{},node('label',{for:'duel-subject'},'自動配對／開房科目'),select)),note('可用文字、數字、空格或底線，最多 16 字。加入朋友房間時會採用房主的科目。')),node('div',{class:'duel-modes'},node('section',{class:'panel duel-mode'},node('p',{class:'eyebrow'},'01 / FIND A RIVAL'),node('h3',{},'自動配對'),note('尋找同科、正在等待的真人玩家。沒有人在線時會持續等候。'),btn('開始自動配對',()=>start('auto'),'full')),node('section',{class:'panel duel-mode'},node('p',{class:'eyebrow'},'02 / PLAY WITH A FRIEND'),node('h3',{},'邀請朋友'),note('建立專屬房號，兩人各用一台裝置進入遊戲。'),btn('建立雙人房間',()=>start('host'),'secondary full'),node('div',{class:'duel-join'},node('label',{for:'duel-code'},'加入朋友的房間'),room,btn('加入房間',()=>start('join'),'gold full')))),rules()];

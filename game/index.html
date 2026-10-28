@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#f3f8f4">
   <meta name="description" content="走進原創藥學學院，選擇學者與器皿夥伴，探索樓館關卡、知識打怪與雙人對戰。單人支援離線，無需訂閱。">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://0.peerjs.com wss://0.peerjs.com; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.gstatic.com https://apis.google.com; style-src 'self'; img-src 'self' data:; connect-src 'self' https://0.peerjs.com wss://0.peerjs.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://www.googleapis.com; frame-src https://*.firebaseapp.com https://accounts.google.com; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>思維冒險 · Mind Quest</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="manifest" href="./manifest.webmanifest">
@@ -14,11 +14,16 @@
   <link rel="stylesheet" href="./duel.css">
   <link rel="stylesheet" href="./academy.css">
   <link rel="stylesheet" href="./daylight.css">
+  <link rel="stylesheet" href="./journey.css">
   <script defer src="./bank.js"></script>
   <script defer src="./engine.js"></script>
   <script defer src="./combat.js"></script>
   <script defer src="./lesson.js"></script>
   <script defer src="./academy.js"></script>
+  <script defer src="./journey.js"></script>
+  <script defer src="./firebase-config.js"></script>
+  <script defer src="./cloud.js"></script>
+  <script defer src="./account-ui.js"></script>
   <script defer src="./academy-ui.js"></script>
   <script defer src="./combat-ui.js"></script>
   <script defer src="./vendor/peerjs.min.js"></script>
@@ -36,7 +41,9 @@
   <div class="shell">
     <aside class="sidebar">
       <div class="profile"><div id="profile-avatar" class="avatar academy-avatar"></div><p class="eyebrow">THE CURIOUS ONE</p><h2 id="profile-name">學院旅人</h2><p id="level" class="muted"></p><progress id="xp-bar" max="100" value="0" aria-label="升級經驗進度"></progress><small id="xp-label"></small></div>
+      <button type="button" id="account-status" class="account-status-button">訪客 · 本機保存</button>
       <nav id="nav" aria-label="遊戲選單">
+        <button data-page="account" class="nav-button"><span>◉</span>學院通行證</button>
         <button data-page="home" class="nav-button active"><span>⌂</span>藥學學院</button>
         <button data-page="wardrobe" class="nav-button"><span>✿</span>人物與夥伴</button>
         <button data-page="practice" class="nav-button"><span>▤</span>自由修練</button>

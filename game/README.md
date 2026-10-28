@@ -116,3 +116,14 @@ V2 使用 `mind-quest-save-v2` 儲存鍵。首次載入若沒有 V2 存檔，會
 官方文件：https://peerjs.com/client/faq 、https://peerjs.com/server/cloud 。
 
 新增邏輯與安全驗證：`node tools/duel.test.cjs`。既有測試：`node tools/combat.test.cjs`、`node tools/engine.test.cjs`。
+
+
+## 2026-10-29 學院通行證與夥伴成長
+
+- 新手可自訂 1–16 字暱稱並選擇 4 種免費人物外觀。
+- Google 登入使用 Firebase Authentication；Firestore `/players/{uid}` 僅本人能讀寫。公共網頁設定不是管理金鑰。沒有付款、Analytics 或 ChatGPT API。
+- 訪客存檔與各 Google UID 本機快取分離。離線先存本機，連線後同步；依修改時間自動保留最新整份旅程，替換前保留一份救援備份。請開啟裝置自動日期時間。雲端採交易版本檢查，避免同時寫入直接覆蓋。
+- 新玩家沒有寵物。領取每日知識補給並答對 5 道不同題目後可領養；4 種器皿共用成長。領養後每天每題首次答對 +1 成長點，10 點升級，20 點進化為研修精靈、60 點為星耀賢者。舊玩家已持有的夥伴保留。
+- 校園植栽插畫：臺灣杉、黑板樹、櫻花、木棉，低矮花圃採薄荷、紫蘇、艾草、菊花。屬原創景觀插畫，不用作藥材辨識依據。
+- 離線 ZIP 不需要 Google 或 ChatGPT；Google 雲端存檔需在網站版連網使用。
+- Firestore 部署規則來源：`firestore.rules`。管理後台：Firebase `mind-quest-academy`。免費 Spark 用量限制仍適用；服務中斷時保留本機與匯出備份。

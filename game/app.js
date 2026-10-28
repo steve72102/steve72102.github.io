@@ -1,11 +1,12 @@
 (() => {
   'use strict';
-  const E = window.MindEngine, C = window.MindCombat, A = window.MindAcademy, bank = window.MIND_BANK;
+  const E = window.MindEngine, C = window.MindCombat, A = window.MindAcademy, J = window.MindJourney, bank = window.MIND_BANK;
   const view = document.getElementById('view');
   if (!E || !C || !A || !window.MindAcademyUI || !window.MindLesson || !window.MindBattleUI || !bank?.questions?.length) { view.textContent = '題庫尚未載入，請重新整理。離線版請先完整解壓縮整個資料夾。'; return; }
   const questions = bank.questions, byId = new Map(questions.map(q => [q.id, q]));
   const KEY = 'mind-quest-save-v3';
-  let state = Object.assign(E.fresh(), { arena: C.fresh(), appearance: A.fresh() }), page = 'home', subjectYear = 'all', calculations = false, selected = null, blockedSave = false, originalSave = null, toastTimer;
+  function freshSave(){const s=Object.assign(E.fresh(),{arena:C.fresh(),appearance:A.fresh(),profile:J.profile()});s.companion=J.companion(undefined,s);return s;}
+  let state = freshSave(), page = 'home', subjectYear = 'all', calculations = false, selected = null, blockedSave = false, originalSave = null, toastTimer, cloud;
   const $ = id => document.getElementById(id);
   function node(tag, attrs = {}, ...children) {
     const n = document.createElement(tag);
@@ -25,7 +26,7 @@
   const symbol = item => node('div', { class: 'item-symbol', 'aria-hidden': 'true' }, ['◈', '✧', '❋'][Object.keys(E.SUBJECTS).indexOf(item.subject)]);
   function random() { if (window.crypto?.getRandomValues) { const x = new Uint32Array(1); crypto.getRandomValues(x); return x[0] / 4294967296; } return Math.random(); }
   function warn(message) { $('storage-warning').textContent = message; $('storage-warning').hidden = false; }
-  function restoreSave(raw) { const restored = E.restore(raw, questions); restored.arena = C.restore(raw.arena, questions); restored.appearance = A.restore(raw.appearance); return restored; }
+  function restoreSave(raw) { const restored = E.restore(raw, questions); restored.arena = C.restore(raw.arena, questions); restored.appearance = A.restore(raw.appearance); restored.profile=J.profile(raw.profile);restored.companion=J.companion(raw.companion,restored);return restored; }
   try {
     originalSave = localStorage.getItem(KEY) || localStorage.getItem('mind-quest-save-v2') || localStorage.getItem('mind-quest-save-v1');
     if (originalSave) state = restoreSave(JSON.parse(originalSave));
@@ -36,12 +37,13 @@
   E.rollDay(state, E.today());
   function save() {
     if (blockedSave) return;
-    try { localStorage.setItem(KEY, JSON.stringify(state)); }
+    try { if(cloud)cloud.localSave();else localStorage.setItem(KEY, JSON.stringify(state)); }
     catch (_) { warn('進度無法寫入瀏覽器。請匯出備份，避免關閉頁面後遺失進度。'); }
   }
   function toast(text) { clearTimeout(toastTimer); $('toast').textContent = text; $('toast').hidden = false; toastTimer = setTimeout(() => { $('toast').hidden = true; }, 4200); }
   function header() {
-    $('profile-avatar').replaceChildren(academyUI.portrait(state.appearance, 'sidebar')); $('profile-name').textContent = A.character(state.appearance.character).name;
+    $('profile-avatar').replaceChildren(academyUI.portrait(state.appearance, 'sidebar')); $('profile-name').textContent = state.profile.name || '尚未命名的旅人';
+    if(cloud)$('account-status').textContent=cloud.snapshot().message;
     $('tickets').textContent = state.tickets; $('coins').textContent = state.arena.coins;
     $('level').textContent = `Lv. ${Math.floor(state.xp / 100) + 1} · ${state.xp < 500 ? '見習探索者' : state.xp < 2000 ? '知識守望者' : '星光學者'}`;
     $('xp-bar').value = state.xp % 100;
@@ -139,38 +141,37 @@
     return [node('div', { class: 'draw-layout' }, stage, details)];
   }
   function download(content, filename, type = 'application/json') { const url = URL.createObjectURL(new Blob([content], { type })); const a = node('a', { href: url, download: filename }); document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); }
-  function exportSave() { download(JSON.stringify(state, null, 2), '思維冒險-存檔-' + E.today() + '.json'); toast('存檔已匯出，請妥善保管下載檔案。'); }
+  function exportSave() { download(JSON.stringify(cloud?.snapshot().phase==='choose'?cloud.versions().local:state, null, 2), '思維冒險-存檔-' + E.today() + '.json'); toast('存檔已匯出，請妥善保管下載檔案。'); }
   async function importSave(file) {
     if (!file) return;
     if (file.size > 2000000 || !file.name.toLowerCase().endsWith('.json')) { toast('請選擇小於 2 MB 的 JSON 遊戲存檔。'); return; }
     try {
       const parsed = JSON.parse(await file.text(), (key, value) => { if (['__proto__', 'prototype', 'constructor'].includes(key)) throw new Error('存檔包含不支援的欄位。'); return value; });
       const imported = restoreSave(parsed);
-      openModal(node('h2', {}, '匯入這份旅程？'), note(`備份進度：Lv. ${Math.floor(imported.xp / 100) + 1}、${imported.tickets} 張星願券、${imported.mastered.length} 道曾答對題目、${imported.arena.coins} 金幣、${imported.arena.supplies} 張補給券。匯入將取代此瀏覽器的現有進度。`), node('div', { class: 'modal-actions' }, btn('先備份目前存檔', exportSave, 'secondary'), btn('確認匯入', () => { state = imported; E.rollDay(state, E.today()); blockedSave = false; $('storage-warning').hidden = true; save(); closeModal(); go('home'); toast('旅程已還原，歡迎回來。'); })));
+      openModal(node('h2', {}, '匯入這份旅程？'), note(`備份進度：Lv. ${Math.floor(imported.xp / 100) + 1}、${imported.tickets} 張星願券、${imported.mastered.length} 道曾答對題目、${imported.arena.coins} 金幣、${imported.arena.supplies} 張補給券。匯入將取代目前旅程，Google 登入時也會同步到此帳號。`), node('div', { class: 'modal-actions' }, btn('先備份目前存檔', exportSave, 'secondary'), btn('確認匯入', () => { state = imported; E.rollDay(state, E.today()); blockedSave = false; $('storage-warning').hidden = true; save(); closeModal(); go('home'); toast('旅程已還原，歡迎回來。'); })));
     } catch (error) { toast('匯入失敗：' + (error instanceof SyntaxError ? '不是有效的 JSON 存檔。' : error.message)); }
   }
   function settings() {
     title('好好保存，你的每一步。', 'YOUR JOURNEY, YOUR DATA');
     const input = node('input', { type: 'file', accept: '.json,application/json', class: 'file-input', onChange: e => { importSave(e.target.files[0]); e.target.value = ''; } });
     return [node('div', { class: 'settings-grid' },
-      node('section', { class: 'panel' }, node('h3', {}, '存檔跟著你走'), note('進度自動保存在此裝置、此瀏覽器。清除瀏覽資料、使用無痕模式或換裝置可能失去進度；網站版與離線版的存檔各自獨立，可透過匯出、匯入轉移。'), btn('匯出遊戲存檔 ↓', exportSave), node('label', { class: 'button secondary file-label' }, '匯入備份', input), blockedSave ? btn('下載原始存檔救援檔', () => download(originalSave, 'mind-quest-recovery.json'), 'secondary') : null),
+      node('section', { class: 'panel' }, node('h3', {}, '存檔跟著你走'), note('Google 玩家會自動保存到帳號專屬雲端空間；會依最近修改時間自動接續最新版本，替換前保留一份救援備份。請確認「雲端已保存」後再換裝置，並讓裝置日期時間保持自動設定。離線或訪客進度先存在此瀏覽器，清除瀏覽資料前務必匯出備份。網站版與離線版可用備份轉移。'), btn('匯出遊戲存檔 ↓', exportSave), cloud?.recovery()?btn('下載先前版本救援備份',()=>download(cloud.recovery(),'mind-quest-previous-save.json'),'secondary'):null, node('label', { class: 'button secondary file-label' }, '匯入備份', input), blockedSave ? btn('下載原始存檔救援檔', () => download(originalSave, 'mind-quest-recovery.json'), 'secondary') : null),
       node('section', { class: 'panel' }, node('h3', {}, '不用訂閱，也能繼續玩'), note('所有題目、解析與遊戲規則都已放在網頁檔案裡，沒有呼叫 ChatGPT 或付費 API。單人模式可離線；雙人模式需網路與連線服務，不需 ChatGPT 訂閱。也建議下載完整離線版備份。'), location.protocol === 'file:' ? note('你正在使用獨立離線版。記得定期備份存檔。') : node('a', { class: 'button gold', href: '../downloads/mind-quest-offline.zip', download: 'mind-quest-offline.zip' }, '下載完整離線版 ↓'), note('電腦下載後先完整解壓縮，再開啟資料夾內的 index.html。網站服務若日後有變動，已下載的版本仍可執行。手機建議使用已快取的網站。')),
-      node('section', { class: 'panel wide' }, node('h3', {}, '冒險規則'), note('藥學學院各樓館與樓層可進入原有關卡。人物與器皿夥伴是免費外觀，不影響能力；可在「人物與夥伴」更換，選擇會隨存檔備份。'), node('ul', { class: 'rules' }, node('li', {}, '每日補給：以台北時間午夜換日，讀完當日知識卡可領一件普通裝備與 80 金幣（金幣也可在商城領取，每日僅一次）。不必連續登入，沒有斷簽懲罰。'), node('li', {}, '答題獎勵：每道題目每天第一次答對可得 10 XP，對應裝備可加成；每累積 5 道獲獎題目得到 1 張星願券。進度可跨日累積。'), node('li', {}, '錯題修練：答錯不扣分，會留下題目等待複習。重練答對後移出錯題清單。'), node('li', {}, '裝備與等級：每 100 XP 升一級；穿戴 1 件裝備獲得學科加成。稀有度也增加戰鬥攻擊、生命與減傷，同科裝備另加 6 攻擊。戰鬥等級加成上限為 Lv. 20。'), node('li', {}, '週賽：每場 2 回合、每回合 3 題。台北時間週一 00:00 換季；每日每隻怪只計最佳積分，刷新時補發差額。銅 0、銀 600、金 1800、鑽石 3600 分。這是本機個人賽，不提供真人線上排名。'), node('li', {}, '補給：在商城用金幣買臨時補給券，於回合開始前消耗 1 張可預習本回合 3 題的概念、完整題意、答案內容與記憶重點。開始作答後不可再查看；兩回合各需一張。刷卡購買尚未開放。'), node('li', {}, '抽獎：普通 60%、稀有 30%、史詩 9%、極品 1%，連續 30 抽內至少獲得一次極品。沒有付費購買。'))),
+      node('section', { class: 'panel wide' }, node('h3', {}, '冒險規則'), note('藥學學院各樓館與樓層可進入原有關卡。人物都是免費外觀。新玩家完成每日補給與 5 題不同題目後領養夥伴；領養後每天每題首次答對累積 1 成長點，10 點升 1 級，20 與 60 點進化。夥伴不改變戰鬥能力，外觀與成長會隨存檔保存。'), node('ul', { class: 'rules' }, node('li', {}, '每日補給：以台北時間午夜換日，讀完當日知識卡可領一件普通裝備與 80 金幣（金幣也可在商城領取，每日僅一次）。不必連續登入，沒有斷簽懲罰。'), node('li', {}, '答題獎勵：每道題目每天第一次答對可得 10 XP，對應裝備可加成；每累積 5 道獲獎題目得到 1 張星願券。進度可跨日累積。'), node('li', {}, '錯題修練：答錯不扣分，會留下題目等待複習。重練答對後移出錯題清單。'), node('li', {}, '裝備與等級：每 100 XP 升一級；穿戴 1 件裝備獲得學科加成。稀有度也增加戰鬥攻擊、生命與減傷，同科裝備另加 6 攻擊。戰鬥等級加成上限為 Lv. 20。'), node('li', {}, '週賽：每場 2 回合、每回合 3 題。台北時間週一 00:00 換季；每日每隻怪只計最佳積分，刷新時補發差額。銅 0、銀 600、金 1800、鑽石 3600 分。這是本機個人賽，不提供真人線上排名。'), node('li', {}, '補給：在商城用金幣買臨時補給券，於回合開始前消耗 1 張可預習本回合 3 題的概念、完整題意、答案內容與記憶重點。開始作答後不可再查看；兩回合各需一張。刷卡購買尚未開放。'), node('li', {}, '抽獎：普通 60%、稀有 30%、史詩 9%、極品 1%，連續 30 抽內至少獲得一次極品。沒有付費購買。'))),
       node('section', { class: 'panel' }, node('h3', {}, '題庫從哪裡來？'), note(`目前收錄 ${questions.length.toLocaleString()} 題，來自「我的思維資料夾」108–115 年的 ${bank.packs.length} 組主題教學筆記。涵蓋藥劑生物藥劑、藥理藥化，以及藥物分析與生藥學。`), note('僅轉入可取得完整文字、單一答案與解析的題目；缺圖、已標記爭議或缺少結構化筆記的題目未收錄。115-1 藥物分析與生藥學暫未收錄。計算相關篩選以題幹關鍵字輔助分類。'), note(bank.lessonReview.scope), note('每題作答後顯示原筆記來源。內容供國考複習，不作臨床處方依據；仍可能有原筆記誤差，遇到疑義請回看原題與正式答案。')),
-      node('section', { class: 'panel' }, node('h3', {}, '讓遊戲單純，也讓資料安心'), note('無帳號、無追蹤碼、無廣告，不上傳整份存檔。程式檔案由本站提供。雙人連線使用 PeerJS 配對，向對手交換暱稱、等級、裝備與本場答題資料；不開啟鏡頭或麥克風。匯入備份與連線資料都會檢查格式，不執行收到的文字。'), note('網頁無法代替系統防毒軟體，也不會假裝掃描你的電腦。請維持作業系統、瀏覽器與 Windows Defender 更新。單人進度保存在本機，雙人模式為友誼賽；目前不提供伺服器防作弊或真人排行榜。'), node('a', { class: 'quiet-link', href: 'https://github.com/steve72102/steve72102.github.io/tree/main/game', target: '_blank', rel: 'noopener noreferrer' }, '查看遊戲程式碼 ↗'))
+      node('section', { class: 'panel' }, node('h3', {}, '讓遊戲單純，也讓資料安心'), note('可選用 Google 登入。登入後會將暱稱、人物、寵物與遊戲進度上傳到 Firebase 帳號專屬存檔，供跨裝置接續；僅帳號本人可讀寫。沒有廣告或分析追蹤碼。Google 處理登入資訊，網站不取得你的密碼。雙人連線使用 PeerJS 配對，向對手交換暱稱、等級、裝備與本場答題資料；不開啟鏡頭或麥克風。匯入備份與連線資料都會檢查格式，不執行收到的文字。'), note('網頁無法代替系統防毒軟體，也不會假裝掃描你的電腦。請維持作業系統、瀏覽器與 Windows Defender 更新。離線進度先保存在本機，雙人模式為友誼賽；目前不提供伺服器防作弊或真人排行榜。'), node('a', { class: 'quiet-link', href: 'https://github.com/steve72102/steve72102.github.io/tree/main/game', target: '_blank', rel: 'noopener noreferrer' }, '查看遊戲程式碼 ↗'))
     )];
   }
-  function render() { E.rollDay(state, E.today()); if (C.rollWeek(state.arena)) save(); header(); const routes = { home, practice, wardrobe: academyUI.wardrobe, quiz, review, inventory, draw, settings, arena: combatUI.arena, battle: combatUI.battle, shop: combatUI.shop, duel: duelUI.page }; const content = (routes[page] || home)(); view.replaceChildren(...content.filter(Boolean)); }
+  function render() { E.rollDay(state, E.today()); if (C.rollWeek(state.arena)) save();if(cloud?.snapshot().locked||!state.profile.enrolled||['choose','conflict','connecting'].includes(cloud?.snapshot().phase)){page='account';academyUI.leave();}header(); const routes = { home, account:accountUI.page, practice, wardrobe: academyUI.wardrobe, quiz, review, inventory, draw, settings, arena: combatUI.arena, battle: combatUI.battle, shop: combatUI.shop, duel: duelUI.page }; const content = (routes[page] || home)(); view.replaceChildren(...content.filter(Boolean)); }
   const combatUI = window.MindBattleUI({ E, C, node, btn, note, go, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random, appearance: () => academyUI.portrait(state.appearance, 'fighter') });
   const duelUI = window.MindDuelUI({ E, C, node, btn, note, title, save, render, toast, openModal, closeModal, questions, getState: () => state, random, portrait: (look,variant) => academyUI.portrait(look,variant), isVisible: () => page === 'duel' });
   const academyUI = window.MindAcademyUI({ node, btn, note, title, go, render, save, toast, start, questions, getState: () => state, openModal, daily: () => lore(todayItem(), !(state.claimed === E.today() && state.arena.login === E.today())) });
+  const accountUI=window.MindAccountUI({node,btn,note,title,getState:()=>state,save,go,toast,account:()=>cloud,exportSave,openModal,closeModal});
+  cloud=window.MindCloud({getState:()=>state,setState:s=>{state=s;selected=null;},restore:restoreSave,fresh:freshSave,changed:()=>{if(cloud)render();},busy:()=>duelUI.active(),warning:warn});
   $('nav').addEventListener('click', event => { const target = event.target.closest('[data-page]'); if (target) go(target.dataset.page); });
-  window.addEventListener('storage', event => {
-    if (event.key !== KEY || !event.newValue) return;
-    try { state = restoreSave(JSON.parse(event.newValue)); selected = null; render(); toast('已同步另一個分頁的最新進度。'); } catch (_) { warn('另一分頁的存檔無法讀取。請先匯出目前進度備份。'); }
-  });
+  $('account-status').addEventListener('click',()=>go('account'));
   document.addEventListener('visibilitychange', () => { if (!document.hidden) render(); });
-  save();
+  cloud.init();
   render();
   if ('serviceWorker' in navigator && ['https:', 'http:'].includes(location.protocol)) {
     navigator.serviceWorker.register('./sw.js').then(reg => {

@@ -1,6 +1,6 @@
 window.MindAcademyUI=function(ctx){
   'use strict';
-  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal}=ctx,A=window.MindAcademy,E=window.MindEngine;
+  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal}=ctx,A=window.MindAcademy,E=window.MindEngine,J=window.MindJourney;
   const BASE='./assets/academy/';
   let building=null,floor='practice',exam='',immersive=false,travel=0,position='plaza';
   const places=['plaza','pharmaceutics','pharmacology','herbal','battle','life'];
@@ -8,7 +8,7 @@ window.MindAcademyUI=function(ctx){
   function art(item,cls='',decorative=false){return node('img',{class:cls,src:BASE+item.image,alt:decorative?'':item.name,decoding:'async',draggable:'false'});}
   function portrait(raw,variant='normal'){
     const look=A.restore(raw),person=A.character(look.character),pet=A.pet(look.pet);
-    return node('div',{class:'academy-portrait portrait-'+variant,'aria-label':person.name+(pet?'，夥伴'+pet.name:''),role:'img'},art(person,'portrait-person',true),pet?art(pet,'portrait-pet',true):null);
+    return node('div',{class:'academy-portrait portrait-'+variant,'aria-label':person.name+(pet?'，夥伴'+pet.name:''),role:'img'},art(person,'portrait-person',true),pet?node('span',{class:'portrait-pet-wrap'+(J.growth(getState()).stage?' pet-evolved evo-'+J.growth(getState()).stage:'')},art(pet,'portrait-pet',true)):null);
   }
   function mode(){document.body.classList.toggle('academy-immersive',immersive);render();window.scrollTo({top:0,behavior:'instant'});document.querySelector('.scene-actions .button')?.focus({preventScroll:true});requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));}
   function leave(){travel++;document.body.classList.remove('academy-immersive');}
@@ -49,14 +49,14 @@ window.MindAcademyUI=function(ctx){
     const s=getState(),person=A.character(s.appearance.character),pet=A.pet(s.appearance.pet),current=A.BUILDINGS.find(b=>b.id===building);
     if(current)return [toolbar(),buildingPanel(current)];
     const map=node('section',{class:'campus-map at-'+position,tabindex:'0','aria-label':'互動校園：點選樓館進入；方向鍵切換目的地，Enter 進入',onKeydown:mapKeys,onClick:groundWalk},
-      node('img',{class:'campus-backdrop',src:BASE+'campus-taiwan.webp',alt:'晴日中的藥學學院，紅磚拱廊、素白研究館、玻璃溫室與榕樹，圍繞著清澈水池與石板步道。',fetchpriority:'high',width:1536,height:1024,draggable:'false'}),
+      node('img',{class:'campus-backdrop',src:BASE+'campus-taiwan.webp',alt:'晴日中的藥學學院，紅磚拱廊、素白研究館、玻璃溫室、臺灣杉、黑板樹、櫻花與木棉，圍繞著清澈水池與石板步道。',fetchpriority:'high',width:1536,height:1024,draggable:'false'}),
       node('div',{class:'campus-atmosphere','aria-hidden':'true'},node('i',{class:'sun-dust dust-one'}),node('i',{class:'sun-dust dust-two'}),node('i',{class:'sun-dust dust-three'})),
       node('div',{class:'campus-heading'},node('p',{class:'eyebrow'},'WELCOME TO YOUR ACADEMY'),node('h2',{},'今天，從哪一份好奇開始？'),node('p',{},'點選樓館，跟著夥伴走進下一堂冒險。')),
       node('div',{class:'campus-pins'},A.BUILDINGS.map(b=>node('button',{class:'campus-pin pin-'+b.id,type:'button','data-place':b.id,'aria-label':'前往'+b.name,'aria-pressed':String(position===b.id),onClick:()=>chooseBuilding(b.id)},node('span',{class:'pin-number'},b.number),node('span',{},b.name),node('span',{class:'pin-arrow','aria-hidden':'true'},'↗')))),
       node('div',{class:'campus-traveler','aria-hidden':'true'},node('span',{class:'traveler-shadow'}),portrait(s.appearance,'map')),
       node('div',{class:'campus-location',role:'status'},node('span',{class:'location-dot'}),node('span',{class:'campus-location-text'},position==='plaza'?'中央庭院 · 歡迎回到學院':'今天的探索，從這裡出發。'),node('span',{class:'location-sub'},'點選步道散步 · 點選樓館進入')));
-    const identity=node('section',{class:'academy-pass'},portrait(s.appearance,'pass'),node('div',{class:'academy-pass-copy'},node('p',{class:'eyebrow'},'YOUR COMPANION, YOUR PACE'),node('h3',{},person.name),node('p',{},pet?pet.name+' 正在等你一起出發。':'今天，跟著自己的步調出發。'),node('span',{class:'cosmetic-note'},'所有人物與夥伴皆為免費外觀')),btn('領取今日補給',daily,'gold small'),btn(s.session&&s.session.index<s.session.ids.length?'繼續上次答題 →':'自由修練 →',()=>go(s.session&&s.session.index<s.session.ids.length?'quiz':'practice'),'small'));
-    return [toolbar(),map,identity,directory(),node('div',{class:'academy-footnote'},node('span',{},'✦ 為這座學院創作的場景與夥伴'),node('span',{},'單人可離線 · 無需 ChatGPT 訂閱'))];
+    const identity=node('section',{class:'academy-pass'},portrait(s.appearance,'pass'),node('div',{class:'academy-pass-copy'},node('p',{class:'eyebrow'},'YOUR COMPANION, YOUR PACE'),node('h3',{},s.profile.name||person.name),node('p',{},pet?pet.name+' 正在等你一起出發。':'今天，跟著自己的步調出發。'),node('span',{class:'cosmetic-note'},'以理解結伴，讓好奇心一起成長')),btn('領取今日補給',daily,'gold small'),btn(s.session&&s.session.index<s.session.ids.length?'繼續上次答題 →':'自由修練 →',()=>go(s.session&&s.session.index<s.session.ids.length?'quiz':'practice'),'small'));
+    return [toolbar(),map,node('p',{class:'botanical-note'},'校園植栽｜臺灣杉 · 黑板樹 · 櫻花 · 木棉　／　藥草花圃｜薄荷 · 紫蘇 · 艾草 · 菊花'),identity,mission(),directory(),node('div',{class:'academy-footnote'},node('span',{},'✦ 為這座學院創作的場景與夥伴'),node('span',{},'單人可離線 · 無需 ChatGPT 訂閱'))];
   }
   function directory(){return node('section',{class:'campus-directory'},node('div',{class:'section-title'},node('h2',{},'學院導覽'),node('p',{},'5 座樓館，5 種探索方式')),node('div',{class:'building-directory'},A.BUILDINGS.map(b=>node('button',{class:'directory-card '+b.color,onClick:()=>enter(b.id),type:'button'},node('span',{class:'directory-number'},b.number),node('strong',{},b.name),node('small',{},b.subtitle),node('span',{class:'school-inspiration'},b.school+'校園風格'),node('span',{class:'directory-arrow','aria-hidden':'true'},'↗')))));}
   function buildingPanel(b){
@@ -80,13 +80,22 @@ window.MindAcademyUI=function(ctx){
   }
   function choose(kind,id){if(A.choose(getState(),kind,id)){save();render();toast(kind==='character'?'已換上 '+A.character(id).name+' 的外觀。':id?'現在由 '+A.pet(id).name+' 陪你出發。':'夥伴先在工坊休息。');}}
   function lore(p){openModal(art(p,'pet-lore-art'),node('p',{class:'eyebrow'},'LITTLE VESSEL, LITTLE LESSON'),node('h2',{},p.name),node('p',{},p.line),node('div',{class:'memory'},node('strong',{},'認識器皿｜'),p.fact),note('夥伴只作外觀陪伴，不增加攻擊、經驗、金幣或抽獎機率。'));}
+  function mission(){
+    const s=getState(),g=J.growth(s),p=A.pet(s.appearance.pet);
+    if(!s.companion.unlocked)return node('section',{class:'pet-mission'},node('p',{class:'eyebrow'},'FIRST FRIEND · 新手任務'),node('h3',{},'和第一位器皿夥伴相遇'),note('讓知識成為你們相遇的理由。完成兩項任務後，選一位喜歡的夥伴。'),node('div',{class:'mission-checks'},node('span',{class:s.claimed?'done':''},(s.claimed?'✓':'○')+' 閱讀並領取一次每日補給'),node('span',{class:s.mastered.length>=5?'done':''},(s.mastered.length>=5?'✓':'○')+' 答對不同題目 '+Math.min(5,s.mastered.length)+' / 5')),btn(J.ready(s)?'任務完成，選擇夥伴 →':'前往新手修練 →',()=>go(J.ready(s)?'wardrobe':'practice'),'gold'));
+    return node('section',{class:'pet-mission'},node('div',{class:'pet-growth'},p?node('div',{class:'pet-art'+(g.stage?' pet-evolved evo-'+g.stage:'')},art(p)):null,node('div',{},node('span',{class:'pet-stage'},g.mark+' '+g.name),node('h3',{},(p?p.name:'器皿夥伴')+' · Lv. '+g.level),note('累積成長 '+g.xp+' 點'+(g.next?' · 距離'+g.next.name+'還有 '+(g.next.at-g.xp)+' 點':' · 已達最終進化，等級仍會成長')),node('progress',{max:10,value:g.xp%10,'aria-label':'夥伴升級進度'}))),node('div',{class:'evolution-path'},J.STAGES.map((x,i)=>node('span',{class:i<=g.stage?'achieved':''},x.mark+' '+x.name+' · '+x.at+' 點'))),note('領養後，每天每題第一次答對 +1 成長點；10 點升 1 級，20／60 點進化。各種練習、打怪與雙人對戰都算；休息不扣點，夥伴在工坊也能成長。'));
+  }
+  function adopt(id){
+    if(J.unlock(getState(),id,A.PETS.map(p=>p.id))){save();render();toast('相遇了！'+A.pet(id).name+' 成為你的第一位夥伴。');}
+    else toast('先完成每日補給與 5 道不同題目，就能領養夥伴。');
+  }
   function wardrobe(){
     title('人物與器皿夥伴','THE ACADEMY WARDROBE');
-    const look=getState().appearance,person=A.character(look.character),pet=A.pet(look.pet);
+    const s=getState(),look=s.appearance,person=A.character(look.character),pet=A.pet(look.pet),g=J.growth(s);
     const preview=node('section',{class:'wardrobe-hero'},node('div',{class:'wardrobe-stage'},node('div',{class:'wardrobe-orbit','aria-hidden':'true'}),portrait(look,'showcase'),node('span',{class:'wardrobe-stage-label'},'YOUR ORIGINAL ACADEMY LOOK')),node('div',{class:'wardrobe-copy'},node('p',{class:'eyebrow'},'CHOOSE YOUR OWN WAY TO EXPLORE'),node('h2',{},person.name),node('blockquote',{},person.line),note(person.story),node('div',{class:'wardrobe-tags'},node('span',{},person.role+'外觀'),node('span',{},pet?pet.name:'不攜帶夥伴'),node('span',{},'自由選用')),node('p',{class:'cosmetic-promise'},'博士、教授、研究生、研究員都是外觀選擇，沒有稀有度或階級。換造型不會改變等級、裝備與戰鬥能力。'),btn('回到藥學學院 →',()=>go('home'),'gold')));
     const people=node('div',{class:'character-gallery'},A.CHARACTERS.map(c=>node('article',{class:'character-card '+c.color+(look.character===c.id?' chosen':'')},node('div',{class:'character-art'},art(c)),node('div',{class:'character-copy'},node('p',{class:'eyebrow'},c.role+' / ORIGINAL CHARACTER'),node('h3',{},c.name),note(c.line),btn(look.character===c.id?'目前使用':'選用'+c.role+'外觀',()=>choose('character',c.id),look.character===c.id?'secondary full':'full',look.character===c.id)))));
-    const pets=node('div',{class:'pet-gallery'},A.PETS.map(p=>node('article',{class:'pet-card'+(look.pet===p.id?' chosen':'')},node('div',{class:'pet-art'},art(p)),node('div',{class:'pet-copy'},node('p',{class:'eyebrow'},p.vessel+' / LAB COMPANION'),node('h3',{},p.name),note(p.line),btn(look.pet===p.id?'正在陪伴你':'邀請'+p.name,()=>choose('pet',p.id),look.pet===p.id?'secondary full':'full',look.pet===p.id),btn('認識這個器皿',()=>lore(p),'quiet-link')))));
-    return [preview,node('div',{class:'section-title'},node('h2',{},'選一位，代表今天的你'),node('p',{},'4 種原創人物 · 全部開放')),people,node('div',{class:'section-title'},node('h2',{},'實驗室裡的小小夥伴'),node('p',{},'4 種原創器皿 · 外觀陪伴')),pets,node('div',{class:'wardrobe-footer'},note('人物和夥伴會出現在學院、個人資料與對戰畫面。選擇會自動存檔，也會包含在匯出的遊戲備份裡。'),btn(look.pet===null?'目前不攜帶夥伴':'讓夥伴在工坊休息',()=>choose('pet',null),'secondary small',look.pet===null))];
+    const pets=node('div',{class:'pet-gallery'},A.PETS.map(p=>node('article',{class:'pet-card'+(look.pet===p.id?' chosen':'')+(!s.companion.unlocked?' locked':'')},node('div',{class:'pet-art'+(s.companion.unlocked&&g.stage?' pet-evolved evo-'+g.stage:'')},art(p)),node('div',{class:'pet-copy'},node('p',{class:'eyebrow'},p.vessel+' / LAB COMPANION'),node('h3',{},p.name),note(p.line),btn(!s.companion.unlocked?(J.ready(s)?'領養'+p.name:'完成新手任務解鎖'):look.pet===p.id?'正在陪伴你':'邀請'+p.name,()=>s.companion.unlocked?choose('pet',p.id):adopt(p.id),look.pet===p.id?'secondary full':'full',look.pet===p.id||(!s.companion.unlocked&&!J.ready(s))),btn('認識這個器皿',()=>lore(p),'quiet-link')))));
+    return [preview,btn('修改學院暱稱',()=>go('account'),'secondary small'),node('div',{class:'section-title'},node('h2',{},'選一位，代表今天的你'),node('p',{},'4 種原創人物 · 全部開放')),people,mission(),node('div',{class:'section-title'},node('h2',{},'實驗室裡的小小夥伴'),node('p',{},'4 種原創器皿 · 完成新手任務後自由換用 · 共用成長')),pets,node('div',{class:'wardrobe-footer'},note('人物和夥伴會出現在學院、個人資料與對戰畫面。選擇會自動存檔，也會包含在匯出的遊戲備份裡。'),btn(look.pet===null?'目前不攜帶夥伴':'讓夥伴在工坊休息',()=>choose('pet',null),'secondary small',look.pet===null))];
   }
   return {home,wardrobe,portrait,leave};
 };
