@@ -10,7 +10,7 @@ window.MindAcademyUI=function(ctx){
     const look=A.restore(raw),person=A.character(look.character),pet=A.pet(look.pet);
     return node('div',{class:'academy-portrait portrait-'+variant,'aria-label':person.name+(pet?'，夥伴'+pet.name:''),role:'img'},art(person,'portrait-person',true),pet?art(pet,'portrait-pet',true):null);
   }
-  function mode(){document.body.classList.toggle('academy-immersive',immersive);render();}
+  function mode(){document.body.classList.toggle('academy-immersive',immersive);render();window.scrollTo({top:0,behavior:'instant'});document.querySelector('.scene-actions .button')?.focus({preventScroll:true});}
   function leave(){travel++;document.body.classList.remove('academy-immersive');}
   function back(){travel++;building=null;render();document.querySelector('.campus-map')?.focus({preventScroll:true});}
   function walk(id){
