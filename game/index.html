@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101824">
+  <meta name="description" content="把我的思維資料夾變成學習冒險。每日裝備、答題任務、知識抽獎；免費、無廣告，支援離線遊玩。">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>思維冒險 · Mind Quest</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./bank.js"></script>
+  <script defer src="./engine.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">跳到遊戲內容</a>
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-icon">◈</span><span>思維冒險<small>MIND QUEST</small></span></a>
+    <div class="top-meta"><span id="connection" class="status">獨立運作 · 無需訂閱</span><a href="../">Steve 的首頁 ↗</a></div>
+  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="profile"><div class="avatar" aria-hidden="true">✦</div><p class="eyebrow">THE CURIOUS ONE</p><h2>知識旅人</h2><p id="level" class="muted"></p><progress id="xp-bar" max="100" value="0" aria-label="升級經驗進度"></progress><small id="xp-label"></small></div>
+      <nav id="nav" aria-label="遊戲選單">
+        <button data-page="home" class="nav-button active"><span>⌂</span>冒險營地</button>
+        <button data-page="review" class="nav-button"><span>◎</span>錯題修練<span id="wrong-badge" class="badge">0</span></button>
+        <button data-page="inventory" class="nav-button"><span>◇</span>裝備圖鑑</button>
+        <button data-page="draw" class="nav-button"><span>✧</span>星願寶箱</button>
+        <button data-page="settings" class="nav-button"><span>⚙</span>存檔與說明</button>
+      </nav>
+      <div class="sidebar-note"><span>✺</span><p>每一個懂了的瞬間，<br>都會成為你的裝備。</p></div>
+      <p class="version">PERSONAL LEARNING WORLD / V1.0</p>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div id="storage-warning" class="notice danger" hidden></div>
+      <div class="page-top"><div><p class="eyebrow" id="page-kicker">YOUR LITTLE ADVENTURE</p><h1 id="page-title">今天，也前進一點。</h1></div><div class="wallet"><span class="ticket-icon">▤</span><div><strong id="tickets">0</strong><small>星願券</small></div></div></div>
+      <div id="view"></div>
+      <footer class="game-footer"><span>源自「我的思維資料夾」</span><span>知識會留下來，冒險也是。</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="modal"><div id="modal-content"></div><form method="dialog"><button class="button secondary">關閉</button></form></dialog>
+  <noscript><p class="notice">請開啟 JavaScript 以遊玩；遊戲無需 ChatGPT 帳號。</p></noscript>
+</body>
+</html>

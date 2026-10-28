@@ -16,3 +16,10 @@
 
 在儲存庫 Settings → Pages 選擇 Deploy from a branch，分支選 `main`，資料夾選 `/ (root)` 後儲存。
 若儲存庫名稱為 `steve72102.github.io`，網站網址為 `https://steve72102.github.io/`。
+
+
+## 思維冒險
+
+[開始遊玩](https://steve72102.github.io/game/) · [下載離線版](https://steve72102.github.io/downloads/mind-quest-offline.zip)
+
+獨立學習遊戲，包含 3,221 題、每日知識裝備、答題獎勵、保底寶箱、錯題複習與 JSON 備份。無需 ChatGPT 訂閱或 API。詳細規則與限制見 [game/README.md](game/README.md)。
