@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#101824">
   <meta name="description" content="把我的思維資料夾變成學習冒險。每日裝備、答題任務、知識抽獎；免費、無廣告，支援離線遊玩。">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://0.peerjs.com wss://0.peerjs.com; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>思維冒險 · Mind Quest</title>
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./combat.css">
+  <link rel="stylesheet" href="./duel.css">
   <script defer src="./bank.js"></script>
   <script defer src="./engine.js"></script>
   <script defer src="./combat.js"></script>
   <script defer src="./combat-ui.js"></script>
+  <script defer src="./vendor/peerjs.min.js"></script>
+  <script defer src="./duel.js"></script>
+  <script defer src="./duel-network.js"></script>
+  <script defer src="./duel-ui.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
@@ -29,6 +34,7 @@
       <nav id="nav" aria-label="遊戲選單">
         <button data-page="home" class="nav-button active"><span>⌂</span>冒險營地</button>
         <button data-page="arena" class="nav-button"><span>⚔</span>每週積分賽</button>
+        <button data-page="duel" class="nav-button"><span>⚡</span>雙人對戰</button>
         <button data-page="shop" class="nav-button"><span>▱</span>補給商城</button>
         <button data-page="review" class="nav-button"><span>◎</span>錯題修練<span id="wrong-badge" class="badge">0</span></button>
         <button data-page="inventory" class="nav-button"><span>◇</span>裝備圖鑑</button>
@@ -36,7 +42,7 @@
         <button data-page="settings" class="nav-button"><span>⚙</span>存檔與說明</button>
       </nav>
       <div class="sidebar-note"><span>✺</span><p>每一個懂了的瞬間，<br>都會成為你的裝備。</p></div>
-      <p class="version">PERSONAL LEARNING WORLD / V2.0</p>
+      <p class="version">PERSONAL LEARNING WORLD / V2.1</p>
     </aside>
     <main id="main" tabindex="-1">
       <div id="storage-warning" class="notice danger" hidden></div>
