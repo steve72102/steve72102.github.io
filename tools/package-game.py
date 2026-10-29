@@ -3,7 +3,7 @@ import zipfile
 root=Path(__file__).resolve().parents[1]
 out=root/'downloads'
 out.mkdir(exist_ok=True)
-files=['index.html','style.css','app.js','engine.js','combat.js','combat-ui.js','combat.css','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md','duel.js','duel-network.js','duel-ui.js','duel.css','vendor/peerjs.min.js','vendor/peerjs-LICENSE','academy.js','academy-ui.js','academy.css','daylight.css','lesson.js','journey.js','journey.css','cloud.js','firebase-config.js','account-ui.js']
+files=['index.html','style.css','app.js','engine.js','combat.js','combat-ui.js','combat.css','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md','duel.js','duel-network.js','duel-ui.js','duel.css','vendor/peerjs.min.js','vendor/peerjs-LICENSE','campus-walk.js','campus-walk-ui.js','campus-walk.css','academy.js','academy-ui.js','academy.css','daylight.css','lesson.js','journey.js','journey.css','cloud.js','firebase-config.js','account-ui.js']
 files += ['assets/academy/'+name+'.webp' for name in ['campus-taiwan','hall-ntu','hall-nthu','hall-ncku','doctor-portrait','professor-portrait','graduate-portrait','researcher-portrait','cedar-dean-portrait','herbal-mentor-portrait','lab-engineer-portrait','balance-analyst-portrait','dawn-intern-portrait','river-fellow-portrait','beaker','flask','cylinder','mortar']]
 with zipfile.ZipFile(out/'mind-quest-offline.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
     for name in files:

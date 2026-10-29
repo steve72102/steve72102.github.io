@@ -1,66 +1,46 @@
 window.MindAcademyUI=function(ctx){
   'use strict';
-  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal}=ctx,A=window.MindAcademy,E=window.MindEngine,J=window.MindJourney;
+  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal}=ctx,A=window.MindAcademy,E=window.MindEngine,J=window.MindJourney,W=window.MindWalk;
   const BASE='./assets/academy/';
-  let building=null,floor='practice',exam='',immersive=false,travel=0,position='plaza';
-  const places=['plaza','pharmaceutics','pharmacology','herbal','battle','life'];
-  const greetings={pharmaceutics:'劑型是起點，理解是藥物的下一站。',pharmacology:'先找到受體，再循著訊號往前走。',herbal:'一片葉子的紋理，也藏著值得觀察的線索。',battle:'準備好了嗎？這裡最強的招式，是把原因說清楚。',life:'休息一下，把下一次出發需要的東西備齊。'};
+  let building=null,floor='practice',exam='',immersive=false,walking=null,pendingWalk=null;
+  let campusPosition={...W.campus.spawn},hallPosition={...W.hall('').spawn};
+  function stopWalking(){if(walking){walking.destroy();walking=null;}}
+  function mount(){stopWalking();if(pendingWalk?.root.isConnected)walking=window.MindWalkUI(pendingWalk);}
+  function controls(){return node('div',{class:'walk-console'},node('div',{class:'walk-instructions'},node('strong',{},'讓好奇心，帶你往前走'),node('p',{},'方向鍵 / WASD 移動 · Shift 加速 · 點地面自動走近。手機可長按右側方向鍵；走到入口會自動進入。'),node('div',{class:'walk-status',role:'status','aria-live':'polite'},'準備出發'),btn('靠近入口即可進入',()=>{},'walk-enter secondary small',true)),node('div',{class:'walk-pad',role:'group','aria-label':'角色移動方向'},[['up','ArrowUp','↑','向上移動'],['left','ArrowLeft','←','向左移動'],['down','ArrowDown','↓','向下移動'],['right','ArrowRight','→','向右移動']].map(([cls,direction,mark,label])=>node('button',{type:'button',class:'walk-direction walk-'+cls,'data-direction':direction,'aria-label':label},mark))));}
+  function actor(){return node('div',{class:'walk-actor','aria-hidden':'true'},node('span',{class:'traveler-shadow'}),portrait(getState().appearance,'map'));}
+  function portals(scene){return scene.portals.map(p=>{const button=node('button',{type:'button',class:'walk-portal','data-walk-portal':p.id,'aria-label':'走向'+p.name+'入口'},p.name+' ↗');button.style.left=p.x/10+'%';button.style.top=p.y/W.HEIGHT*100+'%';return button;});}
+  function walkingScene(scene,world,initial,onPosition,onPortal){
+    const root=node('div',{class:'walk-section'},world,controls());
+    pendingWalk={root,scene,initial,onPosition,onPortal};return root;
+  }
   function art(item,cls='',decorative=false){return node('img',{class:cls,src:BASE+item.image,alt:decorative?'':item.name,decoding:'async',draggable:'false'});}
   function portrait(raw,variant='normal'){
     const look=A.restore(raw),person=A.character(look.character),pet=A.pet(look.pet);
     return node('div',{class:'academy-portrait portrait-'+variant,'aria-label':person.name+(pet?'，夥伴'+pet.name:''),role:'img'},art(person,'portrait-person',true),pet?node('span',{class:'portrait-pet-wrap'+(J.growth(getState()).stage?' pet-evolved evo-'+J.growth(getState()).stage:'')},art(pet,'portrait-pet',true)):null);
   }
-  function mode(){document.body.classList.toggle('academy-immersive',immersive);render();window.scrollTo({top:0,behavior:'instant'});document.querySelector('.scene-actions .button')?.focus({preventScroll:true});requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));}
-  function leave(){travel++;document.body.classList.remove('academy-immersive');}
-  function back(){travel++;building=null;render();document.querySelector('.campus-map')?.focus({preventScroll:true});}
-  function walk(id){
-    if(!places.includes(id))return;
-    travel++;position=id;
-    const map=document.querySelector('.campus-map');if(!map)return;
-    map.className='campus-map at-'+id;
-    map.querySelectorAll('.campus-pin').forEach(p=>p.setAttribute('aria-pressed',String(p.dataset.place===id)));
-    const place=A.BUILDINGS.find(b=>b.id===id);
-    const status=map.querySelector('.campus-location-text');status.textContent=place?'前往 '+place.name+' · 再點一次或按 Enter 進入':'中央庭院 · 點選樓館開始探索';
-  }
-  function chooseBuilding(id){
-    const map=document.querySelector('.campus-map');
-    if(!map){enter(id);return;}
-    walk(id);const ticket=travel;
-    const delay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:650;
-    setTimeout(()=>{if(ticket===travel&&map.isConnected)enter(id);},delay);
-  }
-  function enter(id){if(!A.BUILDINGS.some(b=>b.id===id))return;travel++;building=id;position=id;floor=A.floors(id)[0].id;exam='';render();document.getElementById('building-title')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
-  function mapKeys(e){
-    if(e.target!==e.currentTarget)return;
-    if(e.key==='Enter'&&position!=='plaza'){e.preventDefault();enter(position);return;}
-    const step=['ArrowRight','ArrowDown'].includes(e.key)?1:['ArrowLeft','ArrowUp'].includes(e.key)?-1:0;
-    if(step){e.preventDefault();walk(places[(places.indexOf(position)+step+places.length)%places.length]);}
-  }
-  function groundWalk(e){
-    if(e.target.closest('button'))return;
-    const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
-    const pts={plaza:[.5,.7],pharmaceutics:[.29,.48],pharmacology:[.51,.43],herbal:[.74,.53],battle:[.76,.86],life:[.31,.81]};
-    walk(Object.keys(pts).sort((a,b)=>Math.hypot(x-pts[a][0],y-pts[a][1])-Math.hypot(x-pts[b][0],y-pts[b][1]))[0]);e.currentTarget.focus({preventScroll:true});
-  }
+  function mode(){document.body.classList.toggle('academy-immersive',immersive);render();window.scrollTo({top:0,behavior:'instant'});document.querySelector('.walk-world')?.focus({preventScroll:true});requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'instant'}));}
+  function leave(){stopWalking();pendingWalk=null;document.body.classList.remove('academy-immersive');}
+  function back(){stopWalking();const door=W.campus.portals.find(p=>p.id===building);if(door)campusPosition={...door.out};building=null;render();document.querySelector('.walk-world')?.focus({preventScroll:true});}
+  function enter(id){if(!A.BUILDINGS.some(b=>b.id===id))return;stopWalking();building=id;floor=A.floors(id)[0].id;exam='';hallPosition={...W.hall('').spawn};render();document.querySelector('.walk-world')?.focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
   function toolbar(){return node('div',{class:'academy-toolbar'},node('div',{},node('span',{class:'weather-dot','aria-hidden':'true'},'☀'),node('span',{},'晴日學院'),node('small',{},'把世界放慢一點，讓好奇心走遠一點。')),node('div',{class:'scene-actions'},btn(immersive?'收起沉浸視野':'展開沉浸視野',()=>{immersive=!immersive;mode();},'secondary small'),building?btn('← 回到校園',back,'secondary small'):btn('人物與夥伴',()=>go('wardrobe'),'secondary small')));}
   function home(){
+    stopWalking();pendingWalk=null;
     document.body.classList.toggle('academy-immersive',immersive);
     title('藥學學院','A LITTLE CURIOSITY, A WHOLE NEW WORLD');
     const s=getState(),person=A.character(s.appearance.character),pet=A.pet(s.appearance.pet),current=A.BUILDINGS.find(b=>b.id===building);
     if(current)return [toolbar(),buildingPanel(current)];
-    const map=node('section',{class:'campus-map at-'+position,tabindex:'0','aria-label':'互動校園：點選樓館進入；方向鍵切換目的地，Enter 進入',onKeydown:mapKeys,onClick:groundWalk},
-      node('img',{class:'campus-backdrop',src:BASE+'campus-taiwan.webp',alt:'晴日中的藥學學院，紅磚拱廊、素白研究館、玻璃溫室、臺灣杉、黑板樹、櫻花與木棉，圍繞著清澈水池與石板步道。',fetchpriority:'high',width:1536,height:1024,draggable:'false'}),
-      node('div',{class:'campus-atmosphere','aria-hidden':'true'},node('i',{class:'sun-dust dust-one'}),node('i',{class:'sun-dust dust-two'}),node('i',{class:'sun-dust dust-three'})),
-      node('div',{class:'campus-heading'},node('p',{class:'eyebrow'},'WELCOME TO YOUR ACADEMY'),node('h2',{},'今天，從哪一份好奇開始？'),node('p',{},'點選樓館，跟著夥伴走進下一堂冒險。')),
-      node('div',{class:'campus-pins'},A.BUILDINGS.map(b=>node('button',{class:'campus-pin pin-'+b.id,type:'button','data-place':b.id,'aria-label':'前往'+b.name,'aria-pressed':String(position===b.id),onClick:()=>chooseBuilding(b.id)},node('span',{class:'pin-number'},b.number),node('span',{},b.name),node('span',{class:'pin-arrow','aria-hidden':'true'},'↗')))),
-      node('div',{class:'campus-traveler','aria-hidden':'true'},node('span',{class:'traveler-shadow'}),portrait(s.appearance,'map')),
-      node('div',{class:'campus-location',role:'status'},node('span',{class:'location-dot'}),node('span',{class:'campus-location-text'},position==='plaza'?'中央庭院 · 歡迎回到學院':'今天的探索，從這裡出發。'),node('span',{class:'location-sub'},'點選步道散步 · 點選樓館進入')));
+    const scene=W.campus;
+    const world=node('section',{class:'campus-map walk-world',tabindex:'0','aria-label':'可自由走動的校園：方向鍵或 WASD 移動，靠近入口進樓'},
+      node('img',{class:'campus-backdrop',src:BASE+'campus-taiwan.webp',alt:'晴日中的藥學學院，五座樓館與環繞噴泉的步道。',fetchpriority:'high',width:1536,height:1024,draggable:'false'}),
+      node('div',{class:'campus-heading'},node('p',{class:'eyebrow'},'WALK INTO YOUR ACADEMY'),node('h2',{},'沿著步道，跑進下一段冒險。'),node('p',{},'繞過中央噴泉，五座樓館都能走進去。')),
+      portals(scene),node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
+    const map=walkingScene(scene,world,campusPosition,p=>campusPosition=p,enter);
     const identity=node('section',{class:'academy-pass'},portrait(s.appearance,'pass'),node('div',{class:'academy-pass-copy'},node('p',{class:'eyebrow'},'YOUR COMPANION, YOUR PACE'),node('h3',{},s.profile.name||person.name),node('p',{},pet?pet.name+' 正在等你一起出發。':'今天，跟著自己的步調出發。'),node('span',{class:'cosmetic-note'},'以理解結伴，讓好奇心一起成長')),btn('領取今日補給',daily,'gold small'),btn(s.session&&s.session.index<s.session.ids.length?'繼續上次答題 →':'自由修練 →',()=>go(s.session&&s.session.index<s.session.ids.length?'quiz':'practice'),'small'));
     return [toolbar(),map,node('p',{class:'botanical-note'},'校園植栽｜臺灣杉 · 黑板樹 · 櫻花 · 木棉　／　藥草花圃｜薄荷 · 紫蘇 · 艾草 · 菊花'),identity,mission(),directory(),node('div',{class:'academy-footnote'},node('span',{},'✦ 為這座學院創作的場景與夥伴'),node('span',{},'單人可離線 · 無需 ChatGPT 訂閱'))];
   }
   function directory(){return node('section',{class:'campus-directory'},node('div',{class:'section-title'},node('h2',{},'學院導覽'),node('p',{},'5 座樓館，5 種探索方式')),node('div',{class:'building-directory'},A.BUILDINGS.map(b=>node('button',{class:'directory-card '+b.color,onClick:()=>enter(b.id),type:'button'},node('span',{class:'directory-number'},b.number),node('strong',{},b.name),node('small',{},b.subtitle),node('span',{class:'school-inspiration'},b.school+'校園風格'),node('span',{class:'directory-arrow','aria-hidden':'true'},'↗')))));}
   function buildingPanel(b){
-    const fs=A.floors(b.id),isStudy=!!E.SUBJECTS[b.id],f=fs.find(x=>x.id===floor)||fs[0],s=getState();
+    const fs=A.floors(b.id),isStudy=!!E.SUBJECTS[b.id],f=fs.find(x=>x.id===floor)||fs[0],s=getState();let launch=null;
     const floorTabs=node('div',{class:'floor-tabs',role:'group','aria-label':b.name+'樓層'},fs.map(x=>node('button',{type:'button',class:'floor-tab'+(x.id===f.id?' selected':''),'aria-pressed':String(x.id===f.id),onClick:()=>{floor=x.id;render();document.querySelector('.floor-tab.selected')?.focus({preventScroll:true});}},node('strong',{},x.level),node('span',{},x.name),node('span',{class:'floor-door-icon','aria-hidden':'true'},x.id===f.id?'●':'↗'))));
     const detail=node('div',{class:'floor-room'},node('p',{class:'eyebrow'},b.name+' / '+f.level),node('h3',{},f.name),note(f.description));
     if(isStudy){
@@ -71,13 +51,22 @@ window.MindAcademyUI=function(ctx){
         detail.append(node('div',{class:'academy-exam-picker'},node('label',{for:'academy-exam'},'試題年份與梯次'),select));
       }
       const pool=A.pool(questions,b.id,f.id,exam);
-      detail.append(node('div',{class:'room-meta'},node('span',{},pool.length.toLocaleString()+' 題可練習'),node('span',{},'每次最多 5 題'),node('span',{},'閱讀 → 理解 → 挑戰')),btn(pool.length?'走進'+f.name+' →':'此樓層暫無符合題目',()=>start(pool,b.name+' · '+f.level+' '+f.name+(f.id==='exam'?' · '+exam:'')),'',!pool.length));
+      if(pool.length)launch=()=>start(pool,b.name+' · '+f.level+' '+f.name+(f.id==='exam'?' · '+exam:''));
+      detail.append(node('div',{class:'room-meta'},node('span',{},pool.length.toLocaleString()+' 題可練習'),node('span',{},'每次最多 5 題'),node('span',{},'閱讀 → 理解 → 挑戰')),btn(pool.length?'走進'+f.name+' →':'此樓層暫無符合題目',()=>launch?.(),'',!pool.length));
       if(f.id==='calculation')detail.append(note('包含計算相關觀念與推理題；分類依原題庫關鍵字整理。'));
       detail.append(btn('查看錯題修練',()=>go('review'),'secondary small'));
-    }else detail.append(btn('走進'+f.name+' →',()=>go(f.id),f.id==='duel'?'gold':''));
-    const scene=node('div',{class:'interior-scene floor-'+f.level},node('img',{class:'interior-backdrop',src:BASE+b.hall,alt:b.school+'校園風格啟發的原創'+b.name+'室內場景',width:1536,height:1024}),node('div',{class:'interior-sign'},node('span',{},'BUILDING '+b.number),node('h2',{id:'building-title',tabindex:'-1'},b.name),node('p',{},b.subtitle),node('span',{class:'school-inspiration'},b.school+'校園風格 · 原創空間')),node('div',{class:'interior-guide'},node('div',{class:'guide-bubble'},greetings[b.id]),portrait(s.appearance,'interior')),node('div',{class:'interior-floor-badge','aria-live':'polite'},node('strong',{},f.level),node('span',{},f.name)));
-    return node('section',{class:'building-panel interior-panel '+b.color,'aria-labelledby':'building-title'},scene,node('div',{class:'floor-layout'},floorTabs,detail));
+    }else {launch=()=>go(f.id);detail.append(btn('走進'+f.name+' →',launch,f.id==='duel'?'gold':''));}
+    const scene=W.hall(f.name);
+    if(!launch)scene.portals=scene.portals.filter(p=>p.id!=='room');
+    const world=node('section',{class:'interior-scene interior-walk walk-world',tabindex:'0','aria-label':b.name+'可走動大廳：方向鍵移動，入口通往'+f.name+'或返回校園'},
+      node('img',{class:'interior-backdrop',src:BASE+b.hall,alt:b.school+'校園風格啟發的原創'+b.name+'室內場景',width:1536,height:1024,draggable:'false'}),
+      node('div',{class:'interior-sign'},node('span',{},'BUILDING '+b.number),node('h2',{id:'building-title'},b.name),node('p',{},b.subtitle)),
+      node('div',{class:'interior-floor-badge'},node('strong',{},f.level),node('span',{},f.name)),
+      portals(scene),node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
+    const walk=walkingScene(scene,world,hallPosition,p=>hallPosition=p,id=>{if(id==='exit')back();else {hallPosition={x:785,y:535};launch?.();}});
+    return node('section',{class:'building-panel interior-panel '+b.color,'aria-labelledby':'building-title'},walk,node('div',{class:'floor-layout'},floorTabs,detail));
   }
+
   function choose(kind,id){if(A.choose(getState(),kind,id)){save();render();toast(kind==='character'?'已換上 '+A.character(id).name+' 的外觀。':id?'現在由 '+A.pet(id).name+' 陪你出發。':'夥伴先在工坊休息。');}}
   function lore(p){openModal(art(p,'pet-lore-art'),node('p',{class:'eyebrow'},'LITTLE VESSEL, LITTLE LESSON'),node('h2',{},p.name),node('p',{},p.line),node('div',{class:'memory'},node('strong',{},'認識器皿｜'),p.fact),note('夥伴只作外觀陪伴，不增加攻擊、經驗、金幣或抽獎機率。'));}
   function mission(){
@@ -97,5 +86,5 @@ window.MindAcademyUI=function(ctx){
     const pets=node('div',{class:'pet-gallery'},A.PETS.map(p=>node('article',{class:'pet-card'+(look.pet===p.id?' chosen':'')+(!s.companion.unlocked?' locked':'')},node('div',{class:'pet-art'+(s.companion.unlocked&&g.stage?' pet-evolved evo-'+g.stage:'')},art(p)),node('div',{class:'pet-copy'},node('p',{class:'eyebrow'},p.vessel+' / LAB COMPANION'),node('h3',{},p.name),note(p.line),btn(!s.companion.unlocked?(J.ready(s)?'領養'+p.name:'完成新手任務解鎖'):look.pet===p.id?'正在陪伴你':'邀請'+p.name,()=>s.companion.unlocked?choose('pet',p.id):adopt(p.id),look.pet===p.id?'secondary full':'full',look.pet===p.id||(!s.companion.unlocked&&!J.ready(s))),btn('認識這個器皿',()=>lore(p),'quiet-link')))));
     return [preview,btn('修改學院暱稱',()=>go('account'),'secondary small'),node('div',{class:'section-title'},node('h2',{},'選一位，代表今天的你'),node('p',{},A.CHARACTERS.length+' 位原創人物 · 青年、中年與長者 · 全部開放')),people,mission(),node('div',{class:'section-title'},node('h2',{},'實驗室裡的小小夥伴'),node('p',{},'4 種原創器皿 · 完成新手任務後自由換用 · 共用成長')),pets,node('div',{class:'wardrobe-footer'},note('人物和夥伴會出現在學院、個人資料與對戰畫面。選擇會自動存檔，也會包含在匯出的遊戲備份裡。'),btn(look.pet===null?'目前不攜帶夥伴':'讓夥伴在工坊休息',()=>choose('pet',null),'secondary small',look.pet===null))];
   }
-  return {home,wardrobe,portrait,leave};
+  return {home,wardrobe,portrait,leave,mount};
 };

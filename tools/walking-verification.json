@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-29",
+  "tests": {"movementGeometry": 5, "inputLifecycle": 3, "academyRegression": 8, "offlineCache": 2, "passed": 18},
+  "browser": {
+    "origin": "http://localhost:4173/game/",
+    "keyboard": "Holding ArrowUp changed campus Y from 500 to 455. All four directions exercised inside a hall.",
+    "travel": "Walked into pharmacology, walked back outdoors, walked to battle building and into its monster arena. Life workshop entrance also exercised.",
+    "mobile": "390px viewport: long-press down moved Y from 531.2 to 553.7; direction controls visible; no horizontal overflow.",
+    "visual": "Campus and hall reviewed; immersive hall aspect-ratio constraint repaired; initial hall spawn moved away from exit label.",
+    "console": "No errors or warnings in fresh review tab after fixes.",
+    "saves": "Test visitor retained 60 XP, 40 coins, one ticket. No cloud or account configuration changed."
+  },
+  "scope": "2D character movement over existing original campus/hall illustrations; path collision, auto routing, five building entrances, indoor exit and selected-room entry. Position lasts for this open page only."
+}
