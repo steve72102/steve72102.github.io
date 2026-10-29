@@ -20,7 +20,7 @@
   ];
   const BUILDINGS=[
     {id:'pharmaceutics',school:'臺大',hall:'hall-ntu.webp',name:'藥劑樓',subtitle:'藥劑 · 生物藥劑',number:'01',color:'mint',description:'從劑型、溶離到體內旅程，讓抽象概念變得看得見。'},
-    {id:'pharmacology',school:'清大',hall:'hall-nthu.webp',name:'藥理樓',subtitle:'藥理 · 藥物化學',number:'02',color:'violet',description:'循著受體、訊號與結構，找到藥物作用的關鍵。'},
+    {id:'pharmacology',school:'清大',hall:'hall-nthu-interactive.webp',name:'藥理樓',subtitle:'藥理 · 藥物化學',number:'02',color:'violet',description:'循著受體、訊號與結構，找到藥物作用的關鍵。'},
     {id:'herbal',school:'成大',hall:'hall-ncku.webp',name:'生藥樓',subtitle:'藥物分析 · 生藥',number:'03',color:'leaf',description:'走進溫室與分析實驗室，讀懂植物和分子的線索。'},
     {id:'battle',school:'清大',hall:'hall-battle.webp',name:'對戰樓',subtitle:'怪物試煉 · 雙人競技',number:'04',color:'rose',description:'把讀懂的知識化成攻擊。單人打怪、雙人交鋒，都從這裡出發。'},
     {id:'life',school:'成大',hall:'hall-life.webp',name:'生活工坊',subtitle:'補給 · 星願 · 造型',number:'05',color:'gold',description:'備好下一場冒險的補給，換上喜歡的造型，和器皿夥伴一起出發。'}

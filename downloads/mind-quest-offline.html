@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>下載離線版 · 思維冒險</title>
+  <link rel="icon" href="../game/icon.svg">
+  <link rel="stylesheet" href="./offline-download.css">
+  <script defer src="./offline-download.js"></script>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">MIND QUEST · OFFLINE EDITION</p>
+    <h1>把整座學院<br>帶著走。</h1>
+    <p>題目、解析、角色與場景，一起收進離線版。<br>單人遊戲不需訂閱或連網。</p>
+    <section aria-label="下載離線遊戲">
+      <p id="download-status" role="status" aria-live="polite">準備好後，將取得一份完整 ZIP 檔案。</p>
+      <progress id="download-progress" max="1" value="0" aria-label="下載進度" hidden></progress>
+      <button id="prepare-download" type="button">準備下載離線版 ↓</button>
+      <a id="save-download" class="button" download="mind-quest-offline.zip" hidden>儲存完整 ZIP ↓</a>
+    </section>
+    <ol>
+      <li>將 ZIP 完整解壓縮，開啟資料夾內的 <strong>index.html</strong>。</li>
+      <li>原有進度請先在遊戲的「備份與說明」匯出，再於離線版匯入。</li>
+    </ol>
+    <p class="small">多人連線與 Google 雲端存檔請使用網站版。手機建議使用已快取的網站。</p>
+    <a class="back" href="../game/">← 回到藥學學院</a>
+  </main>
+</body>
+</html>

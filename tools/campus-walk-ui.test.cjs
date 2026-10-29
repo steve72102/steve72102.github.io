@@ -26,3 +26,15 @@ test('walking through an entrance activates once and cancels the old animation l
 });
 
 test('jumping reaches the tabletop, lands on it and drops back to the ground when walking off',()=>{const f=fixture({initial:{x:480,y:565}});f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(23);f.fire(f.document,'keyup',{key:'ArrowUp'});assert(Number(f.actor.dataset.z)>52);assert(W.surface(W.hall('room'),f.point()));f.tick(65);assert.equal(Number(f.actor.dataset.z),52);f.fire(f.document,'keydown',{key:'ArrowDown',target:f.world});f.tick(30);f.fire(f.document,'keyup',{key:'ArrowDown'});f.tick(60);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();});
+
+test('the left laboratory counter is reachable and repeated jumps land on each shelf without teleporting upward',()=>{
+  const scene=W.hall('room','pharmacology'),f=fixture({scene,initial:{x:56,y:500}}),jump=()=>f.fire(f.document,'keydown',{key:' ',target:f.world});
+  f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(15);assert.equal(Number(f.actor.dataset.z),0);assert(f.point().y>=482); // Cannot walk into the cabinet.
+  jump();f.tick(31);f.fire(f.document,'keyup',{key:'ArrowUp'});assert(W.inside(f.point(),scene.surfaces.find(s=>s.id==='lab-shelf-0').polygon));f.tick(65);assert.equal(Number(f.actor.dataset.z),90);
+  for(const height of [170,237,309]){jump();f.tick(6);assert(Number(f.actor.dataset.z)<height);f.tick(80);assert.equal(Number(f.actor.dataset.z),height);}
+  f.fire(f.document,'keydown',{key:'ArrowDown',target:f.world});f.tick(35);f.fire(f.document,'keyup',{key:'ArrowDown'});f.tick(110);assert.equal(Number(f.actor.dataset.z),0);assert(W.walkable(scene,f.point()));f.ui.destroy();
+});
+test('the illustrated window bench also supports a jump and blocks floor-level walking',()=>{
+  const scene=W.hall('room','pharmacology'),f=fixture({scene,initial:{x:250,y:480}});
+  f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(18);f.fire(f.document,'keyup',{key:'ArrowUp'});f.tick(70);assert.equal(Number(f.actor.dataset.z),55);assert.equal(W.surface(scene,f.point(),55).id,'window-bench');f.ui.destroy();
+});

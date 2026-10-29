@@ -15,3 +15,11 @@
 @media(max-width:700px){.walk-extra{left:15px;bottom:191px;gap:5px}.walk-extra .button{width:45px;height:44px;font-size:10px}.walk-extra .walk-push{width:72px}.scene-health{left:30%;top:174px;font-size:10px}}
 
 .academy-immersive .world-help{display:none}
+
+/* Detailed transparent glassware shares the painted cabinet's four shelf heights. */
+.walk-world .scene-cup{transform:translate(-50%,-95.5%) translateY(calc(-1 * var(--rise,5.2cqw)))}
+.walk-world .scene-cup.falling{transform:translate(-50%,-95.5%) translateY(calc(-1 * var(--rise,0cqw))) rotate(28deg)}
+.walk-world .scene-cup.lab-glass{min-width:0;transform:translate(-50%,calc(-1 * var(--glass-foot,93%))) translateY(calc(-1 * var(--rise,0cqw)))}
+.lab-glass-art{display:block;width:100%;height:100%;background-image:url('./assets/academy/lab-glassware-hq.webp');background-size:200% 200%;background-repeat:no-repeat}
+.walk-world .scene-shards{transform:translate(-50%,-50%) translateY(calc(-1 * var(--rise,0cqw)))}
+@media(prefers-reduced-motion:no-preference){.fresh-shards>i{animation:glass-settle .45s ease-out both}@keyframes glass-settle{from{opacity:0;translate:0 -1cqw;scale:.5}to{opacity:1;translate:0 0;scale:1}}}

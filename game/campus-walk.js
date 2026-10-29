@@ -26,7 +26,23 @@
     const surfaces=[{id:'table',x:480,y:510,w:200,d:64,height:52},{id:'chair-left',x:350,y:535,w:54,d:32,height:25},{id:'chair-right',x:610,y:535,w:54,d:32,height:25}].map(s=>({...s,polygon:rect(s.x,s.y,s.w,s.d)}));
     surfaces[0].polygon=poly([[384.4,509.3],[428.8,493.9],[575.6,502.9],[551.6,525.7]]);
     if(!modern&&!garden)surfaces.push({id:'existing-desk',x:154,y:490,w:100,d:55,height:90,hidden:true,polygon:rect(154,490,100,55)});
+    const glass=[{id:'cup',kind:'cup',surface:'table',x:480,y:510,width:23}];
+    if(building==='pharmacology'){
+      // The painted cabinet and its shelves share a footprint, but support different elevations.
+      // Upper shelves are one-way platforms: a jump can pass upward through them, then land.
+      const cabinet=poly([[5,456],[110,456],[110,482],[5,482]]);
+      [90,170,237,309].forEach((height,level)=>{
+        const id='lab-shelf-'+level;
+        surfaces.push({id,x:57.5,y:469,w:105,d:26,height,hidden:true,oneWay:level>0,polygon:cabinet});
+        const positions=[[32,56,79],[23,56,89],[18,42,66],[55,78,100]][level],edge=[[376.4,373.8],[293.8,301.6],[224.1,240.4],[146.5,173.9]][level];
+        positions.forEach((x,column)=>glass.push({id:'lab-'+level+'-'+column,kind:['beaker','flask','cylinder','round-flask'][(level+column)%4],surface:id,x,y:height+edge[0]+(edge[1]-edge[0])*x/112,width:level===1?27:25,fragile:true}));
+      });
+      surfaces.push({id:'window-bench',x:256,y:447,w:183,d:27,height:55,hidden:true,polygon:poly([[164,439],[345,432],[346,450],[174,459]])});
+      // Reach the cabinet directly from its front, without walking through the planter.
+      areas.push(poly([[5,482],[119,482],[146,500],[146,535],[5,535]]),poly([[174,459],[346,450],[346,468],[174,483]]));
+    }
     const scene={kind:'hall',building,modern,spawn:{x:450,y:590},areas,surfaces,paths:[],nodes:[],portals:[{id:'exit',name:'回到校園',x:modern?873:garden?823:585,y:modern?369:garden?416:356},{id:'room',name,x:modern?932:garden?230:832,y:modern?408:garden?409:416},{id:'stairs',name:modern?'樓梯平台':'樓梯間',...stairs,kind:'inspect',verb:'使用',auto:true}]};
+    scene.glass=glass;
     // Graph vertices follow the illustrated floor, stair flight and upper landing.
     scene.nodes=[scene.spawn,...scene.portals,point([480,575]),point([370,570]),point([590,570]),point([370,470]),point([590,460]),point([720,440]),...(modern?[[635,400],[710,265],[750,215],[820,211],[810,410],[870,410]]:garden?[[210,430],[300,437],[530,450],[810,445]]:[[250,460],[400,410],[585,382],[710,410]]).map(point)];
     const custom=D.halls[building];if(custom){scene.areas=custom.areas.map(poly);scene.spawn={...custom.spawn};scene.nodes=[...custom.nodes.map(point),...scene.nodes];scene.portals=[{id:'exit',name:'回到前庭',...custom.exit},{id:'room',name,...custom.room},{id:'stairs',name:'樓梯平台',...custom.stairs,kind:'inspect',verb:'使用',auto:true}];scene.nodes.push(...scene.portals);}
@@ -35,9 +51,10 @@
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function projection(p,a,b){const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy||1)));return {x:a.x+t*dx,y:a.y+t*dy};}
   function inside(p,polygon){let hit=false;for(let i=0,j=polygon.length-1;i<polygon.length;j=i++){const a=polygon[i],b=polygon[j],cross=(p.x-a.x)*(b.y-a.y)-(p.y-a.y)*(b.x-a.x);if(Math.abs(cross)<.001*(Math.abs(b.x-a.x)+Math.abs(b.y-a.y)+1)&&p.x>=Math.min(a.x,b.x)-.001&&p.x<=Math.max(a.x,b.x)+.001&&p.y>=Math.min(a.y,b.y)-.001&&p.y<=Math.max(a.y,b.y)+.001)return true;if((a.y>p.y)!==(b.y>p.y)&&p.x<(b.x-a.x)*(p.y-a.y)/(b.y-a.y)+a.x)hit=!hit;}return hit;}
-  function surface(scene,p){return (scene.surfaces||[]).filter(s=>inside(p,s.polygon)).sort((a,b)=>b.height-a.height)[0]||null;}
+  function surface(scene,p,z=Infinity){return (scene.surfaces||[]).filter(s=>s.height<=z+.1&&inside(p,s.polygon)).sort((a,b)=>b.height-a.height)[0]||null;}
+  function maxElevation(scene){return Math.max(200,...(scene.surfaces||[]).map(s=>s.height+110));}
   function ground(scene,p){if((scene.blocked||[]).some(a=>inside(p,a)))return false;return (scene.areas||[]).some(a=>inside(p,a))||(scene.paths||[]).some(s=>distance(p,projection(p,s.a,s.b))<=s.width);}
-  function walkable(scene,p,z=0){if(!p||!Number.isFinite(p.x)||!Number.isFinite(p.y))return false;const s=surface(scene,p);return (ground(scene,p)||!!s)&&(!s||z>=s.height-.1);}
+  function walkable(scene,p,z=0){if(!p||!Number.isFinite(p.x)||!Number.isFinite(p.y))return false;const surfaces=(scene.surfaces||[]).filter(s=>inside(p,s.polygon));return (ground(scene,p)||surfaces.some(s=>z>=s.height-.1))&&surfaces.every(s=>s.oneWay||z>=s.height-.1);}
   function nearest(scene,p,z=0){
     if(!p||!Number.isFinite(p.x)||!Number.isFinite(p.y))return {...scene.spawn};if(walkable(scene,p,z))return {x:p.x,y:p.y};
     const candidates=[scene.spawn,...scene.nodes];for(const a of [...(scene.areas||[]),...(scene.blocked||[])])for(let i=0;i<a.length;i++)candidates.push(projection(p,a[i],a[(i+1)%a.length]));for(const s of scene.paths||[])candidates.push(projection(p,s.a,s.b));
@@ -55,5 +72,5 @@
   function route(scene,from,to){from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];const nodes=[from,...scene.nodes.filter(p=>walkable(scene,p)),to],last=nodes.length-1,cost=nodes.map(()=>Infinity),prev=nodes.map(()=>-1),seen=new Set();cost[0]=0;while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]<cost[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);for(let v=1;v<nodes.length;v++)if(!seen.has(v)&&clear(scene,nodes[u],nodes[v])){const next=cost[u]+distance(nodes[u],nodes[v]);if(next<cost[v]){cost[v]=next;prev[v]=u;}}}if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);return result;}
   function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
-  return {WIDTH,HEIGHT,SPEED,campus,district,hall,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,ground,walkable,nearest,clear,move,route,near,direction};
+  return {WIDTH,HEIGHT,SPEED,campus,district,hall,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,clear,move,route,near,direction};
 });

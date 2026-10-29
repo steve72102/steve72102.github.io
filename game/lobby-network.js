@@ -1,6 +1,6 @@
 /* Public presence only. No account ID, email, save payload, coins or rewards travel here. */
 window.MindLobbyNetwork=function(options){
-  'use strict';const {onChange}=options,L=window.MindLobby,P=window.MindScenePlay,PREFIX='steve72102-academy-lobby2-',id=Array.from(crypto.getRandomValues(new Uint8Array(16)),x=>x.toString(16).padStart(2,'0')).join('');
+  'use strict';const {onChange}=options,L=window.MindLobby,P=window.MindScenePlay,PREFIX='steve72102-academy-'+L.VERSION+'-',id=Array.from(crypto.getRandomValues(new Uint8Array(16)),x=>x.toString(16).padStart(2,'0')).join('');
   let messages=[],requests=[],outgoing=new Set(),socialEvents=[],lastTalk=-2000,lastFriend=-2000;let environment=P.fresh();let peer=null,upstream=null,connections=new Map(),self=null,players=[],channel=1,host=false,epoch=0,interval=null,timeout=null,retryTimer=null,lastBroadcast=0,lastSend=0,lastReceive=0,dirty=false,attempts=0,status='idle',message='獨自漫遊';
   function snapshot(){return {status,message,channel,players:players.map(p=>({...p})),selfId:id,host,environment:P.snapshot(environment,Date.now()),messages:messages.slice(),requests:requests.slice(),socialEvents:socialEvents.slice()};}
   function notify(){onChange(snapshot());}

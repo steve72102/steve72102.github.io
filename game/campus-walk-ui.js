@@ -21,7 +21,7 @@ window.MindWalkUI=function(options){
     world.querySelectorAll('[data-walk-portal]').forEach(b=>b.classList.toggle('nearby',b.dataset.walkPortal===door?.id));
     message(path.length?'正在前往目的地 · 方向鍵可接手':door?'已到 '+door.name+' · 按 Enter 互動':scene.kind!=='hall'?'校園漫遊 · 點地面跑動，空白鍵跳躍':'樓館大廳 · 沿樓梯前往下一層');
   }
-  function camera(){const viewport=root.querySelector('.world-viewport');if(!viewport)return;if(!document.body.classList.contains('academy-immersive')){world.style.transform='';return;}const width=world.offsetWidth,height=world.offsetHeight,x=Math.min(0,Math.max(viewport.clientWidth-width,viewport.clientWidth/2-pos.x/W.WIDTH*width)),y=Math.min(0,Math.max(viewport.clientHeight-height,viewport.clientHeight*.58-pos.y/W.HEIGHT*height));world.style.transform='translate3d('+x+'px,'+y+'px,0)';}
+  function camera(){const viewport=root.querySelector('.world-viewport');if(!viewport)return;if(!document.body.classList.contains('academy-immersive')){world.style.transform='';return;}const width=world.offsetWidth,height=world.offsetHeight,x=Math.min(0,Math.max(viewport.clientWidth-width,viewport.clientWidth/2-pos.x/W.WIDTH*width)),y=Math.min(0,Math.max(viewport.clientHeight-height,viewport.clientHeight*.58-(pos.y-Math.max(0,z-70))/W.HEIGHT*height));world.style.transform='translate3d('+x+'px,'+y+'px,0)';}
   function activate(door){if(!door||activated||disposed)return;latched=door.id;armed=null;stop();paint();if(door.kind!=='inspect'){activated=true;destroy();}onPortal(door.id);}
   function jump(){if(blocked()||vz)return;onRouteCancel();vz=360/(scene.scale||1);path=[];armed=null;focus();}
   function push(){if(blocked())return;onPush(direction);focus();}
@@ -56,10 +56,10 @@ window.MindWalkUI=function(options){
     if(blocked()){if(wasMoving||keys.size||touches.size||path.length){stop();paint();wasMoving=false;}last=0;frame=requestAnimationFrame(tick);return;}
     let dx=0,dy=0;for(const key of [...keys,...touches.values()]){const d=W.direction(key);if(d){dx+=d[0];dy+=d[1];}}
     const before=pos,beforeZ=z;
-    const support=W.surface(scene,pos)?.height||0;if(vz||z>support){vz-=650/(scene.scale||1)*dt;z+=vz*dt;if(z<=support&&vz<0){z=support;vz=0;}}
+    const support=W.surface(scene,pos,z)?.height||0;if(vz||z>support){vz-=650/(scene.scale||1)*dt;z+=vz*dt;if(z<=support&&vz<0){z=support;vz=0;}}
     if(dx||dy)pos=W.move(scene,pos,dx,dy,dt,keys.has('Shift'),z);
     else if(path.length){let next=path[0];const dist=W.distance(pos,next);if(dist<=W.speed(scene)*dt){pos={...next};path.shift();if(!path.length)target.hidden=true;}else pos=W.move(scene,pos,next.x-pos.x,next.y-pos.y,dt,false,z);dx=pos.x-before.x;dy=pos.y-before.y;}
-    const landed=W.surface(scene,pos)?.height||0;if(z<landed){z=landed;vz=0;}
+    const landed=W.surface(scene,pos,z)?.height||0;if(z<landed){z=landed;vz=0;}
     const moved=W.distance(before,pos)>.001;if(moved||wasMoving||beforeZ!==z)paint(moved,dx,dy);wasMoving=moved;
     const door=W.near(scene,pos,14);if(!door||door.id!==latched)latched=null;
     if(door&&door.id!==latched&&z<1&&(moved||armed===door.id)&&(door.auto!==false||armed===door.id)){activate(door);if(disposed)return;}

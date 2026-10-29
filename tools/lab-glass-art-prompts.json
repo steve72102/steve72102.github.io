@@ -1,0 +1,269 @@
+{
+  "generator": "Built-in image_gen__imagegen (no CLI/API fallback)",
+  "createdAt": "2026-10-30",
+  "mode": [
+    "edit",
+    "generate"
+  ],
+  "originalHall": {
+    "path": "game/assets/academy/hall-nthu.png",
+    "width": 1536,
+    "height": 1024,
+    "logicalWidth": 1000,
+    "logicalHeight": 667
+  },
+  "assets": [
+    {
+      "name": "hall-nthu-interactive",
+      "prompt": "Edit target: the attached original game hall image, native 1536 x 1024. Make a precise localized object-removal edit; preserve the complete original camera, field of view, architecture, texture, lighting and object coordinates. Remove ONLY the laboratory GLASS vessels from the FAR-LEFT wooden display shelving and the far-left counter below it, including everything INSIDE those glass vessels (water and plant/terrarium contents). This target strip is x=0..172 pixels, y=169..587 pixels of the 1536x1024 image (logical 1000x667 x=0..112,y=110..382). Keep the wooden shelf boards, warm strip lights, cabinet below, stone counter, opaque pots and plants in opaque pots, bench under windows, windows, staircases, floor reflections, all distant and right-wall glass displays completely unchanged and aligned. Inpaint empty warm beige backing behind removed vessels, naturally retaining exact shelf edges and surface perspective. No repaint, no camera change, no redesign, no added props. This is a high-detail production background used with overlaid game physics; original geometric alignment is critical. Preserve original 1536x1024 output dimensions at minimum, fine wood grain, stone floor details and reflections. Do not crop.",
+      "referenceRole": "edit target",
+      "reference": "game/assets/academy/hall-nthu.png",
+      "generatedSource": "C:/Users/PC/.codex/generated_images/01a188cc-9a1a-7d73-8447-3e58214b837a/exec-11ddecdc-c7f9-4d37-86ad-412b5fdc3bd7.png",
+      "originalOutput": "artifacts/lab-glass-originals/hall-clean.png",
+      "gameOutput": "game/assets/academy/hall-nthu-interactive.webp",
+      "width": 1536,
+      "height": 1024,
+      "alpha": false,
+      "encoding": {
+        "format": "webp",
+        "quality": 96,
+        "effort": 6
+      },
+      "editArea": {
+        "logical": {
+          "x": 0,
+          "y": 110,
+          "width": 112,
+          "height": 272
+        },
+        "native": {
+          "x": 0,
+          "y": 169,
+          "width": 172,
+          "height": 418
+        }
+      },
+      "invariantsChecked": "Visual comparison: same framing and camera, left shelf boards, opaque pots, counter cabinet, window bench, windows and staircases retain their positions. Background regenerated image is not guaranteed pixel-identical outside edit area. No apparent geometry shift."
+    },
+    {
+      "name": "lab-glassware",
+      "prompt": "Create an ORIGINAL production game sprite atlas, square 1536x1536 or 2048x2048 native resolution (minimum 1024x1024), a mathematically even TWO-BY-TWO grid containing exactly FOUR isolated laboratory glass vessels, one whole object within each quadrant. TOP LEFT: low broad graduated beaker with pouring lip. TOP RIGHT: Erlenmeyer conical flask. BOTTOM LEFT: tall slender graduated cylinder with flat circular foot. BOTTOM RIGHT: round-bottom flask with short neck and small flat stable integral base. Refined photorealistic architectural illustration matching a bright modern Taiwanese university atrium: clear transparent thin glass, delicate realistic refraction, very fine warm white specular reflections and pale mint edge highlights; each contains a SMALL amount of clean pale mint/aqua water near its bottom. Gentle near-front three-quarter view looking slightly downward at each rim, consistent perspective and lighting. Each whole object centered horizontally within its exact cell and bottom aligned at 88% of that cell's height. Uniform useful visual scale; generous 12% empty margin on all sides of each cell, including above taller cylinder. Every cell at least 512x512 pixels. Absolutely genuine transparent background and transparent glass interiors: no backdrop, no white rectangle, no checkerboard, no opaque interiors, no exterior cast shadow, no floor. Fine restrained graduation tick marks only, no readable labels, no letters, no numbers, no brands, no logos, no watermark. No plants, tools, stoppers, decorations, borders, frames or dividers. This will be sliced directly into four game object sprites by quadrants. Preserve clean silhouette and highest-detail glass texture without clutter.",
+      "referenceRole": "none, original generation",
+      "generatedSource": "C:/Users/PC/.codex/generated_images/01a188cc-9a1a-7d73-8447-3e58214b837a/exec-64afe311-75a3-4d45-bae3-ad24d24b29ed.png",
+      "originalOutput": "artifacts/lab-glass-originals/glassware-atlas.png",
+      "gameOutput": "game/assets/academy/lab-glassware.webp",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "encoding": {
+        "format": "webp",
+        "lossless": true,
+        "effort": 6
+      },
+      "grid": {
+        "columns": 2,
+        "rows": 2,
+        "cellWidth": 627,
+        "cellHeight": 627
+      },
+      "sprites": [
+        {
+          "id": "beaker",
+          "cell": [
+            0,
+            0
+          ],
+          "alpha64Bounds": {
+            "x": 117,
+            "y": 116,
+            "width": 400,
+            "height": 452
+          },
+          "bottomWithinCell": 567
+        },
+        {
+          "id": "erlenmeyer",
+          "cell": [
+            1,
+            0
+          ],
+          "alpha64Bounds": {
+            "x": 757,
+            "y": 53,
+            "width": 365,
+            "height": 532
+          },
+          "bottomWithinCell": 584
+        },
+        {
+          "id": "cylinder",
+          "cell": [
+            0,
+            1
+          ],
+          "alpha64Bounds": {
+            "x": 226,
+            "y": 653,
+            "width": 207,
+            "height": 562
+          },
+          "bottomWithinCell": 587
+        },
+        {
+          "id": "round-flask",
+          "cell": [
+            1,
+            1
+          ],
+          "alpha64Bounds": {
+            "x": 769,
+            "y": 697,
+            "width": 343,
+            "height": 500
+          },
+          "bottomWithinCell": 569
+        }
+      ],
+      "notes": "Generated native 1254 square exceeds 512 px/cell. Generator did not align bottoms at identical height or deliver exact 12% margin; use supplied alpha bounds for ground anchoring. Transparent alpha retained losslessly. No readable numbers/logos or plants."
+    }
+  ],
+  "geometry": {
+    "coordinateSystem": "logical 1000x667, origin top-left; projected surface height is common foot y minus height.",
+    "plannedParentPhysics": {
+      "groundFootY": 470,
+      "xMin": 0,
+      "xMax": 112,
+      "levels": [
+        {
+          "name": "counter",
+          "height": 90,
+          "projectedY": 380
+        },
+        {
+          "name": "lowerShelf",
+          "height": 160,
+          "projectedY": 310
+        },
+        {
+          "name": "middleShelf",
+          "height": 230,
+          "projectedY": 240
+        },
+        {
+          "name": "upperShelf",
+          "height": 300,
+          "projectedY": 170
+        }
+      ]
+    },
+    "imageSurfaceVisualMeasurementsApproximate": [
+      {
+        "name": "upperShelf",
+        "nativeLine": [
+          {
+            "x": 0,
+            "y": 225
+          },
+          {
+            "x": 172,
+            "y": 267
+          }
+        ],
+        "logicalLine": [
+          {
+            "x": 0,
+            "y": 146.5
+          },
+          {
+            "x": 112,
+            "y": 173.9
+          }
+        ]
+      },
+      {
+        "name": "middleShelf",
+        "nativeLine": [
+          {
+            "x": 0,
+            "y": 344
+          },
+          {
+            "x": 172,
+            "y": 369
+          }
+        ],
+        "logicalLine": [
+          {
+            "x": 0,
+            "y": 224.1
+          },
+          {
+            "x": 112,
+            "y": 240.4
+          }
+        ]
+      },
+      {
+        "name": "lowerShelf",
+        "nativeLine": [
+          {
+            "x": 0,
+            "y": 451
+          },
+          {
+            "x": 172,
+            "y": 463
+          }
+        ],
+        "logicalLine": [
+          {
+            "x": 0,
+            "y": 293.8
+          },
+          {
+            "x": 112,
+            "y": 301.6
+          }
+        ]
+      },
+      {
+        "name": "counter",
+        "nativeLine": [
+          {
+            "x": 0,
+            "y": 578
+          },
+          {
+            "x": 172,
+            "y": 574
+          }
+        ],
+        "logicalLine": [
+          {
+            "x": 0,
+            "y": 376.4
+          },
+          {
+            "x": 112,
+            "y": 373.8
+          }
+        ]
+      }
+    ],
+    "notes": "Shelf front edges are perspective-sloped, particularly upper shelves. Measurements approximate from source image; parent planned constant heights are a gameplay simplification. Opaque pots remain at left top/counter and right middle/counter, so glass placement should not overlap them. Window bench and other glass displays remain unchanged."
+  },
+  "webExport": {
+    "path": "game/assets/academy/lab-glassware-hq.webp",
+    "quality": 96,
+    "alphaQuality": 100,
+    "dimensions": [
+      1254,
+      1254
+    ],
+    "bytes": 370164,
+    "alphaIdentical": true,
+    "psnrAgainstOriginalOnIvory": 47.00595579364041,
+    "losslessMaster": "artifacts/lab-glass-originals/glassware-lossless.webp",
+    "note": "Format conversion only, no resizing or geometry changes. The unused original hall-nthu.webp is omitted from the new offline archive but remains in the repository for previous releases."
+  }
+}
