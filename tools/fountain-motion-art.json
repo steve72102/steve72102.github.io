@@ -1,0 +1,76 @@
+{
+  "tool": "image_gen (built-in)",
+  "mode": "edit",
+  "useCase": "precise-object-edit",
+  "reference": "game/assets/academy/campus-plaza.webp",
+  "output": "game/assets/academy/campus-plaza-motion-base.webp",
+  "original": "artifacts/expansion-originals/fountain-motion-base.png",
+  "prompt": "Use case: precise-object-edit. Asset type: clean background plate for an existing 2.5D browser-game fountain animation. Edit target: the attached campus-plaza.webp. Remove ONLY the golden armillary sculpture's blue-gold sphere and ALL the thin golden circular/elliptical rings above its central plinth, including the top pointed circular supports. Keep the small low stone pedestal in the pool and its simple low golden mounting disk. Also remove every vertical white water fountain jet within the central circular pool, restoring quiet turquoise pool water with subtle small reflections. Fill the area vacated by the armillary sculpture with the logically continuing distant stone stairs and pavement, maintaining the perspective. The game will draw the sphere, rotating rings and animated jets over this clean plate. ABSOLUTE INVARIANTS: exact same original 1536 by 1024 canvas, camera, framing, perspective and object placement. Do not shift or redraw the pool's outer rim, its stair steps, benches, flower beds, trees, buildings, lanterns, bridges, side waterfalls or any stone tile outside the sculpture/jet removal region. Keep the pool and low central pedestal at their exact existing pixel positions. No new objects, no people, birds, text or UI. Preserve the original crisp sunny detailed illustrated style and colors. Make an in-place localized erasure and reconstruction, not a new composition.",
+  "size": [
+    1536,
+    1024
+  ],
+  "logicalScene": [
+    1000,
+    667
+  ],
+  "anchors": {
+    "pool": {
+      "cx": 500,
+      "cy": 330,
+      "rx": 129,
+      "ry": 23
+    },
+    "pedestal": {
+      "cx": 500,
+      "cy": 327,
+      "rx": 33,
+      "ry": 10
+    },
+    "sphere": {
+      "cx": 500,
+      "cy": 278,
+      "r": 25
+    },
+    "rings": {
+      "cx": 500,
+      "cy": 271,
+      "rx": 51,
+      "ry": 61
+    },
+    "jets": [
+      {
+        "x": 430,
+        "y": 330,
+        "maxHeight": 51
+      },
+      {
+        "x": 452,
+        "y": 342,
+        "maxHeight": 43
+      },
+      {
+        "x": 500,
+        "y": 346,
+        "maxHeight": 38
+      },
+      {
+        "x": 544,
+        "y": 342,
+        "maxHeight": 43
+      },
+      {
+        "x": 563,
+        "y": 330,
+        "maxHeight": 51
+      }
+    ],
+    "removedRegion": {
+      "x": 447,
+      "y": 208,
+      "width": 108,
+      "height": 121
+    }
+  },
+  "inspection": "Sphere, all raised metal rings and every vertical fountain jet are absent. Low mounting disk and stone plinth retained. Pool, walks, side waterfalls, stairs, bridges, plants and buildings visually retain original locations. Rendering slightly reinterprets texture outside mask but no material geometry drift seen. Ensure animation masks exclude the low central pedestal and the pool stone rim."
+}

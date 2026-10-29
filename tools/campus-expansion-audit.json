@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-30",
+  "reference": "game/assets/academy/campus-taiwan.webp",
+  "outdoorScenesBefore": 6,
+  "outdoorScenesAfter": 9,
+  "scale": 1.5,
+  "areaEstimate": {
+    "method": "5-unit grid sample of dry walkable polygons, multiplied by squared physical scene scale",
+    "before": 792925,
+    "after": 3220481.25,
+    "ratio": 4.06
+  },
+  "comparisons": [
+    {
+      "feature": "five academic areas",
+      "result": "NW pharmaceutics, N pharmacology, NE herbal, SW life, SE battle retained"
+    },
+    {
+      "feature": "southern stone bridge",
+      "result": "Added traversable central stair, wide arch bridge and west/east branches"
+    },
+    {
+      "feature": "western medicinal beds",
+      "result": "Added connected paths around a solid herb island, NW stair and workshop route"
+    },
+    {
+      "feature": "eastern riverside",
+      "result": "Added dry terraces and greenhouse stairs; bridge approach repainted to remove an impassable flowerbed"
+    },
+    {
+      "feature": "water and borders",
+      "result": "Rivers, gardens and railings stay non-walkable; walking routes use painted bridges/stairs"
+    },
+    {
+      "feature": "fountain",
+      "result": "Removed baked jets and rings. Five staggered jets, three independently rotating metal rings, ripples and sphere rotation"
+    }
+  ],
+  "artRecords": [
+    "tools/expansion-art-prompts.json",
+    "tools/fountain-motion-art.json"
+  ]
+}

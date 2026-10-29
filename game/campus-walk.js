@@ -5,6 +5,17 @@
 
   function layout(raw){return {...raw,areas:raw.areas.map(poly),blocked:(raw.blocked||[]).map(poly),nodes:raw.nodes.map(p=>Array.isArray(p)?point(p):p),surfaces:[],paths:[]};}
   const campus=layout(D.campus),districts=Object.fromEntries(Object.entries(D.districts).map(([id,d])=>[id,layout(d)]));
+  const trails=Object.fromEntries(Object.entries(D.trails||{}).map(([id,d])=>[id,layout(d)]));
+  const outdoors={campus,...Object.fromEntries(Object.entries(districts).map(([id,d])=>['district:'+id,d])),...Object.fromEntries(Object.entries(trails).map(([id,d])=>['trail:'+id,d]))};
+  const outdoor=id=>outdoors[id]||null,speed=scene=>SPEED/(scene.scale||1);
+  function travelRoute(from,to){
+    if(!outdoors[from]||!outdoors[to])return null;if(from===to)return [];
+    // Follow geographic distances on the academy overview, including the two outer loops.
+    const queue=[{id:from,steps:[],cost:0}],costs=new Map([[from,0]]);
+    while(queue.length){queue.sort((a,b)=>a.cost-b.cost);const current=queue.shift();if(current.cost>costs.get(current.id))continue;if(current.id===to)return current.steps;for(const p of outdoors[current.id].portals){if(!outdoors[p.to])continue;const cost=current.cost+distance(mapPoint(current.id),mapPoint(p.to))+1;if(cost>=(costs.get(p.to)??Infinity))continue;costs.set(p.to,cost);queue.push({id:p.to,cost,steps:[...current.steps,{scene:current.id,portal:p.id,to:p.to,arrival:p.arrival}]});}}return null;
+  }
+  function arrival(from,portalId){const p=outdoors[from]?.portals.find(p=>p.id===portalId),next=outdoors[p?.to];if(!next)return null;const gate=next.portals.find(q=>q.id===p.arrival);return {scene:p.to,position:nearest(next,gate?.out||next.spawn)};}
+  function mapPoint(id){const outside=id.startsWith('hall:')?'district:'+id.split(':')[1]:id;return outdoors[outside]?.mapPoint||{x:500,y:355};}
   function district(id){return districts[id]||campus;}
   const hallCache=new Map();
   function hall(name,building='pharmaceutics'){
@@ -40,9 +51,9 @@
     for(const polygon of polygons)for(let i=0;i<polygon.length;i++){const c=polygon[i],d=polygon[(i+1)%polygon.length],ex=d.x-c.x,ey=d.y-c.y,det=dx*ey-dy*ex;if(Math.abs(det)<1e-9)continue;const t=((c.x-a.x)*ey-(c.y-a.y)*ex)/det,u=((c.x-a.x)*dy-(c.y-a.y)*dx)/det;if(t>0&&t<1&&u>=0&&u<=1)cuts.push(t);}
     cuts.sort((a,b)=>a-b);for(let i=1;i<cuts.length;i++){const t=(cuts[i-1]+cuts[i])/2;if(!walkable(scene,{x:a.x+dx*t,y:a.y+dy*t},z))return false;}return true;
   }
-  function move(scene,p,dx,dy,seconds,sprint=false,z=0){p=nearest(scene,p,z);const length=Math.hypot(dx,dy);if(!Number.isFinite(length)||!length||!Number.isFinite(seconds))return p;const amount=SPEED*(sprint?1.5:1)*Math.max(0,Math.min(.05,seconds)),x=dx/length*amount,y=dy/length*amount,both={x:p.x+x,y:p.y+y};if(clear(scene,p,both,z))return both;const horizontal={x:p.x+x,y:p.y},vertical={x:p.x,y:p.y+y};if(x&&clear(scene,p,horizontal,z))return horizontal;if(y&&clear(scene,p,vertical,z))return vertical;return p;}
+  function move(scene,p,dx,dy,seconds,sprint=false,z=0){p=nearest(scene,p,z);const length=Math.hypot(dx,dy);if(!Number.isFinite(length)||!length||!Number.isFinite(seconds))return p;const amount=speed(scene)*(sprint?1.5:1)*Math.max(0,Math.min(.05,seconds)),x=dx/length*amount,y=dy/length*amount,both={x:p.x+x,y:p.y+y};if(clear(scene,p,both,z))return both;const horizontal={x:p.x+x,y:p.y},vertical={x:p.x,y:p.y+y};if(x&&clear(scene,p,horizontal,z))return horizontal;if(y&&clear(scene,p,vertical,z))return vertical;return p;}
   function route(scene,from,to){from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];const nodes=[from,...scene.nodes.filter(p=>walkable(scene,p)),to],last=nodes.length-1,cost=nodes.map(()=>Infinity),prev=nodes.map(()=>-1),seen=new Set();cost[0]=0;while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]<cost[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);for(let v=1;v<nodes.length;v++)if(!seen.has(v)&&clear(scene,nodes[u],nodes[v])){const next=cost[u]+distance(nodes[u],nodes[v]);if(next<cost[v]){cost[v]=next;prev[v]=u;}}}if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);return result;}
-  function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
+  function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
-  return {WIDTH,HEIGHT,SPEED,campus,district,hall,distance,projection,inside,surface,ground,walkable,nearest,clear,move,route,near,direction};
+  return {WIDTH,HEIGHT,SPEED,campus,district,hall,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,ground,walkable,nearest,clear,move,route,near,direction};
 });
