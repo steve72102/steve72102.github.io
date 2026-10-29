@@ -30,7 +30,7 @@
   function rollDay(s, day) { if (s.day !== day) { s.day = day; s.rewarded = []; } }
   function claim(s, day = today()) {
     rollDay(s, day);
-    if (s.claimed === day) return null;
+    if (s.claimed === day || !bagRoom(s)) return null;
     const index = Math.floor(Date.parse(day + 'T00:00:00Z') / 86400000) % 3;
     const item = ITEMS.filter(i => i.tier === 0)[index];
     s.claimed = day; s.inventory[item.id] = Math.min(MAX, (s.inventory[item.id] || 0) + 1);
@@ -51,7 +51,7 @@
     return { xp, ticket, repeated: false };
   }
   function draw(s, random = Math.random) {
-    if (s.tickets < 1) return null;
+    if (s.tickets < 1 || !bagRoom(s)) return null;
     const n = random() * 100;
     const tier = s.pity >= 29 ? 3 : n < 60 ? 0 : n < 90 ? 1 : n < 99 ? 2 : 3;
     const pool = ITEMS.filter(i => i.tier === tier);
@@ -106,5 +106,6 @@
     }
     return s;
   }
-  return { SUBJECTS, TIERS, ITEMS, today, fresh, rollDay, claim, reward, draw, shuffle, begin, answer, next, restore };
+  function bagRoom(s) { return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0)<(s.rpg?.capacity||50); }
+  return { SUBJECTS, TIERS, ITEMS, today, fresh, rollDay, claim, reward, draw, shuffle, begin, answer, next, restore, bagRoom };
 });

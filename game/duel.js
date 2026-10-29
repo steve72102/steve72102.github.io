@@ -3,13 +3,14 @@
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MindDuel=api;
 })(typeof window==='object'?window:globalThis,function(E,C,A){
   'use strict';
-  const VERSION='mq-duel-2', BANK='notes-3221-r5';
+  const VERSION='mq-duel-3', BANK='notes-3221-r5';
   function profile(raw) {
     if(!raw||typeof raw!=='object'||typeof raw.name!=='string'||!Number.isInteger(raw.level)||raw.level<1||raw.level>1000001)throw Error('角色資料不正確');
     const name=raw.name.trim();
     if(!/^[\p{L}\p{N} _-]{1,16}$/u.test(name))throw Error('暱稱請使用 1–16 個文字、數字、空格或底線');
     if(raw.gearId!==null&&!E.ITEMS.some(i=>i.id===raw.gearId))throw Error('裝備資料不正確');
-    return {name,level:raw.level,gearId:raw.gearId,appearance:A.restore(raw.appearance)};
+    const outfit=(typeof module==='object'&&module.exports?require('./adventure.js'):window.MindAdventure).loadout(raw.loadout);
+    return {name,level:raw.level,gearId:raw.gearId,appearance:A.restore(raw.appearance),loadout:outfit};
   }
   function match(raw,questions,subject) {
     if(!raw||raw.version!==VERSION||raw.bank!==BANK||!E.SUBJECTS[raw.subject]||(subject&&subject!==raw.subject)||!Array.isArray(raw.ids)||raw.ids.length!==6||new Set(raw.ids).size!==6)throw Error('對戰版本或題目不一致，請雙方更新網頁');
@@ -46,7 +47,7 @@
     for(let side=0;side<2;side++)s.answers[side].push({choice:s.reveals[side],correct:s.reveals[side]===q.answer});
     if(s.index%3===2)for(let side=0;side<2;side++){
       const count=s.answers[side].slice(s.round*3,s.round*3+3).filter(a=>a.correct).length;
-      const p=s.players[side],hero=C.heroStats(p.level,p.gearId,s.subject);
+      const p=s.players[side],hero=C.heroStats(p.level,p.gearId,s.subject,p.loadout);
       s.rounds[side].push(C.calculateRound(hero,{attack:0},count,s.round?s.rounds[side][0].correct:0));
     }
     s.phase='feedback';return true;

@@ -1,0 +1,718 @@
+{
+  "generatedWith": "builtin image_gen",
+  "useCase": "identity-preserve",
+  "atlas": {
+    "width": 1536,
+    "height": 1024,
+    "columns": 4,
+    "rows": 2,
+    "cellWidth": 384,
+    "cellHeight": 512,
+    "alpha": true,
+    "frames": {
+      "down": [
+        0,
+        4
+      ],
+      "up": [
+        1,
+        5
+      ],
+      "right": [
+        3,
+        7
+      ],
+      "left": "Mirror right frames; do not use column 3"
+    },
+    "notes": "Two animation phases: wide contact stride and high-knee passing pose. All project character references are original game artwork; no real photo is included.",
+    "feetAnchorHint": "Use about 90% cell height; exact opaque bounds are validated per cell."
+  },
+  "prompts": {
+    "gutterRepair": "Use case: precise-object-edit. This is a technical sprite atlas repair. SHRINK EACH OF THE EIGHT EXISTING CHARACTER SPRITES TO 70 PERCENT OF ITS CURRENT SIZE, and center it in its own equal grid cell. Do not change any face, clothes, colors, orientation or limb pose. Keep the same 4 columns x2 rows,1536x1024canvas. Each cell is384x512. Each figure should occupy at most270pxwidth and350pxheight, leaving LARGE EMPTY TRANSPARENT GUTTERS. Put column centers exactly at x192,576,960,1344. Put TOP ROW figure centers at y250; BOTTOM ROW figure centers at y762. ALL pixels of top-row sprites must be between y65 and445; ALL pixels of bottom-row sprites between y577 and957. At least55px empty TRANSPARENT gap from each sprite to its cell boundary. The visual should have much more empty transparent space between the small figures than the input. Background alpha0 everywhere except characters. No shadows, gray/brown backdrop, checkerboard pattern, text, new objects, extra figures. Preserve all eight full-body characters and their poses, just scale down and align. This image will be cropped by an exact4x2 grid; adjacent characters must never spill into the other cell.",
+    "backgroundExtraction": "Use case: background-extraction. Remove ONLY the whole gray/white/brown background and glow from this sprite atlas, producing actual transparent alpha (zero opacity) in every empty space and gutter. Keep ALL eight character sprites exactly the same: same full bodies, faces, green coats, goggles, shoes, poses, dimensions, exact pixel placement, 4 columns x2 rows on1536x1024canvas. Do not repaint or rearrange characters. Keep hair edges smooth and preserve white clothing as opaque. No new background, no color matte, no checkerboard drawing, no shadows. The output must be a clean transparent game sprite sheet with only the eight figures visible when composited on another scene.",
+    "initial": "Use case: identity-preserve. Asset type: original mobile RPG running sprite atlas. Image 1 is CHARACTER IDENTITY AND OUTFIT reference; image 2 is STYLE, SCALE AND GRID reference only. Make this character in the same polished three-head-tall storybook 3D chibi style as image 2. Preserve the character's face shape, age, hair, glasses if any, and exact original outfit/colors from IMAGE 1; do not turn them into the male character from image 2. Stow any held object safely in belt pouch or satchel so both arms can run freely. Real transparent background alpha, no opaque or semi-transparent backdrop. EXACTLY 8 isolated full body sprites in a regular 4 columns by 2 rows, landscape 1536x1024, each cell 384x512. Columns LEFT TO RIGHT: facing FRONT/south; facing BACK/north (back of head); strict LEFT/west profile; strict RIGHT/east profile. Both rows must keep exactly that same orientation order. Top row running stride A left leg forward/right leg back with opposing arms. Bottom row running stride B right leg forward/left leg back with opposing arms. Noticeably different alternating strides. All eight must fit fully within their cells at the same scale, around 3 heads tall, feet baseline at 90% cell height, consistent cell center. Keep at least 8% clear gutters on every cell edge. No cut-off hair, coat, shoes, arms. Transparent empty margins. No frame boxes, numbers, labels, text, floor, cast shadows, extra people, trademarks or watermarks. Every cell contains exactly one character, never overlap adjacent cells. Prioritize technical game atlas layout and identity consistency.",
+    "poseRepair": "Use case: precise-object-edit. Correct this game animation atlas. KEEP all TOP ROW sprites and all faces, age, hairstyles, costumes, proportions and cell alignment unchanged. Change ONLY the LOWER ROW four character poses into the PASSING / HIGH-KNEE PHASE OF RUNNING, visibly different from top row's wide-extended stride: torso a little upright, near knee raised high toward waist, far leg planted almost straight vertically under hips, feet much CLOSER horizontally instead of spread apart; opposite arm raised. In all four BOTTOM cells, the pose must be clearly different from the TOP sprite in that same column, or this animation does not work. Column1 front/south, col2 back/north no face, col3 LEFT profile, col4 RIGHT profile. Exact regular 4 columns x2 rows,1536x1024 image; each cell384x512. Maintain same scale, head center and 90% cell-height lowest-foot baseline. Keep all body parts inside their own cells with transparent margins. True alpha transparent background, no background, no colored backdrop, no shadows, no borders, no text. This is a clean production two-keyframe looping run cycle: upper row contact/stride; lower row passing/high knee. Preserve colors, detailed art style and character identity perfectly."
+  },
+  "characters": [
+    {
+      "id": "doctor",
+      "identityReference": "game/assets/academy/doctor-portrait.webp",
+      "output": "game/assets/academy/doctor-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "gutterRepair"
+      ],
+      "bytes": 281394,
+      "opaqueBoundsByCell": [
+        [
+          81,
+          102,
+          317,
+          457
+        ],
+        [
+          66,
+          97,
+          321,
+          458
+        ],
+        [
+          62,
+          104,
+          339,
+          452
+        ],
+        [
+          56,
+          107,
+          329,
+          459
+        ],
+        [
+          79,
+          71,
+          312,
+          460
+        ],
+        [
+          62,
+          69,
+          279,
+          460
+        ],
+        [
+          44,
+          71,
+          277,
+          458
+        ],
+        [
+          80,
+          75,
+          310,
+          458
+        ]
+      ]
+    },
+    {
+      "id": "professor",
+      "identityReference": "game/assets/academy/professor-portrait.webp",
+      "output": "game/assets/academy/professor-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "gutterRepair"
+      ],
+      "bytes": 235358,
+      "opaqueBoundsByCell": [
+        [
+          80,
+          115,
+          279,
+          449
+        ],
+        [
+          81,
+          118,
+          308,
+          444
+        ],
+        [
+          85,
+          123,
+          301,
+          445
+        ],
+        [
+          71,
+          123,
+          300,
+          445
+        ],
+        [
+          100,
+          90,
+          278,
+          444
+        ],
+        [
+          82,
+          93,
+          282,
+          441
+        ],
+        [
+          87,
+          94,
+          269,
+          442
+        ],
+        [
+          84,
+          97,
+          269,
+          443
+        ]
+      ]
+    },
+    {
+      "id": "graduate",
+      "identityReference": "game/assets/academy/graduate-portrait.webp",
+      "output": "game/assets/academy/graduate-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "gutterRepair"
+      ],
+      "bytes": 193998,
+      "opaqueBoundsByCell": [
+        [
+          94,
+          128,
+          276,
+          462
+        ],
+        [
+          101,
+          125,
+          281,
+          462
+        ],
+        [
+          77,
+          124,
+          309,
+          460
+        ],
+        [
+          98,
+          128,
+          307,
+          462
+        ],
+        [
+          92,
+          77,
+          271,
+          433
+        ],
+        [
+          100,
+          80,
+          278,
+          434
+        ],
+        [
+          101,
+          87,
+          275,
+          439
+        ],
+        [
+          117,
+          87,
+          286,
+          439
+        ]
+      ]
+    },
+    {
+      "id": "researcher",
+      "identityReference": "game/assets/academy/researcher-portrait.webp",
+      "output": "game/assets/academy/researcher-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "backgroundExtraction",
+        "gutterRepair"
+      ],
+      "bytes": 242326,
+      "opaqueBoundsByCell": [
+        [
+          97,
+          126,
+          286,
+          462
+        ],
+        [
+          90,
+          128,
+          296,
+          463
+        ],
+        [
+          64,
+          130,
+          303,
+          459
+        ],
+        [
+          74,
+          125,
+          312,
+          461
+        ],
+        [
+          108,
+          83,
+          271,
+          439
+        ],
+        [
+          100,
+          82,
+          277,
+          439
+        ],
+        [
+          92,
+          82,
+          281,
+          436
+        ],
+        [
+          98,
+          79,
+          290,
+          438
+        ]
+      ]
+    },
+    {
+      "id": "cedar-dean",
+      "identityReference": "game/assets/academy/cedar-dean-portrait.webp",
+      "output": "game/assets/academy/cedar-dean-run.webp",
+      "promptSequence": [
+        "layoutRepair",
+        "gutterRepair"
+      ],
+      "bytes": 256108,
+      "opaqueBoundsByCell": [
+        [
+          85,
+          113,
+          276,
+          454
+        ],
+        [
+          87,
+          110,
+          292,
+          455
+        ],
+        [
+          82,
+          113,
+          303,
+          451
+        ],
+        [
+          83,
+          112,
+          296,
+          455
+        ],
+        [
+          89,
+          76,
+          271,
+          426
+        ],
+        [
+          100,
+          82,
+          289,
+          431
+        ],
+        [
+          77,
+          78,
+          288,
+          430
+        ],
+        [
+          90,
+          78,
+          292,
+          426
+        ]
+      ]
+    },
+    {
+      "id": "herbal-mentor",
+      "identityReference": "game/assets/academy/herbal-mentor-portrait.webp",
+      "output": "game/assets/academy/herbal-mentor-run.webp",
+      "promptSequence": [
+        "layoutRepair",
+        "gutterRepair"
+      ],
+      "bytes": 255940,
+      "opaqueBoundsByCell": [
+        [
+          83,
+          89,
+          273,
+          461
+        ],
+        [
+          81,
+          94,
+          299,
+          462
+        ],
+        [
+          80,
+          97,
+          331,
+          457
+        ],
+        [
+          78,
+          92,
+          328,
+          461
+        ],
+        [
+          95,
+          75,
+          276,
+          439
+        ],
+        [
+          89,
+          72,
+          289,
+          438
+        ],
+        [
+          81,
+          73,
+          297,
+          437
+        ],
+        [
+          79,
+          74,
+          326,
+          435
+        ]
+      ]
+    },
+    {
+      "id": "lab-engineer",
+      "identityReference": "game/assets/academy/lab-engineer-portrait.webp",
+      "output": "game/assets/academy/lab-engineer-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "gutterRepair"
+      ],
+      "bytes": 211024,
+      "opaqueBoundsByCell": [
+        [
+          91,
+          109,
+          302,
+          451
+        ],
+        [
+          67,
+          104,
+          294,
+          451
+        ],
+        [
+          73,
+          108,
+          313,
+          450
+        ],
+        [
+          65,
+          107,
+          318,
+          451
+        ],
+        [
+          110,
+          89,
+          294,
+          443
+        ],
+        [
+          94,
+          88,
+          290,
+          440
+        ],
+        [
+          103,
+          86,
+          278,
+          442
+        ],
+        [
+          116,
+          84,
+          303,
+          444
+        ]
+      ]
+    },
+    {
+      "id": "balance-analyst",
+      "identityReference": "game/assets/academy/balance-analyst-portrait.webp",
+      "output": "game/assets/academy/balance-analyst-run.webp",
+      "promptSequence": [
+        "layoutRepair",
+        "gutterRepair"
+      ],
+      "bytes": 234740,
+      "opaqueBoundsByCell": [
+        [
+          97,
+          116,
+          289,
+          470
+        ],
+        [
+          79,
+          113,
+          303,
+          477
+        ],
+        [
+          60,
+          116,
+          311,
+          468
+        ],
+        [
+          73,
+          115,
+          324,
+          468
+        ],
+        [
+          92,
+          88,
+          290,
+          457
+        ],
+        [
+          87,
+          87,
+          298,
+          457
+        ],
+        [
+          64,
+          85,
+          271,
+          457
+        ],
+        [
+          74,
+          85,
+          291,
+          457
+        ]
+      ]
+    },
+    {
+      "id": "dawn-intern",
+      "identityReference": "game/assets/academy/dawn-intern-portrait.webp",
+      "output": "game/assets/academy/dawn-intern-run.webp",
+      "promptSequence": [
+        "poseRepair",
+        "gutterRepair"
+      ],
+      "bytes": 222186,
+      "opaqueBoundsByCell": [
+        [
+          113,
+          119,
+          289,
+          483
+        ],
+        [
+          103,
+          119,
+          265,
+          484
+        ],
+        [
+          74,
+          124,
+          292,
+          481
+        ],
+        [
+          69,
+          123,
+          307,
+          481
+        ],
+        [
+          123,
+          95,
+          288,
+          450
+        ],
+        [
+          108,
+          93,
+          267,
+          450
+        ],
+        [
+          100,
+          96,
+          268,
+          449
+        ],
+        [
+          104,
+          95,
+          278,
+          449
+        ]
+      ]
+    },
+    {
+      "id": "river-fellow",
+      "identityReference": "game/assets/academy/river-fellow-portrait.webp",
+      "output": "game/assets/academy/river-fellow-run.webp",
+      "promptSequence": [
+        "layoutRepair",
+        "gutterRepair"
+      ],
+      "bytes": 205242,
+      "opaqueBoundsByCell": [
+        [
+          112,
+          108,
+          287,
+          461
+        ],
+        [
+          97,
+          108,
+          278,
+          461
+        ],
+        [
+          83,
+          112,
+          319,
+          461
+        ],
+        [
+          73,
+          110,
+          301,
+          461
+        ],
+        [
+          103,
+          81,
+          287,
+          428
+        ],
+        [
+          103,
+          80,
+          277,
+          420
+        ],
+        [
+          81,
+          84,
+          267,
+          428
+        ],
+        [
+          84,
+          83,
+          279,
+          406
+        ]
+      ]
+    }
+  ],
+  "validation": {
+    "allTenAtlasesRGBA": true,
+    "allTenGridDimensionsCorrect": true,
+    "noOpaquePixelsTouchCellEdges": true,
+    "webpAlphaMatchesPNG": true,
+    "totalRuntimeBytes": 2338316
+  },
+  "livingTrees": {
+    "generatedWith": "builtin image_gen",
+    "reference": "game/assets/academy/campus-taiwan.webp",
+    "output": "game/assets/academy/living-trees.webp",
+    "atlas": {
+      "width": 1254,
+      "height": 1254,
+      "columns": 2,
+      "rows": 2,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        "Taiwan cedar",
+        "Blackboard tree",
+        "Cherry blossom",
+        "Kapok"
+      ],
+      "rootsAnchorHint": "Roots reach 94% of cell height in the top row, 86-87% in the bottom row. Use opaqueBoundsByCell for precise placement."
+    },
+    "prompts": {
+      "initial": "Use case: stylized-concept. Asset type: transparent tree sprite atlas for the supplied original pharmacy academy game. Reference image is STYLE, DAYLIGHT, MATERIAL AND CAMERA reference only. Create FOUR isolated complete trees, not a scene, in EXACT2columns x2rows, square1024x1024, equal512x512cells. Top-left: Taiwan cedar, narrow conical tiered deep-green needle canopy, slender trunk. Top-right: blackboard tree, broad layered emerald-green crown with radial whorls of leaves, elegant light-brown branching trunk. Bottom-left: cherry blossom tree with fluffy light pink blooms and dark fine branches. Bottom-right: kapok tree with vivid crimson-orange flowers on relatively open high bare branches, stout light-brown trunk. Polished original brightstorybook3D miniature/isometric view matching campus reference, camera sees the top and front of each tree. Soft sun from upper left, cheerful fresh colors, detailed but readable leaf clusters. Each full tree INCLUDING canopy and trunk must be wholly inside its own cell, max350pxwidth and360pxheight, horizontally centered at x256 or768; roots-base near y440 top row/y952 bottom row. Keep at least65px transparent gap between foliage and cell borders. Actual transparent alpha, no colored background, checkerboard drawing, ground tile, grass mound, cast shadow, buildings, scenery, extra plants, people, text, labels, borders or watermarks. Four separate original tree assets only, with wide clear gutters.",
+      "gutterRepair": "Use case: precise-object-edit. Repair the spacing of this 2x2 tree sprite atlas. Keep the SAME FOUR TREES, species, details, colors and angle. SHRINK EACH TREE TO 65% of its current size and center it within its own equal square quadrant. Add a LARGE EMPTY TRANSPARENT MARGIN all around EVERY TREE, including a transparent outer border around the whole sheet. Do not crop away the empty canvas. Exact regular2columns x2rows on1024x1024squarecanvas, each cell512x512. Top-left cedar, top-right blackboard tree, bottom-left pink cherry, bottom-right redorange kapok. Each tree must fit entirely within its cell, including whole treetop and roots. Top row bounds must stay between y70 and440; bottom row bounds between y582 and952. Left column bounds stay between x70 and442; right column between x582 and954. Root/trunk anchors at x256 and768. No ground, background, cast shadows, borderlines or text. Actual transparent alpha empty spaces, not black backdrop, and no colored halos. Preserve all tree pixels/details as much as possible; only adjust size/spacing and restore the clipped cedar tip."
+    },
+    "validation": {
+      "realAlpha": true,
+      "alphaPixelIdenticalAfterWebPConversion": true,
+      "noOpaquePixelsOnCellBoundaries": true,
+      "boundsByCell": [
+        {
+          "index": 0,
+          "opaqueBounds": [
+            207,
+            107,
+            470,
+            588
+          ],
+          "edgeMaxAlpha": 1
+        },
+        {
+          "index": 1,
+          "opaqueBounds": [
+            63,
+            159,
+            544,
+            588
+          ],
+          "edgeMaxAlpha": 1
+        },
+        {
+          "index": 2,
+          "opaqueBounds": [
+            109,
+            111,
+            576,
+            535
+          ],
+          "edgeMaxAlpha": 1
+        },
+        {
+          "index": 3,
+          "opaqueBounds": [
+            76,
+            118,
+            565,
+            544
+          ],
+          "edgeMaxAlpha": 1
+        }
+      ]
+    },
+    "runtimeBytes": 373372
+  }
+}

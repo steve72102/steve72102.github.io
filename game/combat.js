@@ -1,7 +1,7 @@
 (function(root, factory) {
-  const api = factory(typeof module === 'object' && module.exports ? require('./engine.js') : root.MindEngine);
+  const api = factory(typeof module === 'object' && module.exports ? require('./engine.js') : root.MindEngine,typeof module === 'object' && module.exports ? require('./adventure.js') : root.MindAdventure);
   if (typeof module === 'object' && module.exports) module.exports = api; else root.MindCombat = api;
-})(typeof window === 'object' ? window : globalThis, function(E) {
+})(typeof window === 'object' ? window : globalThis, function(E,R) {
   'use strict';
   const MAX = 100000000;
   const ENEMIES = [
@@ -46,11 +46,12 @@
     if(target[item.kind]+item.count>MAX) return false;
     a.coins-=item.price; target[item.kind]+=item.count; return true;
   }
-  function heroStats(level, gearId, subject) {
+  function heroStats(level, gearId, subject, outfit) {
     const gear=E.ITEMS.find(i=>i.id===gearId), tier=gear?.tier ?? 0, capped=Math.min(20,level);
-    return {level,gearId:gear?.id || null,tier,hp:90+capped*5+(gear?GEAR_HP[tier]:0),attack:18+capped*2+(gear?GEAR_ATTACK[tier]:0)+(gear&&gear.subject===subject?6:0),guard:gear?GEAR_GUARD[tier]:0};
+    const loadout=R.loadout(outfit),extra=R.bonus(loadout);
+    return {level,gearId:gear?.id || null,tier,loadout,hp:90+capped*5+(gear?GEAR_HP[tier]:0)+extra.hp,attack:18+capped*2+(gear?GEAR_ATTACK[tier]:0)+(gear&&gear.subject===subject?6:0)+extra.attack,guard:(gear?GEAR_GUARD[tier]:0)+extra.guard};
   }
-  function stats(s, subject) { return heroStats(Math.floor(s.xp/100)+1,s.equipped,subject); }
+  function stats(s, subject) { return heroStats(Math.floor(s.xp/100)+1,s.equipped,subject,s.rpg?.loadout); }
   function begin(s, enemyId, subject, questions, random = Math.random, day = E.today()) {
     const a=s.arena, enemy=ENEMIES.find(e=>e.id===enemyId), pool=questions.filter(q=>!q.needsReview&&q.subject===subject);
     if(!enemy || !E.SUBJECTS[subject] || pool.length<6 || a.battle&&a.battle.phase!=='done') return false;
@@ -144,7 +145,7 @@
       if(!b||!ENEMIES.some(e=>e.id===b.enemyId)||!E.SUBJECTS[b.subject]||!Array.isArray(b.ids)||b.ids.length!==6||new Set(b.ids).size!==6||b.ids.some(id=>!byId.has(id)||byId.get(id).subject!==b.subject))invalid();
       const day=date(b.day);if(b.week!==weekId(day))invalid();
       if(!b.hero||num(b.hero.level,1000001)<1||b.hero.gearId!==null&&!E.ITEMS.some(i=>i.id===b.hero.gearId))invalid();
-      const hero=heroStats(b.hero.level,b.hero.gearId,b.subject),round=num(b.round,1),cursor=num(b.cursor,2);
+      const hero=heroStats(b.hero.level,b.hero.gearId,b.subject,b.hero.loadout),round=num(b.round,1),cursor=num(b.cursor,2);
       if(!['prep','question','recap','done'].includes(b.phase)||!Array.isArray(b.answers)||b.answers.length>6||!Array.isArray(b.prepared)||b.prepared.length!==2)invalid();
       const prepared=b.prepared.map(bool),offset=round*3+cursor;
       if(b.phase==='prep'&&(cursor!==0||b.answers.length!==round*3)||b.phase==='question'&&(b.answers.length<offset||b.answers.length>offset+1)||b.phase==='recap'&&(round!==0||cursor!==2||b.answers.length!==3)||b.phase==='done'&&(round!==1||cursor!==2||b.answers.length!==6)||round===0&&prepared[1])invalid();

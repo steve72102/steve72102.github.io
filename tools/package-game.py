@@ -3,8 +3,9 @@ import zipfile
 root=Path(__file__).resolve().parents[1]
 out=root/'downloads'
 out.mkdir(exist_ok=True)
-files=['index.html','style.css','app.js','engine.js','combat.js','combat-ui.js','combat.css','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md','duel.js','duel-network.js','duel-ui.js','duel.css','vendor/peerjs.min.js','vendor/peerjs-LICENSE','campus-walk.js','campus-walk-ui.js','campus-walk.css','academy.js','academy-ui.js','academy.css','daylight.css','lesson.js','journey.js','journey.css','cloud.js','firebase-config.js','account-ui.js']
+files=['adventure.js', 'adventure-ui.js', 'adventure.css', 'lobby.js', 'lobby-network.js', 'lobby-ui.js']+['index.html','style.css','app.js','engine.js','combat.js','combat-ui.js','combat.css','bank.js','icon.svg','manifest.webmanifest','sw.js','README.md','duel.js','duel-network.js','duel-ui.js','duel.css','vendor/peerjs.min.js','vendor/peerjs-LICENSE','campus-walk.js','campus-walk-ui.js','campus-walk.css','academy.js','academy-ui.js','academy.css','daylight.css','lesson.js','journey.js','journey.css','cloud.js','firebase-config.js','account-ui.js']
 files += ['assets/academy/'+name+'.webp' for name in ['campus-taiwan','hall-ntu','hall-nthu','hall-ncku','doctor-portrait','professor-portrait','graduate-portrait','researcher-portrait','cedar-dean-portrait','herbal-mentor-portrait','lab-engineer-portrait','balance-analyst-portrait','dawn-intern-portrait','river-fellow-portrait','beaker','flask','cylinder','mortar']]
+files += ['assets/academy/doctor-run.webp', 'assets/academy/professor-run.webp', 'assets/academy/graduate-run.webp', 'assets/academy/researcher-run.webp', 'assets/academy/cedar-dean-run.webp', 'assets/academy/herbal-mentor-run.webp', 'assets/academy/lab-engineer-run.webp', 'assets/academy/balance-analyst-run.webp', 'assets/academy/dawn-intern-run.webp', 'assets/academy/river-fellow-run.webp', 'assets/academy/living-trees.webp']
 with zipfile.ZipFile(out/'mind-quest-offline.zip','w',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
     for name in files:
         data=(root/'game'/name).read_bytes()
