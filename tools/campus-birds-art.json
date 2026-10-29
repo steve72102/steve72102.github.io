@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-10-29",
+  "tool": "image_gen.imagegen",
+  "mode": "original atlas generation, then spacing/species-head-pattern refinement",
+  "file": "game/assets/academy/campus-birds.png",
+  "width": 1254,
+  "height": 1254,
+  "alpha": true,
+  "grid": {
+    "columns": 2,
+    "rows": 2,
+    "cellWidth": 627,
+    "cellHeight": 627
+  },
+  "cells": [
+    {
+      "id": "white-eye",
+      "name": "綠繡眼",
+      "column": 0,
+      "row": 0,
+      "rect": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "features": "Olive-green, white eye ring, yellow throat and pale belly."
+    },
+    {
+      "id": "bulbul",
+      "name": "白頭翁",
+      "column": 1,
+      "row": 0,
+      "rect": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "features": "Rounded dark forward cap, broad white hind-head and cheek, olive-gray body."
+    },
+    {
+      "id": "pigeon",
+      "name": "鴿子",
+      "column": 0,
+      "row": 1,
+      "rect": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "features": "Gray body, purple-green neck, dark wing bars."
+    },
+    {
+      "id": "sparrow",
+      "name": "麻雀",
+      "column": 1,
+      "row": 1,
+      "rect": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "features": "Chestnut cap, white cheek with black spot, warm brown wings."
+    }
+  ],
+  "initialPrompt": "Use case: stylized-concept. Make one original game sprite atlas of FOUR distinct Taiwanese campus birds, on a truly transparent alpha background, arranged in an EXACT 2 by 2 equal-cell square grid. Square 1536x1536 canvas. One whole isolated bird centered in each cell; 12 percent transparent padding within each cell, clear transparent gutters at the midpoint. No words, labels, boxes, divider lines, plants, floor, or background. Top-left cell: a small olive-green white-eye songbird with vivid clean white eye-ring, yellow-green throat, pale gray-white belly, slender pointed beak. Top-right: a light-vented bulbul with dark black crown, broad white nape/cheek markings, gray-brown face and breast, olive-gray folded flight feathers, slender dark beak. Bottom-left: a gray city pigeon with iridescent purple-and-green neck, pale gray body, TWO clearly visible dark wingbars, coral feet, small dark beak with pale cere. Bottom-right: a Eurasian tree sparrow, chestnut-brown cap, white cheek with a single dark cheek spot, small black throat bib, warm brown patterned back and pale buff belly. All four in a coherent naturalistic finely painted 3D game illustration style with realistic feather groups, soft bright daylight from upper left. Each is in a readable side or three-quarter flight pose facing right, both wings partially lifted/spread but not obscuring the species-specific face and markings, feet tucked under. Express lively motion naturally, not chibi, not an emoji. Birds roughly similarly framed as individual sprite assets; pigeon and bulbul are visually sturdier than the two small songbirds. Keep the entire wings and tails inside each cell, no overlaps. Transparency must be actual alpha, not a checkerboard or white/black backdrop. Nothing except the four birds.",
+  "refinementPrompt": "Preserve naturalistic feather textures and exact 2x2 rightward flight poses. Fit every bird entirely within its own quadrant with transparent gutters, especially shrink the pigeon so its beak cannot cross the centreline. Correct the top-right light-vented bulbul to a rounded black forward cap, conspicuous broad white hindcrown/nape/cheek and no tall pointed crest. Preserve identifying marks of the other three species. Natural antialiased feather edges, no coloured outlines. Actual transparent alpha only, no scenery, matte, text, dividers or shadows.",
+  "inspection": "PNG RGBA color type 6, four visually separate whole birds in equal cells. Original alpha atlas copied without re-encoding. Use source cell rectangles rather than generic silhouette."
+}

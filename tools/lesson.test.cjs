@@ -34,5 +34,5 @@ test('old save question IDs remain recoverable after content review',()=>{
   const s=E.fresh();s.wrong=qs.filter(q=>q.needsReview).map(q=>q.id);assert.deepEqual(E.restore(s,qs).wrong,s.wrong);
 });
 test('each building has exactly one university style and local art',()=>{
-  assert.deepEqual(A.BUILDINGS.map(b=>b.school),['臺大','清大','成大','清大','成大']);assert.ok(A.BUILDINGS.every(b=>/^hall-(ntu|nthu|ncku)\.webp$/.test(b.hall)));
+  assert.deepEqual(A.BUILDINGS.map(b=>b.school),['臺大','清大','成大','清大','成大']);assert.ok(A.BUILDINGS.every(b=>/^hall-(ntu|nthu|ncku|battle|life)\.webp$/.test(b.hall)));
 });

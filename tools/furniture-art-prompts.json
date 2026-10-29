@@ -1,0 +1,75 @@
+{
+  "tool": "built-in image_gen",
+  "styleReference": "game/assets/academy/hall-nthu.webp",
+  "encoding": "Table and chair: WebP quality92 method1, original dimensions and alpha preserved. Glass: original generated PNG with alpha.",
+  "assets": [
+    {
+      "asset": "game/assets/academy/study-table.webp",
+      "master": "private-backups/furniture-art/study-table.png",
+      "prompt": "Use case: stylized-concept. Produce ONE original realistic furniture game sprite, a warm honey-oak rectangular academic reading table, isolated on true transparent alpha background. No room, no floor, no backdrop, no checkerboard. Wide landscape canvas 1536x1024. The entire table fits with only 4 percent transparent padding. Large tabletop and four sturdy square wooden legs, polished but matte natural visible wood grain, elegant softly rounded edges and thin lower apron, no objects on it, no drawers, no chairs. View is a front three-quarter camera at human upper-chest height looking slightly downward, matching a bright realistic sunny university hall viewed from ground level; see a substantial tabletop surface, near front long edge roughly horizontal, depth recedes up-right, table legs converge naturally. Not isometric, not top-down. Realistic proportions: approximately 180cm wide, 80cm deep, 74cm high. Quality finely painted 3D environment sprite, refined warm realistic oak material and gentle sun from upper-left, detailed joinery, softly shaded right side. Original design without brand or text. Entire transparent background, only extremely subtle close contact shadows at the feet, no opaque shadow rectangle. Essential: alpha transparency between all legs and outside silhouette, no white or black background.",
+      "anchors": {
+        "units": "normalized 0..1 of complete image",
+        "ground": [
+          0.5,
+          0.89
+        ],
+        "tabletopCenter": [
+          0.51,
+          0.26
+        ],
+        "tabletopPolygon": [
+          [
+            0.022,
+            0.255
+          ],
+          [
+            0.244,
+            0.139
+          ],
+          [
+            0.978,
+            0.207
+          ],
+          [
+            0.858,
+            0.378
+          ]
+        ]
+      }
+    },
+    {
+      "asset": "game/assets/academy/study-chair.webp",
+      "master": "private-backups/furniture-art/study-chair.png",
+      "prompt": "Use case: stylized-concept. ONE original realistic furniture game sprite on TRUE transparent alpha background: an elegant honey-oak university reading chair with a muted sage-green upholstered seat cushion and slim upholstered sage-green back pad inside a simple wooden backrest. No armrests. Four sturdy wooden legs, realistic visible warm oak grain, softly rounded edge joinery, practical refined reading-room furniture. Square 1024x1024 canvas. Entire chair fills 90 percent of frame height with minimal transparent margins, feet fully visible. Front three-quarter view facing slightly toward the viewer's left; human chest-height camera looking a little down so the seat top is visible, realistic ordinary camera perspective, not isometric or aerial. Polished painted realistic 3D game environment style matching a sunlit ivory-and-oak contemporary university hall. Warm soft sunlight from upper-left, soft brown shadows on right sides of the object. Match a honey-oak rectangular reading table. No other objects, no room, no floor, no backdrop, no checkerboard pattern, no text, no logos. True alpha transparency outside the silhouette and through all openings between the legs and backrest.",
+      "anchors": {
+        "units": "normalized 0..1 of complete image",
+        "ground": [
+          0.5,
+          0.985
+        ],
+        "seatCenter": [
+          0.49,
+          0.46
+        ],
+        "seatTop": 0.375,
+        "seatFront": 0.575
+      }
+    },
+    {
+      "asset": "game/assets/academy/glass-cup.png",
+      "master": "private-backups/furniture-art/glass-cup.png",
+      "prompt": "Use case: stylized-concept. ONE original realistic clear empty drinking glass tumbler, isolated game object sprite on true transparent alpha background. A simple slightly tapered cylindrical glass with a broad steady thick clear glass base and smooth reflective elliptical rim; no handle, no branding, no decoration, no liquid, no straw. Front three-quarter still-life camera with a slight downward look so the inside opening is visible, same camera angle as realistic university reading-room furniture. Square 1024x1024 canvas. Whole object including rim and base fully visible, generously filling 75 percent canvas width and 90 percent canvas height, only minimal transparent padding. Clear glass must be legible at small game size: bright warm-white specular reflections on rim and sides, a subtle pale blue edge reflection, a gentle medium gray inner wall contour and thick reflective base; translucent body. Soft sunlight from upper-left. Refined realistic painted 3D game render. No other objects, no environment, no floor, no wall, no checkerboard, no opaque background. Use genuine transparent alpha outside and appropriate partial alpha through the clear glass interior; clear tumbler shape and its rim are the subject.",
+      "anchors": {
+        "units": "normalized 0..1 of complete image",
+        "base": [
+          0.5,
+          0.955
+        ],
+        "rimCenter": [
+          0.5,
+          0.18
+        ]
+      }
+    }
+  ]
+}

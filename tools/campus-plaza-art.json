@@ -1,0 +1,806 @@
+{
+  "schemaVersion": 1,
+  "created": "2026-10-29",
+  "tool": "image_gen.imagegen",
+  "mode": "perspective transformation with two local art references",
+  "file": "game/assets/academy/campus-plaza.png",
+  "width": 1536,
+  "height": 1024,
+  "coordinateSpace": {
+    "width": 1000,
+    "height": 667
+  },
+  "references": [
+    "game/assets/academy/campus-taiwan.webp",
+    "game/assets/academy/hall-ntu.webp"
+  ],
+  "prompt": "Create ONE original playable campus environment image, landscape 1536x1024 (3:2). Reference image 1 is the campus master map and defines the five districts, landmarks, plants and directional layout. Reference image 2 defines the realistic painterly materials, warm bright daylight and human-scale immersive camera. Transform the campus map into a ground-level game scene seen from a person standing at the southern edge of its central circular plaza, looking north from a modest 2.5-metre-high camera with a wide 28mm view. This is a place to WALK INSIDE, NOT an aerial map, not an isometric scene, not a miniature diorama. A wide cream stone circular plaza fills most of the lower two-thirds, with subtle green-gray geometric tile inlays and a smooth continuous walkable ring around a central fountain. Fountain: modest low round turquoise pool and golden armillary rings rotating around a shiny blue-and-gold sphere, matching the map; locate it around x=50%, y=49%, keep its whole basin below the distant horizon and leave broad open paved space on ALL sides. Crucial five-way route layout: (1) the UPPER LEFT path leaves the ring diagonally toward a cream stone arched bridge over a blue stream, rises by short steps under pink cherry trees, and turns toward a partially visible warm redbrick arched faculty building set back to the far left; (2) the UPPER CENTRE path is a narrow clearly visible paved avenue passing BEHIND the fountain, gently rising on broad stairs between cedars and lamps toward a distant cream modern glass research entrance; (3) the UPPER RIGHT path crosses a separate cream garden bridge over the right stream toward a partial redbrick arcade and glass medicinal greenhouse set back in its own garden; (4) the LOWER RIGHT path visibly branches diagonally from the ring down a broad shallow stone stair and curves out at the lower-right edge behind orange kapok trees, toward a modern white-and-glass battle hall whose side corner alone is visible at the extreme right; (5) the LOWER LEFT path visibly branches diagonally from the ring down a separate shallow stair, curls through medicinal herb beds and pink cherry blossoms, and leaves at the lower-left edge toward a redbrick workshop whose pergola and wall corner alone appear at the extreme left. SW and SE destinations are to the sides/behind the viewer; do NOT rotate them into a front-facing row. Exactly FIVE clearly readable branching pedestrian routes with different compass directions and differing depths, not five adjacent front doors. The middle foreground plaza remains completely open walkable dry paving. Show two natural clear-water channels beside the bridge approaches, tiny connected falls along planted stone retaining walls, continuous downstream water direction, but water must NOT cut through or cover paths or exits. Recreate from the map: golden glass lantern posts on cream pedestals, low cream bridge parapets, rounded herb and flower beds outside walking surfaces, several wood-and-metal benches by the pool edge, cherry pink, kapok orange, tall Taiwanese cedar and broad green blackboard tree crowns, small purple/white/yellow flowering medicinal herbs. Layered botanical detail and believable stone textures. Soft blue sky with a little distant mountain above the research building. Fresh luminous bright ivory, mint/forest green, warm brick red, turquoise water and pastel blossom palette. Detailed naturalistic game background painting with photoreal lighting, not cartoon, not flat vector. No people, birds, avatars, lettering, school logos, text, UI or icons. Camera must leave plentiful visible traversable floor, clear feet placement surfaces on all five paths, and connected traversable stairs. All five routes must connect continuously to the central plaza and extend unblocked to their own distinct screen edges/depths.",
+  "scene": "Near-ground central circular fountain plaza, three distant routes and two lateral foreground routes. Match district compass positions in the academy map.",
+  "anchors": {
+    "spawn": [
+      500,
+      565
+    ],
+    "fountainCentre": [
+      500,
+      330
+    ],
+    "armillaryCentre": [
+      500,
+      275
+    ],
+    "north": [
+      500,
+      205
+    ],
+    "northWest": [
+      245,
+      226
+    ],
+    "northEast": [
+      777,
+      232
+    ],
+    "southWest": [
+      35,
+      351
+    ],
+    "southEast": [
+      970,
+      368
+    ]
+  },
+  "routes": [
+    {
+      "id": "faculty",
+      "direction": "NW",
+      "name": "藥劑學院",
+      "path": [
+        [
+          340,
+          295
+        ],
+        [
+          316,
+          276
+        ],
+        [
+          281,
+          253
+        ],
+        [
+          245,
+          226
+        ],
+        [
+          207,
+          203
+        ],
+        [
+          187,
+          183
+        ]
+      ],
+      "portal": [
+        245,
+        226
+      ],
+      "stairs": {
+        "foot": [
+          344,
+          281
+        ],
+        "head": [
+          263,
+          224
+        ]
+      },
+      "visual": "Cherry-tree arched stone bridge and warm redbrick faculty."
+    },
+    {
+      "id": "research",
+      "direction": "N",
+      "name": "藥理研究樓",
+      "path": [
+        [
+          431,
+          282
+        ],
+        [
+          441,
+          268
+        ],
+        [
+          456,
+          248
+        ],
+        [
+          478,
+          226
+        ],
+        [
+          500,
+          205
+        ],
+        [
+          500,
+          185
+        ]
+      ],
+      "portal": [
+        500,
+        205
+      ],
+      "stairs": {
+        "foot": [
+          500,
+          259
+        ],
+        "head": [
+          500,
+          196
+        ]
+      },
+      "visual": "Central wide stone steps and distant cream glass research entrance."
+    },
+    {
+      "id": "herbal",
+      "direction": "NE",
+      "name": "生藥溫室",
+      "path": [
+        [
+          659,
+          294
+        ],
+        [
+          691,
+          275
+        ],
+        [
+          729,
+          251
+        ],
+        [
+          777,
+          232
+        ],
+        [
+          792,
+          211
+        ]
+      ],
+      "portal": [
+        777,
+        232
+      ],
+      "stairs": {
+        "foot": [
+          670,
+          283
+        ],
+        "head": [
+          750,
+          235
+        ]
+      },
+      "visual": "Separate right garden bridge toward redbrick arcade and greenhouse."
+    },
+    {
+      "id": "life",
+      "direction": "SW",
+      "name": "生活工坊",
+      "path": [
+        [
+          300,
+          398
+        ],
+        [
+          235,
+          373
+        ],
+        [
+          177,
+          356
+        ],
+        [
+          99,
+          352
+        ],
+        [
+          35,
+          351
+        ]
+      ],
+      "portal": [
+        35,
+        351
+      ],
+      "visual": "Left lateral near-plaza path through herbs and cherry trees, workshop corner partly visible at left edge."
+    },
+    {
+      "id": "battle",
+      "direction": "SE",
+      "name": "對戰樓",
+      "path": [
+        [
+          711,
+          399
+        ],
+        [
+          786,
+          378
+        ],
+        [
+          847,
+          366
+        ],
+        [
+          904,
+          365
+        ],
+        [
+          970,
+          368
+        ]
+      ],
+      "portal": [
+        970,
+        368
+      ],
+      "visual": "Right lateral near-plaza path beside kapok and the cropped white glass hall corner."
+    }
+  ],
+  "walkablePolygons": [
+    {
+      "id": "plaza-and-foreground",
+      "points": [
+        [
+          190,
+          358
+        ],
+        [
+          240,
+          318
+        ],
+        [
+          342,
+          285
+        ],
+        [
+          445,
+          268
+        ],
+        [
+          555,
+          268
+        ],
+        [
+          662,
+          285
+        ],
+        [
+          768,
+          316
+        ],
+        [
+          862,
+          356
+        ],
+        [
+          829,
+          415
+        ],
+        [
+          783,
+          455
+        ],
+        [
+          757,
+          492
+        ],
+        [
+          772,
+          551
+        ],
+        [
+          897,
+          574
+        ],
+        [
+          985,
+          630
+        ],
+        [
+          985,
+          667
+        ],
+        [
+          242,
+          667
+        ],
+        [
+          206,
+          617
+        ],
+        [
+          151,
+          567
+        ],
+        [
+          217,
+          526
+        ],
+        [
+          253,
+          468
+        ],
+        [
+          204,
+          418
+        ]
+      ]
+    },
+    {
+      "id": "north-west-bridge",
+      "points": [
+        [
+          327,
+          288
+        ],
+        [
+          362,
+          273
+        ],
+        [
+          269,
+          208
+        ],
+        [
+          218,
+          196
+        ],
+        [
+          188,
+          184
+        ],
+        [
+          175,
+          203
+        ],
+        [
+          228,
+          229
+        ],
+        [
+          278,
+          257
+        ]
+      ]
+    },
+    {
+      "id": "north-stairs",
+      "points": [
+        [
+          442,
+          271
+        ],
+        [
+          559,
+          271
+        ],
+        [
+          545,
+          192
+        ],
+        [
+          454,
+          192
+        ]
+      ]
+    },
+    {
+      "id": "north-east-bridge",
+      "points": [
+        [
+          650,
+          290
+        ],
+        [
+          691,
+          296
+        ],
+        [
+          753,
+          263
+        ],
+        [
+          812,
+          245
+        ],
+        [
+          828,
+          225
+        ],
+        [
+          782,
+          207
+        ],
+        [
+          745,
+          222
+        ],
+        [
+          705,
+          247
+        ]
+      ]
+    },
+    {
+      "id": "south-west-path",
+      "points": [
+        [
+          0,
+          341
+        ],
+        [
+          0,
+          358
+        ],
+        [
+          160,
+          373
+        ],
+        [
+          211,
+          394
+        ],
+        [
+          237,
+          354
+        ],
+        [
+          164,
+          337
+        ]
+      ]
+    },
+    {
+      "id": "south-east-path",
+      "points": [
+        [
+          830,
+          348
+        ],
+        [
+          843,
+          394
+        ],
+        [
+          992,
+          379
+        ],
+        [
+          992,
+          352
+        ],
+        [
+          897,
+          338
+        ]
+      ]
+    }
+  ],
+  "groundObstacles": [
+    {
+      "id": "fountain-flowers-and-benches",
+      "shape": "ellipse",
+      "cx": 500,
+      "cy": 342,
+      "rx": 210,
+      "ry": 53
+    },
+    {
+      "id": "left-foreground-lamp",
+      "shape": "polygon",
+      "points": [
+        [
+          122,
+          450
+        ],
+        [
+          195,
+          450
+        ],
+        [
+          207,
+          535
+        ],
+        [
+          146,
+          552
+        ],
+        [
+          114,
+          520
+        ]
+      ]
+    },
+    {
+      "id": "right-foreground-lamp",
+      "shape": "polygon",
+      "points": [
+        [
+          815,
+          456
+        ],
+        [
+          886,
+          450
+        ],
+        [
+          900,
+          550
+        ],
+        [
+          854,
+          573
+        ],
+        [
+          805,
+          547
+        ]
+      ]
+    }
+  ],
+  "water": [
+    {
+      "id": "fountain",
+      "shape": "ellipse",
+      "cx": 500,
+      "cy": 330,
+      "rx": 130,
+      "ry": 24,
+      "flow": "clockwise circulation and radial fountain ripples",
+      "exclude": "Do not draw ripples on the statue pedestal or outer stone rim."
+    },
+    {
+      "id": "left-upper-cascade",
+      "shape": "polygon",
+      "points": [
+        [
+          306,
+          225
+        ],
+        [
+          321,
+          225
+        ],
+        [
+          321,
+          251
+        ],
+        [
+          307,
+          251
+        ]
+      ],
+      "flow": [
+        [
+          314,
+          226
+        ],
+        [
+          314,
+          249
+        ]
+      ]
+    },
+    {
+      "id": "left-bridge-water",
+      "shape": "polygon",
+      "points": [
+        [
+          166,
+          252
+        ],
+        [
+          185,
+          252
+        ],
+        [
+          199,
+          270
+        ],
+        [
+          214,
+          281
+        ],
+        [
+          234,
+          288
+        ],
+        [
+          226,
+          306
+        ],
+        [
+          189,
+          301
+        ],
+        [
+          165,
+          287
+        ]
+      ],
+      "flow": [
+        [
+          176,
+          257
+        ],
+        [
+          184,
+          280
+        ],
+        [
+          220,
+          300
+        ]
+      ]
+    },
+    {
+      "id": "left-front-cascade",
+      "shape": "polygon",
+      "points": [
+        [
+          148,
+          264
+        ],
+        [
+          168,
+          264
+        ],
+        [
+          170,
+          300
+        ],
+        [
+          149,
+          300
+        ]
+      ],
+      "flow": [
+        [
+          156,
+          265
+        ],
+        [
+          158,
+          299
+        ]
+      ]
+    },
+    {
+      "id": "right-upper-cascade",
+      "shape": "polygon",
+      "points": [
+        [
+          606,
+          235
+        ],
+        [
+          626,
+          236
+        ],
+        [
+          627,
+          258
+        ],
+        [
+          608,
+          257
+        ]
+      ],
+      "flow": [
+        [
+          615,
+          236
+        ],
+        [
+          617,
+          258
+        ]
+      ]
+    },
+    {
+      "id": "right-bridge-water",
+      "shape": "polygon",
+      "points": [
+        [
+          783,
+          279
+        ],
+        [
+          807,
+          283
+        ],
+        [
+          826,
+          298
+        ],
+        [
+          866,
+          299
+        ],
+        [
+          881,
+          308
+        ],
+        [
+          854,
+          320
+        ],
+        [
+          816,
+          309
+        ],
+        [
+          792,
+          300
+        ]
+      ],
+      "flow": [
+        [
+          791,
+          282
+        ],
+        [
+          810,
+          302
+        ],
+        [
+          866,
+          310
+        ]
+      ]
+    },
+    {
+      "id": "right-front-cascade",
+      "shape": "polygon",
+      "points": [
+        [
+          859,
+          273
+        ],
+        [
+          878,
+          273
+        ],
+        [
+          876,
+          302
+        ],
+        [
+          858,
+          303
+        ]
+      ],
+      "flow": [
+        [
+          869,
+          274
+        ],
+        [
+          867,
+          302
+        ]
+      ]
+    }
+  ],
+  "notes": [
+    "Coordinates are visual anchor estimates in a 1000x667 logical scene, not tested collision code. Validate feet placement against the displayed artwork.",
+    "Subtract the fountain obstacle from plaza navigation. For far stairs draw actors behind the sphere and plants when appropriate; their silhouettes extend above the walkable footprint.",
+    "SW and SE routes enter from lateral foreground edges, preserving campus compass relationships rather than adding all doors to one facade row.",
+    "Use polygon clipping for water, independent ripple animation for pool, and rotating ring overlay at the armillary anchor.",
+    "Transparent bird atlas is a separate asset; no birds are painted permanently into this scene."
+  ]
+}

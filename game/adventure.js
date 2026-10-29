@@ -22,7 +22,7 @@
   ];
   const places=['pharmaceutics','pharmacology','herbal','battle','life'],enemies=['bronze','silver','gold','diamond'];
   const gear=id=>GEAR.find(g=>g.id===id)||null;
-  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:{coat:null,boots:null,badge:null},quest:0,visited:[],defeated:[],lootDays:{}};}
+  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:{coat:null,boots:null,badge:null},quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
   function loadout(raw){const out={coat:null,boots:null,badge:null};if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const k of Object.keys(out)){const id=raw[k];if(id!==null&&(!gear(id)||gear(id).slot!==k))throw Error('衣著欄位不正確');out[k]=id;}return out;}
   function bonus(raw){return Object.values(loadout(raw)).map(gear).filter(Boolean).reduce((s,g)=>({attack:s.attack+g.attack,hp:s.hp+g.hp,guard:s.guard+g.guard}),{attack:0,hp:0,guard:0});}
   function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0);}
@@ -53,7 +53,8 @@
     for(const key of ['items','pending']){const obj=raw[key];if(!obj||typeof obj!=='object'||Array.isArray(obj)||Object.keys(obj).length>GEAR.length)bad();for(const [id,n] of Object.entries(obj)){if(!gear(id)||!Number.isInteger(n)||n<1||n>(key==='items'?100:MAX))bad();r[key][id]=n;}}
     if(Object.values(r.items).reduce((n,v)=>n+v,0)>100)bad();for(const id of Object.values(r.loadout))if(id&&!r.items[id])bad();
     for(const [key,allowed] of [['visited',places],['defeated',enemies]]){const a=raw[key];if(!Array.isArray(a)||a.length>allowed.length||new Set(a).size!==a.length||a.some(x=>!allowed.includes(x)))bad();r[key]=a.slice();}
-    if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}return r;
+    if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}
+    if(raw.socialId!==undefined&&raw.socialId!==null&&!/^[a-f0-9]{32}$/.test(raw.socialId))bad();r.socialId=raw.socialId||null;if(raw.friends!==undefined){if(!Array.isArray(raw.friends)||raw.friends.length>100)bad();for(const f of raw.friends){if(!f||!/^[a-f0-9]{32}$/.test(f.id)||typeof f.name!=='string'||!/^[\p{L}\p{N} _-]{1,16}$/u.test(f.name)||r.friends.some(x=>x.id===f.id))bad();r.friends.push({id:f.id,name:f.name});}}return r;
   }
   return {GEAR,SLOTS,QUESTS,fresh,gear,loadout,bonus,count,room,grant,buy,equip,unequip,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
 });

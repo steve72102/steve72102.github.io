@@ -4,9 +4,9 @@ test('all five entrances and their return points are on walkable connected paths
   for(const a of [W.campus.spawn,...W.campus.portals])for(const b of W.campus.portals){const path=W.route(W.campus,a,b);assert.ok(path.length);let prev=a;for(const p of path){assert.ok(W.clear(W.campus,prev,p));prev=p;}assert.ok(W.distance(prev,b)<.01);}
 });
 test('pond, flowerbeds and buildings block movement; routing goes around the fountain',()=>{
-  assert.equal(W.walkable(W.campus,{x:500,y:330}),false);assert.equal(W.walkable(W.campus,{x:80,y:400}),false);assert.equal(W.walkable(W.campus,{x:500,y:100}),false);
+  assert.equal(W.walkable(W.campus,{x:520,y:389}),false);assert.equal(W.walkable(W.campus,{x:170,y:290}),false);assert.equal(W.walkable(W.campus,{x:500,y:100}),false);
   let p={...W.campus.spawn};for(let i=0;i<200;i++)p=W.move(W.campus,p,0,-1,.02);assert.ok(p.y>360);assert.ok(W.walkable(W.campus,p));
-  const path=W.route(W.campus,W.campus.spawn,W.campus.portals[1]);assert.ok(path.length>1);
+  const path=W.route(W.campus,W.campus.spawn,W.campus.portals[2]);assert.ok(path.length>1);
 });
 test('four directions move continuously; diagonal speed is normalized; frame stalls cannot teleport',()=>{
   const s=W.hall('test'),p=s.spawn;
