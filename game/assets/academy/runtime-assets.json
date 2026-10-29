@@ -42,46 +42,6 @@
       "sha256": "5d0755e4ece96f5802839b1a65b6447a505bc048a138a441d02e28e623ce75f2"
     },
     {
-      "file": "doctor-inspired.webp",
-      "width": 1024,
-      "height": 1536,
-      "sourceBytes": 1963611,
-      "priorWebpBytes": 1242610,
-      "webpBytes": 196482,
-      "alphaPreserved": true,
-      "sha256": "4f72784de49bde19cd9163f5f788c2f3afccf0476361705086d9f0f8571d50ad"
-    },
-    {
-      "file": "professor-inspired.webp",
-      "width": 1024,
-      "height": 1536,
-      "sourceBytes": 1864762,
-      "priorWebpBytes": 1144928,
-      "webpBytes": 174290,
-      "alphaPreserved": true,
-      "sha256": "39d2caf2003dc54491b09380f9d38692eb45c4a13960764b4948485c6e85f32f"
-    },
-    {
-      "file": "graduate-inspired.webp",
-      "width": 1024,
-      "height": 1536,
-      "sourceBytes": 1751941,
-      "priorWebpBytes": 1062398,
-      "webpBytes": 147978,
-      "alphaPreserved": true,
-      "sha256": "79dac67a241b1424d5f4b06d0b4dfc3b10e049405b5b2b14c34be50b52b56c3d"
-    },
-    {
-      "file": "researcher-inspired.webp",
-      "width": 1024,
-      "height": 1536,
-      "sourceBytes": 1845809,
-      "priorWebpBytes": 1147892,
-      "webpBytes": 176312,
-      "alphaPreserved": true,
-      "sha256": "969147d44fa36814615a3118c2518ce3373b55752d9ff37737dadca82c7beb8e"
-    },
-    {
       "file": "beaker.webp",
       "width": 1254,
       "height": 1254,
@@ -120,6 +80,96 @@
       "webpBytes": 179258,
       "alphaPreserved": true,
       "sha256": "62d7e1c02fd029be4017f2508418eda91b970cacfe34a7a6683101226ec3f636"
+    },
+    {
+      "file": "doctor-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1866113,
+      "webpBytes": 183902,
+      "alphaPreserved": true,
+      "sha256": "33b8f508b7e72b7674584410014ea58a42503f25ff709eb0defed83f8e5edc9b"
+    },
+    {
+      "file": "professor-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1743231,
+      "webpBytes": 152420,
+      "alphaPreserved": true,
+      "sha256": "bc90fc03c2b38f865b30d577335c13c71f369a6b6afb26b4cb95c19a726da484"
+    },
+    {
+      "file": "graduate-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1727031,
+      "webpBytes": 143156,
+      "alphaPreserved": true,
+      "sha256": "6f22da0639b09cbe46eb6ba7a68a6b6ee963b623cca0e4f64d3543f75147b592"
+    },
+    {
+      "file": "researcher-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1787148,
+      "webpBytes": 159720,
+      "alphaPreserved": true,
+      "sha256": "05747e02a815a5459026a08c5ad31bc44e8b95b082da20b8cfb3db1c1296772f"
+    },
+    {
+      "file": "cedar-dean-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1876064,
+      "webpBytes": 171720,
+      "alphaPreserved": true,
+      "sha256": "c78d09f260298a51a5f315a0e45e8457bf45d0c86bdbc285db6a48f8ef9f60a7"
+    },
+    {
+      "file": "herbal-mentor-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1967427,
+      "webpBytes": 190332,
+      "alphaPreserved": true,
+      "sha256": "5b91ed6027c3e01f8640cd4e11608d72771608f9eff8978ca399e7f71749273f"
+    },
+    {
+      "file": "lab-engineer-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1821226,
+      "webpBytes": 148808,
+      "alphaPreserved": true,
+      "sha256": "b8f413ab42fdd7057af8cab32880dbafbf912555bfe4c80136cab34f4c7e9ba4"
+    },
+    {
+      "file": "balance-analyst-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1678830,
+      "webpBytes": 140424,
+      "alphaPreserved": true,
+      "sha256": "8c8dbc263ac0593b0f6d6b0a880c1be41453f0c2f3f3f62cda67f212bbe24f1c"
+    },
+    {
+      "file": "dawn-intern-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1675266,
+      "webpBytes": 144110,
+      "alphaPreserved": true,
+      "sha256": "2b6dc8939935d42ee2b2a0f6ca8513e21952cfad05864551270bd6fab645697b"
+    },
+    {
+      "file": "river-fellow-portrait.webp",
+      "width": 1024,
+      "height": 1536,
+      "sourceBytes": 1787816,
+      "webpBytes": 157730,
+      "alphaPreserved": true,
+      "sha256": "96a39385a34b650899ec00ccc9fd180571a781eaab80d8b4f08e70efc4dc06fd"
     }
   ]
 }

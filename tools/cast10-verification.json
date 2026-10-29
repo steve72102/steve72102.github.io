@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-29",
+  "characters": 10,
+  "imageReview": "Ten outputs inspected individually; distinct photo-reference subjects; older interpretations retained; no observed brand text or institutional crests. Not exhaustive rights clearance.",
+  "runtime": "Ten WebP portraits: original 1024x1536 dimensions and alpha channel preserved exactly.",
+  "tests": {"academy": 8, "duel": 9, "journey": 5, "serviceWorker": 2, "passed": 24},
+  "browser": {
+    "origin": "http://localhost:4173/game/",
+    "onboarding": "All ten portrait images loaded; selected cedar-dean, named visitor, completed enrollment and reloaded successfully.",
+    "wardrobe": "Selected herbal-mentor, reloaded and confirmed the selected name. Selected river-fellow on mobile successfully.",
+    "progress": "Existing test save retained 60 XP, 40 coins, one ticket and locked companion during appearance changes.",
+    "responsive": "390px and default 1280px: no horizontal overflow; no failed images or console warnings/errors observed.",
+    "cloud": "Not changed or retested for this cosmetic release."
+  }
+}

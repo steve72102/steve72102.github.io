@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-29",
+  "method": "Built-in image_gen; ten independent character edits; no CLI",
+  "reference": "One user-provided group photo: ten distinct subjects, selected only by visible position. Original photos are not copied into the website or repository. Existing project illustrations provide original clothing and rendering references.",
+  "review": {
+    "scope": "Visual inspection of each output for the intended subject, age variation, completeness and recognizable clothing logos/crests. Not exhaustive legal clearance.",
+    "clothing": "Original project clothing retained, composed from ordinary laboratory coats, work jackets, aprons and everyday clothing. Photo clothing labels and accessories are not reproduced.",
+    "likeness": "Roughly seventy-percent likeness requested as an artistic direction, not a measured or legally meaningful threshold. Older characters are age-progressed interpretations.",
+    "limits": "No promise of zero copyright or personality-rights risk. References and generated images do not establish exclusive copyright or replace consent from depicted people.",
+    "status": "All ten generated PNGs visually inspected: separate reference subjects, distinct facial styling, young/middle/older appearance, complete head and shoes, and no observed brand text or recognizable institutional crest. Runtime alpha and dimensions verified during WebP encoding. This is a visual review, not legal clearance."
+  },
+  "references": [
+    {
+      "title": "TIPO clothing and graphic elements",
+      "url": "https://www.tipo.gov.tw/tw/copyright/773-4958.html"
+    },
+    {
+      "title": "TIPO AI substantial similarity",
+      "url": "https://www.tipo.gov.tw/tw/copyright/692-34651.html"
+    }
+  ],
+  "characters": [
+    {
+      "id": "doctor",
+      "target": "doctor-inspired.webp",
+      "master": "doctor-portrait.png",
+      "runtime": "doctor-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The man near the UPPER MIDDLE, wearing a DARK GREEN sweater and rectangular dark glasses, leaning toward the camera. His face is centered approximately at x=0.55, y=0.20 of the group photo. He is below and in front of the red-shirt person. Use this man only. Preserve his black straight fringe, rectangular glasses, narrower eyes, angular slightly long face and subtle closed-mouth smile. Character stays a young adult. Keep the original teal scholar cape and laboratory-coat outfit from image 1.",
+      "sourceOutput": "exec-a318c01a-8c0c-48d6-9d8d-59adc8473602.png",
+      "runtimeSHA256": "33b8f508b7e72b7674584410014ea58a42503f25ff709eb0defed83f8e5edc9b"
+    },
+    {
+      "id": "professor",
+      "target": "professor-inspired.webp",
+      "master": "professor-portrait.png",
+      "runtime": "professor-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The woman at UPPER LEFT, wearing a WHITE top and DARK NAVY scarf, holding a small silver can near her head. Face center approximately x=0.38, y=0.21. She is above the green-jacket man and left of the peeking glasses-wearer. Use this woman only. Keep her gently long oval face, distinctive eyes and broad friendly smile; dark hair swept back into a loose low ponytail, forehead visible, NO glasses. Young-to-middle adult. Keep the lavender-and-ivory original outfit and botanical notebook from image 1.",
+      "sourceOutput": "exec-ef8db823-576d-4d86-8e22-1b2ad5de3a1a.png",
+      "runtimeSHA256": "bc90fc03c2b38f865b30d577335c13c71f369a6b6afb26b4cb95c19a726da484"
+    },
+    {
+      "id": "graduate",
+      "target": "graduate-inspired.webp",
+      "master": "graduate-portrait.png",
+      "runtime": "graduate-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The man at MIDDLE LEFT in an OLIVE GREEN zip jacket, holding a WHITE plate. Face center approximately x=0.24, y=0.48. Use him only, NOT the man at bottom left. Preserve his fuller round cheeks, straight thick black bowl-like side fringe, narrow dark eyes, small nose and gentle closed lips, no glasses. Young adult. Keep the original warm-yellow hoodie, ivory lab coat and satchel from image 1.",
+      "sourceOutput": "exec-d81ec7d3-efc3-4050-afee-bb1b63f9b922.png",
+      "runtimeSHA256": "6f22da0639b09cbe46eb6ba7a68a6b6ee963b623cca0e4f64d3543f75147b592"
+    },
+    {
+      "id": "researcher",
+      "target": "researcher-inspired.webp",
+      "master": "researcher-portrait.png",
+      "runtime": "researcher-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The laughing woman in the UPPER RIGHT of the group, wearing an OLIVE jacket and a BEIGE PLAID scarf. Face center approximately x=0.72, y=0.29, behind the woman in a burgundy knit cap. Use only her. Preserve her broad rounded smiling face, crescent-shaped smiling eyes, cheek shape, open cheerful smile and short dark side-parted bob. Young-to-middle adult. Keep the original mint coat, specimen case and plain clear safety goggles from image 1; goggles above forehead.",
+      "sourceOutput": "exec-80eeea13-1cc9-4c49-b6ea-d219fe2f4290.png",
+      "runtimeSHA256": "05747e02a815a5459026a08c5ad31bc44e8b95b082da20b8cfb3db1c1296772f"
+    },
+    {
+      "id": "cedar-dean",
+      "target": "cedar-dean.webp",
+      "master": "cedar-dean-portrait.png",
+      "runtime": "cedar-dean-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The man at the VERY TOP BACK of the group wearing a RED shirt and thin rectangular glasses. Face center approximately x=0.48, y=0.075, highest face in the picture. Use him only, not the green-sweater man below. Preserve the reference facial structure, narrower eyes, straight brows, distinctive nose and mouth, rectangular glasses and short slightly spiky hair shape. Age this same visual inspiration into a believable 70-year-old scholar with SILVER hair, wrinkles and a neat white moustache, retaining recognizable facial structure rather than inventing a generic old face. Keep the original cream-and-mint lab coat, green knit vest, notebook and pose from image 1.",
+      "sourceOutput": "exec-1820f50d-7997-4718-8f3b-6e17bb5fa7ef.png",
+      "runtimeSHA256": "c78d09f260298a51a5f315a0e45e8457bf45d0c86bdbc285db6a48f8ef9f60a7"
+    },
+    {
+      "id": "herbal-mentor",
+      "target": "herbal-mentor.webp",
+      "master": "herbal-mentor-portrait.png",
+      "runtime": "herbal-mentor-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The woman in the BURGUNDY KNITTED CAP near the MIDDLE RIGHT, making a V gesture beside her smiling face. Face center approximately x=0.60, y=0.47, above the gray-hoodie woman and below the plaid-scarf woman. Use her only. Preserve her distinctive small eyes, cheekbones, gently rounded jaw and warm tooth-showing smile. Age the inspiration to about 63 with visible smile lines and soft wrinkles, silver-gray hair under a plain burgundy knit cap WITHOUT the real label. Keep the original sage field apron, ivory blouse, terracotta sleeve lining, mint pot and full-body pose from image 1.",
+      "sourceOutput": "exec-9b86d830-193e-4dd1-a9e0-81cdd8d56f99.png",
+      "runtimeSHA256": "5b91ed6027c3e01f8640cd4e11608d72771608f9eff8978ca399e7f71749273f"
+    },
+    {
+      "id": "lab-engineer",
+      "target": "lab-engineer.webp",
+      "master": "lab-engineer-portrait.png",
+      "runtime": "lab-engineer-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The LARGE foreground selfie man occupying the FAR RIGHT EDGE of the photo. Face center approximately x=0.90, y=0.62. Use ONLY this closest man. Preserve his broad face, full cheeks, broad nose, thick eyebrows, narrow smiling eyes and wide natural tooth-showing smile. Short upright dark hair, no glasses. Render as a middle-aged version around 47 with subtle smile lines and a little gray at the temples, retaining his face proportions. Keep the original plain ivory work jacket with indigo shoulders, caliper and notebook from image 1.",
+      "sourceOutput": "exec-bcfefea9-2a83-4b38-b1ff-8d1e4001e3f6.png",
+      "runtimeSHA256": "b8f413ab42fdd7057af8cab32880dbafbf912555bfe4c80136cab34f4c7e9ba4"
+    },
+    {
+      "id": "balance-analyst",
+      "target": "balance-analyst.webp",
+      "master": "balance-analyst-portrait.png",
+      "runtime": "balance-analyst-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The woman leaning in from the MIDDLE LEFT behind the olive-jacket man, wearing a DARK NAVY jacket with pale hood lining and holding a RED-AND-YELLOW packet. Her face center approximately x=0.41, y=0.42. Use only her, NOT the round-glasses person lower-left of her and NOT the white-top scarf woman above. Preserve her longer face, softly angular cheeks, straight nose, dark eyes, slightly asymmetric cheerful smile and dark side-fringe shoulder-length hair. Age subtly to a middle-aged woman around 42, add a small silver streak, no glasses. Keep the original cream coat, blue vest and cuffs, lavender notebook and magnifier from image 1.",
+      "sourceOutput": "exec-6f2e5a6c-dcde-4e98-ad00-41624c1b1e00.png",
+      "runtimeSHA256": "8c8dbc263ac0593b0f6d6b0a880c1be41453f0c2f3f3f62cda67f212bbe24f1c"
+    },
+    {
+      "id": "dawn-intern",
+      "target": "dawn-intern.webp",
+      "master": "dawn-intern-portrait.png",
+      "runtime": "dawn-intern-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The woman at LOWER RIGHT-MIDDLE, wearing a GRAY hoodie with a circular sleeve patch, black/navy scarf and backpack straps. Face center approximately x=0.66, y=0.61, directly below the burgundy-cap woman and immediately left of the big foreground selfie man. Use her only. Preserve her rounded cheeks, short chin, straight black chin-length bob with bangs, narrow smiling eyes and bright wide tooth-showing smile. Young adult around 20. Replace auburn pixie hair with her black bob, keep a small plain mint hair clip, no added freckles. Keep the original coral-and-cream jacket, sage trousers and yellow card binder from image 1.",
+      "sourceOutput": "exec-a013d7e3-b9b1-4ac0-9a81-e1832562b311.png",
+      "runtimeSHA256": "2b6dc8939935d42ee2b2a0f6ca8513e21952cfad05864551270bd6fab645697b"
+    },
+    {
+      "id": "river-fellow",
+      "target": "river-fellow.webp",
+      "master": "river-fellow-portrait.png",
+      "runtime": "river-fellow-portrait.webp",
+      "prompt": "Use case: identity-preserve character edit. Image 1 is the EDIT TARGET, an original project game character. Keep its original clothing design, garment colors, props, body, full-body composition, pose and illustration craft. Image 2 is a user-provided group photograph: use ONLY the SINGLE person precisely located below as the facial reference. Redesign the head and hair so the character is recognizably inspired by that person's face: retain their specific eye spacing and shape, eyebrows, nose structure, cheek/jaw proportions and characteristic smile, with roughly seventy-percent resemblance as an artistic direction rather than an exact measurable score. Render the face in the same polished stylized 3D storybook game style; no photorealistic pasted face. Do not blend faces or reuse another person from the group. Do not copy the photograph's clothing, labels, scene or objects. No commercial logo, school crest, lettering or watermark. Preserve genuine transparent alpha background, no scenery, no ground or cast shadow plate. Full head and shoes visible. Portrait 1024x1536. The man closest to the camera at BOTTOM LEFT, wearing a BLACK jacket, with short upright dark hair and a wide tooth-showing smile. Face center approximately x=0.205, y=0.79. Use only him, NOT the olive-jacket man higher up. Preserve his longer tapered face, strong straight eyebrows, lively dark eyes, distinct nose, visible cheek contours and broad tooth-showing smile. Short straight black hair with a subtly lifted top, NO glasses, warm light-medium skin as in reference. Young adult around 29. Keep the original cream jacket with round sage pocket, blue shirt, oatmeal trousers and portfolio from image 1.",
+      "sourceOutput": "exec-cfd08fe7-163c-441a-afb7-726ff6e665c4.png",
+      "runtimeSHA256": "96a39385a34b650899ec00ccc9fd180571a781eaab80d8b4f08e70efc4dc06fd"
+    }
+  ]
+}

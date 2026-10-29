@@ -1,10 +1,16 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAcademy=api;})(typeof window==='object'?window:globalThis,function(){
   'use strict';
   const CHARACTERS=[
-    {id:'doctor',name:'星序博士',role:'博士',color:'mint',image:'doctor-inspired.webp',line:'把每一個問號，整理成新的星座。',story:'喜歡帶著一本空白筆記出門，把今天學會的事畫成星圖。青綠披肩與方框眼鏡，是他的學院日常。'},
-    {id:'professor',name:'苔光教授',role:'教授',color:'violet',image:'professor-inspired.webp',line:'理解慢慢長，也會成為一座森林。',story:'深色長髮與細框眼鏡，隨身帶著植物筆記。她總會留一頁空白，給尚未想明白的好問題。'},
-    {id:'graduate',name:'流墨研究生',role:'研究生',color:'gold',image:'graduate-inspired.webp',line:'帶著好奇心，把今天的未知讀懂。',story:'黑色側瀏海、暖黃帽衫、短實驗袍和裝滿筆記的斜背包。研究途中最喜歡的瞬間，是終於能用自己的話解釋答案。'},
-    {id:'researcher',name:'璃砂研究員',role:'研究員',color:'rose',image:'researcher-inspired.webp',line:'每一次觀察，都值得認真記下。',story:'護目鏡停在額前，標本盒收得整整齊齊。她喜歡用細小的發現，拼出完整的知識地圖。'}
+    {id:'doctor',name:'星序博士',role:'博士',traits:'青年・略長臉',color:'mint',image:'doctor-portrait.webp',line:'把每一個問號，整理成新的星座。',story:'喜歡帶著一本空白筆記出門，把今天學會的事畫成星圖。青綠披肩與方框眼鏡，是他的學院日常。'},
+    {id:'professor',name:'苔光教授',role:'教授',traits:'青年・長橢圓臉',color:'violet',image:'professor-portrait.webp',line:'理解慢慢長，也會成為一座森林。',story:'深色長髮輕輕束起，露出額頭與親切笑容，隨身帶著植物筆記。她總會留一頁空白，給尚未想明白的好問題。'},
+    {id:'graduate',name:'流墨研究生',role:'研究生',traits:'青年・圓潤臉',color:'gold',image:'graduate-portrait.webp',line:'帶著好奇心，把今天的未知讀懂。',story:'黑色側瀏海、暖黃帽衫、短實驗袍和裝滿筆記的斜背包。研究途中最喜歡的瞬間，是終於能用自己的話解釋答案。'},
+    {id:'researcher',name:'璃砂研究員',role:'研究員',traits:'青年・寬圓臉',color:'rose',image:'researcher-portrait.webp',line:'每一次觀察，都值得認真記下。',story:'護目鏡停在額前，標本盒收得整整齊齊。她喜歡用細小的發現，拼出完整的知識地圖。'},
+    {id:'cedar-dean',name:'杉庭院士',role:'院士',traits:'長者・修長臉',color:'mint',image:'cedar-dean-portrait.webp',line:'懂得越多，越願意從頭問起。',story:'銀色短髮、方框眼鏡與眼角笑紋，陪他走過許多研究季節。偏襟白袍搭著青綠針織背心；他的筆記總先寫下「為什麼」。'},
+    {id:'herbal-mentor',name:'藥圃導師',role:'導師',traits:'長者・圓弧臉',color:'gold',image:'herbal-mentor-portrait.webp',line:'先好好觀察，再慢慢下結論。',story:'酒紅針織帽下露出銀髮，笑起來眼角彎彎的。鼠尾草綠圍裙裝著小工具，她把薄荷盆栽當成每天的觀察練習。'},
+    {id:'lab-engineer',name:'砥石技師',role:'技師',traits:'中年・寬闊臉',color:'mint',image:'lab-engineer-portrait.webp',line:'把誤差找出來，也是一次進步。',story:'寬闊臉龐、爽朗笑容、灰黑短髮與穩穩的肩膀。靛藍拼肩工作外套有大小不同的口袋，他習慣量兩次，再記下一次。'},
+    {id:'balance-analyst',name:'沐衡分析師',role:'分析師',traits:'中年・長形臉',color:'violet',image:'balance-analyst-portrait.webp',line:'讓證據，替每個推測說話。',story:'深色側瀏海間有一縷銀色，長臉上帶著溫暖笑意。淺藍翻袖白袍配著簡單背心，她愛把相似的現象放在一起比較。'},
+    {id:'dawn-intern',name:'晨芽實習生',role:'實習生',traits:'青年・短圓臉',color:'rose',image:'dawn-intern-portrait.webp',line:'不怕問得簡單，只怕沒問明白。',story:'齊瀏海黑色短髮、薄荷髮夾和開朗的笑容。珊瑚色拼接短外套配著卡片冊，她會把新名詞改寫成生活裡聽得懂的話。'},
+    {id:'river-fellow',name:'溯溪學者',role:'訪問學者',traits:'青年・收窄下顎',color:'mint',image:'river-fellow-portrait.webp',line:'換個角度，也許就看見答案。',story:'微微豎起的黑色短髮、修長臉型與明亮笑容。淡藍襯衫外搭圓袋短白袍，他把不同學科的線索收進同一本資料夾。'}
   ];
   const PETS=[
     {id:'beaker',name:'泡泡燒杯',vessel:'燒杯',image:'beaker.webp',line:'把好奇心裝到八分滿。',fact:'燒杯適合盛裝、混合液體；杯身刻度主要供估算，不能取代精密量器。'},

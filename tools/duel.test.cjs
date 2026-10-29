@@ -42,7 +42,7 @@ test('equal equipment and answers produce a draw; zero correct causes zero damag
   assert.deepEqual(D.totals(s),[0,0]);assert.equal(D.winner(s),'draw');
 });
 test('untrusted packets reject oversized, invalid and prototype-bearing data',()=>{
-  for(const raw of [null,'x'.repeat(4097),'null','[]','{}','{"v":"mq-duel-1","type":"ping","__proto__":{}}',JSON.stringify({v:D.VERSION,type:'giveCoins'})])assert.throws(()=>D.packet(raw));
+  for(const raw of [null,'x'.repeat(4097),'null','[]','{}','{"v":"'+D.VERSION+'","type":"ping","__proto__":{}}',JSON.stringify({v:D.VERSION,type:'giveCoins'})])assert.throws(()=>D.packet(raw));
   assert.equal(D.packet(JSON.stringify({v:D.VERSION,type:'ping'})).type,'ping');
 });
 test('commitment binds question index, choice and random nonce',()=>{

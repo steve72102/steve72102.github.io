@@ -2,7 +2,7 @@
 window.MindDuelNetwork=function(options){
   'use strict';
   const {questions,onChange,onAnswer,random}=options;
-  const D=window.MindDuel, PREFIX='steve72102-mq1-', byId=new Map(questions.map(q=>[q.id,q]));
+  const D=window.MindDuel, PREFIX='steve72102-mq2-', byId=new Map(questions.map(q=>[q.id,q]));
   let peer=null,connection=null,generation=0,deadline=0,timer=null,connectTimer=null,retryTimer=null,lastSeen=0,lastPing=0,ownReveal=null,revealed=false,answerPending=false,attempts=0;
   let data={status:'idle',message:'',game:null,mode:null,code:'',subject:null,profile:null,host:false};
   const active=()=>['connecting','waiting','handshake','connected'].includes(data.status);

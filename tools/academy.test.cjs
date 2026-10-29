@@ -40,6 +40,7 @@ test('duel profiles preserve validated cosmetics; older clients receive defaults
   const base={name:'同學甲',level:3,gearId:null},look={version:1,character:'professor',pet:'mortar'};
   const result=D.profile({...base,appearance:look});assert.deepEqual(result.appearance,look);look.character='doctor';assert.equal(result.appearance.character,'professor');
   assert.deepEqual(D.profile(base).appearance,A.fresh());assert.throws(()=>D.profile({...base,appearance:{version:1,character:'admin',pet:null}}));
+  for(const c of A.CHARACTERS){const appearance={version:1,character:c.id,pet:null};assert.deepEqual(D.profile({...base,appearance}).appearance,appearance);}
 });
 test('appearance is frozen per duel and does not modify damage',()=>{
   const mine={name:'同學甲',level:3,gearId:null,appearance:A.fresh()},other={...mine,name:'同學乙',appearance:{version:1,character:'professor',pet:null}};
