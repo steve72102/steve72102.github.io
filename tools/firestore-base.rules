@@ -1,0 +1,80 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function poolPath() { return /databases/$(database)/documents/fountains/central; }
+    function playerPath() { return /databases/$(database)/documents/players/$(request.auth.uid); }
+    function receiptPath(id) { return /databases/$(database)/documents/players/$(request.auth.uid)/wishes/$(id); }
+    function operation(id) { return id is string && id.matches('^[a-f0-9]{32}$'); }
+    function amount(n) { return n is int && n >= 0 && n <= 1000000000000; }
+    function prize(ticket) {
+      return ticket < 80000 ? ['wish-mint-coat','wish-cedar-coat','wish-sakura-coat','wish-river-coat','wish-mint-hat','wish-cedar-hat','wish-sakura-hat','wish-river-hat'][int(ticket / 10000)]
+        : ticket < 98000 ? ['wish-prism-coat','wish-bloom-coat','wish-prism-hat','wish-bloom-hat'][int((ticket - 80000) / 4500)]
+        : ticket < 99890 ? ['wish-aurora-coat','wish-aurora-hat'][int((ticket - 98000) / 945)]
+        : ticket < 99900 ? 'wish-zenith-coat' : 'coins';
+    }
+    function validFlow(id) {
+      let old = exists(poolPath()) ? get(poolPath()).data : {'balance':0,'contributed':0,'paidOut':0,'draws':0};
+      let next = getAfter(poolPath()).data;
+      let r = getAfter(receiptPath(id)).data;
+      let before = get(playerPath()).data;
+      let after = getAfter(playerPath()).data;
+      let base = old.balance + 1000;
+      let coins = r.prizeId == 'coins' ? (base < 100000 ? 1000 : int(base / 100)) : 0;
+      return operation(id) && !exists(receiptPath(id))
+        && r.keys().hasOnly(['schema','operationId','prizeId','coins','poolAfter','at','ticket','walletBefore','walletAfter','poolBefore','contributed','paidOut','draws','sequence','playerRevision','updatedAt'])
+        && r.keys().hasAll(['schema','operationId','prizeId','coins','poolAfter','at','ticket','walletBefore','walletAfter','poolBefore','contributed','paidOut','draws','sequence','playerRevision','updatedAt'])
+        && r.schema == 1 && r.operationId == id && r.ticket is int && r.ticket >= 0 && r.ticket < 100000
+        && r.prizeId == prize(r.ticket) && r.coins == coins
+        && r.at is int && r.at > 0 && r.at <= request.time.toMillis() + 300000 && r.updatedAt == request.time
+        && r.walletBefore is int && r.walletBefore >= 1000 && r.walletBefore <= 100000000
+        && r.walletBefore == before.get('coins', r.walletBefore)
+        && r.walletAfter == r.walletBefore - 1000 + coins && r.walletAfter == after.coins
+        && r.poolBefore == old.balance && r.poolAfter == next.balance && r.contributed == next.contributed
+        && r.paidOut == next.paidOut && r.draws == next.draws
+        && next.schema == 1 && next.lastOperation == id && next.updatedAt == request.time
+        && next.balance == base - coins && next.contributed == old.contributed + 1000
+        && next.paidOut == old.paidOut + coins && next.draws == old.draws + 1
+        && amount(next.balance) && amount(next.contributed) && amount(next.paidOut) && amount(next.draws)
+        && amount(next.seeded) && next.seeded == old.get('seeded', 0)
+        && next.balance + next.paidOut == next.contributed + next.seeded && next.draws * 1000 == next.contributed
+        && after.revision == before.revision + 1 && r.playerRevision == after.revision
+        && after.fountain.keys().hasOnly(['sequence','operationId','at'])
+        && after.fountain.operationId == id && after.fountain.at == request.time
+        && after.fountain.sequence == before.get('fountain', {'sequence':0}).sequence + 1
+        && r.sequence == after.fountain.sequence
+        && (before.get('fountain', null) == null || request.time >= before.fountain.at + duration.value(2, 's'));
+    }
+    match /fountains/central {
+      allow get: if true;
+      allow create, update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['schema','balance','seeded','contributed','paidOut','draws','lastOperation','updatedAt'])
+        && validFlow(request.resource.data.lastOperation);
+      allow list, delete: if false;
+    }
+    match /players/{uid} {
+      function owner() { return request.auth != null && request.auth.uid == uid; }
+      function valid() {
+        let d = request.resource.data;
+        return d.keys().hasOnly(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain'])
+          && d.keys().hasAll(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt'])
+          && d.schema == 1 && d.revision is int && d.revision > 0
+          && d.payload is string && d.payload.size() <= 750000
+          && d.modifiedAt is int && d.modifiedAt > 0
+          && d.modifiedAt <= request.time.toMillis() + 300000
+          && d.updatedAt == request.time
+          && (!d.keys().hasAny(['coins']) || (d.coins is int && d.coins >= 0 && d.coins <= 100000000));
+      }
+      allow get: if owner();
+      allow create: if owner() && valid() && request.resource.data.revision == 1 && !request.resource.data.keys().hasAny(['fountain']);
+      allow update: if owner() && valid() && request.resource.data.revision == resource.data.revision + 1
+        && (request.resource.data.get('fountain', null) == resource.data.get('fountain', null)
+          || validFlow(request.resource.data.fountain.operationId));
+      allow list, delete: if false;
+      match /wishes/{id} {
+        allow get: if request.auth != null && request.auth.uid == uid;
+        allow create: if request.auth != null && request.auth.uid == uid && validFlow(id);
+        allow list, update, delete: if false;
+      }
+    }
+  }
+}

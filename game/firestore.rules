@@ -27,7 +27,7 @@ service cloud.firestore {
         && r.prizeId == prize(r.ticket) && r.coins == coins
         && r.at is int && r.at > 0 && r.at <= request.time.toMillis() + 300000 && r.updatedAt == request.time
         && r.walletBefore is int && r.walletBefore >= 1000 && r.walletBefore <= 100000000
-        && r.walletBefore == before.get('coins', r.walletBefore)
+        && r.walletBefore == (before.get('economy',null) == null ? before.get('coins',r.walletBefore) : sd('money',before.economy.key).coins)
         && r.walletAfter == r.walletBefore - 1000 + coins && r.walletAfter == after.coins
         && r.poolBefore == old.balance && r.poolAfter == next.balance && r.contributed == next.contributed
         && r.paidOut == next.paidOut && r.draws == next.draws
@@ -51,22 +51,289 @@ service cloud.firestore {
         && validFlow(request.resource.data.lastOperation);
       allow list, delete: if false;
     }
+    function cursorChanges0(keys,b,n) { return (keys.size() <= 0 || (operation(keys[0]) && small(n[keys[0]],9007199254740991) && n[keys[0]] >= b.get(keys[0],0))) && (keys.size() <= 1 || (operation(keys[1]) && small(n[keys[1]],9007199254740991) && n[keys[1]] >= b.get(keys[1],0))) && (keys.size() <= 2 || (operation(keys[2]) && small(n[keys[2]],9007199254740991) && n[keys[2]] >= b.get(keys[2],0))) && (keys.size() <= 3 || (operation(keys[3]) && small(n[keys[3]],9007199254740991) && n[keys[3]] >= b.get(keys[3],0))) && (keys.size() <= 4 || (operation(keys[4]) && small(n[keys[4]],9007199254740991) && n[keys[4]] >= b.get(keys[4],0))) && (keys.size() <= 5 || (operation(keys[5]) && small(n[keys[5]],9007199254740991) && n[keys[5]] >= b.get(keys[5],0))) && (keys.size() <= 6 || (operation(keys[6]) && small(n[keys[6]],9007199254740991) && n[keys[6]] >= b.get(keys[6],0))) && (keys.size() <= 7 || (operation(keys[7]) && small(n[keys[7]],9007199254740991) && n[keys[7]] >= b.get(keys[7],0))); }
+    function cursorChanges8(keys,b,n) { return (keys.size() <= 8 || (operation(keys[8]) && small(n[keys[8]],9007199254740991) && n[keys[8]] >= b.get(keys[8],0))) && (keys.size() <= 9 || (operation(keys[9]) && small(n[keys[9]],9007199254740991) && n[keys[9]] >= b.get(keys[9],0))) && (keys.size() <= 10 || (operation(keys[10]) && small(n[keys[10]],9007199254740991) && n[keys[10]] >= b.get(keys[10],0))) && (keys.size() <= 11 || (operation(keys[11]) && small(n[keys[11]],9007199254740991) && n[keys[11]] >= b.get(keys[11],0))) && (keys.size() <= 12 || (operation(keys[12]) && small(n[keys[12]],9007199254740991) && n[keys[12]] >= b.get(keys[12],0))) && (keys.size() <= 13 || (operation(keys[13]) && small(n[keys[13]],9007199254740991) && n[keys[13]] >= b.get(keys[13],0))) && (keys.size() <= 14 || (operation(keys[14]) && small(n[keys[14]],9007199254740991) && n[keys[14]] >= b.get(keys[14],0))) && (keys.size() <= 15 || (operation(keys[15]) && small(n[keys[15]],9007199254740991) && n[keys[15]] >= b.get(keys[15],0))); }
+    function cursorChanges16(keys,b,n) { return (keys.size() <= 16 || (operation(keys[16]) && small(n[keys[16]],9007199254740991) && n[keys[16]] >= b.get(keys[16],0))) && (keys.size() <= 17 || (operation(keys[17]) && small(n[keys[17]],9007199254740991) && n[keys[17]] >= b.get(keys[17],0))) && (keys.size() <= 18 || (operation(keys[18]) && small(n[keys[18]],9007199254740991) && n[keys[18]] >= b.get(keys[18],0))) && (keys.size() <= 19 || (operation(keys[19]) && small(n[keys[19]],9007199254740991) && n[keys[19]] >= b.get(keys[19],0))) && (keys.size() <= 20 || (operation(keys[20]) && small(n[keys[20]],9007199254740991) && n[keys[20]] >= b.get(keys[20],0))) && (keys.size() <= 21 || (operation(keys[21]) && small(n[keys[21]],9007199254740991) && n[keys[21]] >= b.get(keys[21],0))) && (keys.size() <= 22 || (operation(keys[22]) && small(n[keys[22]],9007199254740991) && n[keys[22]] >= b.get(keys[22],0))) && (keys.size() <= 23 || (operation(keys[23]) && small(n[keys[23]],9007199254740991) && n[keys[23]] >= b.get(keys[23],0))); }
+    function cursorChanges24(keys,b,n) { return (keys.size() <= 24 || (operation(keys[24]) && small(n[keys[24]],9007199254740991) && n[keys[24]] >= b.get(keys[24],0))) && (keys.size() <= 25 || (operation(keys[25]) && small(n[keys[25]],9007199254740991) && n[keys[25]] >= b.get(keys[25],0))) && (keys.size() <= 26 || (operation(keys[26]) && small(n[keys[26]],9007199254740991) && n[keys[26]] >= b.get(keys[26],0))) && (keys.size() <= 27 || (operation(keys[27]) && small(n[keys[27]],9007199254740991) && n[keys[27]] >= b.get(keys[27],0))) && (keys.size() <= 28 || (operation(keys[28]) && small(n[keys[28]],9007199254740991) && n[keys[28]] >= b.get(keys[28],0))) && (keys.size() <= 29 || (operation(keys[29]) && small(n[keys[29]],9007199254740991) && n[keys[29]] >= b.get(keys[29],0))) && (keys.size() <= 30 || (operation(keys[30]) && small(n[keys[30]],9007199254740991) && n[keys[30]] >= b.get(keys[30],0))) && (keys.size() <= 31 || (operation(keys[31]) && small(n[keys[31]],9007199254740991) && n[keys[31]] >= b.get(keys[31],0))); }
+    function cursorChanges32(keys,b,n) { return (keys.size() <= 32 || (operation(keys[32]) && small(n[keys[32]],9007199254740991) && n[keys[32]] >= b.get(keys[32],0))) && (keys.size() <= 33 || (operation(keys[33]) && small(n[keys[33]],9007199254740991) && n[keys[33]] >= b.get(keys[33],0))) && (keys.size() <= 34 || (operation(keys[34]) && small(n[keys[34]],9007199254740991) && n[keys[34]] >= b.get(keys[34],0))) && (keys.size() <= 35 || (operation(keys[35]) && small(n[keys[35]],9007199254740991) && n[keys[35]] >= b.get(keys[35],0))) && (keys.size() <= 36 || (operation(keys[36]) && small(n[keys[36]],9007199254740991) && n[keys[36]] >= b.get(keys[36],0))) && (keys.size() <= 37 || (operation(keys[37]) && small(n[keys[37]],9007199254740991) && n[keys[37]] >= b.get(keys[37],0))) && (keys.size() <= 38 || (operation(keys[38]) && small(n[keys[38]],9007199254740991) && n[keys[38]] >= b.get(keys[38],0))) && (keys.size() <= 39 || (operation(keys[39]) && small(n[keys[39]],9007199254740991) && n[keys[39]] >= b.get(keys[39],0))); }
+    function cursorChanges40(keys,b,n) { return (keys.size() <= 40 || (operation(keys[40]) && small(n[keys[40]],9007199254740991) && n[keys[40]] >= b.get(keys[40],0))) && (keys.size() <= 41 || (operation(keys[41]) && small(n[keys[41]],9007199254740991) && n[keys[41]] >= b.get(keys[41],0))) && (keys.size() <= 42 || (operation(keys[42]) && small(n[keys[42]],9007199254740991) && n[keys[42]] >= b.get(keys[42],0))) && (keys.size() <= 43 || (operation(keys[43]) && small(n[keys[43]],9007199254740991) && n[keys[43]] >= b.get(keys[43],0))) && (keys.size() <= 44 || (operation(keys[44]) && small(n[keys[44]],9007199254740991) && n[keys[44]] >= b.get(keys[44],0))) && (keys.size() <= 45 || (operation(keys[45]) && small(n[keys[45]],9007199254740991) && n[keys[45]] >= b.get(keys[45],0))) && (keys.size() <= 46 || (operation(keys[46]) && small(n[keys[46]],9007199254740991) && n[keys[46]] >= b.get(keys[46],0))) && (keys.size() <= 47 || (operation(keys[47]) && small(n[keys[47]],9007199254740991) && n[keys[47]] >= b.get(keys[47],0))); }
+    function cursorChanges48(keys,b,n) { return (keys.size() <= 48 || (operation(keys[48]) && small(n[keys[48]],9007199254740991) && n[keys[48]] >= b.get(keys[48],0))) && (keys.size() <= 49 || (operation(keys[49]) && small(n[keys[49]],9007199254740991) && n[keys[49]] >= b.get(keys[49],0))) && (keys.size() <= 50 || (operation(keys[50]) && small(n[keys[50]],9007199254740991) && n[keys[50]] >= b.get(keys[50],0))) && (keys.size() <= 51 || (operation(keys[51]) && small(n[keys[51]],9007199254740991) && n[keys[51]] >= b.get(keys[51],0))) && (keys.size() <= 52 || (operation(keys[52]) && small(n[keys[52]],9007199254740991) && n[keys[52]] >= b.get(keys[52],0))) && (keys.size() <= 53 || (operation(keys[53]) && small(n[keys[53]],9007199254740991) && n[keys[53]] >= b.get(keys[53],0))) && (keys.size() <= 54 || (operation(keys[54]) && small(n[keys[54]],9007199254740991) && n[keys[54]] >= b.get(keys[54],0))) && (keys.size() <= 55 || (operation(keys[55]) && small(n[keys[55]],9007199254740991) && n[keys[55]] >= b.get(keys[55],0))); }
+    function cursorChanges56(keys,b,n) { return (keys.size() <= 56 || (operation(keys[56]) && small(n[keys[56]],9007199254740991) && n[keys[56]] >= b.get(keys[56],0))) && (keys.size() <= 57 || (operation(keys[57]) && small(n[keys[57]],9007199254740991) && n[keys[57]] >= b.get(keys[57],0))) && (keys.size() <= 58 || (operation(keys[58]) && small(n[keys[58]],9007199254740991) && n[keys[58]] >= b.get(keys[58],0))) && (keys.size() <= 59 || (operation(keys[59]) && small(n[keys[59]],9007199254740991) && n[keys[59]] >= b.get(keys[59],0))) && (keys.size() <= 60 || (operation(keys[60]) && small(n[keys[60]],9007199254740991) && n[keys[60]] >= b.get(keys[60],0))) && (keys.size() <= 61 || (operation(keys[61]) && small(n[keys[61]],9007199254740991) && n[keys[61]] >= b.get(keys[61],0))) && (keys.size() <= 62 || (operation(keys[62]) && small(n[keys[62]],9007199254740991) && n[keys[62]] >= b.get(keys[62],0))) && (keys.size() <= 63 || (operation(keys[63]) && small(n[keys[63]],9007199254740991) && n[keys[63]] >= b.get(keys[63],0))); }
+    function cursorsValid(b,n,keys) { return keys is list && keys.size() <= 64 && n.keys().hasAll(b.keys()) && n.diff(b).affectedKeys().hasOnly(keys) && (keys.size() <= 0 || cursorChanges0(keys,b,n)) && (keys.size() <= 8 || cursorChanges8(keys,b,n)) && (keys.size() <= 16 || cursorChanges16(keys,b,n)) && (keys.size() <= 24 || cursorChanges24(keys,b,n)) && (keys.size() <= 32 || cursorChanges32(keys,b,n)) && (keys.size() <= 40 || cursorChanges40(keys,b,n)) && (keys.size() <= 48 || cursorChanges48(keys,b,n)) && (keys.size() <= 56 || cursorChanges56(keys,b,n)); }
+    function socialKey(k) { return k is string && k.matches('^[a-f0-9]{20,64}$'); }
+    function socialId(k) { return k is string && k.matches('^([a-f0-9]{32}|b[a-f0-9]{32}_[a-f0-9]{20,64})$'); }
+    function socialPath(collection, id) { return /databases/$(database)/documents/$(collection)/$(id); }
+    function sd(collection, id) { return get(socialPath(collection,id)).data; }
+    function sa(collection, id) { return getAfter(socialPath(collection,id)).data; }
+    function dayNow() { return int((request.time.toMillis() + 28800000) / 86400000); }
+    function small(n, max) { return n is int && n >= 0 && n <= max; }
+    function belongs(k) { return request.auth != null && sd('economyKeys',k).uid == request.auth.uid; }
+    function daily(b, field, fallback) { return b.day == dayNow() ? b[field] : fallback; }
+    function floorRate(b) { return 100 + daily(b,'bonus',0) - daily(b,'penalty',0); }
+    function rate(b) { return floorRate(b) < 30 ? 30 : floorRate(b); }
+    function minimum(a,b) { return a < b ? a : b; }
+    function freshSocial(id) { return socialId(id) && !exists(socialPath('economyOps',id)); }
+    function blocked(b,k) {
+      let watch = exists(socialPath('bombWatch',string(b.day))) ? sd('bombWatch',string(b.day)).active : {};
+      return watch.get(b.rooms.get('pharmaceutics',''),{'members':[]}).members.hasAny([k])
+        || watch.get(b.rooms.get('pharmacology',''),{'members':[]}).members.hasAny([k])
+        || watch.get(b.rooms.get('herbal',''),{'members':[]}).members.hasAny([k])
+        || watch.get(b.rooms.get('battle',''),{'members':[]}).members.hasAny([k]);
+    }
+    function socialShape(d) {
+      return d.keys().hasOnly(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
+        && d.keys().hasAll(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
+        && d.schema == 1 && small(d.revision,9007199254740991) && d.revision > 0 && small(d.day,100000)
+        && small(d.coins,100000000) && amount(d.debt) && small(d.earned,100000000) && small(d.carry,99)
+        && small(d.bonus,10000) && small(d.penalty,10070) && small(d.usedCounters,10000) && small(d.streak,3)
+        && small(d.bubbleAt,9007199254740991) && (d.lastTarget == '' || socialKey(d.lastTarget))
+        && d.stock.keys().hasOnly(['bully','counter','bomb']) && d.stock.keys().hasAll(['bully','counter','bomb'])
+        && small(d.stock.bully,9999) && small(d.stock.counter,9999) && small(d.stock.bomb,9999)
+        && d.rooms is map && d.rooms.keys().hasOnly(['pharmaceutics','pharmacology','herbal','battle'])
+        && d.rooms.get('pharmaceutics','') is string && d.rooms.get('pharmacology','') is string
+        && d.rooms.get('herbal','') is string && d.rooms.get('battle','') is string
+        && d.cursors is map && d.cursors.size() <= 64 && d.name is string && d.name.size() <= 32 && d.updatedAt == request.time;
+    }
+    function dailyReset(n,exceptions) {
+      let values = {'earned':n.earned,'carry':n.carry,'bonus':n.bonus,'penalty':n.penalty,'usedCounters':n.usedCounters,'lastTarget':n.lastTarget,'streak':n.streak,'bubbleAt':n.bubbleAt,'rooms':n.rooms};
+      return values.diff({'earned':0,'carry':0,'bonus':0,'penalty':0,'usedCounters':0,'lastTarget':'','streak':0,'bubbleAt':0,'rooms':{}}).affectedKeys().hasOnly(exceptions);
+    }
+    function ordinaryBase(b,n,k,exceptions) {
+      let allowed = ['revision','operationId','updatedAt'].concat(exceptions);
+      return b.day <= dayNow() && n.day == dayNow() && (b.rooms.size()==0 || !blocked(b,k))
+        && n.diff(b).affectedKeys().hasOnly(b.day == dayNow() ? allowed : allowed.concat(['day','earned','carry','bonus','penalty','usedCounters','lastTarget','streak','bubbleAt','rooms']))
+        && (b.day == dayNow() || dailyReset(n,exceptions));
+    }
+    function incomeChange(b,n,k,r) {
+      let units = r.amount * rate(b) + daily(b,'carry',0);
+      let gross = int(units / 100);
+      let paid = minimum(b.debt,gross);
+      return small(r.amount,100000000) && small(r.debit,100000000)
+        && ordinaryBase(b,n,k,['coins','debt','earned','carry','cursors','name'])
+        && n.coins == b.coins + gross - paid - r.debit && n.debt == b.debt - paid
+        && n.earned == daily(b,'earned',0) + gross && n.carry == units % 100
+        && n.name is string && n.name.size() <= 32 && n.cursors is map && n.cursors.size() <= 64
+        && cursorsValid(b.cursors,n.cursors,r.devices);
+    }
+    function stockChange(b,n,kind,delta) {
+      return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock[kind] + delta && small(n.stock[kind],9999);
+    }
+    function couponChange(b,n,k,r) {
+      let price = r.get('item','') == 'bully' ? 180 : r.get('item','') == 'counter' ? 60 : 600;
+      return r.kind == 'buy' ? (r.item in ['bully','counter','bomb'] && ordinaryBase(b,n,k,['coins','stock']) && n.coins == b.coins - price && stockChange(b,n,r.item,1))
+        : r.kind == 'counter' ? (ordinaryBase(b,n,k,['stock','penalty','usedCounters','bubbleAt']) && stockChange(b,n,'counter',-1) && n.penalty == 0 && n.usedCounters == daily(b,'usedCounters',0)+1 && n.bubbleAt >= request.time.toMillis()-60000 && n.bubbleAt <= request.time.toMillis()+5000)
+        : r.kind == 'bomb' && ordinaryBase(b,n,k,['stock']) && stockChange(b,n,'bomb',-1) && daily(b,'usedCounters',0)>=6 && rate(b)<70;
+    }
+    function bullyChange(b,n,k,r) {
+      return k == r.actor
+        ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1 && n.lastTarget == r.target && n.streak == r.step
+        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+70,daily(b,'penalty',0)+r.step);
+    }
+    function enrollChange(b,n,k,r) {
+      return ordinaryBase(b,n,k,['rooms']) && n.rooms.diff(daily(b,'rooms',{})).affectedKeys().hasOnly([r.building]) && n.rooms[r.building] == r.room;
+    }
+    function settlementMoney(b,n,k,r) {
+      return r.actor != r.target && (k == r.actor
+        ? n.diff(b).affectedKeys().hasOnly(['coins','revision','operationId','updatedAt']) && n.coins == b.coins + r.amount
+        : k == r.target && n.diff(b).affectedKeys().hasOnly(['coins','debt','revision','operationId','updatedAt']) && n.coins == b.coins-r.cash && n.debt == b.debt+r.debt);
+    }
+    function moneyOperation(k,b,n) {
+      let r = sa('economyOps',n.operationId);
+      return freshSocial(n.operationId) && (r.kind == 'settle' ? settlementMoney(b,n,k,r)
+        : r.kind == 'bully' ? bullyChange(b,n,k,r)
+        : r.actor == k && r.day == dayNow() && (r.kind in ['income','game'] ? incomeChange(b,n,k,r)
+          : r.kind in ['buy','counter','bomb'] ? couponChange(b,n,k,r)
+          : r.kind == 'enroll' && enrollChange(b,n,k,r)));
+    }
+    function fountainMoney(k,b,n) {
+      let r = getAfter(receiptPath(n.operationId)).data;
+      return belongs(k) && operation(n.operationId) && !exists(receiptPath(n.operationId))
+        && ordinaryBase(b,n,k,['coins']) && n.coins == b.coins - 1000 + r.coins && r.walletBefore == b.coins;
+    }
+    function initialMoney(k,d) {
+      return sa('economyKeys',k).uid == request.auth.uid && sa('economyAccounts',request.auth.uid).key == k
+        && d.coins == getAfter(playerPath()).data.coins && d.revision == 1 && d.day == dayNow()
+        && d.debt == 0 && d.earned == 0 && d.carry == 0 && d.bonus == 0 && d.penalty == 0
+        && d.stock == {'bully':0,'counter':0,'bomb':0} && d.usedCounters == 0 && d.streak == 0
+        && d.lastTarget == '' && d.bubbleAt == 0 && d.rooms == {} && d.cursors == {} && d.operationId == null;
+    }
+    function projection(uid,d) {
+      let key = d.economy.key;
+      let w = sa('money',key);
+      return d.economy.keys().hasOnly(['key','revision']) && socialKey(key)
+        && sa('economyAccounts',uid).key == key && d.coins == w.coins && d.economy.revision == w.revision;
+    }
+    function receiptShape(r) {
+      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt'])
+        && r.keys().hasAll(['schema','kind','actor','day','createdAt']) && r.schema == 1 && socialKey(r.actor) && small(r.day,100000) && r.createdAt == request.time;
+    }
+    function pairedReceipt(id,r) {
+      let actor = sd('money',r.actor);
+      let used = exists(socialPath('bullyPairs',r.pair)) ? sd('bullyPairs',r.pair).used : 0;
+      let step = daily(actor,'lastTarget','') == r.target ? minimum(3,daily(actor,'streak',0)+1) : 1;
+      return socialKey(r.target) && r.target != r.actor && r.pair == string(r.day)+'_'+r.actor+'_'+r.target
+        && used < 3 && r.step == step && sa('bullyPairs',r.pair).used == used+1
+        && sa('bullyPairs',r.pair).operationId == id && sa('money',r.target).operationId == id;
+    }
+    function enrollReceipt(id,r) {
+      return r.building in ['pharmaceutics','pharmacology','herbal','battle'] && r.group == string(r.day)+'_'+r.building
+        && small(r.number,10000) && r.number>0 && r.room == r.group+'_'+string(r.number) && r.member == r.group+'_'+r.actor
+        && (r.newMember
+          ? !exists(socialPath('classMembers',r.member)) && sa('classMembers',r.member).operationId == id && sa('classDays',r.group).operationId == id && sa('classRooms',r.room).operationId == id
+          : sd('classMembers',r.member).room == r.room && sd('classRooms',r.room).members.hasAny([r.actor]));
+    }
+    function bombReceipt(id,r) {
+      let room = sd('classRooms',r.room);
+      let watch = sa('bombWatch',string(r.day));
+      let bomb = sa('bombs',id);
+      let actor = sd('money',r.actor);
+      return room.day == r.day && room.building == r.building && room.activeBomb == null && r.members == room.members && r.members.size()>0
+        && actor.day == r.day && actor.rooms.keys().hasAny([r.building]) && sa('classRooms',r.room).activeBomb == id
+        && watch.active[r.room] == {'operationId':id,'members':r.members} && watch.operationId == id
+        && bomb.actor == r.actor && bomb.day == r.day && bomb.room == r.room && bomb.members == r.members;
+    }
+    function settlementReceipt(id,r) {
+      let bomb = sd('bombs',r.bomb);
+      let next = sa('bombs',r.bomb);
+      let victim = sd('money',r.target);
+      let old = sd('bombWatch',string(r.day));
+      let watch = sa('bombWatch',string(r.day));
+      let remaining = old.active[r.room].members.removeAll([r.target]);
+      let value = r.target == r.actor ? 0 : int(victim.earned / 5);
+      return id == 'b'+r.bomb+'_'+r.target && socialKey(r.target) && r.actor == bomb.actor && r.room == bomb.room && r.day == bomb.day
+        && !bomb.done && victim.day == r.day && bomb.members.hasAny([r.target]) && old.active[r.room].operationId == r.bomb && old.active[r.room].members.hasAny([r.target])
+        && r.amount == value && r.cash == minimum(victim.coins,value) && r.debt == value-r.cash
+        && (r.actor == r.target || sa('money',r.actor).operationId == id && sa('money',r.target).operationId == id)
+        && next.operationId == id && next.settled == bomb.settled+1 && next.total == bomb.total+value && next.done == (remaining.size()==0)
+        && watch.operationId == id && watch.active.diff(old.active).affectedKeys().hasOnly([r.room])
+        && (remaining.size()==0 ? !watch.active.keys().hasAny([r.room]) && sa('classRooms',r.room).activeBomb == null
+          : watch.active[r.room] == {'operationId':r.bomb,'members':remaining});
+    }
+    match /economyAccounts/{uid} {
+      allow get: if request.auth != null && request.auth.uid == uid;
+      allow create: if request.auth != null && request.auth.uid == uid && request.resource.data.keys().hasOnly(['schema','key'])
+        && request.resource.data.schema == 1 && socialKey(request.resource.data.key) && sa('economyKeys',request.resource.data.key).uid == uid;
+      allow list, update, delete: if false;
+    }
+    match /economyKeys/{key} {
+      allow get: if request.auth != null && resource.data.uid == request.auth.uid;
+      allow create: if request.auth != null && socialKey(key) && request.resource.data == {'uid':request.auth.uid} && sa('economyAccounts',request.auth.uid).key == key;
+      allow list, update, delete: if false;
+    }
+    match /money/{key} {
+      allow get: if request.auth != null;
+      allow create: if request.auth != null && socialKey(key) && socialShape(request.resource.data) && initialMoney(key,request.resource.data);
+      allow update: if request.auth != null && request.resource.data.updatedAt == request.time
+        && request.resource.data.revision == resource.data.revision+1 && small(request.resource.data.coins,100000000)
+        && amount(request.resource.data.debt) && small(request.resource.data.earned,100000000)
+        && small(request.resource.data.bonus,10000) && small(request.resource.data.penalty,10070)
+        && (moneyOperation(key,resource.data,request.resource.data) || fountainMoney(key,resource.data,request.resource.data));
+      allow list, delete: if false;
+    }
+    match /economyOps/{id} {
+      allow get: if request.auth != null;
+      allow create: if request.auth != null && socialId(id) && receiptShape(request.resource.data)
+        && (request.resource.data.kind == 'settle' ? settlementReceipt(id,request.resource.data)
+          : operation(id) && belongs(request.resource.data.actor) && request.resource.data.day == dayNow()
+            && sa('money',request.resource.data.actor).operationId == id && sa('money',request.resource.data.actor).revision == request.resource.data.sequence
+            && (request.resource.data.kind == 'bully' ? pairedReceipt(id,request.resource.data)
+              : request.resource.data.kind == 'enroll' ? enrollReceipt(id,request.resource.data)
+              : request.resource.data.kind == 'bomb' ? bombReceipt(id,request.resource.data)
+              : request.resource.data.kind in ['income','game','buy','counter']));
+      allow list, update, delete: if false;
+    }
+    match /bullyPairs/{pair} {
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['day','actor','target','used','operationId'])
+        && request.resource.data.used == (resource == null ? 1 : resource.data.used+1) && request.resource.data.used<=3
+        && sa('economyOps',request.resource.data.operationId).kind == 'bully' && sa('economyOps',request.resource.data.operationId).pair == pair
+        && request.resource.data.actor == sa('economyOps',request.resource.data.operationId).actor && request.resource.data.target == sa('economyOps',request.resource.data.operationId).target
+        && request.resource.data.day == dayNow() && freshSocial(request.resource.data.operationId);
+      allow list, delete: if false;
+    }
+    match /classDays/{group} {
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['day','building','count','operationId'])
+        && request.resource.data.day == dayNow() && group == string(dayNow())+'_'+request.resource.data.building
+        && request.resource.data.count == (resource == null ? 1 : resource.data.count+1) && request.resource.data.count<=500000
+        && sa('economyOps',request.resource.data.operationId).kind == 'enroll' && sa('economyOps',request.resource.data.operationId).newMember
+        && sa('economyOps',request.resource.data.operationId).group == group && freshSocial(request.resource.data.operationId);
+      allow list, delete: if false;
+    }
+    match /classMembers/{member} {
+      allow get: if request.auth != null;
+      allow create: if request.auth != null && request.resource.data.keys().hasOnly(['day','building','number','key','room','operationId'])
+        && request.resource.data.day == dayNow() && request.resource.data.key == sa('economyOps',request.resource.data.operationId).actor
+        && request.resource.data.room == sa('economyOps',request.resource.data.operationId).room && request.resource.data.number == sa('economyOps',request.resource.data.operationId).number
+        && request.resource.data.building == sa('economyOps',request.resource.data.operationId).building
+        && sa('economyOps',request.resource.data.operationId).kind == 'enroll' && sa('economyOps',request.resource.data.operationId).member == member
+        && freshSocial(request.resource.data.operationId);
+      allow list, update, delete: if false;
+    }
+    match /classRooms/{room} {
+      function enrollRoom(d,r) {
+        let before = resource == null ? {'members':[],'activeBomb':null} : resource.data;
+        return d.day == dayNow() && d.building == r.building && d.number == r.number && d.activeBomb == before.activeBomb
+          && d.number == int((sa('classDays',r.group).count - 1) / 50) + 1 && d.members == before.members.concat([r.actor]) && r.newMember;
+      }
+      function changeRoom(d,r) {
+        return resource != null && d.diff(resource.data).affectedKeys().hasOnly(['activeBomb','operationId'])
+          && (r.kind == 'bomb' ? resource.data.activeBomb == null && d.activeBomb == d.operationId
+            : r.kind == 'settle' && resource.data.activeBomb == r.bomb && d.activeBomb == null && sa('bombs',r.bomb).done);
+      }
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['day','building','number','members','activeBomb','operationId'])
+        && request.resource.data.members is list && request.resource.data.members.size()>0 && request.resource.data.members.size()<=50
+        && request.resource.data.members.toSet().size()==request.resource.data.members.size()
+        && sa('economyOps',request.resource.data.operationId).room == room && freshSocial(request.resource.data.operationId)
+        && (sa('economyOps',request.resource.data.operationId).kind == 'enroll' ? enrollRoom(request.resource.data,sa('economyOps',request.resource.data.operationId))
+          : changeRoom(request.resource.data,sa('economyOps',request.resource.data.operationId)));
+      allow list, delete: if false;
+    }
+    match /bombWatch/{day} {
+      function watchChange(d,r) {
+        let before = resource == null ? {} : resource.data.active;
+        return d.active.diff(before).affectedKeys().hasOnly([r.room]) && (r.kind == 'bomb'
+          ? !before.keys().hasAny([r.room]) && d.active[r.room] == {'operationId':d.operationId,'members':r.members}
+          : r.kind == 'settle');
+      }
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null && request.resource.data.keys().hasOnly(['day','active','operationId'])
+        && request.resource.data.day == sa('economyOps',request.resource.data.operationId).day && day == string(request.resource.data.day)
+        && request.resource.data.active is map && request.resource.data.active.size()<=10000 && freshSocial(request.resource.data.operationId)
+        && watchChange(request.resource.data,sa('economyOps',request.resource.data.operationId));
+      allow list, delete: if false;
+    }
+    match /bombs/{id} {
+      allow get: if request.auth != null;
+      allow create: if request.auth != null && operation(id) && request.resource.data.keys().hasOnly(['schema','day','actor','room','members','settled','total','done','operationId','createdAt'])
+        && request.resource.data.schema == 1 && request.resource.data.operationId == id && request.resource.data.createdAt == request.time
+        && request.resource.data.settled == 0 && request.resource.data.total == 0 && request.resource.data.done == false
+        && sa('economyOps',id).kind == 'bomb' && freshSocial(id);
+      allow update: if request.auth != null && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['settled','total','done','operationId'])
+        && freshSocial(request.resource.data.operationId) && sa('economyOps',request.resource.data.operationId).kind == 'settle'
+        && sa('economyOps',request.resource.data.operationId).bomb == id;
+      allow list, delete: if false;
+    }
+
     match /players/{uid} {
       function owner() { return request.auth != null && request.auth.uid == uid; }
       function valid() {
         let d = request.resource.data;
-        return d.keys().hasOnly(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain'])
+        return d.keys().hasOnly(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain', 'economy'])
           && d.keys().hasAll(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt'])
           && d.schema == 1 && d.revision is int && d.revision > 0
           && d.payload is string && d.payload.size() <= 750000
           && d.modifiedAt is int && d.modifiedAt > 0
           && d.modifiedAt <= request.time.toMillis() + 300000
           && d.updatedAt == request.time
+          && (d.get('economy',null) == null || projection(uid,d))
           && (!d.keys().hasAny(['coins']) || (d.coins is int && d.coins >= 0 && d.coins <= 100000000));
       }
       allow get: if owner();
       allow create: if owner() && valid() && request.resource.data.revision == 1 && !request.resource.data.keys().hasAny(['fountain']);
       allow update: if owner() && valid() && request.resource.data.revision == resource.data.revision + 1
+        && (resource.data.get('economy',null) == null || request.resource.data.get('economy',null) != null)
         && (request.resource.data.get('fountain', null) == resource.data.get('fountain', null)
           || validFlow(request.resource.data.fountain.operationId));
       allow list, delete: if false;

@@ -1,7 +1,7 @@
 (function(root, factory) {
-  const api = factory(typeof module === 'object' && module.exports ? require('./engine.js') : root.MindEngine,typeof module === 'object' && module.exports ? require('./adventure.js') : root.MindAdventure);
+  const api = factory(typeof module === 'object' && module.exports ? require('./engine.js') : root.MindEngine,typeof module === 'object' && module.exports ? require('./adventure.js') : root.MindAdventure,typeof module === 'object' && module.exports ? require('./social-economy.js') : root.MindEconomy);
   if (typeof module === 'object' && module.exports) module.exports = api; else root.MindCombat = api;
-})(typeof window === 'object' ? window : globalThis, function(E,R) {
+})(typeof window === 'object' ? window : globalThis, function(E,R,P) {
   'use strict';
   const MAX = 100000000;
   const ENEMIES = [
@@ -25,7 +25,7 @@
     const d = new Date(day + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7); return d.toISOString().slice(0,10);
   }
   function addDays(day, count) { const d = new Date(day+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+count); return d.toISOString().slice(0,10); }
-  function fresh(day = E.today()) { return {version:1,coins:0,supplies:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
+  function fresh(day = E.today()) { return {version:1,coins:0,economy:P.localFresh(),supplies:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
   function score(a) { return Object.values(a.week.records).reduce((n,r)=>n+r.points,0); }
   function rank(points) { return RANKS.slice().reverse().find(r=>points>=r.min) || RANKS[0]; }
   function rollWeek(a, day = E.today()) {
@@ -35,10 +35,10 @@
     if (current < a.week.id) return false;
     const points = score(a), r = rank(points), bonus = points ? r.bonus : 0;
     if (points) a.history = [{week:a.week.id,points,rank:r.id,bonus},...a.history].slice(0,8);
-    a.coins = Math.min(MAX,a.coins+bonus); a.week = {id:current,records:{}};
+    P.award(a,bonus); a.week = {id:current,records:{}};
     return true;
   }
-  function claimCoins(a, day = E.today()) { rollWeek(a,day); if(a.login===day) return 0; a.login=day; a.coins=Math.min(MAX,a.coins+80); return 80; }
+  function claimCoins(a, day = E.today()) { rollWeek(a,day); if(a.login===day) return 0; a.login=day; P.award(a,80); return 80; }
   function buy(s, id) {
     const item=GOODS.find(i=>i.id===id), a=s.arena;
     if(!item || !a || a.coins<item.price) return false;
@@ -90,7 +90,7 @@
     const key=b.day+':'+b.enemyId,prev=a.week.records[key]||{points:0,coins:0};
     const earnedPoints=eligible?Math.max(0,value.points-prev.points):0, earnedCoins=eligible?Math.max(0,value.coins-prev.coins):0;
     if(eligible && value.points>prev.points) a.week.records[key]={...value,correct:total.correct,win:total.win};
-    a.coins=Math.min(MAX,a.coins+earnedCoins);
+    P.award(a,earnedCoins);
     b.result={...total,...value,earnedPoints,earnedCoins,eligible};
   }
   function next(s,day=E.today()) {
@@ -128,7 +128,7 @@
     const date=v=>{if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v)||!Number.isFinite(Date.parse(v+'T00:00:00Z'))||new Date(v+'T00:00:00Z').toISOString().slice(0,10)!==v)invalid();return v;};
     if(!raw||typeof raw!=='object'||raw.version!==1||!raw.week||!raw.week.records||Array.isArray(raw.week.records)||typeof raw.week.records!=='object')invalid();
     const week=date(raw.week.id);if(weekId(week)!==week)invalid();
-    const a={version:1,coins:num(raw.coins),supplies:num(raw.supplies),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
+    const a={version:1,coins:num(raw.coins),economy:P.localRestore(raw.economy),supplies:num(raw.supplies),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
     if(Object.keys(raw.week.records).length>28)invalid();
     for(const [key,r] of Object.entries(raw.week.records)) {
       const [day,id]=key.split(':'),enemy=ENEMIES.find(e=>e.id===id);

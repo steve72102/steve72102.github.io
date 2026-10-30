@@ -1,4 +1,4 @@
-(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./world-layout.js'):root.MindWorldLayout);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindWalk=api;})(typeof window==='object'?window:globalThis,function(D){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./world-layout.js'):root.MindWorldLayout,typeof module==='object'&&module.exports?require('./classroom.js'):root.MindClassrooms);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindWalk=api;})(typeof window==='object'?window:globalThis,function(D,Q){
   'use strict';
   const WIDTH=1000,HEIGHT=667,SPEED=135;
   const point=([x,y])=>({x,y}),poly=points=>points.map(point),rect=(x,y,w,d)=>poly([[x-w/2,y-d/2],[x+w/2,y-d/2],[x+w/2,y+d/2],[x-w/2,y+d/2]]);
@@ -17,6 +17,7 @@
   function arrival(from,portalId){const p=outdoors[from]?.portals.find(p=>p.id===portalId),next=outdoors[p?.to];if(!next)return null;const gate=next.portals.find(q=>q.id===p.arrival);return {scene:p.to,position:nearest(next,gate?.out||next.spawn)};}
   function mapPoint(id){const outside=id.startsWith('hall:')?'district:'+id.split(':')[1]:id;return outdoors[outside]?.mapPoint||{x:500,y:355};}
   function district(id){return districts[id]||campus;}
+  const classrooms=Object.fromEntries(Object.entries(Q.rooms).map(([id,raw])=>{const scene=layout(raw);scene.surfaces=raw.tables.map(([x,y,w,d,height],i)=>({id:'class-table-'+i,x,y,w,d,height,hidden:true,polygon:rect(x,y,w,d)}));return [id,scene];}));
   const hallCache=new Map();
   function hall(name,building='pharmaceutics'){
     if(!name&&hallCache.has(building))return hallCache.get(building);
@@ -72,5 +73,5 @@
   function route(scene,from,to){from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];const nodes=[from,...scene.nodes.filter(p=>walkable(scene,p)),to],last=nodes.length-1,cost=nodes.map(()=>Infinity),prev=nodes.map(()=>-1),seen=new Set();cost[0]=0;while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]<cost[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);for(let v=1;v<nodes.length;v++)if(!seen.has(v)&&clear(scene,nodes[u],nodes[v])){const next=cost[u]+distance(nodes[u],nodes[v]);if(next<cost[v]){cost[v]=next;prev[v]=u;}}}if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);return result;}
   function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
-  return {WIDTH,HEIGHT,SPEED,campus,district,hall,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,clear,move,route,near,direction};
+  return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,clear,move,route,near,direction};
 });

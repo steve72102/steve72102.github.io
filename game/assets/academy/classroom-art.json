@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "prompts": [
+    {
+      "id": "pharmaceutics",
+      "prompt": "Use case: stylized-concept. Asset: original 2.5D Taiwanese pharmacy-academy role-playing game classroom background, landscape 1536x1024. Beautiful detailed painterly game environment with realistic materials, refreshing bright daylight, soft shadows, gentle ivory/mint palette, same elevated near-orthographic camera looking from the south toward the north at about 55 degrees, no people, no characters, no UI, no text, no logos, no watermark. A spacious classroom for fifty students, original architecture inspired by the specified Taiwanese university, without copying an identifiable room. Navigation layout is essential: north wall and teaching display occupy upper 20 percent of image; open continuous floor from y=25% to bottom. Keep the central corridor x=38%-62% and the whole foreground y=70%-100% clear. Group work tables and chairs only in the left and right side zones, around x=15%-32% and x=68%-85%, y=38%-60%; clear walkways around all furniture. An open exit threshold at bottom center, no front wall. Finished scene, fine readable details, coherent perspective, no dramatic fisheye. NTU-inspired historic red-brick arches, cream terrazzo floors with delicate mint geometric border, tall arched windows, bright original pharmaceutical formulation teaching lab. Perimeter sage and cream workbenches, transparent beakers, compact tablet-press teaching models, mortar-and-pestle stations, carefully organized unbranded laboratory supplies. Large simple blank green teaching board at north center, restrained warm copper details."
+    },
+    {
+      "id": "pharmacology",
+      "prompt": "Use case: stylized-concept. Asset: original 2.5D Taiwanese pharmacy-academy role-playing game classroom background, landscape 1536x1024. Beautiful detailed painterly game environment with realistic materials, refreshing bright daylight, soft shadows, gentle ivory/mint palette, same elevated near-orthographic camera looking from the south toward the north at about 55 degrees, no people, no characters, no UI, no text, no logos, no watermark. A spacious classroom for fifty students, original architecture inspired by the specified Taiwanese university, without copying an identifiable room. Navigation layout is essential: north wall and teaching display occupy upper 20 percent of image; open continuous floor from y=25% to bottom. Keep the central corridor x=38%-62% and the whole foreground y=70%-100% clear. Group work tables and chairs only in the left and right side zones, around x=15%-32% and x=68%-85%, y=38%-60%; clear walkways around all furniture. An open exit threshold at bottom center, no front wall. Finished scene, fine readable details, coherent perspective, no dramatic fisheye. NTHU-inspired modern light concrete and glazed science architecture, very bright cool sky-blue and lilac seminar classroom. Broad rectangular windows and pale oak acoustic fins, pale blue speckled floor. Distinctive curved group desks at the sides, a physical molecular ball-and-stick model and receptor-shape teaching models along the back, an elegant blank pale teaching display north center. Original contemporary pharmacology case-discussion studio, practical chairs with visible legs."
+    },
+    {
+      "id": "herbal",
+      "prompt": "Use case: stylized-concept. Asset: original 2.5D Taiwanese pharmacy-academy role-playing game classroom background, landscape 1536x1024. Beautiful detailed painterly game environment with realistic materials, refreshing bright daylight, soft shadows, gentle ivory/mint palette, same elevated near-orthographic camera looking from the south toward the north at about 55 degrees, no people, no characters, no UI, no text, no logos, no watermark. A spacious classroom for fifty students, original architecture inspired by the specified Taiwanese university, without copying an identifiable room. Navigation layout is essential: north wall and teaching display occupy upper 20 percent of image; open continuous floor from y=25% to bottom. Keep the central corridor x=38%-62% and the whole foreground y=70%-100% clear. Group work tables and chairs only in the left and right side zones, around x=15%-32% and x=68%-85%, y=38%-60%; clear walkways around all furniture. An open exit threshold at bottom center, no front wall. Finished scene, fine readable details, coherent perspective, no dramatic fisheye. NCKU-inspired warm brick, timber and abundant green garden architecture. Airy botanical materia-medica classroom: warm light wooden floor, botanical specimen cabinets, blank specimen cards, amber herb jars without labels, small mint and other medicinal-herb planters, generous bright garden windows, timber group tables at the sides, a simple green teaching board north center. Relaxing greenhouse-meets-classroom feeling with fine natural wood grain, not cluttered."
+    },
+    {
+      "id": "battle",
+      "prompt": "Use case: stylized-concept. Asset: original 2.5D Taiwanese pharmacy-academy role-playing game classroom background, landscape 1536x1024. Beautiful detailed painterly game environment with realistic materials, refreshing bright daylight, soft shadows, gentle ivory/mint palette, same elevated near-orthographic camera looking from the south toward the north at about 55 degrees, no people, no characters, no UI, no text, no logos, no watermark. A spacious classroom for fifty students, original architecture inspired by the specified Taiwanese university, without copying an identifiable room. Navigation layout is essential: north wall and teaching display occupy upper 20 percent of image; open continuous floor from y=25% to bottom. Keep the central corridor x=38%-62% and the whole foreground y=70%-100% clear. Group work tables and chairs only in the left and right side zones, around x=15%-32% and x=68%-85%, y=38%-60%; clear walkways around all furniture. An open exit threshold at bottom center, no front wall. Finished scene, fine readable details, coherent perspective, no dramatic fisheye. NTHU-inspired contemporary academic architecture transformed into an original knowledge-duel training classroom. Bright ivory, pale gold and muted teal, large glazed windows, pale stone floor with a subtle original circular gold inlay in the open center. Side-tiered discussion benches and individual lightweight chairs, two elegant small presentation lecterns at the north corners and a blank central scoreboard-like teaching panel. It remains a welcoming university classroom rather than a dark combat dungeon. No weapons, no stadium crowd."
+    }
+  ],
+  "files": [
+    {
+      "id": "pharmaceutics",
+      "source": "exec-951420e2-c76d-4800-950f-21daad8d01b7.png",
+      "asset": "classroom-pharmaceutics.webp"
+    },
+    {
+      "id": "pharmacology",
+      "source": "exec-33a4e162-fde4-484a-94c0-525d0a2cd029.png",
+      "asset": "classroom-pharmacology.webp"
+    },
+    {
+      "id": "herbal",
+      "source": "exec-a501bc8b-bb3b-4d87-82fb-fcb5fba99220.png",
+      "asset": "classroom-herbal.webp"
+    },
+    {
+      "id": "battle",
+      "source": "exec-560ab5a6-8e78-4428-8e63-3aa72a2b590e.png",
+      "asset": "classroom-battle.webp"
+    }
+  ]
+}

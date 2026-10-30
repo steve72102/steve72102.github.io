@@ -20,10 +20,14 @@ window.MindWishCloud=function(ctx){
         // Read every document before writing; callback retries keep the same operation and ticket.
         const [playerSnap,poolSnap,receiptSnap]=await Promise.all([tx.get(ref),tx.get(poolRef),tx.get(receiptRef)]),current=unpack(playerSnap);
         if(!current)throw Error('請先同步遊戲進度，再來許願。');
-        if(receiptSnap.exists())return {save:current.save,revision:current.revision,modifiedAt:current.modifiedAt,receipt:receiptSnap.data(),recovered:true};
-        const planned=W.plan(current.save,poolSnap.exists()?poolSnap.data():null,intent.ticket,intent.id),now=Date.now(),revision=current.revision+1,sequence=(current.fountain?.sequence||0)+1;
+        const economyContext=ctx.economy?await ctx.economy().readWish(tx,{sdk,current}):null;
+        const baseSave=economyContext?window.MindEconomy.project(current.save,economyContext.key,economyContext.rolled,[]):current.save;
+        if(receiptSnap.exists())return {save:baseSave,revision:current.revision,modifiedAt:current.modifiedAt,receipt:receiptSnap.data(),recovered:true};
+        const planned=W.plan(baseSave,poolSnap.exists()?poolSnap.data():null,intent.ticket,intent.id),now=Date.now(),revision=current.revision+1,sequence=(current.fountain?.sequence||0)+1;
         const receipt={...planned.receipt,sequence,playerRevision:revision,updatedAt:sdk.db.serverTimestamp()};
-        tx.set(ref,{schema:1,revision,payload:JSON.stringify(planned.save),coins:planned.save.arena.coins,modifiedAt:now,updatedAt:sdk.db.serverTimestamp(),fountain:{sequence,operationId:intent.id,at:sdk.db.serverTimestamp()}});
+        const integrated=ctx.economy?ctx.economy().writeWish(tx,{sdk,current,save:planned.save,operationId:intent.id,context:economyContext}):{save:planned.save};
+        planned.save=integrated.save;
+        tx.set(ref,{schema:1,revision,...(integrated.economy?{economy:integrated.economy}:{}),payload:JSON.stringify(planned.save),coins:planned.save.arena.coins,modifiedAt:now,updatedAt:sdk.db.serverTimestamp(),fountain:{sequence,operationId:intent.id,at:sdk.db.serverTimestamp()}});
         tx.set(poolRef,{...planned.pool,updatedAt:sdk.db.serverTimestamp()});
         tx.set(receiptRef,receipt);
         return {save:planned.save,revision,modifiedAt:now,receipt,recovered:false};

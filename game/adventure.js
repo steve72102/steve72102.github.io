@@ -1,4 +1,4 @@
-(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./wish.js'):root.MindWish);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAdventure=api;})(typeof window==='object'?window:globalThis,function(E,F){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./wish.js'):root.MindWish,typeof module==='object'&&module.exports?require('./social-economy.js'):root.MindEconomy);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAdventure=api;})(typeof window==='object'?window:globalThis,function(E,F,P){
   'use strict';
   const MAX=100000000,SLOTS={coat:'上衣／披風',hat:'帽子',boots:'靴子',badge:'徽章'};
   const GEAR=[
@@ -32,7 +32,7 @@
   function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
   function equip(s,id){const g=gear(id);if(!g||!s.rpg.items[id]||Math.floor(s.xp/100)+1<(g.level||1))return false;s.rpg.loadout[g.slot]=id;return true;}
   function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;return true;}
-  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];s.arena.coins=Math.min(MAX,s.arena.coins+(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
+  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];P.award(s.arena,(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
   function expandPrice(s){return 300+(s.rpg.capacity-50)*20;}
   function expand(s){const price=expandPrice(s);if(s.rpg.capacity>=100||s.arena.coins<price)return false;s.arena.coins-=price;s.rpg.capacity+=10;return true;}
   function visit(s,id){if(!places.includes(id)||s.rpg.visited.includes(id))return false;s.rpg.visited.push(id);return true;}
@@ -44,7 +44,7 @@
     [Math.min(20,s.mastered.length)+Number(r.defeated.includes('silver')),21],
     [Math.min(40,s.mastered.length)+Number(r.defeated.includes('gold')),41]
   ][r.quest];return {current:data[0],total:data[1],done:data[0]>=data[1]};}
-  function claimQuest(s){const q=QUESTS[s.rpg.quest];if(!q||!progress(s).done||!room(s))return null;grant(s,q.item);s.arena.coins=Math.min(MAX,s.arena.coins+q.coins);s.rpg.quest++;return q;}
+  function claimQuest(s){const q=QUESTS[s.rpg.quest];if(!q||!progress(s).done||!room(s))return null;grant(s,q.item);P.award(s.arena,q.coins);s.rpg.quest++;return q;}
   function recordBattle(s){const b=s.arena.battle,r=s.rpg;if(!r||!b||b.phase!=='done'||!b.result?.win)return null;let changed=false;if(!r.defeated.includes(b.enemyId)){r.defeated.push(b.enemyId);changed=true;}if(!b.result.eligible||b.day<=(r.lootDays[b.enemyId]||''))return changed?{recorded:true}:null;
     const pools={bronze:['coat-dawn','boots-dawn','badge-seed'],silver:['coat-herb','boots-path','badge-prism'],gold:['coat-star','boots-star','badge-prism'],diamond:['badge-sage','coat-star','boots-star']};
     const seed=Array.from(b.day+b.enemyId+b.subject).reduce((n,c)=>(n*31+c.charCodeAt(0))>>>0,7),pool=pools[b.enemyId],id=pool[seed%pool.length];r.lootDays[b.enemyId]=b.day;r.pending[id]=Math.min(MAX,(r.pending[id]||0)+1);return {id,recorded:true};
