@@ -3,7 +3,7 @@
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MindDuel=api;
 })(typeof window==='object'?window:globalThis,function(E,C,A){
   'use strict';
-  const VERSION='mq-duel-3', BANK='notes-3221-r5';
+  const VERSION='mq-duel-3', BANK='notes-3221-r6';
   function profile(raw) {
     if(!raw||typeof raw!=='object'||typeof raw.name!=='string'||!Number.isInteger(raw.level)||raw.level<1||raw.level>1000001)throw Error('角色資料不正確');
     const name=raw.name.trim();

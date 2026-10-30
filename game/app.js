@@ -90,7 +90,7 @@
       const pool = questions.filter(q => !q.needsReview && q.subject === key && (subjectYear === 'all' || q.exam === subjectYear) && (!calculations || q.calculation));
       return node('article', { class: 'realm ' + s.color }, node('div', { class: 'realm-top' }, node('span', { class: 'realm-icon', 'aria-hidden': 'true' }, s.icon), node('span', { class: 'realm-number' }, '0' + (i + 1))), node('p', { class: 'eyebrow' }, s.name), node('h3', {}, s.realm), node('p', {}, `${pool.length.toLocaleString()} 題知識碎片 · 每次最多 5 題`), btn('進入秘境 →', () => start(pool, s.name + (subjectYear === 'all' ? '' : ' · ' + subjectYear)), '', !pool.length));
     }));
-    return [hero, combatUI.banner(), node('div', { class: 'two-col' }, daily, track), sectionHeading('選一座秘境，開始探索', '三門學科 / 同一段成長旅程'), filter, realms, node('div', { class: 'mini-stats' }, node('span', {}, node('strong', {}, state.mastered.length), '題曾答對'), node('span', {}, node('strong', {}, state.wrong.length), '題等待複習'), node('span', {}, node('strong', {}, questions.length.toLocaleString()), '題附筆記解析'))];
+    return [hero, node('section', { class: 'panel' }, node('h3', {}, '有個概念還沒讀懂？'), node('p', {}, '用藥名或關鍵字查完整題目、逐步詳解與小圖，不影響遊戲進度。'), node('a', { class: 'button secondary', href: './learn.html', target: '_blank', rel: 'noopener' }, '查閱題目與詳解 ↗')), combatUI.banner(), node('div', { class: 'two-col' }, daily, track), sectionHeading('選一座秘境，開始探索', '三門學科 / 同一段成長旅程'), filter, realms, node('div', { class: 'mini-stats' }, node('span', {}, node('strong', {}, state.mastered.length), '題曾答對'), node('span', {}, node('strong', {}, state.wrong.length), '題等待複習'), node('span', {}, node('strong', {}, questions.length.toLocaleString()), '題附筆記解析'))];
   }
   function quiz() {
     const run = state.session;

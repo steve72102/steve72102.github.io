@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3f8f4">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>詳解查閱 · 思維冒險</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./daylight.css">
+  <link rel="stylesheet" href="./lesson.css">
+  <script defer src="./bank.js"></script>
+  <script defer src="./engine.js"></script>
+  <script defer src="./combat.js"></script>
+  <script defer src="./lesson-diagrams.js"></script>
+  <script defer src="./lesson.js"></script>
+  <script defer src="./learn.js"></script>
+</head>
+<body>
+  <main class="lesson-library" id="main">
+    <a class="quiet-link" href="./index.html">← 返回藥學學院</a>
+    <header class="library-intro"><p class="eyebrow">MIND QUEST · KNOWLEDGE NOTES</p><h1>把每個「為什麼」，讀懂。</h1><p>查閱完整題意、答案與詳解。可以放心重讀，不會影響遊戲進度。</p></header>
+    <section class="panel library-controls" aria-label="搜尋詳解">
+      <label>題目、藥名或關鍵字<input id="lesson-search" type="search" placeholder="例如：quinazoline、半衰期、prazosin" maxlength="100" autocomplete="off"></label>
+      <label>學科<select id="lesson-subject"><option value="all">全部學科</option><option value="pharmacology">藥理與藥化</option><option value="pharmaceutics">藥劑與生物藥劑</option><option value="herbal">藥物分析與生藥學</option></select></label>
+    </section>
+    <div id="library" aria-live="polite"></div>
+    <noscript><p class="notice">請開啟 JavaScript，才能搜尋與閱讀隨檔附上的題庫。</p></noscript>
+  </main>
+</body>
+</html>

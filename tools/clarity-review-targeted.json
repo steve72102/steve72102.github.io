@@ -1,0 +1,97 @@
+{
+  "scope": "使用者指定的含氮環解說與跨題引用；逐題改寫並核對結構／仿單資料。",
+  "reviewedIds": [
+    "pharmacology-115-2-65",
+    "pharmacology-115-2-53",
+    "pharmacology-115-2-47",
+    "pharmacology-115-2-63",
+    "pharmacology-113-2-72"
+  ],
+  "entries": [
+    {
+      "id": "pharmacology-115-2-65",
+      "title": "三種藥共有喹唑啉與哌嗪：看圖辨認環內的氮",
+      "focus": "找出 prazosin、terazosin、doxazosin 三者都具有的兩種環型；不是比較作用時間。",
+      "explanation": "三者共有的結構是 quinazoline（喹唑啉）與 piperazine（哌嗪）。先把 N 讀成「氮原子」；所謂環內 N，是位在封閉環形路徑上的氮，不是整個分子裡所有的氮。\nQuinazoline 是兩個六元環共用一條邊：一邊是苯環，另一邊是含兩個 N 的芳香環。相近的 quinoline（喹啉）在這組融合環中只有一個 N。\nPiperazine 是另一個獨立的六元飽和環，環上的兩個 N 位在相對位置，其餘四個位置是碳。Piperidine（哌啶）的六元環則只有一個 N。這裡「飽和」指環內碳、氮之間沒有雙鍵；不是說環裡擠滿原子。\n所以這題要找的組合是「quinazoline，piperazine」。三種藥的其他末端片段雖不同，不會改變它們共有這兩種環型的事實。看下圖藍色的 N，便能直接比較四個名稱，不必先讀過其他題目。",
+      "memory": "Quinazoline：融合的兩環中有 2 個環內 N；piperazine：單一六元飽和環有 2 個相對的 N。",
+      "pitfall": "不要把環外 —NH₂ 的氮也算進環內；也不要只看到兩個 N 就認定所有含氮環都相同，還要看環的大小、是否融合、雙鍵與 N 的位置。",
+      "diagrams": [
+        "ring-nitrogen"
+      ],
+      "reviewSources": [
+        "https://pubchem.ncbi.nlm.nih.gov/compound/Quinazoline",
+        "https://www.ebi.ac.uk/chebi/CHEBI:28568",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=88efdfb0-710f-768a-e053-2995a90aede4"
+      ],
+      "reason": "補足 N、環內、融合與飽和的定義；移除依賴 Q53 的不完整指示。"
+    },
+    {
+      "id": "pharmacology-115-2-53",
+      "title": "Doxazosin：用半衰期資料比較，不能只憑環的大小猜",
+      "focus": "比較這四種 α₁ 阻斷劑的性質，尤其是血中藥物消除半衰期。",
+      "explanation": "本題選 doxazosin。半衰期是指藥物在消除階段，血中濃度降低一半所需的時間；它不是「多久開始有效」。仿單中的代表值為：prazosin 約 2–3 小時、terazosin 約 12 小時、doxazosin 約 22 小時；alfuzosin 緩釋製劑約 10 小時。指定比較中，doxazosin 的半衰期最長。\n結構方面，doxazosin 的末端帶有 benzodioxane（苯並二噁烷）片段，prazosin 與 terazosin 的相應末端則分別是 furan（呋喃）與 tetrahydrofuran（四氫呋喃）。這些名稱是區分三種藥的線索，但不能把「末端比較大」直接當成半衰期的計算公式。Alfuzosin 的側鏈連接方式也不同。\nDoxazosin 的血漿蛋白結合率約 98%；蛋白結合率指血中有多少比例的藥物暫時與蛋白結合，親脂性則描述分子對脂質環境的親和程度。兩者不是同一件事。這題應合併判斷所有條件，不能只靠「高蛋白結合」決定答案。\n在線性藥物動力學的適用模型中，t½＝0.693 × Vd ÷ CL；Vd 是表觀分布容積，CL 是清除率。分布和清除都會影響半衰期，因此不能推論所有越親脂的藥都一定留在體內越久。",
+      "memory": "這組比較記 doxazosin 約 22 小時；半衰期要看分布與清除，不能只看分子外形。",
+      "pitfall": "同一藥物的不同劑型、受試族群與研究條件可能出現不同數值；半衰期、起效時間、作用持續時間與服藥間隔不可混用。",
+      "diagrams": [
+        "alpha1-half-life"
+      ],
+      "reviewSources": [
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=88efdfb0-710f-768a-e053-2995a90aede4",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f86fc8e-71c1-4749-b67e-86d86cf1d984",
+        "https://www.dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=57125b47-2156-181c-e063-6394a90ad763",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=37e89394-af6e-4700-bfa8-2effba1a286b"
+      ],
+      "reason": "明確區分半衰期與作用時間，提供比較值與縮寫定義，避免由環大小推出藥動學。"
+    },
+    {
+      "id": "pharmacology-115-2-47",
+      "title": "Atorvastatin 的吡咯環：五個環原子，其中一個是氮",
+      "focus": "辨認哪一個藥物含 pyrrole（吡咯）環。",
+      "explanation": "答案是 atorvastatin。Pyrrole（吡咯）是一個五元芳香環：「五元」表示沿著這個環繞一圈會經過五個原子，其中四個是碳，一個是氮（N）。圖上的五角形、N 位置與雙鍵要一起看。\nRosuvastatin 的相關核心是 pyrimidine（嘧啶），為六元芳香環，含兩個環內 N；它不是五元的吡咯。Pravastatin 與 simvastatin 的核心則以稠合碳環為主，沒有吡咯環。\n四個選項都屬於 statin 類藥物，藥名有相同字尾不代表化學環型相同。這題測的是分子中的環型，應以結構辨認，而不是靠藥名的幾個字母拼出口訣。",
+      "memory": "Atorvastatin 有吡咯：五元環、1 個環內 N。Rosuvastatin 的嘧啶是六元環、2 個環內 N。",
+      "pitfall": "五角形不一定是吡咯；還要有正確的氮原子位置及芳香環鍵結。",
+      "diagrams": [
+        "statin-rings"
+      ],
+      "reviewSources": [
+        "https://meshb.nlm.nih.gov/record/ui?dcmsLinks=true&ui=D000069059",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6ebaefa9-2c71-4777-8730-83cf5ae737cc",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aa8aed58-691b-472e-8e98-53d0d3f56686"
+      ],
+      "reason": "移除來源不明的藥名字母口訣，明確解釋五元環及 N。"
+    },
+    {
+      "id": "pharmacology-115-2-63",
+      "title": "Atorvastatin 同時有吡咯環與開鏈羧酸部分",
+      "focus": "同時滿足兩個條件：有 pyrrole（吡咯）環，也有羧酸官能基。",
+      "explanation": "答案是 atorvastatin。先拆成兩項檢查：第一，它含五元的 pyrrole（吡咯）環，環上有四個碳和一個氮；第二，它另有帶羧酸的開鏈部分。羧酸基常寫成 —COOH，也可展開為 —C(=O)—OH；形成鹽時，則可呈 —COO⁻。\n其他選項不能同時滿足這兩項：pitavastatin 的含氮核心是 quinoline（喹啉）；rosuvastatin 是 pyrimidine（嘧啶），兩者都不是吡咯。Simvastatin 以內酯型前驅藥給藥，需水解成活性酸型，也沒有吡咯環。\n「開鏈」與「內酯」的差別是：前者的這一段沒有封成環；後者把酸與羥基相關位置接成環狀酯。這題不必回頭找另一題，直接用「吡咯有沒有、羧酸部分有沒有」兩項條件就能判斷。",
+      "memory": "Atorvastatin 同時符合：吡咯環＋開鏈羧酸部分；只符合其中一項還不夠。",
+      "pitfall": "羧酸成鹽後可能畫成 —COO⁻，不是因此就失去羧酸來源的官能基；也別把醯胺上的 C=O 誤認成 —COOH。",
+      "diagrams": [
+        "statin-rings"
+      ],
+      "reviewSources": [
+        "https://meshb.nlm.nih.gov/record/ui?dcmsLinks=true&ui=D000069059",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6ebaefa9-2c71-4777-8730-83cf5ae737cc",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aa8aed58-691b-472e-8e98-53d0d3f56686",
+        "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7fbfcc0c-9251-456d-a525-e62cfd8abd4b"
+      ],
+      "reason": "把跨題指示改成兩項可直接檢查的條件，補足羧酸、開鏈及內酯定義。"
+    },
+    {
+      "id": "pharmacology-113-2-72",
+      "title": "Cetirizine 的哌嗪環：六個環原子，其中兩個是氮",
+      "explanation": "Cetirizine 含 piperazine（哌嗪），所以選 cetirizine。Piperazine 是六元飽和環：沿環繞一圈，共有六個原子，其中兩個相對位置是氮（N），另外四個是碳。六元環不代表六個環，也不代表六個氮。\nTerfenadine 的 piperidine（哌啶）環同樣有六個原子，但只有一個 N；diphenhydramine 與 carbinoxamine 則屬乙醇胺／醚相關分支，不具有這個哌嗪環。可對照下圖的 piperazine 與 piperidine。\nCetirizine 為第二代 H1 抗組織胺，也可由 hydroxyzine 的代謝形成。其羧酸基與帶鹼性的氮，會影響分子的電荷狀態及進入中樞的程度。第二代通常較少嗜睡，仍不表示每個使用者都完全不會嗜睡。",
+      "memory": "Cetirizine 有哌嗪：一個六元飽和環，兩個相對的環原子是氮。Terfenadine 的哌啶只有一個環內氮。",
+      "diagrams": [
+        "ring-nitrogen"
+      ],
+      "reason": "補足 N 與六元環的定義，修正「六環」可能被理解成六個環的縮寫，讓無題圖的圈選指示改為實際圖例。",
+      "reviewSources": [
+        "https://precision.fda.gov/uniisearch/srs/unii/YO7261ME24",
+        "https://pubchem.ncbi.nlm.nih.gov/compound/Cetirizine-Hydrochloride",
+        "https://www.safetyandquality.gov.au/medicine-finder/alzene"
+      ]
+    }
+  ]
+}

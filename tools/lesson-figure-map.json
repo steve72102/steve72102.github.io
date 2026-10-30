@@ -1,0 +1,22 @@
+{
+  "fused-ring-count": {
+    "questions": ["pharmacology-110-2-60"],
+    "sources": ["https://pubchem.ncbi.nlm.nih.gov/compound/Carbazole", "https://pubchem.ncbi.nlm.nih.gov/compound/indole"]
+  },
+  "liposome": {
+    "questions": ["pharmaceutics-115-2-46", "pharmaceutics-114-1-45", "pharmaceutics-113-2-34"],
+    "sources": ["https://www.fda.gov/media/70837/download"]
+  },
+  "infusion-area": {
+    "questions": ["pharmaceutics-113-1-58", "pharmaceutics-113-1-59"],
+    "sources": []
+  },
+  "chromatography-resolution": {
+    "questions": ["herbal-115-2-36", "herbal-114-2-37"],
+    "sources": ["https://goldbook.iupac.org/terms/view/P04465"]
+  },
+  "glycoside-links": {
+    "questions": ["herbal-113-1-46", "herbal-113-2-65"],
+    "sources": ["https://goldbook.iupac.org/terms/view/G02661"]
+  }
+}

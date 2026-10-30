@@ -1,0 +1,31 @@
+.lesson-figure { margin: 24px 0; padding: 16px; border: 1px solid #d7e5dc; border-radius: 16px; background: #f8fbf6; }
+.lesson-figure h4 { margin: 0 0 12px; }
+.lesson-figure img { display: block; width: 100%; height: auto; max-width: 680px; margin: 0 auto; border-radius: 10px; }
+.lesson-figure figcaption { margin-top: 12px; color: #486458; font-size: 14px; line-height: 1.8; }
+.lesson-figure a { display: inline-block; margin-top: 8px; color: #256748; font-size: 14px; }
+.lesson-figure details { margin-top: 8px; }
+.lesson-figure summary { cursor: pointer; font-size: 14px; color: #486458; }
+.lesson-zoom-scroll { max-width: 100%; overflow: auto; margin-top: 12px; border: 1px solid #d7e5dc; border-radius: 10px; overscroll-behavior-x: contain; }
+.lesson-zoom-scroll img { width: 680px; max-width: none; margin: 0; }
+.lesson-zoom-scroll:focus-visible { outline: 3px solid #4486ba; outline-offset: 2px; }
+.lesson-library { max-width: 1040px; margin: auto; padding: 28px 24px 70px; }
+.lesson-library .library-intro { margin: 40px 0 28px; }
+.lesson-library h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.4; }
+.lesson-library .library-controls { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 22px; }
+.lesson-library label { display: grid; gap: 8px; font-weight: 650; }
+.lesson-library input, .lesson-library select { width: 100%; min-height: 46px; padding: 10px 14px; border: 1px solid #b7cbbf; border-radius: 10px; background: white; color: #203d32; font: inherit; }
+.lesson-library .library-list { display: grid; gap: 12px; list-style: none; padding: 0; }
+.lesson-library .library-result { display: block; padding: 18px 22px; border: 1px solid #dae5dc; border-radius: 12px; background: white; color: inherit; text-decoration: none; }
+.lesson-library .library-result:hover { border-color: #4b846a; }
+.lesson-library .library-result small { display: block; margin-bottom: 5px; color: #587265; }
+.lesson-library .library-result strong { font-size: 17px; line-height: 1.6; }
+.lesson-library .library-result p, .lesson-library .library-detail > p:not(.eyebrow):not(.library-count) { font-size: 16px; line-height: 1.85; }
+.lesson-library .library-nav { display: flex; justify-content: space-between; gap: 12px; margin: 16px 0; align-items: center; }
+.lesson-library .library-detail { padding: clamp(20px, 4vw, 40px); }
+.lesson-library .library-options { padding-left: 24px; line-height: 1.9; }
+.lesson-library .library-count { color: #526a5e; font-size: 14px; }
+.lesson-library .library-empty { padding: 32px; text-align: center; color: #526a5e; }
+.lesson-library a:focus-visible,.lesson-library button:focus-visible,.lesson-library input:focus-visible,.lesson-library select:focus-visible { outline: 3px solid #4486ba; outline-offset: 3px; }
+.lesson-library .lesson-guide p { font-size: 16px; line-height: 1.95; }
+.lesson-library .library-study-link { display: inline-block; margin: 5px 12px 5px 0; color: #286447; }
+@media(max-width:600px) { .lesson-library { padding: 18px 14px 50px; } .lesson-library .library-controls { grid-template-columns: 1fr; padding: 18px; } .lesson-figure { padding: 9px; } .lesson-library .library-intro { margin: 24px 0; } }
