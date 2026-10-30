@@ -1,0 +1,561 @@
+{
+  "checkedDate": "2026-10-30",
+  "questionCorrection": [
+    "pharmacology-115-1-20",
+    "pharmacology-115-1-23",
+    "pharmaceutics-115-2-59",
+    "herbal-115-2-26",
+    "herbal-115-2-27",
+    "herbal-114-1-54",
+    "herbal-113-1-28",
+    "herbal-109-2-23",
+    "herbal-108-1-39",
+    "herbal-108-1-40",
+    "pharmaceutics-114-2-61",
+    "pharmaceutics-114-2-62",
+    "pharmaceutics-114-2-63",
+    "pharmaceutics-112-1-12",
+    "pharmaceutics-111-1-53",
+    "pharmaceutics-109-1-8",
+    "pharmaceutics-108-1-11"
+  ],
+  "optionsCorrection": [
+    "pharmacology-115-1-24",
+    "pharmacology-115-1-25",
+    "pharmaceutics-114-1-1",
+    "herbal-115-2-2",
+    "herbal-115-2-26",
+    "herbal-113-2-72",
+    "pharmacology-113-1-70",
+    "pharmacology-112-2-1",
+    "pharmacology-112-2-3",
+    "pharmacology-112-2-4",
+    "pharmacology-112-2-5",
+    "pharmacology-112-2-78",
+    "pharmacology-112-1-4",
+    "pharmacology-112-1-5",
+    "pharmacology-112-1-74",
+    "pharmacology-112-1-80",
+    "pharmacology-111-2-4",
+    "pharmacology-111-2-5",
+    "pharmacology-111-2-25",
+    "pharmacology-111-2-61",
+    "pharmacology-110-2-5",
+    "pharmacology-110-2-9",
+    "pharmacology-110-2-13",
+    "pharmacology-110-2-26",
+    "pharmacology-110-2-27",
+    "pharmacology-110-2-33",
+    "pharmacology-110-2-74",
+    "pharmacology-110-1-25",
+    "pharmacology-110-1-73",
+    "pharmacology-110-1-76",
+    "pharmacology-109-2-74",
+    "pharmacology-109-1-19",
+    "pharmacology-108-2-6",
+    "pharmacology-108-2-9",
+    "pharmacology-108-2-55",
+    "pharmacology-108-2-56",
+    "pharmacology-108-1-5",
+    "pharmacology-108-1-14",
+    "pharmacology-108-1-17",
+    "pharmacology-108-1-26",
+    "pharmacology-108-1-47",
+    "pharmacology-108-1-49",
+    "pharmacology-108-1-78",
+    "pharmaceutics-113-1-14",
+    "pharmaceutics-112-1-22",
+    "pharmaceutics-109-2-9",
+    "pharmaceutics-108-1-11"
+  ],
+  "evidence": [
+    {
+      "ids": [
+        "pharmacology-115-1-20"
+      ],
+      "pages": [
+        4
+      ],
+      "exam": "pharmacology-115-1",
+      "method": "Rendered original page; GABA A subtype visible"
+    },
+    {
+      "ids": [
+        "pharmacology-115-1-23",
+        "pharmacology-115-1-24",
+        "pharmacology-115-1-25"
+      ],
+      "pages": [
+        5
+      ],
+      "exam": "pharmacology-115-1",
+      "method": "Rendered original page; K+, Na+/K+-ATPase and P2Y12 visible"
+    },
+    {
+      "ids": [
+        "pharmaceutics-115-2-59"
+      ],
+      "pages": [
+        11
+      ],
+      "exam": "pharmaceutics-115-2",
+      "method": "Rendered original page; AUC mg h/L and terminal rate h^-1 visible"
+    },
+    {
+      "ids": [
+        "pharmaceutics-114-1-1"
+      ],
+      "pages": [
+        1
+      ],
+      "exam": "pharmaceutics-114-1",
+      "method": "Rendered original page; exponents -3 and 4 visible"
+    },
+    {
+      "id": "herbal-115-2-2",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-115-2-26",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-115-2-27",
+      "pages": [
+        6
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-114-1-54",
+      "pages": [
+        10
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-113-2-72",
+      "pages": [
+        14
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-113-1-28",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-109-2-23",
+      "pages": [
+        4
+      ],
+      "method": "Rendered official page and compared restored standalone context"
+    },
+    {
+      "id": "herbal-108-1-39",
+      "pages": [
+        6
+      ],
+      "method": "Rendered official page and compared restored standalone context"
+    },
+    {
+      "id": "herbal-108-1-40",
+      "pages": [
+        6
+      ],
+      "method": "Rendered official page and compared restored standalone context"
+    },
+    {
+      "id": "pharmacology-115-1-20",
+      "pages": [
+        4
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-115-1-23",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-115-1-24",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-115-1-25",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-113-1-70",
+      "pages": [
+        16
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-2-1",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-2-3",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-2-4",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-2-5",
+      "pages": [
+        1,
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-2-78",
+      "pages": [
+        20
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-1-4",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-1-5",
+      "pages": [
+        1,
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-1-74",
+      "pages": [
+        17
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-112-1-80",
+      "pages": [
+        20
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-111-2-4",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-111-2-5",
+      "pages": [
+        1,
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-111-2-25",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-111-2-61",
+      "pages": [
+        13
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-5",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-9",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-13",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-26",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-27",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-33",
+      "pages": [
+        6
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-2-74",
+      "pages": [
+        16
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-1-25",
+      "pages": [
+        4
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-1-73",
+      "pages": [
+        13
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-110-1-76",
+      "pages": [
+        14
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-109-2-74",
+      "pages": [
+        15
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-109-1-19",
+      "pages": [
+        3
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-2-6",
+      "pages": [
+        1,
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-2-9",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-2-55",
+      "pages": [
+        10
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-2-56",
+      "pages": [
+        10
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-5",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-14",
+      "pages": [
+        3
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-17",
+      "pages": [
+        3
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-26",
+      "pages": [
+        4
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-47",
+      "pages": [
+        8
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-49",
+      "pages": [
+        9
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmacology-108-1-78",
+      "pages": [
+        14
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-115-2-59",
+      "pages": [
+        11
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-114-1-1",
+      "pages": [
+        1
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols also checked by subject reviewer"
+    },
+    {
+      "id": "herbal-108-1-40",
+      "pages": [
+        6,
+        7
+      ],
+      "method": "Independent numeric check: ratio=(0.5-0.4)/(1.5-0.5)=0.1; pKa=8-log10(ratio)=9; option C on page7"
+    },
+    {
+      "id": "pharmaceutics-114-2-61",
+      "pages": [
+        13
+      ],
+      "method": "Rendered original page to verify symbols or standalone restatement"
+    },
+    {
+      "id": "pharmaceutics-114-2-62",
+      "pages": [
+        13
+      ],
+      "method": "Rendered original page to verify symbols or standalone restatement"
+    },
+    {
+      "id": "pharmaceutics-114-2-63",
+      "pages": [
+        13
+      ],
+      "method": "Rendered original page to verify symbols or standalone restatement"
+    },
+    {
+      "id": "pharmaceutics-113-1-14",
+      "pages": [
+        3
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-112-1-12",
+      "pages": [
+        3
+      ],
+      "method": "Rendered original page to verify symbols or standalone restatement"
+    },
+    {
+      "id": "pharmaceutics-112-1-22",
+      "pages": [
+        5
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-111-1-53",
+      "pages": [
+        8
+      ],
+      "method": "Corrected the original BET mistranslation using FDA definition; lesson explicitly identifies original wording"
+    },
+    {
+      "id": "pharmaceutics-109-2-9",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-109-1-8",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols checked by subject reviewer"
+    },
+    {
+      "id": "pharmaceutics-108-1-11",
+      "pages": [
+        2
+      ],
+      "method": "Compared repaired wording with original PDF page text; symbols checked by subject reviewer"
+    }
+  ]
+}

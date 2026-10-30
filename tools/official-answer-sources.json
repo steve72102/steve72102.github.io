@@ -1,0 +1,237 @@
+{
+  "pharmaceutics-115-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=115090&c=305&s=0403&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=115090&c=305&s=0403&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=115090&c=305&s=0403&q=1"
+  },
+  "pharmaceutics-115-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=115020&c=305&s=0403&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=115020&c=305&s=0403&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=115020&c=305&s=0403&q=1"
+  },
+  "pharmaceutics-114-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=114090&c=305&s=0403&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=114090&c=305&s=0403&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=114090&c=305&s=0403&q=1"
+  },
+  "pharmaceutics-114-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=114020&c=305&s=0403&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=114020&c=305&s=0403&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=114020&c=305&s=0403&q=1"
+  },
+  "pharmaceutics-113-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=113090&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=113090&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=113090&c=305&s=33&q=1"
+  },
+  "pharmaceutics-113-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=113020&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=113020&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=113020&c=305&s=33&q=1"
+  },
+  "pharmaceutics-112-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=112100&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=112100&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=112100&c=305&s=33&q=1"
+  },
+  "pharmaceutics-112-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=112020&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=112020&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=112020&c=305&s=33&q=1"
+  },
+  "pharmaceutics-111-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=111100&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=111100&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=111100&c=305&s=33&q=1"
+  },
+  "pharmaceutics-111-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=111020&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=111020&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=111020&c=305&s=33&q=1"
+  },
+  "pharmaceutics-110-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=110101&c=305&s=55&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=110101&c=305&s=55&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=110101&c=305&s=55&q=1"
+  },
+  "pharmaceutics-110-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=110020&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=110020&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=110020&c=305&s=33&q=1"
+  },
+  "pharmaceutics-109-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=109100&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=109100&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=109100&c=305&s=33&q=1"
+  },
+  "pharmaceutics-109-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=109020&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=109020&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=109020&c=305&s=33&q=1"
+  },
+  "pharmaceutics-108-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=108100&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=108100&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=108100&c=305&s=33&q=1"
+  },
+  "pharmaceutics-108-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=108030&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=108030&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=108030&c=305&s=33&q=1"
+  },
+  "pharmacology-115-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=115090&c=305&s=0401&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=115090&c=305&s=0401&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=115090&c=305&s=0401&q=1"
+  },
+  "pharmacology-115-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=115020&c=305&s=0401&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=115020&c=305&s=0401&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=115020&c=305&s=0401&q=1"
+  },
+  "pharmacology-114-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=114090&c=305&s=0401&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=114090&c=305&s=0401&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=114090&c=305&s=0401&q=1"
+  },
+  "pharmacology-114-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=114020&c=305&s=0401&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=114020&c=305&s=0401&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=114020&c=305&s=0401&q=1"
+  },
+  "pharmacology-113-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=113090&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=113090&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=113090&c=305&s=11&q=1"
+  },
+  "pharmacology-113-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=113020&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=113020&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=113020&c=305&s=11&q=1"
+  },
+  "pharmacology-112-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=112100&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=112100&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=112100&c=305&s=11&q=1"
+  },
+  "pharmacology-112-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=112020&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=112020&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=112020&c=305&s=11&q=1"
+  },
+  "pharmacology-111-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=111100&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=111100&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=111100&c=305&s=11&q=1"
+  },
+  "pharmacology-111-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=111020&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=111020&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=111020&c=305&s=11&q=1"
+  },
+  "pharmacology-110-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=110101&c=305&s=33&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=110101&c=305&s=33&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=110101&c=305&s=33&q=1"
+  },
+  "pharmacology-110-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=110020&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=110020&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=110020&c=305&s=11&q=1"
+  },
+  "pharmacology-109-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=109100&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=109100&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=109100&c=305&s=11&q=1"
+  },
+  "pharmacology-109-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=109020&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=109020&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=109020&c=305&s=11&q=1"
+  },
+  "pharmacology-108-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=108100&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=108100&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=108100&c=305&s=11&q=1"
+  },
+  "pharmacology-108-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q&code=108030&c=305&s=11&q=1",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=S&code=108030&c=305&s=11&q=1",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=108030&c=305&s=11&q=1"
+  },
+  "herbal-115-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=115090&q=1&s=0402&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=115090&q=1&s=0402&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=115090&q=1&s=0402&t=M"
+  },
+  "herbal-114-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114090&q=1&s=0402&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114090&q=1&s=0402&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114090&q=1&s=0402&t=M"
+  },
+  "herbal-114-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114020&q=1&s=0402&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114020&q=1&s=0402&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=114020&q=1&s=0402&t=M"
+  },
+  "herbal-113-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113090&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113090&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113090&q=1&s=22&t=M"
+  },
+  "herbal-113-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113020&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113020&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=113020&q=1&s=22&t=M"
+  },
+  "herbal-112-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112100&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112100&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112100&q=1&s=22&t=M"
+  },
+  "herbal-112-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112020&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112020&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=112020&q=1&s=22&t=M"
+  },
+  "herbal-111-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111100&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111100&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111100&q=1&s=22&t=M"
+  },
+  "herbal-111-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111020&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111020&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=111020&q=1&s=22&t=M"
+  },
+  "herbal-110-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110101&q=1&s=44&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110101&q=1&s=44&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110101&q=1&s=44&t=M"
+  },
+  "herbal-110-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110020&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110020&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=110020&q=1&s=22&t=M"
+  },
+  "herbal-109-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109100&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109100&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109100&q=1&s=22&t=M"
+  },
+  "herbal-109-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109020&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109020&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=109020&q=1&s=22&t=M"
+  },
+  "herbal-108-2": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108100&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108100&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108100&q=1&s=22&t=M"
+  },
+  "herbal-108-1": {
+    "Q": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108030&q=1&s=22&t=Q",
+    "S": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108030&q=1&s=22&t=S",
+    "M": "https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?c=305&code=108030&q=1&s=22&t=M"
+  }
+}

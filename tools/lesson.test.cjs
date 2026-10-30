@@ -17,7 +17,7 @@ test('every question received a clarity review and pending records match the aud
   const audit=JSON.parse(fs.readFileSync(require.resolve('./clarity-review-audit.json'),'utf8'));
   assert.equal(bank.lessonReview.reviewed,3221);assert.equal(audit.reviewed,3221);
   assert.deepEqual(new Set(audit.reviewedIds),new Set(qs.map(q=>q.id)));
-  assert.equal(qs.filter(q=>q.needsReview).length,bank.lessonReview.pending);
+  assert.equal(qs.filter(q=>q.needsReview).length,(bank.factualReview||bank.lessonReview).pending);
   assert.equal(bank.lessonReview.clarityEdited,audit.changedIds.length);
   for(const id of audit.changedIds){const q=qs.find(q=>q.id===id);assert.ok(q.explanation.trim()&&q.memory.trim());}
 });
@@ -58,6 +58,14 @@ test('lesson figures only resolve trusted local files with accessible text and o
 
 test('pending-review cards do not present their old mnemonic as established knowledge',()=>{
   const node=(tag,attrs,...children)=>({tag,attrs,children:children.flat(Infinity)});
-  const rendered=JSON.stringify(L.render({...qs[0],needsReview:true,memory:'UNVERIFIED_MNEMONIC'},node));
+  const rendered=JSON.stringify(L.render({...qs[0],officialKey:null,needsReview:true,memory:'UNVERIFIED_MNEMONIC'},node));
   assert.match(rendered,/原筆記選項（尚待確認）/);assert.match(rendered,/暫時不要背成定論/);assert.doesNotMatch(rendered,/UNVERIFIED_MNEMONIC/);
+});
+
+test('official-answer references preserve pending concerns and reject stale or untrusted provenance',()=>{
+  const node=(tag,attrs,...children)=>({tag,attrs,children:children.flat(Infinity)});
+  const q={...qs[0],needsReview:true,officialKey:{answer:qs[0].answer,url:'https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=M&code=111100&c=305&s=33&q=1'}};
+  const card=L.card(q);assert.ok(card.officialKey);assert.equal(new URL(card.officialKey.questionUrl).searchParams.get('t'),'Q');
+  const rendered=JSON.stringify(L.render(q,node));assert.match(rendered,/正式答案（疑義待釐清）/);assert.match(rendered,/仍有疑義/);assert.match(rendered,/備註/);
+  for(const key of [{...q.officialKey,answer:(q.answer+1)%4},{...q.officialKey,url:'https://wwwq.moex.gov.tw.evil.example/exam/wHandExamQandA_File.ashx?t=S'},{...q.officialKey,url:'javascript:alert(1)'},{...q.officialKey,url:'https://wwwq.moex.gov.tw/exam/wHandExamQandA_File.ashx?t=Q'}])assert.equal(L.card({...q,officialKey:key}).officialKey,null);
 });
