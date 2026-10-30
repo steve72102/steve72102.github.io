@@ -29,4 +29,13 @@
   }
   function update(){page=0;route(null,true);render();}
   search.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(update,150);});subject.addEventListener('change',update);window.addEventListener('popstate',render);render();
+  // Existing players may arrive with an older game worker serving the old bank.
+  // Refresh this read-only page once after the new complete cache takes control.
+  if(location.protocol==='https:'&&'serviceWorker' in navigator){
+    const previousController=navigator.serviceWorker.controller;let refreshed=false;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{
+      if(previousController&&!refreshed){refreshed=true;location.reload();}
+    });
+    navigator.serviceWorker.register('./sw.js').then(registration=>registration.update()).catch(()=>{});
+  }
 })();
