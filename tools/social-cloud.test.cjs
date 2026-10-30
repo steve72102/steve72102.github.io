@@ -32,3 +32,19 @@ test('整班結算可重試，餘額不足留下欠款，使用者收到全額',
  w=db.rows.get('money/'+b.key());db.rows.set('money/'+b.key(),{...w,coins:3,earned:110,revision:w.revision+1});
  const room=a.state().arena.economy.wallet.rooms.herbal;await a.net.bomb(room);for(let i=0;i<20;i++)await tick();const job=[...db.rows].find(([path])=>path.startsWith('bombs/'));assert.ok(job);await a.net.resumeBomb(job[0].slice(6));assert.equal(db.rows.get('money/'+b.key()).debt,19);assert.equal(db.rows.get('money/'+a.key()).coins,10022);assert.equal(db.rows.get(job[0]).total,22);await a.net.resumeBomb(job[0].slice(6));assert.equal(db.rows.get('money/'+a.key()).coins,10022);
 });
+
+test('原班滿 50 人且已開第二班後，跨裝置重新登入仍保留當天同科原班',async()=>{
+ const db=database(),first=await player(db,'returning-student');
+ await first.net.enter('herbal');await first.net.enter('pharmaceutics');
+ const firstRooms=clone(first.state().arena.economy.wallet.rooms),day=first.P.day();
+ for(let i=0;i<50;i++){const newcomer=await player(db,'newcomer-'+i);await newcomer.net.enter('herbal');}
+ assert.equal(db.rows.get('classDays/'+day+'_herbal').count,51);
+ assert.equal(db.rows.get('classRooms/'+day+'_herbal_2').members.length,1);
+ const secondDevice=await player(db,'returning-student');
+ for(let i=0;i<3;i++){await secondDevice.net.enter('herbal');await secondDevice.net.enter('pharmaceutics');}
+ assert.deepEqual(secondDevice.state().arena.economy.wallet.rooms,firstRooms);
+ assert.equal(db.rows.get('classDays/'+day+'_herbal').count,51);
+ assert.equal(db.rows.get('classDays/'+day+'_pharmaceutics').count,1);
+ assert.equal(db.rows.get('classRooms/'+firstRooms.herbal).members.length,50);
+ assert.equal(db.rows.get('classRooms/'+firstRooms.herbal).members.filter(k=>k===first.key()).length,1);
+});

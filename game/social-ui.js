@@ -39,7 +39,7 @@ window.MindEconomyUI=function(ctx){
     try{
       if(ctx.building?.()===building&&network().snapshot().ready&&!current()?.rooms[building])await network().enter(building);
       const rows=await network().classes(building),w=current(),own=w?.rooms[building];
-      openModal(node('p',{class:'eyebrow'},'TODAY’S CLASSROOMS'),node('h2',{},P.BUILDINGS[building]+' · 今日班級'),summary(),note('每班最多 50 位當日成員；同一天進出仍保留原班級。不同棟樓各自計算。'),
+      openModal(node('p',{class:'eyebrow'},'TODAY’S CLASSROOMS'),node('h2',{},P.BUILDINGS[building]+' · 今日班級'),summary(),note('今日班級固定：同科目當天離開再回來、重新登入或換裝置，都會回到原班，不會重新分班。每班最多 50 人，不同棟樓各自計算。'),
         node('div',{class:'class-list'},rows.length?rows.map(room=>node('article',{class:'class-card'+(room.id===own?' my-class':'')},node('div',{},node('h3',{},'第 '+room.number+' 班'+(room.id===own?' · 你的班級':'')),note(room.members.length+' / 50 人'+(room.activeBomb?' · 金幣結算中':''))),node('div',{class:'class-actions'},btn('查看同學',()=>roster(room),'secondary small'),room.id===own?btn('進入教室',()=>{if(ctx.building?.()!==building){toast('請先走進'+P.BUILDINGS[building]+'，再進入教室。');return;}closeModal();ctx.openClass?.(building,room);},'small gold'):null,room.activeBomb?btn('繼續結算',()=>run(()=>network().resumeBomb(room.activeBomb),'班級結算已完成。',()=>classes(building)),'small secondary'):btn('使用炸彈券',()=>bomb(room),'small secondary',locked()||!w?.stock.bomb||!P.eligible(w)||!own)))):note('今天還沒有人進入這棟樓。')),
         btn('選擇其他樓',()=>classes(null),'secondary small'),note('炸彈券只結算啟用當下的名單。每位其他同學當日已入帳收入的 20%（整數無條件捨去）轉給使用者；餘額不足記為欠款。自己在名單內不會額外產生金幣。'));
     }catch(e){openModal(node('h2',{},'班級暫時無法讀取'),note(e.message),btn('重新整理',()=>classes(building),'secondary'));}

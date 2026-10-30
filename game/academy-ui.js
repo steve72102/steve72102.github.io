@@ -109,8 +109,11 @@ window.MindAcademyUI=function(ctx){
   }
   function exitClass(){if(!classroom)return;classroom=null;hallPosition={...W.hall('',building).spawn};focusWorld();lobby.leaveClass();}
   function classroomPanel(b){
-    const scene=W.classrooms[b.id],world=node('section',{class:'campus-map classroom-scene walk-world',tabindex:'0','aria-label':b.name+'第 '+classroom.number+' 班，可使用方向鍵走動'},node('img',{class:'campus-backdrop',src:BASE+scene.image,alt:b.name+'的'+scene.name+'，中央走道連接教學區與出口，兩側為實作桌椅。',width:1536,height:1024,draggable:'false'}),node('div',{class:'classroom-caption'},b.name+' · 第 '+classroom.number+' 班',node('small',{},scene.name)),portals(scene),node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
-    const walk=walkingScene(scene,world,classPosition,p=>classPosition=p,id=>{if(id==='class-exit')exitClass();else if(b.id==='battle')go(id==='class-duel'?'duel':'arena');else start(A.pool(questions,b.id,'practice',''),b.name+' · 第 '+classroom.number+' 班練習');});
+    const scene=W.classrooms[b.id],lessonLabel=b.name+' · 第 '+classroom.number+' 班上課';
+    const attend=()=>{stopWalking();const run=getState().session;if(run?.label===lessonLabel&&run.index<run.ids.length){go('quiz');return;}start(b.id==='battle'?questions.filter(q=>E.SUBJECTS[q.subject]):A.pool(questions,b.id,'practice',''),lessonLabel);};
+    const lessonButton=node('button',{type:'button',class:'classroom-start','aria-label':'上課：'+b.name+'第 '+classroom.number+' 班，開始答題',onClick:attend},node('span',{class:'classroom-start-icon','aria-hidden':'true'},'▤'),node('strong',{},'上課'),node('small',{},b.id==='battle'?'綜合知識 · 點擊開始答題':'本科知識 · 點擊開始答題'));
+    const world=node('section',{class:'campus-map classroom-scene walk-world',tabindex:'0','aria-label':b.name+'第 '+classroom.number+' 班，可使用方向鍵走動'},node('img',{class:'campus-backdrop',src:BASE+scene.image,alt:b.name+'的'+scene.name+'，中央走道連接教學區與出口，兩側為實作桌椅。',width:1536,height:1024,draggable:'false'}),node('div',{class:'classroom-caption'},b.name+' · 第 '+classroom.number+' 班',node('small',{},scene.name)),portals({...scene,portals:scene.portals.filter(p=>b.id==='battle'||p.id!=='class-lesson')}),lessonButton,node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
+    const walk=walkingScene(scene,world,classPosition,p=>classPosition=p,id=>{if(id==='class-exit')exitClass();else if(b.id==='battle')go(id==='class-duel'?'duel':'arena');else attend();});
     return node('section',{class:'building-panel interior-panel '+b.color},walk);
   }
   function choose(kind,id){if(A.choose(getState(),kind,id)){save();render();toast(kind==='character'?'已換上 '+A.character(id).name+' 的外觀。':id?'現在由 '+A.pet(id).name+' 陪你出發。':'夥伴先在工坊休息。');}}
