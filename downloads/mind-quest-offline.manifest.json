@@ -1,8 +1,8 @@
 {
   "version": 1,
   "filename": "mind-quest-offline.zip",
-  "size": 16595677,
-  "sha256": "2926ce3131345eb4f70b8cd49991d00a256daf79e3e0e59ce5cb281f7d702de4",
+  "size": 16612101,
+  "sha256": "382e60681f0f5bd5065d642d35b676e40f90bda6e108e60ae71703974970ff14",
   "parts": [
     {
       "file": "mind-quest-2926ce313134-01.part",
@@ -33,6 +33,11 @@
       "file": "mind-quest-2926ce313134-06.part",
       "bytes": 1595677,
       "sha256": "a5c53bff8ab7cb8448d65f59c762d13b90d55e49b78cac4d0b466690b2b221a9"
+    },
+    {
+      "file": "mind-quest-382e60681f0f-07.part",
+      "bytes": 16424,
+      "sha256": "89d969cdca77329f6313154310c51d00cb7ea57cfd68552b313f4bf665387aa0"
     }
   ]
 }
