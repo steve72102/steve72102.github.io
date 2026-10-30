@@ -22,7 +22,7 @@
   const PRIZES=[...GEAR.map(g=>({id:g.id,name:g.name,weight:g.weight,gear:g})),{id:'coins',name:'金球回饋金幣',weight:100}];
   const operationId=value=>typeof value==='string'&&/^[a-f0-9]{32}$/.test(value);
   const integer=(n,max=MAX_POOL)=>Number.isSafeInteger(n)&&n>=0&&n<=max;
-  function pool(raw){if(raw===undefined||raw===null)return {schema:1,balance:0,contributed:0,paidOut:0,draws:0,lastOperation:null};if(raw.schema!==1||!['balance','contributed','paidOut','draws'].every(k=>integer(raw[k]))||raw.balance+raw.paidOut!==raw.contributed||raw.draws*COST!==raw.contributed||raw.lastOperation!==null&&!operationId(raw.lastOperation))throw Error('許願池資料不正確，請稍後重新連線。');return {schema:1,balance:raw.balance,contributed:raw.contributed,paidOut:raw.paidOut,draws:raw.draws,lastOperation:raw.lastOperation};}
+  function pool(raw){if(raw===undefined||raw===null)return {schema:1,balance:0,seeded:0,contributed:0,paidOut:0,draws:0,lastOperation:null};if(raw.schema!==1||!['balance','contributed','paidOut','draws'].every(k=>integer(raw[k]))||!integer(raw.seeded??0)||raw.balance+raw.paidOut!==raw.contributed+(raw.seeded??0)||raw.draws*COST!==raw.contributed||raw.lastOperation!==null&&!operationId(raw.lastOperation))throw Error('許願池資料不正確，請稍後重新連線。');return {schema:1,balance:raw.balance,seeded:raw.seeded??0,contributed:raw.contributed,paidOut:raw.paidOut,draws:raw.draws,lastOperation:raw.lastOperation};}
   function fresh(){return {version:1,draws:0,spent:0,last:null};}
   function restore(raw){if(raw===undefined)return fresh();if(!raw||raw.version!==1||!integer(raw.draws)||!integer(raw.spent)||raw.spent!==raw.draws*COST)throw Error('許願紀錄不正確。');let last=null;if(raw.last!==null){const r=raw.last;if(!r||!operationId(r.operationId)||!PRIZES.some(p=>p.id===r.prizeId)||!integer(r.coins,MAX_COINS)||!integer(r.poolAfter)||!integer(r.at,Number.MAX_SAFE_INTEGER)||r.prizeId!=='coins'&&r.coins!==0)throw Error('許願獎勵紀錄不正確。');last={operationId:r.operationId,prizeId:r.prizeId,coins:r.coins,poolAfter:r.poolAfter,at:r.at};}return {version:1,draws:raw.draws,spent:raw.spent,last};}
   function prize(ticket){if(!Number.isInteger(ticket)||ticket<0||ticket>=TICKETS)throw Error('抽獎數值不正確。');let edge=0;return PRIZES.find(p=>ticket<(edge+=p.weight));}
@@ -36,7 +36,7 @@
     const p=pool(rawPool),s=JSON.parse(JSON.stringify(save)),w=restore(s.wishes),result=prize(ticket);
     if(!integer(s.arena?.coins,MAX_COINS)||s.arena.coins<COST)throw Error('金幣不足，許願需要 1,000 金幣。');
     if(!s.rpg||!space(s))throw Error('背包已滿，請先整理 1 格；金幣尚未扣除。');
-    if(p.contributed>MAX_POOL-COST||w.spent>MAX_POOL-COST)throw Error('許願池已達目前上限，請聯絡維護者。');
+    if(p.balance>MAX_POOL-COST||p.contributed>MAX_POOL-COST||w.spent>MAX_POOL-COST)throw Error('許願池已達目前上限，請聯絡維護者。');
     const afterDeposit=p.balance+COST,coins=result.id==='coins'?payout(afterDeposit):0,before=s.arena.coins;
     if(before-COST+coins>MAX_COINS)throw Error('錢袋無法容納這次獎金，請先使用部分金幣後再重試。');
     s.arena.coins=before-COST+coins;

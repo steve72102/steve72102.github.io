@@ -35,7 +35,8 @@ service cloud.firestore {
         && next.balance == base - coins && next.contributed == old.contributed + 1000
         && next.paidOut == old.paidOut + coins && next.draws == old.draws + 1
         && amount(next.balance) && amount(next.contributed) && amount(next.paidOut) && amount(next.draws)
-        && next.balance + next.paidOut == next.contributed && next.draws * 1000 == next.contributed
+        && amount(next.seeded) && next.seeded == old.get('seeded', 0)
+        && next.balance + next.paidOut == next.contributed + next.seeded && next.draws * 1000 == next.contributed
         && after.revision == before.revision + 1 && r.playerRevision == after.revision
         && after.fountain.keys().hasOnly(['sequence','operationId','at'])
         && after.fountain.operationId == id && after.fountain.at == request.time
@@ -46,7 +47,7 @@ service cloud.firestore {
     match /fountains/central {
       allow get: if true;
       allow create, update: if request.auth != null
-        && request.resource.data.keys().hasOnly(['schema','balance','contributed','paidOut','draws','lastOperation','updatedAt'])
+        && request.resource.data.keys().hasOnly(['schema','balance','seeded','contributed','paidOut','draws','lastOperation','updatedAt'])
         && validFlow(request.resource.data.lastOperation);
       allow list, delete: if false;
     }
