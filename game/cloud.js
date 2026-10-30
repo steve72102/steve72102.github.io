@@ -2,13 +2,14 @@ window.MindCloud=function(ctx){
   'use strict';
   const {getState,setState,restore,fresh,changed,busy,warning}=ctx;
   const GUEST='mind-quest-save-v3',ACTIVE='mind-quest-account',PREFIX='mind-quest-player:',GUEST_TIME='mind-quest-guest-updated';
+  let critical=false,economyRead=false;
   let sdk=null,uid=null,label='',record=null,phase='guest',message='訪客 · 進度保存在此瀏覽器',timer=null,inflight=false,generation=0,candidate=null,booting=false,needsRead=false,lastSync='',candidateTime=0;
-  const snapshot=()=>({uid,label,phase,message,lastSync,locked:booting||needsRead,ready:!!window.MIND_FIREBASE_CONFIG?.projectId});
+  const snapshot=()=>({uid,label,phase,message,lastSync,locked:booting||needsRead||economyRead,wishing:critical,ready:!!window.MIND_FIREBASE_CONFIG?.projectId});
   function status(p,m){phase=p;message=m;changed();}
   function parse(raw){const x=JSON.parse(raw);if(!x||x.version!==1||(x.base!==null&&(!Number.isSafeInteger(x.base)||x.base<0))||typeof x.dirty!=='boolean')throw Error('帳號快取格式不正確');return {...x,save:restore(x.save)};}
   function cache(){try{localStorage.setItem(PREFIX+uid,JSON.stringify(record));}catch(_){warning('此裝置無法保存帳號進度，請匯出備份。');}}
   function localSave(){
-    if(booting||needsRead)return;
+    if(booting||needsRead||critical||economyRead)return;
     if(!uid){const payload=JSON.stringify(getState());if(localStorage.getItem(GUEST)!==payload){localStorage.setItem(GUEST,payload);localStorage.setItem(GUEST_TIME,String(Date.now()));}return;}
     const copy=JSON.parse(JSON.stringify(getState()));
     if(record&&JSON.stringify(record.save)===JSON.stringify(copy))return;
@@ -33,12 +34,13 @@ window.MindCloud=function(ctx){
   function unpack(snap){
     if(!snap.exists())return null;
     const d=snap.data();if(d.schema!==1||!Number.isSafeInteger(d.revision)||d.revision<1||typeof d.payload!=='string'||d.payload.length>750000)throw Error('雲端存檔格式不相容，已保留本機進度。');
-    return {revision:d.revision,modifiedAt:Number.isSafeInteger(d.modifiedAt)?d.modifiedAt:0,save:restore(JSON.parse(d.payload))};
+    return {revision:d.revision,modifiedAt:Number.isSafeInteger(d.modifiedAt)?d.modifiedAt:0,save:restore(JSON.parse(d.payload)),coins:d.coins,fountain:d.fountain};
   }
-  function apply(save,revision,dirty=false,modifiedAt=0){record={version:1,base:revision,dirty,modifiedAt,save:restore(save)};needsRead=false;setState(restore(record.save));cache();}
+  function apply(save,revision,dirty=false,modifiedAt=0,preserveScene=false){record={version:1,base:revision,dirty,modifiedAt,save:restore(save)};needsRead=false;setState(restore(record.save),{preserveScene});cache();}
   function backup(value){try{localStorage.setItem(PREFIX+uid+':recovery',JSON.stringify(value));}catch(_){warning('救援備份無法保存，請手動匯出目前存檔。');}}
   async function latest(snap){
     if(busy()){status('deferred','已保留最新存檔 · 對戰結束後接續');clearTimeout(timer);timer=setTimeout(sync,5000);return;}
+    if(snap?.fountain&&(record.save.wishes?.draws!==snap.fountain.sequence||record.save.wishes?.last?.operationId!==snap.fountain.operationId)){backup(record.save);apply(snap.save,snap.revision,false,snap.modifiedAt);status('synced','其他裝置已完成許願 · 已接續完整雲端進度');return;}
     if(record.dirty&&(record.modifiedAt||0)>(snap?.modifiedAt||0)){
       if(snap)backup(snap.save);record.base=snap?.revision||0;cache();await push();
     }else{backup(record.save);apply(snap?snap.save:fresh(),snap?.revision||0,false,snap?.modifiedAt||0);status('synced','已自動接續最新進度 · 舊版已保留救援備份');}
@@ -48,12 +50,13 @@ window.MindCloud=function(ctx){
     if(uid===user.uid&&record){label=user.email||'Google 玩家';await sync();return;}
     if(busy()){status('error','請先離開雙人連線，再切換 Google 帳號。');return;}
     const token=++generation;if(!candidate){candidate=restore(getState());candidateTime=uid?0:Number(localStorage.getItem(GUEST_TIME)||0);}uid=user.uid;label=user.email||'Google 玩家';
-    localStorage.setItem(ACTIVE,uid);
+    localStorage.setItem(ACTIVE,uid);economyRead=localStorage.getItem(PREFIX+uid+':economy-read')==='1';
     const stored=localStorage.getItem(PREFIX+uid);record=stored?parse(stored):null;
     needsRead=!record;
     if(record)setState(restore(record.save));
     status('connecting','正在讀取你的雲端旅程…');
     const snap=unpack(await sdk.db.getDocFromServer(docRef()));if(token!==generation)return;
+    if(economyRead){if(!snap)throw Error('找不到待確認的帳號進度');apply(snap.save,snap.revision,false,snap.modifiedAt,true);economyRead=false;localStorage.removeItem(PREFIX+uid+':economy-read');candidate=null;status('synced','已核對許願後的雲端進度');return;}
     if(record){await reconcile(snap);return;}
     if(snap){apply(snap.save,snap.revision,false,snap.modifiedAt);candidate=null;status('synced','已接續此 Google 帳號的最新進度');}
     else{apply(window.MindJourney.hasProgress(candidate)?candidate:fresh(),0,true,candidateTime||Date.now());candidate=null;status('pending','已登入 · 正在保存旅程');await sync();}
@@ -70,8 +73,8 @@ window.MindCloud=function(ctx){
     if(payload.length>750000)throw Error('存檔太大，請匯出備份後聯絡維護者。');
     const revision=await sdk.db.runTransaction(sdk.d,async tx=>{
       const current=unpack(await tx.get(ref)),actual=current?.revision||0;
-      if(actual!==base){const e=Error('雲端版本已更新');e.code='save-conflict';throw e;}
-      tx.set(ref,{schema:1,revision:actual+1,payload,modifiedAt,updatedAt:sdk.db.serverTimestamp()});return actual+1;
+      if(actual!==base||(current?.fountain&&(JSON.parse(payload).wishes?.draws!==current.fountain.sequence||JSON.parse(payload).wishes?.last?.operationId!==current.fountain.operationId))){const e=Error('雲端版本已更新');e.code='save-conflict';throw e;}
+      tx.set(ref,{schema:1,revision:actual+1,payload,coins:JSON.parse(payload).arena.coins,...(current?.fountain?{fountain:current.fountain}:{}),modifiedAt,updatedAt:sdk.db.serverTimestamp()});return actual+1;
     });
     if(token!==generation||id!==uid)return;
     record.base=revision;record.dirty=JSON.stringify(record.save)!==payload;cache();lastSync=new Date().toLocaleTimeString('zh-TW',{hour:'2-digit',minute:'2-digit'});
@@ -81,6 +84,7 @@ window.MindCloud=function(ctx){
   async function sync(){
     if(booting||!uid||!sdk?.a.currentUser||sdk.a.currentUser.uid!==uid||inflight)return;
     if(!navigator.onLine){status('offline','離線已保存 · 連線後同步');return;}
+    if(economyRead){const token=generation,id=uid;inflight=true;try{const remote=unpack(await sdk.db.getDocFromServer(docRef()));if(token!==generation||id!==uid)return;if(!remote)throw Error('找不到待確認的帳號進度');apply(remote.save,remote.revision,false,remote.modifiedAt,true);economyRead=false;localStorage.removeItem(PREFIX+uid+':economy-read');status('synced','已核對許願後的雲端進度');}catch(e){if(token===generation&&id===uid)fail(e);}finally{inflight=false;}return;}
     if(needsRead){try{await attach(sdk.a.currentUser);}catch(e){fail(e);}return;}
     if(!record)return;
     inflight=true;
@@ -89,6 +93,7 @@ window.MindCloud=function(ctx){
     finally{inflight=false;}
   }
   async function login(){
+    if(critical)return;
     if(busy())return warning('請先離開雙人連線，再登入帳號。');
     if(phase==='signing-in')return;
     status('signing-in','正在開啟 Google 登入視窗…');
@@ -96,25 +101,46 @@ window.MindCloud=function(ctx){
     try{const s=await load();const provider=new s.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});await s.auth.signInWithPopup(s.a,provider);}catch(e){fail(e);}finally{clearTimeout(hint);}
   }
   async function logout(){
+    if(critical)return;
     if(busy())return warning('請先離開雙人連線，再登出。');
     clearTimeout(timer);++generation;
     if(sdk)await sdk.auth.signOut(sdk.a);
-    uid=null;record=null;label='';candidate=null;needsRead=false;localStorage.removeItem(ACTIVE);
+    uid=null;record=null;label='';candidate=null;needsRead=false;economyRead=false;localStorage.removeItem(ACTIVE);
     const raw=localStorage.getItem(GUEST);setState(raw?restore(JSON.parse(raw)):fresh());status('guest','已登出 · 訪客進度保存在此瀏覽器');
   }
   function restoreCache(){
     const id=localStorage.getItem(ACTIVE);if(!id||!/^[-A-Za-z0-9_]{1,128}$/.test(id))return;
     const raw=localStorage.getItem(PREFIX+id);if(!raw)return;
-    record=parse(raw);uid=id;setState(restore(record.save));phase='offline';message='帳號本機進度已載入 · 等待連線';
+    record=parse(raw);uid=id;economyRead=localStorage.getItem(PREFIX+id+':economy-read')==='1';setState(restore(record.save));phase='offline';message='帳號本機進度已載入 · 等待連線';
   }
   async function init(){try{booting=true;restoreCache();}catch(e){warning('帳號快取無法讀取，原始資料已保留，請勿清除瀏覽資料。');}finally{booting=false;}changed();if(uid&&navigator.onLine)try{await load();}catch(e){fail(e);}}
   window.addEventListener('online',()=>{if(uid&&!sdk)load().catch(fail);else sync();});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)sync();});
   window.addEventListener('storage',event=>{
     if(event.key===ACTIVE&&event.newValue!==uid){booting=true;status('error','另一分頁已切換帳號，請重新整理後繼續。');warning('為避免混用帳號，請重新整理這個分頁再遊玩。');return;}
+    if(critical||economyRead)return;
     if(event.key!==(uid?PREFIX+uid:GUEST)||!event.newValue)return;
     if(busy()){warning('另一分頁有更新，請結束雙人連線後重新整理。');return;}
     try{if(uid){record=parse(event.newValue);setState(restore(record.save));}else setState(restore(JSON.parse(event.newValue)));changed();}catch(e){warning('另一分頁存檔無法讀取，請匯出目前進度備份。');}
   });
-  return {snapshot,localSave,login,logout,sync,init,recovery:()=>uid?localStorage.getItem(PREFIX+uid+':recovery'):null};
+
+  async function transact(action){
+    if(!uid||!sdk?.a.currentUser||sdk.a.currentUser.uid!==uid)throw Error('請先使用 Google 登入，再參與全體玩家共用的許願池。');
+    if(!navigator.onLine)throw Error('共同許願池需要連線；金幣尚未扣除。');
+    if(critical||inflight||busy()||booting||needsRead||economyRead)throw Error('請先完成同步或離開雙人對戰，再來許願。');
+    localSave();critical=true;changed();const id=uid,token=generation;
+    try{
+      await sync();if(record.dirty||phase!=='synced')throw Error('雲端進度還沒同步完成，請稍後再許願。');
+      clearTimeout(timer);inflight=true;
+      localStorage.setItem(PREFIX+id+':economy-read','1');
+      const result=await action({sdk,uid:id,ref:docRef(),unpack});
+      if(token!==generation||id!==uid||localStorage.getItem(ACTIVE)!==id)throw Error('帳號已切換，請重新整理以接續正確進度。');
+      apply(result.save,result.revision,false,result.modifiedAt,true);economyRead=false;localStorage.removeItem(PREFIX+id+':economy-read');
+      status('synced','許願結果與進度已保存至雲端');return result;
+    }catch(e){
+      if(localStorage.getItem(PREFIX+id+':economy-read')==='1'){economyRead=true;status('error','許願結果待確認，重新同步前暫停修改進度。');}
+      throw e;
+    }finally{critical=false;inflight=false;changed();if(economyRead)sync();}
+  }
+  return {snapshot,localSave,login,logout,sync,init,transact,services:load,recovery:()=>uid?localStorage.getItem(PREFIX+uid+':recovery'):null};
 };

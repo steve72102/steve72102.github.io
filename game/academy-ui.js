@@ -1,6 +1,6 @@
 window.MindAcademyUI=function(ctx){
   'use strict';
-  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal,closeModal,adventure}=ctx,A=window.MindAcademy,E=window.MindEngine,J=window.MindJourney,W=window.MindWalk,R=window.MindAdventure;
+  const {node,btn,note,title,go,render,save,toast,start,questions,getState,daily,openModal,closeModal,adventure,wishing}=ctx,A=window.MindAcademy,E=window.MindEngine,J=window.MindJourney,W=window.MindWalk,R=window.MindAdventure;
   const BASE='./assets/academy/',sceneArt=window.MindSceneUI({node});
   let building=null,district=null,trail=null,travelGoal=null,trailPosition=null,districtPosition=null,floor='practice',exam='',immersive=true,walking=null,pendingWalk=null,worldZoom=1.6;
   const lobby=window.MindLobbyUI({node,btn,note,openModal,closeModal,getState,save,toast});
@@ -10,7 +10,7 @@ window.MindAcademyUI=function(ctx){
   function mount(){stopWalking();if(pendingWalk?.root.isConnected){lobby.bind(pendingWalk.root,pendingWalk.sceneId,pendingWalk.initial);walking=window.MindWalkUI(pendingWalk);if(!building&&travelGoal){const route=W.travelRoute(outsideId(),travelGoal);if(!route?.length)travelGoal=null;else walking.toward(W.outdoor(outsideId()).portals.find(p=>p.id===route[0].portal));}}}
   function controls(){return node('div',{class:'walk-console'},node('div',{class:'walk-instructions'},node('strong',{},'讓好奇心，帶你往前走'),node('p',{},'方向鍵 / WASD 移動 · Shift 加速 · 空白鍵跳躍。手機使用方向鍵與互動按鈕。'),node('div',{class:'walk-status',role:'status','aria-live':'polite'},'準備出發'),btn('靠近入口即可進入',()=>{},'walk-enter secondary small',true)),node('div',{class:'walk-pad',role:'group','aria-label':'角色移動方向'},[['up','ArrowUp','↑','向上移動'],['left','ArrowLeft','←','向左移動'],['down','ArrowDown','↓','向下移動'],['right','ArrowRight','→','向右移動']].map(([cls,direction,mark,label])=>node('button',{type:'button',class:'walk-direction walk-'+cls,'data-direction':direction,'aria-label':label},mark))),node('div',{class:'walk-extra'},btn('跳躍 ␣',()=>{},'walk-jump')));}
   function actor(){const s=getState();return window.MindAvatar({node,appearance:s.appearance,name:s.profile.name,loadout:s.rpg.loadout});}
-  function portals(scene){return scene.portals.map(p=>{const button=node('button',{type:'button',class:'walk-portal','data-walk-portal':p.id,'aria-label':'走向'+p.name+'入口'},p.name+' ↗');button.style.left=p.x/10+'%';button.style.top=p.y/W.HEIGHT*100+'%';return button;});}
+  function portals(scene){return scene.portals.filter(p=>p.id!=='wish').map(p=>{const button=node('button',{type:'button',class:'walk-portal','data-walk-portal':p.id,'aria-label':'走向'+p.name+'入口'},p.name+' ↗');button.style.left=p.x/10+'%';button.style.top=p.y/W.HEIGHT*100+'%';return button;});}
   function walkingScene(scene,world,initial,onPosition,onPortal){
     world.style.setProperty('--world-zoom',worldZoom);world.style.setProperty('--scene-scale',scene.scale||1);
     const root=node('div',{class:'walk-section'},node('div',{class:'world-viewport'},world),hud(),controls());
@@ -56,12 +56,12 @@ window.MindAcademyUI=function(ctx){
     if(current)return [toolbar(),buildingPanel(current)];
     if(district)return [toolbar(),districtPanel(A.BUILDINGS.find(b=>b.id===district))];
     if(trail)return [toolbar(),trailPanel(W.trails[trail])];
-    const scene=W.campus;
+    const scene={...W.campus,portals:[...W.campus.portals,{id:'wish',name:'中央許願池',x:500,y:425,kind:'inspect',auto:false,verb:'靠近'}]};
     const world=node('section',{class:'campus-map walk-world',tabindex:'0','aria-label':'可自由走動的校園：方向鍵或 WASD 移動，靠近入口進樓'},
       node('img',{class:'campus-backdrop',src:BASE+W.campus.image,alt:'中央金球廣場，橋與階梯分別通往西北藥劑、北方藥理、東北生藥、東南對戰、西南工坊。',fetchpriority:'high',width:1536,height:1024,draggable:'false'}),
       node('div',{class:'campus-heading'},node('p',{class:'eyebrow'},'WALK INTO YOUR ACADEMY'),node('h2',{},'沿著步道，跑進下一段冒險。'),node('p',{},'繞過中央噴泉，五座樓館都能走進去。')),
-      scenery(scene),sceneArt.birds('campus'),portals(scene),node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
-    const map=walkingScene(scene,world,campusPosition,p=>campusPosition=p,enter);
+      scenery(scene),wishing().badge(),sceneArt.birds('campus'),portals(scene),node('span',{class:'walk-target',hidden:true,'aria-hidden':'true'}),actor());
+    const map=walkingScene(scene,world,campusPosition,p=>campusPosition=p,id=>id==='wish'?wishing().open():enter(id));
     const identity=node('section',{class:'academy-pass'},portrait(s.appearance,'pass'),node('div',{class:'academy-pass-copy'},node('p',{class:'eyebrow'},'YOUR COMPANION, YOUR PACE'),node('h3',{},s.profile.name||person.name),node('p',{},pet?pet.name+' 正在等你一起出發。':'今天，跟著自己的步調出發。'),node('span',{class:'cosmetic-note'},'以理解結伴，讓好奇心一起成長')),btn('領取今日補給',daily,'gold small'),btn(s.session&&s.session.index<s.session.ids.length?'繼續上次答題 →':'自由修練 →',()=>go(s.session&&s.session.index<s.session.ids.length?'quiz':'practice'),'small'));
     return [toolbar(),map,node('p',{class:'botanical-note'},'校園植栽｜臺灣杉 · 黑板樹 · 櫻花 · 木棉　／　藥草花圃｜薄荷 · 紫蘇 · 艾草 · 菊花'),identity,mission(),directory(),node('div',{class:'academy-footnote'},node('span',{},'✦ 為這座學院創作的場景與夥伴'),node('span',{},'單人可離線 · 無需 ChatGPT 訂閱'))];
   }

@@ -1,6 +1,6 @@
-(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAdventure=api;})(typeof window==='object'?window:globalThis,function(E){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./wish.js'):root.MindWish);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAdventure=api;})(typeof window==='object'?window:globalThis,function(E,F){
   'use strict';
-  const MAX=100000000,SLOTS={coat:'披風',boots:'靴子',badge:'徽章'};
+  const MAX=100000000,SLOTS={coat:'上衣／披風',hat:'帽子',boots:'靴子',badge:'徽章'};
   const GEAR=[
     {id:'coat-dawn',name:'晨光短披風',slot:'coat',tier:0,price:80,attack:2,hp:8,guard:1,color:'mint',text:'輕裝出發，把未知留給今天。'},
     {id:'coat-herb',name:'藥圃旅行披風',slot:'coat',tier:1,price:240,attack:4,hp:18,guard:2,color:'leaf',text:'葉紋記下每一段觀察與驗證。'},
@@ -12,6 +12,7 @@
     {id:'badge-prism',name:'稜光分析章',slot:'badge',tier:1,price:260,attack:5,hp:10,guard:1,color:'leaf',text:'從不同角度，檢查同一份證據。'},
     {id:'badge-sage',name:'賢者知識章',slot:'badge',tier:3,price:900,attack:9,hp:20,guard:3,color:'gold',text:'真正的力量，是願意一直學習。'}
   ];
+  GEAR.push(...F.GEAR);
   const QUESTS=[
     {id:'arrival',chapter:'序章',name:'把學院走成自己的地圖',guide:'苔光教授',story:'新同學，先不用急著比誰答得快。沿著步道，看看三座學科樓各自在研究什麼。',goal:'走進藥劑樓、藥理樓與生藥樓',coins:50,item:'coat-dawn',route:'home'},
     {id:'first-light',chapter:'第一章',name:'讓第一盞知識燈亮起',guide:'星序博士',story:'一個答案不只是一個字母。讀完每日知識卡，再用自己的理解答對五道不同的題目。',goal:'領取每日補給，並累積答對 5 道不同題目',coins:80,item:'boots-dawn',route:'practice'},
@@ -22,16 +23,16 @@
   ];
   const places=['pharmaceutics','pharmacology','herbal','battle','life'],enemies=['bronze','silver','gold','diamond'];
   const gear=id=>GEAR.find(g=>g.id===id)||null;
-  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:{coat:null,boots:null,badge:null},quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
-  function loadout(raw){const out={coat:null,boots:null,badge:null};if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const k of Object.keys(out)){const id=raw[k];if(id!==null&&(!gear(id)||gear(id).slot!==k))throw Error('衣著欄位不正確');out[k]=id;}return out;}
-  function bonus(raw){return Object.values(loadout(raw)).map(gear).filter(Boolean).reduce((s,g)=>({attack:s.attack+g.attack,hp:s.hp+g.hp,guard:s.guard+g.guard}),{attack:0,hp:0,guard:0});}
+  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:{coat:null,hat:null,boots:null,badge:null},quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
+  function loadout(raw){const out={coat:null,hat:null,boots:null,badge:null};if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const k of Object.keys(out)){const id=raw[k]===undefined?null:raw[k];if(id!==null&&(!gear(id)||gear(id).slot!==k))throw Error('衣著欄位不正確');out[k]=id;}return out;}
+  function bonus(raw,level=Infinity){return Object.values(loadout(raw)).map(gear).filter(g=>g&&level>=(g.level||1)).reduce((s,g)=>({attack:s.attack+g.attack,hp:s.hp+g.hp,guard:s.guard+g.guard}),{attack:0,hp:0,guard:0});}
   function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0);}
   function room(s,n=1){return count(s)+n<=(s.rpg?.capacity||50);}
   function grant(s,id){if(!gear(id)||!room(s))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
-  function buy(s,id){const g=gear(id);if(!g||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
-  function equip(s,id){const g=gear(id);if(!g||!s.rpg.items[id])return false;s.rpg.loadout[g.slot]=id;return true;}
+  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
+  function equip(s,id){const g=gear(id);if(!g||!s.rpg.items[id]||Math.floor(s.xp/100)+1<(g.level||1))return false;s.rpg.loadout[g.slot]=id;return true;}
   function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;return true;}
-  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];s.arena.coins=Math.min(MAX,s.arena.coins+Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4)));return true;}
+  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];s.arena.coins=Math.min(MAX,s.arena.coins+(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
   function expandPrice(s){return 300+(s.rpg.capacity-50)*20;}
   function expand(s){const price=expandPrice(s);if(s.rpg.capacity>=100||s.arena.coins<price)return false;s.arena.coins-=price;s.rpg.capacity+=10;return true;}
   function visit(s,id){if(!places.includes(id)||s.rpg.visited.includes(id))return false;s.rpg.visited.push(id);return true;}

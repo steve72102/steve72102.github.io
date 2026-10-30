@@ -48,7 +48,7 @@
   }
   function heroStats(level, gearId, subject, outfit) {
     const gear=E.ITEMS.find(i=>i.id===gearId), tier=gear?.tier ?? 0, capped=Math.min(20,level);
-    const loadout=R.loadout(outfit),extra=R.bonus(loadout);
+    const loadout=R.loadout(outfit),extra=R.bonus(loadout,level);
     return {level,gearId:gear?.id || null,tier,loadout,hp:90+capped*5+(gear?GEAR_HP[tier]:0)+extra.hp,attack:18+capped*2+(gear?GEAR_ATTACK[tier]:0)+(gear&&gear.subject===subject?6:0)+extra.attack,guard:(gear?GEAR_GUARD[tier]:0)+extra.guard};
   }
   function stats(s, subject) { return heroStats(Math.floor(s.xp/100)+1,s.equipped,subject,s.rpg?.loadout); }
