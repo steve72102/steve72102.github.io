@@ -18,3 +18,11 @@ test('a question deep link uses the precached lesson page while offline',async()
  w.handlers.fetch({request:new Request('https://example.test/game/learn.html?q=pharmacology-115-2-65'),respondWith:p=>response=p});
  assert.equal(await response,'fresh content');
 });
+
+test('versioned entry assets bypass an older release and remain available offline after installation',async()=>{
+ const html=fs.readFileSync(require.resolve('../game/index.html'),'utf8');
+ const assets=[...html.matchAll(/(?:src|href)="(\.\/[^"?]+\.(?:js|css))\?v=([^"&]+)"/g)];
+ assert.ok(assets.length>40);assert.equal(new Set(assets.map(m=>m[2])).size,1);
+ assert.equal((html.match(/(?:src|href)="\.\/[^"?]+\.(?:js|css)"/g)||[]).length,0);
+ const w=worker();await w.run('install');for(const m of assets){let response;w.handlers.fetch({request:new Request(new URL(m[1]+'?v='+m[2],'https://example.test/game/')),respondWith:p=>response=p});assert.equal(await response,'fresh content',m[1]);}
+});
