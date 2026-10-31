@@ -17,7 +17,7 @@ window.MindEconomyUI=function(ctx){
     node('div',{},node('small',{},'今日反霸凌使用'),node('strong',{},w.usedCounters+' 次'))
   ]:[note(account().snapshot().uid?'帳號已登入，正在準備金幣與班級資料…':'Google 登入後可使用多人券、加入今日班級並同步金幣。')]);}
   function shop(){const w=current(),s=network().snapshot();return node('section',{class:'panel coupon-shop'},node('p',{class:'eyebrow'},'ACADEMY EXCHANGE'),node('h2',{},'學院互動券'),summary(),s.message?note(s.message):null,
-    node('div',{class:'coupon-grid'},Object.keys(names).map(kind=>node('article',{class:'coupon-card coupon-'+kind},node('span',{class:'coupon-mark','aria-hidden':'true'},marks[kind]),node('small',{},kind==='bully'?'PLAYER EFFECT':kind==='counter'?'CLEAR EFFECTS':'CLASS TRANSFER'),node('h3',{},names[kind]),note(kind==='bully'?'對同一人每天最多三張。連用三張累計對方 −6%、自己 +9%；實際收益最低 30%。':kind==='counter'?'清除目前所有收益減益，保留自己的加成。頭頂短暫顯示「可悲阿~」，當天仍可能再次受到影響。':'當天已用反霸凌券至少六次，且收益倍率低於 70% 時，才能對一個班級使用。'),node('p',{class:'coupon-price'},fmt(P.PRICES[kind])+' 金幣'),note('持有 '+(w?.stock[kind]||0)+' 張'),btn('購買 1 張',()=>purchase(kind),'full',locked()||getState().arena.coins<P.PRICES[kind]),kind==='counter'?btn('使用 1 張',counter,'secondary full',locked()||!w?.stock.counter):kind==='bomb'?btn('查看今日班級',()=>classes(),'secondary full',!account().snapshot().uid):null))),
+    node('div',{class:'coupon-grid'},Object.keys(names).map(kind=>node('article',{class:'coupon-card coupon-'+kind},window.MindShopArt.card(ctx,kind,names[kind],kind==='counter'?'守護淨化':'學院互動'),node('small',{},kind==='bully'?'PLAYER EFFECT':kind==='counter'?'CLEAR EFFECTS':'CLASS TRANSFER'),node('h3',{},names[kind]),note(kind==='bully'?'對同一人每天最多三張。連用三張累計對方 −6%、自己 +9%；實際收益最低 30%。':kind==='counter'?'清除目前所有收益減益，保留自己的加成。頭頂短暫顯示「可悲阿~」，當天仍可能再次受到影響。':'當天已用反霸凌券至少六次，且收益倍率低於 70% 時，才能對一個班級使用。'),node('p',{class:'coupon-price'},fmt(P.PRICES[kind])+' 金幣'),note('持有 '+(w?.stock[kind]||0)+' 張'),btn('購買 1 張',()=>purchase(kind),'full',locked()||getState().arena.coins<P.PRICES[kind]),kind==='counter'?btn('使用 1 張',counter,'secondary full',locked()||!w?.stock.counter):kind==='bomb'?btn('查看今日班級',()=>classes(),'secondary full',!account().snapshot().uid):null))),
     regionShop(),
     note('倍率適用於每日補給、打怪、週賽獎勵、主線與裝備回收。許願獎金和玩家間轉移不再套用倍率，也不重複算成當日收入。小數會累積，不會因分次領取而少拿。'),
     note('每日效果與分班依臺灣時間午夜重置。欠款持續保留，之後的遊戲收入先還款；離線收入以重新連線時有效的倍率結算。券不占背包格數。'));
@@ -28,7 +28,7 @@ window.MindEconomyUI=function(ctx){
       note('四種地區券，每張 1,000 金幣。使用後的新遊戲收入 +15%，頭頂顯示你的專屬稱號，從使用當天起算 14 天。'),
       active?node('div',{class:'honor-status '+active.kind},node('strong',{},active.title),node('span',{},'收入 +'+active.bonus+'% · 至 '+R.date(active.until-1)+' 23:59')):null,
       node('div',{class:'region-grid'},Object.entries(P.REGIONS).map(([kind,label],i)=>node('article',{class:'region-card region-'+kind},
-        node('div',{class:'region-art','aria-hidden':'true'},node('span',{},['北','中','南','東'][i]),node('i',{}),node('b',{},'✦')),
+        window.MindShopArt.card(ctx,kind,'自以為'+label+'最聰明券',label+' · 稱號系列'),
         node('p',{class:'eyebrow'},['NORTH','CENTRAL','SOUTH','EAST'][i]+' · 14 DAYS'),
         node('h3',{},'自以為'+label+'最聰明券'),node('div',{class:'region-benefit'},node('strong',{},'+15%'),node('span',{},'遊戲金幣收入')),
         note('頭頂稱號：自以為'+label+'最聰明'),node('p',{class:'coupon-price'},'1,000 金幣'),note('持有 '+(w?.stock[kind]||0)+' 張'),
@@ -43,7 +43,7 @@ window.MindEconomyUI=function(ctx){
       active?note('目前稱號會被替換，剩餘天數不會累加。'):null,
       btn('確認使用 1 張',()=>run(()=>network().honor(region),'地區稱號已啟用，遊戲收入 +15%。'),'gold',locked()||!current()?.stock[region]||active?.kind==='crown'));
   }
-  function purchase(kind){openModal(node('div',{class:'coupon-mark'},marks[kind]||'✦'),node('h2',{},'購買'+couponName(kind)),note('花費 '+P.PRICES[kind]+' 金幣，獲得 1 張。'),btn('確認購買 · '+P.PRICES[kind]+' 金幣',()=>run(()=>network().buy(kind),'已購入 1 張'+couponName(kind)+'。'),'gold',locked()));}
+  function purchase(kind){openModal(window.MindShopArt.image(node,kind,couponName(kind)),node('h2',{},'購買'+couponName(kind)),note('花費 '+P.PRICES[kind]+' 金幣，獲得 1 張。'),btn('確認購買 · '+P.PRICES[kind]+' 金幣',()=>run(()=>network().buy(kind),'已購入 1 張'+couponName(kind)+'。'),'gold',locked()));}
   function counter(){const w=current();openModal(node('h2',{},'使用反霸凌券'),note('清除目前減益，收益倍率回到 '+(100+(w?.bonus||0)+(w?P.honorBonus(w):0))+'%。這張券不提供當天免疫，也不消除欠款。'),btn('使用 1 張反霸凌券',()=>run(()=>network().counter(),'已清除收益減益。'),'gold',locked()||!w?.stock.counter));}
   async function target(k,label){
     if(locked()){toast('請先完成 Google 帳號與金幣同步。');return;}

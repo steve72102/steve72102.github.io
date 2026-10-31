@@ -1,0 +1,34 @@
+/* Sunlit garden collection: full illustration, readable details, separate purchase action. */
+.shop-hero{background:linear-gradient(90deg,#fffff5f7 0%,#fffff5e8 45%,#e2f7ee55 100%),url('./assets/academy/campus-taiwan.webp') center 46%/cover;border:1px solid #bad5bc;min-height:210px;box-shadow:0 12px 35px #31584913}
+.shop-hero .note{max-width:430px;color:#425e4c}.shop-purse{background:#fffff5ed;border:1px solid #d3c795;border-radius:20px;padding:16px 24px;box-shadow:0 8px 28px #5b71441a}
+.shop-grid,.coupon-grid,.outfit-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.region-grid{gap:16px}
+.shop-card,.coupon-card,.region-card,.outfit-card{display:flex;flex-direction:column;align-items:stretch;min-width:0;padding:14px 14px 18px;border-radius:22px;overflow:hidden;background:linear-gradient(165deg,#fffefa,#f1f7ee);border:1px solid #ceddc5;box-shadow:0 7px 24px #234e3210;text-align:left;transition:box-shadow .18s ease,border-color .18s ease}
+.coupon-card{background:linear-gradient(160deg,#fffefa,#f4effb)}.coupon-counter{background:linear-gradient(160deg,#fffefa,#eaf5e9)}.coupon-bomb{background:linear-gradient(160deg,#fffefa,#eaf5fc)}
+.region-north{background:linear-gradient(160deg,#fffefa,#e9f6ed)}.region-central{background:linear-gradient(160deg,#fffefa,#f2f4df)}.region-south{background:linear-gradient(160deg,#fffefa,#fff0de)}.region-east{background:linear-gradient(160deg,#fffefa,#e8f5fb)}
+.outfit-card.epic{background:linear-gradient(160deg,#fffefa,#f1eafb)}.outfit-card.legendary{background:linear-gradient(160deg,#fffefa,#fff1cc)}
+.shop-artwork{position:relative;display:block;order:-1;flex-shrink:0;width:100%;padding:0;margin:0 0 18px;border:0;border-radius:14px;overflow:hidden;background:#e6efdd;cursor:zoom-in;aspect-ratio:1;isolation:isolate}
+.shop-item-image{display:block;width:100%;height:100%;object-fit:contain;aspect-ratio:1;transition:filter .2s ease}
+.shop-artwork:focus-visible{outline:3px solid #27654b;outline-offset:3px}.shop-artwork:hover .shop-item-image{filter:brightness(1.04)}
+.shop-art-label,.shop-art-zoom{position:absolute;z-index:1;font-size:10px;font-weight:700;line-height:1.5;letter-spacing:.03em;border:1px solid #fff9;box-shadow:0 2px 10px #183b3825}
+.shop-art-label{top:9px;left:9px;background:#fffdf3ed;color:#314d3b;border-radius:18px;padding:5px 10px}
+.shop-art-zoom{bottom:9px;right:9px;background:#173f39e8;color:#fff;border-radius:8px;padding:5px 8px}
+.shop-card>.eyebrow,.coupon-card>small,.region-card>.eyebrow{font-size:10px;letter-spacing:.09em;color:#59734f;margin:0 2px 9px}
+.shop-card h3,.coupon-card h3,.region-card h3,.outfit-card h3{font-size:18px;line-height:1.6;margin:0 2px 9px;color:#294e3e;min-height:0}
+.shop-card>.note,.coupon-card>.note,.region-card>.note,.outfit-card>.note{font-size:12px;line-height:1.8;min-height:0;color:#53684f;margin:0 2px 13px}
+.shop-card>.note:first-of-type,.coupon-card>.note:first-of-type,.outfit-card>.note:first-of-type{flex-grow:1}
+.shop-card>.button,.coupon-card>.button,.region-card>.button,.outfit-card>.button{font-size:12px;min-height:44px;border-radius:11px;margin-top:8px;white-space:normal}
+.shop-card>.product-price,.coupon-price,.outfit-price{font-size:19px;font-weight:800;color:#815916;margin:10px 2px 4px}
+.coupon-card>.coupon-price,.region-card>.coupon-price,.outfit-card>.outfit-price{font-size:19px;font-weight:800;color:#815916}
+.product-price strong{font-size:26px}.product-price span{font-size:11px}.region-benefit{margin:0 2px 12px}.region-benefit strong{font-size:28px}
+.outfit-card>.rarity{position:static;font-size:11px;color:#657e53;margin:0 2px 8px}.outfit-stats{font-size:11px;line-height:1.7;color:#466344;margin:0 2px 10px}
+.coupon-shop{background:#f9fbf5}.coupon-shop>.region-shop{margin-top:34px}.region-shop-heading{gap:16px}.outfit-shop>.note{line-height:1.8}
+.gear-icon:has(>.shop-item-image){overflow:hidden;border:1px solid #d4dfc4}.gear-icon>.shop-item-image{border-radius:inherit}
+.shop-art-expanded{display:block;width:100%;height:auto;max-height:54vh;object-fit:contain;border-radius:16px;margin:0 auto 18px}
+#modal-content>.shop-item-image{width:180px;height:180px;border-radius:18px;margin:0 auto 18px}
+#modal-content>.gear-icon:has(>.shop-item-image){width:180px;height:180px;margin-bottom:14px}
+@media(hover:hover){.shop-card:hover,.coupon-card:hover,.region-card:hover,.outfit-card:hover{border-color:#a7c397;box-shadow:0 10px 30px #234e3220}}
+@media(max-width:1150px){.shop-grid,.coupon-grid,.outfit-grid,.region-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.shop-grid,.coupon-grid,.outfit-grid,.region-grid{gap:12px}.shop-card,.coupon-card,.region-card,.outfit-card{padding:9px 9px 13px;border-radius:17px}.shop-artwork{margin-bottom:13px;border-radius:11px}.shop-card h3,.coupon-card h3,.region-card h3,.outfit-card h3{font-size:16px}.shop-card>.note,.coupon-card>.note,.region-card>.note,.outfit-card>.note{font-size:12px}.shop-art-label{font-size:9px;top:6px;left:6px;padding:4px 7px}.shop-art-zoom{font-size:9px;bottom:6px;right:6px;padding:4px 6px}.coupon-shop{padding:16px}.region-shop-heading{align-items:flex-start;flex-direction:column}.shop-hero{min-height:230px}.shop-purse{padding:12px 17px}.region-benefit{gap:5px;flex-wrap:wrap}}
+@media(max-width:440px){.shop-grid,.coupon-grid,.outfit-grid,.region-grid{grid-template-columns:1fr}.shop-card,.coupon-card,.region-card,.outfit-card{padding:12px 12px 17px}.shop-card h3,.coupon-card h3,.region-card h3,.outfit-card h3{font-size:19px}.shop-art-label,.shop-art-zoom{font-size:11px}.shop-artwork{margin-bottom:16px}.shop-hero{flex-wrap:wrap}.shop-purse{min-width:140px}.coupon-shop{padding:13px}}
+@media(prefers-reduced-motion:reduce){.shop-card,.coupon-card,.region-card,.outfit-card,.shop-item-image{transition:none}}

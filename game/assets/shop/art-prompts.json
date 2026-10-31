@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "created": "2026-10-31",
+  "mode": "built-in imagegen",
+  "styleReference": "../academy/campus-taiwan.webp",
+  "intent": "Original illustrations created for Mind Quest. No third-party franchise assets, logos, school insignia or clothing branding requested.",
+  "assets": [
+    {
+      "id": "north",
+      "name": "北部稱號券",
+      "file": "north.webp",
+      "source": "artifacts/shop-art-source/north.png",
+      "prompt": "Use case: stylized-concept. Create ONE original square premium illustrated game-shop card artwork for a bright Taiwanese fantasy pharmacy academy. The provided image is ONLY a reference for the existing game's rich sunlit color and polished painterly 3D illustration finish, not an edit target. Subject: a floating beautifully crafted mint-jade and brass scholar's compass medallion, set in a miniature lush northern-campus garden with vermilion brick arches, deep green cedar trees, pink blossoms, a tiny turquoise stream and blue mountain skyline. The compass is the main readable silhouette at center, taking 55% of the frame. Soft golden daylight, emerald and turquoise with warm coral accents, detailed materials and botanical depth, inviting collectible fantasy item illustration. Full-bleed square composition, safe central 80%, no card border, NO letters, Chinese characters, numbers, words, logos, brands, watermark, existing game designs, people, or real identifiable buildings. All motifs and arrangement newly invented. This is the North regional knowledge title coupon; convey confident scholarship, exploration and garden freshness.",
+      "sha256": "5b1d028103d7e36de2c8a5d34f6244d5c43d5cb5a4d61450ff2560d61c8a27a2",
+      "bytes": 232662
+    },
+    {
+      "id": "central",
+      "name": "中部稱號券",
+      "file": "central.webp",
+      "source": "artifacts/shop-art-source/central.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a hovering golden open-book reliquary with a luminous green leaf-shaped crystal rising between its blank pages, backed by a sunlit terraced mountain garden, cream stone academy steps, tiny arched bridge, pink and lavender flowers and teal streams. Central Taiwan highland inspiration. Sage, honey gold, celadon and lilac. Academic wonder, confident learning.",
+      "sha256": "e1d595fd523579fce943e79bfe959fb672ea71638316eaf382857b52747d39b4",
+      "bytes": 229960
+    },
+    {
+      "id": "south",
+      "name": "南部稱號券",
+      "file": "south.webp",
+      "source": "artifacts/shop-art-source/south.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: an ornate coral-orange kapok blossom sun medallion in polished warm gold, floating above a terracotta pedestal, backed by a sunny original red-brick academy courtyard, tropical green foliage and flowering orange kapok branches. A sparkling turquoise canal curves behind it. Southern Taiwan warmth. Coral, mandarin, turquoise, leaf green and ivory.",
+      "sha256": "99ffc9eef4b0d9de9dc541dfbc2c478e0743c7eb37a3d514d65bbaedb54bd8b3",
+      "bytes": 253372
+    },
+    {
+      "id": "east",
+      "name": "東部稱號券",
+      "file": "east.webp",
+      "source": "artifacts/shop-art-source/east.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a radiant azure wave-shaped crystal and silver feather-quill medallion, floating above a small carved pale stone dais. Backdrop: an original coastal academy garden between lush mountains and a sparkling ocean inlet, white stone footbridge, flowing water, tiny wildflowers. Eastern Taiwan landscape inspiration. Aquamarine, cobalt, pearl, jade and pink accents.",
+      "sha256": "31bb2b715c10644d3b2fa087287b475e643cac9480e865c43c84fae59dbd0fb9",
+      "bytes": 220646
+    },
+    {
+      "id": "bully",
+      "name": "霸凌券",
+      "file": "bully.webp",
+      "source": "artifacts/shop-art-source/bully.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: two ornate copper-and-jade coin tokens connected by a curling mischievous violet ribbon-arrow, hovering above a sunlit academy stone desk. One smaller coin on left drifting toward a larger gleaming gold coin on right. Magical prank theme without any people, victims or violence. Surrounding purple wisteria, orange blossoms, tiny turquoise glass vials and ivy arches; rich plum, golden orange and mint colors.",
+      "sha256": "a88e5fb741176e2a8b5d98f8cae8e0ae02b98cce84dff26a37f3cde14f62a52c",
+      "bytes": 196526
+    },
+    {
+      "id": "counter",
+      "name": "反霸凌券",
+      "file": "counter.webp",
+      "source": "artifacts/shop-art-source/counter.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a luminous mint-green translucent botanical shield charm with a golden five-petal flower at its center, dissolving smoky violet ribbon wisps into sparkling petals. Set amid a bright herbal greenhouse courtyard, turquoise glass, lush fern and flowering plants. Protective, uplifting, reassuring. Teal, jade, ivory, gold and pink.",
+      "sha256": "e271a799a4a3fcae1ea433766393d94a8348190dce968869e1c09b1a2379f775",
+      "bytes": 212652
+    },
+    {
+      "id": "bomb",
+      "name": "炸彈券",
+      "file": "bomb.webp",
+      "source": "artifacts/shop-art-source/bomb.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a whimsical cobalt glass alchemy orb with brass fittings and a botanical spiral stopper, floating amid a harmless burst of gold coins and bright colorful confetti, with sunlit original academy classroom arches and flower beds behind. Clearly fantastical playful magical item, not a real explosive, NO fuse, wires, weapon instructions or realistic bomb. Cobalt blue, orange gold, turquoise and magenta accents.",
+      "sha256": "27d123c7fd2937da5a30037fc9eefb5411d459d2d07a57abad6bfe8f9a7d4a91",
+      "bytes": 179324
+    },
+    {
+      "id": "shirk",
+      "name": "甩鍋券",
+      "file": "shirk.webp",
+      "source": "artifacts/shop-art-source/shirk.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a finely crafted lilac-and-brass flying paper scroll with blank parchment and a swooping jade ribbon-arrow carrying a second blank page across a sunlit academy library balcony. Airy dynamic motion, open books without text, hanging wisteria, green foliage, blue stream visible below. Symbolic passing of a study task, charming and witty, no people. Amethyst, pale gold, jade and warm ivory.",
+      "sha256": "6ea63f108c3a5794175088dd657e5652c1f44a1c2b27f2c91fd34cac5729b9e1",
+      "bytes": 173438
+    },
+    {
+      "id": "diligence",
+      "name": "能者多勞券",
+      "file": "diligence.webp",
+      "source": "artifacts/shop-art-source/diligence.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: TWO luminous amber crystal stars rising from a beautifully bound open emerald study book, with blank pages, a delicate golden double-loop orbit and bright feather quill. Backdrop: a lush rooftop academy garden and sunlit library window, pink blossoms, honey sunlight, turquoise shadows. Rewarding extra effort and doubled earned knowledge, triumphant but gentle. No people.",
+      "sha256": "4bc854458fa7c291db6559b0c221691ab1ec673b4bf629cb71931e19259a2923",
+      "bytes": 177620
+    },
+    {
+      "id": "supply-one",
+      "name": "臨時補給券",
+      "file": "supply-one.webp",
+      "source": "artifacts/shop-art-source/supply-one.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: one beautiful folded ivory study folio held by an emerald botanical clasp, with a tiny clear mint potion vial and gold fountain pen beside it on a mossy pale stone reading desk. An original bright pharmacy conservatory garden behind it, hanging blossoms, lush herbs, sunlight in glass. The folio is blank without text. Warm jade, ivory, apricot and cyan.",
+      "sha256": "a1f1084f3c7d14ec9946aa0872b5ed59e260c6f35ecf5f3fbd3c8a0c1349d945",
+      "bytes": 201920
+    },
+    {
+      "id": "supply-three",
+      "name": "補給小行囊",
+      "file": "supply-three.webp",
+      "source": "artifacts/shop-art-source/supply-three.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a small handcrafted sage-green canvas scholar satchel, OPEN so exactly THREE neatly bound blank cream study folios are visible, a rolled botanical map with no letters, little turquoise vial and copper clasp. On a bright garden bench beside pink flowers and a rippling campus stream, original brick arch in distance. Detailed soft fabric, inviting adventure. Mint, warm leather, gold and rose.",
+      "sha256": "e21a6739b14bcd58e6aa996aaf02c00ef2cf6d346dc19912a756d4c7a9fdd59b",
+      "bytes": 191230
+    },
+    {
+      "id": "supply-ten",
+      "name": "遠征補給箱",
+      "file": "supply-ten.webp",
+      "source": "artifacts/shop-art-source/supply-ten.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: an open elegant teal-and-warm-wood expedition study chest with brass corners, filled with neatly arranged blank ivory folios, glass botanical vials, a brass compass and rolled unmarked maps. A soft golden glow rises out. Garden laboratory terrace overlooking mountain greenery, vibrant pink blossoms and turquoise running water. Generous academic supply treasure, original construction.",
+      "sha256": "71d9bada668975c93bacc8ed9818294178a653b15029b7b018d9b3688c69b36c",
+      "bytes": 224254
+    },
+    {
+      "id": "star-ticket",
+      "name": "星願券",
+      "file": "star-ticket.webp",
+      "source": "artifacts/shop-art-source/star-ticket.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: a magical ivory ticket-shaped crystal plaque with scalloped corners and a luminous five-point star-shaped amber gem embedded at center, threaded with a teal ribbon, hovering over a little luminous academy fountain. Original golden armillary sculpture, cascades of turquoise water, lush green gardens, pink blossoms and sparkling daylight. No writing or numerals.",
+      "sha256": "3ad51e3d161dd9ba9e2ea28a03135b95fb16ecd5cc6f632c56bf997ac6302d65",
+      "bytes": 202994
+    },
+    {
+      "id": "coat-dawn",
+      "name": "晨光短披風",
+      "file": "coat-dawn.webp",
+      "source": "artifacts/shop-art-source/coat-dawn.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE original short mint-green scholar cape displayed without a person on a simple brass hanger, ivory lining, asymmetrical layered hem, a small golden leaf-shaped clasp and a subtle sunray seam. Fabric sways lightly. Bright garden atelier, cream stone balustrade, flowing stream, dawn peach sunlight, pink flowers and green foliage. No mannequin torso, no other clothing. Readable complete garment centered.",
+      "sha256": "083cacfc6e0f89e0c87035b27b8dc5f171bea14a6e65ee1731d09f9c7f94bb21",
+      "bytes": 146838
+    },
+    {
+      "id": "coat-herb",
+      "name": "藥圃旅行披風",
+      "file": "coat-herb.webp",
+      "source": "artifacts/shop-art-source/coat-herb.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE original medium-length forest-green botanical travel cape on a simple brass hanger, sage lining, practical shoulder yoke, finely stitched invented leaf-vein seams, small copper seed clasp. No logos or copied costume. Sunlit medicinal herb garden atelier, glasshouse, lavender flowers and turquoise water. Fabric detailed and tactile, full garment unobscured, no person, no other clothing.",
+      "sha256": "a96000769bdfde5abb2c5902e85d1af2b914861cb594c7a01912c5b1fde34476",
+      "bytes": 210422
+    },
+    {
+      "id": "coat-star",
+      "name": "星紋長披風",
+      "file": "coat-star.webp",
+      "source": "artifacts/shop-art-source/coat-star.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE original long rich violet scholarly cape on a simple brass hanger, plum-to-indigo fabric, tiny abstract gold star stitches and subtle curved silver seamwork, pale lilac lining, elegant original collar and gold clasp. Full cape centered, no person, no additional clothing. A bright sky observatory garden with white arches, purple flowers, blue mountain skyline, warm sunlight; luminous day, not dark night.",
+      "sha256": "8cbd0bdf67411659b11f648b7b596f0cf1720ed449125df83ff05b50b5f16111",
+      "bytes": 188912
+    },
+    {
+      "id": "boots-dawn",
+      "name": "晨露輕靴",
+      "file": "boots-dawn.webp",
+      "source": "artifacts/shop-art-source/boots-dawn.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE PAIR of original mint and ivory lightweight ankle boots for a garden scholar, rounded toes, warm tan soles, neat cream laces, small leaf-shaped seam details, dew droplets. Three-quarter product angle on a pale stone garden step, fresh medicinal greenery, pink blossoms and sparkling cyan stream. Clearly two matching boots, no legs, no brand, no copied sneaker silhouette.",
+      "sha256": "9dfc07eab1b4b026cab1804a0e2c2f70b2d8131d73f6a0f98efafd5ce90ace56",
+      "bytes": 190906
+    },
+    {
+      "id": "boots-path",
+      "name": "尋跡旅行靴",
+      "file": "boots-path.webp",
+      "source": "artifacts/shop-art-source/boots-path.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE PAIR of original forest-green and warm chestnut travel boots with practical stitched panels, copper eyelets, sturdy honey-colored soles, sage laces, a tiny invented seed-shaped clasp. Three-quarter product angle on sunlit original academy garden cobblestone, fern, lavender blossoms and flowing turquoise creek. Detailed crafted leather and canvas, no legs, brand or existing footwear design.",
+      "sha256": "ea6b9f2de6877811643fb45fc006b7ca25ed3e02fda1da6fe04715d1d4a4685e",
+      "bytes": 225714
+    },
+    {
+      "id": "boots-star",
+      "name": "星路遠征靴",
+      "file": "boots-star.webp",
+      "source": "artifacts/shop-art-source/boots-star.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: ONE PAIR of original violet and pearl expedition boots, indigo canvas and supple plum leather panels, pale silver curved stitching and tiny gold star clasps, cream laces, pale stone-colored sturdy soles. Three-quarter angle on an ivory observatory garden plinth, purple flowers and bright cyan water, sunlit trees. Clearly two boots, no legs, no branding, no copied costume.",
+      "sha256": "3696ac7341060dda653aaccb0b8b602dd6da11800f298f1bf4dcaec7b13239c6",
+      "bytes": 191330
+    },
+    {
+      "id": "badge-seed",
+      "name": "萌芽研究章",
+      "file": "badge-seed.webp",
+      "source": "artifacts/shop-art-source/badge-seed.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: an original small mint enamel botanical research brooch shaped as a seed opening into two tender jade leaves inside a delicate warm brass oval, a tiny clear dewdrop gemstone. Displayed prominently on a pale stone study stand in a bright lush academy herbal greenhouse, pink blossoms, warm morning sunlight, cyan glass highlights. No insignia from real schools, no lettering.",
+      "sha256": "76d189ff297e069ddcc1bfdc957a24cd0a57e623fdddf6c6f779e2b319e56b73",
+      "bytes": 155844
+    },
+    {
+      "id": "badge-prism",
+      "name": "稜光分析章",
+      "file": "badge-prism.webp",
+      "source": "artifacts/shop-art-source/badge-prism.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: an original elegant scientific brooch featuring a faceted aquamarine prism held in three curved botanical bronze arms, splitting daylight into subtle rainbow glints. Lush garden analytical laboratory with clear glassware, sage foliage, lilac flowers and a turquoise canal. Detailed jewel craftsmanship, centered complete object, original emblem, no real institution badge or letters.",
+      "sha256": "b57ee7a1ba8cf2a50aacbb0a7abe6c4c7f4c370078ee5d628bd9575a3aa31aa3",
+      "bytes": 189400
+    },
+    {
+      "id": "badge-sage",
+      "name": "賢者知識章",
+      "file": "badge-sage.webp",
+      "source": "artifacts/shop-art-source/badge-sage.png",
+      "prompt": "Use case: stylized-concept. ONE original square full-bleed premium game shop item illustration for a bright Taiwanese fantasy pharmacy academy. The reference image is only the game's existing original sunlit painterly 3D illustration STYLE reference, not an edit target. Rich vivid harmonious colors, detailed tangible materials, botanical depth, sparkling natural light, polished collectible item quality. Main object occupies the center 60%, complete silhouette safe inside central 85%. NO letters, numbers, Chinese characters, readable text, logo, watermark, UI, border, people, existing franchise elements, recognizable real-school architecture or copied branding. No generic flat icon. Main subject: an original magnificent gold scholar brooch, intricate open-book-inspired golden wings surrounding a luminous emerald crystal seed, little pearl droplets and a floating delicate golden orbit. Displayed on an ivory stone plinth in a richly flowering sunlit academy garden, white blossoms, cyan fountain, golden-leaf vines, original brick arches. Premium legendary knowledge collectible, no crown copied from any game, no real-world insignia or text.",
+      "sha256": "ce70ea5b0af0c588bba7f4e75c84958783dbac11375862dc0df49a62e8e46704",
+      "bytes": 194778
+    }
+  ]
+}

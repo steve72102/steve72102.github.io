@@ -10,6 +10,7 @@ files += ['assets/academy/'+name+'.webp' for name in ['campus-taiwan','hall-ntu'
 files += ['assets/academy/doctor-run.webp', 'assets/academy/professor-run.webp', 'assets/academy/graduate-run.webp', 'assets/academy/researcher-run.webp', 'assets/academy/cedar-dean-run.webp', 'assets/academy/herbal-mentor-run.webp', 'assets/academy/lab-engineer-run.webp', 'assets/academy/balance-analyst-run.webp', 'assets/academy/dawn-intern-run.webp', 'assets/academy/river-fellow-run.webp', 'assets/academy/living-trees.webp']
 files += ['assets/equipment/'+name+'.webp' for name in ['level30-bach','level40-schumann','level50-mozart','level60-haydn','level30-bach-cast','level40-schumann-cast','level50-mozart-cast','level60-haydn-cast','level70-requiem','level80-letter','level90-tide']]
 files += ['learn.html','learn.js','lesson.css','lesson-diagrams.js'] + ['assets/lessons/'+p.name for p in sorted((root/'game/assets/lessons').glob('*.svg'))]
+files += ['shop-art.js','shop-art.css','assets/shop/art-prompts.json'] + ['assets/shop/'+name+'.webp' for name in ["north","central","south","east","bully","counter","bomb","shirk","diligence","supply-one","supply-three","supply-ten","star-ticket","coat-dawn","coat-herb","coat-star","boots-dawn","boots-path","boots-star","badge-seed","badge-prism","badge-sage"]]
 with zipfile.ZipFile(out/'mind-quest-offline.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
     for name in files:
         data=(root/'game'/name).read_bytes()
