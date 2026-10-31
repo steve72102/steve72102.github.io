@@ -1,19 +1,34 @@
 /* Only session data travels over the data channel. Save files never leave the device. */
 window.MindDuelNetwork=function(options){
   'use strict';
-  const {questions,onChange,onAnswer,random}=options;
-  const D=window.MindDuel, PREFIX='steve72102-mq3-', byId=new Map(questions.map(q=>[q.id,q]));
+  const {questions,onChange,onAnswer,random,useTicket=()=>false,onNotice=()=>{}}=options;
+  const D=window.MindDuel, PREFIX='steve72102-mq6-', byId=new Map(questions.map(q=>[q.id,q]));
   let peer=null,connection=null,generation=0,deadline=0,timer=null,connectTimer=null,retryTimer=null,lastSeen=0,lastPing=0,ownReveal=null,revealed=false,answerPending=false,attempts=0;
   let data={status:'idle',message:'',game:null,mode:null,code:'',subject:null,profile:null,host:false};
+  let passRequestId=null;const passDecisions=new Set();
   const active=()=>['connecting','waiting','handshake','connected'].includes(data.status);
   const notify=()=>onChange(data);
   function nonce(){const a=new Uint8Array(16);crypto.getRandomValues(a);return Array.from(a,x=>x.toString(16).padStart(2,'0')).join('');}
   async function digest(index,choice,salt){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(D.commitmentText(index,choice,salt)));return Array.from(new Uint8Array(b),x=>x.toString(16).padStart(2,'0')).join('');}
   function send(type,fields={}){if(!connection?.open)throw Error('連線已中斷');connection.send(JSON.stringify({v:D.VERSION,type,...fields}));}
-  function clean(){generation++;clearInterval(timer);clearTimeout(connectTimer);clearTimeout(retryTimer);const p=peer;peer=null;connection=null;p?.destroy();ownReveal=null;revealed=false;answerPending=false;}
+  function clean(){generation++;clearInterval(timer);clearTimeout(connectTimer);clearTimeout(retryTimer);const p=peer;peer=null;connection=null;p?.destroy();ownReveal=null;revealed=false;answerPending=false;passRequestId=null;data.passPending=false;passDecisions.clear();}
   function fail(message){if(!active())return;data.status='error';data.message=message;clean();notify();}
   function leave(){if(connection?.open)try{send('leave');}catch(_){}clean();data={status:'idle',message:'',game:null,mode:null,code:'',subject:null,profile:null,host:false};notify();}
-  function setStage(){const s=data.game;deadline=Date.now()+(s?.phase==='prep'?180000:120000);}
+  function setStage(){const s=data.game;deadline=Date.now()+(s?.phase==='prep'?180000:s?.phase==='question'&&s.passBy!==null?240000:120000);}
+  const revision=()=>data.game?.passBy===null?0:1;
+  function resetSubmission(){ownReveal=null;revealed=false;answerPending=false;passRequestId=null;data.passPending=false;}
+  function hostPass(side,id,index){
+    const s=data.game;
+    if(!/^[a-f0-9]{32}$/.test(id))throw Error('甩鍋請求不正確');
+    if(passDecisions.has(id))return;
+    const accepted=index===s.index&&!answerPending&&D.canPass(s,side)&&(side!==0||useTicket('shirkTickets'));
+    const order=random()<.5?0:1;
+    if(accepted){if(!D.pass(s,side,order))throw Error('甩鍋步驟不一致');passDecisions.add(id);resetSubmission();setStage();}
+    send('pass_decision',{id,index,side,order,accepted});
+    if(!accepted&&side===0){data.passPending=false;onNotice('此題已交卷或已有甩鍋，沒有扣券。');}
+    if(accepted&&side===0)answer([]);
+    change();
+  }
   function change(){
     const s=data.game;
     if(s?.phase==='done'){data.status='done';data.message='對戰完成';clearInterval(timer);clearTimeout(connectTimer);const token=generation;setTimeout(()=>{if(token===generation&&data.status==='done')clean();},1000);}
@@ -42,7 +57,7 @@ window.MindDuelNetwork=function(options){
   function settle(){
     const s=data.game;if(!s)return;
     const q=byId.get(s.ids[s.index]);
-    if(D.settleQuestion(s,q)){onAnswer(q,s.answers[0][s.index].correct);setStage();change();}
+    if(D.settleQuestion(s,q)){const a=s.answers[0][s.index],actual=a.actual??[a.choice];if(actual.length)onAnswer(q,actual.some(choice=>choice===q.answer));setStage();change();}
     else notify();
   }
   async function receive(text,token){
@@ -65,12 +80,27 @@ window.MindDuelNetwork=function(options){
       peer.disconnect();connected();return;
     }
     const s=data.game;if(data.status!=='connected'||!s)throw Error('對戰步驟不一致');
+    if(m.type==='pass_request'&&data.host){hostPass(1,m.id,m.index);return;}
+    if(m.type==='pass_decision'&&!data.host){
+      if(!/^[a-f0-9]{32}$/.test(m.id)||typeof m.accepted!=='boolean'||![0,1].includes(m.side)||![0,1].includes(m.order))throw Error('甩鍋結果不正確');
+      if(passDecisions.has(m.id))return;
+      if(!m.accepted){if(passRequestId===m.id){passRequestId=null;data.passPending=false;onNotice('此題已交卷或已有甩鍋，沒有扣券。');notify();}return;}
+      const side=1-m.side;
+      if(m.index!==s.index||!D.pass(s,side,m.order,true))throw Error('甩鍋步驟不一致');
+      if(side===0&&!useTicket('shirkTickets'))throw Error('甩鍋券不足');
+      passDecisions.add(m.id);resetSubmission();setStage();if(side===0)answer([]);change();return;
+    }
+    if(m.type==='diligence'&&m.index===5){if(s.diligence[1])return;if(!D.activateDiligence(s,1))throw Error('能者多勞券步驟不一致');change();return;}
     if(m.type==='ready'&&m.round===s.round){if(!D.ready(s,1))throw Error('準備步驟不一致');if(s.phase==='question')setStage();change();return;}
     if(m.type==='commit'){
+      if(m.revision===0&&revision()===1)return;
+      if(m.revision!==revision())throw Error('交卷版本不一致');
       if(!D.commit(s,1,m.hash,m.index))throw Error('交卷步驟不一致');
       await revealIfReady(token);if(token===generation)notify();return;
     }
     if(m.type==='reveal'){
+      if(m.revision===0&&revision()===1)return;
+      if(m.revision!==revision())throw Error('答案版本不一致');
       if(s.phase!=='question'||m.index!==s.index||!s.commits.every(Boolean)||s.reveals[1]!==null)throw Error('答案步驟不一致');
       const hash=await digest(m.index,m.choice,m.nonce);
       if(token!==generation)return;
@@ -150,18 +180,20 @@ window.MindDuelNetwork=function(options){
   }
   function ready(){const s=data.game;if(data.status!=='connected'||!s||!D.ready(s,0))return;try{send('ready',{round:s.round});if(s.phase==='question')setStage();change();}catch(_){fail('連線已中斷。');}}
   async function answer(choice){
-    const s=data.game;if(data.status!=='connected'||!s||s.phase!=='question'||s.commits[0]||answerPending)return;
-    const token=generation;answerPending=true;
+    const s=data.game;if(data.status!=='connected'||!s||s.phase!=='question'||s.commits[0]||answerPending||data.passPending)return;
+    const token=generation,epoch=revision();answerPending=true;
     try{
       const salt=nonce(),index=s.index,hash=await digest(index,choice,salt);
-      if(token!==generation)return;
+      if(token!==generation||epoch!==revision())return;
       if(!D.commit(s,0,hash,index))throw Error('交卷失敗');
-      ownReveal={index,choice,nonce:salt};send('commit',{index,hash});await revealIfReady(token);if(token===generation)notify();
-    }catch(e){if(token===generation)fail(e.message+'，請重新配對。');}finally{if(token===generation)answerPending=false;}
+      ownReveal={index,choice,nonce:salt,revision:epoch};send('commit',{index,hash,revision:epoch});await revealIfReady(token);if(token===generation)notify();
+    }catch(e){if(token===generation&&epoch===revision())fail(e.message+'，請重新配對。');}finally{if(token===generation&&epoch===revision())answerPending=false;}
   }
+  function requestPass(){const s=data.game;if(data.status!=='connected'||data.passPending||answerPending||!s||!D.canPass(s,0))return false;data.passPending=true;passRequestId=nonce();try{if(data.host)hostPass(0,passRequestId,s.index);else{send('pass_request',{id:passRequestId,index:s.index});notify();}return true;}catch(e){fail(e.message);return false;}}
+  function diligence(){const s=data.game;if(data.status!=='connected'||!s||!D.canDiligence(s,0)||!useTicket('diligenceTickets'))return false;try{if(!D.activateDiligence(s,0))throw Error('能者多勞券步驟不一致');send('diligence',{index:5});change();return true;}catch(e){fail(e.message);return false;}}
   function next(){const s=data.game;if(data.status!=='connected'||!s||s.phase!=='feedback'||s.next[0])return;try{const index=s.index;send('next',{index});D.next(s,0);if(s.index!==index||s.phase!=='feedback'){ownReveal=null;revealed=false;setStage();}change();}catch(_){fail('連線已中斷。');}}
   window.addEventListener('pagehide',clean);
   window.addEventListener('beforeunload',e=>{if(active()){e.preventDefault();e.returnValue='';}});
   window.addEventListener('offline',()=>fail('網路已中斷，本場不判勝負。連線恢復後可以重新配對。'));
-  return {start,leave,ready,answer,next,active,snapshot:()=>data,remaining:()=>Math.max(0,Math.ceil((deadline-Date.now())/1000))};
+  return {start,leave,ready,answer,requestPass,diligence,next,active,snapshot:()=>data,remaining:()=>Math.max(0,Math.ceil((deadline-Date.now())/1000))};
 };

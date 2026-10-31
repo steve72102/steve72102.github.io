@@ -188,7 +188,7 @@
   cloud.init();wishNetwork.watch();
   render();
   if ('serviceWorker' in navigator && ['https:', 'http:'].includes(location.protocol)) {
-    navigator.serviceWorker.register('./sw.js?v=20261031-wardrobe-storage', {updateViaCache:'none'}).then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=20261031-duel-coupons', {updateViaCache:'none'}).then(reg => {
       const updateStatus = async () => { const names = await caches.keys(); if (names.some(n => n.startsWith('mind-quest-'))) $('connection').textContent = navigator.onLine ? '離線冒險已準備好' : '離線模式 · 繼續冒險'; };
       navigator.serviceWorker.ready.then(updateStatus);
       reg.addEventListener('updatefound', () => { const worker = reg.installing; if (worker) worker.addEventListener('statechange', () => { if (worker.state === 'installed') updateStatus(); }); });

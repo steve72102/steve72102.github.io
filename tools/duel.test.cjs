@@ -10,7 +10,7 @@ test('match checks bank version, subject and six unique known question IDs',()=>
   for(const bad of [{...config,bank:'old'},{...config,ids:Array(6).fill('q1')},{...config,ids:['x',...config.ids.slice(1)]},{...config,subject:'herbal'}])assert.throws(()=>D.match(bad,q,'pharmaceutics'));
 });
 test('profile accepts readable names and rejects HTML and forged numeric stats',()=>{
-  assert.deepEqual(D.profile(a),{...a,appearance:require('../game/academy.js').fresh(),loadout:require('../game/adventure.js').loadout(),training:{}});
+  assert.deepEqual(D.profile(a),{...a,appearance:require('../game/academy.js').fresh(),loadout:require('../game/adventure.js').loadout(),training:{},shirkTickets:0,diligenceTickets:0});
   for(const bad of [{...a,name:'<img src=x>'},{...a,level:Infinity},{...a,level:0},{...a,gearId:'fake'},{...a,name:'x'.repeat(17)}])assert.throws(()=>D.profile(bad));
 });
 test('both players must be ready, and ready cannot be replayed',()=>{
@@ -48,4 +48,47 @@ test('untrusted packets reject oversized, invalid and prototype-bearing data',()
 test('commitment binds question index, choice and random nonce',()=>{
   const salt='a'.repeat(32);assert.notEqual(D.commitmentText(0,0,salt),D.commitmentText(1,0,salt));assert.notEqual(D.commitmentText(0,0,salt),D.commitmentText(0,1,salt));
   assert.throws(()=>D.commitmentText(0,4,salt));assert.throws(()=>D.commitmentText(0,0,'short'));
+});
+
+function withCoupons(){return D.fresh(config,{...a,shirkTickets:6,diligenceTickets:2},{...a,name:'旅人二',shirkTickets:6,diligenceTickets:2});}
+test('delegated copy and original score separately in either hidden order; wrong extras score zero',()=>{
+  for(const order of [0,1])for(const ownCorrect of [false,true])for(const extraCorrect of [false,true]){
+    const s=withCoupons();D.ready(s,0);D.ready(s,1);assert(D.pass(s,0,order));assert.equal(D.pass(s,1,order),false);
+    assert.equal(D.taskCount(s,0),0);assert.equal(D.taskCount(s,1),2);
+    const correct=q.find(x=>x.id===s.ids[0]).answer,wrong=(correct+1)%4,list=[];
+    list[order]=ownCorrect?correct:wrong;list[1-order]=extraCorrect?correct:wrong;
+    question(s,[],list);assert.equal(s.answers[0][0].correct,extraCorrect);assert.equal(s.answers[1][0].correct,ownCorrect);
+    assert.equal(D.diligenceBonus(s,1).correct,Number(extraCorrect));
+    assert.equal(D.diligenceBonus(s,1).damage,extraCorrect?84:0);
+    assert.equal(D.diligenceBonus(s,0).damage,0);
+  }
+});
+test('three transfers each round, six total; extra answers required, passbacks and replays rejected',()=>{
+  const s=withCoupons();D.ready(s,0);D.ready(s,1);
+  for(let i=0;i<6;i++){
+    assert(D.pass(s,0,i%2));assert.equal(D.pass(s,0,0),false);assert.equal(D.pass(s,1,0),false);
+    assert.equal(s.passUsed[0],i%3+1);const correct=q.find(x=>x.id===s.ids[i]).answer;
+    question(s,[],[correct,correct]);D.next(s,0);D.next(s,1);if(i===2){assert.equal(s.passUsed[0],0);D.ready(s,0);D.ready(s,1);}
+  }
+  assert.equal(s.passTotal[0],6);assert.equal(D.totals(s)[0],D.totals(s)[1]);
+  const empty=fresh();D.ready(empty,0);D.ready(empty,1);assert.equal(D.canPass(empty,0),false);
+  const bad=withCoupons();D.ready(bad,0);D.ready(bad,1);D.pass(bad,0,0);D.commit(bad,0,'a'.repeat(64),0);D.commit(bad,1,'b'.repeat(64),0);
+  assert.equal(D.reveal(bad,0,1,0),false);assert.equal(D.reveal(bad,1,[0],0),false);assert.equal(D.reveal(bad,1,[0,1,2],0),false);
+});
+test('diligence counts only correct extras from both rounds, once at final submission, retains opponent score',()=>{
+  const s=withCoupons();D.ready(s,0);D.ready(s,1);assert.equal(D.canDiligence(s,1),false);
+  for(let i=0;i<6;i++){
+    const correct=q.find(x=>x.id===s.ids[i]).answer,wrong=(correct+1)%4;D.pass(s,0,0);question(s,[],[correct,i===0||i===3?correct:wrong]);
+    if(i<5){D.next(s,0);D.next(s,1);if(i===2){D.ready(s,0);D.ready(s,1);}}
+  }
+  const before=D.totals(s);assert.equal(D.diligenceBonus(s,1).correct,2);assert.equal(D.diligenceBonus(s,1).damage,168);
+  assert(D.activateDiligence(s,1));assert.equal(D.activateDiligence(s,1),false);
+  assert.deepEqual(D.totals(s),[before[0],before[1]+168]);D.next(s,1);assert.equal(D.canDiligence(s,1),false);D.next(s,0);
+  assert.equal(s.phase,'done');assert.equal(D.activateDiligence(s,0),false);
+});
+test('all wrong extras cannot activate diligence and give zero bonus even when original answers are correct',()=>{
+  const s=withCoupons();D.ready(s,0);D.ready(s,1);
+  for(let i=0;i<6;i++){const correct=q.find(x=>x.id===s.ids[i]).answer;D.pass(s,0,1);question(s,[],[(correct+1)%4,correct]);if(i<5){D.next(s,0);D.next(s,1);if(i===2){D.ready(s,0);D.ready(s,1);}}}
+  assert.deepEqual(D.diligenceBonus(s,1),{correct:0,damage:0});assert.equal(D.canDiligence(s,1),false);assert.equal(D.activateDiligence(s,1),false);
+  assert.deepEqual(D.totals(s),[0,594]);
 });

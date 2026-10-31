@@ -18,14 +18,16 @@
     {id:'supply-1',name:'臨時補給券',count:1,price:40,kind:'supplies',tag:'一回合的準備'},
     {id:'supply-3',name:'補給小行囊',count:3,price:100,kind:'supplies',tag:'三次預讀機會'},
     {id:'supply-10',name:'遠征補給箱',count:10,price:300,kind:'supplies',tag:'為一週的冒險準備'},
-    {id:'wish-1',name:'星願券',count:1,price:120,kind:'tickets',tag:'用學習所得，換一份驚喜'}
+    {id:'wish-1',name:'星願券',count:1,price:120,kind:'tickets',tag:'用學習所得，換一份驚喜'},
+    {id:'shirk-1',name:'甩鍋券',count:1,price:80,kind:'shirkTickets',tag:'交給對手，多一份挑戰',description:'雙人對戰作答前使用，對手額外回答一份題目；代答答對的傷害歸你，對方原本的題目照常計分。每回合最多 3 張。'},
+    {id:'diligence-1',name:'能者多勞券',count:1,price:240,kind:'diligenceTickets',tag:'多做的理解，化成雙倍回報',description:'整場最後交卷結算前使用 1 張，兩回合答對的額外代答題按雙倍傷害加回自己的總分；答錯不加分，不撤回對手已得分數。'}
   ];
   const GEAR_ATTACK = [0,8,18,32], GEAR_HP = [0,10,25,45], GEAR_GUARD = [0,2,4,7];
   function weekId(day = E.today()) {
     const d = new Date(day + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7); return d.toISOString().slice(0,10);
   }
   function addDays(day, count) { const d = new Date(day+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+count); return d.toISOString().slice(0,10); }
-  function fresh(day = E.today()) { return {version:1,coins:0,economy:P.localFresh(),supplies:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
+  function fresh(day = E.today()) { return {version:1,coins:0,economy:P.localFresh(),supplies:0,shirkTickets:0,diligenceTickets:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
   function score(a) { return Object.values(a.week.records).reduce((n,r)=>n+r.points,0); }
   function rank(points) { return RANKS.slice().reverse().find(r=>points>=r.min) || RANKS[0]; }
   function rollWeek(a, day = E.today()) {
@@ -46,6 +48,7 @@
     if(target[item.kind]+item.count>MAX) return false;
     a.coins-=item.price; target[item.kind]+=item.count; return true;
   }
+  function useDuelTicket(a,kind){if(!['shirkTickets','diligenceTickets'].includes(kind)||!Number.isInteger(a[kind])||a[kind]<1)return false;a[kind]--;return true;}
   function heroStats(level, gearId, subject, outfit,training) {
     const gear=E.ITEMS.find(i=>i.id===gearId), tier=gear?.tier ?? 0, capped=Math.min(20,level);
     const loadout=R.loadout(outfit),study=R.training(training),extra=R.bonus(loadout,level,study);
@@ -128,7 +131,7 @@
     const date=v=>{if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v)||!Number.isFinite(Date.parse(v+'T00:00:00Z'))||new Date(v+'T00:00:00Z').toISOString().slice(0,10)!==v)invalid();return v;};
     if(!raw||typeof raw!=='object'||raw.version!==1||!raw.week||!raw.week.records||Array.isArray(raw.week.records)||typeof raw.week.records!=='object')invalid();
     const week=date(raw.week.id);if(weekId(week)!==week)invalid();
-    const a={version:1,coins:num(raw.coins),economy:P.localRestore(raw.economy),supplies:num(raw.supplies),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
+    const a={version:1,coins:num(raw.coins),economy:P.localRestore(raw.economy),supplies:num(raw.supplies),shirkTickets:num(raw.shirkTickets??0),diligenceTickets:num(raw.diligenceTickets??0),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
     if(Object.keys(raw.week.records).length>28)invalid();
     for(const [key,r] of Object.entries(raw.week.records)) {
       const [day,id]=key.split(':'),enemy=ENEMIES.find(e=>e.id===id);
@@ -163,5 +166,5 @@
     }
     return a;
   }
-  return {ENEMIES,RANKS,GOODS,GEAR_ATTACK,GEAR_HP,GEAR_GUARD,weekId,addDays,fresh,score,rank,rollWeek,claimCoins,buy,stats,heroStats,begin,useSupply,startRound,answer,calculateRound,totals,next,advance,studyCard,restore};
+  return {ENEMIES,RANKS,GOODS,GEAR_ATTACK,GEAR_HP,GEAR_GUARD,weekId,addDays,fresh,score,rank,rollWeek,claimCoins,buy,useDuelTicket,stats,heroStats,begin,useSupply,startRound,answer,calculateRound,totals,next,advance,studyCard,restore};
 });

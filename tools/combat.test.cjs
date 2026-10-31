@@ -26,6 +26,16 @@ test('numeric answer mnemonic loses option prefix without losing its calculation
 });
 function player(){const s=E.fresh(day);s.arena=C.fresh(day);return s;}
 function restore(s){const raw=JSON.parse(JSON.stringify(s)),out=E.restore(raw,qs);out.arena=C.restore(raw.arena,qs);return out;}
+test('duel coupons cost 80 and 240 coins, persist, and cannot be spent below zero',()=>{
+ const s=player();s.arena.coins=400;
+ assert(C.buy(s,'shirk-1'));assert.equal(s.arena.coins,320);assert.equal(s.arena.shirkTickets,1);
+ assert(C.buy(s,'diligence-1'));assert.equal(s.arena.coins,80);assert.equal(s.arena.diligenceTickets,1);
+ assert.equal(C.buy(s,'diligence-1'),false);assert.equal(s.arena.coins,80);
+ const restored=restore(s);assert.equal(restored.arena.shirkTickets,1);assert.equal(restored.arena.diligenceTickets,1);
+ for(const kind of ['shirkTickets','diligenceTickets']){assert(C.useDuelTicket(restored.arena,kind));assert.equal(C.useDuelTicket(restored.arena,kind),false);assert.equal(restored.arena[kind],0);}
+ assert.equal(C.useDuelTicket(restored.arena,'coins'),false);assert.equal(restored.arena.coins,80);
+ const old=C.fresh(day);delete old.shirkTickets;delete old.diligenceTickets;assert.equal(C.restore(old,qs).diligenceTickets,0);
+});
 function run(s,mask,enemy='diamond',finishDay=day,startDay=day){
  assert(C.begin(s,enemy,'pharmaceutics',qs,()=>.3,startDay));
  for(let round=0;round<2;round++){
