@@ -21,7 +21,7 @@ test('shelf shards injure only at their elevation, recover after eight seconds a
 });
 test('multiple shelves round-trip through the network and reject invented vessels, heights and duplicates',()=>{
   const raw={cups:[0,1,2,3].map(level=>({scene:lab,id:'lab-'+level+'-1',x:P.definitions(lab).find(d=>d.id==='lab-'+level+'-1').x,y:P.definitions(lab).find(d=>d.id==='lab-'+level+'-1').y,z:[90,170,237,309][level],remaining:40000})),injuries:[]};
-  const restored=P.restore(raw,1000);assert.deepEqual(P.snapshot(restored,1000),raw);
+  const restored=P.restore(raw,1000);assert.deepEqual(P.snapshot(restored,1000),{...raw,furniture:[]});
   for(const change of [{id:'missing'},{z:91},{x:800},{scene:'hall:battle:arena'}])assert.throws(()=>P.restore({...raw,cups:[{...raw.cups[0],...change}]},1000));
   assert.throws(()=>P.restore({...raw,cups:[raw.cups[0],raw.cups[0]]},1000));
 });

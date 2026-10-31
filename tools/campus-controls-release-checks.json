@@ -1,0 +1,30 @@
+{
+  "release": "20261101-campus-controls",
+  "checks": {
+    "interactionCore": 29,
+    "onlineCloudAndExistingFeatures": 61,
+    "allFloorButtonsAndClassActions": 2,
+    "additionalFurnitureCases": 2,
+    "totalDistinctTests": 94,
+    "syntax": "all game JavaScript parses",
+    "offline": {
+      "bytes": 29264210,
+      "parts": 16,
+      "uniqueEntries": 161,
+      "newEntriesOrUpdates": 39,
+      "hash": "30d3575f1aef6681c49acfc8a28582c5e359fdb481826cf31ccea280303a9a12"
+    }
+  },
+  "visualQA": {
+    "stall": "Local desktop stall walking and shop return checked before final control changes",
+    "latestMobileControls": "Not visually or physically verified; browser and Windows automation tools timed out"
+  },
+  "scope": [
+    "touch drag movement",
+    "offline bot stages",
+    "movable furniture",
+    "direct floor and activity navigation",
+    "fountain stall",
+    "revised original shop artwork"
+  ]
+}

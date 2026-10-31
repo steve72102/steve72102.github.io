@@ -2,7 +2,7 @@ window.MindEconomyUI=function(ctx){
   'use strict';
   const {node,btn,note,openModal,closeModal,getState,toast,render,network,account}=ctx,P=window.MindEconomy;
   const names={bully:'霸凌券',counter:'反霸凌券',bomb:'炸彈券'},marks={bully:'↘',counter:'◇',bomb:'✹'};
-  const couponName=kind=>names[kind]||'自以為'+P.REGIONS[kind]+'最聰明券';
+  const couponName=kind=>names[kind]||'自以為'+P.REGIONS[kind]+'最強券';
   const fmt=n=>Number(n||0).toLocaleString('zh-TW');
   function current(){const w=getState().arena.economy?.wallet;return w?P.roll(w):null;}
   function locked(){const a=account().snapshot(),n=network().snapshot();return !a.uid||a.locked||a.wishing||!n.ready||n.working||!navigator.onLine;}
@@ -28,17 +28,17 @@ window.MindEconomyUI=function(ctx){
       note('四種地區券，每張 1,000 金幣。使用後的新遊戲收入 +15%，頭頂顯示你的專屬稱號，從使用當天起算 14 天。'),
       active?node('div',{class:'honor-status '+active.kind},node('strong',{},active.title),node('span',{},'收入 +'+active.bonus+'% · 至 '+R.date(active.until-1)+' 23:59')):null,
       node('div',{class:'region-grid'},Object.entries(P.REGIONS).map(([kind,label],i)=>node('article',{class:'region-card region-'+kind},
-        window.MindShopArt.card(ctx,kind,'自以為'+label+'最聰明券',label+' · 稱號系列'),
+        window.MindShopArt.card(ctx,kind,'自以為'+label+'最強券',label+' · 稱號系列'),
         node('p',{class:'eyebrow'},['NORTH','CENTRAL','SOUTH','EAST'][i]+' · 14 DAYS'),
-        node('h3',{},'自以為'+label+'最聰明券'),node('div',{class:'region-benefit'},node('strong',{},'+15%'),node('span',{},'遊戲金幣收入')),
-        note('頭頂稱號：自以為'+label+'最聰明'),node('p',{class:'coupon-price'},'1,000 金幣'),note('持有 '+(w?.stock[kind]||0)+' 張'),
+        node('h3',{},'自以為'+label+'最強券'),node('div',{class:'region-benefit'},node('strong',{},'+15%'),node('span',{},'遊戲金幣收入')),
+        note('頭頂稱號：自以為'+label+'最強'),node('p',{class:'coupon-price'},'1,000 金幣'),note('持有 '+(w?.stock[kind]||0)+' 張'),
         btn('購買'+label+'券',()=>purchase(kind),'full',locked()||getState().arena.coins<1000),
         btn('使用'+label+'券',()=>useRegion(kind),'secondary full',locked()||!w?.stock[kind]||active?.kind==='crown')))),
       note('四個地區效果相同，只取一種加成。重複使用或切換地區會重新起算 14 天，不會延長剩餘天數；冠軍稱號生效時先保留地區券。以臺灣日期計算，使用當天為第 1 天。'));
   }
   function useRegion(region){
     const R=window.MindRankings,active=P.activeHonor(current(),P.day());
-    openModal(node('p',{class:'eyebrow'},'REGIONAL TITLE'),node('h2',{},'自以為'+P.REGIONS[region]+'最聰明'),
+    openModal(node('p',{class:'eyebrow'},'REGIONAL TITLE'),node('h2',{},'自以為'+P.REGIONS[region]+'最強'),
       note('消耗 1 張券。從今天起，遊戲金幣收入 +15%，至 '+R.date(P.day()+13)+' 23:59（臺灣時間）。頭頂會持續顯示此稱號。'),
       active?note('目前稱號會被替換，剩餘天數不會累加。'):null,
       btn('確認使用 1 張',()=>run(()=>network().honor(region),'地區稱號已啟用，遊戲收入 +15%。'),'gold',locked()||!current()?.stock[region]||active?.kind==='crown'));

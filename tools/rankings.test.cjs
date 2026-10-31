@@ -5,7 +5,7 @@ test('四張地區券各 1000；14 天 +15%，同類不疊加，屆滿恢復',()
  let w=P.freshWallet(4000,'旅人',today);
  for(const region of Object.keys(P.REGIONS)){w=P.purchase(w,region);assert.equal(w.stock[region],1);}
  assert.equal(w.coins,0);w=P.useHonor(w,'north',today);assert.equal(P.factor(w),115);
- w=P.useHonor(w,'east',today);assert.equal(P.factor(w),115);assert.equal(P.activeHonor(w).title,'自以為東部最聰明');
+ w=P.useHonor(w,'east',today);assert.equal(P.factor(w),115);assert.equal(P.activeHonor(w).title,'自以為東部最強');
  assert.equal(P.earn(w,100).cash,115);assert.equal(P.factor(P.roll(w,today+13)),115);assert.equal(P.factor(P.roll(w,today+14)),100);
  assert.equal(P.roll(w,today+14).stock.central,1);assert.equal(P.validate(JSON.parse(JSON.stringify(w))).honor.region,'east');
  assert.throws(()=>P.purchase(w,'constructor'));assert.throws(()=>P.useHonor(w,'toString',today));

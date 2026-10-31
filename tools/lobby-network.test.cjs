@@ -24,3 +24,12 @@ test('room cap admits 60 players and refuses a 61st without disrupting existing 
 
 test('不同班級的教室隔離，同班可互見；角色效果更新不清空聊天',()=>{const f=fixture(),room='class-20000_herbal_1',a=f.create('旅人一',room);f.advance(100);const b=f.create('旅人二',room),c=f.create('旅人三','class-20000_herbal_2');f.advance(1500);assert.equal(a.snapshot().players.length,2);assert.equal(c.snapshot().players.length,1);assert(b.say('教室你好'));f.advance(10);const own=b.snapshot().players.find(p=>p.id===b.snapshot().selfId);const day=require('../game/social-economy.js').day();b.refresh({...own,counterAt:1000,honor:{kind:'honor',region:'east',start:day,until:day+14}});f.advance(10);assert.equal(a.snapshot().players.find(p=>p.id===own.id).counterAt,1000);assert.equal(a.snapshot().players.find(p=>p.id===own.id).honor.region,'east');assert.equal(a.snapshot().messages.length,1);assert.equal(b.snapshot().messages.length,1);f.stop();});
 test('班級房間上限為 50 人，第 51 人不擠掉既有同學',()=>{const f=fixture(),room='class-20000_battle_1',host=f.create('同學零',room);f.advance(100);for(let i=1;i<50;i++){f.create('同學'+i,room);f.advance(60);}f.advance(500);assert.equal(host.snapshot().players.length,50);const extra=f.create('額外同學',room);f.advance(1000);assert.equal(host.snapshot().players.length,50);assert.equal(extra.snapshot().status,'error');assert.match(extra.snapshot().message,/50/);f.stop();});
+
+test('movable tables synchronize across two peers and old tabletop space becomes walkable',()=>{
+ const f=fixture(),a=f.create('推桌旅人一');f.advance(100);const b=f.create('推桌旅人二');f.advance(1000);
+ const scene='hall:battle:arena';b.move({scene,x:480,y:527,z:0,direction:'up',moving:true});f.advance(1200);
+ const first=a.snapshot().environment.furniture.find(p=>p.scene===scene&&p.id==='table');assert(first&&first.dy<0);
+ assert.equal(JSON.stringify(a.snapshot().environment.furniture),JSON.stringify(b.snapshot().environment.furniture));
+ b.move({scene,x:480,y:510,z:0,direction:'down',moving:false});f.advance(400);
+ assert.equal(b.snapshot().status,'connected');assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).y,510);f.stop();
+});

@@ -1,0 +1,7 @@
+{
+  "mode": "built-in imagegen",
+  "prompt": "Create ONE ORIGINAL isolated small fantasy pharmacy academy market stall game sprite, transparent background. Use supplied campus image ONLY for matching its bright sunlit painterly 3D style and perspective, not as a background or edit target. A welcoming compact wooden pushcart stall, three-quarter FRONT view, camera modestly elevated about 25 degrees, front counter visible. Sage-green and cream striped fabric canopy, honey-colored wood with real grain, two cart wheels, neat counter displaying tiny rolled study notes, a few plain colored glass vials, a small pair of boots and a folded cape. Original hanging plain wooden signboard EMPTY so game UI can add its title. No people, no human faces, no animals, no readable lettering, no logos, no coins pouring, no glitter, no copied franchise motifs. Grounded everyday charming market stall, not palace or ornate jewelry. Entire canopy, pole tops, wheels and base must be visible with modest transparent margin. Soft contact shadow only, NO floor or scenery or opaque background. Sunlight from upper left. Width slightly greater than height.",
+  "reference": "campus-plaza-motion-base.webp",
+  "file": "fountain-vendor.webp",
+  "transparent": true
+}

@@ -2,7 +2,7 @@ const test=require('node:test'),assert=require('node:assert/strict'),L=require('
 const p={id:'a'.repeat(32),name:'學院旅人',scene:'campus',...W.campus.spawn,direction:'down',moving:false};
 test('regional and champion titles are bounded, expire, and never trust free-form remote text',()=>{
  const day=require('../game/social-economy.js').day(),h={kind:'honor',region:'north',start:day,until:day+14,title:'<script>'};
- assert.equal(L.honorTitle(h),'自以為北部最聰明');assert.equal(L.player({...p,honor:h}).honor.title,undefined);
+ assert.equal(L.honorTitle(h),'自以為北部最強');assert.equal(L.player({...p,honor:h}).honor.title,undefined);
  assert.equal(L.honor(h,day+14),null);assert.equal(L.honorTitle({...h,kind:'crown',tier:'diamond',until:day+21}),'北部最聰明');
  for(const change of [{region:'constructor'},{kind:'fake'},{until:day+90},{start:day+1}])assert.throws(()=>L.honor({...h,...change}));
 });

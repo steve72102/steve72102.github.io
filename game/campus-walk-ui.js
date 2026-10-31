@@ -3,9 +3,10 @@ window.MindWalkUI=function(options){
   const {root,scene,initial,onPosition,onPortal,onMotion=()=>{},onPush=()=>{},onRouteCancel=()=>{}}=options;
   const W=window.MindWalk,world=root.querySelector('.walk-world'),actor=world.querySelector('.walk-actor'),label=root.querySelector('.walk-status'),action=root.querySelector('.walk-enter'),target=world.querySelector('.walk-target');
   const abort=new AbortController(),signal=abort.signal,keys=new Set(),touches=new Map();
+  let gesture=null,suppressClickUntil=0;const stick=root.querySelector('.walk-touch-stick'),knob=stick?.querySelector('i');
   let z=0,vz=0,armed=null,latched=null;let pos=W.nearest(scene,initial||scene.spawn),path=[],frame=0,last=0,disposed=false,activated=false,facing=1,direction='down',lastMessage='',wasMoving=false;
   function listen(el,type,fn,opts={}){el.addEventListener(type,fn,{...opts,signal});}
-  function stop(){keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
+  function stop(){gesture=null;if(stick)stick.hidden=true;keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
   function destroy(){if(disposed)return;disposed=true;stop();cancelAnimationFrame(frame);abort.abort();onPosition({...pos});}
   function focus(){world.focus({preventScroll:true});}
   function blocked(){return document.hidden||!!document.querySelector('dialog[open]');}
@@ -40,8 +41,32 @@ window.MindWalkUI=function(options){
   listen(window,'blur',()=>{stop();paint();});listen(document,'visibilitychange',()=>{stop();paint();});
   listen(window,'resize',camera);
   listen(document,'focusin',e=>{if(!root.contains(e.target)){stop();paint();}});
-  listen(world,'click',e=>{if(e.target.closest('button'))return;onRouteCancel();const r=world.getBoundingClientRect();toward({x:(e.clientX-r.left)/r.width*W.WIDTH,y:(e.clientY-r.top)/r.height*W.HEIGHT});});
+  listen(world,'click',e=>{if(e.target.closest('button,[role="button"]')||Date.now()<suppressClickUntil)return;onRouteCancel();const r=world.getBoundingClientRect();toward({x:(e.clientX-r.left)/r.width*W.WIDTH,y:(e.clientY-r.top)/r.height*W.HEIGHT});});
   root.querySelectorAll('[data-walk-portal]').forEach(b=>listen(b,'click',()=>{onRouteCancel();toward(scene.portals.find(p=>p.id===b.dataset.walkPortal));}));
+
+  function steer(){
+    if(!gesture)return;if(!gesture.active){gesture.active=true;keys.clear();touches.clear();path=[];armed=null;target.hidden=true;onRouteCancel();focus();}
+    if(stick){stick.hidden=false;stick.style.left=gesture.x+'px';stick.style.top=gesture.y+'px';}
+    if(knob)knob.style.transform='translate('+gesture.dx*34+'px,'+gesture.dy*34+'px)';
+  }
+  listen(world,'pointerdown',e=>{
+    if(!['touch','pen'].includes(e.pointerType)||gesture||blocked()||e.target.closest('button,[role="button"],input,select,textarea,a'))return;
+    e.preventDefault();keys.clear();touches.clear();path=[];armed=null;target.hidden=true;onRouteCancel();paint();gesture={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,dx:0,dy:0,active:false,started:null};
+    world.setPointerCapture(e.pointerId);suppressClickUntil=Date.now()+700;
+  });
+  listen(world,'pointermove',e=>{
+    if(!gesture||e.pointerId!==gesture.id)return;e.preventDefault();gesture.lastX=e.clientX;gesture.lastY=e.clientY;
+    const x=e.clientX-gesture.x,y=e.clientY-gesture.y,d=Math.hypot(x,y),scale=Math.max(48,d);
+    gesture.dx=d<8?0:x/scale;gesture.dy=d<8?0:y/scale;if(d>=10||gesture.active)steer();
+  });
+  function releaseGesture(e){
+    if(!gesture||e.pointerId!==gesture.id)return;const g=gesture;gesture=null;if(stick)stick.hidden=true;
+    suppressClickUntil=Date.now()+700;e.preventDefault();
+    if(e.type==='pointerup'&&!g.active&&!blocked()){onRouteCancel();const r=world.getBoundingClientRect();toward({x:(g.lastX-r.left)/r.width*W.WIDTH,y:(g.lastY-r.top)/r.height*W.HEIGHT});}
+    else{path=[];target.hidden=true;paint();}
+  }
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])listen(world,type,releaseGesture);
+
   listen(action,'click',()=>activate(W.near(scene,pos)));
   root.querySelectorAll('.walk-direction').forEach(b=>{
     const dir=b.dataset.direction;
@@ -53,14 +78,15 @@ window.MindWalkUI=function(options){
   function tick(now){
     if(disposed)return;if(!root.isConnected){destroy();return;}
     const dt=last?Math.min(.05,(now-last)/1000):0;last=now;
-    if(blocked()){if(wasMoving||keys.size||touches.size||path.length){stop();paint();wasMoving=false;}last=0;frame=requestAnimationFrame(tick);return;}
+    if(blocked()){if(wasMoving||keys.size||touches.size||path.length||gesture){stop();paint();wasMoving=false;}last=0;frame=requestAnimationFrame(tick);return;}
     let dx=0,dy=0;for(const key of [...keys,...touches.values()]){const d=W.direction(key);if(d){dx+=d[0];dy+=d[1];}}
+    if(gesture){if(gesture.started===null)gesture.started=now;if(!gesture.active&&now-gesture.started>=160)steer();if(gesture.active){dx+=gesture.dx;dy+=gesture.dy;}}
     const before=pos,beforeZ=z;
     const support=W.surface(scene,pos,z)?.height||0;if(vz||z>support){vz-=650/(scene.scale||1)*dt;z+=vz*dt;if(z<=support&&vz<0){z=support;vz=0;}}
     if(dx||dy)pos=W.move(scene,pos,dx,dy,dt,keys.has('Shift'),z);
     else if(path.length){let next=path[0];const dist=W.distance(pos,next);if(dist<=W.speed(scene)*dt){pos={...next};path.shift();if(!path.length)target.hidden=true;}else pos=W.move(scene,pos,next.x-pos.x,next.y-pos.y,dt,false,z);dx=pos.x-before.x;dy=pos.y-before.y;}
     const landed=W.surface(scene,pos,z)?.height||0;if(z<landed){z=landed;vz=0;}
-    const moved=W.distance(before,pos)>.001;if(moved||wasMoving||beforeZ!==z)paint(moved,dx,dy);wasMoving=moved;
+    const moved=W.distance(before,pos)>.001,intent=moved||!!(dx||dy);if(intent||wasMoving||beforeZ!==z)paint(intent,dx,dy);wasMoving=intent;
     const door=W.near(scene,pos,14);if(!door||door.id!==latched)latched=null;
     if(door&&door.id!==latched&&z<1&&(moved||armed===door.id)&&(door.auto!==false||armed===door.id)){activate(door);if(disposed)return;}
     frame=requestAnimationFrame(tick);

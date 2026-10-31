@@ -1,6 +1,6 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),W=require('../game/campus-walk.js');
 function fixture(options={}){
-  class El extends EventTarget{constructor(){super();this.dataset={};this.hidden=false;this.isConnected=true;this.style={setProperty(){}};this.classes=new Set();this.classList={add:v=>this.classes.add(v),remove:v=>this.classes.delete(v),toggle:(v,b)=>b?this.classes.add(v):this.classes.delete(v)};}closest(){return null;}focus(){}querySelectorAll(){return [];}setPointerCapture(){}}
+  class El extends EventTarget{constructor(){super();this.dataset={};this.hidden=false;this.isConnected=true;this.style={setProperty(){}};this.classes=new Set();this.classList={add:v=>this.classes.add(v),remove:v=>this.classes.delete(v),toggle:(v,b)=>b?this.classes.add(v):this.classes.delete(v)};}closest(){return null;}focus(){}querySelectorAll(){return [];}setPointerCapture(){}getBoundingClientRect(){return {left:0,top:0,width:1000,height:667};}}
   const actor=new El(),world=new El(),root=new El(),label=new El(),action=new El(),target=new El(),main=new El(),buttons=['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].map(d=>{const b=new El();b.dataset.direction=d;return b;});
   world.querySelector=s=>s==='.walk-actor'?actor:target;root.querySelector=s=>({'.walk-world':world,'.walk-status':label,'.walk-enter':action})[s];root.querySelectorAll=s=>s==='.walk-direction'?buttons:[];root.contains=e=>[world,root,action,...buttons].includes(e);
   const document=new El(),window=new El();window.MindWalk=W;document.body=new El();document.hidden=false;document.modal=false;document.querySelector=()=>document.modal?{}:null;document.getElementById=()=>main;
@@ -37,4 +37,23 @@ test('the left laboratory counter is reachable and repeated jumps land on each s
 test('the illustrated window bench also supports a jump and blocks floor-level walking',()=>{
   const scene=W.hall('room','pharmacology'),f=fixture({scene,initial:{x:250,y:480}});
   f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(18);f.fire(f.document,'keyup',{key:'ArrowUp'});f.tick(70);assert.equal(Number(f.actor.dataset.z),55);assert.equal(W.surface(scene,f.point(),55).id,'window-bench');f.ui.destroy();
+});
+
+test('selecting the market stall walks to it and activates once',()=>{const shop=W.campus.portals.find(p=>p.id==='shop'),f=fixture({scene:W.campus,initial:W.campus.spawn});f.ui.toward(shop);f.tick(350);assert.deepEqual(f.portals,['shop']);assert(W.distance(f.point(),shop)<10);f.tick(180);assert.deepEqual(f.portals,['shop']);f.ui.destroy();assert.equal(f.frames.size,0);});
+test('walking past the market does not open it; Enter at the counter does',()=>{const shop=W.campus.portals.find(p=>p.id==='shop'),f=fixture({scene:W.campus,initial:W.campus.spawn});f.ui.toward({x:shop.x,y:shop.y});f.tick(350);assert.deepEqual(f.portals,[]);f.fire(f.document,'keydown',{key:'Enter',target:f.world});assert.deepEqual(f.portals,['shop']);f.tick(120);assert.deepEqual(f.portals,['shop']);f.ui.destroy();});
+
+test('drag anywhere touch movement stops on release, cancellation, modal and blur without a synthetic click restart',()=>{
+ const f=fixture(),down=(id=10)=>f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:id,clientX:500,clientY:550}),drag=(x,y,id=10)=>f.fire(f.world,'pointermove',{pointerType:'touch',pointerId:id,clientX:x,clientY:y});
+ const start=f.point();down();drag(560,550);f.tick(15);assert(f.point().x>start.x);f.fire(f.world,'pointerup',{pointerId:10});const stopped=f.point();f.fire(f.world,'click',{clientX:560,clientY:550});f.tick(20);assert.deepEqual(f.point(),stopped);
+ down();drag(440,550);f.tick(10);f.fire(f.world,'pointercancel',{pointerId:10});const canceled=f.point();f.tick(20);assert.deepEqual(f.point(),canceled);
+ down();drag(560,550);f.fire(f.window,'blur');const blurred=f.point();f.tick();assert.deepEqual(f.point(),blurred);
+ down();drag(560,550);f.document.modal=true;f.tick();f.document.modal=false;const paused=f.point();f.tick();assert.deepEqual(f.point(),paused);f.ui.destroy();
+});
+test('a stationary long press does not start an unintended route; UI buttons do not start steering',()=>{
+ const f=fixture(),start=f.point();f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:9,clientX:500,clientY:550});f.tick(20);f.fire(f.world,'pointerup',{pointerId:9});f.tick();assert.deepEqual(f.point(),start);
+ const button={closest:()=>({})};f.fire(f.world,'pointerdown',{target:button,pointerType:'touch',pointerId:8,clientX:500,clientY:550});f.fire(f.world,'pointermove',{pointerId:8,clientX:600,clientY:550});f.tick();assert.deepEqual(f.point(),start);f.ui.destroy();
+});
+test('a short tap still walks to ground and ignores the second finger during an active drag',()=>{
+ const f=fixture();f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:4,clientX:540,clientY:590});f.fire(f.world,'pointerup',{pointerId:4});f.tick(50);assert(Math.abs(f.point().x-540)<1);
+ f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:4,clientX:500,clientY:550});f.fire(f.world,'pointermove',{pointerId:4,clientX:450,clientY:550});f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:5,clientX:600,clientY:550});f.fire(f.world,'pointerup',{pointerId:5});const old=f.point();f.tick(10);assert(f.point().x<old.x);f.fire(f.world,'pointerup',{pointerId:4});f.ui.destroy();
 });

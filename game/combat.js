@@ -27,7 +27,7 @@
     const d = new Date(day + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() - (d.getUTCDay() + 6) % 7); return d.toISOString().slice(0,10);
   }
   function addDays(day, count) { const d = new Date(day+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+count); return d.toISOString().slice(0,10); }
-  function fresh(day = E.today()) { return {version:1,coins:0,economy:P.localFresh(),supplies:0,shirkTickets:0,diligenceTickets:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
+  function fresh(day = E.today()) { return {version:1,coins:0,economy:P.localFresh(),botWins:0,supplies:0,shirkTickets:0,diligenceTickets:0,login:'',week:{id:weekId(day),records:{}},history:[],battle:null}; }
   function score(a) { return Object.values(a.week.records).reduce((n,r)=>n+r.points,0); }
   function rank(points) { return RANKS.slice().reverse().find(r=>points>=r.min) || RANKS[0]; }
   function rollWeek(a, day = E.today()) {
@@ -131,7 +131,7 @@
     const date=v=>{if(typeof v!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(v)||!Number.isFinite(Date.parse(v+'T00:00:00Z'))||new Date(v+'T00:00:00Z').toISOString().slice(0,10)!==v)invalid();return v;};
     if(!raw||typeof raw!=='object'||raw.version!==1||!raw.week||!raw.week.records||Array.isArray(raw.week.records)||typeof raw.week.records!=='object')invalid();
     const week=date(raw.week.id);if(weekId(week)!==week)invalid();
-    const a={version:1,coins:num(raw.coins),economy:P.localRestore(raw.economy),supplies:num(raw.supplies),shirkTickets:num(raw.shirkTickets??0),diligenceTickets:num(raw.diligenceTickets??0),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
+    const a={version:1,coins:num(raw.coins),economy:P.localRestore(raw.economy),botWins:num(raw.botWins??0,3),supplies:num(raw.supplies),shirkTickets:num(raw.shirkTickets??0),diligenceTickets:num(raw.diligenceTickets??0),login:raw.login===''?'':date(raw.login),week:{id:week,records:{}},history:[],battle:null};
     if(Object.keys(raw.week.records).length>28)invalid();
     for(const [key,r] of Object.entries(raw.week.records)) {
       const [day,id]=key.split(':'),enemy=ENEMIES.find(e=>e.id===id);

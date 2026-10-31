@@ -1,0 +1,11 @@
+
+.walk-world{touch-action:none}
+.walk-touch-stick{position:fixed;z-index:950;width:94px;height:94px;margin:-47px 0 0 -47px;border:2px solid #fffaf1c9;border-radius:50%;background:#275b4d44;box-shadow:0 3px 18px #194b3426;pointer-events:none}
+.walk-touch-stick[hidden]{display:none}.walk-touch-stick i{position:absolute;left:29px;top:29px;width:32px;height:32px;border:2px solid #fff8df;border-radius:50%;background:#e8efcfcc;box-shadow:0 2px 10px #173d3944}
+.touch-move-help{display:none}
+.world-route-guide{pointer-events:auto;position:absolute;left:18px;top:215px;width:250px;border:1px solid #c8d3ba;border-radius:15px;background:#fffdefef;color:#375748;box-shadow:0 6px 20px #29463620;max-height:calc(100vh - 330px);overflow:auto}
+.world-route-guide summary{padding:12px;font-weight:800;font-size:14px;cursor:pointer}
+.route-guide-actions{padding:0 10px 10px;display:grid;gap:6px}.route-guide-actions p{font-size:12px;line-height:1.7;margin:0 2px 4px}.route-guide-actions .button{font-size:12px;padding:9px 10px;min-height:40px;white-space:normal}
+.bot-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.bot-level{padding:16px;border:1px solid #c9d8cc;border-radius:14px;background:#f2f8ec}.bot-level.locked{background:#f1f1ed}.bot-level h3{font-size:18px}.bot-level .button{width:100%;white-space:normal}
+@media(pointer:coarse){.academy-immersive .walk-pad{display:none}.academy-immersive .touch-move-help{display:block;position:absolute;bottom:132px;left:12px;max-width:210px;border-radius:9px;padding:7px 9px;background:#fffbe9d9;color:#345749;font-size:11px;pointer-events:none}}
+@media(max-width:650px){.world-route-guide{left:10px;top:155px;width:210px;max-height:calc(100dvh - 340px)}.world-route-guide summary{font-size:12px;padding:9px}.route-guide-actions .button{font-size:11px;padding:7px;min-height:36px}.bot-levels{grid-template-columns:1fr}.bot-level{padding:13px}}

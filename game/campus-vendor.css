@@ -1,0 +1,18 @@
+.campus-vendor{position:absolute;display:block;transform:translate(-50%,-100%);padding:0;border:0;background:transparent;cursor:pointer;isolation:isolate;touch-action:manipulation}
+.campus-vendor>img{display:block;width:100%;height:auto;pointer-events:none;filter:drop-shadow(0 4px 2px #583f3725)}
+.vendor-wood-sign{position:absolute;right:6%;top:35%;font-size:clamp(10px,.72cqw,22px);font-weight:850;color:#633a1c;transform:rotate(-7deg);letter-spacing:.1em;pointer-events:none}
+.vendor-caption{display:flex;align-items:center;gap:10px;position:absolute;left:50%;bottom:-8px;transform:translateX(-50%);padding:7px 12px;border-radius:12px;background:#fff9e9f5;border:1px solid #a78c59;color:#3d593d;box-shadow:0 3px 10px #40311822;white-space:nowrap;font-size:clamp(11px,.6cqw,18px);font-weight:800;pointer-events:none}
+.vendor-caption small{color:#6b5939;font-size:.8em;font-weight:600}
+.campus-vendor:hover .vendor-caption,.campus-vendor.nearby .vendor-caption{background:#fff3c9;border-color:#6d8a3c}
+.campus-vendor:focus-visible{outline:3px solid #347953;outline-offset:4px;border-radius:18px}
+.shop-equipment-actual{padding:16%;background:radial-gradient(ellipse at 50% 42%,#fffdf1 0%,#e4efe0 80%);box-sizing:border-box}
+.shop-equipment-actual.shop-art-expanded{height:350px;max-height:54vh;padding:35px;border:1px solid #d4dfc4}
+.gear-icon>.shop-equipment-actual{width:100%;height:100%;padding:8%;border-radius:inherit}
+@media(max-width:600px){.vendor-caption{padding:6px 9px;gap:5px}.vendor-caption small{display:none}}
+
+.shop-regional-art{position:relative;overflow:hidden;container-type:inline-size;background:#fff8e5;line-height:1}
+.shop-regional-art>img{display:block;width:100%;height:100%;object-fit:contain}
+.region-crown-text{position:absolute;left:5%;right:5%;bottom:7%;display:flex;flex-direction:column;align-items:center;gap:3px;font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;font-weight:950;color:#742a24;text-shadow:0 2px #fff8ce,1px 0 #fff8ce,-1px 0 #fff8ce;transform:rotate(-3deg)}
+.region-crown-text small{font-size:clamp(17px,8cqw,40px);letter-spacing:.12em}
+.region-crown-text strong{font-size:clamp(25px,12cqw,62px);font-weight:950;letter-spacing:.04em;color:#8b2a17}
+.shop-regional-art.shop-art-expanded{width:min(100%,54vh);height:auto;aspect-ratio:1}

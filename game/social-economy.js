@@ -20,7 +20,7 @@
   function activeHonor(w,today=w?.day??day()){
     const active=h=>h&&today>=h.start&&today<h.until;
     if(active(w?.crown))return {...w.crown,bonus:CROWN_BONUS[w.crown.tier],title:REGIONS[w.crown.region]+'最聰明',kind:'crown'};
-    if(active(w?.honor))return {...w.honor,bonus:15,title:'自以為'+REGIONS[w.honor.region]+'最聰明',kind:'honor'};
+    if(active(w?.honor))return {...w.honor,bonus:15,title:'自以為'+REGIONS[w.honor.region]+'最強',kind:'honor'};
     return null;
   }
   const honorBonus=(w,today=w.day)=>activeHonor(w,today)?.bonus||0;

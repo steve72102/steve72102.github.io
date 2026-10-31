@@ -23,7 +23,7 @@ async function player(db,uid,storage=new Map()){
 const R=require('../game/rankings.js');
 test('地區券購買、使用與 15% 收益會跨裝置保存',async()=>{
  const db=database(),a=await player(db,'alice');await a.net.buy('north');assert.equal(a.state().arena.coins,9000);await a.net.honor('north');
- assert.equal(a.P.activeHonor(a.state().arena.economy.wallet).title,'自以為北部最聰明');assert.equal(a.state().arena.economy.wallet.stock.north,0);
+ assert.equal(a.P.activeHonor(a.state().arena.economy.wallet).title,'自以為北部最強');assert.equal(a.state().arena.economy.wallet.stock.north,0);
  a.P.award(a.state().arena,100);a.cloud.localSave();await a.cloud.sync();assert.equal(a.state().arena.coins,9115);
  const b=await player(db,'alice');assert.equal(b.state().arena.coins,9115);assert.equal(b.P.factor(b.state().arena.economy.wallet),115);
 });

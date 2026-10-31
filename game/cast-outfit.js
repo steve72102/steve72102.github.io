@@ -31,27 +31,32 @@
     const A=window.MindAcademy,R=window.MindAdventure,E=window.MindEngine,{character,cut,items,palette}=model(state,A,R,E);
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,role:'img','aria-label':character.name+'八欄裝備試穿圖：'+Object.entries(R.SLOTS).map(([slot,label])=>label+' '+(items[slot]?.name||'未穿戴')).join('；')});
-    const add=(tag,attrs)=>svg.appendChild(set(document.createElementNS(ns,tag),attrs));
+    let equipmentSlot='';
+    const add=(tag,attrs)=>svg.appendChild(set(document.createElementNS(ns,tag),equipmentSlot?{...attrs,'data-equipment-slot':equipmentSlot}:attrs));
     const path=(d,fill,stroke='#554f4b',width=1.7)=>add('path',{d,fill,stroke,'stroke-width':width,'stroke-linejoin':'round','stroke-linecap':'round'});
     const line=(d,color,width=1.7)=>path(d,'none',color,width);
     const circle=(cx,cy,r,fill)=>add('circle',{cx,cy,r,fill});
     const p=slot=>palette(slot),has=slot=>!!items[slot],style=slot=>items[slot]?.style;
     const sh=cut.shoulder,sl=90-sh,sr=90+sh,hem=cut.hem,fl=cut.flare;
     add('ellipse',{cx:90,cy:315,rx:50,ry:8,fill:'#34584522'});
+    equipmentSlot='cape';
     if(has('cape')){
       const c=p('cape'),length=Math.min(235,cut.cape+(style('cape')==='requiem'?24:0));
       path(`M${sl} 80Q90 69 ${sr} 80L${sr+12} ${length}Q90 ${length+21} ${sl-12} ${length}Z`,c[1],c[3]);
       if(style('cape')==='haydn')for(let x=72;x<=108;x+=12)line(`M${x} 92Q${x+3} 130 ${x} ${length-8}`,c[2],1.3);
       if(style('cape')==='tide')line(`M${sl-10} ${length-6}Q90 ${length+12} ${sr+10} ${length-6}`,c[0],2);
     }
+    equipmentSlot='';
     // Body proportions remain character-specific even when items are mixed across levels.
     path(`M${sl+4} 72Q90 63 ${sr-4} 72L${sr-4} 158Q90 172 ${sl+4} 158Z`,'#e7d9c6');
     const pant=has('pants')?p('pants')[3]:'#a5a49a',leg=cut.shoulder>34?5:0;
     path(`M${sl+5} 145L90 145 86 289 ${67-leg} 289 ${sl-1} 182Z`,pant);
     path(`M90 145L${sr-5} 145 ${sr+1} 182 ${113+leg} 289 94 289Z`,pant);
     if(has('pants')){const c=p('pants');line('M90 148L90 198',c[2]);if(style('pants')==='bach')line(`M${sl+2} 187Q${sl+8} 225 74 266M${sr-2} 187Q${sr-8} 225 107 266`,c[0]);if(style('pants')==='haydn')for(const x of [70,77,104,111])line(`M${x} 168L${x} 260`,c[0],1);if(style('pants')==='tide')line('M70 240Q80 246 88 240M96 240Q107 246 115 240',c[1],2);}
+    equipmentSlot=has('shoes')?'shoes':'';
     const shoe=has('shoes')?p('shoes')[0]:'#7e796e';path('M65 280L87 280 88 305Q73 312 54 304L56 292Z',shoe);path('M93 280L115 280 125 292 126 304Q106 312 92 305Z',shoe);
     if(has('shoes'))line('M57 301L86 301M94 301L123 301',p('shoes')[2],2);
+    equipmentSlot='';
     path(`M${sl+3} 73L${sl-13} 84 36 145 47 152 ${sl-1} 120 ${sl} 162 ${sr} 162 ${sr+1} 120 133 152 144 145 ${sr+13} 84 ${sr-3} 73 90 82Z`,has('shirt')?p('shirt')[2]:'#ece9df');
     if(has('shirt')){const c=p('shirt');line('M78 73L90 85 102 73M90 85L90 154',c[3],1.5);if(style('shirt')==='letter')for(const y of [105,116,127])line(`M82 ${y}H98`,c[1],1);}
     if(has('jacket')){
@@ -79,9 +84,22 @@
     if(cut.glasses)path('M73 37Q79 34 87 38L87 46Q80 50 74 45ZM93 38Q101 34 107 37L106 45Q99 50 93 46ZM87 40H93','none','#35383c',1.5);
     if(cut.goggles)path('M71 20Q79 14 87 20L87 27Q79 31 72 27ZM93 20Q101 14 109 20L108 27Q101 31 93 27Z','none','#5b676d',2);
     if(has('hat')){const c=p('hat');path(style('hat')==='schumann'?'M63 24Q65 4 90 6 115 4 117 24Z':style('hat')==='tide'?'M64 25Q66 3 90 7 114 3 116 25Z':'M62 25Q65 3 90 6 115 3 118 25Z',c[0],c[3]);path('M57 25Q90 34 123 25L120 31Q90 39 60 31Z',c[1],c[3],1);}
+    equipmentSlot='accessory';
     if(has('accessory')){const c=p('accessory');circle(sr-5,107,5,c[2]);line(`M${sr-8} 107Q${sr-5} 101 ${sr-2} 107`,c[0],1.2);}
+    equipmentSlot='';
     if(has('handheld')){const c=p('handheld');path('M116 148L148 140 153 180 120 187Z',c[0],c[3],2);line('M123 157L145 151M124 164L146 158',c[2],1.4);path('M117 166Q125 160 130 167L127 177 117 179Z',skin,'#a67255',1);}
     return svg;
   }
-  return {CUTS,COLORS,model,preview};
+  // The shop and bag extract the very same SVG parts used by the character's try-on view.
+  function itemPreview(state,item){
+    if(!['cape','shoes','accessory'].includes(item.slot))return null;
+    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id];
+    const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    const box=item.slot==='cape'?[90-cut.shoulder-28,54,2*(cut.shoulder+28),cut.cape-12]:item.slot==='shoes'?[42,267,96,53]:[90+cut.shoulder-17,95,24,24];
+    svg.setAttribute('viewBox',box.join(' '));svg.setAttribute('role','img');svg.setAttribute('aria-label',item.name+'：遊戲試穿版型');
+    svg.setAttribute('data-gear-id',item.id);
+    for(const part of full.querySelectorAll('[data-equipment-slot="'+item.slot+'"]'))svg.append(part.cloneNode(true));
+    return svg;
+  }
+  return {CUTS,COLORS,model,preview,itemPreview};
 });
