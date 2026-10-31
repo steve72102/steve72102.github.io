@@ -69,8 +69,8 @@ service cloud.firestore {
     function small(n, max) { return n is int && n >= 0 && n <= max; }
     function belongs(k) { return request.auth != null && sd('economyKeys',k).uid == request.auth.uid; }
     function daily(b, field, fallback) { return b.day == dayNow() ? b[field] : fallback; }
-    function floorRate(b) { return 100 + daily(b,'bonus',0) - daily(b,'penalty',0); }
-    function rate(b) { return floorRate(b) < 30 ? 30 : floorRate(b); }
+    function floorRate(b) { return 100 + daily(b,'bonus',0) + honorRate(b) - daily(b,'penalty',0); }
+    function rate(b) { let value=floorRate(b); return value<30 ? 30 : value; }
     function minimum(a,b) { return a < b ? a : b; }
     function freshSocial(id) { return socialId(id) && !exists(socialPath('economyOps',id)); }
     function blocked(b,k) {
@@ -81,13 +81,13 @@ service cloud.firestore {
         || watch.get(b.rooms.get('battle',''),{'members':[]}).members.hasAny([k]);
     }
     function socialShape(d) {
-      return d.keys().hasOnly(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
+      return d.keys().hasOnly(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt','honor','crown'])
         && d.keys().hasAll(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
         && d.schema == 1 && small(d.revision,9007199254740991) && d.revision > 0 && small(d.day,100000)
         && small(d.coins,100000000) && amount(d.debt) && small(d.earned,100000000) && small(d.carry,99)
-        && small(d.bonus,10000) && small(d.penalty,10070) && small(d.usedCounters,10000) && small(d.streak,3)
+        && small(d.bonus,10000) && small(d.penalty,10105) && small(d.usedCounters,10000) && small(d.streak,3)
         && small(d.bubbleAt,9007199254740991) && (d.lastTarget == '' || socialKey(d.lastTarget))
-        && d.stock.keys().hasOnly(['bully','counter','bomb']) && d.stock.keys().hasAll(['bully','counter','bomb'])
+        && d.stock.keys().hasOnly(['bully','counter','bomb','north','central','south','east']) && d.stock.keys().hasAll(['bully','counter','bomb'])
         && small(d.stock.bully,9999) && small(d.stock.counter,9999) && small(d.stock.bomb,9999)
         && d.rooms is map && d.rooms.keys().hasOnly(['pharmaceutics','pharmacology','herbal','battle'])
         && d.rooms.get('pharmaceutics','') is string && d.rooms.get('pharmacology','') is string
@@ -116,18 +116,18 @@ service cloud.firestore {
         && cursorsValid(b.cursors,n.cursors,r.devices);
     }
     function stockChange(b,n,kind,delta) {
-      return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock[kind] + delta && small(n.stock[kind],9999);
+      return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock.get(kind,0) + delta && small(n.stock[kind],9999);
     }
     function couponChange(b,n,k,r) {
-      let price = r.get('item','') == 'bully' ? 180 : r.get('item','') == 'counter' ? 60 : 600;
-      return r.kind == 'buy' ? (r.item in ['bully','counter','bomb'] && ordinaryBase(b,n,k,['coins','stock']) && n.coins == b.coins - price && stockChange(b,n,r.item,1))
+      let price = r.get('item','') == 'bully' ? 180 : r.get('item','') == 'counter' ? 60 : r.get('item','') == 'bomb' ? 600 : 1000;
+      return r.kind == 'buy' ? (r.item in ['bully','counter','bomb','north','central','south','east'] && ordinaryBase(b,n,k,['coins','stock']) && n.coins == b.coins - price && stockChange(b,n,r.item,1))
         : r.kind == 'counter' ? (ordinaryBase(b,n,k,['stock','penalty','usedCounters','bubbleAt']) && stockChange(b,n,'counter',-1) && n.penalty == 0 && n.usedCounters == daily(b,'usedCounters',0)+1 && n.bubbleAt >= request.time.toMillis()-60000 && n.bubbleAt <= request.time.toMillis()+5000)
         : r.kind == 'bomb' && ordinaryBase(b,n,k,['stock']) && stockChange(b,n,'bomb',-1) && daily(b,'usedCounters',0)>=6 && rate(b)<70;
     }
     function bullyChange(b,n,k,r) {
       return k == r.actor
         ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1 && n.lastTarget == r.target && n.streak == r.step
-        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+70,daily(b,'penalty',0)+r.step);
+        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step);
     }
     function enrollChange(b,n,k,r) {
       return ordinaryBase(b,n,k,['rooms']) && n.rooms.diff(daily(b,'rooms',{})).affectedKeys().hasOnly([r.building]) && n.rooms[r.building] == r.room;
@@ -143,7 +143,7 @@ service cloud.firestore {
         : r.kind == 'bully' ? bullyChange(b,n,k,r)
         : r.actor == k && r.day == dayNow() && (r.kind in ['income','game'] ? incomeChange(b,n,k,r)
           : r.kind in ['buy','counter','bomb'] ? couponChange(b,n,k,r)
-          : r.kind == 'enroll' && enrollChange(b,n,k,r)));
+          : r.kind == 'honor' ? honorChange(b,n,k,r) : r.kind == 'crown' ? crownChange(b,n,k,r) : r.kind == 'enroll' && enrollChange(b,n,k,r)));
     }
     function fountainMoney(k,b,n) {
       let r = getAfter(receiptPath(n.operationId)).data;
@@ -155,7 +155,7 @@ service cloud.firestore {
         && d.coins == getAfter(playerPath()).data.coins && d.revision == 1 && d.day == dayNow()
         && d.debt == 0 && d.earned == 0 && d.carry == 0 && d.bonus == 0 && d.penalty == 0
         && d.stock == {'bully':0,'counter':0,'bomb':0} && d.usedCounters == 0 && d.streak == 0
-        && d.lastTarget == '' && d.bubbleAt == 0 && d.rooms == {} && d.cursors == {} && d.operationId == null;
+        && d.get('honor',null)==null && d.get('crown',null)==null && d.lastTarget == '' && d.bubbleAt == 0 && d.rooms == {} && d.cursors == {} && d.operationId == null;
     }
     function projection(uid,d) {
       let key = d.economy.key;
@@ -164,7 +164,7 @@ service cloud.firestore {
         && sa('economyAccounts',uid).key == key && d.coins == w.coins && d.economy.revision == w.revision;
     }
     function receiptShape(r) {
-      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt'])
+      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
         && r.keys().hasAll(['schema','kind','actor','day','createdAt']) && r.schema == 1 && socialKey(r.actor) && small(r.day,100000) && r.createdAt == request.time;
     }
     function pairedReceipt(id,r) {
@@ -226,7 +226,7 @@ service cloud.firestore {
       allow update: if request.auth != null && request.resource.data.updatedAt == request.time
         && request.resource.data.revision == resource.data.revision+1 && small(request.resource.data.coins,100000000)
         && amount(request.resource.data.debt) && small(request.resource.data.earned,100000000)
-        && small(request.resource.data.bonus,10000) && small(request.resource.data.penalty,10070)
+        && small(request.resource.data.bonus,10000) && small(request.resource.data.penalty,10105)
         && (moneyOperation(key,resource.data,request.resource.data) || fountainMoney(key,resource.data,request.resource.data));
       allow list, delete: if false;
     }
@@ -239,7 +239,7 @@ service cloud.firestore {
             && (request.resource.data.kind == 'bully' ? pairedReceipt(id,request.resource.data)
               : request.resource.data.kind == 'enroll' ? enrollReceipt(id,request.resource.data)
               : request.resource.data.kind == 'bomb' ? bombReceipt(id,request.resource.data)
-              : request.resource.data.kind in ['income','game','buy','counter']));
+              : request.resource.data.kind == 'crown' ? crownReceipt(id,request.resource.data) : request.resource.data.kind in ['income','game','buy','counter','honor']));
       allow list, update, delete: if false;
     }
     match /bullyPairs/{pair} {
@@ -314,6 +314,131 @@ service cloud.firestore {
         && freshSocial(request.resource.data.operationId) && sa('economyOps',request.resource.data.operationId).kind == 'settle'
         && sa('economyOps',request.resource.data.operationId).bomb == id;
       allow list, delete: if false;
+    }
+
+    function rankWeek() { return dayNow() - (dayNow()+3)%7; }
+    function rankSeason(w) { return small(w,100000) && (w+3)%7 == 0; }
+    function rankGroup(p) { return p>=3600 ? 'diamond' : p>=1800 ? 'gold' : p>=600 ? 'silver' : 'bronze'; }
+    function rankPercent(t) { return t=='diamond' ? 35 : t=='gold' ? 30 : t=='silver' ? 25 : 20; }
+    function region(r) { return r in ['north','central','south','east']; }
+    function honorActive(h) { return h != null && h.start <= dayNow() && h.until > dayNow(); }
+    function crownRate(b) { let h=b.get('crown',null); return honorActive(h) ? rankPercent(h.tier) : 0; }
+    function honorRate(b) { let value=crownRate(b); return value>0 ? value : honorActive(b.get('honor',null)) ? 15 : 0; }
+    function honorChange(b,n,k,r) {
+      return region(r.region) && ordinaryBase(b,n,k,['stock','honor']) && stockChange(b,n,r.region,-1)
+        && crownRate(b)==0 && n.honor=={'region':r.region,'start':dayNow(),'until':dayNow()+14};
+    }
+    function crownChange(b,n,k,r) {
+      return region(r.region) && r.tier in ['diamond','gold','silver','bronze'] && rankSeason(r.week) && r.week+7<=dayNow()
+        && ordinaryBase(b,n,k,['crown']) && honorRate(b)<=rankPercent(r.tier)
+        && n.crown=={'region':r.region,'tier':r.tier,'week':r.week,'start':dayNow(),'until':dayNow()+21}
+        && sa('rankClaims',string(r.week)+'_'+k).operationId==n.operationId;
+    }
+    function crownReceipt(id,r) {
+      let c=sa('rankClaims',string(r.week)+'_'+r.actor);
+      return c.operationId==id && c.key==r.actor && c.week==r.week && c.region==r.region && c.tier==r.tier;
+    }
+    function rankCount(w) { return exists(socialPath('rankWeeks',string(w))) ? sd('rankWeeks',string(w)).count : 0; }
+    function rankMeta(d,id) {
+      return d.keys().hasOnly(['schema','week','count','updatedAt']) && d.schema==1 && rankSeason(d.week)
+        && id==string(d.week) && d.week==rankWeek() && small(d.count,1000000) && d.count>0 && d.updatedAt==request.time;
+    }
+    function rankNewSlot(d) {
+      let id=string(d.week)+'_'+string(d.count);
+      let e=sa('rankSlots',id);
+      return !exists(socialPath('rankSlots',id)) && e.week==d.week && e.slot==d.count && belongs(e.key)
+        && sa('rankEntries',string(d.week)+'_'+e.key).slot==d.count;
+    }
+    function rankEntry(d,id) {
+      return d.keys().hasOnly(['schema','week','slot','key','name','points','achievedAt','updatedAt'])
+        && d.schema==1 && rankSeason(d.week) && d.week==rankWeek() && small(d.slot,1000000) && d.slot>0
+        && socialKey(d.key) && belongs(d.key) && id==string(d.week)+'_'+string(d.slot)
+        && d.name is string && d.name.size()>0 && d.name.size()<=32
+        && small(d.points,1550*(dayNow()-d.week+1)) && d.points>0
+        && d.achievedAt is timestamp && d.updatedAt==request.time;
+    }
+    function rankCandidate(e) {
+      return {'key':e.key,'name':e.name,'slot':e.slot,'points':e.points,'achievedAt':e.achievedAt.toMillis()};
+    }
+    function rankBetter(a,b) {
+      return b==null || a.points>b.points || (a.points==b.points
+        && (a.achievedAt<b.achievedAt || (a.achievedAt==b.achievedAt && a.slot<b.slot)));
+    }
+    function rankFold(leaders,e) {
+      let c=rankCandidate(e);
+      let t=rankGroup(c.points);
+      return c.points==0 ? leaders : {
+        'diamond':t=='diamond' && rankBetter(c,leaders.diamond) ? c : leaders.diamond,
+        'gold':t=='gold' && rankBetter(c,leaders.gold) ? c : leaders.gold,
+        'silver':t=='silver' && rankBetter(c,leaders.silver) ? c : leaders.silver,
+        'bronze':t=='bronze' && rankBetter(c,leaders.bronze) ? c : leaders.bronze
+      };
+    }
+    function rankAt(w,slot,count) { return slot<=count ? sd('rankSlots',string(w)+'_'+string(slot)) : {'key':'','name':'','slot':0,'points':0,'achievedAt':request.time}; }
+    function rankEmpty(w) { return {'week':w,'cursor':0,'finished':false,'leaders':{'diamond':null,'gold':null,'silver':null,'bronze':null}}; }
+    function rankFinal(n,id,b) {
+      let count=sd('rankWeeks',id).count;
+      let cursor=b.cursor;
+      let before=b.leaders;
+      let one=rankFold(before,rankAt(n.week,cursor+1,count));
+      let two=rankFold(one,rankAt(n.week,cursor+2,count));
+      let three=rankFold(two,rankAt(n.week,cursor+3,count));
+      let four=rankFold(three,rankAt(n.week,cursor+4,count));
+      return n.keys().hasOnly(['schema','week','cursor','leaders','finished','updatedAt'])
+        && n.schema==1 && rankSeason(n.week) && id==string(n.week) && n.week+7<=dayNow()
+        && !b.finished && b.week==n.week && cursor<count
+        && n.cursor==minimum(cursor+4,count) && n.leaders==four && n.finished==(n.cursor==count) && n.updatedAt==request.time;
+    }
+    match /rankWeeks/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && rankMeta(request.resource.data,id) && request.resource.data.count==1 && rankNewSlot(request.resource.data);
+      allow update: if request.auth!=null && rankMeta(request.resource.data,id) && request.resource.data.week==resource.data.week
+        && request.resource.data.count==resource.data.count+1 && rankNewSlot(request.resource.data);
+      allow list,delete: if false;
+    }
+    match /rankEntries/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && request.resource.data.keys().hasOnly(['week','key','slot'])
+        && request.resource.data.week==rankWeek() && belongs(request.resource.data.key)
+        && id==string(request.resource.data.week)+'_'+request.resource.data.key
+        && request.resource.data.slot==rankCount(request.resource.data.week)+1
+        && sa('rankWeeks',string(request.resource.data.week)).count==request.resource.data.slot
+        && sa('rankSlots',string(request.resource.data.week)+'_'+string(request.resource.data.slot)).key==request.resource.data.key;
+      allow list,update,delete: if false;
+    }
+    match /rankSlots/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && rankEntry(request.resource.data,id)
+        && request.resource.data.slot==rankCount(request.resource.data.week)+1
+        && sa('rankWeeks',string(request.resource.data.week)).count==request.resource.data.slot
+        && !exists(socialPath('rankEntries',string(request.resource.data.week)+'_'+request.resource.data.key))
+        && sa('rankEntries',string(request.resource.data.week)+'_'+request.resource.data.key).slot==request.resource.data.slot
+        && request.resource.data.achievedAt==request.time;
+      allow update: if request.auth!=null && rankEntry(request.resource.data,id)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','points','achievedAt','updatedAt'])
+        && request.resource.data.points>=resource.data.points
+        && request.resource.data.achievedAt==(request.resource.data.points>resource.data.points ? request.time : resource.data.achievedAt);
+      allow list,delete: if false;
+    }
+    match /rankFinals/{id} {
+      allow get: if request.auth!=null;
+      allow create,update: if request.auth!=null && rankFinal(request.resource.data,id,resource==null?rankEmpty(request.resource.data.week):resource.data);
+      allow list,delete: if false;
+    }
+    match /rankClaims/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && request.resource.data.keys().hasOnly(['schema','week','key','tier','region','day','operationId','createdAt'])
+        && request.resource.data.schema==1 && rankSeason(request.resource.data.week) && request.resource.data.week+7<=dayNow()
+        && belongs(request.resource.data.key) && id==string(request.resource.data.week)+'_'+request.resource.data.key
+        && request.resource.data.tier in ['diamond','gold','silver','bronze'] && region(request.resource.data.region)
+        && request.resource.data.day==dayNow() && request.resource.data.createdAt==request.time
+        && sd('rankFinals',string(request.resource.data.week)).finished
+        && sd('rankFinals',string(request.resource.data.week)).leaders[request.resource.data.tier].key==request.resource.data.key
+        && freshSocial(request.resource.data.operationId)
+        && sa('economyOps',request.resource.data.operationId).kind=='crown'
+        && sa('money',request.resource.data.key).operationId==request.resource.data.operationId
+        && crownReceipt(request.resource.data.operationId,sa('economyOps',request.resource.data.operationId));
+      allow list,update,delete: if false;
     }
 
     match /players/{uid} {

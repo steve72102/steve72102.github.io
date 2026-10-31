@@ -86,6 +86,18 @@ window.MindEconomyCloud=function(ctx){
           try{
             if(intent.kind==='buy'){w=P.purchase(w,intent.args.kind);extra.item=intent.args.kind;}
             else if(intent.kind==='counter'){w=P.counter(w);}
+            else if(intent.kind==='honor'){w=P.useHonor(w,intent.args.region);extra.region=intent.args.region;}
+            else if(intent.kind==='crown'){
+              const R=window.MindRankings,season=intent.args.week,region=intent.args.region;
+              if(!R?.validWeek(season)||season+7>P.day()||!P.REGIONS[region])throw Error('冠軍獎勵期間不正確。');
+              const claimId=season+'_'+k;
+              const [fs,cs]=await Promise.all([tx.get(doc(sdk,'rankFinals',season)),tx.get(doc(sdk,'rankClaims',claimId))]);
+              if(cs.exists())throw Error('這一週的冠軍獎勵已領取。');
+              const final=data(fs),tier=final?.finished?Object.keys(R.TIERS).find(t=>final.leaders[t]?.key===k):null;
+              if(!tier)throw Error('全服週榜尚未結算完成，或你不是該週的組別冠軍。');
+              w=P.crown(w,{region,tier,week:season});extra={week:season,region,tier};
+              writes.push(()=>tx.set(doc(sdk,'rankClaims',claimId),{schema:1,week:season,key:k,tier,region,day:w.day,operationId:intent.id,createdAt:sdk.db.serverTimestamp()}));
+            }
             else if(intent.kind==='bully'){
               const target=intent.args.target;if(!P.validKey(target)||target===k)throw Error('請選擇其他玩家。');
               const pairId=w.day+'_'+k+'_'+target;
@@ -157,6 +169,6 @@ window.MindEconomyCloud=function(ctx){
   async function classes(building){if(!P.BUILDINGS[building])return [];const sdk=await account().services(),group=P.day()+'_'+building,g=data(await sdk.db.getDocFromServer(doc(sdk,'classDays',group)));if(!g)return [];const rows=[];for(let n=1;n<=Math.ceil(g.count/50);n++){const roomId=group+'_'+n,r=data(await sdk.db.getDocFromServer(doc(sdk,'classRooms',roomId)));if(r)rows.push({...r,id:roomId});}return rows;}
   async function player(k){if(!P.validKey(k))return null;const sdk=await account().services(),s=await sdk.db.getDocFromServer(doc(sdk,'money',k));return s.exists()?P.validate(s.data()):null;}
   return {snapshot,observe,recover,prepareSave,readWish,writeWish,perform,classes,player,resumeBomb,settle,
-    buy:kind=>perform('buy',{kind}),counter:()=>perform('counter'),bully:target=>perform('bully',{target}),bomb:room=>perform('bomb',{room}),mutate:(action,param)=>perform('game',{action,param:param??null}),
+    buy:kind=>perform('buy',{kind}),honor:region=>perform('honor',{region}),crown:(week,region)=>perform('crown',{week,region}),counter:()=>perform('counter'),bully:target=>perform('bully',{target}),bomb:room=>perform('bomb',{room}),mutate:(action,param)=>perform('game',{action,param:param??null}),
     enter:building=>!P.BUILDINGS[building]||!key||wallet?.day===P.day()&&wallet.rooms[building]?Promise.resolve():perform('enroll',{building})};
 };

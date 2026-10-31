@@ -7,7 +7,7 @@ for(let offset=0;offset<64;offset+=8){
  blocks.push('    function cursorChanges'+offset+'(keys,b,n) { return '+checks+'; }');
 }
 blocks.push('    function cursorsValid(b,n,keys) { return keys is list && keys.size() <= 64 && n.keys().hasAll(b.keys()) && n.diff(b).affectedKeys().hasOnly(keys) && '+Array.from({length:8},(_,j)=>'(keys.size() <= '+j*8+' || cursorChanges'+j*8+'(keys,b,n))').join(' && ')+'; }');
-fragment=blocks.join('\n')+'\n'+fragment;
+fragment=blocks.join('\n')+'\n'+fragment+'\n'+fs.readFileSync(path.join(__dirname,'rankings-rules.fragment'),'utf8');
 source=source.replace('    match /players/{uid} {',()=>fragment+'\n    match /players/{uid} {');
 source=source.replace("'updatedAt', 'coins', 'fountain']","'updatedAt', 'coins', 'fountain', 'economy']");
 source=source.replace("&& r.walletBefore == before.get('coins', r.walletBefore)","&& r.walletBefore == (before.get('economy',null) == null ? before.get('coins',r.walletBefore) : sd('money',before.economy.key).coins)");

@@ -1,0 +1,124 @@
+    function rankWeek() { return dayNow() - (dayNow()+3)%7; }
+    function rankSeason(w) { return small(w,100000) && (w+3)%7 == 0; }
+    function rankGroup(p) { return p>=3600 ? 'diamond' : p>=1800 ? 'gold' : p>=600 ? 'silver' : 'bronze'; }
+    function rankPercent(t) { return t=='diamond' ? 35 : t=='gold' ? 30 : t=='silver' ? 25 : 20; }
+    function region(r) { return r in ['north','central','south','east']; }
+    function honorActive(h) { return h != null && h.start <= dayNow() && h.until > dayNow(); }
+    function crownRate(b) { let h=b.get('crown',null); return honorActive(h) ? rankPercent(h.tier) : 0; }
+    function honorRate(b) { let value=crownRate(b); return value>0 ? value : honorActive(b.get('honor',null)) ? 15 : 0; }
+    function honorChange(b,n,k,r) {
+      return region(r.region) && ordinaryBase(b,n,k,['stock','honor']) && stockChange(b,n,r.region,-1)
+        && crownRate(b)==0 && n.honor=={'region':r.region,'start':dayNow(),'until':dayNow()+14};
+    }
+    function crownChange(b,n,k,r) {
+      return region(r.region) && r.tier in ['diamond','gold','silver','bronze'] && rankSeason(r.week) && r.week+7<=dayNow()
+        && ordinaryBase(b,n,k,['crown']) && honorRate(b)<=rankPercent(r.tier)
+        && n.crown=={'region':r.region,'tier':r.tier,'week':r.week,'start':dayNow(),'until':dayNow()+21}
+        && sa('rankClaims',string(r.week)+'_'+k).operationId==n.operationId;
+    }
+    function crownReceipt(id,r) {
+      let c=sa('rankClaims',string(r.week)+'_'+r.actor);
+      return c.operationId==id && c.key==r.actor && c.week==r.week && c.region==r.region && c.tier==r.tier;
+    }
+    function rankCount(w) { return exists(socialPath('rankWeeks',string(w))) ? sd('rankWeeks',string(w)).count : 0; }
+    function rankMeta(d,id) {
+      return d.keys().hasOnly(['schema','week','count','updatedAt']) && d.schema==1 && rankSeason(d.week)
+        && id==string(d.week) && d.week==rankWeek() && small(d.count,1000000) && d.count>0 && d.updatedAt==request.time;
+    }
+    function rankNewSlot(d) {
+      let id=string(d.week)+'_'+string(d.count);
+      let e=sa('rankSlots',id);
+      return !exists(socialPath('rankSlots',id)) && e.week==d.week && e.slot==d.count && belongs(e.key)
+        && sa('rankEntries',string(d.week)+'_'+e.key).slot==d.count;
+    }
+    function rankEntry(d,id) {
+      return d.keys().hasOnly(['schema','week','slot','key','name','points','achievedAt','updatedAt'])
+        && d.schema==1 && rankSeason(d.week) && d.week==rankWeek() && small(d.slot,1000000) && d.slot>0
+        && socialKey(d.key) && belongs(d.key) && id==string(d.week)+'_'+string(d.slot)
+        && d.name is string && d.name.size()>0 && d.name.size()<=32
+        && small(d.points,1550*(dayNow()-d.week+1)) && d.points>0
+        && d.achievedAt is timestamp && d.updatedAt==request.time;
+    }
+    function rankCandidate(e) {
+      return {'key':e.key,'name':e.name,'slot':e.slot,'points':e.points,'achievedAt':e.achievedAt.toMillis()};
+    }
+    function rankBetter(a,b) {
+      return b==null || a.points>b.points || (a.points==b.points
+        && (a.achievedAt<b.achievedAt || (a.achievedAt==b.achievedAt && a.slot<b.slot)));
+    }
+    function rankFold(leaders,e) {
+      let c=rankCandidate(e);
+      let t=rankGroup(c.points);
+      return c.points==0 ? leaders : {
+        'diamond':t=='diamond' && rankBetter(c,leaders.diamond) ? c : leaders.diamond,
+        'gold':t=='gold' && rankBetter(c,leaders.gold) ? c : leaders.gold,
+        'silver':t=='silver' && rankBetter(c,leaders.silver) ? c : leaders.silver,
+        'bronze':t=='bronze' && rankBetter(c,leaders.bronze) ? c : leaders.bronze
+      };
+    }
+    function rankAt(w,slot,count) { return slot<=count ? sd('rankSlots',string(w)+'_'+string(slot)) : {'key':'','name':'','slot':0,'points':0,'achievedAt':request.time}; }
+    function rankEmpty(w) { return {'week':w,'cursor':0,'finished':false,'leaders':{'diamond':null,'gold':null,'silver':null,'bronze':null}}; }
+    function rankFinal(n,id,b) {
+      let count=sd('rankWeeks',id).count;
+      let cursor=b.cursor;
+      let before=b.leaders;
+      let one=rankFold(before,rankAt(n.week,cursor+1,count));
+      let two=rankFold(one,rankAt(n.week,cursor+2,count));
+      let three=rankFold(two,rankAt(n.week,cursor+3,count));
+      let four=rankFold(three,rankAt(n.week,cursor+4,count));
+      return n.keys().hasOnly(['schema','week','cursor','leaders','finished','updatedAt'])
+        && n.schema==1 && rankSeason(n.week) && id==string(n.week) && n.week+7<=dayNow()
+        && !b.finished && b.week==n.week && cursor<count
+        && n.cursor==minimum(cursor+4,count) && n.leaders==four && n.finished==(n.cursor==count) && n.updatedAt==request.time;
+    }
+    match /rankWeeks/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && rankMeta(request.resource.data,id) && request.resource.data.count==1 && rankNewSlot(request.resource.data);
+      allow update: if request.auth!=null && rankMeta(request.resource.data,id) && request.resource.data.week==resource.data.week
+        && request.resource.data.count==resource.data.count+1 && rankNewSlot(request.resource.data);
+      allow list,delete: if false;
+    }
+    match /rankEntries/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && request.resource.data.keys().hasOnly(['week','key','slot'])
+        && request.resource.data.week==rankWeek() && belongs(request.resource.data.key)
+        && id==string(request.resource.data.week)+'_'+request.resource.data.key
+        && request.resource.data.slot==rankCount(request.resource.data.week)+1
+        && sa('rankWeeks',string(request.resource.data.week)).count==request.resource.data.slot
+        && sa('rankSlots',string(request.resource.data.week)+'_'+string(request.resource.data.slot)).key==request.resource.data.key;
+      allow list,update,delete: if false;
+    }
+    match /rankSlots/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && rankEntry(request.resource.data,id)
+        && request.resource.data.slot==rankCount(request.resource.data.week)+1
+        && sa('rankWeeks',string(request.resource.data.week)).count==request.resource.data.slot
+        && !exists(socialPath('rankEntries',string(request.resource.data.week)+'_'+request.resource.data.key))
+        && sa('rankEntries',string(request.resource.data.week)+'_'+request.resource.data.key).slot==request.resource.data.slot
+        && request.resource.data.achievedAt==request.time;
+      allow update: if request.auth!=null && rankEntry(request.resource.data,id)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','points','achievedAt','updatedAt'])
+        && request.resource.data.points>=resource.data.points
+        && request.resource.data.achievedAt==(request.resource.data.points>resource.data.points ? request.time : resource.data.achievedAt);
+      allow list,delete: if false;
+    }
+    match /rankFinals/{id} {
+      allow get: if request.auth!=null;
+      allow create,update: if request.auth!=null && rankFinal(request.resource.data,id,resource==null?rankEmpty(request.resource.data.week):resource.data);
+      allow list,delete: if false;
+    }
+    match /rankClaims/{id} {
+      allow get: if request.auth!=null;
+      allow create: if request.auth!=null && request.resource.data.keys().hasOnly(['schema','week','key','tier','region','day','operationId','createdAt'])
+        && request.resource.data.schema==1 && rankSeason(request.resource.data.week) && request.resource.data.week+7<=dayNow()
+        && belongs(request.resource.data.key) && id==string(request.resource.data.week)+'_'+request.resource.data.key
+        && request.resource.data.tier in ['diamond','gold','silver','bronze'] && region(request.resource.data.region)
+        && request.resource.data.day==dayNow() && request.resource.data.createdAt==request.time
+        && sd('rankFinals',string(request.resource.data.week)).finished
+        && sd('rankFinals',string(request.resource.data.week)).leaders[request.resource.data.tier].key==request.resource.data.key
+        && freshSocial(request.resource.data.operationId)
+        && sa('economyOps',request.resource.data.operationId).kind=='crown'
+        && sa('money',request.resource.data.key).operationId==request.resource.data.operationId
+        && crownReceipt(request.resource.data.operationId,sa('economyOps',request.resource.data.operationId));
+      allow list,update,delete: if false;
+    }

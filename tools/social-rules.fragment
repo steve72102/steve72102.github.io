@@ -7,8 +7,8 @@
     function small(n, max) { return n is int && n >= 0 && n <= max; }
     function belongs(k) { return request.auth != null && sd('economyKeys',k).uid == request.auth.uid; }
     function daily(b, field, fallback) { return b.day == dayNow() ? b[field] : fallback; }
-    function floorRate(b) { return 100 + daily(b,'bonus',0) - daily(b,'penalty',0); }
-    function rate(b) { return floorRate(b) < 30 ? 30 : floorRate(b); }
+    function floorRate(b) { return 100 + daily(b,'bonus',0) + honorRate(b) - daily(b,'penalty',0); }
+    function rate(b) { let value=floorRate(b); return value<30 ? 30 : value; }
     function minimum(a,b) { return a < b ? a : b; }
     function freshSocial(id) { return socialId(id) && !exists(socialPath('economyOps',id)); }
     function blocked(b,k) {
@@ -19,13 +19,13 @@
         || watch.get(b.rooms.get('battle',''),{'members':[]}).members.hasAny([k]);
     }
     function socialShape(d) {
-      return d.keys().hasOnly(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
+      return d.keys().hasOnly(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt','honor','crown'])
         && d.keys().hasAll(['schema','revision','day','coins','debt','earned','carry','bonus','penalty','stock','usedCounters','lastTarget','streak','bubbleAt','rooms','cursors','name','operationId','updatedAt'])
         && d.schema == 1 && small(d.revision,9007199254740991) && d.revision > 0 && small(d.day,100000)
         && small(d.coins,100000000) && amount(d.debt) && small(d.earned,100000000) && small(d.carry,99)
-        && small(d.bonus,10000) && small(d.penalty,10070) && small(d.usedCounters,10000) && small(d.streak,3)
+        && small(d.bonus,10000) && small(d.penalty,10105) && small(d.usedCounters,10000) && small(d.streak,3)
         && small(d.bubbleAt,9007199254740991) && (d.lastTarget == '' || socialKey(d.lastTarget))
-        && d.stock.keys().hasOnly(['bully','counter','bomb']) && d.stock.keys().hasAll(['bully','counter','bomb'])
+        && d.stock.keys().hasOnly(['bully','counter','bomb','north','central','south','east']) && d.stock.keys().hasAll(['bully','counter','bomb'])
         && small(d.stock.bully,9999) && small(d.stock.counter,9999) && small(d.stock.bomb,9999)
         && d.rooms is map && d.rooms.keys().hasOnly(['pharmaceutics','pharmacology','herbal','battle'])
         && d.rooms.get('pharmaceutics','') is string && d.rooms.get('pharmacology','') is string
@@ -54,18 +54,18 @@
         && cursorsValid(b.cursors,n.cursors,r.devices);
     }
     function stockChange(b,n,kind,delta) {
-      return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock[kind] + delta && small(n.stock[kind],9999);
+      return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock.get(kind,0) + delta && small(n.stock[kind],9999);
     }
     function couponChange(b,n,k,r) {
-      let price = r.get('item','') == 'bully' ? 180 : r.get('item','') == 'counter' ? 60 : 600;
-      return r.kind == 'buy' ? (r.item in ['bully','counter','bomb'] && ordinaryBase(b,n,k,['coins','stock']) && n.coins == b.coins - price && stockChange(b,n,r.item,1))
+      let price = r.get('item','') == 'bully' ? 180 : r.get('item','') == 'counter' ? 60 : r.get('item','') == 'bomb' ? 600 : 1000;
+      return r.kind == 'buy' ? (r.item in ['bully','counter','bomb','north','central','south','east'] && ordinaryBase(b,n,k,['coins','stock']) && n.coins == b.coins - price && stockChange(b,n,r.item,1))
         : r.kind == 'counter' ? (ordinaryBase(b,n,k,['stock','penalty','usedCounters','bubbleAt']) && stockChange(b,n,'counter',-1) && n.penalty == 0 && n.usedCounters == daily(b,'usedCounters',0)+1 && n.bubbleAt >= request.time.toMillis()-60000 && n.bubbleAt <= request.time.toMillis()+5000)
         : r.kind == 'bomb' && ordinaryBase(b,n,k,['stock']) && stockChange(b,n,'bomb',-1) && daily(b,'usedCounters',0)>=6 && rate(b)<70;
     }
     function bullyChange(b,n,k,r) {
       return k == r.actor
         ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1 && n.lastTarget == r.target && n.streak == r.step
-        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+70,daily(b,'penalty',0)+r.step);
+        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step);
     }
     function enrollChange(b,n,k,r) {
       return ordinaryBase(b,n,k,['rooms']) && n.rooms.diff(daily(b,'rooms',{})).affectedKeys().hasOnly([r.building]) && n.rooms[r.building] == r.room;
@@ -81,7 +81,7 @@
         : r.kind == 'bully' ? bullyChange(b,n,k,r)
         : r.actor == k && r.day == dayNow() && (r.kind in ['income','game'] ? incomeChange(b,n,k,r)
           : r.kind in ['buy','counter','bomb'] ? couponChange(b,n,k,r)
-          : r.kind == 'enroll' && enrollChange(b,n,k,r)));
+          : r.kind == 'honor' ? honorChange(b,n,k,r) : r.kind == 'crown' ? crownChange(b,n,k,r) : r.kind == 'enroll' && enrollChange(b,n,k,r)));
     }
     function fountainMoney(k,b,n) {
       let r = getAfter(receiptPath(n.operationId)).data;
@@ -93,7 +93,7 @@
         && d.coins == getAfter(playerPath()).data.coins && d.revision == 1 && d.day == dayNow()
         && d.debt == 0 && d.earned == 0 && d.carry == 0 && d.bonus == 0 && d.penalty == 0
         && d.stock == {'bully':0,'counter':0,'bomb':0} && d.usedCounters == 0 && d.streak == 0
-        && d.lastTarget == '' && d.bubbleAt == 0 && d.rooms == {} && d.cursors == {} && d.operationId == null;
+        && d.get('honor',null)==null && d.get('crown',null)==null && d.lastTarget == '' && d.bubbleAt == 0 && d.rooms == {} && d.cursors == {} && d.operationId == null;
     }
     function projection(uid,d) {
       let key = d.economy.key;
@@ -102,7 +102,7 @@
         && sa('economyAccounts',uid).key == key && d.coins == w.coins && d.economy.revision == w.revision;
     }
     function receiptShape(r) {
-      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt'])
+      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
         && r.keys().hasAll(['schema','kind','actor','day','createdAt']) && r.schema == 1 && socialKey(r.actor) && small(r.day,100000) && r.createdAt == request.time;
     }
     function pairedReceipt(id,r) {
@@ -164,7 +164,7 @@
       allow update: if request.auth != null && request.resource.data.updatedAt == request.time
         && request.resource.data.revision == resource.data.revision+1 && small(request.resource.data.coins,100000000)
         && amount(request.resource.data.debt) && small(request.resource.data.earned,100000000)
-        && small(request.resource.data.bonus,10000) && small(request.resource.data.penalty,10070)
+        && small(request.resource.data.bonus,10000) && small(request.resource.data.penalty,10105)
         && (moneyOperation(key,resource.data,request.resource.data) || fountainMoney(key,resource.data,request.resource.data));
       allow list, delete: if false;
     }
@@ -177,7 +177,7 @@
             && (request.resource.data.kind == 'bully' ? pairedReceipt(id,request.resource.data)
               : request.resource.data.kind == 'enroll' ? enrollReceipt(id,request.resource.data)
               : request.resource.data.kind == 'bomb' ? bombReceipt(id,request.resource.data)
-              : request.resource.data.kind in ['income','game','buy','counter']));
+              : request.resource.data.kind == 'crown' ? crownReceipt(id,request.resource.data) : request.resource.data.kind in ['income','game','buy','counter','honor']));
       allow list, update, delete: if false;
     }
     match /bullyPairs/{pair} {
