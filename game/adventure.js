@@ -39,10 +39,12 @@
   function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:Object.fromEntries(STYLE_SLOTS.map(k=>[k,null])),training:{},notes:0,notesDay:'',notedIds:[],quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
   function loadout(raw){const out=fresh().loadout;if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const [legacy,target] of [['coat',null],['boots','shoes'],['badge','accessory']])if(raw[legacy]!=null){const id=raw[legacy],g=gear(id),slot=target||g?.slot;if(!g||g.slot!==slot||legacy==='coat'&&!['jacket','cape'].includes(slot)||out[slot])throw Error('衣著欄位不正確');out[slot]=id;}for(const k of STYLE_SLOTS){const id=raw[k]===undefined?null:raw[k];if(id!==null&&!(k==='handheld'?(E.ITEMS.some(g=>g.id===id)||gear(id)?.slot==='handheld'):gear(id)?.slot===k))throw Error('衣著欄位不正確');if(id!==null)out[k]=id;}return out;}
   function bonus(raw,level=Infinity,training={}){return Object.values(loadout(raw)).reduce((s,id)=>{const g=gear(id),baseLevel=g?.level||1,stage=level>=baseLevel?Math.min(3,training?.[id]||0,Math.floor((level-baseLevel)/10)+1):0;if(g&&level>=baseLevel){s.attack+=g.attack;s.hp+=g.hp;s.guard+=g.guard;}s.attack+=stage;s.hp+=stage*2;return s;},{attack:0,hp:0,guard:0});}
-  function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0);}
+  function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0);}
+  function wardrobeCount(s){return Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0);}
+  function canStore(s,id){const g=gear(id),n=s.rpg?.items?.[id]||0;return !!g&&g.source!=='milestone'&&Number.isSafeInteger(n)&&n>=0&&n<MAX;}
   function room(s,n=1){return count(s)+n<=(s.rpg?.capacity||50);}
-  function grant(s,id){if(!gear(id)||gear(id).source==='milestone'||!room(s))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
-  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
+  function grant(s,id){if(!canStore(s,id))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
+  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||s.arena.coins<g.price||!grant(s,id))return false;s.arena.coins-=g.price;return true;}
   function equip(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1;if(knowledge){if(!s.inventory[id])return false;s.equipped=id;s.rpg.loadout.handheld=id;return true;}if(!g||level<(g.level||1)||g.source!=='milestone'&&!s.rpg.items[id])return false;s.rpg.loadout[g.slot]=id;if(g.slot==='handheld')s.equipped=null;return true;}
   function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;if(slot==='handheld')s.equipped=null;return true;}
   function earnNote(s,id,correct,day=E.today()){if(!correct)return false;const r=s.rpg;if(r.notesDay!==day){r.notesDay=day;r.notedIds=[];}if(r.notedIds.includes(id))return false;r.notedIds.push(id);r.notes=Math.min(MAX,r.notes+1);return true;}
@@ -61,15 +63,15 @@
     [Math.min(20,s.mastered.length)+Number(r.defeated.includes('silver')),21],
     [Math.min(40,s.mastered.length)+Number(r.defeated.includes('gold')),41]
   ][r.quest];return {current:data[0],total:data[1],done:data[0]>=data[1]};}
-  function claimQuest(s){const q=QUESTS[s.rpg.quest];if(!q||!progress(s).done||!room(s))return null;grant(s,q.item);P.award(s.arena,q.coins);s.rpg.quest++;return q;}
+  function claimQuest(s){const q=QUESTS[s.rpg.quest];if(!q||!progress(s).done||!grant(s,q.item))return null;P.award(s.arena,q.coins);s.rpg.quest++;return q;}
   function recordBattle(s){const b=s.arena.battle,r=s.rpg;if(!r||!b||b.phase!=='done'||!b.result?.win)return null;let changed=false;if(!r.defeated.includes(b.enemyId)){r.defeated.push(b.enemyId);changed=true;}if(!b.result.eligible||b.day<=(r.lootDays[b.enemyId]||''))return changed?{recorded:true}:null;
     const pools={bronze:['coat-dawn','boots-dawn','badge-seed'],silver:['coat-herb','boots-path','badge-prism'],gold:['coat-star','boots-star','badge-prism'],diamond:['badge-sage','coat-star','boots-star']};
     const seed=Array.from(b.day+b.enemyId+b.subject).reduce((n,c)=>(n*31+c.charCodeAt(0))>>>0,7),pool=pools[b.enemyId],id=pool[seed%pool.length];r.lootDays[b.enemyId]=b.day;r.pending[id]=Math.min(MAX,(r.pending[id]||0)+1);return {id,recorded:true};
   }
   function collect(s,id){if(!s.rpg.pending[id]||!grant(s,id))return false;s.rpg.pending[id]--;if(!s.rpg.pending[id])delete s.rpg.pending[id];return true;}
   function restore(raw){if(raw===undefined)return fresh();const bad=()=>{throw Error('主線或背包存檔不正確');};if(!raw||raw.version!==1||!Number.isInteger(raw.capacity)||raw.capacity<50||raw.capacity>100||raw.capacity%10||!Number.isInteger(raw.quest)||raw.quest<0||raw.quest>QUESTS.length)bad();const r=fresh();r.capacity=raw.capacity;r.quest=raw.quest;r.loadout=loadout(raw.loadout);
-    for(const key of ['items','pending']){const obj=raw[key];if(!obj||typeof obj!=='object'||Array.isArray(obj)||Object.keys(obj).length>GEAR.length)bad();for(const [id,n] of Object.entries(obj)){if(!gear(id)||!Number.isInteger(n)||n<1||n>(key==='items'?100:MAX))bad();r[key][id]=n;}}
-    if(Object.values(r.items).reduce((n,v)=>n+v,0)>100)bad();for(const id of Object.values(r.loadout)){const g=gear(id);if(id&&g?.source!=='milestone'&&g&&!r.items[id])bad();}
+    for(const key of ['items','pending']){const obj=raw[key];if(!obj||typeof obj!=='object'||Array.isArray(obj)||Object.keys(obj).length>GEAR.length)bad();for(const [id,n] of Object.entries(obj)){if(!gear(id)||!Number.isInteger(n)||n<1||n>MAX)bad();r[key][id]=n;}}
+    for(const id of Object.values(r.loadout)){const g=gear(id);if(id&&g?.source!=='milestone'&&g&&!r.items[id])bad();}
     if(raw.training!==undefined)r.training=training(raw.training);
     if(raw.notes!==undefined){if(!Number.isInteger(raw.notes)||raw.notes<0||raw.notes>MAX)bad();r.notes=raw.notes;}
     if(raw.notesDay!==undefined){if(raw.notesDay!==''&&(typeof raw.notesDay!=='string'||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(raw.notesDay)))bad();r.notesDay=raw.notesDay;}
@@ -78,5 +80,5 @@
     if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}
     if(raw.socialId!==undefined&&raw.socialId!==null&&!/^[a-f0-9]{32}$/.test(raw.socialId))bad();r.socialId=raw.socialId||null;if(raw.friends!==undefined){if(!Array.isArray(raw.friends)||raw.friends.length>100)bad();for(const f of raw.friends){if(!f||!/^[a-f0-9]{32}$/.test(f.id)||typeof f.name!=='string'||!/^[\p{L}\p{N} _-]{1,16}$/u.test(f.name)||r.friends.some(x=>x.id===f.id))bad();r.friends.push({id:f.id,name:f.name});}}return r;
   }
-  return {GEAR,SLOTS,STYLE_SETS,QUESTS,fresh,gear,loadout,bonus,count,room,grant,buy,equip,unequip,earnNote,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
+  return {GEAR,SLOTS,STYLE_SETS,QUESTS,fresh,gear,loadout,bonus,count,wardrobeCount,canStore,room,grant,buy,equip,unequip,earnNote,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
 });

@@ -53,6 +53,11 @@ with zipfile.ZipFile(io.BytesIO(data)) as verify:
 digest = hashlib.sha256(data).hexdigest()
 parts = list(baseline['parts'])
 tail = data[len(prefix):]
+# Fold small earlier tails into the replacement tail when the manifest is full.
+# The ZIP bytes stay identical; only their download boundaries change.
+while len(parts) + (len(tail) + 2_999_999) // 3_000_000 > 16 and parts:
+    previous_part = parts.pop()
+    tail = (out / previous_part['file']).read_bytes() + tail
 assert len(parts) + (len(tail) + 2_999_999) // 3_000_000 <= 16
 for start in range(0, len(tail), 3_000_000):
     chunk = tail[start:start+3_000_000]

@@ -28,14 +28,14 @@
   function prize(ticket){if(!Number.isInteger(ticket)||ticket<0||ticket>=TICKETS)throw Error('抽獎數值不正確。');let edge=0;return PRIZES.find(p=>ticket<(edge+=p.weight));}
   function randomTicket(crypto){if(!crypto?.getRandomValues)throw Error('此瀏覽器無法進行安全抽獎，請更新瀏覽器。');const limit=Math.floor(4294967296/TICKETS)*TICKETS,value=new Uint32Array(1);do{crypto.getRandomValues(value);}while(value[0]>=limit);return value[0]%TICKETS;}
   function newOperation(crypto){const bytes=new Uint8Array(16);crypto.getRandomValues(bytes);return Array.from(bytes,n=>n.toString(16).padStart(2,'0')).join('');}
-  function space(s){return Object.values(s.inventory||{}).reduce((a,b)=>a+b,0)+Object.values(s.rpg.items).reduce((a,b)=>a+b,0)<s.rpg.capacity;}
+  function space(s){return !!s.rpg?.items&&GEAR.every(g=>{const n=s.rpg.items[g.id]||0;return Number.isSafeInteger(n)&&n>=0&&n<MAX_COINS;});}
   function payout(balance){if(!integer(balance)||balance<COST)throw Error('獎池金額不正確。');return Math.max(COST,Math.floor(balance/100));}
   // Pure transaction planner. No live state is mutated before the cloud commit succeeds.
   function plan(save,rawPool,ticket,id,now=Date.now()){
     if(!operationId(id)||!integer(now,Number.MAX_SAFE_INTEGER))throw Error('許願編號不正確。');
     const p=pool(rawPool),s=JSON.parse(JSON.stringify(save)),w=restore(s.wishes),result=prize(ticket);
     if(!integer(s.arena?.coins,MAX_COINS)||s.arena.coins<COST)throw Error('金幣不足，許願需要 1,000 金幣。');
-    if(!s.rpg||!space(s))throw Error('背包已滿，請先整理 1 格；金幣尚未扣除。');
+    if(!space(s))throw Error('服飾收藏數量已達儲存上限；金幣尚未扣除。');
     if(p.balance>MAX_POOL-COST||p.contributed>MAX_POOL-COST||w.spent>MAX_POOL-COST)throw Error('許願池已達目前上限，請聯絡維護者。');
     const afterDeposit=p.balance+COST,coins=result.id==='coins'?payout(afterDeposit):0,before=s.arena.coins;
     if(before-COST+coins>MAX_COINS)throw Error('錢袋無法容納這次獎金，請先使用部分金幣後再重試。');

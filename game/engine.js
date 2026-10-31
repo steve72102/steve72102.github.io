@@ -106,6 +106,6 @@
     }
     return s;
   }
-  function bagRoom(s) { return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0)<(s.rpg?.capacity||50); }
+  function bagRoom(s) { return Object.values(s.inventory).reduce((n,v)=>n+v,0)<(s.rpg?.capacity||50); }
   return { SUBJECTS, TIERS, ITEMS, today, fresh, rollDay, claim, reward, draw, shuffle, begin, answer, next, restore, bagRoom };
 });
