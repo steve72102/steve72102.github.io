@@ -3,10 +3,13 @@
   const MAX=100000000,SLOTS={jacket:'外套',cape:'披風',shirt:'上衣',pants:'褲子',shoes:'鞋子',hat:'帽子',accessory:'配戴物',handheld:'手持物'};
   const STYLE_SLOTS=Object.keys(SLOTS);
   const STYLE_SETS=[
-    {level:30,key:'bach',name:'單線行旅',music:'巴哈｜無伴奏大提琴組曲第一號〈前奏曲〉',image:'./assets/equipment/level30-bach.webp',color:'brown',names:['行旅採樣外套','墨綠短肩披','米白棉襯衣','耐磨收納褲','低筒步行鞋','軟質野外帽','單線研究別針','採樣筆記本'],text:'一條連續細線穿過現代野外採樣服。'},
-    {level:40,key:'schumann',name:'記憶書房',music:'舒曼｜〈夢幻曲〉',image:'./assets/equipment/level40-schumann.webp',color:'lilac',names:['霧紫圓角外套','淺紫短圍肩','燕麥棉襯衣','暖灰直筒褲','淺色低跟便鞋','針織軟帽','折頁書籤別針','回想手札'],text:'柔和的回折與留白，像安靜整理一頁筆記。'},
-    {level:50,key:'mozart',name:'幾何序曲',music:'莫札特｜《魔笛》序曲',image:'./assets/equipment/level50-mozart.webp',color:'cobalt',names:['交疊裁片外套','藍白平整披片','奶油白高領衣','炭灰俐落長褲','藍灰簡線低鞋','分片布帽','幾何量測徽記','折頁學習圖冊'],text:'交錯幾何裁片與清楚的現代線條。'},
-    {level:60,key:'haydn',name:'四線晴空',music:'海頓｜《雲雀》弦樂四重奏第一樂章',image:'./assets/equipment/level60-haydn.webp',color:'sage',names:['可修復拉鍊外套','四線圓弧肩披','雲白針織上衣','寬鬆活動工作褲','可修補綁帶鞋','軟質帆布帽','四線交會徽記','分層研習冊'],text:'四條布料通道交織成輕量、可修復的學習衣著。'}
+    {level:30,key:'bach',name:'單線行旅',music:'巴哈｜無伴奏大提琴組曲第一號〈前奏曲〉',image:'./assets/equipment/level30-bach.webp',castImage:'./assets/equipment/level30-bach-cast.webp',color:'brown',names:['行旅採樣外套','墨綠短肩披','米白棉襯衣','耐磨收納褲','低筒步行鞋','軟質野外帽','單線研究別針','採樣筆記本'],text:'一條連續細線穿過現代野外採樣服。'},
+    {level:40,key:'schumann',name:'記憶書房',music:'舒曼｜〈夢幻曲〉',image:'./assets/equipment/level40-schumann.webp',castImage:'./assets/equipment/level40-schumann-cast.webp',color:'lilac',names:['霧紫圓角外套','淺紫短圍肩','燕麥棉襯衣','暖灰直筒褲','淺色低跟便鞋','針織軟帽','折頁書籤別針','回想手札'],text:'柔和的回折與留白，像安靜整理一頁筆記。'},
+    {level:50,key:'mozart',name:'幾何序曲',music:'莫札特｜《魔笛》序曲',image:'./assets/equipment/level50-mozart.webp',castImage:'./assets/equipment/level50-mozart-cast.webp',color:'cobalt',names:['交疊裁片外套','藍白平整披片','奶油白高領衣','炭灰俐落長褲','藍灰簡線低鞋','分片布帽','幾何量測徽記','折頁學習圖冊'],text:'交錯幾何裁片與清楚的現代線條。'},
+    {level:60,key:'haydn',name:'四線晴空',music:'海頓｜《雲雀》弦樂四重奏第一樂章',image:'./assets/equipment/level60-haydn.webp',castImage:'./assets/equipment/level60-haydn-cast.webp',color:'sage',names:['可修復拉鍊外套','四線圓弧肩披','雲白針織上衣','寬鬆活動工作褲','可修補綁帶鞋','軟質帆布帽','四線交會徽記','分層研習冊'],text:'四條布料通道交織成輕量、可修復的學習衣著。'},
+    {level:70,key:'requiem',name:'餘光檔案',music:'莫札特｜《安魂曲》〈落淚之日〉',image:'./assets/equipment/level70-requiem.webp',color:'ink',names:['墨藍側衩長外套','骨白獨立肩披','織紋立領長上衣','炭灰寬直筒褲','骨白耐走低鞋','低檐織紋布帽','摺頁花瓣胸針','檔案研習冊'],text:'層疊的合唱感化為披搭與長衣；融入印度服裝剪裁，保留原創、實用的學院造型。'},
+    {level:80,key:'letter',name:'每日來信',music:'張雨生｜〈天天想你〉',image:'./assets/equipment/level80-letter.webp',color:'dusk',names:['暮藍寬鬆短外套','摺信短肩披片','米白細條針織衫','石墨灰直筒褲','米白帆布步行鞋','柔軟暮藍漁夫帽','雙弧書籤胸針','往返研習冊'],text:'反覆弧線和暖色信紙感，搭配英國九〇年代的寬鬆日常剪裁。'},
+    {level:90,key:'tide',name:'海風切拍',music:'ATEEZ｜〈BAD〉',image:'./assets/equipment/level90-tide.webp',color:'teal',names:['海藍綠開領薄外套','波浪邊遮陽肩披','骨白透氣棉上衣','石墨沙色亞麻長褲','海藍綠帆布低鞋','柔軟編織遮陽帽','潮汐書頁胸針','海岸觀察筆記'],text:'錯位波浪線與透氣的 aloha 服裝語彙，創作清爽的海岸學習裝。'}
   ];
   const canonicalSlot=g=>g.slot==='boots'?'shoes':g.slot==='badge'?'accessory':g.slot==='coat'?(/披風|披肩/.test(g.name)?'cape':'jacket'):g.slot;
   const GEAR=[
