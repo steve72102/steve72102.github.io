@@ -1,6 +1,14 @@
 (function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./engine.js'):root.MindEngine,typeof module==='object'&&module.exports?require('./wish.js'):root.MindWish,typeof module==='object'&&module.exports?require('./social-economy.js'):root.MindEconomy);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindAdventure=api;})(typeof window==='object'?window:globalThis,function(E,F,P){
   'use strict';
-  const MAX=100000000,SLOTS={coat:'上衣／披風',hat:'帽子',boots:'靴子',badge:'徽章'};
+  const MAX=100000000,SLOTS={jacket:'外套',cape:'披風',shirt:'上衣',pants:'褲子',shoes:'鞋子',hat:'帽子',accessory:'配戴物',handheld:'手持物'};
+  const STYLE_SLOTS=Object.keys(SLOTS);
+  const STYLE_SETS=[
+    {level:30,key:'bach',name:'單線行旅',music:'巴哈｜無伴奏大提琴組曲第一號〈前奏曲〉',image:'./assets/equipment/level30-bach.webp',color:'brown',names:['行旅採樣外套','墨綠短肩披','米白棉襯衣','耐磨收納褲','低筒步行鞋','軟質野外帽','單線研究別針','採樣筆記本'],text:'一條連續細線穿過現代野外採樣服。'},
+    {level:40,key:'schumann',name:'記憶書房',music:'舒曼｜〈夢幻曲〉',image:'./assets/equipment/level40-schumann.webp',color:'lilac',names:['霧紫圓角外套','淺紫短圍肩','燕麥棉襯衣','暖灰直筒褲','淺色低跟便鞋','針織軟帽','折頁書籤別針','回想手札'],text:'柔和的回折與留白，像安靜整理一頁筆記。'},
+    {level:50,key:'mozart',name:'幾何序曲',music:'莫札特｜《魔笛》序曲',image:'./assets/equipment/level50-mozart.webp',color:'cobalt',names:['交疊裁片外套','藍白平整披片','奶油白高領衣','炭灰俐落長褲','藍灰簡線低鞋','分片布帽','幾何量測徽記','折頁學習圖冊'],text:'交錯幾何裁片與清楚的現代線條。'},
+    {level:60,key:'haydn',name:'四線晴空',music:'海頓｜《雲雀》弦樂四重奏第一樂章',image:'./assets/equipment/level60-haydn.webp',color:'sage',names:['可修復拉鍊外套','四線圓弧肩披','雲白針織上衣','寬鬆活動工作褲','可修補綁帶鞋','軟質帆布帽','四線交會徽記','分層研習冊'],text:'四條布料通道交織成輕量、可修復的學習衣著。'}
+  ];
+  const canonicalSlot=g=>g.slot==='boots'?'shoes':g.slot==='badge'?'accessory':g.slot==='coat'?(/披風|披肩/.test(g.name)?'cape':'jacket'):g.slot;
   const GEAR=[
     {id:'coat-dawn',name:'晨光短披風',slot:'coat',tier:0,price:80,attack:2,hp:8,guard:1,color:'mint',text:'輕裝出發，把未知留給今天。'},
     {id:'coat-herb',name:'藥圃旅行披風',slot:'coat',tier:1,price:240,attack:4,hp:18,guard:2,color:'leaf',text:'葉紋記下每一段觀察與驗證。'},
@@ -13,6 +21,8 @@
     {id:'badge-sage',name:'賢者知識章',slot:'badge',tier:3,price:900,attack:9,hp:20,guard:3,color:'gold',text:'真正的力量，是願意一直學習。'}
   ];
   GEAR.push(...F.GEAR);
+  for(let i=0;i<GEAR.length;i++)GEAR[i]={...GEAR[i],slot:canonicalSlot(GEAR[i])};
+  for(const set of STYLE_SETS)for(let i=0;i<STYLE_SLOTS.length;i++)GEAR.push({id:'style-'+set.key+'-'+STYLE_SLOTS[i],name:set.names[i],slot:STYLE_SLOTS[i],tier:0,level:set.level,source:'milestone',style:set.key,color:set.color,price:null,attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:set.text});
   const QUESTS=[
     {id:'arrival',chapter:'序章',name:'把學院走成自己的地圖',guide:'苔光教授',story:'新同學，先不用急著比誰答得快。沿著步道，看看三座學科樓各自在研究什麼。',goal:'走進藥劑樓、藥理樓與生藥樓',coins:50,item:'coat-dawn',route:'home'},
     {id:'first-light',chapter:'第一章',name:'讓第一盞知識燈亮起',guide:'星序博士',story:'一個答案不只是一個字母。讀完每日知識卡，再用自己的理解答對五道不同的題目。',goal:'領取每日補給，並累積答對 5 道不同題目',coins:80,item:'boots-dawn',route:'practice'},
@@ -23,16 +33,20 @@
   ];
   const places=['pharmaceutics','pharmacology','herbal','battle','life'],enemies=['bronze','silver','gold','diamond'];
   const gear=id=>GEAR.find(g=>g.id===id)||null;
-  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:{coat:null,hat:null,boots:null,badge:null},quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
-  function loadout(raw){const out={coat:null,hat:null,boots:null,badge:null};if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const k of Object.keys(out)){const id=raw[k]===undefined?null:raw[k];if(id!==null&&(!gear(id)||gear(id).slot!==k))throw Error('衣著欄位不正確');out[k]=id;}return out;}
-  function bonus(raw,level=Infinity){return Object.values(loadout(raw)).map(gear).filter(g=>g&&level>=(g.level||1)).reduce((s,g)=>({attack:s.attack+g.attack,hp:s.hp+g.hp,guard:s.guard+g.guard}),{attack:0,hp:0,guard:0});}
+  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:Object.fromEntries(STYLE_SLOTS.map(k=>[k,null])),training:{},notes:0,notesDay:'',notedIds:[],quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
+  function loadout(raw){const out=fresh().loadout;if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const [legacy,target] of [['coat',null],['boots','shoes'],['badge','accessory']])if(raw[legacy]!=null){const id=raw[legacy],g=gear(id),slot=target||g?.slot;if(!g||g.slot!==slot||legacy==='coat'&&!['jacket','cape'].includes(slot)||out[slot])throw Error('衣著欄位不正確');out[slot]=id;}for(const k of STYLE_SLOTS){const id=raw[k]===undefined?null:raw[k];if(id!==null&&!(k==='handheld'?(E.ITEMS.some(g=>g.id===id)||gear(id)?.slot==='handheld'):gear(id)?.slot===k))throw Error('衣著欄位不正確');if(id!==null)out[k]=id;}return out;}
+  function bonus(raw,level=Infinity,training={}){return Object.values(loadout(raw)).reduce((s,id)=>{const g=gear(id),baseLevel=g?.level||1,stage=level>=baseLevel?Math.min(3,training?.[id]||0,Math.floor((level-baseLevel)/10)+1):0;if(g&&level>=baseLevel){s.attack+=g.attack;s.hp+=g.hp;s.guard+=g.guard;}s.attack+=stage;s.hp+=stage*2;return s;},{attack:0,hp:0,guard:0});}
   function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0)+Object.values(s.rpg?.items||{}).reduce((n,v)=>n+v,0);}
   function room(s,n=1){return count(s)+n<=(s.rpg?.capacity||50);}
-  function grant(s,id){if(!gear(id)||!room(s))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
-  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
-  function equip(s,id){const g=gear(id);if(!g||!s.rpg.items[id]||Math.floor(s.xp/100)+1<(g.level||1))return false;s.rpg.loadout[g.slot]=id;return true;}
-  function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;return true;}
-  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];P.award(s.arena,(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
+  function grant(s,id){if(!gear(id)||gear(id).source==='milestone'||!room(s))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
+  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||s.arena.coins<g.price||!room(s))return false;grant(s,id);s.arena.coins-=g.price;return true;}
+  function equip(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1;if(knowledge){if(!s.inventory[id])return false;s.equipped=id;s.rpg.loadout.handheld=id;return true;}if(!g||level<(g.level||1)||g.source!=='milestone'&&!s.rpg.items[id])return false;s.rpg.loadout[g.slot]=id;if(g.slot==='handheld')s.equipped=null;return true;}
+  function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;if(slot==='handheld')s.equipped=null;return true;}
+  function earnNote(s,id,correct,day=E.today()){if(!correct)return false;const r=s.rpg;if(r.notesDay!==day){r.notesDay=day;r.notedIds=[];}if(r.notedIds.includes(id))return false;r.notedIds.push(id);r.notes=Math.min(MAX,r.notes+1);return true;}
+  function trainCost(stage){return [5,15,35][stage]??Infinity;}
+  function train(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1,owned=g?.source==='milestone'?level>=g.level:g?!!s.rpg.items[id]:!!s.inventory[id],stage=s.rpg.training[id]||0,cost=trainCost(stage);if(!(g||knowledge)||!owned||stage>=3||level<(g?.level||1)+stage*10||s.rpg.notes<cost)return false;s.rpg.notes-=cost;s.rpg.training[id]=stage+1;return true;}
+  function training(raw){if(raw===undefined)return {};if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).length>GEAR.length+E.ITEMS.length)throw Error('研習資料不正確');const out={};for(const [id,n] of Object.entries(raw)){if(!(gear(id)||E.ITEMS.some(g=>g.id===id))||!Number.isInteger(n)||n<1||n>3)throw Error('研習資料不正確');out[id]=n;}return out;}
+  function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||g.source==='milestone'||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];P.award(s.arena,(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
   function expandPrice(s){return 300+(s.rpg.capacity-50)*20;}
   function expand(s){const price=expandPrice(s);if(s.rpg.capacity>=100||s.arena.coins<price)return false;s.arena.coins-=price;s.rpg.capacity+=10;return true;}
   function visit(s,id){if(!places.includes(id)||s.rpg.visited.includes(id))return false;s.rpg.visited.push(id);return true;}
@@ -52,10 +66,14 @@
   function collect(s,id){if(!s.rpg.pending[id]||!grant(s,id))return false;s.rpg.pending[id]--;if(!s.rpg.pending[id])delete s.rpg.pending[id];return true;}
   function restore(raw){if(raw===undefined)return fresh();const bad=()=>{throw Error('主線或背包存檔不正確');};if(!raw||raw.version!==1||!Number.isInteger(raw.capacity)||raw.capacity<50||raw.capacity>100||raw.capacity%10||!Number.isInteger(raw.quest)||raw.quest<0||raw.quest>QUESTS.length)bad();const r=fresh();r.capacity=raw.capacity;r.quest=raw.quest;r.loadout=loadout(raw.loadout);
     for(const key of ['items','pending']){const obj=raw[key];if(!obj||typeof obj!=='object'||Array.isArray(obj)||Object.keys(obj).length>GEAR.length)bad();for(const [id,n] of Object.entries(obj)){if(!gear(id)||!Number.isInteger(n)||n<1||n>(key==='items'?100:MAX))bad();r[key][id]=n;}}
-    if(Object.values(r.items).reduce((n,v)=>n+v,0)>100)bad();for(const id of Object.values(r.loadout))if(id&&!r.items[id])bad();
+    if(Object.values(r.items).reduce((n,v)=>n+v,0)>100)bad();for(const id of Object.values(r.loadout)){const g=gear(id);if(id&&g?.source!=='milestone'&&g&&!r.items[id])bad();}
+    if(raw.training!==undefined)r.training=training(raw.training);
+    if(raw.notes!==undefined){if(!Number.isInteger(raw.notes)||raw.notes<0||raw.notes>MAX)bad();r.notes=raw.notes;}
+    if(raw.notesDay!==undefined){if(raw.notesDay!==''&&(typeof raw.notesDay!=='string'||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(raw.notesDay)))bad();r.notesDay=raw.notesDay;}
+    if(raw.notedIds!==undefined){if(!Array.isArray(raw.notedIds)||raw.notedIds.length>5000||new Set(raw.notedIds).size!==raw.notedIds.length||raw.notedIds.some(id=>typeof id!=='string'||id.length>100))bad();r.notedIds=raw.notedIds.slice();}
     for(const [key,allowed] of [['visited',places],['defeated',enemies]]){const a=raw[key];if(!Array.isArray(a)||a.length>allowed.length||new Set(a).size!==a.length||a.some(x=>!allowed.includes(x)))bad();r[key]=a.slice();}
     if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}
     if(raw.socialId!==undefined&&raw.socialId!==null&&!/^[a-f0-9]{32}$/.test(raw.socialId))bad();r.socialId=raw.socialId||null;if(raw.friends!==undefined){if(!Array.isArray(raw.friends)||raw.friends.length>100)bad();for(const f of raw.friends){if(!f||!/^[a-f0-9]{32}$/.test(f.id)||typeof f.name!=='string'||!/^[\p{L}\p{N} _-]{1,16}$/u.test(f.name)||r.friends.some(x=>x.id===f.id))bad();r.friends.push({id:f.id,name:f.name});}}return r;
   }
-  return {GEAR,SLOTS,QUESTS,fresh,gear,loadout,bonus,count,room,grant,buy,equip,unequip,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
+  return {GEAR,SLOTS,STYLE_SETS,QUESTS,fresh,gear,loadout,bonus,count,room,grant,buy,equip,unequip,earnNote,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
 });

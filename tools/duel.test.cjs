@@ -10,7 +10,7 @@ test('match checks bank version, subject and six unique known question IDs',()=>
   for(const bad of [{...config,bank:'old'},{...config,ids:Array(6).fill('q1')},{...config,ids:['x',...config.ids.slice(1)]},{...config,subject:'herbal'}])assert.throws(()=>D.match(bad,q,'pharmaceutics'));
 });
 test('profile accepts readable names and rejects HTML and forged numeric stats',()=>{
-  assert.deepEqual(D.profile(a),{...a,appearance:require('../game/academy.js').fresh(),loadout:require('../game/adventure.js').loadout()});
+  assert.deepEqual(D.profile(a),{...a,appearance:require('../game/academy.js').fresh(),loadout:require('../game/adventure.js').loadout(),training:{}});
   for(const bad of [{...a,name:'<img src=x>'},{...a,level:Infinity},{...a,level:0},{...a,gearId:'fake'},{...a,name:'x'.repeat(17)}])assert.throws(()=>D.profile(bad));
 });
 test('both players must be ready, and ready cannot be replayed',()=>{

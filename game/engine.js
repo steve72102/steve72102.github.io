@@ -34,7 +34,7 @@
     const index = Math.floor(Date.parse(day + 'T00:00:00Z') / 86400000) % 3;
     const item = ITEMS.filter(i => i.tier === 0)[index];
     s.claimed = day; s.inventory[item.id] = Math.min(MAX, (s.inventory[item.id] || 0) + 1);
-    if (!s.equipped) s.equipped = item.id;
+    if (!s.equipped && !s.rpg?.loadout?.handheld) s.equipped = item.id;
     return item;
   }
   function reward(s, q, correct, day = today()) {
