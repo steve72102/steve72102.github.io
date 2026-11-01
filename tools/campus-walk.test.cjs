@@ -25,9 +25,7 @@ test('interior exits and room entrances work, invalid targets clamp safely',()=>
 
 test('floor arrival stands in front of the destination desk, off furniture and away from portals',()=>{
  for(const building of ['pharmaceutics','pharmacology','herbal','battle','life']){
-  const scene=W.hall('lesson',building),p=W.deskArrival(scene),table=scene.surfaces.find(s=>s.id==='table');assert(W.walkable(scene,p),building);assert(p.y>Math.max(...table.polygon.map(q=>q.y)),building);assert(Math.abs(p.x-table.x)<1,building);assert.equal(W.near(scene,p,45),null,building);assert(W.route(scene,p,scene.portals.find(d=>d.id==='stairs')).length,building);
+  const scene=W.hall('lesson',building),p=W.deskArrival(scene),table=scene.surfaces.find(s=>s.arrival);assert(W.walkable(scene,p),building);assert(p.y>Math.max(...table.polygon.map(q=>q.y)),building);assert(Math.abs(p.x-table.x)<1,building);assert.equal(W.near(scene,p,45),null,building);assert(W.route(scene,p,scene.portals.find(d=>d.id==='stairs')).length,building);
   table.x+=40;table.y+=20;table.polygon=table.polygon.map(q=>({x:q.x+40,y:q.y+20}));const moved=W.deskArrival(scene);assert(W.walkable(scene,moved));assert(Math.abs(moved.x-table.x)<1);assert(moved.y>Math.max(...table.polygon.map(q=>q.y)));
  }
 });
-
-test('floor arrival starts on clear ground in front of the desk away from portals',()=>{for(const b of ['pharmaceutics','pharmacology','herbal','battle','life']){const scene=W.hall('',b),p=W.deskArrival(scene),desk=scene.surfaces.find(s=>s.id==='table');assert(W.walkable(scene,p));assert(p.y>Math.max(...desk.polygon.map(p=>p.y)));assert(!W.near(scene,p,14));assert(W.route(scene,p,scene.portals.find(p=>p.id==='stairs')).length);}});

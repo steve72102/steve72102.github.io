@@ -11,6 +11,24 @@
     {level:80,key:'letter',name:'每日來信',music:'張雨生｜〈天天想你〉',image:'./assets/equipment/level80-letter.webp',color:'dusk',names:['暮藍寬鬆短外套','摺信短肩披片','米白細條針織衫','石墨灰直筒褲','米白帆布步行鞋','柔軟暮藍漁夫帽','雙弧書籤胸針','往返研習冊'],text:'反覆弧線和暖色信紙感，搭配英國九〇年代的寬鬆日常剪裁。'},
     {level:90,key:'tide',name:'海風切拍',music:'ATEEZ｜〈BAD〉',image:'./assets/equipment/level90-tide.webp',color:'teal',names:['海藍綠開領薄外套','波浪邊遮陽肩披','骨白透氣棉上衣','石墨沙色亞麻長褲','海藍綠帆布低鞋','柔軟編織遮陽帽','潮汐書頁胸針','海岸觀察筆記'],text:'錯位波浪線與透氣的 aloha 服裝語彙，創作清爽的海岸學習裝。'}
   ];
+  // Fruit collections are ordinary coin purchases. Their silhouettes and colour
+  // stories are independent of rarity, character choice and combat progression.
+  const FRUIT_SETS=[
+    {key:'citrus',season:'2026Q4',music:'Afrobeat',musicKey:'afrobeat',name:'柑橘航海',color:'citrus',mood:'橙黃 × 深海藍 × 奶油白',names:['橙帆雙排短外套','浪花水手領肩披','奶油條紋棉衫','深海摺線長褲','橙邊帆布步行鞋','象牙航海軟帽','柑橘切片胸針','橙帆觀察手札'],text:'俐落雙排短外套配水手領，橙黃滾邊、海藍條紋與柑橘切片扣飾，穿出明亮的航海學院風；Afrobeat 的交錯節奏轉成雙排扣與橙瓣波紋。',pieces:['合身雙排剪裁留出抬手空間，橙黃色翻領與海藍袖口相互呼應。','奶油白水手領落在肩線內，外緣繡上雙層海藍波紋。','柔軟棉衫以細條紋和小面積橙色領口提亮層次。','深海藍直筒褲沿腿線收整，褲腳保留一圈橙色細滾邊。','奶油白帆布鞋配橙色包邊與海藍鞋帶，輪廓輕巧耐走。','低帽頂軟帽搭配海藍帽帶，果瓣刺繡留在側邊。','小巧柑橘切片以金色外框固定，不遮住衣服的剪裁。','海藍布面手札包上橙色書角，書帶末端綴著小葉片。']},
+    {key:'berry',season:'2026Q4',music:'藍草音樂',musicKey:'bluegrass',name:'莓果禮裝',color:'berry',mood:'莓紅 × 玫瑰粉 × 象牙白',names:['莓紅燕尾禮服外套','玫瑰花瓣短肩披','象牙細褶襯衫','莓紫修身禮服褲','玫瑰扣帶低鞋','莓紅柔軟貝蕾帽','金枝莓果胸針','玫瑰緞面研習冊'],text:'以收腰燕尾、細褶與花瓣邊肩披構成典雅禮裝；莓果珠飾點綴玫瑰粉與象牙白，華麗而輕盈；藍草音樂的弦線節奏轉成細褶、交織滾邊與莓果花枝。',pieces:['莓紅燕尾外套順著肩寬和腰線收束，玫瑰粉翻領帶出明亮層次。','花瓣形肩披輕覆上臂，象牙滾邊與細金線勾勒弧度。','象牙白立領襯衫以細褶排列，領口只留一枚小莓紅扣。','莓紫長褲沿膝線微收，穿搭禮服也能自在走動。','低跟扣帶鞋使用玫瑰粉鞋面，莓紅鞋尖與細金扣呼應禮裝。','柔軟莓紅貝蕾帽偏側配戴，以小葉形刺繡收尾。','金色枝葉托住三枚莓果珠飾，大小配合角色胸前比例。','玫瑰緞面封皮搭配莓紅書脊，書角壓上細小葉紋。']},
+    {key:'pomelo',season:'2026Q4',music:'Ambient 環境音樂',musicKey:'ambient',name:'青柚東方',color:'pomelo',mood:'玉青 × 柚黃 × 月白',names:['玉青斜襟長外套','月白雲弧肩披','柚白立領上衣','墨綠側摺長褲','玉青織邊平底鞋','柚葉摺檐軟帽','青柚葉環胸針','月白採葉圖冊'],text:'斜襟、立領和側衩組成現代東方剪裁；玉青與月白之間加上一點柚黃，果葉紋樣沿著衣緣舒展；Ambient 的緩慢層次化為柔和葉脈與雲弧披搭。',pieces:['玉青長外套以斜襟收攏，側衩保留步幅，細柚黃線條延伸身形。','月白短肩披以雲弧裁邊連接肩線，葉脈細繡集中在衣緣。','月白立領上衣採平整前襟，柚黃色盤形小扣作為點綴。','墨綠直筒長褲加入側摺，轉身與跨步仍保有俐落線條。','低筒平底鞋以玉青鞋面和月白織邊搭配，鞋頭飾一筆葉脈。','低檐軟帽沿帽邊作斜摺，柚葉刺繡與衣襟方向呼應。','青柚圓環與兩片細葉相扣，月白中心提亮胸前。','月白圖冊以玉青書脊包覆，柚黃頁籤標記植物觀察。']},
+    {key:'pineapple',season:'2026Q4',music:'Funk',musicKey:'funk',name:'鳳梨工裝',color:'pineapple',mood:'鳳梨黃 × 森林綠 × 奶白',names:['金格短版工作外套','葉綠工具肩披','奶白機能棉上衣','森林綠收納工作褲','金黃拼片工作鞋','葉冠軟質工作帽','鳳梨菱格徽章','金格採樣記錄冊'],text:'短版工裝、立體口袋與菱格壓線搭配鳳梨黃和森林綠；葉冠元素縮成俐落徽記，實用又有活力；Funk 的切分感化為錯落口袋線與菱格節奏。',pieces:['金黃短版外套沿肩線拼接森林綠，菱格壓線集中於口袋，不堆疊厚重裝飾。','葉綠短肩披以分片接縫呈現工具收納感，奶白滾邊提亮輪廓。','奶白棉上衣配金黃領口與小型綠色織標，作為明亮內搭。','森林綠工裝褲在大腿外側設平貼口袋，膝部留活動餘量。','金黃與奶白拼片的低筒工作鞋，深綠鞋底呼應褲色。','柔軟工作帽以葉形分片收束帽頂，保留低帽型。','菱格果身與小片葉冠組成金綠徽章，尺寸不超過胸前配戴區。','金格封面的採樣冊加上森林綠束帶，頁邊用奶白小標籤分區。']},
+    {key:'cherry',season:'2026Q4',music:'Disco',musicKey:'disco',name:'櫻桃街頭',color:'cherry',mood:'櫻桃紅 × 墨黑 × 冰藍',names:['櫻紅拼袖短夾克','冰藍連帽短肩披','奶白櫻桃印花衫','墨黑束口機能褲','櫻紅撞色運動鞋','墨黑彎檐棒球帽','雙櫻桃琺瑯別針','冰藍貼布隨行冊'],text:'短夾克、拼色袖口與束口褲走輕快街頭路線；櫻桃紅、墨黑和冰藍形成鮮明對比，雙櫻桃只作精緻點題；Disco 的舞步節拍化為亮色拼袖與點狀反光縫線。',pieces:['櫻紅短夾克配冰藍拼袖，羅紋下襬收在腰線，兼顧動作空間。','冰藍連帽肩披採短版裁法，櫻紅抽繩點亮頸側。','奶白內搭只在胸口印小型雙櫻桃，讓夾克的撞色成為主角。','墨黑機能褲沿腿部略收，冰藍側條與束口褲腳增加節奏。','櫻紅運動鞋搭奶白鞋底與冰藍鞋帶，鞋面分片貼合腳形。','墨黑彎檐帽以櫻紅帽緣和一枚雙果刺繡點綴。','紅色雙櫻桃與綠葉以細金框相連，配在領口下方。','冰藍布面手冊以櫻紅貼布與黑色束帶呈現街頭隨行感。']},
+    {key:'grape',season:'2026Q4',music:'Synth-pop',musicKey:'synth-pop',name:'葡萄星象',color:'grape',mood:'星紫 × 薄荷青 × 淺金',names:['星紫弧領長外套','薄荷星軌長肩披','月白微光高領衫','夜紫直線長褲','星紫金邊低鞋','薄荷星紋軟帽','葡萄星群胸針','星軌觀測圖冊'],text:'弧領長外套和垂墜肩披結合星軌刺繡；星紫、薄荷青與淺金交錯，葡萄珠飾化為細小星群；Synth-pop 的合成器波形轉成星軌細線與果珠串。',pieces:['星紫長外套以弧領和不對稱衣緣拉長線條，淺金滾邊沿著剪裁延伸。','薄荷青肩披自然垂落，疏落星點與金色弧線沿下襬排列。','月白高領內搭保留乾淨中線，星紫領緣襯出臉部。','夜紫直筒長褲用細金側線連接上下身，膝下輪廓保持輕巧。','星紫低鞋配月白鞋底，薄荷青鞋帶與金邊呼應星軌。','薄荷青軟帽以小型紫色葡萄星群刺繡點綴，帽簷不遮眼。','幾枚紫色葡萄珠飾沿金色星軌排列，葉片化成小月牙。','深紫觀測冊包上薄荷書脊，淺金星軌連接封面上的細小果實。']}
+  ];
+  const FRUIT_PRICES=[240,180,160,160,120,140,100,180];
+  const SHOP_SEASONS=[{id:'2026Q4',name:'果園即興',label:'2026 第四季',startsOn:'2026-10-01',endsBefore:'2027-01-01',theme:'音樂 × 水果'}];
+  function shopSeasonStatus(id,day=E.today()){
+    const season=SHOP_SEASONS.find(value=>value.id===id);
+    if(!season)throw Error('找不到商城季度。');
+    if(typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)throw Error('商城日期不正確。');
+    return day<season.startsOn?'upcoming':day<season.endsBefore?'active':'archive';
+  }
   const canonicalSlot=g=>g.slot==='boots'?'shoes':g.slot==='badge'?'accessory':g.slot==='coat'?(/披風|披肩/.test(g.name)?'cape':'jacket'):g.slot;
   const GEAR=[
     {id:'coat-dawn',name:'晨光短披風',slot:'coat',tier:0,price:80,attack:2,hp:8,guard:1,color:'mint',text:'輕裝出發，把未知留給今天。'},
@@ -26,6 +44,8 @@
   GEAR.push(...F.GEAR);
   for(let i=0;i<GEAR.length;i++)GEAR[i]={...GEAR[i],slot:canonicalSlot(GEAR[i])};
   for(const set of STYLE_SETS)for(let i=0;i<STYLE_SLOTS.length;i++)GEAR.push({id:'style-'+set.key+'-'+STYLE_SLOTS[i],name:set.names[i],slot:STYLE_SLOTS[i],tier:0,level:set.level,source:'milestone',style:set.key,color:set.color,price:null,attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:set.text});
+  for(const set of FRUIT_SETS)for(let i=0;i<STYLE_SLOTS.length;i++)GEAR.push({id:'fruit-'+set.key+'-'+STYLE_SLOTS[i],name:set.names[i],slot:STYLE_SLOTS[i],tier:0,source:'fruit',season:set.season,style:set.key,color:set.color,price:FRUIT_PRICES[i],attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:set.pieces[i]});
+  function setIds(value){const key=typeof value==='string'?value:value?.key,prefix=FRUIT_SETS.some(set=>set.key===key)?'fruit':STYLE_SETS.some(set=>set.key===key)?'style':null;return prefix?STYLE_SLOTS.map(slot=>prefix+'-'+key+'-'+slot):[];}
   const QUESTS=[
     {id:'arrival',chapter:'序章',name:'把學院走成自己的地圖',guide:'苔光教授',story:'新同學，先不用急著比誰答得快。沿著步道，看看三座學科樓各自在研究什麼。',goal:'走進藥劑樓、藥理樓與生藥樓',coins:50,item:'coat-dawn',route:'home'},
     {id:'first-light',chapter:'第一章',name:'讓第一盞知識燈亮起',guide:'星序博士',story:'一個答案不只是一個字母。讀完每日知識卡，再用自己的理解答對五道不同的題目。',goal:'領取每日補給，並累積答對 5 道不同題目',coins:80,item:'boots-dawn',route:'practice'},
@@ -44,8 +64,17 @@
   function canStore(s,id){const g=gear(id),n=s.rpg?.items?.[id]||0;return !!g&&g.source!=='milestone'&&Number.isSafeInteger(n)&&n>=0&&n<MAX;}
   function room(s,n=1){return count(s)+n<=(s.rpg?.capacity||50);}
   function grant(s,id){if(!canStore(s,id))return false;s.rpg.items[id]=(s.rpg.items[id]||0)+1;return true;}
-  function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||s.arena.coins<g.price||!grant(s,id))return false;s.arena.coins-=g.price;return true;}
+  function buy(s,id,day=E.today()){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||g.source==='fruit'&&shopSeasonStatus(g.season,day)==='upcoming'||s.arena.coins<g.price||!grant(s,id))return false;s.arena.coins-=g.price;return true;}
   function equip(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1;if(knowledge){if(!s.inventory[id])return false;s.equipped=id;s.rpg.loadout.handheld=id;return true;}if(!g||level<(g.level||1)||g.source!=='milestone'&&!s.rpg.items[id])return false;s.rpg.loadout[g.slot]=id;if(g.slot==='handheld')s.equipped=null;return true;}
+  // Validate every piece before replacing any slot: failed set wear is a no-op.
+  function equipSet(s,ids){
+    if(!Array.isArray(ids)||!ids.length||ids.length>STYLE_SLOTS.length)return false;
+    const level=Math.floor(s.xp/100)+1,slots=new Set(),pieces=[];
+    for(const id of ids){const g=gear(id),knowledge=g?null:E.ITEMS.find(item=>item.id===id),slot=g?.slot||(knowledge?'handheld':null);if(!slot||slots.has(slot)||g&&(level<(g.level||1)||g.source!=='milestone'&&!s.rpg.items[id])||knowledge&&!s.inventory[id])return false;slots.add(slot);pieces.push({id,slot,knowledge:!!knowledge});}
+    const next={...s.rpg.loadout};let equipped=s.equipped;
+    for(const item of pieces){next[item.slot]=item.id;if(item.slot==='handheld')equipped=item.knowledge?item.id:null;}
+    s.rpg.loadout=next;s.equipped=equipped;return true;
+  }
   function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;if(slot==='handheld')s.equipped=null;return true;}
   function earnNote(s,id,correct,day=E.today()){
     if(!correct)return 0;
@@ -115,5 +144,5 @@
     if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}
     if(raw.socialId!==undefined&&raw.socialId!==null&&!/^[a-f0-9]{32}$/.test(raw.socialId))bad();r.socialId=raw.socialId||null;if(raw.friends!==undefined){if(!Array.isArray(raw.friends)||raw.friends.length>100)bad();for(const f of raw.friends){if(!f||!/^[a-f0-9]{32}$/.test(f.id)||typeof f.name!=='string'||!/^[\p{L}\p{N} _-]{1,16}$/u.test(f.name)||r.friends.some(x=>x.id===f.id))bad();r.friends.push({id:f.id,name:f.name});}}return r;
   }
-  return {GEAR,SLOTS,STYLE_SETS,QUESTS,MAX_EQUIPMENT_LEVEL,fresh,gear,loadout,bonus,count,wardrobeCount,canStore,room,grant,buy,equip,unequip,earnNote,equipmentLevel,equipmentStage,trainingRequirement,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
+  return {GEAR,SLOTS,STYLE_SETS,FRUIT_SETS,SHOP_SEASONS,QUESTS,MAX_EQUIPMENT_LEVEL,fresh,gear,setIds,shopSeasonStatus,loadout,bonus,count,wardrobeCount,canStore,room,grant,buy,equip,equipSet,unequip,earnNote,equipmentLevel,equipmentStage,trainingRequirement,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
 });

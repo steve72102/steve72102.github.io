@@ -1,0 +1,86 @@
+{
+  "method": "Python Random(seed).sample: no replacement; design-time selection only",
+  "seed": 3242565345,
+  "pool": [
+    {
+      "key": "bossa",
+      "label": "Bossa nova"
+    },
+    {
+      "key": "swing",
+      "label": "Swing 爵士"
+    },
+    {
+      "key": "soul",
+      "label": "Soul 靈魂樂"
+    },
+    {
+      "key": "disco",
+      "label": "Disco"
+    },
+    {
+      "key": "synthpop",
+      "label": "Synth-pop"
+    },
+    {
+      "key": "reggae",
+      "label": "Reggae"
+    },
+    {
+      "key": "funk",
+      "label": "Funk"
+    },
+    {
+      "key": "tango",
+      "label": "探戈"
+    },
+    {
+      "key": "bluegrass",
+      "label": "藍草音樂"
+    },
+    {
+      "key": "afrobeat",
+      "label": "Afrobeat"
+    },
+    {
+      "key": "citypop",
+      "label": "City pop"
+    },
+    {
+      "key": "ambient",
+      "label": "Ambient 環境音樂"
+    }
+  ],
+  "selected": [
+    {
+      "outfit": "citrus",
+      "musicKey": "afrobeat",
+      "music": "Afrobeat"
+    },
+    {
+      "outfit": "berry",
+      "musicKey": "bluegrass",
+      "music": "藍草音樂"
+    },
+    {
+      "outfit": "pomelo",
+      "musicKey": "ambient",
+      "music": "Ambient 環境音樂"
+    },
+    {
+      "outfit": "pineapple",
+      "musicKey": "funk",
+      "music": "Funk"
+    },
+    {
+      "outfit": "cherry",
+      "musicKey": "disco",
+      "music": "Disco"
+    },
+    {
+      "outfit": "grape",
+      "musicKey": "synthpop",
+      "music": "Synth-pop"
+    }
+  ]
+}

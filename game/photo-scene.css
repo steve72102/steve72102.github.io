@@ -1,0 +1,13 @@
+/* Room-specific photo objects use one original transparent atlas. */
+.photo-object{position:absolute;transform:translate(calc(-1 * var(--anchor-x,50%)),calc(-1 * var(--anchor-y,90%)));pointer-events:none;contain:layout style;isolation:isolate}
+.photo-atlas-art{position:absolute;left:0;top:0;display:block;width:100%;height:100%;background-size:400% 400%;background-repeat:no-repeat;transform-origin:50% 90%;user-select:none}
+.photo-occlusion{position:absolute;inset:0;background-size:100% 100%;background-repeat:no-repeat;pointer-events:none}
+.photo-atlas-art.photo-flipped{transform:scaleX(-1)}
+.photo-portable.is-falling .photo-atlas-art{transform:rotate(22deg)}
+.photo-portable.is-falling .photo-atlas-art.photo-flipped{transform:scaleX(-1) rotate(22deg)}
+.photo-shards{position:absolute;width:4.4%;height:3.4%;transform:translate(-50%,-50%);pointer-events:none;z-index:28}
+.photo-shards>i{position:absolute;width:17%;height:18%;clip-path:polygon(3% 92%,27% 2%,100% 71%,69% 100%);background:linear-gradient(128deg,#fcffffee 0,#b9d2d9b8 48%,#f6ffffc4 52%,#91b2bb8f 100%);border-bottom:1px solid #819c9f;box-shadow:1px 2px 2px #35545b27}
+.photo-shards[data-material="ceramic"]>i{background:linear-gradient(125deg,#f7f1de,#c0b89d 55%,#ede5d0 57%,#bfb092);border-color:#8d806c;clip-path:polygon(2% 82%,18% 5%,78% 0,100% 58%,67% 100%)}
+.photo-object[hidden],.photo-shards[hidden]{display:none}
+@media(prefers-reduced-motion:no-preference){.photo-atlas-art{transition:transform .2s ease-out}}
+@media(prefers-reduced-motion:reduce){.photo-portable.is-falling .photo-atlas-art{transform:none}.photo-portable.is-falling .photo-atlas-art.photo-flipped{transform:scaleX(-1)}}

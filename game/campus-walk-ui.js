@@ -12,6 +12,7 @@ window.MindWalkUI=function(options){
   function focus(){world.focus({preventScroll:true});}
   function blocked(){return document.hidden||!!document.querySelector('dialog[open]');}
   function message(value){if(value!==lastMessage){label.textContent=value;lastMessage=value;}}
+  function nearbyAction(){const portal=W.near(scene,pos);if(portal)return portal;return (scene.inspections||[]).filter(item=>W.distance(pos,item)<=40/(scene.scale||1)).sort((a,b)=>W.distance(pos,a)-W.distance(pos,b))[0]||null;}
   function paint(moving=false,dx=0,dy=0){
     if(dx)facing=dx<0?-1:1;
     if(dx||dy)direction=Math.abs(dy)>Math.abs(dx)?dy<0?'up':'down':dx<0?'left':'right';
@@ -19,7 +20,7 @@ window.MindWalkUI=function(options){
     actor.style.setProperty('--facing',facing);actor.style.setProperty('--depth',scene.kind!=='hall'?(.76+pos.y/1300):1);
     actor.style.setProperty('--lift',(z*(world.offsetHeight||667)/667)+'px');actor.dataset.z=z.toFixed(1);actor.classList.toggle('jumping',vz!==0);actor.dataset.x=pos.x.toFixed(1);actor.dataset.y=pos.y.toFixed(1);actor.dataset.direction=direction;actor.classList.toggle('walking',moving);actor.style.zIndex=String(30+Math.round(pos.y/10)+(z>0?15:0));
     onMotion({...pos,z,direction,moving});camera();
-    const door=W.near(scene,pos);action.disabled=!door;action.textContent=door?(door.verb||'進入')+' '+door.name:'走近標記即可互動';
+    const door=nearbyAction();action.disabled=!door;action.textContent=door?(door.verb||'進入')+' '+door.name:'走近標記即可互動';
     world.querySelectorAll('[data-walk-portal]').forEach(b=>b.classList.toggle('nearby',b.dataset.walkPortal===door?.id));
     message(path.length?'正在前往目的地 · 方向鍵可接手':door?'已到 '+door.name+' · 按 Enter 互動':scene.kind!=='hall'?'校園漫遊 · 點地面跑動，空白鍵跳躍':'樓館大廳 · 沿樓梯前往下一層');
   }
@@ -35,7 +36,7 @@ window.MindWalkUI=function(options){
     const key=e.key.length===1?e.key.toLowerCase():e.key;
     if(W.direction(key)||key==='Shift'){e.preventDefault();onRouteCancel();keys.add(key);path=[];armed=null;target.hidden=true;}
     else if(key===' '&&!e.repeat){e.preventDefault();jump();}
-    else if((key==='Enter'||key==='e')&&e.target===world){e.preventDefault();activate(W.near(scene,pos));}
+    else if((key==='Enter'||key==='e')&&!e.repeat&&e.target===world){e.preventDefault();activate(nearbyAction());}
     else if(key==='Escape'){stop();paint();}
   }
   listen(document,'keydown',keydown);listen(document,'keyup',e=>keys.delete(e.key.length===1?e.key.toLowerCase():e.key));
@@ -81,7 +82,7 @@ window.MindWalkUI=function(options){
     for(const type of ['pointerup','pointercancel','lostpointercapture'])listen(joystick,type,releaseGesture);
     listen(joystick,'click',e=>e.preventDefault());
   }
-  listen(action,'click',()=>activate(W.near(scene,pos)));
+  listen(action,'click',()=>activate(nearbyAction()));
   root.querySelectorAll('.walk-direction').forEach(b=>{
     const dir=b.dataset.direction;
     const release=e=>{touches.delete(e.pointerId);b.classList.remove('held');if(!touches.size&&!keys.size&&!path.length)paint();};

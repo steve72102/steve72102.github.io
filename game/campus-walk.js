@@ -1,4 +1,4 @@
-(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./world-layout.js'):root.MindWorldLayout,typeof module==='object'&&module.exports?require('./classroom.js'):root.MindClassrooms);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindWalk=api;})(typeof window==='object'?window:globalThis,function(D,Q){
+(function(root,factory){const api=factory(typeof module==='object'&&module.exports?require('./world-layout.js'):root.MindWorldLayout,typeof module==='object'&&module.exports?require('./classroom.js'):root.MindClassrooms,typeof module==='object'&&module.exports?require('./scene-objects.js'):root.MindSceneObjects);if(typeof module==='object'&&module.exports)module.exports=api;else root.MindWalk=api;})(typeof window==='object'?window:globalThis,function(D,Q,O){
   'use strict';
   const WIDTH=1000,HEIGHT=667,SPEED=135;
   const point=([x,y])=>({x,y}),poly=points=>points.map(point),rect=(x,y,w,d)=>poly([[x-w/2,y-d/2],[x+w/2,y-d/2],[x+w/2,y+d/2],[x-w/2,y+d/2]]);
@@ -17,37 +17,25 @@
   function arrival(from,portalId){const p=outdoors[from]?.portals.find(p=>p.id===portalId),next=outdoors[p?.to];if(!next)return null;const gate=next.portals.find(q=>q.id===p.arrival);return {scene:p.to,position:nearest(next,gate?.out||next.spawn)};}
   function mapPoint(id){const outside=id.startsWith('hall:')?'district:'+id.split(':')[1]:id;return outdoors[outside]?.mapPoint||{x:500,y:355};}
   function district(id){return districts[id]||campus;}
-  const classrooms=Object.fromEntries(Object.entries(Q.rooms).map(([id,raw])=>{const scene=layout(raw);scene.surfaces=raw.tables.map(([x,y,w,d,height],i)=>({id:'class-table-'+i,x,y,w,d,height,hidden:true,polygon:rect(x,y,w,d)}));scene.surfaces.push(...[{id:'table',x:620,y:485,w:130,d:42,height:38},{id:'chair-left',x:530,y:515,w:38,d:24,height:22},{id:'chair-right',x:710,y:515,w:38,d:24,height:22}].map(s=>({...s,polygon:rect(s.x,s.y,s.w,s.d)})));scene.glass=[{id:'cup',kind:'cup',surface:'table',x:620,y:485,width:16}];return [id,scene];}));
+  function photoLayout(scene,key){
+    const room=O.get(key);if(!room)throw Error('找不到原景物件配置：'+key);
+    scene.roomKey=room.key;scene.background=room.background;scene.atlas=room.atlas;scene.artSource=room.source;
+    scene.surfaces=room.surfaces.map(s=>({...s,polygon:poly(s.polygon),...(s.visual?{visual:{...s.visual}}:{})}));
+    scene.glass=room.props.map(p=>({...p,visual:{...p.visual}}));scene.fixtures=room.fixtures.map(p=>({...p}));
+    if(room.extraAreas)scene.areas.push(...room.extraAreas.map(poly));if(room.portalPositions)scene.portals=scene.portals.map(p=>({...p,...room.portalPositions[p.id]}));return scene;
+  }
+  const classrooms=Object.fromEntries(Object.entries(Q.rooms).map(([id,raw])=>[id,photoLayout(layout(raw),'classroom-'+id)]));
   const hallCache=new Map();
   function hall(name,building='pharmaceutics'){
     if(!name&&hallCache.has(building))return hallCache.get(building);
     const modern=['pharmacology','battle'].includes(building),garden=['herbal','life'].includes(building);
     const areas=modern?[poly([[45,655],[985,655],[985,368],[778,368],[770,405],[347,406],[347,443],[155,480],[45,495]]),poly([[580,407],[690,407],[779,212],[729,212]]),poly([[675,222],[955,222],[955,185],[693,185]])]:garden?[poly([[125,655],[985,655],[985,432],[908,405],[606,405],[606,428],[505,428],[402,400],[202,393],[205,352],[186,352],[175,412],[140,480]])]:[poly([[15,655],[985,655],[985,398],[330,386],[205,456],[205,560],[15,630]]),poly([[462,389],[726,389],[726,350],[468,350]])];
     const stairs=modern?{x:748,y:218}:{x:garden?211:885,y:garden?401:416};
-    const surfaces=[{id:'table',x:480,y:510,w:200,d:64,height:52},{id:'chair-left',x:350,y:535,w:54,d:32,height:25},{id:'chair-right',x:610,y:535,w:54,d:32,height:25}].map(s=>({...s,polygon:rect(s.x,s.y,s.w,s.d)}));
-    surfaces[0].polygon=poly([[384.4,509.3],[428.8,493.9],[575.6,502.9],[551.6,525.7]]);
-    if(!modern&&!garden)surfaces.push({id:'existing-desk',x:154,y:490,w:100,d:55,height:90,hidden:true,polygon:rect(154,490,100,55)});
-    const glass=[{id:'cup',kind:'cup',surface:'table',x:480,y:510,width:23}];
-    if(building==='pharmacology'){
-      // The painted cabinet and its shelves share a footprint, but support different elevations.
-      // Upper shelves are one-way platforms: a jump can pass upward through them, then land.
-      const cabinet=poly([[5,456],[110,456],[110,482],[5,482]]);
-      [90,170,237,309].forEach((height,level)=>{
-        const id='lab-shelf-'+level;
-        surfaces.push({id,x:57.5,y:469,w:105,d:26,height,hidden:true,oneWay:level>0,polygon:cabinet});
-        const positions=[[32,56,79],[23,56,89],[18,42,66],[55,78,100]][level],edge=[[376.4,373.8],[293.8,301.6],[224.1,240.4],[146.5,173.9]][level];
-        positions.forEach((x,column)=>glass.push({id:'lab-'+level+'-'+column,kind:['beaker','flask','cylinder','round-flask'][(level+column)%4],surface:id,x,y:height+edge[0]+(edge[1]-edge[0])*x/112,width:level===1?27:25,fragile:true}));
-      });
-      surfaces.push({id:'window-bench',x:256,y:447,w:183,d:27,height:55,hidden:true,polygon:poly([[164,439],[345,432],[346,450],[174,459]])});
-      // Reach the cabinet directly from its front, without walking through the planter.
-      areas.push(poly([[5,482],[119,482],[146,500],[146,535],[5,535]]),poly([[174,459],[346,450],[346,468],[174,483]]));
-    }
-    const scene={kind:'hall',building,modern,spawn:{x:450,y:590},areas,surfaces,paths:[],nodes:[],portals:[{id:'exit',name:'回到校園',x:modern?873:garden?823:585,y:modern?369:garden?416:356},{id:'room',kind:'inspect',name,x:modern?932:garden?230:832,y:modern?408:garden?409:416},{id:'stairs',name:modern?'樓梯平台':'樓梯間',...stairs,kind:'inspect',verb:'使用',auto:true}]};
-    scene.glass=glass;
+    const scene={kind:'hall',building,modern,spawn:{x:450,y:590},areas,surfaces:[],paths:[],nodes:[],portals:[{id:'exit',name:'回到校園',x:modern?873:garden?823:585,y:modern?369:garden?416:356},{id:'room',kind:'inspect',name,x:modern?932:garden?230:832,y:modern?408:garden?409:416},{id:'stairs',name:modern?'樓梯平台':'樓梯間',...stairs,kind:'inspect',verb:'使用',auto:true}]};
     // Graph vertices follow the illustrated floor, stair flight and upper landing.
     scene.nodes=[scene.spawn,...scene.portals,point([480,575]),point([370,570]),point([590,570]),point([370,470]),point([590,460]),point([720,440]),...(modern?[[635,400],[710,265],[750,215],[820,211],[810,410],[870,410]]:garden?[[210,430],[300,437],[530,450],[810,445]]:[[250,460],[400,410],[585,382],[710,410]]).map(point)];
     const custom=D.halls[building];if(custom){scene.areas=custom.areas.map(poly);scene.spawn={...custom.spawn};scene.nodes=[...custom.nodes.map(point),...scene.nodes];scene.portals=[{id:'exit',name:'回到前庭',...custom.exit},{id:'room',kind:'inspect',name,...custom.room},{id:'stairs',name:'樓梯平台',...custom.stairs,kind:'inspect',verb:'使用',auto:true}];scene.nodes.push(...scene.portals);}
-    if(!name)hallCache.set(building,scene);return scene;
+    photoLayout(scene,'hall-'+building);if(!name)hallCache.set(building,scene);return scene;
   }
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
   function projection(p,a,b){const dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy||1)));return {x:a.x+t*dx,y:a.y+t*dy};}
@@ -64,7 +52,7 @@
   }
   function deskArrival(scene){
     // Arrive on the floor in front of the destination table, never on its surface.
-    const table=(scene.surfaces||[]).find(s=>s.id==='table');
+    const table=(scene.surfaces||[]).find(s=>s.arrival)||(scene.surfaces||[]).find(s=>s.height>=30&&s.height<=120);
     if(!table)return nearest(scene,scene.spawn);
     const front=Math.max(...table.polygon.map(p=>p.y)),candidates=[];
     for(const gap of [28,44,64])for(const offset of [0,-32,32,-64,64])candidates.push({x:table.x+offset,y:front+gap});
@@ -78,7 +66,33 @@
     cuts.sort((a,b)=>a-b);for(let i=1;i<cuts.length;i++){const t=(cuts[i-1]+cuts[i])/2;if(!walkable(scene,{x:a.x+dx*t,y:a.y+dy*t},z))return false;}return true;
   }
   function move(scene,p,dx,dy,seconds,sprint=false,z=0){p=nearest(scene,p,z);const length=Math.hypot(dx,dy);if(!Number.isFinite(length)||!length||!Number.isFinite(seconds))return p;const amount=speed(scene)*(sprint?1.5:1)*Math.max(0,Math.min(.05,seconds)),x=dx/length*amount,y=dy/length*amount,both={x:p.x+x,y:p.y+y};if(clear(scene,p,both,z))return both;const horizontal={x:p.x+x,y:p.y},vertical={x:p.x,y:p.y+y};if(x&&clear(scene,p,horizontal,z))return horizontal;if(y&&clear(scene,p,vertical,z))return vertical;return p;}
-  function route(scene,from,to){from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];const corners=(scene.surfaces||[]).filter(s=>!s.hidden).flatMap(s=>s.polygon.map(p=>{const d=Math.hypot(p.x-s.x,p.y-s.y)||1;return {x:p.x+(p.x-s.x)/d*3,y:p.y+(p.y-s.y)/d*3};}));const nodes=[from,...scene.nodes,...corners].filter(p=>walkable(scene,p));nodes.push(to);const last=nodes.length-1,cost=nodes.map(()=>Infinity),prev=nodes.map(()=>-1),seen=new Set();cost[0]=0;while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]<cost[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);for(let v=1;v<nodes.length;v++)if(!seen.has(v)&&clear(scene,nodes[u],nodes[v])){const next=cost[u]+distance(nodes[u],nodes[v]);if(next<cost[v]){cost[v]=next;prev[v]=u;}}}if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);return result;}
+  function route(scene,from,to){
+    from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];
+    // Bounds are scoped to this route, so moved furniture can never leave a stale
+    // geometry cache. The exact polygon tests still decide every visible edge.
+    const box=polygon=>({polygon,minX:Math.min(...polygon.map(p=>p.x)),maxX:Math.max(...polygon.map(p=>p.x)),minY:Math.min(...polygon.map(p=>p.y)),maxY:Math.max(...polygon.map(p=>p.y))});
+    const areas=(scene.areas||[]).map(box),blocked=(scene.blocked||[]).map(box),surfaces=(scene.surfaces||[]).map(s=>({...box(s.polygon),surface:s})),polygons=[...areas,...blocked,...surfaces];
+    const contains=(b,p)=>p.x>=b.minX-.001&&p.x<=b.maxX+.001&&p.y>=b.minY-.001&&p.y<=b.maxY+.001&&inside(p,b.polygon);
+    const valid=p=>{const on=surfaces.filter(s=>contains(s,p)),ground=!blocked.some(b=>contains(b,p))&&(areas.some(a=>contains(a,p))||(scene.paths||[]).some(s=>distance(p,projection(p,s.a,s.b))<=s.width));return (ground||on.some(s=>s.surface.height<=.1))&&on.every(s=>s.surface.oneWay||s.surface.height<=.1);};
+    function visible(a,b){
+      if(scene.paths?.length)return clear(scene,a,b);
+      const dx=b.x-a.x,dy=b.y-a.y,minX=Math.min(a.x,b.x),maxX=Math.max(a.x,b.x),minY=Math.min(a.y,b.y),maxY=Math.max(a.y,b.y),cuts=[0,1];
+      for(const bound of polygons){if(bound.maxX<minX||bound.minX>maxX||bound.maxY<minY||bound.minY>maxY)continue;const polygon=bound.polygon;for(let i=0;i<polygon.length;i++){const c=polygon[i],d=polygon[(i+1)%polygon.length],ex=d.x-c.x,ey=d.y-c.y,det=dx*ey-dy*ex;if(Math.abs(det)<1e-9)continue;const t=((c.x-a.x)*ey-(c.y-a.y)*ex)/det,u=((c.x-a.x)*dy-(c.y-a.y)*dx)/det;if(t>0&&t<1&&u>=0&&u<=1)cuts.push(t);}}
+      cuts.sort((a,b)=>a-b);for(let i=1;i<cuts.length;i++){const t=(cuts[i-1]+cuts[i])/2;if(!valid({x:a.x+dx*t,y:a.y+dy*t}))return false;}return true;
+    }
+    if(!valid(from)||!valid(to))return [];
+    const corners=(scene.surfaces||[]).flatMap(s=>s.polygon.map(p=>{const d=Math.hypot(p.x-s.x,p.y-s.y)||1;return {x:p.x+(p.x-s.x)/d*3,y:p.y+(p.y-s.y)/d*3};}));
+    const nodes=[...new Map([from,...scene.nodes,...corners].filter(valid).map(p=>[p.x.toFixed(4)+':'+p.y.toFixed(4),p])).values()];nodes.push(to);
+    const last=nodes.length-1,cost=nodes.map(()=>Infinity),heuristic=nodes.map(p=>distance(p,to)),prev=nodes.map(()=>-1),seen=new Set(),edges=new Map(),order=[last,...nodes.map((_,i)=>i).filter(i=>i>0&&i!==last)];cost[0]=0;
+    const connected=(a,b)=>{const key=Math.min(a,b)*nodes.length+Math.max(a,b);if(!edges.has(key))edges.set(key,visible(nodes[a],nodes[b]));return edges.get(key);};
+    while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]+heuristic[i]<cost[u]+heuristic[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);
+      // Try the destination first; a known complete path gives a safe A* bound.
+      for(const v of order){if(seen.has(v))continue;const next=cost[u]+distance(nodes[u],nodes[v]);if(next>=cost[v]||next+heuristic[v]>=cost[last])continue;if(connected(u,v)){cost[v]=next;prev[v]=u;}}
+    }
+    if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);
+    // Validate only the chosen edges against the public movement predicate.
+    let previous=from;for(const next of result){if(!clear(scene,previous,next))return [];previous=next;}return result;
+  }
   function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
   return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,deskArrival,clear,move,route,near,direction};

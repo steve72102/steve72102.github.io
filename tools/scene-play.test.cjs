@@ -1,27 +1,29 @@
-const test=require('node:test'),assert=require('node:assert/strict'),P=require('../game/scene-play.js'),W=require('../game/campus-walk.js'),A=require('../game/academy.js');
-const sid='hall:battle:arena',id='a'.repeat(32),p={id,scene:sid,x:480,y:560,z:0};
-test('pushing stays on the tabletop until the rim, then glass lasts exactly 60 seconds',()=>{const s=P.fresh();assert(P.push(s,p,{type:'push',scene:sid,direction:'right'},1000));assert.equal(P.cup(s,sid).brokenUntil,0);assert(P.push(s,p,{type:'push',scene:sid,direction:'down'},1100));const c=P.cup(s,sid);assert.equal(c.brokenUntil,61100);assert(W.walkable(P.scene(sid),c));assert.equal(P.push(s,p,{type:'push',scene:sid,direction:'down'},1200),false);P.step(s,[],61099);assert(s.cups[sid]);P.step(s,[],61100);assert(!s.cups[sid]);});
-test('another grounded player bleeds for eight seconds, jumping avoids glass and the same pile does not retrigger',()=>{const s=P.fresh();P.push(s,p,{type:'push',scene:sid,direction:'down'},0);P.push(s,p,{type:'push',scene:sid,direction:'down'},0);const c=P.cup(s,sid),other={id:'b'.repeat(32),scene:sid,...c,z:20};P.step(s,[other],1000);assert(!s.injuries[other.id]);other.z=0;P.step(s,[other],2000);assert.equal(s.injuries[other.id],10000);P.step(s,[other],9999);assert(s.injuries[other.id]);P.step(s,[other],10000);assert(!s.injuries[other.id]);P.step(s,[other],20000);assert(!s.injuries[other.id]);});
-test('proximity, scene and restored bounds prevent remote prop manipulation and invalid timers',()=>{const s=P.fresh();assert.equal(P.push(s,{...p,x:0},{type:'push',scene:sid,direction:'down'},0),false);assert.equal(P.push(s,p,{type:'push',scene:'hall:life:shop',direction:'down'},0),false);assert.throws(()=>P.restore({cups:[{scene:sid,x:480,y:510,remaining:60001}],injuries:[]},0));assert.throws(()=>P.restore({cups:[{scene:sid,x:0,y:0,remaining:0}],injuries:[]},0));P.push(s,p,{type:'push',scene:sid,direction:'down'},0);P.push(s,p,{type:'push',scene:sid,direction:'down'},0);assert.doesNotThrow(()=>P.restore(P.snapshot(s,60001),60001));});
-test('all five campus entrances connect through clear floor, and water and planters block even jumping',()=>{const s=W.campus;for(const from of [s.spawn,...s.portals])for(const to of s.portals){const path=W.route(s,from,to);assert(path.length,from.id+' to '+to.id);let prev=from;for(const p of path){assert(W.clear(s,prev,p));prev=p;}}for(const p of [{x:500,y:342},{x:170,y:290},{x:600,y:220},{x:930,y:440}]){assert(!W.walkable(s,p));assert(!W.walkable(s,p,100));}});
-test('every hall has connected stairs and rooms, clear lower floors, solid desks and elevated tabletop support',()=>{for(const b of A.BUILDINGS){const s=W.hall('room',b.id);for(const p of s.portals){assert(W.walkable(s,p),b.id+':'+p.id);assert(W.route(s,s.spawn,p).length,b.id+':'+p.id);}assert(!W.walkable(s,{x:480,y:510}));assert(W.walkable(s,{x:480,y:510},52));assert.equal(W.surface(s,{x:480,y:510}).height,52);}assert.equal(new Set(A.BUILDINGS.map(b=>b.hall)).size,5);});
-
-const lab='hall:pharmacology:'+A.floors('pharmacology')[0].id;
-test('touching one laboratory vessel shatters only that shelf and vessel; a vertical landing also works',()=>{
-  const state=P.fresh(),person={id,scene:lab,x:56,y:490,z:90,moving:true};P.step(state,[person],100);person.y=469;P.step(state,[person],200);
-  assert.equal(P.cup(state,lab,'lab-0-1').brokenUntil,60200);assert.equal(P.cup(state,lab,'lab-0-1').z,90);
-  assert.equal(P.cup(state,lab,'lab-1-1').brokenUntil,0);assert.equal(P.cup(state,lab,'lab-0-0').brokenUntil,0);
-  person.z=180;person.moving=false;P.step(state,[person],300);person.z=170;P.step(state,[person],500);assert.equal(P.cup(state,lab,'lab-1-1').brokenUntil,60500);
-  assert.equal(Object.keys(state.cups).length,2);assert.equal(P.cup(state,'hall:pharmacology:'+A.floors('pharmacology')[1].id,'lab-0-1').brokenUntil,0);
+const test=require('node:test'),assert=require('node:assert/strict'),P=require('../game/scene-play.js'),W=require('../game/campus-walk.js');
+const sid='hall:pharmaceutics:practice',id='a'.repeat(32),prop='ntu-desk-flask';
+function drop(state,scene=sid,object=prop,start=1000){let now=start;for(let i=0;i<40;i++){const c=P.cup(state,scene,object,now);if(c.fallUntil>now)return {c,now};assert(P.push(state,{id,scene,...c,z:c.z},{type:'push',scene,direction:'right'},now),'nearby object can be pushed');now+=10;}throw Error('object never left support');}
+function breakOnFloor(state){const falling=drop(state);P.step(state,[],falling.c.fallUntil);return P.cup(state,sid,prop,falling.c.fallUntil);}
+test('touching a photographed glass vessel pushes it off its desk, then it falls before shattering for sixty seconds',()=>{
+  const s=P.fresh(),original=P.cup(s,sid,prop),person={id,scene:sid,x:original.x-8,y:original.y,z:original.z,moving:true};P.step(s,[person],0);person.x=original.x+2;P.step(s,[person],100);assert(P.cup(s,sid,prop).x>original.x);assert.equal(P.cup(s,sid,prop).brokenUntil,0);
+  const {c,now}=drop(s,sid,prop,1000);assert.equal(c.brokenUntil,0);assert.equal(c.support,null);assert(P.elevation(c,now)>0);assert(P.elevation(c,(now+c.fallUntil)/2)<c.fromZ);P.step(s,[],c.fallUntil);const broken=P.cup(s,sid,prop);assert.equal(broken.z,0);assert.equal(broken.brokenUntil,c.fallUntil+60000);P.step(s,[],broken.brokenUntil-1);assert(!P.cup(s,sid,prop).removed);P.step(s,[],broken.brokenUntil);assert(P.cup(s,sid,prop).removed);assert.equal(P.cup(s,sid,prop).brokenUntil,0);
+  const restored=P.restore(P.snapshot(s,broken.brokenUntil),broken.brokenUntil);assert(P.cup(restored,sid,prop).removed,'removed vessel stays gone until the room is reset');assert(!P.cup(P.fresh(),sid,prop).removed,'a new room gets its original furnishings');
 });
-test('shelf shards injure only at their elevation, recover after eight seconds and reset at sixty seconds',()=>{
-  const state=P.fresh(),person={id,scene:lab,x:56,y:469,z:120,moving:false};P.step(state,[person],0);person.z=90;P.step(state,[person],100);
-  const below={id:'b'.repeat(32),scene:lab,x:56,y:469,z:0,moving:false};P.step(state,[person,below],200);assert(!state.injuries[below.id]);assert.equal(state.injuries[id],8100);
-  P.step(state,[person,below],8100);assert(!state.injuries[id]);P.step(state,[person,below],60100);assert.equal(P.cup(state,lab,'lab-0-1').brokenUntil,0);assert.equal(Object.keys(state.cups).length,0);
+test('another grounded player bleeds for eight seconds, jumping avoids shards and the same pile cannot retrigger',()=>{
+  const s=P.fresh(),c=breakOnFloor(s),start=c.brokenUntil-P.GLASS_MS,other={id:'b'.repeat(32),scene:sid,x:c.x,y:c.y,z:20,moving:false};P.step(s,[other],start+100);assert(!s.injuries[other.id]);other.z=0;P.step(s,[other],start+200);assert.equal(s.injuries[other.id],start+8200);P.step(s,[other],start+8199);assert(s.injuries[other.id]);P.step(s,[other],start+8200);assert(!s.injuries[other.id]);P.step(s,[other],start+20000);assert(!s.injuries[other.id]);
 });
-test('multiple shelves round-trip through the network and reject invented vessels, heights and duplicates',()=>{
-  const raw={cups:[0,1,2,3].map(level=>({scene:lab,id:'lab-'+level+'-1',x:P.definitions(lab).find(d=>d.id==='lab-'+level+'-1').x,y:P.definitions(lab).find(d=>d.id==='lab-'+level+'-1').y,z:[90,170,237,309][level],remaining:40000})),injuries:[]};
-  const restored=P.restore(raw,1000);assert.deepEqual(P.snapshot(restored,1000),{...raw,furniture:[]});
-  for(const change of [{id:'missing'},{z:91},{x:800},{scene:'hall:battle:arena'}])assert.throws(()=>P.restore({...raw,cups:[{...raw.cups[0],...change}]},1000));
-  assert.throws(()=>P.restore({...raw,cups:[raw.cups[0],raw.cups[0]]},1000));
+test('remote distance, other rooms and unreachable shelf elevations cannot manipulate a loose object',()=>{
+  const s=P.fresh();assert(!P.push(s,{id,scene:sid,x:999,y:655,z:0},{type:'push',scene:sid,direction:'right'},0));assert(!P.push(s,{id,scene:sid,x:103,y:486,z:105},{type:'push',scene:'hall:life:shop',direction:'right'},0));const high='hall:pharmacology:practice',c=P.cup(s,high,'pharma-shelf-plant-high');P.push(s,{id,scene:high,x:c.x,y:c.y,z:0},{type:'push',scene:high,direction:'right'},0);assert.deepEqual(P.cup(s,high,'pharma-shelf-plant-high'),c,'ground-level reach cannot move the high shelf pot');
+});
+test('the five original campus entrances remain connected and landscape water blocks jumping',()=>{
+  const s=W.campus;for(const from of [s.spawn,...s.portals])for(const to of s.portals){const route=W.route(s,from,to);assert(route.length);let previous=from;for(const point of route){assert(W.clear(s,previous,point));previous=point;}}
+  for(const point of [{x:500,y:342},{x:170,y:290},{x:600,y:220},{x:930,y:440}]){assert(!W.walkable(s,point));assert(!W.walkable(s,point,100));}
+});
+test('the original fixed window bench has a solid ground footprint and supports a jumping player',()=>{
+  const s=W.hall('藥理','pharmacology'),bench=s.surfaces.find(s=>s.id==='window-bench'),point={x:bench.x,y:bench.y};assert.equal(bench.movable,false);assert(!W.walkable(s,point));assert(W.walkable(s,point,bench.height));assert.equal(W.surface(s,point,bench.height).id,bench.id);
+});
+test('landing on a ceramic pot breaks only that pot at its actual shelf height',()=>{
+  const scene='hall:pharmacology:practice',object='pharma-shelf-plant-mid',s=P.fresh(),c=P.cup(s,scene,object),person={id,scene,x:c.x,y:c.y,z:c.z+14,moving:false};P.step(s,[person],0);person.z=c.z;P.step(s,[person],100);const broken=P.cup(s,scene,object);assert.equal(broken.brokenUntil,60100);assert.equal(broken.z,c.z);assert.equal(P.cup(s,scene,'pharma-shelf-plant-high').brokenUntil,0);assert.equal(P.cup(s,'hall:pharmacology:calculation',object).brokenUntil,0);const below={id:'b'.repeat(32),scene,x:c.x,y:c.y,z:0,moving:false};P.step(s,[person,below],200);assert(s.injuries[id]);assert(!s.injuries[below.id]);
+});
+test('snapshot round trips pending falls and removal tombstones while rejecting invented or impossible object states',()=>{
+  const s=P.fresh(),{c,now}=drop(s),raw=P.snapshot(s,now),restored=P.restore(raw,now);assert.deepEqual(P.snapshot(restored,now),raw);const row=raw.cups[0];for(const change of [{id:'missing'},{x:NaN},{x:-1},{remaining:60001},{fromZ:Infinity},{fallRemaining:1501},{support:'made-up'},{z:5},{removed:true}])assert.throws(()=>P.restore({...raw,cups:[{...row,...change}]},now));assert.throws(()=>P.restore({...raw,cups:[row,row]},now));
+  const end=c.fallUntil+P.GLASS_MS;const snapshot=P.snapshot(s,end);assert.equal(snapshot.cups[0].removed,true,'snapshot canonicalizes an expired fall and shards even before a new animation frame');assert(P.cup(P.restore(snapshot,end),sid,prop).removed);
 });

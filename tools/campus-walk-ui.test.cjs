@@ -10,7 +10,7 @@ function fixture(options={}){
   const ui=window.MindWalkUI({root,scene:options.scene||W.hall('room'),initial:options.initial,onPosition:p=>position=p,onPortal:id=>portals.push(id)});
   function fire(el,type,attrs={}){const e=new Event(type,{cancelable:true});for(const [k,v] of Object.entries(attrs))Object.defineProperty(e,k,{value:v});el.dispatchEvent(e);return e;}
   function tick(n=30){for(let i=0;i<n;i++){time+=1000/60;const batch=[...frames.values()];frames.clear();batch.forEach(fn=>fn(time));}}
-  return {ui,root,world,actor,joystick,joyKnob,document,window,buttons,fire,tick,frames,portals,point:()=>({x:Number(actor.dataset.x),y:Number(actor.dataset.y)}),position:()=>position};
+  return {ui,root,world,actor,action,label,joystick,joyKnob,document,window,buttons,fire,tick,frames,portals,point:()=>({x:Number(actor.dataset.x),y:Number(actor.dataset.y)}),position:()=>position};
 }
 test('held keyboard moves; keyup, blur and modal opening stop movement without a stuck key',()=>{
   const f=fixture(),start=f.point();f.fire(f.document,'keydown',{key:'ArrowLeft',target:f.world});f.tick(20);assert.ok(f.point().x<start.x);
@@ -26,7 +26,7 @@ test('walking through an exit activates once and cancels the old animation loop'
   const f=fixture();f.ui.toward(W.hall('room').portals.find(p=>p.id==='exit'));f.tick(250);assert.deepEqual(f.portals,['exit']);assert.equal(f.frames.size,0);f.tick();assert.deepEqual(f.portals,['exit']);
 });
 
-test('jumping reaches the tabletop, lands on it and drops back to the ground when walking off',()=>{const f=fixture({initial:{x:480,y:565}});f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(23);f.fire(f.document,'keyup',{key:'ArrowUp'});assert(Number(f.actor.dataset.z)>52);assert(W.surface(W.hall('room'),f.point()));f.tick(65);assert.equal(Number(f.actor.dataset.z),52);f.fire(f.document,'keydown',{key:'ArrowDown',target:f.world});f.tick(30);f.fire(f.document,'keyup',{key:'ArrowDown'});f.tick(60);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();});
+test('jumping reaches the actual window desk, lands on it and drops back to the ground when walking off',()=>{const scene=W.hall('room'),desk=scene.surfaces.find(s=>s.id==='ntu-window-desk'),f=fixture({scene,initial:{x:desk.x,y:Math.max(...desk.polygon.map(p=>p.y))+45}});f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(23);f.fire(f.document,'keyup',{key:'ArrowUp'});assert(Number(f.actor.dataset.z)>desk.height);assert(W.surface(scene,f.point()));f.tick(65);assert.equal(Number(f.actor.dataset.z),desk.height);f.fire(f.document,'keydown',{key:'ArrowDown',target:f.world});f.tick(30);f.fire(f.document,'keyup',{key:'ArrowDown'});f.tick(60);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();});
 
 test('the left laboratory counter is reachable and repeated jumps land on each shelf without teleporting upward',()=>{
   const scene=W.hall('room','pharmacology'),f=fixture({scene,initial:{x:56,y:500}}),jump=()=>f.fire(f.document,'keydown',{key:' ',target:f.world});
@@ -98,4 +98,31 @@ test('selecting a destination releases an earlier joystick gesture',()=>{
 test('Space on a focused button keeps native keyboard activation instead of jumping',()=>{
  const f=fixture(),button=f.buttons[0];button.closest=selector=>selector.includes('button')?{}:null;
  const event=f.fire(f.document,'keydown',{key:' ',target:button});f.tick(12);assert.equal(event.defaultPrevented,false);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();
+});
+
+test('fixed-fixture observations reuse the contextual button and E/Enter without automatic activation or ending movement',()=>{
+ const base=W.hall('room'),scene={...base,portals:[],inspections:[{...base.spawn,id:'fixture:wood-cabinet',name:'木質櫥櫃',kind:'inspect',verb:'觀察',auto:false}]},f=fixture({scene});
+ assert.equal(f.action.disabled,false);assert.equal(f.action.textContent,'觀察 木質櫥櫃');f.tick(100);assert.deepEqual(f.portals,[],'standing nearby must not open a dialog');
+ f.fire(f.document,'keydown',{key:'Enter',target:f.world});assert.deepEqual(f.portals,['fixture:wood-cabinet']);assert(f.frames.size>0);f.document.modal=true;f.tick(3);f.document.modal=false;
+ f.fire(f.action,'click');assert.equal(f.portals.length,2);f.fire(f.document,'keydown',{key:'e',target:f.world});assert.equal(f.portals.length,3);f.fire(f.document,'keydown',{key:'e',target:f.world,repeat:true});assert.equal(f.portals.length,3,'a held interaction key cannot reopen the observation');
+ const before=f.point();f.fire(f.document,'keydown',{key:'ArrowRight',target:f.world});f.tick(10);f.fire(f.document,'keyup',{key:'ArrowRight'});assert(f.point().x>before.x);f.ui.destroy();
+});
+
+test('entrance actions take precedence over a closer fixed-fixture observation',()=>{
+ const base=W.hall('room'),scene={...base,portals:[{...base.spawn,x:base.spawn.x+8,id:'room',name:'教室入口',kind:'inspect',auto:false}],inspections:[{...base.spawn,id:'fixture:cabinet',name:'固定書櫃',kind:'inspect',verb:'觀察',auto:false}]},f=fixture({scene});
+ assert.equal(f.action.textContent,'進入 教室入口');f.fire(f.document,'keydown',{key:'Enter',target:f.world});assert.deepEqual(f.portals,['room']);f.ui.destroy();
+});
+
+test('opening an observation releases held movement and closing it cannot resume an old keyboard or touch gesture',()=>{
+ for(const input of ['keyboard','joystick','drag','direction']){
+  const base=W.hall('room'),scene={...base,portals:[],inspections:[{...base.spawn,id:'fixture:cabinet',name:'固定書櫃',kind:'inspect',verb:'觀察',auto:false}]},f=fixture({scene});
+  if(input==='keyboard')f.fire(f.document,'keydown',{key:'ArrowRight',target:f.world});
+  else if(input==='joystick'){f.fire(f.joystick,'pointerdown',{pointerType:'touch',pointerId:5,clientX:57,clientY:57});f.fire(f.joystick,'pointermove',{pointerId:5,clientX:100,clientY:57});}
+  else if(input==='drag'){f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:5,clientX:500,clientY:550});f.fire(f.world,'pointermove',{pointerId:5,clientX:550,clientY:550});}
+  else f.fire(f.buttons[3],'pointerdown',{button:0,pointerId:5});
+  f.tick(3);f.fire(f.action,'click');assert.deepEqual(f.portals,['fixture:cabinet'],input);const stopped=f.point();
+  f.document.modal=true;f.tick(8);assert.deepEqual(f.point(),stopped);f.document.modal=false;f.tick(8);assert.deepEqual(f.point(),stopped);
+  f.fire(f.world,'pointerup',{pointerId:5});f.fire(f.joystick,'pointerup',{pointerId:5});f.fire(f.buttons[3],'pointerup',{pointerId:5});f.fire(f.document,'keyup',{key:'ArrowRight'});f.tick(8);assert.deepEqual(f.point(),stopped);assert.equal(f.joyKnob.style.transform,'');assert(!f.actor.classes.has('walking'));assert(f.frames.size>0);
+  f.fire(f.document,'keydown',{key:'ArrowLeft',target:f.world});f.tick(8);assert(f.point().x<stopped.x);f.ui.destroy();
+ }
 });

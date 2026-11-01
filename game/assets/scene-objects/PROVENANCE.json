@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "created_at": "2026-11-01",
+  "runtime_generation": false,
+  "third_party_music_recordings_used": false,
+  "new_external_artwork_references_used": false,
+  "review_scope": "All nine original scene images and nine clean plates manually viewed; atlas rectangles/anchors calibrated; source reconstruction renders are not browser screenshots. Existing repository assets are user-provided references, not a legal clearance of all historical assets.",
+  "assets": [
+    {
+      "file": "hall-pharmaceutics-clean.webp",
+      "sha256": "bc4e59de33b2be5d510ac9dad73da2b949287faea3d45950e5ebb32cbf470053",
+      "bytes": 343276,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/hall-ntu.webp",
+      "source_git_blob": "8fe1d27833af7b15c147a41161a4f6bf898c7af4",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "hall-pharmacology-clean.webp",
+      "sha256": "9df7b3ac387ffd14ea0e9eb881002a2b697d4b09a6003dcb374b6b32357e4759",
+      "bytes": 325638,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/hall-nthu-interactive.webp",
+      "source_git_blob": "b54fedfbe53003fbd463e6bb5459402c928864f4",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "hall-herbal-clean.webp",
+      "sha256": "d1ca331800acc0bd31b0dcb7acf4654ec657f7249e19c45f14f216a00433b54c",
+      "bytes": 473828,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/hall-ncku.webp",
+      "source_git_blob": "129b54fc9e4bc2c8c541492e1933f1242fbd67c2",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "hall-battle-clean.webp",
+      "sha256": "30d75aa5996f0a3cacdba0d7d3ca45fa6c60121aebd504fba1ed7679b4d893ed",
+      "bytes": 417350,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/hall-battle.webp",
+      "source_git_blob": "04ce43713987a890902549ee37ba87ea35dbe2ba",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "hall-life-clean.webp",
+      "sha256": "bfa02785fa9d30be4e55bf0a9628c0d151912e4c145cbf828e097c4ccf8060ec",
+      "bytes": 475664,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/hall-life.webp",
+      "source_git_blob": "938e94592d2418e1c3da89959ca024b93b95e2e1",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "classroom-pharmaceutics-clean.webp",
+      "sha256": "a9306cea9aca0a447686aeb22e0c41810d272d84fcda4f5be737747ce684d4b1",
+      "bytes": 376146,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/classroom-pharmaceutics.webp",
+      "source_git_blob": "12cbbd1db15ae015afdb3e7ed930f25c765b2a25",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "classroom-pharmacology-clean.webp",
+      "sha256": "085e4fe203988c71856e0545f9c1aea0ea00484ab1060dd7ab2502e6d2f51fed",
+      "bytes": 305286,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/classroom-pharmacology.webp",
+      "source_git_blob": "b5ee1a9b227ddabacf5ce17f8febfdaef0ea9869",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "classroom-herbal-clean.webp",
+      "sha256": "48c821a3420018c32c0cae65e19b4f9cfca965850cb6d177cfe80d14c8c35103",
+      "bytes": 351444,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/classroom-herbal.webp",
+      "source_git_blob": "ab33f8a5b22343c6a01a221c283ff9fb189c28c0",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "classroom-battle-clean.webp",
+      "sha256": "90d9cdcc6f7ce8d3455f2a25c4927956edb04ab334690e2d7ebfc5cc9350309b",
+      "bytes": 327832,
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "source_path": "game/assets/academy/classroom-battle.webp",
+      "source_git_blob": "e9b3fb47bfb8d95209d102f4339c0f4d32f85e15",
+      "source_commit": "c0c28fd05eed80aa621a9f3e62e79be5ab1baf27",
+      "operation": "ImageGen edit of supplied repository image; remove specified loose objects, preserve architecture; generated PNG encoded as WebP quality 92 without resize"
+    },
+    {
+      "file": "props.png",
+      "sha256": "855a0a753842115f67e2b6d132480e70484dfdbd29fc399bc315a7ebda27e3df",
+      "bytes": 1645134,
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "operation": "ImageGen original transparent 16-object atlas based on the nine supplied project scene references; original PNG unchanged",
+      "source_paths": [
+        "game/assets/academy/hall-ntu.webp",
+        "game/assets/academy/hall-nthu-interactive.webp",
+        "game/assets/academy/hall-ncku.webp",
+        "game/assets/academy/hall-battle.webp",
+        "game/assets/academy/hall-life.webp",
+        "game/assets/academy/classroom-pharmaceutics.webp",
+        "game/assets/academy/classroom-pharmacology.webp",
+        "game/assets/academy/classroom-herbal.webp",
+        "game/assets/academy/classroom-battle.webp"
+      ]
+    }
+  ]
+}

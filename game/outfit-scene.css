@@ -1,0 +1,14 @@
+/* A fixed-size image surface keeps shared wardrobe art inexpensive in a crowd. */
+.equipped-sprite{position:absolute;inset:0;display:block;pointer-events:none;transform-origin:50% 91%;contain:layout style}
+.equipped-sprite .outfit-facing{position:absolute;inset:0;display:none;width:100%;height:100%;object-fit:contain;object-position:50% 50%;user-select:none;-webkit-user-drag:none}
+.walk-actor[data-direction="down"] .outfit-facing-down,.walk-actor[data-direction="up"] .outfit-facing-up,.walk-actor[data-direction="right"] .outfit-facing-right,.walk-actor[data-direction="left"] .outfit-facing-right{display:block}
+.walk-actor[data-direction="left"] .outfit-facing-right{transform:scaleX(-1)}
+.geared-actor .traveler-shadow{left:29%;width:42%}
+@media(prefers-reduced-motion:no-preference){
+  .walk-actor.walking .equipped-sprite{animation:outfit-walk .34s ease-in-out infinite alternate}
+  @keyframes outfit-walk{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-3px) rotate(1deg)}}
+}
+@media(prefers-reduced-motion:reduce){.equipped-sprite{animation:none!important}}
+
+.player-outfit-preview{display:flex;justify-content:center;max-height:330px;margin:16px auto;background:linear-gradient(150deg,#f1f7eb,#fff5e7);border:1px solid #d8e5d5;border-radius:18px}
+.player-outfit-preview .outfit-preview{display:block;width:180px;max-width:100%;height:330px;max-height:330px}

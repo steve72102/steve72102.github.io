@@ -1,4 +1,4 @@
-const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),{EventEmitter}=require('node:events'),{webcrypto}=require('node:crypto'),L=require('../game/lobby.js'),W=require('../game/campus-walk.js');
+const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),{EventEmitter}=require('node:events'),{webcrypto}=require('node:crypto'),L=require('../game/lobby.js'),W=require('../game/campus-walk.js'),P=require('../game/scene-play.js');
 function fixture(){
  let now=0,next=1;const stats={maxMotionBytes:0},packets=[];const tasks=new Map(),registry=new Map(),nets=[];
  const timeout=(fn,delay=0,interval=0)=>{const id=next++;tasks.set(id,{at:now+delay,fn,interval});return id;},clear=id=>tasks.delete(id);
@@ -11,29 +11,51 @@ function fixture(){
 test('two independent peers see live movement and building changes without any save or currency exchange',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二');f.advance(1000);assert.equal(a.snapshot().players.length,2);assert.equal(b.snapshot().players.length,2);b.move({scene:'campus',x:500,y:525,direction:'down',moving:true});f.advance(400);const other=a.snapshot().players.find(p=>p.id===b.snapshot().selfId);assert.equal(other.y,525);assert.equal(other.moving,true);b.move({scene:'hall:pharmacology:practice',...W.hall('').spawn,direction:'left',moving:false});f.advance(400);assert.equal(a.snapshot().players.find(p=>p.id===other.id).scene,'hall:pharmacology:practice');assert(!JSON.stringify(a.snapshot()).includes('coins'));f.stop();});
 test('host departure re-elects a host and peers can meet again; leaving removes presence',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二'),c=f.create('旅人三');f.advance(1500);assert.equal(c.snapshot().players.length,3);a.leave();f.advance(5000);assert.equal(b.snapshot().status,'connected');assert.equal(c.snapshot().status,'connected');assert.equal(c.snapshot().players.length,2);assert.notEqual(b.snapshot().host,c.snapshot().host);b.leave();f.advance(5000);assert.equal(c.snapshot().players.length,1);f.stop();});
 test('chat is attributed by host, private recipients are isolated and friendships require reciprocal action',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二'),c=f.create('旅人三');f.advance(1000);const ai=a.snapshot().selfId,bi=b.snapshot().selfId;assert(b.say('校園你好'));f.advance(10);assert.equal(a.snapshot().messages.at(-1).name,'旅人二');assert.equal(c.snapshot().messages.length,1);assert.equal(b.say('太快'),false);f.advance(1100);assert(b.say('只給你',ai));f.advance(10);assert.equal(a.snapshot().messages.at(-1).text,'只給你');assert.equal(c.snapshot().messages.length,1);assert(a.friend('request',bi));f.advance(10);assert.equal(b.snapshot().requests[0].id,ai);assert(b.friend('accept',ai));f.advance(10);assert.equal(a.takeFriends()[0].socialId,bi);assert.equal(a.takeFriends().length,0);assert.equal(b.say('x'.repeat(201)),false);f.stop();});
-test('touching the cup synchronizes breakage, injury recovery and one-minute cleanup',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二');f.advance(1000);const scene='hall:battle:arena',h=W.hall('','battle').surfaces[0].height;const move=(net,x,y,z=0)=>net.move({scene,x,y,z,direction:'up',moving:true});move(b,480,545,h);f.advance(400);move(b,480,516,h);f.advance(400);move(b,480,490,h);f.advance(400);const glass=a.snapshot().environment.cups[0];assert(glass.remaining>59000);move(a,glass.x,glass.y);f.advance(400);assert(b.snapshot().environment.injuries.some(p=>p.id===a.snapshot().selfId));f.advance(8500);assert.equal(b.snapshot().environment.injuries.length,0);f.advance(52000);assert.equal(b.snapshot().environment.cups.length,0);f.stop();});
-test('two peers see the same independently broken laboratory shelves and high jumps',()=>{
+test('two peers share a photographed vessel falling, breakage, recovery and permanent room-session removal',()=>{
+ const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二');f.advance(1000);
+ const scene='hall:pharmaceutics:practice',id='ntu-desk-flask';let current=P.cup(P.fresh(),scene,id),fell=false;
+ for(let i=0;i<20;i++){
+  b.move({scene,x:current.x,y:current.y,z:current.z,direction:'right',moving:false});f.advance(220);assert(b.interact({scene,type:'push',direction:'right'}));f.advance(220);
+  current=a.snapshot().environment.cups.find(c=>c.scene===scene&&c.id===id);assert(current);if(current.fallRemaining>0||current.remaining>0){fell=true;break;}
+ }
+ assert(fell);f.advance(1000);const glass=a.snapshot().environment.cups.find(c=>c.id===id);assert(glass.remaining>58000);assert.equal(glass.support,null);assert.equal(glass.z,0);
+ a.move({scene,x:glass.x,y:glass.y,z:0,direction:'down',moving:false});f.advance(400);assert(b.snapshot().environment.injuries.some(p=>p.id===a.snapshot().selfId));
+ f.advance(8500);assert.equal(b.snapshot().environment.injuries.length,0);f.advance(52000);
+ for(const net of [a,b]){const gone=net.snapshot().environment.cups.find(c=>c.id===id);assert(gone.removed);assert.equal(gone.remaining,0);}
+ f.stop();
+});
+test('two peers see the same independently broken photographed ceramic pots and high jumps',()=>{
  const f=fixture(),a=f.create('研究旅人一');f.advance(100);const b=f.create('研究旅人二');f.advance(1000);
- const scene='hall:pharmacology:practice',move=(z)=>b.move({scene,x:56,y:469,z,direction:'up',moving:false});
- move(180);f.advance(400);move(170);f.advance(400);move(320);f.advance(400);move(309);f.advance(400);
- for(const net of [a,b]){const cups=net.snapshot().environment.cups;assert.equal(cups.length,2);assert.deepEqual(cups.map(c=>[c.id,c.z]),[['lab-1-1',170],['lab-3-0',309]]);assert(cups.every(c=>c.remaining>58000));}
+ const scene='hall:pharmacology:practice',move=(x,z)=>b.move({scene,x,y:469,z,direction:'up',moving:false});
+ move(55,247);f.advance(400);move(55,237);f.advance(400);move(78,319);f.advance(400);move(78,309);f.advance(400);
+ for(const net of [a,b]){const cups=net.snapshot().environment.cups;assert.equal(cups.length,2);assert.deepEqual(cups.map(c=>[c.id,c.z]),[['pharma-shelf-plant-mid',237],['pharma-shelf-plant-high',309]]);assert(cups.every(c=>c.remaining>58000));}
  assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).z,309);
- f.advance(61000);assert.equal(a.snapshot().environment.cups.length,0);assert.equal(b.snapshot().environment.cups.length,0);f.stop();
+ f.advance(61000);for(const net of [a,b])assert(net.snapshot().environment.cups.every(c=>c.removed&&c.remaining===0));f.stop();
 });
 test('room cap admits 60 players and refuses a 61st without disrupting existing peers',()=>{const f=fixture();for(let i=0;i<61;i++){f.create('旅人'+i);f.advance(400);}assert.equal(f.nets[0].snapshot().players.length,60);assert.equal(f.nets[60].snapshot().status,'error');assert.match(f.nets[60].snapshot().message,/已滿/);for(let tick=0;tick<10;tick++){for(let i=0;i<60;i++)f.nets[i].move({scene:'campus',x:440+i%10*10+tick,y:460+Math.floor(i/10)*15,direction:'right',moving:true});f.advance(220);}f.advance(400);const host=f.nets[0].snapshot();for(const n of f.nets.slice(1,60)){const seen=n.snapshot();assert.equal(seen.players.length,60);assert.equal(JSON.stringify(seen.players.map(p=>[p.id,p.x,p.y,p.moving])),JSON.stringify(host.players.map(p=>[p.id,p.x,p.y,p.moving])));}assert(f.stats.maxMotionBytes>0&&f.stats.maxMotionBytes<16384);f.stop();});
 
 test('不同班級的教室隔離，同班可互見；角色效果更新不清空聊天',()=>{const f=fixture(),room='class-20000_herbal_1',a=f.create('旅人一',room);f.advance(100);const b=f.create('旅人二',room),c=f.create('旅人三','class-20000_herbal_2');f.advance(1500);assert.equal(a.snapshot().players.length,2);assert.equal(c.snapshot().players.length,1);assert(b.say('教室你好'));f.advance(10);const own=b.snapshot().players.find(p=>p.id===b.snapshot().selfId);const day=require('../game/social-economy.js').day();b.refresh({...own,counterAt:1000,honor:{kind:'honor',region:'east',start:day,until:day+14}});f.advance(220);assert.equal(a.snapshot().players.find(p=>p.id===own.id).counterAt,1000);assert.equal(a.snapshot().players.find(p=>p.id===own.id).honor.region,'east');assert.equal(a.snapshot().messages.length,1);assert.equal(b.snapshot().messages.length,1);f.stop();});
 test('班級房間上限為 50 人，第 51 人不擠掉既有同學',()=>{const f=fixture(),room='class-20000_battle_1',host=f.create('同學零',room);f.advance(100);for(let i=1;i<50;i++){f.create('同學'+i,room);f.advance(60);}f.advance(500);assert.equal(host.snapshot().players.length,50);const extra=f.create('額外同學',room);f.advance(1000);assert.equal(host.snapshot().players.length,50);assert.equal(extra.snapshot().status,'error');assert.match(extra.snapshot().message,/50/);f.stop();});
 
-test('movable tables synchronize across two peers and old tabletop space becomes walkable',()=>{
+test('the original seminar table synchronizes across peers and frees the floor under its former edge',()=>{
  const f=fixture(),a=f.create('推桌旅人一');f.advance(100);const b=f.create('推桌旅人二');f.advance(1000);
- const scene='hall:battle:arena';b.move({scene,x:480,y:527,z:0,direction:'up',moving:true});f.advance(1200);
- const first=a.snapshot().environment.furniture.find(p=>p.scene===scene&&p.id==='table');assert(first&&first.dy<0);
+ const scene='classroom:pharmacology',id='seminar-table-0',table=P.scene(scene,P.fresh()).surfaces.find(s=>s.id===id),oldEdge={x:table.x,y:table.y+table.d/2-1};assert(!W.walkable(P.scene(scene,P.fresh()),oldEdge));
+ b.move({scene,x:table.x,y:table.y+table.d/2+2,z:0,direction:'up',moving:true});f.advance(1200);
+ const first=a.snapshot().environment.furniture.find(p=>p.scene===scene&&p.id===id);assert(first&&first.dy<0);
  assert.equal(JSON.stringify(a.snapshot().environment.furniture),JSON.stringify(b.snapshot().environment.furniture));
- b.move({scene,x:480,y:510,z:0,direction:'down',moving:false});f.advance(400);
- assert.equal(b.snapshot().status,'connected');assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).y,510);f.stop();
+ assert(W.walkable(P.scene(scene,P.restore(a.snapshot().environment,0)),oldEdge));b.move({scene,...oldEdge,z:0,direction:'down',moving:false});f.advance(400);
+ assert.equal(b.snapshot().status,'connected');assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).y,oldEdge.y);f.stop();
 });
 
+test('actual world and motion broadcasts use compact object tuples while UI snapshots retain descriptive objects',()=>{
+ const f=fixture(),a=f.create('封包房主');f.advance(100);const b=f.create('封包同學');f.advance(1000);
+ const scene='hall:pharmacology:practice';b.move({scene,x:55,y:469,z:247,direction:'up',moving:false});f.advance(400);b.move({scene,x:55,y:469,z:237,direction:'up',moving:false});f.advance(400);
+ const worlds=f.packets.filter(p=>['world','motion'].includes(p.packet.type));assert(worlds.some(p=>p.packet.type==='world'));assert(worlds.some(p=>p.packet.type==='motion'));
+ for(const packet of worlds){assert.equal(packet.packet.environment.v,2);assert(Array.isArray(packet.packet.environment.f));assert(Array.isArray(packet.packet.environment.o));assert(Array.isArray(packet.packet.environment.i));assert.equal(packet.packet.environment.cups,undefined);}
+ assert(worlds.some(p=>p.packet.environment.o.some(row=>Array.isArray(row)&&row.length===10)));
+ for(const net of [a,b]){assert(Array.isArray(net.snapshot().environment.cups));assert.equal(net.snapshot().environment.cups[0].id,'pharma-shelf-plant-mid');assert.equal(net.snapshot().environment.v,undefined);}
+ f.stop();
+});
 
 test('a burst of 60 genuine simulated joins is coalesced and does not trip the upstream limit',()=>{
  const f=fixture(),host=f.create('房主');f.advance(100);

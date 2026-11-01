@@ -8,8 +8,8 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'..');
 const source=file=>fs.readFileSync(path.join(root,'game',file),'utf8');
-const styles=['style.css','academy.css','daylight.css','campus-walk.css','adventure.css','scene-play.css','social.css','academy-controls.css'].map(source).join('\n');
-const modules=['world-layout.js','classroom.js','campus-walk.js','engine.js','social-economy.js','wish.js','combat.js','academy.js','adventure.js','journey.js','campus-walk-ui.js','academy-ui.js'];
+const styles=['style.css','academy.css','daylight.css','campus-walk.css','adventure.css','scene-play.css','social.css','academy-controls.css','wardrobe.css','outfit-scene.css','photo-scene.css'].map(source).join('\n');
+const modules=['world-layout.js','classroom.js','scene-objects.js','campus-walk.js','engine.js','social-economy.js','wish.js','combat.js','academy.js','adventure.js','journey.js','campus-walk-ui.js','academy-ui.js'];
 async function harness(page){
   await page.setContent('<!doctype html><html lang="zh-Hant"><head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body><main id="main"></main></body></html>');
   await page.addStyleTag({content:styles});
