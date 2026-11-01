@@ -3,10 +3,11 @@ window.MindWalkUI=function(options){
   const {root,scene,initial,onPosition,onPortal,onMotion=()=>{},onPush=()=>{},onRouteCancel=()=>{}}=options;
   const W=window.MindWalk,world=root.querySelector('.walk-world'),actor=world.querySelector('.walk-actor'),label=root.querySelector('.walk-status'),action=root.querySelector('.walk-enter'),target=world.querySelector('.walk-target');
   const abort=new AbortController(),signal=abort.signal,keys=new Set(),touches=new Map();
-  let gesture=null,suppressClickUntil=0;const stick=root.querySelector('.walk-touch-stick'),knob=stick?.querySelector('i');
+  let gesture=null,suppressClickUntil=0;const stick=root.querySelector('.walk-touch-stick'),knob=stick?.querySelector('i'),joystick=root.querySelector('.walk-joystick'),joyKnob=joystick?.querySelector('i');
+  function resetKnobs(){if(knob)knob.style.transform='';if(joyKnob)joyKnob.style.transform='';joystick?.classList.remove('held');}
   let z=0,vz=0,armed=null,latched=null;let pos=W.nearest(scene,initial||scene.spawn),path=[],frame=0,last=0,disposed=false,activated=false,facing=1,direction='down',lastMessage='',wasMoving=false;
   function listen(el,type,fn,opts={}){el.addEventListener(type,fn,{...opts,signal});}
-  function stop(){gesture=null;if(stick)stick.hidden=true;keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
+  function stop(){gesture=null;resetKnobs();if(stick)stick.hidden=true;keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
   function destroy(){if(disposed)return;disposed=true;stop();cancelAnimationFrame(frame);abort.abort();onPosition({...pos});}
   function focus(){world.focus({preventScroll:true});}
   function blocked(){return document.hidden||!!document.querySelector('dialog[open]');}
@@ -46,27 +47,40 @@ window.MindWalkUI=function(options){
 
   function steer(){
     if(!gesture)return;if(!gesture.active){gesture.active=true;keys.clear();touches.clear();path=[];armed=null;target.hidden=true;onRouteCancel();focus();}
-    if(stick){stick.hidden=false;stick.style.left=gesture.x+'px';stick.style.top=gesture.y+'px';}
-    if(knob)knob.style.transform='translate('+gesture.dx*34+'px,'+gesture.dy*34+'px)';
+    if(gesture.fixed)joystick?.classList.add('held');
+    if(stick&&!gesture.fixed){stick.hidden=false;stick.style.left=gesture.x+'px';stick.style.top=gesture.y+'px';}
+    const activeKnob=gesture.fixed?joyKnob:knob;if(activeKnob)activeKnob.style.transform='translate('+gesture.dx*34+'px,'+gesture.dy*34+'px)';
   }
   listen(world,'pointerdown',e=>{
     if(!['touch','pen'].includes(e.pointerType)||gesture||blocked()||e.target.closest('button,[role="button"],input,select,textarea,a'))return;
     e.preventDefault();keys.clear();touches.clear();path=[];armed=null;target.hidden=true;onRouteCancel();paint();gesture={id:e.pointerId,x:e.clientX,y:e.clientY,lastX:e.clientX,lastY:e.clientY,dx:0,dy:0,active:false,started:null};
     world.setPointerCapture(e.pointerId);suppressClickUntil=Date.now()+700;
   });
-  listen(world,'pointermove',e=>{
+  function moveGesture(e){
     if(!gesture||e.pointerId!==gesture.id)return;e.preventDefault();gesture.lastX=e.clientX;gesture.lastY=e.clientY;
     const x=e.clientX-gesture.x,y=e.clientY-gesture.y,d=Math.hypot(x,y),scale=Math.max(48,d);
     gesture.dx=d<8?0:x/scale;gesture.dy=d<8?0:y/scale;if(d>=10||gesture.active)steer();
-  });
+  }
+  listen(world,'pointermove',moveGesture);
   function releaseGesture(e){
-    if(!gesture||e.pointerId!==gesture.id)return;const g=gesture;gesture=null;if(stick)stick.hidden=true;
+    if(!gesture||e.pointerId!==gesture.id)return;const g=gesture;gesture=null;resetKnobs();if(stick)stick.hidden=true;
     suppressClickUntil=Date.now()+700;e.preventDefault();
-    if(e.type==='pointerup'&&!g.active&&!blocked()){onRouteCancel();const r=world.getBoundingClientRect();toward({x:(g.lastX-r.left)/r.width*W.WIDTH,y:(g.lastY-r.top)/r.height*W.HEIGHT});}
+    if(e.type==='pointerup'&&!g.fixed&&!g.active&&!blocked()){onRouteCancel();const r=world.getBoundingClientRect();toward({x:(g.lastX-r.left)/r.width*W.WIDTH,y:(g.lastY-r.top)/r.height*W.HEIGHT});}
     else{path=[];target.hidden=true;paint();}
   }
   for(const type of ['pointerup','pointercancel','lostpointercapture'])listen(world,type,releaseGesture);
 
+  if(joystick){
+    listen(joystick,'pointerdown',e=>{
+      if(gesture||blocked()||(e.pointerType==='mouse'&&e.button!==0))return;
+      e.preventDefault();stop();onRouteCancel();armed=null;focus();
+      const r=joystick.getBoundingClientRect();gesture={id:e.pointerId,x:r.left+r.width/2,y:r.top+r.height/2,lastX:e.clientX,lastY:e.clientY,dx:0,dy:0,active:true,fixed:true,started:null};
+      joystick.setPointerCapture(e.pointerId);suppressClickUntil=Date.now()+700;moveGesture(e);steer();
+    });
+    listen(joystick,'pointermove',moveGesture);
+    for(const type of ['pointerup','pointercancel','lostpointercapture'])listen(joystick,type,releaseGesture);
+    listen(joystick,'click',e=>e.preventDefault());
+  }
   listen(action,'click',()=>activate(W.near(scene,pos)));
   root.querySelectorAll('.walk-direction').forEach(b=>{
     const dir=b.dataset.direction;

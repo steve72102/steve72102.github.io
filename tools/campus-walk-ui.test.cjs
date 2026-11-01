@@ -1,15 +1,16 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),W=require('../game/campus-walk.js');
 function fixture(options={}){
   class El extends EventTarget{constructor(){super();this.dataset={};this.hidden=false;this.isConnected=true;this.style={setProperty(){}};this.classes=new Set();this.classList={add:v=>this.classes.add(v),remove:v=>this.classes.delete(v),toggle:(v,b)=>b?this.classes.add(v):this.classes.delete(v)};}closest(){return null;}focus(){}querySelectorAll(){return [];}setPointerCapture(){}getBoundingClientRect(){return {left:0,top:0,width:1000,height:667};}}
+  const joystick=new El(),joyKnob=new El();joystick.querySelector=()=>joyKnob;joystick.getBoundingClientRect=()=>({left:0,top:0,width:114,height:114});
   const actor=new El(),world=new El(),root=new El(),label=new El(),action=new El(),target=new El(),main=new El(),buttons=['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].map(d=>{const b=new El();b.dataset.direction=d;return b;});
-  world.querySelector=s=>s==='.walk-actor'?actor:target;root.querySelector=s=>({'.walk-world':world,'.walk-status':label,'.walk-enter':action})[s];root.querySelectorAll=s=>s==='.walk-direction'?buttons:[];root.contains=e=>[world,root,action,...buttons].includes(e);
+  world.querySelector=s=>s==='.walk-actor'?actor:target;root.querySelector=s=>({'.walk-joystick':joystick,'.walk-world':world,'.walk-status':label,'.walk-enter':action})[s];root.querySelectorAll=s=>s==='.walk-direction'?buttons:[];root.contains=e=>[world,root,action,...buttons].includes(e);
   const document=new El(),window=new El();window.MindWalk=W;document.body=new El();document.hidden=false;document.modal=false;document.querySelector=()=>document.modal?{}:null;document.getElementById=()=>main;
   let time=0,id=0,position=null,portals=[];const frames=new Map();
   vm.runInNewContext(fs.readFileSync(require.resolve('../game/campus-walk-ui.js'),'utf8'),{window,document,AbortController,requestAnimationFrame:fn=>{frames.set(++id,fn);return id;},cancelAnimationFrame:id=>frames.delete(id)});
   const ui=window.MindWalkUI({root,scene:options.scene||W.hall('room'),initial:options.initial,onPosition:p=>position=p,onPortal:id=>portals.push(id)});
   function fire(el,type,attrs={}){const e=new Event(type,{cancelable:true});for(const [k,v] of Object.entries(attrs))Object.defineProperty(e,k,{value:v});el.dispatchEvent(e);return e;}
   function tick(n=30){for(let i=0;i<n;i++){time+=1000/60;const batch=[...frames.values()];frames.clear();batch.forEach(fn=>fn(time));}}
-  return {ui,root,world,actor,document,window,buttons,fire,tick,frames,portals,point:()=>({x:Number(actor.dataset.x),y:Number(actor.dataset.y)}),position:()=>position};
+  return {ui,root,world,actor,joystick,joyKnob,document,window,buttons,fire,tick,frames,portals,point:()=>({x:Number(actor.dataset.x),y:Number(actor.dataset.y)}),position:()=>position};
 }
 test('held keyboard moves; keyup, blur and modal opening stop movement without a stuck key',()=>{
   const f=fixture(),start=f.point();f.fire(f.document,'keydown',{key:'ArrowLeft',target:f.world});f.tick(20);assert.ok(f.point().x<start.x);
@@ -61,3 +62,16 @@ test('a short tap still walks to ground and ignores the second finger during an 
 test('targeting the herbal stairs does not activate the neighboring classroom first',()=>{const scene=W.hall('知識教室','herbal'),f=fixture({scene});f.ui.toward(scene.portals.find(p=>p.id==='stairs'));f.tick(400);assert.deepEqual(f.portals,['stairs']);f.ui.destroy();});
 
 test('closing a classroom entrance menu preserves movement and can reach stairs',()=>{const scene=W.hall('知識教室','herbal'),f=fixture({scene});f.ui.toward(scene.portals.find(p=>p.id==='room'));f.tick(400);assert.deepEqual(f.portals,['room']);f.document.modal=true;f.tick();f.document.modal=false;f.ui.toward(scene.portals.find(p=>p.id==='stairs'));f.tick(400);assert.deepEqual(f.portals,['room','stairs']);f.ui.destroy();});
+
+test('fixed joystick moves diagonally, clamps knob and returns to center on release',()=>{
+ const f=fixture(),down=(id=1)=>f.fire(f.joystick,'pointerdown',{pointerType:'touch',pointerId:id,clientX:57,clientY:57}),move=(x,y,id=1)=>f.fire(f.joystick,'pointermove',{pointerId:id,clientX:x,clientY:y});
+ const start=f.point();down();f.tick(10);assert.deepEqual(f.point(),start);move(200,200);f.tick(10);assert(f.point().x>start.x&&f.point().y>start.y);assert(f.joystick.classes.has('held'));
+ const offsets=f.joyKnob.style.transform.match(/[-\d.]+/g).map(Number);assert(Math.hypot(...offsets)<=34.01);
+ f.fire(f.joystick,'pointerup',{pointerId:1});const end=f.point();f.tick(15);assert.deepEqual(f.point(),end);assert.equal(f.joyKnob.style.transform,'');assert(!f.joystick.classes.has('held'));f.ui.destroy();
+});
+test('fixed joystick ignores other fingers and stops on cancellation, modal, blur and scene exit',()=>{
+ const f=fixture(),down=()=>f.fire(f.joystick,'pointerdown',{pointerType:'touch',pointerId:1,clientX:57,clientY:57}),move=()=>f.fire(f.joystick,'pointermove',{pointerId:1,clientX:100,clientY:57});
+ down();move();f.fire(f.joystick,'pointerdown',{pointerType:'touch',pointerId:2,clientX:0,clientY:57});f.fire(f.joystick,'pointerup',{pointerId:2});const initial=f.point();f.tick(8);assert(f.point().x>initial.x);
+ for(const type of ['pointercancel','lostpointercapture']){f.fire(f.joystick,type,{pointerId:1});const p=f.point();f.tick(8);assert.deepEqual(f.point(),p);assert.equal(f.joyKnob.style.transform,'');down();move();}
+ f.fire(f.window,'blur');const blur=f.point();f.tick();assert.deepEqual(f.point(),blur);down();move();f.document.modal=true;f.tick();f.document.modal=false;const paused=f.point();f.tick();assert.deepEqual(f.point(),paused);down();move();f.ui.destroy();assert.equal(f.frames.size,0);assert.equal(f.joyKnob.style.transform,'');
+});

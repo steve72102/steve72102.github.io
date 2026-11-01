@@ -16,3 +16,15 @@
 .world-exit-button{pointer-events:auto;position:absolute;right:18px;bottom:155px;z-index:150;padding:12px 18px!important;min-height:48px;background:#fff8e9!important;color:#843c2d!important;border:2px solid #bf7655!important;box-shadow:0 3px 14px #452e2430;font-weight:850}
 .quiz-exit{display:block;margin-bottom:16px;border:2px solid #b77554!important;font-weight:800}
 @media(max-width:650px){.world-exit-button{right:10px;bottom:160px;font-size:12px;padding:10px!important}}
+
+/* Fixed thumb joystick, alongside the optional floating ground gesture. */
+.walk-joystick{display:none;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+@media(pointer:coarse),(max-width:650px){
+ .walk-pad{display:none!important}.touch-move-help{display:none!important}
+ .walk-joystick{display:block;position:absolute;left:max(18px,env(safe-area-inset-left));bottom:calc(122px + env(safe-area-inset-bottom));width:114px;height:114px;z-index:160;pointer-events:auto;border:2px solid #fff9e4;border-radius:50%;background:radial-gradient(circle,#dbe8d7b8 0 28%,#527e6e99 29% 64%,#e9f3ddcc 65%);box-shadow:0 4px 18px #1d4c4244,inset 0 0 0 7px #ffffff30;color:#fff;cursor:grab}
+ .walk-joystick>span{position:absolute;inset:0;display:grid;place-items:center;font-size:96px;line-height:1;opacity:.5;pointer-events:none}
+ .walk-joystick>i{position:absolute;left:37px;top:37px;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#fffef4,#c9e4b7);border:2px solid #fffdf3;box-shadow:0 3px 9px #244d4766;pointer-events:none;transition:transform .08s ease-out}
+ .walk-joystick.held{cursor:grabbing;box-shadow:0 0 0 4px #fff5c04d,0 4px 18px #1d4c4244}.walk-joystick.held>i{transition:none}
+ .walk-joystick>small{position:absolute;top:120px;left:0;width:100%;text-align:center;font-size:11px;color:#244b3e;background:#fffbe9e8;border-radius:12px;padding:3px;pointer-events:none}
+ .academy-immersive .walk-extra{left:auto;top:auto;right:18px;bottom:230px}
+}
