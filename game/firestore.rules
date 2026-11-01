@@ -51,14 +51,14 @@ service cloud.firestore {
         && validFlow(request.resource.data.lastOperation);
       allow list, delete: if false;
     }
-    function cursorChanges0(keys,b,n) { return (keys.size() <= 0 || (operation(keys[0]) && small(n[keys[0]],9007199254740991) && n[keys[0]] >= b.get(keys[0],0))) && (keys.size() <= 1 || (operation(keys[1]) && small(n[keys[1]],9007199254740991) && n[keys[1]] >= b.get(keys[1],0))) && (keys.size() <= 2 || (operation(keys[2]) && small(n[keys[2]],9007199254740991) && n[keys[2]] >= b.get(keys[2],0))) && (keys.size() <= 3 || (operation(keys[3]) && small(n[keys[3]],9007199254740991) && n[keys[3]] >= b.get(keys[3],0))) && (keys.size() <= 4 || (operation(keys[4]) && small(n[keys[4]],9007199254740991) && n[keys[4]] >= b.get(keys[4],0))) && (keys.size() <= 5 || (operation(keys[5]) && small(n[keys[5]],9007199254740991) && n[keys[5]] >= b.get(keys[5],0))) && (keys.size() <= 6 || (operation(keys[6]) && small(n[keys[6]],9007199254740991) && n[keys[6]] >= b.get(keys[6],0))) && (keys.size() <= 7 || (operation(keys[7]) && small(n[keys[7]],9007199254740991) && n[keys[7]] >= b.get(keys[7],0))); }
-    function cursorChanges8(keys,b,n) { return (keys.size() <= 8 || (operation(keys[8]) && small(n[keys[8]],9007199254740991) && n[keys[8]] >= b.get(keys[8],0))) && (keys.size() <= 9 || (operation(keys[9]) && small(n[keys[9]],9007199254740991) && n[keys[9]] >= b.get(keys[9],0))) && (keys.size() <= 10 || (operation(keys[10]) && small(n[keys[10]],9007199254740991) && n[keys[10]] >= b.get(keys[10],0))) && (keys.size() <= 11 || (operation(keys[11]) && small(n[keys[11]],9007199254740991) && n[keys[11]] >= b.get(keys[11],0))) && (keys.size() <= 12 || (operation(keys[12]) && small(n[keys[12]],9007199254740991) && n[keys[12]] >= b.get(keys[12],0))) && (keys.size() <= 13 || (operation(keys[13]) && small(n[keys[13]],9007199254740991) && n[keys[13]] >= b.get(keys[13],0))) && (keys.size() <= 14 || (operation(keys[14]) && small(n[keys[14]],9007199254740991) && n[keys[14]] >= b.get(keys[14],0))) && (keys.size() <= 15 || (operation(keys[15]) && small(n[keys[15]],9007199254740991) && n[keys[15]] >= b.get(keys[15],0))); }
-    function cursorChanges16(keys,b,n) { return (keys.size() <= 16 || (operation(keys[16]) && small(n[keys[16]],9007199254740991) && n[keys[16]] >= b.get(keys[16],0))) && (keys.size() <= 17 || (operation(keys[17]) && small(n[keys[17]],9007199254740991) && n[keys[17]] >= b.get(keys[17],0))) && (keys.size() <= 18 || (operation(keys[18]) && small(n[keys[18]],9007199254740991) && n[keys[18]] >= b.get(keys[18],0))) && (keys.size() <= 19 || (operation(keys[19]) && small(n[keys[19]],9007199254740991) && n[keys[19]] >= b.get(keys[19],0))) && (keys.size() <= 20 || (operation(keys[20]) && small(n[keys[20]],9007199254740991) && n[keys[20]] >= b.get(keys[20],0))) && (keys.size() <= 21 || (operation(keys[21]) && small(n[keys[21]],9007199254740991) && n[keys[21]] >= b.get(keys[21],0))) && (keys.size() <= 22 || (operation(keys[22]) && small(n[keys[22]],9007199254740991) && n[keys[22]] >= b.get(keys[22],0))) && (keys.size() <= 23 || (operation(keys[23]) && small(n[keys[23]],9007199254740991) && n[keys[23]] >= b.get(keys[23],0))); }
-    function cursorChanges24(keys,b,n) { return (keys.size() <= 24 || (operation(keys[24]) && small(n[keys[24]],9007199254740991) && n[keys[24]] >= b.get(keys[24],0))) && (keys.size() <= 25 || (operation(keys[25]) && small(n[keys[25]],9007199254740991) && n[keys[25]] >= b.get(keys[25],0))) && (keys.size() <= 26 || (operation(keys[26]) && small(n[keys[26]],9007199254740991) && n[keys[26]] >= b.get(keys[26],0))) && (keys.size() <= 27 || (operation(keys[27]) && small(n[keys[27]],9007199254740991) && n[keys[27]] >= b.get(keys[27],0))) && (keys.size() <= 28 || (operation(keys[28]) && small(n[keys[28]],9007199254740991) && n[keys[28]] >= b.get(keys[28],0))) && (keys.size() <= 29 || (operation(keys[29]) && small(n[keys[29]],9007199254740991) && n[keys[29]] >= b.get(keys[29],0))) && (keys.size() <= 30 || (operation(keys[30]) && small(n[keys[30]],9007199254740991) && n[keys[30]] >= b.get(keys[30],0))) && (keys.size() <= 31 || (operation(keys[31]) && small(n[keys[31]],9007199254740991) && n[keys[31]] >= b.get(keys[31],0))); }
-    function cursorChanges32(keys,b,n) { return (keys.size() <= 32 || (operation(keys[32]) && small(n[keys[32]],9007199254740991) && n[keys[32]] >= b.get(keys[32],0))) && (keys.size() <= 33 || (operation(keys[33]) && small(n[keys[33]],9007199254740991) && n[keys[33]] >= b.get(keys[33],0))) && (keys.size() <= 34 || (operation(keys[34]) && small(n[keys[34]],9007199254740991) && n[keys[34]] >= b.get(keys[34],0))) && (keys.size() <= 35 || (operation(keys[35]) && small(n[keys[35]],9007199254740991) && n[keys[35]] >= b.get(keys[35],0))) && (keys.size() <= 36 || (operation(keys[36]) && small(n[keys[36]],9007199254740991) && n[keys[36]] >= b.get(keys[36],0))) && (keys.size() <= 37 || (operation(keys[37]) && small(n[keys[37]],9007199254740991) && n[keys[37]] >= b.get(keys[37],0))) && (keys.size() <= 38 || (operation(keys[38]) && small(n[keys[38]],9007199254740991) && n[keys[38]] >= b.get(keys[38],0))) && (keys.size() <= 39 || (operation(keys[39]) && small(n[keys[39]],9007199254740991) && n[keys[39]] >= b.get(keys[39],0))); }
-    function cursorChanges40(keys,b,n) { return (keys.size() <= 40 || (operation(keys[40]) && small(n[keys[40]],9007199254740991) && n[keys[40]] >= b.get(keys[40],0))) && (keys.size() <= 41 || (operation(keys[41]) && small(n[keys[41]],9007199254740991) && n[keys[41]] >= b.get(keys[41],0))) && (keys.size() <= 42 || (operation(keys[42]) && small(n[keys[42]],9007199254740991) && n[keys[42]] >= b.get(keys[42],0))) && (keys.size() <= 43 || (operation(keys[43]) && small(n[keys[43]],9007199254740991) && n[keys[43]] >= b.get(keys[43],0))) && (keys.size() <= 44 || (operation(keys[44]) && small(n[keys[44]],9007199254740991) && n[keys[44]] >= b.get(keys[44],0))) && (keys.size() <= 45 || (operation(keys[45]) && small(n[keys[45]],9007199254740991) && n[keys[45]] >= b.get(keys[45],0))) && (keys.size() <= 46 || (operation(keys[46]) && small(n[keys[46]],9007199254740991) && n[keys[46]] >= b.get(keys[46],0))) && (keys.size() <= 47 || (operation(keys[47]) && small(n[keys[47]],9007199254740991) && n[keys[47]] >= b.get(keys[47],0))); }
-    function cursorChanges48(keys,b,n) { return (keys.size() <= 48 || (operation(keys[48]) && small(n[keys[48]],9007199254740991) && n[keys[48]] >= b.get(keys[48],0))) && (keys.size() <= 49 || (operation(keys[49]) && small(n[keys[49]],9007199254740991) && n[keys[49]] >= b.get(keys[49],0))) && (keys.size() <= 50 || (operation(keys[50]) && small(n[keys[50]],9007199254740991) && n[keys[50]] >= b.get(keys[50],0))) && (keys.size() <= 51 || (operation(keys[51]) && small(n[keys[51]],9007199254740991) && n[keys[51]] >= b.get(keys[51],0))) && (keys.size() <= 52 || (operation(keys[52]) && small(n[keys[52]],9007199254740991) && n[keys[52]] >= b.get(keys[52],0))) && (keys.size() <= 53 || (operation(keys[53]) && small(n[keys[53]],9007199254740991) && n[keys[53]] >= b.get(keys[53],0))) && (keys.size() <= 54 || (operation(keys[54]) && small(n[keys[54]],9007199254740991) && n[keys[54]] >= b.get(keys[54],0))) && (keys.size() <= 55 || (operation(keys[55]) && small(n[keys[55]],9007199254740991) && n[keys[55]] >= b.get(keys[55],0))); }
-    function cursorChanges56(keys,b,n) { return (keys.size() <= 56 || (operation(keys[56]) && small(n[keys[56]],9007199254740991) && n[keys[56]] >= b.get(keys[56],0))) && (keys.size() <= 57 || (operation(keys[57]) && small(n[keys[57]],9007199254740991) && n[keys[57]] >= b.get(keys[57],0))) && (keys.size() <= 58 || (operation(keys[58]) && small(n[keys[58]],9007199254740991) && n[keys[58]] >= b.get(keys[58],0))) && (keys.size() <= 59 || (operation(keys[59]) && small(n[keys[59]],9007199254740991) && n[keys[59]] >= b.get(keys[59],0))) && (keys.size() <= 60 || (operation(keys[60]) && small(n[keys[60]],9007199254740991) && n[keys[60]] >= b.get(keys[60],0))) && (keys.size() <= 61 || (operation(keys[61]) && small(n[keys[61]],9007199254740991) && n[keys[61]] >= b.get(keys[61],0))) && (keys.size() <= 62 || (operation(keys[62]) && small(n[keys[62]],9007199254740991) && n[keys[62]] >= b.get(keys[62],0))) && (keys.size() <= 63 || (operation(keys[63]) && small(n[keys[63]],9007199254740991) && n[keys[63]] >= b.get(keys[63],0))); }
+    function cursorChanges0(keys,b,n) { return (keys.size() <= 0 || (operation(keys[0]) && small(n[keys[0]],9007199254740991) && n[keys[0]] > b.get(keys[0],0))) && (keys.size() <= 1 || (operation(keys[1]) && small(n[keys[1]],9007199254740991) && n[keys[1]] > b.get(keys[1],0))) && (keys.size() <= 2 || (operation(keys[2]) && small(n[keys[2]],9007199254740991) && n[keys[2]] > b.get(keys[2],0))) && (keys.size() <= 3 || (operation(keys[3]) && small(n[keys[3]],9007199254740991) && n[keys[3]] > b.get(keys[3],0))) && (keys.size() <= 4 || (operation(keys[4]) && small(n[keys[4]],9007199254740991) && n[keys[4]] > b.get(keys[4],0))) && (keys.size() <= 5 || (operation(keys[5]) && small(n[keys[5]],9007199254740991) && n[keys[5]] > b.get(keys[5],0))) && (keys.size() <= 6 || (operation(keys[6]) && small(n[keys[6]],9007199254740991) && n[keys[6]] > b.get(keys[6],0))) && (keys.size() <= 7 || (operation(keys[7]) && small(n[keys[7]],9007199254740991) && n[keys[7]] > b.get(keys[7],0))); }
+    function cursorChanges8(keys,b,n) { return (keys.size() <= 8 || (operation(keys[8]) && small(n[keys[8]],9007199254740991) && n[keys[8]] > b.get(keys[8],0))) && (keys.size() <= 9 || (operation(keys[9]) && small(n[keys[9]],9007199254740991) && n[keys[9]] > b.get(keys[9],0))) && (keys.size() <= 10 || (operation(keys[10]) && small(n[keys[10]],9007199254740991) && n[keys[10]] > b.get(keys[10],0))) && (keys.size() <= 11 || (operation(keys[11]) && small(n[keys[11]],9007199254740991) && n[keys[11]] > b.get(keys[11],0))) && (keys.size() <= 12 || (operation(keys[12]) && small(n[keys[12]],9007199254740991) && n[keys[12]] > b.get(keys[12],0))) && (keys.size() <= 13 || (operation(keys[13]) && small(n[keys[13]],9007199254740991) && n[keys[13]] > b.get(keys[13],0))) && (keys.size() <= 14 || (operation(keys[14]) && small(n[keys[14]],9007199254740991) && n[keys[14]] > b.get(keys[14],0))) && (keys.size() <= 15 || (operation(keys[15]) && small(n[keys[15]],9007199254740991) && n[keys[15]] > b.get(keys[15],0))); }
+    function cursorChanges16(keys,b,n) { return (keys.size() <= 16 || (operation(keys[16]) && small(n[keys[16]],9007199254740991) && n[keys[16]] > b.get(keys[16],0))) && (keys.size() <= 17 || (operation(keys[17]) && small(n[keys[17]],9007199254740991) && n[keys[17]] > b.get(keys[17],0))) && (keys.size() <= 18 || (operation(keys[18]) && small(n[keys[18]],9007199254740991) && n[keys[18]] > b.get(keys[18],0))) && (keys.size() <= 19 || (operation(keys[19]) && small(n[keys[19]],9007199254740991) && n[keys[19]] > b.get(keys[19],0))) && (keys.size() <= 20 || (operation(keys[20]) && small(n[keys[20]],9007199254740991) && n[keys[20]] > b.get(keys[20],0))) && (keys.size() <= 21 || (operation(keys[21]) && small(n[keys[21]],9007199254740991) && n[keys[21]] > b.get(keys[21],0))) && (keys.size() <= 22 || (operation(keys[22]) && small(n[keys[22]],9007199254740991) && n[keys[22]] > b.get(keys[22],0))) && (keys.size() <= 23 || (operation(keys[23]) && small(n[keys[23]],9007199254740991) && n[keys[23]] > b.get(keys[23],0))); }
+    function cursorChanges24(keys,b,n) { return (keys.size() <= 24 || (operation(keys[24]) && small(n[keys[24]],9007199254740991) && n[keys[24]] > b.get(keys[24],0))) && (keys.size() <= 25 || (operation(keys[25]) && small(n[keys[25]],9007199254740991) && n[keys[25]] > b.get(keys[25],0))) && (keys.size() <= 26 || (operation(keys[26]) && small(n[keys[26]],9007199254740991) && n[keys[26]] > b.get(keys[26],0))) && (keys.size() <= 27 || (operation(keys[27]) && small(n[keys[27]],9007199254740991) && n[keys[27]] > b.get(keys[27],0))) && (keys.size() <= 28 || (operation(keys[28]) && small(n[keys[28]],9007199254740991) && n[keys[28]] > b.get(keys[28],0))) && (keys.size() <= 29 || (operation(keys[29]) && small(n[keys[29]],9007199254740991) && n[keys[29]] > b.get(keys[29],0))) && (keys.size() <= 30 || (operation(keys[30]) && small(n[keys[30]],9007199254740991) && n[keys[30]] > b.get(keys[30],0))) && (keys.size() <= 31 || (operation(keys[31]) && small(n[keys[31]],9007199254740991) && n[keys[31]] > b.get(keys[31],0))); }
+    function cursorChanges32(keys,b,n) { return (keys.size() <= 32 || (operation(keys[32]) && small(n[keys[32]],9007199254740991) && n[keys[32]] > b.get(keys[32],0))) && (keys.size() <= 33 || (operation(keys[33]) && small(n[keys[33]],9007199254740991) && n[keys[33]] > b.get(keys[33],0))) && (keys.size() <= 34 || (operation(keys[34]) && small(n[keys[34]],9007199254740991) && n[keys[34]] > b.get(keys[34],0))) && (keys.size() <= 35 || (operation(keys[35]) && small(n[keys[35]],9007199254740991) && n[keys[35]] > b.get(keys[35],0))) && (keys.size() <= 36 || (operation(keys[36]) && small(n[keys[36]],9007199254740991) && n[keys[36]] > b.get(keys[36],0))) && (keys.size() <= 37 || (operation(keys[37]) && small(n[keys[37]],9007199254740991) && n[keys[37]] > b.get(keys[37],0))) && (keys.size() <= 38 || (operation(keys[38]) && small(n[keys[38]],9007199254740991) && n[keys[38]] > b.get(keys[38],0))) && (keys.size() <= 39 || (operation(keys[39]) && small(n[keys[39]],9007199254740991) && n[keys[39]] > b.get(keys[39],0))); }
+    function cursorChanges40(keys,b,n) { return (keys.size() <= 40 || (operation(keys[40]) && small(n[keys[40]],9007199254740991) && n[keys[40]] > b.get(keys[40],0))) && (keys.size() <= 41 || (operation(keys[41]) && small(n[keys[41]],9007199254740991) && n[keys[41]] > b.get(keys[41],0))) && (keys.size() <= 42 || (operation(keys[42]) && small(n[keys[42]],9007199254740991) && n[keys[42]] > b.get(keys[42],0))) && (keys.size() <= 43 || (operation(keys[43]) && small(n[keys[43]],9007199254740991) && n[keys[43]] > b.get(keys[43],0))) && (keys.size() <= 44 || (operation(keys[44]) && small(n[keys[44]],9007199254740991) && n[keys[44]] > b.get(keys[44],0))) && (keys.size() <= 45 || (operation(keys[45]) && small(n[keys[45]],9007199254740991) && n[keys[45]] > b.get(keys[45],0))) && (keys.size() <= 46 || (operation(keys[46]) && small(n[keys[46]],9007199254740991) && n[keys[46]] > b.get(keys[46],0))) && (keys.size() <= 47 || (operation(keys[47]) && small(n[keys[47]],9007199254740991) && n[keys[47]] > b.get(keys[47],0))); }
+    function cursorChanges48(keys,b,n) { return (keys.size() <= 48 || (operation(keys[48]) && small(n[keys[48]],9007199254740991) && n[keys[48]] > b.get(keys[48],0))) && (keys.size() <= 49 || (operation(keys[49]) && small(n[keys[49]],9007199254740991) && n[keys[49]] > b.get(keys[49],0))) && (keys.size() <= 50 || (operation(keys[50]) && small(n[keys[50]],9007199254740991) && n[keys[50]] > b.get(keys[50],0))) && (keys.size() <= 51 || (operation(keys[51]) && small(n[keys[51]],9007199254740991) && n[keys[51]] > b.get(keys[51],0))) && (keys.size() <= 52 || (operation(keys[52]) && small(n[keys[52]],9007199254740991) && n[keys[52]] > b.get(keys[52],0))) && (keys.size() <= 53 || (operation(keys[53]) && small(n[keys[53]],9007199254740991) && n[keys[53]] > b.get(keys[53],0))) && (keys.size() <= 54 || (operation(keys[54]) && small(n[keys[54]],9007199254740991) && n[keys[54]] > b.get(keys[54],0))) && (keys.size() <= 55 || (operation(keys[55]) && small(n[keys[55]],9007199254740991) && n[keys[55]] > b.get(keys[55],0))); }
+    function cursorChanges56(keys,b,n) { return (keys.size() <= 56 || (operation(keys[56]) && small(n[keys[56]],9007199254740991) && n[keys[56]] > b.get(keys[56],0))) && (keys.size() <= 57 || (operation(keys[57]) && small(n[keys[57]],9007199254740991) && n[keys[57]] > b.get(keys[57],0))) && (keys.size() <= 58 || (operation(keys[58]) && small(n[keys[58]],9007199254740991) && n[keys[58]] > b.get(keys[58],0))) && (keys.size() <= 59 || (operation(keys[59]) && small(n[keys[59]],9007199254740991) && n[keys[59]] > b.get(keys[59],0))) && (keys.size() <= 60 || (operation(keys[60]) && small(n[keys[60]],9007199254740991) && n[keys[60]] > b.get(keys[60],0))) && (keys.size() <= 61 || (operation(keys[61]) && small(n[keys[61]],9007199254740991) && n[keys[61]] > b.get(keys[61],0))) && (keys.size() <= 62 || (operation(keys[62]) && small(n[keys[62]],9007199254740991) && n[keys[62]] > b.get(keys[62],0))) && (keys.size() <= 63 || (operation(keys[63]) && small(n[keys[63]],9007199254740991) && n[keys[63]] > b.get(keys[63],0))); }
     function cursorsValid(b,n,keys) { return keys is list && keys.size() <= 64 && n.keys().hasAll(b.keys()) && n.diff(b).affectedKeys().hasOnly(keys) && (keys.size() <= 0 || cursorChanges0(keys,b,n)) && (keys.size() <= 8 || cursorChanges8(keys,b,n)) && (keys.size() <= 16 || cursorChanges16(keys,b,n)) && (keys.size() <= 24 || cursorChanges24(keys,b,n)) && (keys.size() <= 32 || cursorChanges32(keys,b,n)) && (keys.size() <= 40 || cursorChanges40(keys,b,n)) && (keys.size() <= 48 || cursorChanges48(keys,b,n)) && (keys.size() <= 56 || cursorChanges56(keys,b,n)); }
     function socialKey(k) { return k is string && k.matches('^[a-f0-9]{20,64}$'); }
     function socialId(k) { return k is string && k.matches('^([a-f0-9]{32}|b[a-f0-9]{32}_[a-f0-9]{20,64})$'); }
@@ -113,7 +113,8 @@ service cloud.firestore {
         && n.coins == b.coins + gross - paid - r.debit && n.debt == b.debt - paid
         && n.earned == daily(b,'earned',0) + gross && n.carry == units % 100
         && n.name is string && n.name.size() <= 32 && n.cursors is map && n.cursors.size() <= 64
-        && cursorsValid(b.cursors,n.cursors,r.devices);
+        && cursorsValid(b.cursors,n.cursors,r.devices)
+        && (r.amount == 0 || r.devices.size() > 0);
     }
     function stockChange(b,n,kind,delta) {
       return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock.get(kind,0) + delta && small(n.stock[kind],9999);
@@ -126,8 +127,8 @@ service cloud.firestore {
     }
     function bullyChange(b,n,k,r) {
       return k == r.actor
-        ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1 && n.lastTarget == r.target && n.streak == r.step
-        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step);
+        ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1+r.crowdBonus && n.lastTarget == r.target && n.streak == r.step
+        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step+r.crowdBonus);
     }
     function enrollChange(b,n,k,r) {
       return ordinaryBase(b,n,k,['rooms']) && n.rooms.diff(daily(b,'rooms',{})).affectedKeys().hasOnly([r.building]) && n.rooms[r.building] == r.room;
@@ -164,8 +165,18 @@ service cloud.firestore {
         && sa('economyAccounts',uid).key == key && d.coins == w.coins && d.economy.revision == w.revision;
     }
     function receiptShape(r) {
-      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
+      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','crowd','crowdMember','crowdCount','crowdBonus','crowdNew','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
         && r.keys().hasAll(['schema','kind','actor','day','createdAt']) && r.schema == 1 && socialKey(r.actor) && small(r.day,100000) && r.createdAt == request.time;
+    }
+    // Validate only the resulting group here. Its write rule proves the old
+    // count and first membership, keeping this receipt below the per-write
+    // document-access budget. A fresh operationId forces a same-batch write.
+    function crowdReceipt(id,r) {
+      let group = sa('bullyCrowds',r.crowd);
+      return r.crowd == string(r.day)+'_'+r.target && r.crowdMember == r.crowd+'_'+r.actor
+        && r.crowdNew is bool && small(r.crowdCount,9007199254740991) && r.crowdCount > 0
+        && r.crowdBonus is int && r.crowdBonus == int(r.crowdCount / 3)
+        && group.operationId == id && group.count == r.crowdCount;
     }
     function pairedReceipt(id,r) {
       let actor = sd('money',r.actor);
@@ -173,7 +184,7 @@ service cloud.firestore {
       let step = daily(actor,'lastTarget','') == r.target ? minimum(3,daily(actor,'streak',0)+1) : 1;
       return socialKey(r.target) && r.target != r.actor && r.pair == string(r.day)+'_'+r.actor+'_'+r.target
         && used < 3 && r.step == step && sa('bullyPairs',r.pair).used == used+1
-        && sa('bullyPairs',r.pair).operationId == id && sa('money',r.target).operationId == id;
+        && sa('bullyPairs',r.pair).operationId == id && sa('money',r.target).operationId == id && crowdReceipt(id,r);
     }
     function enrollReceipt(id,r) {
       return r.building in ['pharmaceutics','pharmacology','herbal','battle'] && r.group == string(r.day)+'_'+r.building
@@ -250,6 +261,39 @@ service cloud.firestore {
         && request.resource.data.actor == sa('economyOps',request.resource.data.operationId).actor && request.resource.data.target == sa('economyOps',request.resource.data.operationId).target
         && request.resource.data.day == dayNow() && freshSocial(request.resource.data.operationId);
       allow list, delete: if false;
+    }
+    match /bullyCrowds/{crowd} {
+      function crowdChange(d,r) {
+        let first = !exists(socialPath('bullyCrowdMembers',r.crowdMember));
+        let before = resource == null ? 0 : resource.data.count;
+        return r.kind == 'bully' && r.crowd == crowd && r.day == d.day && r.target == d.target
+          && r.crowdNew == first && r.crowdCount == d.count && d.count == before + (first ? 1 : 0)
+          && (!first || sa('bullyCrowdMembers',r.crowdMember).operationId == d.operationId);
+      }
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['schema','day','target','count','operationId'])
+        && request.resource.data.schema == 1 && request.resource.data.day == dayNow() && socialKey(request.resource.data.target)
+        && crowd == string(request.resource.data.day)+'_'+request.resource.data.target
+        && small(request.resource.data.count,9007199254740991) && request.resource.data.count > 0
+        && freshSocial(request.resource.data.operationId)
+        && crowdChange(request.resource.data,sa('economyOps',request.resource.data.operationId));
+      allow list, delete: if false;
+    }
+    match /bullyCrowdMembers/{member} {
+      function crowdMember(d,r) {
+        return r.kind == 'bully' && r.crowdNew == true && r.crowdMember == member
+          && d.day == r.day && d.target == r.target && d.actor == r.actor
+          && member == string(d.day)+'_'+d.target+'_'+d.actor;
+      }
+      allow get: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['schema','day','target','actor','operationId'])
+        && request.resource.data.schema == 1 && request.resource.data.day == dayNow()
+        && socialKey(request.resource.data.target) && socialKey(request.resource.data.actor)
+        && freshSocial(request.resource.data.operationId)
+        && crowdMember(request.resource.data,sa('economyOps',request.resource.data.operationId));
+      allow list, update, delete: if false;
     }
     match /classDays/{group} {
       allow get: if request.auth != null;
@@ -445,9 +489,9 @@ service cloud.firestore {
       function owner() { return request.auth != null && request.auth.uid == uid; }
       function valid() {
         let d = request.resource.data;
-        return d.keys().hasOnly(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain', 'economy'])
+        return d.keys().hasOnly(['schema', 'saveFormat', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain', 'economy'])
           && d.keys().hasAll(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt'])
-          && d.schema == 1 && d.revision is int && d.revision > 0
+          && d.schema == 1 && d.get('saveFormat',1) in [1,2] && d.revision is int && d.revision > 0
           && d.payload is string && d.payload.size() <= 750000
           && d.modifiedAt is int && d.modifiedAt > 0
           && d.modifiedAt <= request.time.toMillis() + 300000
@@ -458,6 +502,7 @@ service cloud.firestore {
       allow get: if owner();
       allow create: if owner() && valid() && request.resource.data.revision == 1 && !request.resource.data.keys().hasAny(['fountain']);
       allow update: if owner() && valid() && request.resource.data.revision == resource.data.revision + 1
+        && request.resource.data.get('saveFormat',1) >= resource.data.get('saveFormat',1)
         && (resource.data.get('economy',null) == null || request.resource.data.get('economy',null) != null)
         && (request.resource.data.get('fountain', null) == resource.data.get('fountain', null)
           || validFlow(request.resource.data.fountain.operationId));

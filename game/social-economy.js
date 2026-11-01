@@ -42,14 +42,26 @@
     Object.assign(w,{coins:w.coins+cash,debt:w.debt-paid,earned:w.earned+gross,carry:units%100});return {wallet:w,gross,paid,cash};
   }
   function purchase(w,kind){const price=PRICES[kind];if(!price)throw Error('找不到這張券。');if(w.coins<price)throw Error('金幣不足。');if(w.stock[kind]>=9999)throw Error('這種券已達持有上限。');w=copy(w);w.coins-=price;w.stock[kind]=(w.stock[kind]||0)+1;return w;}
-  function bully(actor,target,{actorKey,targetKey,used=0}={}){
+  function crowdPlan(rawGroup,rawMember,{day:today,actorKey,targetKey}={}){
+    if(!integer(today,100000)||!validKey(actorKey)||!validKey(targetKey)||actorKey===targetKey)throw Error('今日參與人數資料不正確。');
+    const record=(raw,keys)=>raw&&typeof raw==='object'&&!Array.isArray(raw)&&Object.keys(raw).length===keys.length&&keys.every(k=>Object.hasOwn(raw,k))&&raw.schema===1&&raw.day===today&&raw.target===targetKey&&typeof raw.operationId==='string'&&/^[a-f0-9]{32}$/.test(raw.operationId);
+    const group=rawGroup!=null,member=rawMember!=null;
+    if(group&&(!record(rawGroup,['schema','day','target','count','operationId'])||!integer(rawGroup.count,Number.MAX_SAFE_INTEGER)||rawGroup.count<1))throw Error('今日參與人數紀錄不正確。');
+    if(member&&(!group||!record(rawMember,['schema','day','target','actor','operationId'])||rawMember.actor!==actorKey))throw Error('今日施放者紀錄不正確。');
+    const count=(group?rawGroup.count:0)+(member?0:1);
+    if(!Number.isSafeInteger(count)||count<1)throw Error('今日參與人數已達上限。');
+    const crowd=today+'_'+targetKey;
+    return {crowd,crowdMember:crowd+'_'+actorKey,crowdCount:count,crowdBonus:Math.floor(count/3),crowdNew:!member};
+  }
+  function bully(actor,target,{actorKey,targetKey,used=0,crowdCount=1}={}){
     if(!validKey(actorKey)||!validKey(targetKey)||actorKey===targetKey)throw Error('請選擇其他玩家。');
+    if(!Number.isSafeInteger(crowdCount)||crowdCount<1)throw Error('今日參與人數不正確。');const crowdBonus=Math.floor(crowdCount/3);
     if(actor.stock.bully<1)throw Error('你沒有霸凌券。');if(!integer(used,3)||used>=3)throw Error('今天對這位玩家已使用三次。');
     if(factor(target)<=30)throw Error('對方已達減益上限，這張券不會消耗。');
     actor=copy(actor);target=copy(target);const step=actor.lastTarget===targetKey?Math.min(3,actor.streak+1):1;
-    if(actor.bonus+step+1>10000)throw Error('今日加成已達上限。');
-    actor.stock.bully--;actor.lastTarget=targetKey;actor.streak=step;actor.bonus+=step+1;target.penalty=Math.min(target.bonus+honorBonus(target)+70,target.penalty+step);
-    return {actor,target,used:used+1,step};
+    if(actor.bonus+step+1+crowdBonus>10000)throw Error('今日加成已達上限。');
+    actor.stock.bully--;actor.lastTarget=targetKey;actor.streak=step;actor.bonus+=step+1+crowdBonus;target.penalty=Math.min(target.bonus+honorBonus(target)+70,target.penalty+step+crowdBonus);
+    return {actor,target,used:used+1,step,crowdCount,crowdBonus};
   }
   function counter(w,at=Date.now()){if(w.stock.counter<1)throw Error('你沒有反霸凌券。');if(w.usedCounters>=10000)throw Error('今日使用次數已達上限。');w=copy(w);w.stock.counter--;w.penalty=0;w.usedCounters++;w.bubbleAt=at;return w;}
   function eligible(w){return w.usedCounters>=6&&factor(w)<70;}
@@ -79,7 +91,22 @@
     if(!a.economy?.key){const cash=Math.min(base,MAX_COINS-a.coins);a.coins+=cash;return {gross:cash,paid:0,cash};}
     const current=roll(a.economy.wallet,today);current.coins=a.coins;const result=earn(current,base);append(a,base);a.economy.wallet=result.wallet;a.coins=result.wallet.coins;return {gross:result.gross,paid:result.paid,cash:result.cash};
   }
-  function replay(w,events){w=copy(w);let amount=0;const cursors={...w.cursors};for(const e of events){if(e.sequence<=(cursors[e.device]||0))continue;amount+=e.amount;cursors[e.device]=e.sequence;}if(Object.keys(cursors).length>64)throw Error('登入裝置紀錄已滿，請聯絡維護者。');const result=earn(w,amount);result.wallet.cursors=cursors;return {...result,amount};}
+  function replay(w,events){
+    if(!Array.isArray(events)||events.length>MAX_PENDING)throw Error('待入帳收入不正確。');
+    const unique=new Map();
+    for(const e of events){
+      if(!e||typeof e.device!=='string'||!/^[a-f0-9]{32}$/.test(e.device)||!integer(e.sequence,Number.MAX_SAFE_INTEGER)||e.sequence<1||!integer(e.amount)||e.amount<1)throw Error('待入帳收入不正確。');
+      const key=e.device+':'+e.sequence,old=unique.get(key);
+      if(old&&old.amount!==e.amount)throw Error('相同收入序號的金額不一致，請保留備份並重新同步。');
+      unique.set(key,e);
+    }
+    w=copy(w);let amount=0;const cursors={...w.cursors};
+    // Restored/offline queues need not arrive in sequence order. Sort a copy
+    // before advancing cursors so a later event cannot swallow an earlier one.
+    const ordered=[...unique.values()].sort((a,b)=>a.device.localeCompare(b.device)||a.sequence-b.sequence);
+    for(const e of ordered){if(e.sequence<=(cursors[e.device]||0))continue;amount+=e.amount;cursors[e.device]=e.sequence;}
+    if(Object.keys(cursors).length>64)throw Error('登入裝置紀錄已滿，請聯絡維護者。');const result=earn(w,amount);result.wallet.cursors=cursors;return {...result,amount};
+  }
   function project(save,key,w,pending=[]){const next=copy(save),result=replay(w,pending);next.arena.coins=result.wallet.coins;next.arena.economy={version:VERSION,key,wallet:result.wallet,pending:copy(pending)};next.rpg.socialId=key;return next;}
-  return Object.freeze({VERSION,MAX_COINS,MAX_DEBT,MAX_PENDING,PRICES,REGIONS,CROWN_BONUS,BUILDINGS,copy,day,id,validKey,integer,freshWallet,validate,roll,activeHonor,honorBonus,useHonor,crown,factor,earn,purchase,bully,counter,eligible,activateBomb,settleBomb,enrollment,localFresh,localRestore,award,replay,project});
+  return Object.freeze({VERSION,MAX_COINS,MAX_DEBT,MAX_PENDING,PRICES,REGIONS,CROWN_BONUS,BUILDINGS,copy,day,id,validKey,integer,freshWallet,validate,roll,activeHonor,honorBonus,useHonor,crown,factor,earn,purchase,crowdPlan,bully,counter,eligible,activateBomb,settleBomb,enrollment,localFresh,localRestore,award,replay,project});
 });

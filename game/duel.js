@@ -3,7 +3,7 @@
   if(typeof module==='object'&&module.exports)module.exports=api;else root.MindDuel=api;
 })(typeof window==='object'?window:globalThis,function(E,C,A){
   'use strict';
-  const VERSION='mq-duel-6', BANK='notes-3221-r7';
+  const VERSION='mq-duel-7', BANK='notes-3221-r7';
   function profile(raw) {
     if(!raw||typeof raw!=='object'||typeof raw.name!=='string'||!Number.isInteger(raw.level)||raw.level<1||raw.level>1000001)throw Error('角色資料不正確');
     const name=raw.name.trim();
@@ -56,7 +56,7 @@
   function reveal(s,side,choice,index) {
     // The transport verifies the SHA-256 commitment before calling this reducer.
     const list=choices(choice);
-    if(s.phase!=='question'||index!==s.index||!s.commits.every(Boolean)||s.reveals[side]!==null||!list||list.length!==taskCount(s,side)||list.some(n=>!Number.isInteger(n)||n<0||n>3))return false;
+    if(s.phase!=='question'||index!==s.index||!s.commits.every(Boolean)||s.reveals[side]!==null||!list||list.length!==taskCount(s,side)||list.some(n=>!Number.isInteger(n)||n<-1||n>3))return false;
     s.reveals[side]=choice;return true;
   }
   function settleQuestion(s,q) {
@@ -94,10 +94,11 @@
     if(!p||Array.isArray(p)||typeof p!=='object'||p.v!==VERSION||!['hello','match','ack','ready','commit','reveal','next','ping','leave','busy','pass_request','pass_decision','diligence'].includes(p.type))throw Error('連線協定不一致');
     return p;
   }
-  function commitmentText(index,choice,nonce) {
+  function commitmentText(index,choice,nonce,session=null,questionId=null) {
     const list=choices(choice);
-    if(!Number.isInteger(index)||index<0||index>5||!list||list.length>2||list.some(n=>!Number.isInteger(n)||n<0||n>3)||typeof nonce!=='string'||!/^[a-f0-9]{32}$/.test(nonce))throw Error('答案格式不正確');
-    return VERSION+':'+index+':'+JSON.stringify(choice)+':'+nonce;
+    if(!Number.isInteger(index)||index<0||index>5||!list||list.length>2||list.some(n=>!Number.isInteger(n)||n<-1||n>3)||typeof nonce!=='string'||!/^[a-f0-9]{32}$/.test(nonce))throw Error('答案格式不正確');
+    if(session!==null&&(typeof session!=='string'||!/^[a-f0-9]{32}$/.test(session)||typeof questionId!=='string'||questionId.length<1||questionId.length>200))throw Error('對戰識別碼不正確');
+    return VERSION+':'+JSON.stringify([session,questionId,index,choice,nonce]);
   }
   return {VERSION,BANK,profile,match,create,fresh,ready,commit,canPass,pass,taskCount,reveal,settleQuestion,next,diligenceBonus,canDiligence,activateDiligence,totals,winner,packet,commitmentText};
 });

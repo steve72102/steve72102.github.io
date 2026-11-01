@@ -92,3 +92,22 @@ test('all wrong extras cannot activate diligence and give zero bonus even when o
   assert.deepEqual(D.diligenceBonus(s,1),{correct:0,damage:0});assert.equal(D.canDiligence(s,1),false);assert.equal(D.activateDiligence(s,1),false);
   assert.deepEqual(D.totals(s),[0,594]);
 });
+
+
+test('commitment additionally binds match session and actual question identity',()=>{
+ const salt='a'.repeat(32),session='b'.repeat(32),text=D.commitmentText(0,[1,-1],salt,session,'q0');
+ assert.notEqual(text,D.commitmentText(0,[1,-1],salt,'c'.repeat(32),'q0'));
+ assert.notEqual(text,D.commitmentText(0,[1,-1],salt,session,'q1'));
+ assert.throws(()=>D.commitmentText(0,[1,-2],salt,session,'q0'));
+ assert.throws(()=>D.commitmentText(0,[1,-1],salt,'short','q0'));
+});
+
+test('timed-out copies score zero in either hidden assignment order without affecting confirmed answers',()=>{
+ for(const order of [0,1]){
+  const s=withCoupons();D.ready(s,0);D.ready(s,1);D.pass(s,0,order);
+  const correct=q.find(x=>x.id===s.ids[0]).answer;question(s,[],[correct,-1]);
+  assert.equal(s.answers[1][0].correct,order===0);
+  assert.equal(s.answers[0][0].correct,order===1);
+  assert.equal(D.diligenceBonus(s,1).correct,order===1?1:0);
+ }
+});

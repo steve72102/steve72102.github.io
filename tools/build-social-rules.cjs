@@ -3,7 +3,7 @@ let source=fs.readFileSync(path.join(__dirname,'firestore-base.rules'),'utf8');
 let fragment=fs.readFileSync(path.join(__dirname,'social-rules.fragment'),'utf8');
 const blocks=[];
 for(let offset=0;offset<64;offset+=8){
- const checks=Array.from({length:8},(_,j)=>{const i=offset+j;return '(keys.size() <= '+i+' || (operation(keys['+i+']) && small(n[keys['+i+']],9007199254740991) && n[keys['+i+']] >= b.get(keys['+i+'],0)))';}).join(' && ');
+ const checks=Array.from({length:8},(_,j)=>{const i=offset+j;return '(keys.size() <= '+i+' || (operation(keys['+i+']) && small(n[keys['+i+']],9007199254740991) && n[keys['+i+']] > b.get(keys['+i+'],0)))';}).join(' && ');
  blocks.push('    function cursorChanges'+offset+'(keys,b,n) { return '+checks+'; }');
 }
 blocks.push('    function cursorsValid(b,n,keys) { return keys is list && keys.size() <= 64 && n.keys().hasAll(b.keys()) && n.diff(b).affectedKeys().hasOnly(keys) && '+Array.from({length:8},(_,j)=>'(keys.size() <= '+j*8+' || cursorChanges'+j*8+'(keys,b,n))').join(' && ')+'; }');

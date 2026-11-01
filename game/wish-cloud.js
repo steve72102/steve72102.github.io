@@ -27,15 +27,16 @@ window.MindWishCloud=function(ctx){
         const receipt={...planned.receipt,sequence,playerRevision:revision,updatedAt:sdk.db.serverTimestamp()};
         const integrated=ctx.economy?ctx.economy().writeWish(tx,{sdk,current,save:planned.save,operationId:intent.id,context:economyContext}):{save:planned.save};
         planned.save=integrated.save;
-        tx.set(ref,{schema:1,revision,...(integrated.economy?{economy:integrated.economy}:{}),payload:JSON.stringify(planned.save),coins:planned.save.arena.coins,modifiedAt:now,updatedAt:sdk.db.serverTimestamp(),fountain:{sequence,operationId:intent.id,at:sdk.db.serverTimestamp()}});
+        tx.set(ref,{schema:1,saveFormat:2,revision,...(integrated.economy?{economy:integrated.economy}:{}),payload:JSON.stringify(planned.save),coins:planned.save.arena.coins,modifiedAt:now,updatedAt:sdk.db.serverTimestamp(),fountain:{sequence,operationId:intent.id,at:sdk.db.serverTimestamp()}});
         tx.set(poolRef,{...planned.pool,updatedAt:sdk.db.serverTimestamp()});
         tx.set(receiptRef,receipt);
         return {save:planned.save,revision,modifiedAt:now,receipt,recovered:false};
       });
-      return {...settled,intentKey:key};
+      return {...settled,intentKey:key,intentId:intent.id};
     });
     // Clear only after both the server transaction and local account cache have succeeded.
-    localStorage.removeItem(result.intentKey);return result;
+    try{if(JSON.parse(localStorage.getItem(result.intentKey)||'null')?.id===result.intentId)localStorage.removeItem(result.intentKey);}catch(_){/* Keep unfamiliar intent data for recovery. */}
+    return result;
   }
   window.addEventListener('online',retry);
   return {snapshot,watch,retry,draw};

@@ -7,8 +7,9 @@ window.MindEconomyCloud=function(ctx){
   const changed=()=>ctx.changed?.(snapshot());
   function data(s){return s.exists()?s.data():null;}
   function pendingKey(id){return 'mind-quest-social-operation:'+id;}
+  function clearPending(owner,id){try{if(JSON.parse(localStorage.getItem(pendingKey(owner))||'null')?.id===id)localStorage.removeItem(pendingKey(owner));}catch(_){/* Preserve an unfamiliar or damaged intent for recovery. */}}
   function pending(id){try{const x=JSON.parse(localStorage.getItem(pendingKey(id))||'null');if(x&&(!/^[a-f0-9]{32}$/.test(x.id)||typeof x.kind!=='string'||!x.args))throw Error();return x;}catch(_){throw Error('待確認的券使用紀錄損壞，請保留瀏覽器資料。');}}
-  function fields(current,save,revision,economy,sdk){return {schema:1,revision,payload:JSON.stringify(save),coins:save.arena.coins,modifiedAt:Date.now(),updatedAt:sdk.db.serverTimestamp(),...(current.fountain?{fountain:current.fountain}:{}),economy};}
+  function fields(current,save,revision,economy,sdk){return {schema:1,saveFormat:2,revision,payload:JSON.stringify(save),coins:save.arena.coins,modifiedAt:Date.now(),updatedAt:sdk.db.serverTimestamp(),...(current.fountain?{fountain:current.fountain}:{}),economy};}
   function writeWallet(tx,sdk,k,w,op){const next={...w,revision:w.revision+1,operationId:op,updatedAt:sdk.db.serverTimestamp()};tx.set(doc(sdk,'money',k),next);return next;}
   function watchBlocked(w,k,watch){return Object.values(w.rooms).some(room=>watch?.active?.[room]?.members?.includes(k));}
   async function readWallet(tx,sdk,current){
@@ -100,14 +101,16 @@ window.MindEconomyCloud=function(ctx){
             }
             else if(intent.kind==='bully'){
               const target=intent.args.target;if(!P.validKey(target)||target===k)throw Error('請選擇其他玩家。');
-              const pairId=w.day+'_'+k+'_'+target;
-              const [ts,pairSnap]=await Promise.all([tx.get(doc(sdk,'money',target)),tx.get(doc(sdk,'bullyPairs',pairId))]);
+              const pairId=w.day+'_'+k+'_'+target,crowdId=w.day+'_'+target,crowdMemberId=crowdId+'_'+k;
+              const [ts,pairSnap,crowdSnap,memberSnap]=await Promise.all([tx.get(doc(sdk,'money',target)),tx.get(doc(sdk,'bullyPairs',pairId)),tx.get(doc(sdk,'bullyCrowds',crowdId)),tx.get(doc(sdk,'bullyCrowdMembers',crowdMemberId))]);
               if(!ts.exists())throw Error('對方尚未完成 Google 帳號同步。');
               const raw=P.validate(ts.data()),tw=data(await tx.get(doc(sdk,'bombWatch',raw.day)));
               if(watchBlocked(raw,target,tw))throw Error('對方的班級正在結算，請稍後再試。');
-              const planned=P.bully(w,P.roll(raw),{actorKey:k,targetKey:target,used:data(pairSnap)?.used||0});
-              w=planned.actor;extra={target,step:planned.step,pair:pairId};
-              writes.push(()=>writeWallet(tx,sdk,target,planned.target,intent.id),()=>tx.set(doc(sdk,'bullyPairs',pairId),{day:w.day,actor:k,target,used:planned.used,operationId:intent.id}));
+              const crowd=P.crowdPlan(data(crowdSnap),data(memberSnap),{day:w.day,actorKey:k,targetKey:target});
+              const planned=P.bully(w,P.roll(raw),{actorKey:k,targetKey:target,used:data(pairSnap)?.used||0,crowdCount:crowd.crowdCount});
+              w=planned.actor;extra={target,step:planned.step,pair:pairId,...crowd};
+              writes.push(()=>writeWallet(tx,sdk,target,planned.target,intent.id),()=>tx.set(doc(sdk,'bullyPairs',pairId),{day:w.day,actor:k,target,used:planned.used,operationId:intent.id}),()=>tx.set(doc(sdk,'bullyCrowds',crowd.crowd),{schema:1,day:w.day,target,count:crowd.crowdCount,operationId:intent.id}));
+              if(crowd.crowdNew)writes.push(()=>tx.set(doc(sdk,'bullyCrowdMembers',crowd.crowdMember),{schema:1,day:w.day,target,actor:k,operationId:intent.id}));
             }else if(intent.kind==='enroll'){
               const building=intent.args.building;if(!P.BUILDINGS[building])throw Error('這棟樓沒有分班。');
               const group=w.day+'_'+building,memberId=group+'_'+k;
@@ -140,10 +143,10 @@ window.MindEconomyCloud=function(ctx){
           return {save,revision,modifiedAt:record.modifiedAt,receipt,recovered:false};
         });
       });
-      localStorage.removeItem(pendingKey(owner));wallet=result.save.arena.economy.wallet;key=result.save.arena.economy.key;
+      clearPending(owner,intent.id);wallet=result.save.arena.economy.wallet;key=result.save.arena.economy.key;
       if(result.receipt.kind==='bomb')resumeBomb(intent.id).catch(e=>{lastError=e.message;changed();});
       return {...result,previous:intent.kind!==kind||JSON.stringify(intent.args)!==JSON.stringify(args)};
-    }catch(e){if(owner&&['game-rule','permission-denied'].includes(e.code))localStorage.removeItem(pendingKey(owner));lastError=e.message;throw e;}
+    }catch(e){if(owner&&intent&&['game-rule','permission-denied'].includes(e.code))clearPending(owner,intent.id);lastError=e.message;throw e;}
     finally{working=false;changed();}
   }
   async function settle(bombId,target,sdk){

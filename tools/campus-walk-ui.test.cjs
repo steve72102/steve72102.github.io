@@ -75,3 +75,27 @@ test('fixed joystick ignores other fingers and stops on cancellation, modal, blu
  for(const type of ['pointercancel','lostpointercapture']){f.fire(f.joystick,type,{pointerId:1});const p=f.point();f.tick(8);assert.deepEqual(f.point(),p);assert.equal(f.joyKnob.style.transform,'');down();move();}
  f.fire(f.window,'blur');const blur=f.point();f.tick();assert.deepEqual(f.point(),blur);down();move();f.document.modal=true;f.tick();f.document.modal=false;const paused=f.point();f.tick();assert.deepEqual(f.point(),paused);down();move();f.ui.destroy();assert.equal(f.frames.size,0);assert.equal(f.joyKnob.style.transform,'');
 });
+
+
+test('cancelled doorway navigation cannot reopen an interaction after Escape or blur',()=>{
+ for(const type of ['Escape','blur']){const scene=W.hall('room'),door=scene.portals.find(p=>p.id==='room'),f=fixture({scene,initial:door});f.ui.toward(door);if(type==='Escape')f.fire(f.document,'keydown',{key:'Escape',target:f.world});else f.fire(f.window,'blur');f.tick(5);assert.deepEqual(f.portals,[],type);f.ui.destroy();}
+});
+test('a newly moved table cannot be crossed by the final route snap',()=>{
+ const scene={kind:'hall',spawn:{x:500,y:590},areas:[[{x:0,y:0},{x:1000,y:0},{x:1000,y:667},{x:0,y:667}]],surfaces:[],paths:[],nodes:[],portals:[]},f=fixture({scene});
+ f.ui.toward({x:502,y:590});f.tick(1);
+ scene.surfaces.push({id:'table',x:502,y:590,height:52,polygon:[{x:501,y:589},{x:503,y:589},{x:503,y:591},{x:501,y:591}]});
+ f.tick(1);assert(W.walkable(scene,f.point()),'the last step must recheck the live furniture footprint');f.tick(20);assert(W.walkable(scene,f.point()));f.ui.destroy();
+});
+test('autowalking recalculates a route when a moved table blocks an existing segment',()=>{
+ const scene={kind:'hall',spawn:{x:500,y:590},areas:[[{x:0,y:0},{x:1000,y:0},{x:1000,y:667},{x:0,y:667}]],surfaces:[],paths:[],nodes:[],portals:[]},f=fixture({scene});
+ f.ui.toward({x:610,y:590});f.tick(1);scene.surfaces.push({id:'table',x:550,y:590,height:52,polygon:[{x:535,y:575},{x:565,y:575},{x:565,y:605},{x:535,y:605}]});
+ for(let i=0;i<150;i++){f.tick(1);assert(W.walkable(scene,f.point()));}assert(W.distance(f.point(),{x:610,y:590})<.2);f.ui.destroy();
+});
+test('selecting a destination releases an earlier joystick gesture',()=>{
+ const f=fixture();f.fire(f.joystick,'pointerdown',{pointerType:'touch',pointerId:1,clientX:57,clientY:57});f.fire(f.joystick,'pointermove',{pointerId:1,clientX:100,clientY:57});f.tick(6);const start=f.point();f.ui.toward({x:start.x-20,y:start.y});f.tick(40);assert(f.point().x<start.x);assert.equal(f.joyKnob.style.transform,'');f.ui.destroy();
+});
+
+test('Space on a focused button keeps native keyboard activation instead of jumping',()=>{
+ const f=fixture(),button=f.buttons[0];button.closest=selector=>selector.includes('button')?{}:null;
+ const event=f.fire(f.document,'keydown',{key:' ',target:button});f.tick(12);assert.equal(event.defaultPrevented,false);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();
+});

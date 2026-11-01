@@ -55,9 +55,9 @@ service cloud.firestore {
       function owner() { return request.auth != null && request.auth.uid == uid; }
       function valid() {
         let d = request.resource.data;
-        return d.keys().hasOnly(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain'])
+        return d.keys().hasOnly(['schema', 'saveFormat', 'revision', 'payload', 'modifiedAt', 'updatedAt', 'coins', 'fountain'])
           && d.keys().hasAll(['schema', 'revision', 'payload', 'modifiedAt', 'updatedAt'])
-          && d.schema == 1 && d.revision is int && d.revision > 0
+          && d.schema == 1 && d.get('saveFormat',1) in [1,2] && d.revision is int && d.revision > 0
           && d.payload is string && d.payload.size() <= 750000
           && d.modifiedAt is int && d.modifiedAt > 0
           && d.modifiedAt <= request.time.toMillis() + 300000
@@ -67,6 +67,7 @@ service cloud.firestore {
       allow get: if owner();
       allow create: if owner() && valid() && request.resource.data.revision == 1 && !request.resource.data.keys().hasAny(['fountain']);
       allow update: if owner() && valid() && request.resource.data.revision == resource.data.revision + 1
+        && request.resource.data.get('saveFormat',1) >= resource.data.get('saveFormat',1)
         && (request.resource.data.get('fountain', null) == resource.data.get('fountain', null)
           || validFlow(request.resource.data.fountain.operationId));
       allow list, delete: if false;

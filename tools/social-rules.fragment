@@ -51,7 +51,8 @@
         && n.coins == b.coins + gross - paid - r.debit && n.debt == b.debt - paid
         && n.earned == daily(b,'earned',0) + gross && n.carry == units % 100
         && n.name is string && n.name.size() <= 32 && n.cursors is map && n.cursors.size() <= 64
-        && cursorsValid(b.cursors,n.cursors,r.devices);
+        && cursorsValid(b.cursors,n.cursors,r.devices)
+        && (r.amount == 0 || r.devices.size() > 0);
     }
     function stockChange(b,n,kind,delta) {
       return n.stock.diff(b.stock).affectedKeys().hasOnly([kind]) && n.stock[kind] == b.stock.get(kind,0) + delta && small(n.stock[kind],9999);
@@ -64,8 +65,8 @@
     }
     function bullyChange(b,n,k,r) {
       return k == r.actor
-        ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1 && n.lastTarget == r.target && n.streak == r.step
-        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step);
+        ? ordinaryBase(b,n,k,['stock','bonus','lastTarget','streak']) && stockChange(b,n,'bully',-1) && n.bonus == daily(b,'bonus',0)+r.step+1+r.crowdBonus && n.lastTarget == r.target && n.streak == r.step
+        : k == r.target && rate(b)>30 && ordinaryBase(b,n,k,['penalty']) && n.penalty == minimum(daily(b,'bonus',0)+honorRate(b)+70,daily(b,'penalty',0)+r.step+r.crowdBonus);
     }
     function enrollChange(b,n,k,r) {
       return ordinaryBase(b,n,k,['rooms']) && n.rooms.diff(daily(b,'rooms',{})).affectedKeys().hasOnly([r.building]) && n.rooms[r.building] == r.room;
@@ -102,8 +103,18 @@
         && sa('economyAccounts',uid).key == key && d.coins == w.coins && d.economy.revision == w.revision;
     }
     function receiptShape(r) {
-      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
+      return r.keys().hasOnly(['schema','kind','actor','day','sequence','createdAt','devices','amount','debit','action','param','item','target','step','pair','crowd','crowdMember','crowdCount','crowdBonus','crowdNew','building','group','room','member','number','newMember','members','bomb','cash','debt','week','region','tier'])
         && r.keys().hasAll(['schema','kind','actor','day','createdAt']) && r.schema == 1 && socialKey(r.actor) && small(r.day,100000) && r.createdAt == request.time;
+    }
+    // Validate only the resulting group here. Its write rule proves the old
+    // count and first membership, keeping this receipt below the per-write
+    // document-access budget. A fresh operationId forces a same-batch write.
+    function crowdReceipt(id,r) {
+      let group = sa('bullyCrowds',r.crowd);
+      return r.crowd == string(r.day)+'_'+r.target && r.crowdMember == r.crowd+'_'+r.actor
+        && r.crowdNew is bool && small(r.crowdCount,9007199254740991) && r.crowdCount > 0
+        && r.crowdBonus is int && r.crowdBonus == int(r.crowdCount / 3)
+        && group.operationId == id && group.count == r.crowdCount;
     }
     function pairedReceipt(id,r) {
       let actor = sd('money',r.actor);
@@ -111,7 +122,7 @@
       let step = daily(actor,'lastTarget','') == r.target ? minimum(3,daily(actor,'streak',0)+1) : 1;
       return socialKey(r.target) && r.target != r.actor && r.pair == string(r.day)+'_'+r.actor+'_'+r.target
         && used < 3 && r.step == step && sa('bullyPairs',r.pair).used == used+1
-        && sa('bullyPairs',r.pair).operationId == id && sa('money',r.target).operationId == id;
+        && sa('bullyPairs',r.pair).operationId == id && sa('money',r.target).operationId == id && crowdReceipt(id,r);
     }
     function enrollReceipt(id,r) {
       return r.building in ['pharmaceutics','pharmacology','herbal','battle'] && r.group == string(r.day)+'_'+r.building
@@ -188,6 +199,39 @@
         && request.resource.data.actor == sa('economyOps',request.resource.data.operationId).actor && request.resource.data.target == sa('economyOps',request.resource.data.operationId).target
         && request.resource.data.day == dayNow() && freshSocial(request.resource.data.operationId);
       allow list, delete: if false;
+    }
+    match /bullyCrowds/{crowd} {
+      function crowdChange(d,r) {
+        let first = !exists(socialPath('bullyCrowdMembers',r.crowdMember));
+        let before = resource == null ? 0 : resource.data.count;
+        return r.kind == 'bully' && r.crowd == crowd && r.day == d.day && r.target == d.target
+          && r.crowdNew == first && r.crowdCount == d.count && d.count == before + (first ? 1 : 0)
+          && (!first || sa('bullyCrowdMembers',r.crowdMember).operationId == d.operationId);
+      }
+      allow get: if request.auth != null;
+      allow create, update: if request.auth != null
+        && request.resource.data.keys().hasOnly(['schema','day','target','count','operationId'])
+        && request.resource.data.schema == 1 && request.resource.data.day == dayNow() && socialKey(request.resource.data.target)
+        && crowd == string(request.resource.data.day)+'_'+request.resource.data.target
+        && small(request.resource.data.count,9007199254740991) && request.resource.data.count > 0
+        && freshSocial(request.resource.data.operationId)
+        && crowdChange(request.resource.data,sa('economyOps',request.resource.data.operationId));
+      allow list, delete: if false;
+    }
+    match /bullyCrowdMembers/{member} {
+      function crowdMember(d,r) {
+        return r.kind == 'bully' && r.crowdNew == true && r.crowdMember == member
+          && d.day == r.day && d.target == r.target && d.actor == r.actor
+          && member == string(d.day)+'_'+d.target+'_'+d.actor;
+      }
+      allow get: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['schema','day','target','actor','operationId'])
+        && request.resource.data.schema == 1 && request.resource.data.day == dayNow()
+        && socialKey(request.resource.data.target) && socialKey(request.resource.data.actor)
+        && freshSocial(request.resource.data.operationId)
+        && crowdMember(request.resource.data,sa('economyOps',request.resource.data.operationId));
+      allow list, update, delete: if false;
     }
     match /classDays/{group} {
       allow get: if request.auth != null;

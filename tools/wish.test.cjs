@@ -13,3 +13,15 @@ test('the wishing spot is reachable from the plaza spawn and all campus entrance
 test('a 10000-coin opening pool is not counted as player contributions or fake draws',()=>{const p={...W.pool(null),balance:10000,seeded:10000};const item=W.plan(fresh(),p,0,id);assert.equal(item.pool.balance,11000);assert.equal(item.pool.seeded,10000);assert.equal(item.pool.contributed,1000);assert.equal(item.pool.draws,1);const coins=W.plan(fresh(),p,99999,id);assert.equal(coins.receipt.coins,1000);assert.equal(coins.pool.balance,10000);assert.equal(W.pool(coins.pool).balance,10000);assert.throws(()=>W.pool({...p,seeded:9999}));});
 
 test('fountain clothes and coins both work with a full general bag and wardrobe saves above 100 copies',()=>{const s=fresh();s.inventory[E.ITEMS[0].id]=50;s.rpg.items[W.GEAR[0].id]=150;for(const ticket of [0,99890,99999]){const x=W.plan(s,null,ticket,id);assert.equal(R.count(x.save),50);assert.equal(R.wardrobeCount(x.save),ticket===99999?150:151);assert.deepEqual(R.restore(x.save.rpg),x.save.rpg);assert.equal(s.rpg.items[W.GEAR[0].id],150);}});
+
+test('one-million seeded pool preserves all contribution, payout and draw history for either prize type',()=>{
+ const previous='b'.repeat(32),p={schema:1,balance:1000000,seeded:1000000,contributed:34000,paidOut:34000,draws:34,lastOperation:previous},before=JSON.stringify(p);
+ for(const ticket of [0,99999]){
+  const x=W.plan(fresh(),p,ticket,id,10),award=ticket===99999?10010:0;
+  assert.equal(x.pool.seeded,1000000);assert.equal(x.pool.contributed,35000);assert.equal(x.pool.paidOut,34000+award);
+  assert.equal(x.pool.draws,35);assert.equal(x.pool.balance,1001000-award);assert.equal(x.pool.lastOperation,id);
+  assert.equal(x.receipt.coins,award);assert.equal(x.receipt.poolBefore,1000000);assert.equal(x.receipt.poolAfter,x.pool.balance);
+  assert.equal(x.pool.balance+x.pool.paidOut,x.pool.seeded+x.pool.contributed);assert.deepEqual(W.pool(x.pool),x.pool);
+ }
+ assert.equal(JSON.stringify(p),before);
+});

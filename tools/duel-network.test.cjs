@@ -2,7 +2,8 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const questions=Array.from({length:6},(_,i)=>({id:'q'+i,subject:'pharmaceutics',answer:i%4}));
 const pause=()=>new Promise(resolve=>setTimeout(resolve,4));
 async function until(fn){for(let i=0;i<500;i++){if(fn())return;await pause();}throw Error('Timed out waiting for peers');}
-function fixture({duplicateDecisions=false}={}){
+function fixture({duplicateDecisions=false,manualClock=false}={}){
+  let clock=Date.now(),timerId=0;const healthTimers=new Map();
   const registry=new Map(),nets=[],peers=[],packets=[];
   class Conn extends EventEmitter{
     constructor(opts){super();Object.assign(this,opts);this.open=false;}
@@ -17,13 +18,13 @@ function fixture({duplicateDecisions=false}={}){
   }
   function player(name){
     const win=new EventTarget();Object.assign(win,{MindDuel:D,MindEngine:E,Peer,RTCPeerConnection:function(){}});
-    vm.runInNewContext(fs.readFileSync(require.resolve('../game/duel-network.js'),'utf8'),{window:win,crypto:webcrypto,Uint8Array,TextEncoder,navigator:{onLine:true},location:{protocol:'https:'},document:{getElementById:()=>null},setTimeout,clearTimeout,setInterval,clearInterval});
-    const stock={shirkTickets:6,diligenceTickets:1},earned=[],messages=[];
-    const net=win.MindDuelNetwork({questions,random:()=>.3,onChange:()=>{},onAnswer:(q,correct)=>earned.push({id:q.id,correct}),onNotice:m=>messages.push(m),useTicket:key=>stock[key]>0?(stock[key]--,true):false});
-    nets.push(net);return {net,stock,earned,messages,profile:{name,level:1,gearId:null,...stock}};
+    vm.runInNewContext(fs.readFileSync(require.resolve('../game/duel-network.js'),'utf8'),{window:win,crypto:webcrypto,Uint8Array,TextEncoder,navigator:{onLine:true},location:{protocol:'https:'},document:{getElementById:()=>null},Date:manualClock?class extends Date{static now(){return clock;}}:Date,setTimeout,clearTimeout,setInterval:manualClock?fn=>{healthTimers.set(++timerId,fn);return timerId;}:setInterval,clearInterval:manualClock?id=>healthTimers.delete(id):clearInterval});
+    const stock={shirkTickets:6,diligenceTickets:1},earned=[],messages=[],draft=[];
+    const net=win.MindDuelNetwork({questions,random:()=>.3,onChange:()=>{},onAnswer:(q,correct)=>earned.push({id:q.id,correct}),onNotice:m=>messages.push(m),getDraftAnswers:()=>draft.slice(),useTicket:key=>stock[key]>0?(stock[key]--,true):false});
+    nets.push(net);return {net,stock,earned,messages,draft,profile:{name,level:1,gearId:null,...stock}};
   }
   async function pair(){const a=player('測試一'),b=player('測試二');a.net.start({mode:'host',subject:'pharmaceutics',profile:a.profile});await until(()=>a.net.snapshot().status==='waiting');b.net.start({mode:'join',subject:'pharmaceutics',profile:b.profile,code:a.net.snapshot().code});await until(()=>[a,b].every(p=>p.net.snapshot().status==='connected'));return [a,b];}
-  return {pair,packets,stop:()=>nets.forEach(n=>n.leave())};
+  return {pair,packets,peers,elapse:async ms=>{clock+=ms;for(const fn of [...healthTimers.values()])fn();await pause();},stop:()=>nets.forEach(n=>n.leave())};
 }
 async function ready(pair){pair.forEach(p=>p.net.ready());await until(()=>pair.every(p=>p.net.snapshot().game.phase==='question'));}
 async function next(pair){const index=pair[0].net.snapshot().game.index;pair.forEach(p=>p.net.next());await until(()=>pair.every(p=>p.net.snapshot().game.index!==index||p.net.snapshot().game.phase==='done'));if(index===2)await ready(pair);}
@@ -63,4 +64,40 @@ test('guest can pass, committed questions reject passes without charge, and wron
     await feedback(pair);if(i<5)await next(pair);
   }
   assert.equal(D.diligenceBonus(a.net.snapshot().game,0).correct,0);assert.equal(a.net.diligence(),false);assert.equal(a.stock.diligenceTickets,1);assert.equal(b.stock.shirkTickets,1);
+});
+
+
+test('a host cannot charge a guest for an unrequested pass decision',async t=>{
+ const f=fixture();t.after(f.stop);const pair=await f.pair(),[,guest]=pair;await ready(pair);
+ const session=f.packets.find(p=>p.type==='match').session;
+ f.peers[0].links[0].send(JSON.stringify({v:D.VERSION,type:'pass_decision',session,id:'e'.repeat(32),index:0,side:1,order:0,accepted:true}));
+ await until(()=>guest.net.snapshot().status==='error');
+ assert.equal(guest.stock.shirkTickets,6);
+ assert.equal(guest.net.snapshot().game.passTotal[0],0);
+});
+
+test('a packet copied from another match is rejected before changing readiness',async t=>{
+ const f=fixture();t.after(f.stop);const pair=await f.pair(),[,guest]=pair;
+ f.peers[0].links[0].send(JSON.stringify({v:D.VERSION,type:'ready',session:'f'.repeat(32),round:0}));
+ await until(()=>guest.net.snapshot().status==='error');
+ assert.equal(guest.net.snapshot().game.ready[1],false);
+});
+
+test('delegated timeout preserves the confirmed first answer and scores the missing extra as zero',async t=>{
+ const f=fixture({manualClock:true});t.after(f.stop);const pair=await f.pair(),[owner,writer]=pair;await ready(pair);
+ assert(owner.net.requestPass());await until(()=>writer.net.snapshot().game.passBy===1);
+ const correct=questions.find(q=>q.id===writer.net.snapshot().game.ids[0]).answer;
+ writer.draft.push(correct); // The first copy was confirmed; the second was not submitted.
+ for(let i=0;i<41;i++)await f.elapse(6000);
+ await feedback(pair);
+ const s=writer.net.snapshot().game;
+ assert.equal(s.answers[0][0].correct,true);
+ assert.equal(s.answers[0][0].extra.choice,-1);
+ assert.equal(s.answers[0][0].extra.correct,false);
+ assert.equal(owner.net.snapshot().game.answers[0][0].correct,false);
+ assert.equal(D.diligenceBonus(s,0).correct,0);
+ assert.equal(owner.earned.length,0);
+ assert.deepEqual(writer.earned,[{id:s.ids[0],correct:true}]);
+ assert.equal(owner.stock.shirkTickets,5);
+ await next(pair);assert.equal(writer.net.snapshot().game.index,1);
 });

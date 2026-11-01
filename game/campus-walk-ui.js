@@ -7,7 +7,7 @@ window.MindWalkUI=function(options){
   function resetKnobs(){if(knob)knob.style.transform='';if(joyKnob)joyKnob.style.transform='';joystick?.classList.remove('held');}
   let z=0,vz=0,armed=null,latched=null;let pos=W.nearest(scene,initial||scene.spawn),path=[],frame=0,last=0,disposed=false,activated=false,facing=1,direction='down',lastMessage='',wasMoving=false;
   function listen(el,type,fn,opts={}){el.addEventListener(type,fn,{...opts,signal});}
-  function stop(){gesture=null;resetKnobs();if(stick)stick.hidden=true;keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
+  function stop(){armed=null;gesture=null;resetKnobs();if(stick)stick.hidden=true;keys.clear();touches.clear();path=[];actor.classList.remove('walking');root.querySelectorAll('.walk-direction').forEach(b=>b.classList.remove('held'));target.hidden=true;last=0;}
   function destroy(){if(disposed)return;disposed=true;stop();cancelAnimationFrame(frame);abort.abort();onPosition({...pos});}
   function focus(){world.focus({preventScroll:true});}
   function blocked(){return document.hidden||!!document.querySelector('dialog[open]');}
@@ -28,9 +28,9 @@ window.MindWalkUI=function(options){
   function jump(){if(blocked()||vz)return;onRouteCancel();vz=360/(scene.scale||1);path=[];armed=null;focus();}
   function push(){if(blocked())return;onPush(direction);focus();}
   const jumpButton=root.querySelector('.walk-jump'),pushButton=root.querySelector('.walk-push');if(jumpButton)listen(jumpButton,'click',jump);if(pushButton)listen(pushButton,'click',push);
-  function toward(p){if(blocked()||!p)return;armed=p.id||null;latched=null;keys.clear();touches.clear();path=W.route(scene,pos,p);const end=path.at(-1);target.hidden=!end;if(end){target.style.left=end.x/10+'%';target.style.top=end.y/W.HEIGHT*100+'%';}focus();paint();}
+  function toward(p){if(blocked()||!p||disposed)return;stop();armed=p.id||null;latched=null;path=W.route(scene,pos,p);const end=path.at(-1);target.hidden=!end;if(end){target.style.left=end.x/10+'%';target.style.top=end.y/W.HEIGHT*100+'%';}focus();paint();}
   function keydown(e){
-    if(e.altKey||e.ctrlKey||e.metaKey||blocked()||e.target.closest('input,textarea,select,[contenteditable="true"]'))return;
+    if(e.altKey||e.ctrlKey||e.metaKey||blocked()||e.target.closest('input,textarea,select,button,a,summary,[role="button"],[contenteditable="true"]'))return;
     if(!root.contains(e.target)&&e.target!==document.body&&e.target!==document.getElementById('main'))return;
     const key=e.key.length===1?e.key.toLowerCase():e.key;
     if(W.direction(key)||key==='Shift'){e.preventDefault();onRouteCancel();keys.add(key);path=[];armed=null;target.hidden=true;}
@@ -85,9 +85,9 @@ window.MindWalkUI=function(options){
   root.querySelectorAll('.walk-direction').forEach(b=>{
     const dir=b.dataset.direction;
     const release=e=>{touches.delete(e.pointerId);b.classList.remove('held');if(!touches.size&&!keys.size&&!path.length)paint();};
-    listen(b,'pointerdown',e=>{if(e.button!==0||blocked())return;e.preventDefault();onRouteCancel();focus();path=[];target.hidden=true;touches.set(e.pointerId,dir);b.classList.add('held');b.setPointerCapture(e.pointerId);const d=W.direction(dir);pos=W.move(scene,pos,...d,.05,false,z);paint(true,d[0],d[1]);});
+    listen(b,'pointerdown',e=>{if(e.button!==0||blocked())return;e.preventDefault();onRouteCancel();focus();path=[];armed=null;target.hidden=true;touches.set(e.pointerId,dir);b.classList.add('held');b.setPointerCapture(e.pointerId);const d=W.direction(dir);pos=W.move(scene,pos,...d,.05,false,z);paint(true,d[0],d[1]);});
     for(const type of ['pointerup','pointercancel','lostpointercapture'])listen(b,type,release);
-    listen(b,'click',e=>{if(e.detail===0&&!blocked()){onRouteCancel();const d=W.direction(dir);path=[];pos=W.move(scene,pos,...d,.05,false,z);paint(true,d[0],d[1]);}});
+    listen(b,'click',e=>{if(e.detail===0&&!blocked()){onRouteCancel();const d=W.direction(dir);path=[];armed=null;pos=W.move(scene,pos,...d,.05,false,z);paint(true,d[0],d[1]);}});
   });
   function tick(now){
     if(disposed)return;if(!root.isConnected){destroy();return;}
@@ -98,7 +98,19 @@ window.MindWalkUI=function(options){
     const before=pos,beforeZ=z;
     const support=W.surface(scene,pos,z)?.height||0;if(vz||z>support){vz-=650/(scene.scale||1)*dt;z+=vz*dt;if(z<=support&&vz<0){z=support;vz=0;}}
     if(dx||dy)pos=W.move(scene,pos,dx,dy,dt,keys.has('Shift'),z);
-    else if(path.length){let next=path[0];const dist=W.distance(pos,next);if(dist<=W.speed(scene)*dt){pos={...next};path.shift();if(!path.length)target.hidden=true;}else pos=W.move(scene,pos,next.x-pos.x,next.y-pos.y,dt,false,z);dx=pos.x-before.x;dy=pos.y-before.y;}
+    else if(path.length){
+      // Another player may have pushed furniture after this route was planned.
+      // Recheck the complete next segment, including the final short step.
+      if(!W.clear(scene,pos,path[0],z))path=W.route(scene,pos,path.at(-1));
+      const next=path[0];
+      if(next&&W.clear(scene,pos,next,z)){
+        const dist=W.distance(pos,next);
+        if(dist<=W.speed(scene)*dt){pos={...next};path.shift();}
+        else pos=W.move(scene,pos,next.x-pos.x,next.y-pos.y,dt,false,z);
+      }else{path=[];armed=null;}
+      if(!path.length)target.hidden=true;
+      dx=pos.x-before.x;dy=pos.y-before.y;
+    }
     const landed=W.surface(scene,pos,z)?.height||0;if(z<landed){z=landed;vz=0;}
     const moved=W.distance(before,pos)>.001,intent=moved||!!(dx||dy);if(intent||wasMoving||beforeZ!==z)paint(intent,dx,dy);wasMoving=intent;
     const door=armed?scene.portals.find(p=>p.id===armed&&W.distance(p,pos)<=14/(scene.scale||1)):W.near(scene,pos,14);if(!door||door.id!==latched)latched=null;

@@ -1,20 +1,20 @@
 /* Only session data travels over the data channel. Save files never leave the device. */
 window.MindDuelNetwork=function(options){
   'use strict';
-  const {questions,onChange,onAnswer,random,useTicket=()=>false,onNotice=()=>{}}=options;
-  const D=window.MindDuel, PREFIX='steve72102-mq6-', byId=new Map(questions.map(q=>[q.id,q]));
+  const {questions,onChange,onAnswer,random,useTicket=()=>false,onNotice=()=>{},getDraftAnswers=()=>[]}=options;
+  const D=window.MindDuel, PREFIX='steve72102-'+D.VERSION+'-', byId=new Map(questions.map(q=>[q.id,q]));
   let peer=null,connection=null,generation=0,deadline=0,timer=null,connectTimer=null,retryTimer=null,lastSeen=0,lastPing=0,ownReveal=null,revealed=false,answerPending=false,attempts=0;
   let data={status:'idle',message:'',game:null,mode:null,code:'',subject:null,profile:null,host:false};
-  let passRequestId=null;const passDecisions=new Set();
+  let passRequestId=null,matchSession=null,timeoutSubmitted=false;const passDecisions=new Set();
   const active=()=>['connecting','waiting','handshake','connected'].includes(data.status);
   const notify=()=>onChange(data);
   function nonce(){const a=new Uint8Array(16);crypto.getRandomValues(a);return Array.from(a,x=>x.toString(16).padStart(2,'0')).join('');}
-  async function digest(index,choice,salt){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(D.commitmentText(index,choice,salt)));return Array.from(new Uint8Array(b),x=>x.toString(16).padStart(2,'0')).join('');}
-  function send(type,fields={}){if(!connection?.open)throw Error('連線已中斷');connection.send(JSON.stringify({v:D.VERSION,type,...fields}));}
-  function clean(){generation++;clearInterval(timer);clearTimeout(connectTimer);clearTimeout(retryTimer);const p=peer;peer=null;connection=null;p?.destroy();ownReveal=null;revealed=false;answerPending=false;passRequestId=null;data.passPending=false;passDecisions.clear();}
+  async function digest(index,choice,salt){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(D.commitmentText(index,choice,salt,matchSession,data.game?.ids[index])));return Array.from(new Uint8Array(b),x=>x.toString(16).padStart(2,'0')).join('');}
+  function send(type,fields={}){if(!connection?.open)throw Error('連線已中斷');connection.send(JSON.stringify({v:D.VERSION,type,...fields,session:matchSession}));}
+  function clean(){generation++;matchSession=null;timeoutSubmitted=false;clearInterval(timer);clearTimeout(connectTimer);clearTimeout(retryTimer);const p=peer;peer=null;connection=null;p?.destroy();ownReveal=null;revealed=false;answerPending=false;passRequestId=null;data.passPending=false;passDecisions.clear();}
   function fail(message){if(!active())return;data.status='error';data.message=message;clean();notify();}
   function leave(){if(connection?.open)try{send('leave');}catch(_){}clean();data={status:'idle',message:'',game:null,mode:null,code:'',subject:null,profile:null,host:false};notify();}
-  function setStage(){const s=data.game;deadline=Date.now()+(s?.phase==='prep'?180000:s?.phase==='question'&&s.passBy!==null?240000:120000);}
+  function setStage(){const s=data.game;timeoutSubmitted=false;deadline=Date.now()+(s?.phase==='prep'?180000:s?.phase==='question'&&s.passBy!==null?240000:120000);}
   const revision=()=>data.game?.passBy===null?0:1;
   function resetSubmission(){ownReveal=null;revealed=false;answerPending=false;passRequestId=null;data.passPending=false;}
   function hostPass(side,id,index){
@@ -40,7 +40,23 @@ window.MindDuelNetwork=function(options){
       if(data.status!=='connected')return;
       const now=Date.now();
       if(now-lastSeen>75000){fail('對手的連線已失去回應。本場不判勝負，已獲得的答題經驗仍保留。');return;}
-      if(now>deadline){fail('此步驟等待超時，對戰已結束。請雙方保持頁面開啟，再重新配對。');return;}
+      if(now>deadline){
+        const s=data.game;
+        if(s?.phase==='question'&&s.passBy!==null&&!timeoutSubmitted){
+          // A delegated set has a 240-second answer window. Preserve explicitly
+          // confirmed copies and commit unanswered copies as -1 (zero points).
+          // Both peers get a short transport grace period to exchange reveals.
+          timeoutSubmitted=true;deadline=now+15000;
+          if(!s.commits[0]&&!answerPending){
+            const count=D.taskCount(s,0),draft=getDraftAnswers(),confirmed=Array.isArray(draft)?draft:[];
+            const choices=Array.from({length:count},(_,i)=>Number.isInteger(confirmed[i])&&confirmed[i]>=0&&confirmed[i]<=3?confirmed[i]:-1);
+            if(count)onNotice('作答時間已到，已確認的作答保留，其餘未交卷作答為 0 分。');
+            answer(choices);
+          }
+          return;
+        }
+        fail('此步驟等待超時，對戰已結束。請雙方保持頁面開啟，再重新配對。');return;
+      }
       if(now-lastPing>5000){lastPing=now;try{send('ping');}catch(_){fail('連線已中斷，請重新配對。');}}
       const label=document.getElementById('duel-time');if(label)label.textContent=Math.max(0,Math.ceil((deadline-now)/1000))+' 秒';
     },1000);
@@ -57,22 +73,25 @@ window.MindDuelNetwork=function(options){
   function settle(){
     const s=data.game;if(!s)return;
     const q=byId.get(s.ids[s.index]);
-    if(D.settleQuestion(s,q)){const a=s.answers[0][s.index],actual=a.actual??[a.choice];if(actual.length)onAnswer(q,actual.some(choice=>choice===q.answer));setStage();change();}
+    if(D.settleQuestion(s,q)){const a=s.answers[0][s.index],actual=a.actual??[a.choice];if(actual.some(choice=>choice>=0))onAnswer(q,actual.some(choice=>choice===q.answer));setStage();change();}
     else notify();
   }
   async function receive(text,token){
     if(token!==generation)return;
-    const m=D.packet(text);lastSeen=Date.now();
+    const m=D.packet(text);
+    if(!['hello','match','busy'].includes(m.type)&&(!matchSession||m.session!==matchSession))throw Error('對戰識別碼不符');
+    lastSeen=Date.now();
     if(m.type==='ping')return;
     if(m.type==='leave'){fail('對手已離開，本場不判勝負。已獲得的答題經驗仍保留。');return;}
     if(m.type==='busy'&&data.status==='handshake'){retryQueue();return;}
     if(m.type==='hello'&&data.host&&data.status==='handshake'&&!data.game){
       if(m.bank!==D.BANK||(data.mode==='auto'&&m.subject!==data.subject))throw Error('題庫版本或科目不同，請雙方更新遊戲');
       const other=D.profile(m.profile), config=D.create(data.subject,questions,random);
-      data.game=D.fresh(config,data.profile,other);send('match',{...config,profile:data.profile});return;
+      matchSession=nonce();data.game=D.fresh(config,data.profile,other);send('match',{...config,profile:data.profile});return;
     }
     if(m.type==='match'&&!data.host&&data.status==='handshake'&&!data.game){
-      const config=D.match(m,questions,data.mode==='auto'?data.subject:null);
+      if(typeof m.session!=='string'||!/^[a-f0-9]{32}$/.test(m.session))throw Error('對戰識別碼不正確');
+      const config=D.match(m,questions,data.mode==='auto'?data.subject:null);matchSession=m.session;
       data.subject=config.subject;data.game=D.fresh(config,data.profile,config.opponent);send('ack');connected();return;
     }
     if(m.type==='ack'&&data.host&&data.status==='handshake'&&data.game){
@@ -86,6 +105,7 @@ window.MindDuelNetwork=function(options){
       if(passDecisions.has(m.id))return;
       if(!m.accepted){if(passRequestId===m.id){passRequestId=null;data.passPending=false;onNotice('此題已交卷或已有甩鍋，沒有扣券。');notify();}return;}
       const side=1-m.side;
+      if(side===0&&m.id!==passRequestId)throw Error('未提出這次甩鍋請求');
       if(m.index!==s.index||!D.pass(s,side,m.order,true))throw Error('甩鍋步驟不一致');
       if(side===0&&!useTicket('shirkTickets'))throw Error('甩鍋券不足');
       passDecisions.add(m.id);resetSubmission();setStage();if(side===0)answer([]);change();return;
@@ -181,12 +201,14 @@ window.MindDuelNetwork=function(options){
   function ready(){const s=data.game;if(data.status!=='connected'||!s||!D.ready(s,0))return;try{send('ready',{round:s.round});if(s.phase==='question')setStage();change();}catch(_){fail('連線已中斷。');}}
   async function answer(choice){
     const s=data.game;if(data.status!=='connected'||!s||s.phase!=='question'||s.commits[0]||answerPending||data.passPending)return;
+    const submitted=Array.isArray(choice)?choice.slice():choice,list=Array.isArray(submitted)?submitted:[submitted];
+    if(list.length!==D.taskCount(s,0)||list.some(n=>!Number.isInteger(n)||n<-1||n>3))return;
     const token=generation,epoch=revision();answerPending=true;
     try{
-      const salt=nonce(),index=s.index,hash=await digest(index,choice,salt);
+      const salt=nonce(),index=s.index,hash=await digest(index,submitted,salt);
       if(token!==generation||epoch!==revision())return;
       if(!D.commit(s,0,hash,index))throw Error('交卷失敗');
-      ownReveal={index,choice,nonce:salt,revision:epoch};send('commit',{index,hash,revision:epoch});await revealIfReady(token);if(token===generation)notify();
+      ownReveal={index,choice:submitted,nonce:salt,revision:epoch};send('commit',{index,hash,revision:epoch});await revealIfReady(token);if(token===generation)notify();
     }catch(e){if(token===generation&&epoch===revision())fail(e.message+'，請重新配對。');}finally{if(token===generation&&epoch===revision())answerPending=false;}
   }
   function requestPass(){const s=data.game;if(data.status!=='connected'||data.passPending||answerPending||!s||!D.canPass(s,0))return false;data.passPending=true;passRequestId=nonce();try{if(data.host)hostPass(0,passRequestId,s.index);else{send('pass_request',{id:passRequestId,index:s.index});notify();}return true;}catch(e){fail(e.message);return false;}}

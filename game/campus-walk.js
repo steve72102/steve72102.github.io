@@ -62,6 +62,14 @@
     for(const s of scene.surfaces||[])for(let i=0;i<s.polygon.length;i++){const q=projection(p,s.polygon[i],s.polygon[(i+1)%s.polygon.length]),dx=q.x-s.x,dy=q.y-s.y,l=Math.hypot(dx,dy)||1;candidates.push({x:q.x+dx/l*2,y:q.y+dy/l*2});}
     return {...candidates.filter(q=>walkable(scene,q,z)).sort((a,b)=>distance(p,a)-distance(p,b))[0]};
   }
+  function deskArrival(scene){
+    // Arrive on the floor in front of the destination table, never on its surface.
+    const table=(scene.surfaces||[]).find(s=>s.id==='table');
+    if(!table)return nearest(scene,scene.spawn);
+    const front=Math.max(...table.polygon.map(p=>p.y)),candidates=[];
+    for(const gap of [28,44,64])for(const offset of [0,-32,32,-64,64])candidates.push({x:table.x+offset,y:front+gap});
+    return candidates.find(p=>walkable(scene,p)&&!near(scene,p,45))||nearest(scene,scene.spawn);
+  }
   function clear(scene,a,b,z=0){
     if(!walkable(scene,a,z)||!walkable(scene,b,z))return false;
     if(scene.paths?.length){const n=Math.max(1,Math.ceil(distance(a,b)/3));for(let i=1;i<n;i++)if(!walkable(scene,{x:a.x+(b.x-a.x)*i/n,y:a.y+(b.y-a.y)*i/n},z))return false;return true;}
@@ -73,5 +81,5 @@
   function route(scene,from,to){from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];const corners=(scene.surfaces||[]).filter(s=>!s.hidden).flatMap(s=>s.polygon.map(p=>{const d=Math.hypot(p.x-s.x,p.y-s.y)||1;return {x:p.x+(p.x-s.x)/d*3,y:p.y+(p.y-s.y)/d*3};}));const nodes=[from,...scene.nodes,...corners].filter(p=>walkable(scene,p));nodes.push(to);const last=nodes.length-1,cost=nodes.map(()=>Infinity),prev=nodes.map(()=>-1),seen=new Set();cost[0]=0;while(seen.size<nodes.length){let u=-1;for(let i=0;i<nodes.length;i++)if(!seen.has(i)&&(u<0||cost[i]<cost[u]))u=i;if(u<0||!Number.isFinite(cost[u]))break;if(u===last)break;seen.add(u);for(let v=1;v<nodes.length;v++)if(!seen.has(v)&&clear(scene,nodes[u],nodes[v])){const next=cost[u]+distance(nodes[u],nodes[v]);if(next<cost[v]){cost[v]=next;prev[v]=u;}}}if(!Number.isFinite(cost[last]))return [];const result=[];for(let n=last;n>0;n=prev[n])result.unshift(nodes[n]);return result;}
   function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
-  return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,clear,move,route,near,direction};
+  return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,deskArrival,clear,move,route,near,direction};
 });

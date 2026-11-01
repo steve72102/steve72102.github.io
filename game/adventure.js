@@ -36,7 +36,7 @@
   ];
   const places=['pharmaceutics','pharmacology','herbal','battle','life'],enemies=['bronze','silver','gold','diamond'];
   const gear=id=>GEAR.find(g=>g.id===id)||null;
-  function fresh(){return {version:1,capacity:50,items:{},pending:{},loadout:Object.fromEntries(STYLE_SLOTS.map(k=>[k,null])),training:{},notes:0,notesDay:'',notedIds:[],quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
+  function fresh(){return {version:2,capacity:50,items:{},pending:{},loadout:Object.fromEntries(STYLE_SLOTS.map(k=>[k,null])),training:{},equipmentLevels:{},notes:0,notesDay:'',notedIds:[],noteCounts:{},quest:0,visited:[],defeated:[],lootDays:{},socialId:null,friends:[]};}
   function loadout(raw){const out=fresh().loadout;if(raw===undefined)return out;if(!raw||Array.isArray(raw)||typeof raw!=='object')throw Error('衣著資料不正確');for(const [legacy,target] of [['coat',null],['boots','shoes'],['badge','accessory']])if(raw[legacy]!=null){const id=raw[legacy],g=gear(id),slot=target||g?.slot;if(!g||g.slot!==slot||legacy==='coat'&&!['jacket','cape'].includes(slot)||out[slot])throw Error('衣著欄位不正確');out[slot]=id;}for(const k of STYLE_SLOTS){const id=raw[k]===undefined?null:raw[k];if(id!==null&&!(k==='handheld'?(E.ITEMS.some(g=>g.id===id)||gear(id)?.slot==='handheld'):gear(id)?.slot===k))throw Error('衣著欄位不正確');if(id!==null)out[k]=id;}return out;}
   function bonus(raw,level=Infinity,training={}){return Object.values(loadout(raw)).reduce((s,id)=>{const g=gear(id),baseLevel=g?.level||1,stage=level>=baseLevel?Math.min(3,training?.[id]||0,Math.floor((level-baseLevel)/10)+1):0;if(g&&level>=baseLevel){s.attack+=g.attack;s.hp+=g.hp;s.guard+=g.guard;}s.attack+=stage;s.hp+=stage*2;return s;},{attack:0,hp:0,guard:0});}
   function count(s){return Object.values(s.inventory).reduce((n,v)=>n+v,0);}
@@ -47,9 +47,30 @@
   function buy(s,id){const g=gear(id);if(!g||g.source==='fountain'||g.source==='milestone'||s.arena.coins<g.price||!grant(s,id))return false;s.arena.coins-=g.price;return true;}
   function equip(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1;if(knowledge){if(!s.inventory[id])return false;s.equipped=id;s.rpg.loadout.handheld=id;return true;}if(!g||level<(g.level||1)||g.source!=='milestone'&&!s.rpg.items[id])return false;s.rpg.loadout[g.slot]=id;if(g.slot==='handheld')s.equipped=null;return true;}
   function unequip(s,slot){if(!Object.hasOwn(SLOTS,slot))return false;s.rpg.loadout[slot]=null;if(slot==='handheld')s.equipped=null;return true;}
-  function earnNote(s,id,correct,day=E.today()){if(!correct)return false;const r=s.rpg;if(r.notesDay!==day){r.notesDay=day;r.notedIds=[];}if(r.notedIds.includes(id))return false;r.notedIds.push(id);r.notes=Math.min(MAX,r.notes+1);return true;}
+  function earnNote(s,id,correct,day=E.today()){
+    if(!correct)return 0;
+    if(typeof id!=='string'||!id.length||id.length>100||['__proto__','constructor','prototype'].includes(id))throw Error('題目識別碼不正確');
+    const r=s.rpg;if(r.notesDay!==day){r.notesDay=day;r.notedIds=[];r.noteCounts={};}
+    r.noteCounts??={};const count=Object.hasOwn(r.noteCounts,id)?r.noteCounts[id]:r.notedIds.includes(id)?1:0;
+    const gained=Math.min(count===0?2:count===1?1:0,MAX-r.notes);if(!gained)return 0;
+    if(!r.notedIds.includes(id))r.notedIds.push(id);
+    r.noteCounts[id]=count+1;r.notes+=gained;return gained;
+  }
+  // Keep the original three combat milestones. Equipment levels are separate
+  // from a garment's character-level unlock requirement and do not inflate PvP.
+  const MAX_EQUIPMENT_LEVEL=90;
+  const equipmentLevel=(r,id)=>r.equipmentLevels?.[id]??Math.max(1,(r.training?.[id]||0)*30);
+  const equipmentStage=level=>Math.min(3,Math.floor(level/30));
   function trainCost(stage){return [5,15,35][stage]??Infinity;}
-  function train(s,id){const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1,owned=g?.source==='milestone'?level>=g.level:g?!!s.rpg.items[id]:!!s.inventory[id],stage=s.rpg.training[id]||0,cost=trainCost(stage);if(!(g||knowledge)||!owned||stage>=3||level<(g?.level||1)+stage*10||s.rpg.notes<cost)return false;s.rpg.notes-=cost;s.rpg.training[id]=stage+1;return true;}
+  function trainingRequirement(id,nextLevel){return (gear(id)?.level||1)+Math.max(0,equipmentStage(nextLevel)-1)*10;}
+  function train(s,id){
+    const g=gear(id),knowledge=E.ITEMS.find(i=>i.id===id),level=Math.floor(s.xp/100)+1,owned=g?.source==='milestone'?level>=g.level:g?!!s.rpg.items[id]:!!s.inventory[id];
+    const current=equipmentLevel(s.rpg,id),stage=equipmentStage(current),cost=trainCost(stage);
+    if(!(g||knowledge)||!owned||current>=MAX_EQUIPMENT_LEVEL||level<trainingRequirement(id,current+1)||s.rpg.notes<cost)return false;
+    s.rpg.notes-=cost;s.rpg.equipmentLevels??={};s.rpg.equipmentLevels[id]=current+1;
+    const nextStage=equipmentStage(current+1);if(nextStage)s.rpg.training[id]=nextStage;
+    return true;
+  }
   function training(raw){if(raw===undefined)return {};if(!raw||typeof raw!=='object'||Array.isArray(raw)||Object.keys(raw).length>GEAR.length+E.ITEMS.length)throw Error('研習資料不正確');const out={};for(const [id,n] of Object.entries(raw)){if(!(gear(id)||E.ITEMS.some(g=>g.id===id))||!Number.isInteger(n)||n<1||n>3)throw Error('研習資料不正確');out[id]=n;}return out;}
   function sell(s,id){const g=gear(id)||E.ITEMS.find(i=>i.id===id),items=gear(id)?s.rpg.items:s.inventory;if(!g||g.source==='milestone'||!items[id])return false;if(items[id]===1&&(s.equipped===id||Object.values(s.rpg.loadout).includes(id)))return false;items[id]--;if(!items[id])delete items[id];P.award(s.arena,(g.sellValue||Math.max(5,Math.floor((g.price||[40,80,160,320][g.tier])/4))));return true;}
   function expandPrice(s){return 300+(s.rpg.capacity-50)*20;}
@@ -69,16 +90,30 @@
     const seed=Array.from(b.day+b.enemyId+b.subject).reduce((n,c)=>(n*31+c.charCodeAt(0))>>>0,7),pool=pools[b.enemyId],id=pool[seed%pool.length];r.lootDays[b.enemyId]=b.day;r.pending[id]=Math.min(MAX,(r.pending[id]||0)+1);return {id,recorded:true};
   }
   function collect(s,id){if(!s.rpg.pending[id]||!grant(s,id))return false;s.rpg.pending[id]--;if(!s.rpg.pending[id])delete s.rpg.pending[id];return true;}
-  function restore(raw){if(raw===undefined)return fresh();const bad=()=>{throw Error('主線或背包存檔不正確');};if(!raw||raw.version!==1||!Number.isInteger(raw.capacity)||raw.capacity<50||raw.capacity>100||raw.capacity%10||!Number.isInteger(raw.quest)||raw.quest<0||raw.quest>QUESTS.length)bad();const r=fresh();r.capacity=raw.capacity;r.quest=raw.quest;r.loadout=loadout(raw.loadout);
+  function restore(raw){if(raw===undefined)return fresh();const bad=()=>{throw Error('主線或背包存檔不正確');};if(!raw||![1,2].includes(raw.version)||!Number.isInteger(raw.capacity)||raw.capacity<50||raw.capacity>100||raw.capacity%10||!Number.isInteger(raw.quest)||raw.quest<0||raw.quest>QUESTS.length)bad();const r=fresh();r.capacity=raw.capacity;r.quest=raw.quest;r.loadout=loadout(raw.loadout);
     for(const key of ['items','pending']){const obj=raw[key];if(!obj||typeof obj!=='object'||Array.isArray(obj)||Object.keys(obj).length>GEAR.length)bad();for(const [id,n] of Object.entries(obj)){if(!gear(id)||!Number.isInteger(n)||n<1||n>MAX)bad();r[key][id]=n;}}
     for(const id of Object.values(r.loadout)){const g=gear(id);if(id&&g?.source!=='milestone'&&g&&!r.items[id])bad();}
     if(raw.training!==undefined)r.training=training(raw.training);
+    if(raw.equipmentLevels!==undefined){
+      if(!raw.equipmentLevels||typeof raw.equipmentLevels!=='object'||Array.isArray(raw.equipmentLevels)||Object.keys(raw.equipmentLevels).length>GEAR.length+E.ITEMS.length)bad();
+      for(const [id,n] of Object.entries(raw.equipmentLevels)){
+        if(!(gear(id)||E.ITEMS.some(g=>g.id===id))||!Number.isInteger(n)||n<1||n>MAX_EQUIPMENT_LEVEL||equipmentStage(n)!==(r.training[id]||0))bad();
+        r.equipmentLevels[id]=n;
+      }
+    }
+    // Saves predating equipment levels retain every already-earned stat bonus.
+    for(const [id,stage] of Object.entries(r.training))if(!Object.hasOwn(r.equipmentLevels,id))r.equipmentLevels[id]=stage*30;
     if(raw.notes!==undefined){if(!Number.isInteger(raw.notes)||raw.notes<0||raw.notes>MAX)bad();r.notes=raw.notes;}
     if(raw.notesDay!==undefined){if(raw.notesDay!==''&&(typeof raw.notesDay!=='string'||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(raw.notesDay)))bad();r.notesDay=raw.notesDay;}
     if(raw.notedIds!==undefined){if(!Array.isArray(raw.notedIds)||raw.notedIds.length>5000||new Set(raw.notedIds).size!==raw.notedIds.length||raw.notedIds.some(id=>typeof id!=='string'||id.length>100))bad();r.notedIds=raw.notedIds.slice();}
+    if(raw.noteCounts!==undefined){
+      if(!raw.noteCounts||typeof raw.noteCounts!=='object'||Array.isArray(raw.noteCounts)||Object.keys(raw.noteCounts).length>5000)bad();
+      for(const [id,n] of Object.entries(raw.noteCounts)){if(!r.notedIds.includes(id)||!Number.isInteger(n)||n<1||n>2||['__proto__','constructor','prototype'].includes(id))bad();r.noteCounts[id]=n;}
+    }
+    for(const id of r.notedIds){if(!id.length||['__proto__','constructor','prototype'].includes(id))bad();if(!Object.hasOwn(r.noteCounts,id))r.noteCounts[id]=1;}
     for(const [key,allowed] of [['visited',places],['defeated',enemies]]){const a=raw[key];if(!Array.isArray(a)||a.length>allowed.length||new Set(a).size!==a.length||a.some(x=>!allowed.includes(x)))bad();r[key]=a.slice();}
     if(!raw.lootDays||typeof raw.lootDays!=='object'||Array.isArray(raw.lootDays)||Object.keys(raw.lootDays).length>4)bad();for(const [id,day] of Object.entries(raw.lootDays)){if(!enemies.includes(id)||typeof day!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(day)||!Number.isFinite(Date.parse(day+'T00:00:00Z'))||new Date(day+'T00:00:00Z').toISOString().slice(0,10)!==day)bad();r.lootDays[id]=day;}
     if(raw.socialId!==undefined&&raw.socialId!==null&&!/^[a-f0-9]{32}$/.test(raw.socialId))bad();r.socialId=raw.socialId||null;if(raw.friends!==undefined){if(!Array.isArray(raw.friends)||raw.friends.length>100)bad();for(const f of raw.friends){if(!f||!/^[a-f0-9]{32}$/.test(f.id)||typeof f.name!=='string'||!/^[\p{L}\p{N} _-]{1,16}$/u.test(f.name)||r.friends.some(x=>x.id===f.id))bad();r.friends.push({id:f.id,name:f.name});}}return r;
   }
-  return {GEAR,SLOTS,STYLE_SETS,QUESTS,fresh,gear,loadout,bonus,count,wardrobeCount,canStore,room,grant,buy,equip,unequip,earnNote,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
+  return {GEAR,SLOTS,STYLE_SETS,QUESTS,MAX_EQUIPMENT_LEVEL,fresh,gear,loadout,bonus,count,wardrobeCount,canStore,room,grant,buy,equip,unequip,earnNote,equipmentLevel,equipmentStage,trainingRequirement,trainCost,train,training,sell,expand,expandPrice,visit,progress,claimQuest,recordBattle,collect,restore};
 });

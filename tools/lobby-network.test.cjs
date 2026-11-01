@@ -1,12 +1,12 @@
 const test=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm'),{EventEmitter}=require('node:events'),{webcrypto}=require('node:crypto'),L=require('../game/lobby.js'),W=require('../game/campus-walk.js');
 function fixture(){
- let now=0,next=1;const stats={maxMotionBytes:0};const tasks=new Map(),registry=new Map(),nets=[];
+ let now=0,next=1;const stats={maxMotionBytes:0},packets=[];const tasks=new Map(),registry=new Map(),nets=[];
  const timeout=(fn,delay=0,interval=0)=>{const id=next++;tasks.set(id,{at:now+delay,fn,interval});return id;},clear=id=>tasks.delete(id);
  function advance(ms){const end=now+ms;for(let safe=0;safe<100000;safe++){const entry=[...tasks].filter(([,t])=>t.at<=end).sort((a,b)=>a[1].at-b[1].at)[0];if(!entry)break;const [id,t]=entry;now=t.at;if(t.interval)t.at+=t.interval;else tasks.delete(id);t.fn();}now=end;}
- class Conn extends EventEmitter{constructor(options){super();Object.assign(this,options);this.open=false;this.closed=false;}send(text){if(text.includes('\"type\":\"motion\"'))stats.maxMotionBytes=Math.max(stats.maxMotionBytes,Buffer.byteLength(text));if(this.open)timeout(()=>{if(this.other.open)this.other.emit('data',text);},1);}close(){if(this.closed)return;this.closed=true;this.open=false;this.emit('close');if(this.other&&!this.other.closed)this.other.close();}}
+ class Conn extends EventEmitter{constructor(options){super();Object.assign(this,options);this.open=false;this.closed=false;}send(text){packets.push({source:this,text,packet:JSON.parse(text),at:now});if(text.includes('\"type\":\"motion\"'))stats.maxMotionBytes=Math.max(stats.maxMotionBytes,Buffer.byteLength(text));if(this.open)timeout(()=>{if(this.other.open)this.other.emit('data',text);},1);}close(){if(this.closed)return;this.closed=true;this.open=false;this.emit('close');if(this.other&&!this.other.closed)this.other.close();}}
  class Peer extends EventEmitter{constructor(id){super();this.id=id;this.links=[];if(registry.has(id)){timeout(()=>this.emit('error',{type:'unavailable-id'}));return;}registry.set(id,this);timeout(()=>this.emit('open',id));}connect(id,opts){const c=new Conn(opts),remote=new Conn(opts);c.other=remote;remote.other=c;const host=registry.get(id);if(!host){timeout(()=>this.emit('error',{type:'peer-unavailable'}));return c;}this.links.push(c);host.links.push(remote);timeout(()=>host.emit('connection',remote));timeout(()=>{if(c.closed||remote.closed)return;c.open=remote.open=true;c.emit('open');remote.emit('open');},2);return c;}destroy(){if(registry.get(this.id)===this)registry.delete(this.id);this.links.forEach(c=>c.close());}}
  function create(name,room=10){const win=new EventTarget();Object.assign(win,{MindLobby:L,MindClassrooms:require('../game/classroom.js'),MindScenePlay:require('../game/scene-play.js'),Peer,RTCPeerConnection:function(){}});const fakeMath=Object.create(Math);fakeMath.random=()=>.5;vm.runInNewContext(fs.readFileSync(require.resolve('../game/lobby-network.js'),'utf8'),{window:win,crypto:webcrypto,Uint8Array,navigator:{onLine:true},location:{protocol:'https:'},Date:class extends Date{static now(){return now;}},Math:fakeMath,setTimeout:timeout,clearTimeout:clear,setInterval:(fn,n)=>timeout(fn,n,n),clearInterval:clear});const net=win.MindLobbyNetwork({onChange:()=>{}});const building=typeof room==='string'?room.split('_')[1]:null;net.join(room,{name,scene:building?'classroom:'+building:'campus',...(building?W.classrooms[building]:W.campus).spawn,direction:'down',moving:false});nets.push(net);return net;}
- return {create,advance,nets,registry,stats,stop:()=>nets.forEach(n=>n.leave())};
+ return {create,advance,nets,registry,stats,packets,stop:()=>nets.forEach(n=>n.leave())};
 }
 test('two independent peers see live movement and building changes without any save or currency exchange',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二');f.advance(1000);assert.equal(a.snapshot().players.length,2);assert.equal(b.snapshot().players.length,2);b.move({scene:'campus',x:500,y:525,direction:'down',moving:true});f.advance(400);const other=a.snapshot().players.find(p=>p.id===b.snapshot().selfId);assert.equal(other.y,525);assert.equal(other.moving,true);b.move({scene:'hall:pharmacology:practice',...W.hall('').spawn,direction:'left',moving:false});f.advance(400);assert.equal(a.snapshot().players.find(p=>p.id===other.id).scene,'hall:pharmacology:practice');assert(!JSON.stringify(a.snapshot()).includes('coins'));f.stop();});
 test('host departure re-elects a host and peers can meet again; leaving removes presence',()=>{const f=fixture(),a=f.create('旅人一');f.advance(100);const b=f.create('旅人二'),c=f.create('旅人三');f.advance(1500);assert.equal(c.snapshot().players.length,3);a.leave();f.advance(5000);assert.equal(b.snapshot().status,'connected');assert.equal(c.snapshot().status,'connected');assert.equal(c.snapshot().players.length,2);assert.notEqual(b.snapshot().host,c.snapshot().host);b.leave();f.advance(5000);assert.equal(c.snapshot().players.length,1);f.stop();});
@@ -22,7 +22,7 @@ test('two peers see the same independently broken laboratory shelves and high ju
 });
 test('room cap admits 60 players and refuses a 61st without disrupting existing peers',()=>{const f=fixture();for(let i=0;i<61;i++){f.create('旅人'+i);f.advance(400);}assert.equal(f.nets[0].snapshot().players.length,60);assert.equal(f.nets[60].snapshot().status,'error');assert.match(f.nets[60].snapshot().message,/已滿/);for(let tick=0;tick<10;tick++){for(let i=0;i<60;i++)f.nets[i].move({scene:'campus',x:440+i%10*10+tick,y:460+Math.floor(i/10)*15,direction:'right',moving:true});f.advance(220);}f.advance(400);const host=f.nets[0].snapshot();for(const n of f.nets.slice(1,60)){const seen=n.snapshot();assert.equal(seen.players.length,60);assert.equal(JSON.stringify(seen.players.map(p=>[p.id,p.x,p.y,p.moving])),JSON.stringify(host.players.map(p=>[p.id,p.x,p.y,p.moving])));}assert(f.stats.maxMotionBytes>0&&f.stats.maxMotionBytes<16384);f.stop();});
 
-test('不同班級的教室隔離，同班可互見；角色效果更新不清空聊天',()=>{const f=fixture(),room='class-20000_herbal_1',a=f.create('旅人一',room);f.advance(100);const b=f.create('旅人二',room),c=f.create('旅人三','class-20000_herbal_2');f.advance(1500);assert.equal(a.snapshot().players.length,2);assert.equal(c.snapshot().players.length,1);assert(b.say('教室你好'));f.advance(10);const own=b.snapshot().players.find(p=>p.id===b.snapshot().selfId);const day=require('../game/social-economy.js').day();b.refresh({...own,counterAt:1000,honor:{kind:'honor',region:'east',start:day,until:day+14}});f.advance(10);assert.equal(a.snapshot().players.find(p=>p.id===own.id).counterAt,1000);assert.equal(a.snapshot().players.find(p=>p.id===own.id).honor.region,'east');assert.equal(a.snapshot().messages.length,1);assert.equal(b.snapshot().messages.length,1);f.stop();});
+test('不同班級的教室隔離，同班可互見；角色效果更新不清空聊天',()=>{const f=fixture(),room='class-20000_herbal_1',a=f.create('旅人一',room);f.advance(100);const b=f.create('旅人二',room),c=f.create('旅人三','class-20000_herbal_2');f.advance(1500);assert.equal(a.snapshot().players.length,2);assert.equal(c.snapshot().players.length,1);assert(b.say('教室你好'));f.advance(10);const own=b.snapshot().players.find(p=>p.id===b.snapshot().selfId);const day=require('../game/social-economy.js').day();b.refresh({...own,counterAt:1000,honor:{kind:'honor',region:'east',start:day,until:day+14}});f.advance(220);assert.equal(a.snapshot().players.find(p=>p.id===own.id).counterAt,1000);assert.equal(a.snapshot().players.find(p=>p.id===own.id).honor.region,'east');assert.equal(a.snapshot().messages.length,1);assert.equal(b.snapshot().messages.length,1);f.stop();});
 test('班級房間上限為 50 人，第 51 人不擠掉既有同學',()=>{const f=fixture(),room='class-20000_battle_1',host=f.create('同學零',room);f.advance(100);for(let i=1;i<50;i++){f.create('同學'+i,room);f.advance(60);}f.advance(500);assert.equal(host.snapshot().players.length,50);const extra=f.create('額外同學',room);f.advance(1000);assert.equal(host.snapshot().players.length,50);assert.equal(extra.snapshot().status,'error');assert.match(extra.snapshot().message,/50/);f.stop();});
 
 test('movable tables synchronize across two peers and old tabletop space becomes walkable',()=>{
@@ -32,4 +32,50 @@ test('movable tables synchronize across two peers and old tabletop space becomes
  assert.equal(JSON.stringify(a.snapshot().environment.furniture),JSON.stringify(b.snapshot().environment.furniture));
  b.move({scene,x:480,y:510,z:0,direction:'down',moving:false});f.advance(400);
  assert.equal(b.snapshot().status,'connected');assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).y,510);f.stop();
+});
+
+
+test('a burst of 60 genuine simulated joins is coalesced and does not trip the upstream limit',()=>{
+ const f=fixture(),host=f.create('房主');f.advance(100);
+ const observer=f.create('觀察同學');f.advance(1000);
+ for(let i=2;i<60;i++)f.create('同學'+i);
+ f.advance(1000);
+ for(const net of f.nets){assert.equal(net.snapshot().status,'connected',net.snapshot().message);assert.equal(net.snapshot().players.length,60);}
+ const join=f.packets.find(p=>p.packet.type==='join'&&p.packet.player.id===observer.snapshot().selfId);
+ const worlds=f.packets.filter(p=>p.source===join.source.other&&p.packet.type==='world'&&p.at>=1100);
+ assert(worlds.length<=5,'roster broadcasts must be coalesced to the 200 ms tick');
+ f.stop();
+});
+
+test('60 players can each chat once in one second without disconnecting other participants',()=>{
+ const f=fixture();for(let i=0;i<60;i++){f.create('同學'+i);f.advance(400);}
+ const observer=f.nets[59];for(const net of f.nets.slice(0,59))assert(net.say('大家好'));
+ f.advance(400);
+ assert.equal(observer.snapshot().status,'connected',observer.snapshot().message);
+ assert.equal(observer.snapshot().messages.length,59);
+ assert(f.nets.every(n=>n.snapshot().status==='connected'));
+ f.stop();
+});
+
+test('replaying an old chat or movement packet cannot resend a message or rewind the player',()=>{
+ const f=fixture(),a=f.create('房主');f.advance(100);const b=f.create('同學');f.advance(1000);
+ assert(b.say('只送一次'));f.advance(10);
+ const chat=f.packets.find(p=>p.packet.type==='talk');
+ b.move({scene:'campus',x:500,y:525,direction:'down',moving:true});f.advance(400);
+ const move=f.packets.filter(p=>p.packet.type==='move').at(-1);
+ b.move({scene:'campus',x:500,y:550,direction:'down',moving:false});f.advance(1400);
+ chat.source.send(chat.text);move.source.send(move.text);f.advance(400);
+ assert.equal(a.snapshot().messages.length,1);
+ assert.equal(a.snapshot().players.find(p=>p.id===b.snapshot().selfId).y,550);
+ assert.equal(b.snapshot().status,'connected');f.stop();
+});
+
+test('an unresponsive peer expires with a full roster update even if its close event is delayed',()=>{
+ const f=fixture(),a=f.create('房主');f.advance(100);const b=f.create('離線同學'),c=f.create('在線同學');f.advance(1000);
+ const join=f.packets.find(p=>p.packet.type==='join'&&p.packet.player.id===b.snapshot().selfId);
+ join.source.send=()=>{};join.source.other.close=()=>{join.source.other.open=false;};
+ f.advance(32000);
+ assert.equal(a.snapshot().players.length,2);
+ assert.equal(c.snapshot().status,'connected',c.snapshot().message);
+ assert.equal(c.snapshot().players.length,2);f.stop();
 });
