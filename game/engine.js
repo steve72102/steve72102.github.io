@@ -26,7 +26,7 @@
     const get = type => p.find(x => x.type === type).value;
     return `${get('year')}-${get('month')}-${get('day')}`;
   }
-  function fresh(day = today()) { return { version: 1, xp: 0, tickets: 0, progress: 0, pity: 0, draws: 0, totalCorrect: 0, claimed: '', day, rewarded: [], inventory: {}, equipped: null, wrong: [], mastered: [], session: null }; }
+  function fresh(day = today()) { return { version: 1, xp: 0, tickets: 0, progress: 0, pity: 0, draws: 0, totalCorrect: 0, claimed: '', day, rewarded: [], inventory: {}, equipped: null, wrong: [], mastered: [], session: null, academyProgress: {} }; }
   function rollDay(s, day) { if (s.day !== day) { s.day = day; s.rewarded = []; } }
   function claim(s, day = today()) {
     rollDay(s, day);
@@ -63,10 +63,15 @@
     return { item, duplicate, bonus, guaranteed: n < 99 && tier === 3 };
   }
   function shuffle(list, random = Math.random) { const out = list.slice(); for (let i = out.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [out[i], out[j]] = [out[j], out[i]]; } return out; }
-  function begin(s, questions, label, random = Math.random) {
+  const COURSE_FLOORS=['practice','calculation','exam'];
+  function canFloor(s,subject,floor){const i=COURSE_FLOORS.indexOf(floor);return Object.keys(SUBJECTS).includes(subject)&&i>=0&&(s.academyProgress?.[subject]||0)>=i;}
+  function validCourse(course,questions){return course&&Object.keys(SUBJECTS).includes(course.subject)&&COURSE_FLOORS.includes(course.floor)&&questions.length>=5&&questions.every(q=>q.subject===course.subject&&!q.needsReview&&(course.floor!=='practice'||!q.calculation)&&(course.floor!=='calculation'||q.calculation))&&(course.floor!=='exam'||new Set(questions.map(q=>q.exam)).size===1);}
+  function courseResult(s){const r=s.session,c=r?.course;if(!c)return null;const needed=COURSE_FLOORS.indexOf(c.floor)+3,correct=r.answers.filter(a=>a.correct).length;return {needed,correct,passed:r.index===r.ids.length&&correct>=needed};}
+  function begin(s, questions, label, random = Math.random, course = null) {
     questions = questions.filter(q => !q.needsReview);
-    if (!questions.length) return false;
+    if (!questions.length || course&&(!canFloor(s,course.subject,course.floor)||!validCourse(course,questions))) return false;
     s.session = { ids: shuffle(questions, random).slice(0, 5).map(q => q.id), index: 0, answers: [], label: String(label).slice(0, 60) };
+    if(course)s.session.course={subject:course.subject,floor:course.floor};
     return true;
   }
   function answer(s, q, choice, day = today()) {
@@ -77,7 +82,7 @@
     run.answers.push(result);
     return result;
   }
-  function next(s) { if (s.session && s.session.answers.length > s.session.index) s.session.index++; }
+  function next(s) { if (s.session && s.session.answers.length > s.session.index){s.session.index++;const result=courseResult(s);if(result?.passed){s.academyProgress??={};const c=s.session.course;s.academyProgress[c.subject]=Math.max(s.academyProgress[c.subject]||0,COURSE_FLOORS.indexOf(c.floor)+1);}} }
   function restore(raw, questions) {
     if (!raw || typeof raw !== 'object' || Array.isArray(raw) || raw.version !== 1) throw new Error('存檔格式或版本不相容。');
     const byId = new Map(questions.map(q => [q.id, q]));
@@ -85,6 +90,7 @@
     const num = (value, max = MAX) => { if (!Number.isInteger(value) || value < 0 || value > max) throw new Error('存檔數值不正確。'); return value; };
     const date = value => { if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value) || !Number.isFinite(Date.parse(value + 'T00:00:00Z'))) throw new Error('存檔日期不正確。'); return value; };
     const s = fresh(date(raw.day));
+    if(raw.academyProgress!==undefined){if(!raw.academyProgress||typeof raw.academyProgress!=='object'||Array.isArray(raw.academyProgress)||Object.keys(raw.academyProgress).some(k=>!Object.keys(SUBJECTS).includes(k)))throw Error('樓層進度不正確');for(const [k,v] of Object.entries(raw.academyProgress))s.academyProgress[k]=num(v,3);}
     for (const key of ['xp', 'tickets', 'draws', 'totalCorrect']) s[key] = num(raw[key]);
     s.progress = num(raw.progress, 4); s.pity = num(raw.pity, 29); s.claimed = raw.claimed === '' ? '' : date(raw.claimed);
     for (const key of ['rewarded', 'wrong', 'mastered']) s[key] = ids(raw[key]);
@@ -103,9 +109,10 @@
         return { choice, correct, repeated: a.repeated, xp: num(a.xp, 16), ticket: num(a.ticket, 1) };
       });
       s.session = { ids: list, index, answers, label: r.label };
+      if(r.course!==undefined){if(!validCourse(r.course,list.map(id=>byId.get(id)))||!canFloor(s,r.course.subject,r.course.floor))throw Error('樓層關卡不正確');s.session.course={subject:r.course.subject,floor:r.course.floor};}
     }
     return s;
   }
   function bagRoom(s) { return Object.values(s.inventory).reduce((n,v)=>n+v,0)<(s.rpg?.capacity||50); }
-  return { SUBJECTS, TIERS, ITEMS, today, fresh, rollDay, claim, reward, draw, shuffle, begin, answer, next, restore, bagRoom };
+  return { canFloor,courseResult,COURSE_FLOORS, SUBJECTS, TIERS, ITEMS, today, fresh, rollDay, claim, reward, draw, shuffle, begin, answer, next, restore, bagRoom };
 });

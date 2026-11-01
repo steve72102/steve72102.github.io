@@ -69,14 +69,15 @@
   }
   function todayItem() { const day = E.today(); return E.ITEMS.filter(i => i.tier === 0)[Math.floor(Date.parse(day + 'T00:00:00Z') / 86400000) % 3]; }
   function sectionHeading(text, description) { return node('div', { class: 'section-title' }, node('h2', {}, text), node('p', {}, description)); }
-  function start(pool, label) {
+  function start(pool, label, course=null) {
+    if(course&&!E.canFloor(state,course.subject,course.floor)){toast("請先通過前一樓層。");return;}
     pool = pool.filter(q => !q.needsReview);
     if (!pool.length) { toast('這個篩選沒有可用題目，請試試其他年份。'); return; }
     if (state.session && state.session.index < state.session.ids.length) {
-      openModal(node('h2', {}, '還有一場進行中的冒險'), note('可以繼續原本的題目，或結束這次關卡後開新一場。已獲得的獎勵與錯題都會保留。'), node('div', { class: 'modal-actions' }, btn('繼續原關卡', () => { closeModal(); go('quiz'); }), btn('開始新關卡', () => { E.begin(state, pool, label, random); save(); closeModal(); go('quiz'); }, 'secondary')));
+      openModal(node('h2', {}, '還有一場進行中的冒險'), note('可以繼續原本的題目，或結束這次關卡後開新一場。已獲得的獎勵與錯題都會保留。'), node('div', { class: 'modal-actions' }, btn('繼續原關卡', () => { closeModal(); go('quiz'); }), btn('開始新關卡', () => { if(!E.begin(state, pool, label, random,course)){toast("此關卡目前無法開始。");return;} save(); closeModal(); go('quiz'); }, 'secondary')));
       return;
     }
-    E.begin(state, pool, label, random); save(); go('quiz');
+    if(!E.begin(state, pool, label, random,course)){toast("此關卡目前無法開始。");return;} save(); go('quiz');
   }
   function home() { return academyUI.home(); }
   function practice() {
@@ -101,7 +102,7 @@
     title('每個答案，都是一步。', 'KNOWLEDGE EXPEDITION');
     const q = byId.get(run.ids[run.index]), answered = run.answers[run.index];
     const panel = node('section', { class: 'panel question-panel' });
-    panel.append(node('div', { class: 'question-top' }, node('span', {}, run.label), node('strong', {}, `${run.index + 1} / ${run.ids.length}`)), node('progress', { max: run.ids.length, value: run.index, 'aria-label': '關卡進度' }), node('div', { class: 'mini-stats' }, node('span', {}, E.SUBJECTS[q.subject].name), node('span', {}, q.exam + ' · 第 ' + q.number + ' 題')), node('h2', { class: 'question-text' }, q.question));
+    panel.append(btn('← 離開作答，返回教室／大廳（保留進度）',()=>go('home'),'secondary quiz-exit'),note(run.course?'本層通關：'+(E.COURSE_FLOORS.indexOf(run.course.floor)+3)+'/5 題答對；完成整場後結算。':'可隨時離開作答，進度會保留。'),node('div', { class: 'question-top' }, node('span', {}, run.label), node('strong', {}, `${run.index + 1} / ${run.ids.length}`)), node('progress', { max: run.ids.length, value: run.index, 'aria-label': '關卡進度' }), node('div', { class: 'mini-stats' }, node('span', {}, E.SUBJECTS[q.subject].name), node('span', {}, q.exam + ' · 第 ' + q.number + ' 題')), node('h2', { class: 'question-text' }, q.question));
     const answers = node('div', { class: 'answers', role: 'group', 'aria-label': '作答選項' });
     q.options.forEach((option, i) => answers.append(node('button', { class: 'answer' + (!answered && selected === i ? ' selected' : '') + (answered && i === q.answer ? ' correct' : '') + (answered && i === answered.choice && !answered.correct ? ' incorrect' : ''), disabled: !!answered, 'aria-pressed': String((answered ? answered.choice : selected) === i), onClick: () => { selected = i; render(); view.querySelectorAll('.answer')[i].focus({ preventScroll: true }); } }, node('span', { class: 'answer-letter' }, String.fromCharCode(65 + i)), node('span', {}, option, answered && i === q.answer ? ' ✓ 正確答案' : answered && i === answered.choice ? ' ✕ 你的選擇' : ''))));
     panel.append(answers);
@@ -116,7 +117,7 @@
   function summary() {
     title('知識，已成為你的裝備。', 'EXPEDITION COMPLETE');
     const run = state.session, correct = run.answers.filter(a => a.correct).length;
-    return [node('section', { class: 'panel summary' }, node('div', { class: 'result-icon', 'aria-hidden': 'true' }, '✦'), node('p', { class: 'eyebrow' }, 'ONE SMALL STEP, WELL TAKEN'), node('h2', {}, correct === run.ids.length ? '這一段旅程，收穫滿滿。' : '每一次理解，都值得慶祝。'), note('答對的題目累積實力，錯題也會成為下一段冒險的方向。'), node('div', { class: 'summary-stats' }, [['答對題數', `${correct}/${run.ids.length}`], ['獲得經驗', '+' + run.answers.reduce((n, a) => n + a.xp, 0)], ['獲得星願券', '+' + run.answers.reduce((n, a) => n + a.ticket, 0)]].map(([label, value]) => node('div', {}, node('strong', {}, value), node('small', {}, label)))), btn('回到學院', () => go('home')), btn('複習錯題', () => go('review'), 'secondary'), state.tickets ? btn('去開寶箱 ✧', () => go('draw'), 'gold') : null)];
+    return [node('section', { class: 'panel summary' }, node('div', { class: 'result-icon', 'aria-hidden': 'true' }, '✦'), node('p', { class: 'eyebrow' }, 'ONE SMALL STEP, WELL TAKEN'), node('h2', {}, correct === run.ids.length ? '這一段旅程，收穫滿滿。' : '每一次理解，都值得慶祝。'), note(run.course?(E.courseResult(state).passed?(run.course.floor==='exam'?'本層通關！本科三層挑戰完成，進度已保存。':'本層通關！已保存樓層進度，可回學院前往下一層。'):'尚未通關：需要答對 '+E.courseResult(state).needed+'/5 題；已獲得的學習獎勵保留，可回教室重試。'):'答對的題目累積實力，錯題也會成為下一段冒險的方向。'), node('div', { class: 'summary-stats' }, [['答對題數', `${correct}/${run.ids.length}`], ['獲得經驗', '+' + run.answers.reduce((n, a) => n + a.xp, 0)], ['獲得星願券', '+' + run.answers.reduce((n, a) => n + a.ticket, 0)]].map(([label, value]) => node('div', {}, node('strong', {}, value), node('small', {}, label)))), btn('回到學院', () => go('home')), btn('複習錯題', () => go('review'), 'secondary'), state.tickets ? btn('去開寶箱 ✧', () => go('draw'), 'gold') : null)];
   }
   function review() {
     title('再遇見，就更懂一點。', 'THE PRACTICE GARDEN');
@@ -190,7 +191,7 @@
   cloud.init();wishNetwork.watch();
   render();
   if ('serviceWorker' in navigator && ['https:', 'http:'].includes(location.protocol)) {
-    navigator.serviceWorker.register('./sw.js?v=20261101-campus-controls', {updateViaCache:'none'}).then(reg => {
+    navigator.serviceWorker.register('./sw.js?v=20261101-floor-gates', {updateViaCache:'none'}).then(reg => {
       const updateStatus = async () => { const names = await caches.keys(); if (names.some(n => n.startsWith('mind-quest-'))) $('connection').textContent = navigator.onLine ? '離線冒險已準備好' : '離線模式 · 繼續冒險'; };
       navigator.serviceWorker.ready.then(updateStatus);
       reg.addEventListener('updatefound', () => { const worker = reg.installing; if (worker) worker.addEventListener('statechange', () => { if (worker.state === 'installed') updateStatus(); }); });

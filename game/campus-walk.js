@@ -42,11 +42,11 @@
       // Reach the cabinet directly from its front, without walking through the planter.
       areas.push(poly([[5,482],[119,482],[146,500],[146,535],[5,535]]),poly([[174,459],[346,450],[346,468],[174,483]]));
     }
-    const scene={kind:'hall',building,modern,spawn:{x:450,y:590},areas,surfaces,paths:[],nodes:[],portals:[{id:'exit',name:'回到校園',x:modern?873:garden?823:585,y:modern?369:garden?416:356},{id:'room',name,x:modern?932:garden?230:832,y:modern?408:garden?409:416},{id:'stairs',name:modern?'樓梯平台':'樓梯間',...stairs,kind:'inspect',verb:'使用',auto:true}]};
+    const scene={kind:'hall',building,modern,spawn:{x:450,y:590},areas,surfaces,paths:[],nodes:[],portals:[{id:'exit',name:'回到校園',x:modern?873:garden?823:585,y:modern?369:garden?416:356},{id:'room',kind:'inspect',name,x:modern?932:garden?230:832,y:modern?408:garden?409:416},{id:'stairs',name:modern?'樓梯平台':'樓梯間',...stairs,kind:'inspect',verb:'使用',auto:true}]};
     scene.glass=glass;
     // Graph vertices follow the illustrated floor, stair flight and upper landing.
     scene.nodes=[scene.spawn,...scene.portals,point([480,575]),point([370,570]),point([590,570]),point([370,470]),point([590,460]),point([720,440]),...(modern?[[635,400],[710,265],[750,215],[820,211],[810,410],[870,410]]:garden?[[210,430],[300,437],[530,450],[810,445]]:[[250,460],[400,410],[585,382],[710,410]]).map(point)];
-    const custom=D.halls[building];if(custom){scene.areas=custom.areas.map(poly);scene.spawn={...custom.spawn};scene.nodes=[...custom.nodes.map(point),...scene.nodes];scene.portals=[{id:'exit',name:'回到前庭',...custom.exit},{id:'room',name,...custom.room},{id:'stairs',name:'樓梯平台',...custom.stairs,kind:'inspect',verb:'使用',auto:true}];scene.nodes.push(...scene.portals);}
+    const custom=D.halls[building];if(custom){scene.areas=custom.areas.map(poly);scene.spawn={...custom.spawn};scene.nodes=[...custom.nodes.map(point),...scene.nodes];scene.portals=[{id:'exit',name:'回到前庭',...custom.exit},{id:'room',kind:'inspect',name,...custom.room},{id:'stairs',name:'樓梯平台',...custom.stairs,kind:'inspect',verb:'使用',auto:true}];scene.nodes.push(...scene.portals);}
     if(!name)hallCache.set(building,scene);return scene;
   }
   const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);

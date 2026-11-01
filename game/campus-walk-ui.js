@@ -87,7 +87,7 @@ window.MindWalkUI=function(options){
     else if(path.length){let next=path[0];const dist=W.distance(pos,next);if(dist<=W.speed(scene)*dt){pos={...next};path.shift();if(!path.length)target.hidden=true;}else pos=W.move(scene,pos,next.x-pos.x,next.y-pos.y,dt,false,z);dx=pos.x-before.x;dy=pos.y-before.y;}
     const landed=W.surface(scene,pos,z)?.height||0;if(z<landed){z=landed;vz=0;}
     const moved=W.distance(before,pos)>.001,intent=moved||!!(dx||dy);if(intent||wasMoving||beforeZ!==z)paint(intent,dx,dy);wasMoving=intent;
-    const door=W.near(scene,pos,14);if(!door||door.id!==latched)latched=null;
+    const door=armed?scene.portals.find(p=>p.id===armed&&W.distance(p,pos)<=14/(scene.scale||1)):W.near(scene,pos,14);if(!door||door.id!==latched)latched=null;
     if(door&&door.id!==latched&&z<1&&(moved||armed===door.id)&&(door.auto!==false||armed===door.id)){activate(door);if(disposed)return;}
     frame=requestAnimationFrame(tick);
   }

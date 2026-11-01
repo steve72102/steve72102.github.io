@@ -21,8 +21,8 @@ test('touch cancellation and leaving a scene release input and animation listene
   const f=fixture(),start=f.point(),b=f.buttons[3];f.fire(b,'pointerdown',{button:0,pointerId:1});f.tick(20);assert.ok(f.point().x>start.x);f.fire(b,'pointercancel',{pointerId:1});const canceled=f.point();f.tick();assert.deepEqual(f.point(),canceled);
   f.ui.destroy();assert.equal(f.frames.size,0);assert.ok(f.position());f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick();assert.deepEqual(f.point(),canceled);
 });
-test('walking through an entrance activates once and cancels the old animation loop',()=>{
-  const f=fixture();f.ui.toward(W.hall('room').portals.find(p=>p.id==='room'));f.tick(250);assert.deepEqual(f.portals,['room']);assert.equal(f.frames.size,0);f.tick();assert.deepEqual(f.portals,['room']);
+test('walking through an exit activates once and cancels the old animation loop',()=>{
+  const f=fixture();f.ui.toward(W.hall('room').portals.find(p=>p.id==='exit'));f.tick(250);assert.deepEqual(f.portals,['exit']);assert.equal(f.frames.size,0);f.tick();assert.deepEqual(f.portals,['exit']);
 });
 
 test('jumping reaches the tabletop, lands on it and drops back to the ground when walking off',()=>{const f=fixture({initial:{x:480,y:565}});f.fire(f.document,'keydown',{key:' ',target:f.world});f.fire(f.document,'keydown',{key:'ArrowUp',target:f.world});f.tick(23);f.fire(f.document,'keyup',{key:'ArrowUp'});assert(Number(f.actor.dataset.z)>52);assert(W.surface(W.hall('room'),f.point()));f.tick(65);assert.equal(Number(f.actor.dataset.z),52);f.fire(f.document,'keydown',{key:'ArrowDown',target:f.world});f.tick(30);f.fire(f.document,'keyup',{key:'ArrowDown'});f.tick(60);assert.equal(Number(f.actor.dataset.z),0);f.ui.destroy();});
@@ -57,3 +57,7 @@ test('a short tap still walks to ground and ignores the second finger during an 
  const f=fixture();f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:4,clientX:540,clientY:590});f.fire(f.world,'pointerup',{pointerId:4});f.tick(50);assert(Math.abs(f.point().x-540)<1);
  f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:4,clientX:500,clientY:550});f.fire(f.world,'pointermove',{pointerId:4,clientX:450,clientY:550});f.fire(f.world,'pointerdown',{pointerType:'touch',pointerId:5,clientX:600,clientY:550});f.fire(f.world,'pointerup',{pointerId:5});const old=f.point();f.tick(10);assert(f.point().x<old.x);f.fire(f.world,'pointerup',{pointerId:4});f.ui.destroy();
 });
+
+test('targeting the herbal stairs does not activate the neighboring classroom first',()=>{const scene=W.hall('知識教室','herbal'),f=fixture({scene});f.ui.toward(scene.portals.find(p=>p.id==='stairs'));f.tick(400);assert.deepEqual(f.portals,['stairs']);f.ui.destroy();});
+
+test('closing a classroom entrance menu preserves movement and can reach stairs',()=>{const scene=W.hall('知識教室','herbal'),f=fixture({scene});f.ui.toward(scene.portals.find(p=>p.id==='room'));f.tick(400);assert.deepEqual(f.portals,['room']);f.document.modal=true;f.tick();f.document.modal=false;f.ui.toward(scene.portals.find(p=>p.id==='stairs'));f.tick(400);assert.deepEqual(f.portals,['room','stairs']);f.ui.destroy();});

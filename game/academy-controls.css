@@ -9,3 +9,10 @@
 .bot-levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.bot-level{padding:16px;border:1px solid #c9d8cc;border-radius:14px;background:#f2f8ec}.bot-level.locked{background:#f1f1ed}.bot-level h3{font-size:18px}.bot-level .button{width:100%;white-space:normal}
 @media(pointer:coarse){.academy-immersive .walk-pad{display:none}.academy-immersive .touch-move-help{display:block;position:absolute;bottom:132px;left:12px;max-width:210px;border-radius:9px;padding:7px 9px;background:#fffbe9d9;color:#345749;font-size:11px;pointer-events:none}}
 @media(max-width:650px){.world-route-guide{left:10px;top:155px;width:210px;max-height:calc(100dvh - 340px)}.world-route-guide summary{font-size:12px;padding:9px}.route-guide-actions .button{font-size:11px;padding:7px;min-height:36px}.bot-levels{grid-template-columns:1fr}.bot-level{padding:13px}}
+
+/* Separate labels without changing their actual walk destinations. */
+.interior-walk[data-building="herbal"] .walk-portal[data-walk-portal="stairs"]{transform:translate(-100%,-150%)}
+.interior-walk[data-building="herbal"] .walk-portal[data-walk-portal="room"]{transform:translate(10%,0)}
+.world-exit-button{pointer-events:auto;position:absolute;right:18px;bottom:155px;z-index:150;padding:12px 18px!important;min-height:48px;background:#fff8e9!important;color:#843c2d!important;border:2px solid #bf7655!important;box-shadow:0 3px 14px #452e2430;font-weight:850}
+.quiz-exit{display:block;margin-bottom:16px;border:2px solid #b77554!important;font-weight:800}
+@media(max-width:650px){.world-exit-button{right:10px;bottom:160px;font-size:12px;padding:10px!important}}

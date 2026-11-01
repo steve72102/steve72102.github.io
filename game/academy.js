@@ -26,7 +26,7 @@
     {id:'life',school:'成大',hall:'hall-life.webp',name:'生活工坊',subtitle:'補給 · 星願 · 造型',number:'05',color:'gold',description:'備好下一場冒險的補給，換上喜歡的造型，和器皿夥伴一起出發。'}
   ];
   const FLOORS={
-    study:[{id:'practice',level:'1F',name:'知識教室',description:'隨機 5 題，從今天的一點理解開始。'},{id:'calculation',level:'2F',name:'計算研究室',description:'練習題庫中與計算相關的題目。'},{id:'exam',level:'3F',name:'歷屆試煉室',description:'選一份歷屆試題，逐步讀懂每個觀念。'}],
+    study:[{id:'practice',level:'1F',name:'知識教室',description:'基礎觀念：非計算題，每場 5 題，答對 3 題解鎖二樓。'},{id:'calculation',level:'2F',name:'計算研究室',description:'計算與推理：每場 5 題，答對 4 題解鎖三樓。'},{id:'exam',level:'3F',name:'歷屆試煉室',description:'歷屆綜合挑戰：選定年度抽 5 題，全部答對通關。'}],
     battle:[{id:'arena',level:'1F',name:'怪物試煉場',description:'兩回合打怪，累積個人每週銅、銀、金、鑽石積分。'},{id:'duel',level:'2F',name:'雙人競技場',description:'自動配對或房號邀請，和真人進行兩回合知識友誼賽。'}],
     life:[{id:'shop',level:'1F',name:'補給商店',description:'用金幣購買回合前知識補給券。'},{id:'draw',level:'2F',name:'星願工坊',description:'用答題取得的星願券，抽取戰鬥裝備。'},{id:'wardrobe',level:'3F',name:'造型研究室',description:'自由更換人物外觀；完成新手任務後，與器皿夥伴一起成長。'}]
   };
@@ -46,7 +46,7 @@
   function floors(id){return FLOORS[id]||FLOORS.study;}
   function pool(questions,subject,floor,exam){
     if(!BUILDINGS.slice(0,3).some(b=>b.id===subject)||!FLOORS.study.some(f=>f.id===floor))return [];
-    return questions.filter(q=>!q.needsReview&&q.subject===subject&&(floor!=='calculation'||q.calculation)&&(floor!=='exam'||q.exam===exam));
+    return questions.filter(q=>!q.needsReview&&q.subject===subject&&(floor!=='practice'||!q.calculation)&&(floor!=='calculation'||q.calculation)&&(floor!=='exam'||q.exam===exam));
   }
   return {CHARACTERS,PETS,BUILDINGS,FLOORS,fresh,restore,character,pet,choose,floors,pool};
 });
