@@ -1,0 +1,51 @@
+{
+  "assetId": "pineapple-professor",
+  "identity": "Top row second scholar from approved ten-person reference: young adult woman, slender build, oval face, long black ponytail, cream ribbon, no glasses.",
+  "artMethod": "Built-in image_gen; eight separately authored transparent sheets and one rejected/replaced rear-run spacing correction. No mirrored sides or synthesized in-between poses.",
+  "references": [
+    {
+      "file": "outfit-references/original-public/level30-bach-cast.webp",
+      "sha256": "9ab222f7099dd99fbc81d4e76e169670d9a1f50aba4276b0696383f2b0b9f9f3",
+      "purpose": "approved character identity"
+    },
+    {
+      "file": "stage3-production/extra-masters/turnaround-reference.webp",
+      "sha256": "cf7e5dd621acf017513a90f7c173bf824e6744af0433d870d598ee5eba89750e",
+      "purpose": "approved pineapple outfit materials and four-side garment design"
+    }
+  ],
+  "sourcePrompts": "art-source/characters/pineapple-professor/generation-records.json",
+  "packingManifest": "art-source/characters/pineapple-professor/packing-manifest.json",
+  "visualReview": [
+    "All eight source sheets reviewed for identity, outfit, body completeness, cardinal view and distinct poses.",
+    "Packed right-run, up-run, down-actions and right-actions checked for whole hair, shoes, notebook and no neighboring fragments.",
+    "Back notebook is naturally occluded, held in front of chest; all other directions keep two-handed hold."
+  ],
+  "scope": "64 authored poses for professor wearing complete eight-slot pineapple outfit. Actions are one painting per state per direction; independent per-slot authored animations are not claimed.",
+  "originals": "Native transparent PNG source retained; exact lossless WebP copies decode to identical RGBA including hidden RGB.",
+  "pipeline": {
+    "operations": [
+      "original alpha-component attribution",
+      "explicit cropped region extraction retaining own RGBA",
+      "isotropic Lanczos downscale",
+      "integer translation",
+      "transparent atlas packing",
+      "lossless WebP"
+    ],
+    "noMirroring": true,
+    "noWarp": true,
+    "noSynthesisedPoses": true,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0",
+    "extractionDisclosure": "Eight disconnected source alpha>16 silhouettes define ownership; other-pose pixels within overlapping bounding rectangles are excluded by nearest-silhouette assignment. Own RGBA pixels are retained exactly before resampling. Original PNG/WebP masters retain every source pixel."
+  },
+  "bodyHeightCalibration": {
+    "doctorReferenceVisibleHeight": 295,
+    "doctorBodyHeight": 450,
+    "characterBodyHeight": 450,
+    "desiredIdleHeight": 295.0,
+    "actualIdleHeight": 295,
+    "commonScale": 0.5874
+  },
+  "licensedDependencies": "No third-party game artwork, logo, branded clothes or runtime image API. User-approved reference images and generated derivative originals."
+}

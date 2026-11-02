@@ -13,7 +13,9 @@ test('native artwork requires the exact scholar and all eight actually equipped 
     const mixed=full();mixed.rpg.loadout[slot]='fruit-berry-'+slot;assert(!Native.matches(mixed),slot);
     const empty=full();empty.rpg.loadout[slot]=null;assert(!Native.matches(empty),slot);
   }
-  for(const character of A.CHARACTERS.filter(c=>c.id!=='doctor'))assert(!Native.matches({...state,appearance:{character:character.id}}));
+  for(const character of A.CHARACTERS)assert.equal(Native.matches({...state,appearance:{character:character.id}}),!!Native.CAST[character.id]);
+  assert(!Native.matches({...state,appearance:{character:'unknown-scholar'}}));
+  for(const character of ['toString','constructor','__proto__']){assert(!Native.matches({...state,appearance:{character}}));assert.equal(Native.asset('down','actions',character),Native.asset('down','actions'));}
   assert(!Native.matches({rpg:state.rpg}));assert(!Native.matches(null));assert.equal(JSON.stringify(state),before);
 });
 
@@ -80,7 +82,7 @@ function domFixture({images=true,missing=null}={}){
   }
   const node=(tag,attrs={},...children)=>new Element(tag,attrs,children),document={createElementNS:(_,tag)=>node(tag)};
   const window={document,MindAcademy:A,MindAdventure:R,MindEngine:E,MindLobby:L,MindCharacterMotion:Motion,matchMedia:()=>({matches:false})};
-  if(images)window.Image=class{constructor(){this.naturalWidth=1024;this.naturalHeight=768;}set src(value){requests.push(value);if(missing?.test(value))this.onerror();else this.onload();}};
+  if(images)window.Image=class{constructor(){this.naturalWidth=1024;this.naturalHeight=768;}set src(value){if(value.includes('/actor-')){this.naturalWidth=384;this.naturalHeight=288;}requests.push(value);if(missing?.test(value))this.onerror();else this.onload();}};
   const context=vm.createContext({window,document,Date,XMLSerializer:class{serializeToString(el){serialized++;return JSON.stringify(el.attrs);}}});
   for(const name of ['native-avatar','cast-outfit','avatar-motion','lobby-ui'])vm.runInContext(fs.readFileSync(require.resolve('../game/'+name+'.js'),'utf8'),context);
   const actor=(state=full(),remote=false)=>window.MindAvatar({node,appearance:state.appearance,loadout:state.rpg.loadout,name:remote?'同學乙':'同學甲',remote});
@@ -108,6 +110,17 @@ test('removing even one hat, accessory or handheld restores the existing truthfu
     for(const remote of [false,true]){const actor=f.actor(state,remote);assert(actor.querySelector('.equipped-sprite'),slot);assert(!actor.querySelector('.native-avatar-sprite'),slot);}
   }
   assert.equal(f.requests.length,0,'fallback outfits must not load painted atlases');
+});
+
+test('each registered scholar uses its own original preview and compact world sheet; all eight slots are required',()=>{
+  const f=domFixture();
+  for(const [character,p] of Object.entries(Native.CAST)){
+    const state=full();state.appearance.character=character;
+    const preview=f.window.MindCastOutfit.preview(state);assert.equal(preview.attrs['data-native-avatar'],p.id);assert.equal(preview.attrs.viewBox,p.previewBox.join(' '));assert.equal(preview.querySelector('image').attrs.href,Native.asset('down','actions',character));
+    for(const remote of [false,true]){const actor=f.actor(state,remote);f.window.MindAvatarMotion.update(actor,sample());assert.equal(actor.dataset.nativeAvatar,p.id);assert.equal(actor.dataset.nativeAssetStatus,'ready');assert.equal(actor.querySelector('.native-avatar-sprite').styleValues.get('background-image'),'url("'+Native.asset('down','actions',character,'actor')+'")');f.window.MindAvatarMotion.dispose(actor);}
+    for(const slot of Native.SLOTS){const partial={...state,rpg:{loadout:{...state.rpg.loadout,[slot]:null}}};assert(!Native.matches(partial),character+'/'+slot);}
+    for(const view of Native.DIRECTIONS)assert(fs.existsSync(require.resolve('../game/'+Native.asset(view,'actions',character,'actor').slice(2))));
+  }
 });
 
 test('all eight native catalog cards crop the approved independent garment while single-piece try-on remains truthful',()=>{

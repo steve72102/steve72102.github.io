@@ -1,0 +1,602 @@
+[
+  {
+    "character": "doctor",
+    "view": "down",
+    "component": 3,
+    "neck": [
+      162.0,
+      440
+    ],
+    "rect": [
+      14,
+      83,
+      272,
+      360
+    ]
+  },
+  {
+    "character": "professor",
+    "view": "down",
+    "component": 2,
+    "neck": [
+      472.0,
+      436
+    ],
+    "rect": [
+      261,
+      81,
+      346,
+      473
+    ]
+  },
+  {
+    "character": "graduate",
+    "view": "down",
+    "component": 4,
+    "neck": [
+      773.0,
+      438
+    ],
+    "rect": [
+      617,
+      86,
+      282,
+      355
+    ]
+  },
+  {
+    "character": "researcher",
+    "view": "down",
+    "component": 7,
+    "neck": [
+      1062.0,
+      436
+    ],
+    "rect": [
+      895,
+      95,
+      352,
+      344
+    ]
+  },
+  {
+    "character": "cedar-dean",
+    "view": "down",
+    "component": 1,
+    "neck": [
+      1382.0,
+      439
+    ],
+    "rect": [
+      1246,
+      78,
+      277,
+      364
+    ]
+  },
+  {
+    "character": "herbal-mentor",
+    "view": "down",
+    "component": 92,
+    "neck": [
+      179.0,
+      888
+    ],
+    "rect": [
+      8,
+      573,
+      328,
+      318
+    ]
+  },
+  {
+    "character": "lab-engineer",
+    "view": "down",
+    "component": 87,
+    "neck": [
+      472.0,
+      888
+    ],
+    "rect": [
+      339,
+      542,
+      273,
+      349
+    ]
+  },
+  {
+    "character": "balance-analyst",
+    "view": "down",
+    "component": 90,
+    "neck": [
+      764.0,
+      888
+    ],
+    "rect": [
+      596,
+      559,
+      301,
+      332
+    ]
+  },
+  {
+    "character": "dawn-intern",
+    "view": "down",
+    "component": 93,
+    "neck": [
+      1074.0,
+      897
+    ],
+    "rect": [
+      888,
+      575,
+      378,
+      325
+    ]
+  },
+  {
+    "character": "river-fellow",
+    "view": "down",
+    "component": 85,
+    "neck": [
+      1374.5,
+      898
+    ],
+    "rect": [
+      1241,
+      536,
+      290,
+      365
+    ]
+  },
+  {
+    "character": "doctor",
+    "view": "up",
+    "component": 4,
+    "neck": [
+      160.0,
+      450
+    ],
+    "rect": [
+      21,
+      106,
+      285,
+      348
+    ]
+  },
+  {
+    "character": "professor",
+    "view": "up",
+    "component": 1,
+    "neck": [
+      505.0,
+      449
+    ],
+    "rect": [
+      301,
+      98,
+      309,
+      486
+    ]
+  },
+  {
+    "character": "graduate",
+    "view": "up",
+    "component": 3,
+    "neck": [
+      765.0,
+      451
+    ],
+    "rect": [
+      624,
+      105,
+      280,
+      350
+    ]
+  },
+  {
+    "character": "researcher",
+    "view": "up",
+    "component": 19,
+    "neck": [
+      1070.0,
+      457
+    ],
+    "rect": [
+      895,
+      117,
+      353,
+      344
+    ]
+  },
+  {
+    "character": "cedar-dean",
+    "view": "up",
+    "component": 2,
+    "neck": [
+      1385.0,
+      458
+    ],
+    "rect": [
+      1243,
+      99,
+      283,
+      362
+    ]
+  },
+  {
+    "character": "herbal-mentor",
+    "view": "up",
+    "component": 161,
+    "neck": [
+      163.0,
+      915
+    ],
+    "rect": [
+      16,
+      590,
+      305,
+      329
+    ]
+  },
+  {
+    "character": "lab-engineer",
+    "view": "up",
+    "component": 156,
+    "neck": [
+      469.0,
+      915
+    ],
+    "rect": [
+      324,
+      578,
+      285,
+      341
+    ]
+  },
+  {
+    "character": "balance-analyst",
+    "view": "up",
+    "component": 157,
+    "neck": [
+      760.0,
+      919
+    ],
+    "rect": [
+      616,
+      578,
+      287,
+      348
+    ]
+  },
+  {
+    "character": "dawn-intern",
+    "view": "up",
+    "component": 174,
+    "neck": [
+      1073.0,
+      915
+    ],
+    "rect": [
+      889,
+      601,
+      373,
+      333
+    ]
+  },
+  {
+    "character": "river-fellow",
+    "view": "up",
+    "component": 151,
+    "neck": [
+      1384.0,
+      917
+    ],
+    "rect": [
+      1235,
+      549,
+      295,
+      372
+    ]
+  },
+  {
+    "character": "doctor",
+    "view": "right",
+    "component": 4,
+    "neck": [
+      165.0,
+      441
+    ],
+    "rect": [
+      8,
+      84,
+      304,
+      361
+    ]
+  },
+  {
+    "character": "professor",
+    "view": "right",
+    "component": 3,
+    "neck": [
+      497.0,
+      434
+    ],
+    "rect": [
+      285,
+      83,
+      346,
+      464
+    ]
+  },
+  {
+    "character": "graduate",
+    "view": "right",
+    "component": 2,
+    "neck": [
+      786.0,
+      441
+    ],
+    "rect": [
+      625,
+      80,
+      297,
+      365
+    ]
+  },
+  {
+    "character": "researcher",
+    "view": "right",
+    "component": 7,
+    "neck": [
+      1089.0,
+      443
+    ],
+    "rect": [
+      899,
+      94,
+      334,
+      352
+    ]
+  },
+  {
+    "character": "cedar-dean",
+    "view": "right",
+    "component": 1,
+    "neck": [
+      1403.0,
+      441
+    ],
+    "rect": [
+      1238,
+      74,
+      288,
+      371
+    ]
+  },
+  {
+    "character": "herbal-mentor",
+    "view": "right",
+    "component": 121,
+    "neck": [
+      202.0,
+      895
+    ],
+    "rect": [
+      6,
+      568,
+      303,
+      330
+    ]
+  },
+  {
+    "character": "lab-engineer",
+    "view": "right",
+    "component": 110,
+    "neck": [
+      493.0,
+      893
+    ],
+    "rect": [
+      320,
+      543,
+      305,
+      354
+    ]
+  },
+  {
+    "character": "balance-analyst",
+    "view": "right",
+    "component": 111,
+    "neck": [
+      800.0,
+      894
+    ],
+    "rect": [
+      606,
+      547,
+      319,
+      351
+    ]
+  },
+  {
+    "character": "dawn-intern",
+    "view": "right",
+    "component": 120,
+    "neck": [
+      1103.0,
+      902
+    ],
+    "rect": [
+      908,
+      567,
+      326,
+      339
+    ]
+  },
+  {
+    "character": "river-fellow",
+    "view": "right",
+    "component": 108,
+    "neck": [
+      1400.0,
+      898
+    ],
+    "rect": [
+      1235,
+      534,
+      297,
+      368
+    ]
+  },
+  {
+    "character": "doctor",
+    "view": "left",
+    "component": 2,
+    "neck": [
+      148.5,
+      444
+    ],
+    "rect": [
+      4,
+      91,
+      297,
+      356
+    ]
+  },
+  {
+    "character": "professor",
+    "view": "left",
+    "component": 4,
+    "neck": [
+      433.0,
+      441
+    ],
+    "rect": [
+      305,
+      96,
+      359,
+      450
+    ]
+  },
+  {
+    "character": "graduate",
+    "view": "left",
+    "component": 3,
+    "neck": [
+      754.0,
+      444
+    ],
+    "rect": [
+      605,
+      92,
+      300,
+      355
+    ]
+  },
+  {
+    "character": "researcher",
+    "view": "left",
+    "component": 11,
+    "neck": [
+      1040.0,
+      443
+    ],
+    "rect": [
+      914,
+      112,
+      335,
+      335
+    ]
+  },
+  {
+    "character": "cedar-dean",
+    "view": "left",
+    "component": 1,
+    "neck": [
+      1375.0,
+      446
+    ],
+    "rect": [
+      1233,
+      85,
+      293,
+      365
+    ]
+  },
+  {
+    "character": "herbal-mentor",
+    "view": "left",
+    "component": 111,
+    "neck": [
+      150.0,
+      898
+    ],
+    "rect": [
+      17,
+      567,
+      314,
+      334
+    ]
+  },
+  {
+    "character": "lab-engineer",
+    "view": "left",
+    "component": 103,
+    "neck": [
+      448.0,
+      892
+    ],
+    "rect": [
+      326,
+      537,
+      282,
+      359
+    ]
+  },
+  {
+    "character": "balance-analyst",
+    "view": "left",
+    "component": 110,
+    "neck": [
+      741.0,
+      898
+    ],
+    "rect": [
+      616,
+      561,
+      307,
+      340
+    ]
+  },
+  {
+    "character": "dawn-intern",
+    "view": "left",
+    "component": 117,
+    "neck": [
+      1041.0,
+      903
+    ],
+    "rect": [
+      912,
+      579,
+      343,
+      327
+    ]
+  },
+  {
+    "character": "river-fellow",
+    "view": "left",
+    "component": 101,
+    "neck": [
+      1377.0,
+      896
+    ],
+    "rect": [
+      1217,
+      524,
+      318,
+      375
+    ]
+  }
+]

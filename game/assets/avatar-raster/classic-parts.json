@@ -1,0 +1,1798 @@
+{
+  "version": 1,
+  "atlases": {
+    "classic-cloaks": {
+      "src": "./assets/avatar-raster/classic-cloaks.webp",
+      "width": 1448,
+      "height": 1086
+    },
+    "classic-boots": {
+      "src": "./assets/avatar-raster/classic-boots.webp",
+      "width": 2048,
+      "height": 768
+    },
+    "classic-badges": {
+      "src": "./assets/avatar-raster/classic-badges.webp",
+      "width": 1448,
+      "height": 1086
+    }
+  },
+  "kits": {
+    "coat-dawn": {
+      "views": {
+        "down": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                47,
+                76,
+                270,
+                237
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "cape.front": {
+              "hidden": true
+            },
+            "cape.back": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                424,
+                77,
+                249,
+                226
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                794,
+                75,
+                184,
+                237
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                1190,
+                75,
+                185,
+                237
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    },
+    "coat-herb": {
+      "views": {
+        "down": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                44,
+                365,
+                277,
+                327
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "cape.front": {
+              "hidden": true
+            },
+            "cape.back": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                422,
+                368,
+                259,
+                316
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                769,
+                369,
+                233,
+                323
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                1177,
+                368,
+                215,
+                325
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    },
+    "coat-star": {
+      "views": {
+        "down": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                41,
+                712,
+                306,
+                324
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "cape.front": {
+              "hidden": true
+            },
+            "cape.back": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                428,
+                712,
+                256,
+                326
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                777,
+                712,
+                227,
+                327
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "cape.front": {
+              "atlas": "classic-cloaks",
+              "rect": [
+                1175,
+                712,
+                231,
+                325
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    },
+    "boots-dawn": {
+      "views": {
+        "down": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                42,
+                15,
+                143,
+                260
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                255,
+                15,
+                142,
+                260
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                472,
+                44,
+                148,
+                231
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                663,
+                44,
+                150,
+                231
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                859,
+                41,
+                317,
+                234
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1195,
+                44,
+                265,
+                229
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1465,
+                36,
+                289,
+                239
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                1765,
+                37,
+                266,
+                237
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        }
+      }
+    },
+    "boots-path": {
+      "views": {
+        "down": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                38,
+                279,
+                147,
+                229
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                253,
+                279,
+                144,
+                229
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                460,
+                289,
+                159,
+                226
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                662,
+                289,
+                153,
+                226
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                868,
+                286,
+                308,
+                233
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1202,
+                292,
+                266,
+                218
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1471,
+                288,
+                276,
+                228
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                1761,
+                288,
+                267,
+                224
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        }
+      }
+    },
+    "boots-star": {
+      "views": {
+        "down": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                34,
+                512,
+                150,
+                239
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                249,
+                512,
+                148,
+                239
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                460,
+                520,
+                158,
+                232
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                660,
+                520,
+                158,
+                232
+              ],
+              "anchor": [
+                0.5,
+                0.75
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                865,
+                518,
+                311,
+                235
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            },
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1191,
+                518,
+                273,
+                232
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "shoes.L": {
+              "atlas": "classic-boots",
+              "rect": [
+                1465,
+                516,
+                288,
+                236
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "L"
+            },
+            "shoes.R": {
+              "atlas": "classic-boots",
+              "rect": [
+                1765,
+                516,
+                273,
+                233
+              ],
+              "anchor": [
+                0.5,
+                0.72
+              ],
+              "anatomicalSide": "R"
+            }
+          }
+        }
+      }
+    },
+    "badge-seed": {
+      "views": {
+        "down": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                119,
+                8,
+                259,
+                328
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                469,
+                8,
+                258,
+                328
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                914,
+                8,
+                141,
+                330
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                1217,
+                9,
+                128,
+                329
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        }
+      }
+    },
+    "badge-prism": {
+      "views": {
+        "down": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                84,
+                346,
+                321,
+                369
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                441,
+                347,
+                318,
+                368
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                896,
+                346,
+                168,
+                369
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                1198,
+                346,
+                168,
+                369
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        }
+      }
+    },
+    "badge-sage": {
+      "views": {
+        "down": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                30,
+                717,
+                394,
+                356
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                436,
+                716,
+                385,
+                357
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                888,
+                717,
+                196,
+                356
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "accessory": {
+              "atlas": "classic-badges",
+              "rect": [
+                1179,
+                717,
+                195,
+                356
+              ],
+              "anchor": [
+                0.5,
+                0.5
+              ],
+              "side": "L",
+              "backVisible": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "catalog": {
+    "coat-dawn": {
+      "kit": "coat-dawn",
+      "slot": "cape"
+    },
+    "coat-herb": {
+      "kit": "coat-herb",
+      "slot": "cape"
+    },
+    "coat-star": {
+      "kit": "coat-star",
+      "slot": "cape"
+    },
+    "boots-dawn": {
+      "kit": "boots-dawn",
+      "slot": "shoes"
+    },
+    "boots-path": {
+      "kit": "boots-path",
+      "slot": "shoes"
+    },
+    "boots-star": {
+      "kit": "boots-star",
+      "slot": "shoes"
+    },
+    "badge-seed": {
+      "kit": "badge-seed",
+      "slot": "accessory"
+    },
+    "badge-prism": {
+      "kit": "badge-prism",
+      "slot": "accessory"
+    },
+    "badge-sage": {
+      "kit": "badge-sage",
+      "slot": "accessory"
+    }
+  },
+  "measurements": {
+    "classic-cloaks": {
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "alphaZeroPixels": 995603,
+      "alphaSignificantPixels": 516122,
+      "alphaPreservedExactly": true,
+      "logicalRows": 3,
+      "cellsPerRow": 4,
+      "cells": [
+        {
+          "index": 0,
+          "alphaBounds": [
+            49,
+            78,
+            266,
+            233
+          ],
+          "rect": [
+            47,
+            76,
+            270,
+            237
+          ],
+          "significantPixels": 38788
+        },
+        {
+          "index": 1,
+          "alphaBounds": [
+            426,
+            79,
+            245,
+            222
+          ],
+          "rect": [
+            424,
+            77,
+            249,
+            226
+          ],
+          "significantPixels": 36328
+        },
+        {
+          "index": 2,
+          "alphaBounds": [
+            796,
+            77,
+            180,
+            233
+          ],
+          "rect": [
+            794,
+            75,
+            184,
+            237
+          ],
+          "significantPixels": 25795
+        },
+        {
+          "index": 3,
+          "alphaBounds": [
+            1192,
+            77,
+            181,
+            233
+          ],
+          "rect": [
+            1190,
+            75,
+            185,
+            237
+          ],
+          "significantPixels": 26145
+        },
+        {
+          "index": 4,
+          "alphaBounds": [
+            46,
+            367,
+            273,
+            323
+          ],
+          "rect": [
+            44,
+            365,
+            277,
+            327
+          ],
+          "significantPixels": 59447
+        },
+        {
+          "index": 5,
+          "alphaBounds": [
+            424,
+            370,
+            255,
+            312
+          ],
+          "rect": [
+            422,
+            368,
+            259,
+            316
+          ],
+          "significantPixels": 55080
+        },
+        {
+          "index": 6,
+          "alphaBounds": [
+            771,
+            371,
+            229,
+            319
+          ],
+          "rect": [
+            769,
+            369,
+            233,
+            323
+          ],
+          "significantPixels": 41680
+        },
+        {
+          "index": 7,
+          "alphaBounds": [
+            1179,
+            370,
+            211,
+            321
+          ],
+          "rect": [
+            1177,
+            368,
+            215,
+            325
+          ],
+          "significantPixels": 40212
+        },
+        {
+          "index": 8,
+          "alphaBounds": [
+            43,
+            714,
+            302,
+            320
+          ],
+          "rect": [
+            41,
+            712,
+            306,
+            324
+          ],
+          "significantPixels": 56571
+        },
+        {
+          "index": 9,
+          "alphaBounds": [
+            430,
+            714,
+            252,
+            322
+          ],
+          "rect": [
+            428,
+            712,
+            256,
+            326
+          ],
+          "significantPixels": 50222
+        },
+        {
+          "index": 10,
+          "alphaBounds": [
+            779,
+            714,
+            223,
+            323
+          ],
+          "rect": [
+            777,
+            712,
+            227,
+            327
+          ],
+          "significantPixels": 43063
+        },
+        {
+          "index": 11,
+          "alphaBounds": [
+            1177,
+            714,
+            227,
+            321
+          ],
+          "rect": [
+            1175,
+            712,
+            231,
+            325
+          ],
+          "significantPixels": 42787
+        }
+      ]
+    },
+    "classic-boots": {
+      "sourceSize": [
+        2048,
+        768
+      ],
+      "alphaZeroPixels": 675379,
+      "alphaSignificantPixels": 815730,
+      "alphaPreservedExactly": true,
+      "logicalRows": 3,
+      "cellsPerRow": 8,
+      "cells": [
+        {
+          "index": 0,
+          "alphaBounds": [
+            44,
+            17,
+            139,
+            256
+          ],
+          "rect": [
+            42,
+            15,
+            143,
+            260
+          ],
+          "significantPixels": 25573
+        },
+        {
+          "index": 1,
+          "alphaBounds": [
+            257,
+            17,
+            138,
+            256
+          ],
+          "rect": [
+            255,
+            15,
+            142,
+            260
+          ],
+          "significantPixels": 25863
+        },
+        {
+          "index": 2,
+          "alphaBounds": [
+            474,
+            46,
+            144,
+            227
+          ],
+          "rect": [
+            472,
+            44,
+            148,
+            231
+          ],
+          "significantPixels": 26891
+        },
+        {
+          "index": 3,
+          "alphaBounds": [
+            665,
+            46,
+            146,
+            227
+          ],
+          "rect": [
+            663,
+            44,
+            150,
+            231
+          ],
+          "significantPixels": 27114
+        },
+        {
+          "index": 4,
+          "alphaBounds": [
+            861,
+            43,
+            313,
+            230
+          ],
+          "rect": [
+            859,
+            41,
+            317,
+            234
+          ],
+          "significantPixels": 44764
+        },
+        {
+          "index": 5,
+          "alphaBounds": [
+            1197,
+            46,
+            261,
+            225
+          ],
+          "rect": [
+            1195,
+            44,
+            265,
+            229
+          ],
+          "significantPixels": 37890
+        },
+        {
+          "index": 6,
+          "alphaBounds": [
+            1467,
+            38,
+            285,
+            235
+          ],
+          "rect": [
+            1465,
+            36,
+            289,
+            239
+          ],
+          "significantPixels": 42172
+        },
+        {
+          "index": 7,
+          "alphaBounds": [
+            1767,
+            39,
+            262,
+            233
+          ],
+          "rect": [
+            1765,
+            37,
+            266,
+            237
+          ],
+          "significantPixels": 38580
+        },
+        {
+          "index": 8,
+          "alphaBounds": [
+            40,
+            281,
+            143,
+            225
+          ],
+          "rect": [
+            38,
+            279,
+            147,
+            229
+          ],
+          "significantPixels": 25079
+        },
+        {
+          "index": 9,
+          "alphaBounds": [
+            255,
+            281,
+            140,
+            225
+          ],
+          "rect": [
+            253,
+            279,
+            144,
+            229
+          ],
+          "significantPixels": 25154
+        },
+        {
+          "index": 10,
+          "alphaBounds": [
+            462,
+            291,
+            155,
+            222
+          ],
+          "rect": [
+            460,
+            289,
+            159,
+            226
+          ],
+          "significantPixels": 28142
+        },
+        {
+          "index": 11,
+          "alphaBounds": [
+            664,
+            291,
+            149,
+            222
+          ],
+          "rect": [
+            662,
+            289,
+            153,
+            226
+          ],
+          "significantPixels": 27145
+        },
+        {
+          "index": 12,
+          "alphaBounds": [
+            870,
+            288,
+            304,
+            229
+          ],
+          "rect": [
+            868,
+            286,
+            308,
+            233
+          ],
+          "significantPixels": 45276
+        },
+        {
+          "index": 13,
+          "alphaBounds": [
+            1204,
+            294,
+            262,
+            214
+          ],
+          "rect": [
+            1202,
+            292,
+            266,
+            218
+          ],
+          "significantPixels": 37806
+        },
+        {
+          "index": 14,
+          "alphaBounds": [
+            1473,
+            290,
+            272,
+            224
+          ],
+          "rect": [
+            1471,
+            288,
+            276,
+            228
+          ],
+          "significantPixels": 40632
+        },
+        {
+          "index": 15,
+          "alphaBounds": [
+            1763,
+            290,
+            263,
+            220
+          ],
+          "rect": [
+            1761,
+            288,
+            267,
+            224
+          ],
+          "significantPixels": 38821
+        },
+        {
+          "index": 16,
+          "alphaBounds": [
+            36,
+            514,
+            146,
+            235
+          ],
+          "rect": [
+            34,
+            512,
+            150,
+            239
+          ],
+          "significantPixels": 25885
+        },
+        {
+          "index": 17,
+          "alphaBounds": [
+            251,
+            514,
+            144,
+            235
+          ],
+          "rect": [
+            249,
+            512,
+            148,
+            239
+          ],
+          "significantPixels": 25845
+        },
+        {
+          "index": 18,
+          "alphaBounds": [
+            462,
+            522,
+            154,
+            228
+          ],
+          "rect": [
+            460,
+            520,
+            158,
+            232
+          ],
+          "significantPixels": 27961
+        },
+        {
+          "index": 19,
+          "alphaBounds": [
+            662,
+            522,
+            154,
+            228
+          ],
+          "rect": [
+            660,
+            520,
+            158,
+            232
+          ],
+          "significantPixels": 27862
+        },
+        {
+          "index": 20,
+          "alphaBounds": [
+            867,
+            520,
+            307,
+            231
+          ],
+          "rect": [
+            865,
+            518,
+            311,
+            235
+          ],
+          "significantPixels": 46272
+        },
+        {
+          "index": 21,
+          "alphaBounds": [
+            1193,
+            520,
+            269,
+            228
+          ],
+          "rect": [
+            1191,
+            518,
+            273,
+            232
+          ],
+          "significantPixels": 40436
+        },
+        {
+          "index": 22,
+          "alphaBounds": [
+            1467,
+            518,
+            284,
+            232
+          ],
+          "rect": [
+            1465,
+            516,
+            288,
+            236
+          ],
+          "significantPixels": 43643
+        },
+        {
+          "index": 23,
+          "alphaBounds": [
+            1767,
+            518,
+            269,
+            229
+          ],
+          "rect": [
+            1765,
+            516,
+            273,
+            233
+          ],
+          "significantPixels": 40901
+        }
+      ]
+    },
+    "classic-badges": {
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "alphaZeroPixels": 679243,
+      "alphaSignificantPixels": 507773,
+      "alphaPreservedExactly": true,
+      "logicalRows": 3,
+      "cellsPerRow": 4,
+      "cells": [
+        {
+          "index": 0,
+          "alphaBounds": [
+            121,
+            10,
+            255,
+            324
+          ],
+          "rect": [
+            119,
+            8,
+            259,
+            328
+          ],
+          "significantPixels": 47251
+        },
+        {
+          "index": 1,
+          "alphaBounds": [
+            471,
+            10,
+            254,
+            324
+          ],
+          "rect": [
+            469,
+            8,
+            258,
+            328
+          ],
+          "significantPixels": 47269
+        },
+        {
+          "index": 2,
+          "alphaBounds": [
+            916,
+            10,
+            137,
+            326
+          ],
+          "rect": [
+            914,
+            8,
+            141,
+            330
+          ],
+          "significantPixels": 24212
+        },
+        {
+          "index": 3,
+          "alphaBounds": [
+            1219,
+            11,
+            124,
+            325
+          ],
+          "rect": [
+            1217,
+            9,
+            128,
+            329
+          ],
+          "significantPixels": 21854
+        },
+        {
+          "index": 4,
+          "alphaBounds": [
+            86,
+            348,
+            317,
+            365
+          ],
+          "rect": [
+            84,
+            346,
+            321,
+            369
+          ],
+          "significantPixels": 55868
+        },
+        {
+          "index": 5,
+          "alphaBounds": [
+            443,
+            349,
+            314,
+            364
+          ],
+          "rect": [
+            441,
+            347,
+            318,
+            368
+          ],
+          "significantPixels": 55414
+        },
+        {
+          "index": 6,
+          "alphaBounds": [
+            898,
+            348,
+            164,
+            365
+          ],
+          "rect": [
+            896,
+            346,
+            168,
+            369
+          ],
+          "significantPixels": 27543
+        },
+        {
+          "index": 7,
+          "alphaBounds": [
+            1200,
+            348,
+            164,
+            365
+          ],
+          "rect": [
+            1198,
+            346,
+            168,
+            369
+          ],
+          "significantPixels": 27885
+        },
+        {
+          "index": 8,
+          "alphaBounds": [
+            32,
+            719,
+            390,
+            352
+          ],
+          "rect": [
+            30,
+            717,
+            394,
+            356
+          ],
+          "significantPixels": 70216
+        },
+        {
+          "index": 9,
+          "alphaBounds": [
+            438,
+            718,
+            381,
+            353
+          ],
+          "rect": [
+            436,
+            716,
+            385,
+            357
+          ],
+          "significantPixels": 68200
+        },
+        {
+          "index": 10,
+          "alphaBounds": [
+            890,
+            719,
+            192,
+            352
+          ],
+          "rect": [
+            888,
+            717,
+            196,
+            356
+          ],
+          "significantPixels": 31461
+        },
+        {
+          "index": 11,
+          "alphaBounds": [
+            1181,
+            719,
+            191,
+            352
+          ],
+          "rect": [
+            1179,
+            717,
+            195,
+            356
+          ],
+          "significantPixels": 30564
+        }
+      ]
+    }
+  },
+  "viewOrder": [
+    "down",
+    "up",
+    "right",
+    "left"
+  ],
+  "validation": {
+    "method": "Connected-component alpha bounds >16/255 with two-pixel padding; exact source alpha retained by WebP encoder. Rectangles checked for nonempty pixels, atlas bounds and overlapping visible pieces.",
+    "atlases": [
+      {
+        "atlas": "classic-cloaks",
+        "parts": 12,
+        "significantAlphaOutsideRects": 0,
+        "overlappingSignificantPixels": 0
+      },
+      {
+        "atlas": "classic-boots",
+        "parts": 24,
+        "significantAlphaOutsideRects": 0,
+        "overlappingSignificantPixels": 0
+      },
+      {
+        "atlas": "classic-badges",
+        "parts": 12,
+        "significantAlphaOutsideRects": 0,
+        "overlappingSignificantPixels": 0
+      }
+    ]
+  }
+}

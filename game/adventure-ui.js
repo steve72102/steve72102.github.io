@@ -13,7 +13,7 @@ window.MindAdventureUI=function(ctx){
     const paths=item.slot==='jacket'||item.slot==='cape'?['M25 10 12 22 5 51Q18 58 32 52Q46 58 59 51L52 22 39 10 32 18Z','M25 10 27 24 32 18 37 24 39 10M32 25V51M13 47 22 28M51 47 42 28']:item.slot==='hat'?['M13 37 20 16Q32 7 44 16L51 37Z','M6 38Q32 49 58 38L55 45Q32 56 9 45ZM19 31Q32 37 45 31']:item.slot==='shoes'?['M12 9H29L27 35 32 45 30 54H5V44L14 37Z','M37 9H54L52 35 59 43 59 54H34V44L39 37ZM13 16H27M38 16H52M7 48H29M36 48H57']:item.slot==='accessory'?['M21 7H43L40 27 32 32 24 27Z','M32 25 38 31 47 32 46 41 50 48 42 53 38 61 30 57 22 60 18 52 11 47 16 39 16 31 25 30ZM32 34 35 40 41 41 36 46 37 52 31 49 25 52 26 45 22 41 29 40Z']:item.slot==='pants'?['M15 8H49L46 55H34L32 30 30 55H18Z','M15 17H49M32 8V29M20 49H29M35 49H44']:item.slot==='shirt'?['M22 9 10 19 6 35 16 39 18 54H46L48 39 58 35 54 19 42 9 32 17Z','M22 9 25 22 32 17 39 22 42 9M32 18V53']:['M10 12Q21 6 32 14Q43 6 54 12V51Q42 46 32 54Q21 46 10 51ZM32 14V54M17 22 25 20M17 31 25 29M39 20 47 22M39 29 47 31'];
     paths.forEach((d,i)=>{const p=document.createElementNS(ns,'path');p.setAttribute('d',d);p.setAttribute('stroke','currentColor');p.setAttribute('stroke-width','2.5');p.setAttribute('stroke-linejoin','round');if(!i){p.setAttribute('fill','currentColor');p.setAttribute('fill-opacity','.18');}svg.append(p);});if(item.source==='fountain'){const p=document.createElementNS(ns,'path');p.setAttribute('d',['M27 32 32 27 37 32 32 37Z','M26 32Q32 22 38 32Q32 42 26 32','M26 36 32 26 38 36M28 32H36','M26 29H38M26 35H38'][item.pattern]);p.setAttribute('stroke','currentColor');p.setAttribute('stroke-width','2');svg.append(p);}wrap.append(svg);return wrap;
   }
-  function outfitPreview(s){return window.MindCastOutfit.preview(s);}
+  function outfitPreview(s,options={}){return window.MindCastOutfit.preview(s,options);}
   function commit(message){save();closeModal();render();if(message)toast(message);}
   function previewState(ids,character){
     const s=getState(),loadout={...s.rpg.loadout};
@@ -22,7 +22,16 @@ window.MindAdventureUI=function(ctx){
   }
   function liveStage(ids,setKey='',character){
     const s=previewState(ids,character),name=window.MindAcademy.character(s.appearance.character).name;
-    return node('div',{class:'outfit-live-stage'+(setKey?' palette-'+setKey:''),'data-live-outfit':ids.join(' ')},outfitPreview(s),node('span',{class:'outfit-live-caption'},'實際穿戴版型 · '+name));
+    let picture=outfitPreview(s);const stage=node('div',{class:'outfit-live-stage'+(setKey?' palette-'+setKey:''),'data-live-outfit':ids.join(' ')},picture,node('span',{class:'outfit-live-caption'},'實際穿戴版型 · '+name));
+    if(!character){
+      const controls=node('div',{class:'outfit-view-controls',role:'group','aria-label':'試穿方向'});
+      for(const [direction,label] of [['down','正面'],['up','背面'],['left','左側'],['right','右側']]){
+        const button=btn(label,()=>{const next=outfitPreview(s,{direction});window.MindRasterOutfit?.dispose(picture);picture.replaceWith(next);picture=next;for(const b of controls.children)b.setAttribute('aria-pressed',b===button?'true':'false');},'secondary small');
+        button.setAttribute('aria-pressed',direction==='down'?'true':'false');button.setAttribute('data-outfit-view',direction);controls.append(button);
+      }
+      stage.append(controls);
+    }
+    return stage;
   }
   function castGallery(set,ids){
     openModal(node('p',{class:'eyebrow'},'TEN SCHOLARS · ONE COLLECTION'),node('h2',{},set.name+' · 十人版型'),note('以下以每位人物自己的肩寬、衣長與身形呈現同一套裝配；選角與預覽不會改動你的穿戴。'),node('div',{class:'outfit-cast-gallery'},window.MindAcademy.CHARACTERS.map(person=>node('figure',{},liveStage(ids,set.key,person.id),node('figcaption',{},person.name)))));

@@ -1,8 +1,8 @@
 {
   "version": 1,
   "filename": "mind-quest-offline.zip",
-  "size": 33338658,
-  "sha256": "d7b91358f64876e0a09eeeeec2f090b239c4ef16e26d47713efb1cb471a84fe4",
+  "size": 96499619,
+  "sha256": "60df8d4f34a426f4f143dbf62de5130e7b5aee1d6e5113005d44be1f512fe1f7",
   "parts": [
     {
       "file": "mind-quest-def3050ac969-01.part",
@@ -68,6 +68,116 @@
       "file": "mind-quest-d7b91358f648-13.part",
       "bytes": 1662500,
       "sha256": "31dac7543011633e5c680523a14989678bd50fbc2d17be679e43d76462cb2e40"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-14.part",
+      "bytes": 3000000,
+      "sha256": "c4d79b3a80aeca48b33acb955481c592a91010930227ce9906a6e2e762a2350b"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-15.part",
+      "bytes": 3000000,
+      "sha256": "71a8f4e29dd6f8a6ddd7447ae0f272f3115dafe23e96883c413cbfb8fa4aa6bb"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-16.part",
+      "bytes": 3000000,
+      "sha256": "729711572629b6255b99acb0401a7e8faa5c092a077a0c0b34e60bebca750b21"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-17.part",
+      "bytes": 3000000,
+      "sha256": "3b5111371f1e7cac7aee6104751721d9a4e841d7bcfc1075af05728784543d1f"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-18.part",
+      "bytes": 3000000,
+      "sha256": "7409679500ff200dead8bd3d4a26f20cd1f86c734fb399929ddda661e20c800b"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-19.part",
+      "bytes": 3000000,
+      "sha256": "b2674235cdcf0df863e8a2ffea75f68c4a92d96d4ac3c510445158293be18d10"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-20.part",
+      "bytes": 3000000,
+      "sha256": "e83a364ee73784f599abf646cfea78ecb9246cf725ea7b751e7e94c6ec0ffe3a"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-21.part",
+      "bytes": 3000000,
+      "sha256": "a3dcc5bc2fc25660cf890b9a581e977c2eac8fdb6468475ef9c218592b87189e"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-22.part",
+      "bytes": 3000000,
+      "sha256": "a17f9f865d52fe9d2a27dc7215fb665209f0567158ff3bf3301be9e7ec94b1eb"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-23.part",
+      "bytes": 3000000,
+      "sha256": "515343545fd548923f4a3b99f7007ee4c260c94903bc5c7f4ff66e553704e228"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-24.part",
+      "bytes": 3000000,
+      "sha256": "460497f4b047ed34fddacff86ca33862ab8a1212e1e6a120071a6b43003c236d"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-25.part",
+      "bytes": 3000000,
+      "sha256": "80b8ba0819893c912d2a8402e900121531a93f5187491cd98d780a7f9de26b99"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-26.part",
+      "bytes": 3000000,
+      "sha256": "651c66d3fab06f401cb7892d0694bcb540a5f455597fba91dc21e986b270ac21"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-27.part",
+      "bytes": 3000000,
+      "sha256": "a93b8c7c011cf3712b60e500d2206e275dc2c76dfea2b69c03b98af7c0c61d69"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-28.part",
+      "bytes": 3000000,
+      "sha256": "aced74335baa152d23a4b6d4e2e255485650c6115d16ef9196b9ac8084f8b458"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-29.part",
+      "bytes": 3000000,
+      "sha256": "3d860c4fc7c62c7e32dbec9c25cb5c0549449871b7ab52f6452d173763f32775"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-30.part",
+      "bytes": 3000000,
+      "sha256": "555af8631bc7de2b961f36d5e6dc0f97398e3f11a429b10ee332e0aebbeecf64"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-31.part",
+      "bytes": 3000000,
+      "sha256": "2a293a170a5751cfb9208e1f50f25049ea7ccdd779be86096f31779a98abf12e"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-32.part",
+      "bytes": 3000000,
+      "sha256": "293cb904030c1b4699511ed9dd079a549a5bdb14e4cf0a9801511610e82e4168"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-33.part",
+      "bytes": 3000000,
+      "sha256": "6a153d8fc1f5f7f2f03caf7465dfb48b44ad0682febde3c821e89beb3c7f7bfb"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-34.part",
+      "bytes": 3000000,
+      "sha256": "439f385f13549afec4f9d3166ea4dfa5f4b4bbc78f7191a481e02a55776c0b4f"
+    },
+    {
+      "file": "mind-quest-60df8d4f34a4-35.part",
+      "bytes": 160961,
+      "sha256": "4b7e164e9681b2e8fe524e1539837a6769e6b532b7098ca051bf88787f5cc37a"
     }
   ]
 }

@@ -4,9 +4,13 @@ const O=require('../game/scene-objects.js'),root=path.resolve(__dirname,'../game
 test('all original scene reconstruction assets are present, hash-matched, and atlas crops stay inside the actual PNG',()=>{
   const provenance=JSON.parse(fs.readFileSync(path.join(root,'assets/scene-objects/PROVENANCE.json'),'utf8'));
   const illustrated=JSON.parse(fs.readFileSync(path.join(root,'assets/illustrated-scenes/PROVENANCE.json'),'utf8'));
+  const expanded=JSON.parse(fs.readFileSync(path.join(root,'assets/illustrated-scenes/STAGE4-PROVENANCE.json'),'utf8'));
   assert.equal(provenance.assets.length,10);assert.equal(Object.keys(O.rooms).length,9);
-  assert.equal(illustrated.assets.length,1,'only the reviewed pharmaceutics classroom is replaced in this stage');
-  const sources=[['assets/scene-objects',provenance],['assets/illustrated-scenes',illustrated]];
+  assert.equal(illustrated.assets.length,1,'preserve the delivered Stage3 provenance unchanged');
+  assert.equal(expanded.assets.length,18,'all remaining reviewed original background plates');
+  const expandedRuntime={assets:expanded.assets.map(a=>({file:path.basename(a.runtime),bytes:a.runtimeBytes,sha256:a.runtimeSHA256}))};
+  for(const a of expanded.assets)assert.equal(a.runtime,'game/assets/illustrated-scenes/'+path.basename(a.runtime),'only the declared local illustrated scene directory');
+  const sources=[['assets/scene-objects',provenance],['assets/illustrated-scenes',illustrated],['assets/illustrated-scenes',expandedRuntime]];
   const files=new Set(sources.flatMap(([dir,record])=>record.assets.map(a=>'./'+dir+'/'+a.file)));
   for(const room of Object.values(O.rooms)){assert(files.has(room.background));assert(files.has(room.atlas));}
   for(const [dir,record] of sources)for(const a of record.assets){const data=fs.readFileSync(path.join(root,dir,a.file));assert.equal(data.length,a.bytes,a.file);assert.equal(createHash('sha256').update(data).digest('hex'),a.sha256,a.file);}

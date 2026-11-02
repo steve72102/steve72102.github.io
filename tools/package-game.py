@@ -16,6 +16,9 @@ files = list(dict.fromkeys(files + ['academy-ui.js', 'adventure-ui.js', 'adventu
 files = list(dict.fromkeys(files + ['avatar-motion.js','character-motion.js','character-motion.css']))
 # The first painted set is shipped locally; game play never calls an image API.
 files = list(dict.fromkeys(files + ['native-avatar.js','native-avatar.css','assets/native-avatar/pineapple-doctor/catalog.webp','assets/native-avatar/pineapple-doctor/manifest.json','assets/native-avatar/pineapple-doctor/PROVENANCE.json','assets/illustrated-scenes/classroom-pharmaceutics.webp','assets/illustrated-scenes/PROVENANCE.json'] + ['assets/native-avatar/pineapple-doctor/'+view+'-'+sheet+'.webp' for view in ['down','up','left','right'] for sheet in ['run','actions']]))
+# pharmacy-stage4-art start
+files = list(dict.fromkeys(files + json.loads((Path(__file__).resolve().parent/'stage4-runtime-assets.json').read_text(encoding='utf-8'))['offline']))
+# pharmacy-stage4-art end
 with zipfile.ZipFile(out/'mind-quest-offline.zip','w',zipfile.ZIP_DEFLATED,compresslevel=6) as archive:
     for name in files:
         data=(root/'game'/name).read_bytes()

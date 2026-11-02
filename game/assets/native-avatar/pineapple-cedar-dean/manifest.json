@@ -1,0 +1,3023 @@
+{
+  "previewBox": [
+    45,
+    64,
+    167,
+    315
+  ],
+  "portraitBox": [
+    82,
+    69,
+    94,
+    108
+  ],
+  "bodyHeightCalibration": {
+    "doctorReferenceVisibleHeight": 295,
+    "doctorBodyHeight": 450,
+    "characterBodyHeight": 458,
+    "desiredIdleHeight": 300.24444444444447,
+    "actualIdleHeight": 299,
+    "commonScale": 0.6029
+  },
+  "schemaVersion": 1,
+  "assetId": "pineapple-cedar-dean",
+  "character": "cedar-dean",
+  "requiredLoadout": {
+    "jacket": "fruit-pineapple-jacket",
+    "cape": "fruit-pineapple-cape",
+    "shirt": "fruit-pineapple-shirt",
+    "pants": "fruit-pineapple-pants",
+    "shoes": "fruit-pineapple-shoes",
+    "hat": "fruit-pineapple-hat",
+    "accessory": "fruit-pineapple-accessory",
+    "handheld": "fruit-pineapple-handheld"
+  },
+  "scope": "cedar-dean wearing all eight pineapple pieces",
+  "completeCardinalSet": true,
+  "authoredFrameCount": 64,
+  "layout": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "anchor": [
+      128,
+      372
+    ]
+  },
+  "pipeline": {
+    "operations": [
+      "original alpha-component attribution",
+      "explicit cropped region extraction retaining own RGBA",
+      "isotropic Lanczos downscale",
+      "integer translation",
+      "transparent atlas packing",
+      "lossless WebP"
+    ],
+    "noMirroring": true,
+    "noWarp": true,
+    "noSynthesisedPoses": true,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0",
+    "extractionDisclosure": "Eight disconnected source alpha>16 silhouettes define ownership; other-pose pixels within overlapping bounding rectangles are excluded by nearest-silhouette assignment. Own RGBA pixels are retained exactly before resampling. Original PNG/WebP masters retain every source pixel."
+  },
+  "sheets": [
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/down-run.webp",
+      "direction": "down",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/down-run.png",
+      "sourceSha256": "8ebad280ce033792629b5f7cb4634b578aad96d205303cf4c66d9990f139a3cc",
+      "sourceBytes": 2395800,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/down-run.webp",
+      "masterWebpSha256": "b5e5a708187d37869b80cc6621c4437221d207f3a402e0f90f30dfcca6d27425",
+      "masterWebpBytes": 1576174,
+      "decodedRGBASha256": "e895dec8f7b6f9633ece3afeb5c31d1d9d09f7f6fdd6540c5212c868885cff7d",
+      "runtimeBytes": 458812,
+      "runtimeSha256": "0a134f60f53b3e0c7fd4453c49441ae1154946f4e03b52fca38535f64d92d593",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            91,
+            5,
+            351,
+            516
+          ],
+          "visibleBox": [
+            97,
+            11,
+            345,
+            510
+          ],
+          "foreignSourcePixelsExcluded": 279,
+          "extractedRGBASha256": "73b1416dd23982b14f353cd9fa3873b9c7183825508b741eff85a91bcaddb598",
+          "pose": "run",
+          "sourceAnchor": [
+            221.0,
+            510
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            50,
+            68
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            50,
+            68,
+            207,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            54,
+            72,
+            204,
+            372
+          ],
+          "rgbaSha256": "d1c2be9e2d45061a68f756c645985303bc5b37de52d3673c42f58e07373c4370",
+          "alphaSha256": "e83703af02b711d8d4f98e149c8bcbaa517777f383dfca41cd9e162fc2f7061b",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            444,
+            6,
+            718,
+            515
+          ],
+          "visibleBox": [
+            450,
+            12,
+            712,
+            509
+          ],
+          "foreignSourcePixelsExcluded": 361,
+          "extractedRGBASha256": "a02a8b66af266cca59c70576820c6bbe16656746dde71e35cbb5a139f833d99f",
+          "pose": "run",
+          "sourceAnchor": [
+            581.0,
+            509
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            45,
+            69
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            45,
+            69,
+            210,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            49,
+            72,
+            207,
+            372
+          ],
+          "rgbaSha256": "283fc74e8f230948ada5e9a6f9b3672d4ea0b80b3a085616c65b63520678ea0f",
+          "alphaSha256": "49dbe48b50045ce286b7d89c99687329f0183b0a3e0005a4b2823f57674d5002",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            811,
+            3,
+            1093,
+            517
+          ],
+          "visibleBox": [
+            817,
+            9,
+            1087,
+            511
+          ],
+          "foreignSourcePixelsExcluded": 195,
+          "extractedRGBASha256": "77613426447ae06baf91c72927860131340abfc24f868ee1d0909a7e41d86258",
+          "pose": "run",
+          "sourceAnchor": [
+            952.0,
+            511
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            43,
+            66
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            43,
+            66,
+            212,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            46,
+            70,
+            209,
+            373
+          ],
+          "rgbaSha256": "14e4663e9425db1cee557448d81f465703643687e26585637450e78ca76229df",
+          "alphaSha256": "80d68cf0929cb76ff0b9b9f4daaa7a8e4c025e51ee09876e36e87072121bf697",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1202,
+            4,
+            1485,
+            477
+          ],
+          "visibleBox": [
+            1208,
+            10,
+            1479,
+            471
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "59712460f25c754738cbe3dbf18eb8cb87afc1cbef845770febd1c75244e2ea7",
+          "pose": "run",
+          "sourceAnchor": [
+            1343.5,
+            511
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            43,
+            66
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            44,
+            66,
+            214,
+            351
+          ],
+          "visibleBoundsAlpha16": [
+            46,
+            69,
+            211,
+            347
+          ],
+          "rgbaSha256": "72337ac5df43e1b7568f9ca52f2510dee0b146b53f66a1d2404000259c6309e8",
+          "alphaSha256": "8d19b3e8b81c1ef4c7c4491b1f854be432d4bb4777b235d5be0e87448db67518",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            86,
+            508,
+            356,
+            1015
+          ],
+          "visibleBox": [
+            92,
+            514,
+            350,
+            1009
+          ],
+          "foreignSourcePixelsExcluded": 350,
+          "extractedRGBASha256": "8a07189e53025b6ef22ef476b018fd9ee05a418c13e692d09a45ecfe1ee3a015",
+          "pose": "run",
+          "sourceAnchor": [
+            221.0,
+            1009
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            47,
+            70
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            47,
+            70,
+            210,
+            374
+          ],
+          "visibleBoundsAlpha16": [
+            50,
+            73,
+            206,
+            372
+          ],
+          "rgbaSha256": "1d5a1a2a17fb3783fe9a3807a02cc60f30fc6e0bee7fde0d8268e48e54964f22",
+          "alphaSha256": "7449acea63987c205362c6b12f4883e88e08c1c271badddb42e3585266e5c7a7",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            451,
+            509,
+            733,
+            1015
+          ],
+          "visibleBox": [
+            457,
+            515,
+            727,
+            1009
+          ],
+          "foreignSourcePixelsExcluded": 277,
+          "extractedRGBASha256": "9b0546e4e1f0c8933ab584b245377bcf787e906b24f7bd86a5acc730bb46057f",
+          "pose": "run",
+          "sourceAnchor": [
+            592.0,
+            1009
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            43,
+            71
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            43,
+            71,
+            212,
+            374
+          ],
+          "visibleBoundsAlpha16": [
+            46,
+            74,
+            209,
+            372
+          ],
+          "rgbaSha256": "a3b008646ac0678a745839459222be58f1fb832f95591c406ed936cf52188aa9",
+          "alphaSha256": "7eae4cd9c6e6674b4eb2db95d0db8de4da44abb059fa80fd834e8a25e53b68b8",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            825,
+            509,
+            1112,
+            1014
+          ],
+          "visibleBox": [
+            831,
+            515,
+            1106,
+            1008
+          ],
+          "foreignSourcePixelsExcluded": 323,
+          "extractedRGBASha256": "97b9604342a85c57878e5a0f31746e8b11bd50ff4e7297310014db8e6e71c1f5",
+          "pose": "run",
+          "sourceAnchor": [
+            968.5,
+            1008
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            41,
+            71
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            41,
+            73,
+            214,
+            373
+          ],
+          "visibleBoundsAlpha16": [
+            44,
+            75,
+            210,
+            371
+          ],
+          "rgbaSha256": "8b77c910eb31ab5e56a6784aad131846ad89282cf0fa07c68693610dd2b72537",
+          "alphaSha256": "914d3aafe9cd4fa778cdebc5696df59e64cf9218babfc4da1020ef0799c8f8c8",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1201,
+            519,
+            1490,
+            990
+          ],
+          "visibleBox": [
+            1207,
+            525,
+            1484,
+            984
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "e60ec3d022677485b28707ba8529a862681616a2f728c2438e97c2a308edd7af",
+          "pose": "run",
+          "sourceAnchor": [
+            1345.5,
+            1009
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            41,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            41,
+            77,
+            215,
+            361
+          ],
+          "visibleBoundsAlpha16": [
+            44,
+            81,
+            212,
+            358
+          ],
+          "rgbaSha256": "df31359975eb95a138e12b88f4568081a2546317c6fb14a64c797ab4202ad37a",
+          "alphaSha256": "c6178a1ccce0fc5ea0d35e042f10886f67c2576a12ddff8fae89f39d3990262a",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/down-actions.webp",
+      "direction": "down",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/down-actions.png",
+      "sourceSha256": "054568b749602f3b20746dd5a96606d080b1c0603cf8dc8d2d8ac4ca026b5eca",
+      "sourceBytes": 2537840,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/down-actions.webp",
+      "masterWebpSha256": "9675dddece12dba8f80df30b62857332c35263ee1916142b223319d668307e56",
+      "masterWebpBytes": 1708938,
+      "decodedRGBASha256": "cf042a54955380a00810897750ee2e923bb67f79074e82e2fa4dd7a3441d1920",
+      "runtimeBytes": 531688,
+      "runtimeSha256": "391c9ed89f8e0641fe656dff83da5ce38b4cae105b4b1020990e8766dfbb110d",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            59,
+            7,
+            319,
+            517
+          ],
+          "visibleBox": [
+            65,
+            13,
+            313,
+            511
+          ],
+          "foreignSourcePixelsExcluded": 251,
+          "extractedRGBASha256": "0af2f746b4bfa384978464bb82fb7e272cd1051068d46824c386ab17cd78ed42",
+          "pose": "idle",
+          "sourceAnchor": [
+            189.0,
+            511
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            50,
+            68
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            50,
+            68,
+            207,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            53,
+            72,
+            204,
+            371
+          ],
+          "rgbaSha256": "b45c84a6f0d5c712595e774c654a0b54fdbbb1e39808a35980381af4dce32382",
+          "alphaSha256": "7c34ec3003183328c0641df6eee6192c001d0434d2d56484984363f11bf3684f",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            432,
+            5,
+            729,
+            492
+          ],
+          "visibleBox": [
+            438,
+            11,
+            723,
+            486
+          ],
+          "foreignSourcePixelsExcluded": 26,
+          "extractedRGBASha256": "d5c95afca894f031a242a475d85f55b291c1fbe0e4e0d6b9505a7d3a4d4d72c8",
+          "pose": "start",
+          "sourceAnchor": [
+            580.5,
+            486
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            38,
+            82
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            39,
+            82,
+            216,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            41,
+            86,
+            213,
+            372
+          ],
+          "rgbaSha256": "289451c7a5822d732398566b526342286368abe72241154b37ca4c3b28f14aa8",
+          "alphaSha256": "e1c9c207cb31ae72966765f40e66a0cd74c8e56a3329fa22161c1cbf3e7c9df1",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            789,
+            8,
+            1121,
+            519
+          ],
+          "visibleBox": [
+            795,
+            14,
+            1115,
+            513
+          ],
+          "foreignSourcePixelsExcluded": 587,
+          "extractedRGBASha256": "e1c2ba177216aa23020e5de2f5be06510adef39dead6aa1d401223c4f54bd24c",
+          "pose": "stop",
+          "sourceAnchor": [
+            955.0,
+            513
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            28,
+            68
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            28,
+            68,
+            228,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            32,
+            71,
+            225,
+            373
+          ],
+          "rgbaSha256": "651a677503a5572bf5ef2c0a6c8c5794fc7ddad246c37b830925468a6b3c64b6",
+          "alphaSha256": "f05afcc93c523b0dc4442e669ebb35e970c82d4886df767fe0eeb3decad214bb",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1171,
+            7,
+            1497,
+            519
+          ],
+          "visibleBox": [
+            1177,
+            13,
+            1491,
+            513
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "5cfb7cba33bef945f1ceb7372945bec0d2afce9449a81459f802b11872559bee",
+          "pose": "turn",
+          "sourceAnchor": [
+            1334.0,
+            513
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            30,
+            67
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            30,
+            67,
+            227,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            33,
+            70,
+            224,
+            373
+          ],
+          "rgbaSha256": "3156dfc1bc721d8cc8928a2cd9b72ed5c53338b7c402aeb12493b98d58800769",
+          "alphaSha256": "14c0e2063c64782a4ecf5a9607c352020ad53859dba34119f55ff493512e2654",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            52,
+            511,
+            348,
+            1019
+          ],
+          "visibleBox": [
+            58,
+            517,
+            342,
+            1013
+          ],
+          "foreignSourcePixelsExcluded": 374,
+          "extractedRGBASha256": "eb555d1d81cdace8c272a171e7fbbade7628d9b62b649f63205c10b22c2076fe",
+          "pose": "rise",
+          "sourceAnchor": [
+            200.0,
+            1013
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            39,
+            69
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            39,
+            69,
+            217,
+            373
+          ],
+          "visibleBoundsAlpha16": [
+            42,
+            72,
+            213,
+            371
+          ],
+          "rgbaSha256": "31b3e2fead28c59a57fad2ba95b65e4908880a0407893ca7fbd5db1e083d554f",
+          "alphaSha256": "dd60d26b0f72454509040ec194d30a70a6b4656eb68b6208d89896a31a093441",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            423,
+            493,
+            745,
+            889
+          ],
+          "visibleBox": [
+            429,
+            499,
+            739,
+            883
+          ],
+          "foreignSourcePixelsExcluded": 69,
+          "extractedRGBASha256": "fdf29b9fc9d12b9927db747fac86b26a655d80bbeedb6fc56f61f7fc7be1b5e5",
+          "pose": "apex",
+          "sourceAnchor": [
+            584.0,
+            1013
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            31,
+            58
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            31,
+            58,
+            225,
+            296
+          ],
+          "visibleBoundsAlpha16": [
+            35,
+            62,
+            221,
+            293
+          ],
+          "rgbaSha256": "99ec18e82826181978cea9cdc99829bfb8af9463bd2b7c5ad83f1a290709d551",
+          "alphaSha256": "062fe21a5376a76928bbbe607b785f555e2ead09f0f5623be948de6a76a96808",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            818,
+            512,
+            1114,
+            1019
+          ],
+          "visibleBox": [
+            824,
+            518,
+            1108,
+            1013
+          ],
+          "foreignSourcePixelsExcluded": 200,
+          "extractedRGBASha256": "5b1ddab2094598eb06d19c7068b09b67b16f36518a8e994e4aed30650f4c2268",
+          "pose": "fall",
+          "sourceAnchor": [
+            966.0,
+            1013
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            39,
+            70
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            39,
+            70,
+            217,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            42,
+            73,
+            213,
+            373
+          ],
+          "rgbaSha256": "83c0d11aa5a33c55a34c66d0de05fd74b0315bec3a0110651a3c300e522a9bac",
+          "alphaSha256": "968ce1dfe82358bf2b6eaa7a7fa6a89ca56444390c8266760016f853e1d5eca5",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1195,
+            578,
+            1503,
+            1010
+          ],
+          "visibleBox": [
+            1201,
+            584,
+            1497,
+            1004
+          ],
+          "foreignSourcePixelsExcluded": 1,
+          "extractedRGBASha256": "3e5474c397be23b594de1128aa22c991d594cd6114f5aac338d23ba9f805200c",
+          "pose": "land",
+          "sourceAnchor": [
+            1349.0,
+            1004
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            35,
+            115
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            35,
+            115,
+            221,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            39,
+            118,
+            218,
+            371
+          ],
+          "rgbaSha256": "1c4854bde15a2eb0daf69238ead3fb5133eeffa4e9daa11480b89687b3edb2a9",
+          "alphaSha256": "ef3db5539d3e6fb12d87879b40f692681c139ad15482eaaad48fdd1f40407494",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/up-run.webp",
+      "direction": "up",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/up-run.png",
+      "sourceSha256": "3f80193013ea9ee3b18149bc96b51482c45d5b5302c483d9ae61f5457e8b1228",
+      "sourceBytes": 2110058,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/up-run.webp",
+      "masterWebpSha256": "cae78190b349a85117c9bbb8370286e669b58c77b8ac216a6a90af6e92f18553",
+      "masterWebpBytes": 1360328,
+      "decodedRGBASha256": "d6b8af2b5264d7729c9224daa041925352cd66093457eb91e48872ce37c41fbf",
+      "runtimeBytes": 348150,
+      "runtimeSha256": "c8aa34af4124e80be5fb3fcde7d4a60902a7438e6cc436a43695c4b261a7af9c",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            98,
+            11,
+            309,
+            508
+          ],
+          "visibleBox": [
+            104,
+            17,
+            303,
+            502
+          ],
+          "foreignSourcePixelsExcluded": 84,
+          "extractedRGBASha256": "fa44761bee01f36490f4497fff6801719630d29d0fb621f4469defd187c2a5b9",
+          "pose": "run",
+          "sourceAnchor": [
+            203.5,
+            502
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            64,
+            76
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            64,
+            77,
+            190,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            67,
+            79,
+            187,
+            372
+          ],
+          "rgbaSha256": "036a381c4aa039852a3284a894c0d4d49b17e692deb33b59499d6ed4fbfd575a",
+          "alphaSha256": "e3c1e32f280dee525f4264bd5e8b2ee7670a2634a61d63ccd3386dcaabe5033b",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            464,
+            8,
+            673,
+            492
+          ],
+          "visibleBox": [
+            470,
+            14,
+            667,
+            486
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "05bec00ed7541b03b110c8c61bec7a6d77707ab2374262d62174584dc1b45c38",
+          "pose": "run",
+          "sourceAnchor": [
+            568.5,
+            486
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            65,
+            84
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            65,
+            84,
+            191,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            68,
+            87,
+            187,
+            373
+          ],
+          "rgbaSha256": "326cea733a6ab8e380cffd62de1817b7e73aca3871ac3df548b959900b44e621",
+          "alphaSha256": "3b4ef1bdfa47793952eab41dcde3869521188f467c5475149bd1d04935c25a17",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            827,
+            9,
+            1047,
+            504
+          ],
+          "visibleBox": [
+            833,
+            15,
+            1041,
+            498
+          ],
+          "foreignSourcePixelsExcluded": 552,
+          "extractedRGBASha256": "eaea62c41fc7f3ead3348b17d8c3c10e93260f8127b01d8461a225b7761a757a",
+          "pose": "run",
+          "sourceAnchor": [
+            937.0,
+            498
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            62,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            62,
+            78,
+            195,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            66,
+            81,
+            191,
+            372
+          ],
+          "rgbaSha256": "0669e455cb2074f345ecbcb13a0d1eefbf7a84c9c6f821eeb83c317aea3c07f8",
+          "alphaSha256": "f35c04d5b483824c2741bc99f6e8a49ebfd7d8530e989f40c178d04b3aaf7ec6",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1207,
+            7,
+            1432,
+            467
+          ],
+          "visibleBox": [
+            1213,
+            13,
+            1426,
+            461
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "eae47d272eb484b9724e02014d1e80498384fadd50a2fdd026a99646d0cecc17",
+          "pose": "run",
+          "sourceAnchor": [
+            1319.5,
+            502
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            60,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            60,
+            74,
+            196,
+            351
+          ],
+          "visibleBoundsAlpha16": [
+            63,
+            78,
+            193,
+            347
+          ],
+          "rgbaSha256": "7083be2b23710434db1a6266fa9cbfd868d5db792cc938a2f96a7d8eff31ceec",
+          "alphaSha256": "54c69de30549b50b5d17c3c55ea0bc0338d0bacb4aec1bccbe068be256142f27",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            101,
+            515,
+            310,
+            1011
+          ],
+          "visibleBox": [
+            107,
+            521,
+            304,
+            1005
+          ],
+          "foreignSourcePixelsExcluded": 1,
+          "extractedRGBASha256": "245baed0d84fc7d93128c588941b366669cfc474af633151df0ef0cfe6b422cf",
+          "pose": "run",
+          "sourceAnchor": [
+            205.5,
+            1005
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            65,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            65,
+            77,
+            191,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            68,
+            80,
+            188,
+            373
+          ],
+          "rgbaSha256": "4471415dc911ffb7e4299bd9c024c1dd8f0d4d2eccf2a2c1cc6faafeb89c5126",
+          "alphaSha256": "c9bc1821a8ba871bc069a27a77eac2dae32eb8aacb4e40104f75f61932650223",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            454,
+            515,
+            672,
+            1002
+          ],
+          "visibleBox": [
+            460,
+            521,
+            666,
+            996
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "20e83687e86becc9f5a0b9955997f827d503acc43f5b236d2c788630ffb5e630",
+          "pose": "run",
+          "sourceAnchor": [
+            563.0,
+            996
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            62,
+            82
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            62,
+            82,
+            193,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            65,
+            86,
+            189,
+            373
+          ],
+          "rgbaSha256": "a9ed38561463004e4f70bb8c52342d8ebd728e30c8fd7493af514b653211a502",
+          "alphaSha256": "8d66b0ee37cc68f76f0f3713dcac4dc1755accdbc322a6f3d3663e0ab8e1659b",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            851,
+            513,
+            1063,
+            1011
+          ],
+          "visibleBox": [
+            857,
+            519,
+            1057,
+            1005
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "57c2fd47da259f9c8f38980c6346ebc3e4c118431d91c74f2859dd668460fe2b",
+          "pose": "run",
+          "sourceAnchor": [
+            957.0,
+            1005
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            64,
+            75
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            64,
+            75,
+            191,
+            374
+          ],
+          "visibleBoundsAlpha16": [
+            67,
+            78,
+            189,
+            372
+          ],
+          "rgbaSha256": "b6c5be52675898d9228ce72e7d45d8411544d0a11e860060d1fd74515f4fac38",
+          "alphaSha256": "fa91719e93eb3f14b5d5e7795112abf902b4a399a66516a2b97e145544a20ab6",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1220,
+            516,
+            1445,
+            954
+          ],
+          "visibleBox": [
+            1226,
+            522,
+            1439,
+            948
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "ae5ea01d649aca1a864484464f3f20cec5e008db13c3d17c35eb62f310d4509e",
+          "pose": "run",
+          "sourceAnchor": [
+            1332.5,
+            1005
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            60,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            60,
+            77,
+            195,
+            341
+          ],
+          "visibleBoundsAlpha16": [
+            63,
+            81,
+            192,
+            338
+          ],
+          "rgbaSha256": "1b3e82c64a0446d511f40e3ea8539fd7a8fc6a156d22f933f8ddd2055d7ef0df",
+          "alphaSha256": "bdec23ec0a8753a4b2a17a18da6b3fbe0163f9e334bb4e6f67d2991a55fed460",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/up-actions.webp",
+      "direction": "up",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/up-actions.png",
+      "sourceSha256": "fbae292483fa6aceb23ed5d8875c9068e5bbbe722ff053b7be227a46abf355c1",
+      "sourceBytes": 2222498,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/up-actions.webp",
+      "masterWebpSha256": "38ee0f4fd406ca9afe293b6c636209183c23540e3ba7e1346e2966fb0cc37c54",
+      "masterWebpBytes": 1464520,
+      "decodedRGBASha256": "1d37b2b99f7b436f529395b146f1bf292e18ff931f9a10af194823f93c518749",
+      "runtimeBytes": 405336,
+      "runtimeSha256": "5002a63b3589e324e8afba63d20494610aa9b09a64537dbf5f2987e3f101100a",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            91,
+            6,
+            311,
+            510
+          ],
+          "visibleBox": [
+            97,
+            12,
+            305,
+            504
+          ],
+          "foreignSourcePixelsExcluded": 34,
+          "extractedRGBASha256": "e608b718d549688ab5f6dc2be7b180c0857b7301d4b5b68839a3da91318e3eef",
+          "pose": "idle",
+          "sourceAnchor": [
+            201.0,
+            504
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            62,
+            72
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            62,
+            72,
+            194,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            66,
+            75,
+            192,
+            372
+          ],
+          "rgbaSha256": "18d9dcfad4feb96cdc8dd5d329eaac1e9e09ed2b51421c6e7822914993c51fb0",
+          "alphaSha256": "0cc8c3339586bc62d14b67aa037ea8eaf24a2389e3227d0d718d3e23bbd1022a",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            476,
+            6,
+            694,
+            505
+          ],
+          "visibleBox": [
+            482,
+            12,
+            688,
+            499
+          ],
+          "foreignSourcePixelsExcluded": 57,
+          "extractedRGBASha256": "d93a663f97aad305ec9c67305a057e3455275a3fd9554992e080ed4d08f40045",
+          "pose": "start",
+          "sourceAnchor": [
+            585.0,
+            499
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            62,
+            75
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            62,
+            75,
+            193,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            65,
+            78,
+            190,
+            373
+          ],
+          "rgbaSha256": "dc70d5fecf100ff3fee3eeaba5b8cb67805cb27645b722b33fc9c707361f4f51",
+          "alphaSha256": "1f1a07c0af9d77b93a75fd4e1b0420806254bad14c32695a5f27734c67c1759d",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            843,
+            6,
+            1076,
+            503
+          ],
+          "visibleBox": [
+            849,
+            12,
+            1070,
+            497
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "1a006ece90f155badcead218f880bfdac3bf1d45e813b0b08365a4e224b9a43e",
+          "pose": "stop",
+          "sourceAnchor": [
+            959.5,
+            497
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            58,
+            76
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            58,
+            76,
+            198,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            61,
+            80,
+            194,
+            373
+          ],
+          "rgbaSha256": "9a19456ba0f3a4a050ac36397b1002d99a9ddfe31b49032ca869e03cac3e2cff",
+          "alphaSha256": "6bbf30b4b16903fc29e77f5c94946d13e9054af11474f70d30cba5010a060945",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1193,
+            5,
+            1431,
+            502
+          ],
+          "visibleBox": [
+            1199,
+            11,
+            1425,
+            496
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "570cd33203e9f2d865896b4f3d29e3b48bda41c7c625d702e21a0a24a1b70009",
+          "pose": "turn",
+          "sourceAnchor": [
+            1312.0,
+            496
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            56,
+            76
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            56,
+            76,
+            198,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            59,
+            80,
+            196,
+            373
+          ],
+          "rgbaSha256": "b173222456825e5469a777779885cd8f520d208ed16c9e94191efb3572916f6c",
+          "alphaSha256": "ac6dd1d96e493f821268c524208e76f8cfc027bb54d21a5b00c5e093648c9d7d",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            84,
+            508,
+            318,
+            1010
+          ],
+          "visibleBox": [
+            90,
+            514,
+            312,
+            1004
+          ],
+          "foreignSourcePixelsExcluded": 259,
+          "extractedRGBASha256": "81a81655f79f49ebc3256a96111c7858327e80a6b9a7e6406bce0e6af1cbcb10",
+          "pose": "rise",
+          "sourceAnchor": [
+            201.0,
+            1009
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            57,
+            70
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            57,
+            70,
+            198,
+            372
+          ],
+          "visibleBoundsAlpha16": [
+            61,
+            73,
+            194,
+            370
+          ],
+          "rgbaSha256": "ad0aa50d10b18c739a19880ad40aa8da245345b86befaf01bffda016e76695c5",
+          "alphaSha256": "f435d3ecac49282391189da4b9891b3f51aafb9076833b58ae4825d9cc5ad214",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            454,
+            506,
+            703,
+            898
+          ],
+          "visibleBox": [
+            460,
+            512,
+            697,
+            892
+          ],
+          "foreignSourcePixelsExcluded": 5,
+          "extractedRGBASha256": "77a17ce33e784286001c290330c01d64f61f5d255c334177e349302125272098",
+          "pose": "apex",
+          "sourceAnchor": [
+            578.5,
+            1009
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            53,
+            69
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            53,
+            69,
+            203,
+            305
+          ],
+          "visibleBoundsAlpha16": [
+            57,
+            72,
+            200,
+            301
+          ],
+          "rgbaSha256": "4b09f2f23d44c586ec0c3220bd9486cb4adaae6d2c95caba4c1b1e231a38d105",
+          "alphaSha256": "c782f7dc4bd6f82417ac9d3759c97a9b24b79c4120313e5a61b0d5ef6af601fa",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            846,
+            512,
+            1095,
+            1011
+          ],
+          "visibleBox": [
+            852,
+            518,
+            1089,
+            1005
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "901c289eef43fd0aa04a8ad622fe625a332076073d699962d8caefadd41ee21a",
+          "pose": "fall",
+          "sourceAnchor": [
+            970.5,
+            1009
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            53,
+            72
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            53,
+            72,
+            202,
+            372
+          ],
+          "visibleBoundsAlpha16": [
+            57,
+            75,
+            199,
+            369
+          ],
+          "rgbaSha256": "de11c521b968c99fe6b76d8f2f0cb9506df8d62dbef0080a0050e00f89d2594c",
+          "alphaSha256": "14c6eed0c76116d0a61c43b6a3ba18f188380bba272ad3e1bc0a3834718953a2",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1208,
+            581,
+            1458,
+            1015
+          ],
+          "visibleBox": [
+            1214,
+            587,
+            1452,
+            1009
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "da9b27dd80ddc07d9f6b6480770618861fd733d7bf0a0a0d00fe44853d886541",
+          "pose": "land",
+          "sourceAnchor": [
+            1333.0,
+            1009
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            53,
+            114
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            53,
+            114,
+            204,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            57,
+            118,
+            201,
+            373
+          ],
+          "rgbaSha256": "a92638da649e5c31502b203a0d0a454f534ccb70f14bd03eba9d2c63e6e1678a",
+          "alphaSha256": "868b889a0c59458ef4ee88ffa44d10310c6f59373d4dae14bc79bd8f57109a47",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/left-run.webp",
+      "direction": "left",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/left-run.png",
+      "sourceSha256": "4c0b9a5756cf81588bf610e54cc8d65bf0c161c23fff2050993005d85ab00924",
+      "sourceBytes": 2406581,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/left-run.webp",
+      "masterWebpSha256": "b9f3392fbc8a25412887e07272ebb6e5312f8400864fda853a6dd2ed27f8ef8b",
+      "masterWebpBytes": 1594804,
+      "decodedRGBASha256": "bf247a573b5fafb911382c7cbc0e8d633ab89bf7bb61e94cb404dbfebd50823c",
+      "runtimeBytes": 464660,
+      "runtimeSha256": "6f49afc948684f96cc1af33d60b3e737c4bfe0256a9f36070526f5b07ddd06f5",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            19,
+            8,
+            427,
+            504
+          ],
+          "visibleBox": [
+            25,
+            14,
+            421,
+            498
+          ],
+          "foreignSourcePixelsExcluded": 45,
+          "extractedRGBASha256": "c88b262d19e5bac40775a8e429dd4d77a6160ea7cbc6d82ed13dea099ec90f5d",
+          "pose": "run",
+          "sourceAnchor": [
+            223.0,
+            498
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            5,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            5,
+            78,
+            251,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            8,
+            80,
+            248,
+            372
+          ],
+          "rgbaSha256": "22b9fad2f0d000857dad97b6b3fc7f1bda28ca2c63f47dfd8967f2db2e6bfa81",
+          "alphaSha256": "4c72a4811ae72f56959a0e13447de8ac261ec401c8f80a9ab49cb817aef00c96",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            449,
+            6,
+            741,
+            506
+          ],
+          "visibleBox": [
+            455,
+            12,
+            735,
+            500
+          ],
+          "foreignSourcePixelsExcluded": 12,
+          "extractedRGBASha256": "b8aec1275c25189300438de69e0ad63d635d034215767aca1116b3041652e1e8",
+          "pose": "run",
+          "sourceAnchor": [
+            595.0,
+            500
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            40,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            40,
+            74,
+            215,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            43,
+            77,
+            213,
+            372
+          ],
+          "rgbaSha256": "f11fafe2ec7479a50de03bff1ffe80af8c476f587191292ffecf986179385848",
+          "alphaSha256": "31976c1058f6c22d1bc0f30535c9a604c03e5745ae922f014c89b4921fba56cc",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            817,
+            7,
+            1145,
+            507
+          ],
+          "visibleBox": [
+            823,
+            13,
+            1139,
+            501
+          ],
+          "foreignSourcePixelsExcluded": 32,
+          "extractedRGBASha256": "b2e7cd88c7181b2be40ee9f213f684d40ed64f6aebaae79f10168cfa48c2d234",
+          "pose": "run",
+          "sourceAnchor": [
+            981.0,
+            501
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            29,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            29,
+            74,
+            227,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            33,
+            77,
+            224,
+            371
+          ],
+          "rgbaSha256": "529b48d61d29cc0e9069af36c8290585837eac4ce2c7bfba0818ce024000efeb",
+          "alphaSha256": "0fb6f6089f237371c2a777a84b86c6db9b34de1367cb3d98d4b5204f3dbf1c4d",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1192,
+            10,
+            1525,
+            484
+          ],
+          "visibleBox": [
+            1198,
+            16,
+            1519,
+            478
+          ],
+          "foreignSourcePixelsExcluded": 2,
+          "extractedRGBASha256": "113158d55abfb04726c16a9e5b3c1eab8d8e6ac8218aab618a4407c9bec64ab1",
+          "pose": "run",
+          "sourceAnchor": [
+            1358.5,
+            501
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            28,
+            76
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            28,
+            77,
+            228,
+            362
+          ],
+          "visibleBoundsAlpha16": [
+            32,
+            80,
+            225,
+            358
+          ],
+          "rgbaSha256": "b640d68182cfb7c798d51df565d02296ffb43eb12627f7ef2b32b8256386a295",
+          "alphaSha256": "ed64539559d6381fb643e2871b9162fc455e59afcb1099543412eb4d681b0815",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            7,
+            510,
+            394,
+            1005
+          ],
+          "visibleBox": [
+            13,
+            516,
+            388,
+            999
+          ],
+          "foreignSourcePixelsExcluded": 71,
+          "extractedRGBASha256": "ae694211f6b7d16b8431fedfd73bb06c1ae6bcc1ddc98a527f0103c0c6b04d92",
+          "pose": "run",
+          "sourceAnchor": [
+            200.5,
+            999
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            11,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            12,
+            77,
+            244,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            15,
+            81,
+            241,
+            372
+          ],
+          "rgbaSha256": "4d4efccca5b6b627aaf00d7ba615529a0b1223776c153d0cc0a0912fcf0833f5",
+          "alphaSha256": "d8fa1689b959538f2dd63ed456dda5aba43d64352381e7f123d1e24aa58078a4",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            422,
+            512,
+            755,
+            1004
+          ],
+          "visibleBox": [
+            428,
+            518,
+            749,
+            998
+          ],
+          "foreignSourcePixelsExcluded": 179,
+          "extractedRGBASha256": "0ece8df45f3c5047569bdc57de04fc684c33ef3d0811ab383b7cfc5b0dfa2607",
+          "pose": "run",
+          "sourceAnchor": [
+            588.5,
+            998
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            28,
+            79
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            28,
+            79,
+            229,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            32,
+            83,
+            226,
+            373
+          ],
+          "rgbaSha256": "edbba1d8114fbccbad6c2e32bae7f36b1dc1f8c5e900fc7445e7b313de0aceaa",
+          "alphaSha256": "d527d02d3857ee1148971d804759e847e7b2ad8cf70f2d7f6ba66042d587b3f5",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            802,
+            509,
+            1140,
+            1005
+          ],
+          "visibleBox": [
+            808,
+            515,
+            1134,
+            999
+          ],
+          "foreignSourcePixelsExcluded": 151,
+          "extractedRGBASha256": "42c0fb0d97dbcb55ad56783c1da59e2748390bef730925796b78f7751b7ef126",
+          "pose": "run",
+          "sourceAnchor": [
+            971.0,
+            999
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            26,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            26,
+            77,
+            230,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            29,
+            81,
+            226,
+            373
+          ],
+          "rgbaSha256": "415442f4e63d5813e7738a9dcbe66a5ca539841044b2fc5cc70734e88feeb630",
+          "alphaSha256": "e4566c5d7f72f3c1b18e68a73cb86899f1a476a8e91da7b400b257a61cb59ba7",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1204,
+            505,
+            1530,
+            991
+          ],
+          "visibleBox": [
+            1210,
+            511,
+            1524,
+            985
+          ],
+          "foreignSourcePixelsExcluded": 248,
+          "extractedRGBASha256": "fc8edd53734fcbf100485869f8af959991fdbf5afc7927138623c886dbfeb9ee",
+          "pose": "run",
+          "sourceAnchor": [
+            1367.0,
+            999
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            30,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            30,
+            75,
+            227,
+            367
+          ],
+          "visibleBoundsAlpha16": [
+            33,
+            77,
+            224,
+            364
+          ],
+          "rgbaSha256": "e69eda8f45e54ded620ac7fc2ec529e9c17c7981c31c10fe10d00a35cd47162c",
+          "alphaSha256": "87215c0641213fbfe78bd1d41d26e86f8d498693b64dfc795562bec7e12ab2e0",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/left-actions.webp",
+      "direction": "left",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/left-actions.png",
+      "sourceSha256": "3b05cdd33291070c9ae1b5954a7c3bb9b271f20117a48329c8c4756752aa8c7e",
+      "sourceBytes": 2331022,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/left-actions.webp",
+      "masterWebpSha256": "ab50fb1802a168ce85c32c5a1030c27fccf5c867a187545b8ed3fc1a9b751794",
+      "masterWebpBytes": 1540986,
+      "decodedRGBASha256": "309ef481d71422ede741308211ad60f3a85777b7663b119de86f6e4cb566adae",
+      "runtimeBytes": 444836,
+      "runtimeSha256": "00385989595a69ff2fe208d7c0672dcf3ac0464f2c919b7fb16345736e779428",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            69,
+            6,
+            297,
+            501
+          ],
+          "visibleBox": [
+            75,
+            12,
+            291,
+            495
+          ],
+          "foreignSourcePixelsExcluded": 2,
+          "extractedRGBASha256": "6b1afc278dbc9f9ac9701d50199ccef3ac311a1a373aeadc8269773bd02a96d9",
+          "pose": "idle",
+          "sourceAnchor": [
+            183.0,
+            495
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            59,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            59,
+            77,
+            196,
+            374
+          ],
+          "visibleBoundsAlpha16": [
+            63,
+            81,
+            193,
+            372
+          ],
+          "rgbaSha256": "173b6451aae6d7bd2042326e45c534a6d3dcfd7e8b0a3d330b80b5803ada50d8",
+          "alphaSha256": "4d6aaab8572448ba6f607e24ba1ca2c5ae9d5cf840bd61dc3762f37d9b47e1ba",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            378,
+            12,
+            784,
+            493
+          ],
+          "visibleBox": [
+            384,
+            18,
+            778,
+            487
+          ],
+          "foreignSourcePixelsExcluded": 64,
+          "extractedRGBASha256": "09d06e3e1afb03941f8ab9adbbdbd0419166e493073c213976e602d06c03ae7d",
+          "pose": "start",
+          "sourceAnchor": [
+            581.0,
+            487
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            6,
+            86
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            7,
+            87,
+            251,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            9,
+            90,
+            247,
+            372
+          ],
+          "rgbaSha256": "a2d5ad99991de1c909875e36e0d4b02b4a2fef170dc1980f13d8fd20d4d63260",
+          "alphaSha256": "1c4ab282790f03d24f21852f881f92da134885dc759bfdab70504da438ce4ee7",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            817,
+            12,
+            1131,
+            490
+          ],
+          "visibleBox": [
+            823,
+            18,
+            1125,
+            484
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "45daba18890e15578c85ef0d151a3429b7f273565635316b65dc046031617ba9",
+          "pose": "stop",
+          "sourceAnchor": [
+            974.0,
+            484
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            33,
+            87
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            33,
+            88,
+            222,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            36,
+            90,
+            219,
+            372
+          ],
+          "rgbaSha256": "d720fca686603c312bd1ae5773601d254245961d9de70785e262d4e5fb638dbf",
+          "alphaSha256": "0e0a35815b3377e1e8db8027e435e7e215304f256e8400372ed8fd65e5149a51",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1202,
+            5,
+            1499,
+            499
+          ],
+          "visibleBox": [
+            1208,
+            11,
+            1493,
+            493
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "6a11329c18d920e03ec45a134cbf9211e5b94c673b861a46707c976228dc024c",
+          "pose": "turn",
+          "sourceAnchor": [
+            1350.5,
+            493
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            38,
+            78
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            38,
+            78,
+            216,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            41,
+            81,
+            214,
+            372
+          ],
+          "rgbaSha256": "13ad90802f84d22b68e503a72913cf57b1992226f0fb16ed5414fa0af1fa86a1",
+          "alphaSha256": "21cb57b50fffcb25cae2feb6c55723284f1cb4b5af776df62dcea2e4b12fb878",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            50,
+            505,
+            380,
+            1004
+          ],
+          "visibleBox": [
+            56,
+            511,
+            374,
+            998
+          ],
+          "foreignSourcePixelsExcluded": 2,
+          "extractedRGBASha256": "d82fad3c7785a368921ff38297fa71fc7642cc4cbcfdb084248d3380a9c58496",
+          "pose": "rise",
+          "sourceAnchor": [
+            215.0,
+            1000
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            29,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            29,
+            74,
+            228,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            32,
+            77,
+            224,
+            372
+          ],
+          "rgbaSha256": "0b046a47b8df4b76c7705f0d20ec3c9c0c83bc370b967afc7848364360e3adf0",
+          "alphaSha256": "a998ad4e276b4673d8c44e93cd93b80d8cae10b55c8783bb491176b29b3e2a37",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            443,
+            505,
+            746,
+            878
+          ],
+          "visibleBox": [
+            449,
+            511,
+            740,
+            872
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "6921d06484d4c42ab7982160a2bb950a4beec3f85dfc1c91f000cbdca594655e",
+          "pose": "apex",
+          "sourceAnchor": [
+            594.5,
+            1000
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            37,
+            74
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            37,
+            75,
+            220,
+            299
+          ],
+          "visibleBoundsAlpha16": [
+            40,
+            77,
+            217,
+            296
+          ],
+          "rgbaSha256": "cc9bbca6c2d96bdc200af69afdbfbaeed1a18b3759d5265ab0285ba1ff28f41b",
+          "alphaSha256": "41636ba457dfa6af6b0bba4e37dfb664e63217ef1ca1606e21097a205969ad10",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            826,
+            514,
+            1143,
+            1006
+          ],
+          "visibleBox": [
+            832,
+            520,
+            1137,
+            1000
+          ],
+          "foreignSourcePixelsExcluded": 32,
+          "extractedRGBASha256": "433fcde0dd58e655eeae57f931def50691692d8b66d5772d5e65e65a090b9138",
+          "pose": "fall",
+          "sourceAnchor": [
+            984.5,
+            1000
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            32,
+            79
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            33,
+            79,
+            221,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            36,
+            83,
+            219,
+            372
+          ],
+          "rgbaSha256": "e65cc88c909f03c91f2f020d1d2a6f22a0f4c487956214686a94f73e3c84d839",
+          "alphaSha256": "eec78cd25de1014264e7983af693a47c795601cb6fc6499a3cc4eb929b7f6d69",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1198,
+            555,
+            1514,
+            995
+          ],
+          "visibleBox": [
+            1204,
+            561,
+            1508,
+            989
+          ],
+          "foreignSourcePixelsExcluded": 1,
+          "extractedRGBASha256": "fd217486eec355de0243c5118b2efcb0afac0f33f87fa77c2548fc5909ea8188",
+          "pose": "land",
+          "sourceAnchor": [
+            1356.0,
+            989
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            33,
+            110
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            34,
+            111,
+            222,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            36,
+            113,
+            220,
+            371
+          ],
+          "rgbaSha256": "9dcfbee977d4750dedf17c91317599fa38096fa9a6f0d3c4e3393152f5eb6727",
+          "alphaSha256": "e02e3db9f8257802d970642ae3ca43b6d66a81139048656ddec21ba1a7c33042",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/right-run.webp",
+      "direction": "right",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/right-run.png",
+      "sourceSha256": "b97a7a4b2ecc8b905ad95b52226edbc50b4e65006fde88b230a50bf30c3cdef8",
+      "sourceBytes": 2416866,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/right-run.webp",
+      "masterWebpSha256": "4010ff62fb14aaeeea30becc16dacbba04a5bccc452a59c84be5582ea606a30b",
+      "masterWebpBytes": 1604408,
+      "decodedRGBASha256": "2de48566a5688e6acc512d0740b3c6752030428c656915ca08a7e464cc20ca68",
+      "runtimeBytes": 476912,
+      "runtimeSha256": "40b7932cc061f026cb8f3dcde68055de99fd6271cad54173e6f89f48a37130f4",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            17,
+            6,
+            394,
+            510
+          ],
+          "visibleBox": [
+            23,
+            12,
+            388,
+            504
+          ],
+          "foreignSourcePixelsExcluded": 46,
+          "extractedRGBASha256": "02707d183c0add7ad39bae73ce576168aa1b36f2128eb67572fd06156045c743",
+          "pose": "run",
+          "sourceAnchor": [
+            205.5,
+            504
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            14,
+            72
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            14,
+            72,
+            241,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            17,
+            75,
+            238,
+            373
+          ],
+          "rgbaSha256": "2a469ed3320a84b3de95c3f5dd7495e11f714726f784c63f07f0b472e9e6049d",
+          "alphaSha256": "9bb07f85f85fdb566e57866a291ce26a18d37518fb6151699cd1751a9f3270f7",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            419,
+            13,
+            733,
+            508
+          ],
+          "visibleBox": [
+            425,
+            19,
+            727,
+            502
+          ],
+          "foreignSourcePixelsExcluded": 317,
+          "extractedRGBASha256": "87325720f152074c1c57c2fef949aa65a4ee42e72bab7d6aa6dcaad45548035d",
+          "pose": "run",
+          "sourceAnchor": [
+            576.0,
+            502
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            33,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            33,
+            78,
+            222,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            37,
+            81,
+            218,
+            371
+          ],
+          "rgbaSha256": "f76616fda6a2672627e6c3a61e39635231ac0fa3373fd2aa0854fb92b761fc12",
+          "alphaSha256": "a49e7cdc7b50f98fff7f0c9270071561ab84de16d6e62ca0f7a569f0b2ff49d3",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            780,
+            10,
+            1124,
+            508
+          ],
+          "visibleBox": [
+            786,
+            16,
+            1118,
+            502
+          ],
+          "foreignSourcePixelsExcluded": 234,
+          "extractedRGBASha256": "e5149bf5e8720936c549366ea23f4667bb85b6f0f10a47f90db5fadcda5a5a50",
+          "pose": "run",
+          "sourceAnchor": [
+            952.0,
+            502
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            24,
+            75
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            24,
+            76,
+            231,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            27,
+            78,
+            227,
+            372
+          ],
+          "rgbaSha256": "6bf8a43069ceee56f36f93cacbfee75ffd8bf0117ef663e45c8ea6246ecab29c",
+          "alphaSha256": "5fd913ca3e16f07b2ac6cc2852835465cf8293b1c81fec6338783b064dfccbbe",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1162,
+            3,
+            1536,
+            508
+          ],
+          "visibleBox": [
+            1168,
+            9,
+            1530,
+            502
+          ],
+          "foreignSourcePixelsExcluded": 834,
+          "extractedRGBASha256": "152bb54e14527cd3662403c8b6e01b934c25caac621a4233e12c1bd6aa0d2d96",
+          "pose": "run",
+          "sourceAnchor": [
+            1349.0,
+            504
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            15,
+            70
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            15,
+            70,
+            240,
+            374
+          ],
+          "visibleBoundsAlpha16": [
+            18,
+            74,
+            237,
+            371
+          ],
+          "rgbaSha256": "7b705151362640a0274ba7ba9398e9eeba759913c826d90e8ee3975d083ed10f",
+          "alphaSha256": "f6a39a662aee02a0418f178c5683ab92559ee859c6892f979cda275dbc420352",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            2,
+            521,
+            396,
+            999
+          ],
+          "visibleBox": [
+            8,
+            527,
+            390,
+            993
+          ],
+          "foreignSourcePixelsExcluded": 697,
+          "extractedRGBASha256": "b95bec5da3b7ebdbd3cd6807ba033e72fc8994fe32be7332c179b36395092e30",
+          "pose": "run",
+          "sourceAnchor": [
+            199.0,
+            993
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            9,
+            87
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            9,
+            87,
+            247,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            12,
+            90,
+            244,
+            372
+          ],
+          "rgbaSha256": "80702130c979f879433253ccaab7210b46f2a718566ef1c2ee324575ae31409e",
+          "alphaSha256": "05c4c6e8ed0d4e390ab988c1a420901792dfb4a3a5826149a24d735b262ef190",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            431,
+            516,
+            716,
+            997
+          ],
+          "visibleBox": [
+            437,
+            522,
+            710,
+            991
+          ],
+          "foreignSourcePixelsExcluded": 134,
+          "extractedRGBASha256": "5c56cf5f4eca782bac9eb5ce9e138187ef49c5692e658c55b4cccf96d54645d9",
+          "pose": "run",
+          "sourceAnchor": [
+            573.5,
+            991
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            42,
+            86
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            42,
+            86,
+            214,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            45,
+            89,
+            211,
+            373
+          ],
+          "rgbaSha256": "7bce5a9ad9b6518a3f3b5fa9efe23a696fdea7eccb5511814f3fa91651c51801",
+          "alphaSha256": "d64d9788f5821f04363ac722711a7a32cf8564f3c1fc17e23be653ed693e4038",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            793,
+            519,
+            1139,
+            1003
+          ],
+          "visibleBox": [
+            799,
+            525,
+            1133,
+            997
+          ],
+          "foreignSourcePixelsExcluded": 112,
+          "extractedRGBASha256": "a8650d37041e8bb6c73819e23a093002e19009d3fdf323b94283497557a4dc9c",
+          "pose": "run",
+          "sourceAnchor": [
+            966.0,
+            997
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            24,
+            84
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            24,
+            84,
+            233,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            27,
+            88,
+            229,
+            373
+          ],
+          "rgbaSha256": "7c0bc6877cb2ef6f67584da5aade36b15f5de6d835d69720f0efbabe037783a4",
+          "alphaSha256": "a663cd4c51c0024d0e9b25f15b7ef2d79db870790429cfbe971215ec35e3da72",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1159,
+            518,
+            1488,
+            997
+          ],
+          "visibleBox": [
+            1165,
+            524,
+            1482,
+            991
+          ],
+          "foreignSourcePixelsExcluded": 80,
+          "extractedRGBASha256": "c525e0aabe8ab33ecffea035158960b36cf70e91d78b5fb6b1a8a5e8ca6c4ce7",
+          "pose": "run",
+          "sourceAnchor": [
+            1323.5,
+            997
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            29,
+            83
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            29,
+            83,
+            227,
+            372
+          ],
+          "visibleBoundsAlpha16": [
+            32,
+            86,
+            224,
+            369
+          ],
+          "rgbaSha256": "2582336d3631b935605edd2b7a32db7d35b665b8e95e98d93afd331593d60e30",
+          "alphaSha256": "43251e8d93aca68e67283110711199d080feb0d471f59c0b38f15ed7abddcf23",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-cedar-dean/right-actions.webp",
+      "direction": "right",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/right-actions.png",
+      "sourceSha256": "cfa87290d311e607282048418826c1c150bedc80c90beb9d6fdd534924931f42",
+      "sourceBytes": 2421980,
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "masterWebp": "masters/right-actions.webp",
+      "masterWebpSha256": "6e1d4571d7e49a4db715b07b362636efa4b55fb13a913ca2f754eb2399c75e13",
+      "masterWebpBytes": 1632300,
+      "decodedRGBASha256": "8f4fe246153f35439595c427f51652035aa3ad2064f683c65ed357d22515388d",
+      "runtimeBytes": 476184,
+      "runtimeSha256": "e84a1be44077c75741114057ce53de6447c8bc553cb6df17caa1b1f453c599e3",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "crop": [
+            53,
+            5,
+            324,
+            502
+          ],
+          "visibleBox": [
+            59,
+            11,
+            318,
+            496
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "ecd42b1d027e34d0d5e31ec4766928e1cbb9da1a6d5a47eaad4df1a5d68c8345",
+          "pose": "idle",
+          "sourceAnchor": [
+            188.5,
+            496
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            46,
+            76
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            46,
+            76,
+            209,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            50,
+            79,
+            206,
+            373
+          ],
+          "rgbaSha256": "da329f55d2e34b1a7366b2e5204fe092defd5f41e3223d8785745ac6bc55e2cb",
+          "alphaSha256": "be4c146723e893048fdbe3fb73ea496c3cefa00168aa3e11c78d7ec7a49ece7b",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 1,
+          "crop": [
+            382,
+            20,
+            749,
+            496
+          ],
+          "visibleBox": [
+            388,
+            26,
+            743,
+            490
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "993e5b498fdfba83ead7d13a4d8232182f4d6d50b213ebc615eaa229cabbd7f1",
+          "pose": "start",
+          "sourceAnchor": [
+            565.5,
+            490
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            17,
+            89
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            19,
+            89,
+            238,
+            376
+          ],
+          "visibleBoundsAlpha16": [
+            21,
+            92,
+            235,
+            373
+          ],
+          "rgbaSha256": "77799fcede3bb04c3d122febdcfd9a4acae28af0dbcfcf0575f01c4a099c487f",
+          "alphaSha256": "e4a68f7d072650b6a4240d5983a20c494530c11e075b64489d9f542c39cdb7b1",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 2,
+          "crop": [
+            790,
+            27,
+            1152,
+            499
+          ],
+          "visibleBox": [
+            796,
+            33,
+            1146,
+            493
+          ],
+          "foreignSourcePixelsExcluded": 69,
+          "extractedRGBASha256": "4e688f24fe5f4d3512e4a480def353ba2f92b1ec695e74a512da32b478a8808f",
+          "pose": "stop",
+          "sourceAnchor": [
+            971.0,
+            493
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            19,
+            91
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            20,
+            92,
+            237,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            23,
+            95,
+            234,
+            372
+          ],
+          "rgbaSha256": "547c2d612fde95668215056ea29a4c02daf1164fe408a9b3ed3e32abf2f864b6",
+          "alphaSha256": "b84c6284824db774d7b8e463de758ae629939d78bf96e4f2fdea4ea116964de9",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 3,
+          "crop": [
+            1182,
+            8,
+            1523,
+            499
+          ],
+          "visibleBox": [
+            1188,
+            14,
+            1517,
+            493
+          ],
+          "foreignSourcePixelsExcluded": 2,
+          "extractedRGBASha256": "ba15d0847019041e21f02441febd1ad253ebe4a2c1ff32866290e3d46afd46b1",
+          "pose": "turn",
+          "sourceAnchor": [
+            1352.5,
+            493
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            25,
+            80
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            26,
+            81,
+            230,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            28,
+            83,
+            227,
+            373
+          ],
+          "rgbaSha256": "2de39c4e457dc75816aa6e073e17f29fc321f33f357d026b0394552029befcd5",
+          "alphaSha256": "44e725774e124de3e50ff466e5c815d83123000a729a4ea8175ca218a4574b4b",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 4,
+          "crop": [
+            28,
+            509,
+            342,
+            997
+          ],
+          "visibleBox": [
+            34,
+            515,
+            336,
+            991
+          ],
+          "foreignSourcePixelsExcluded": 4,
+          "extractedRGBASha256": "3a6397300fb3143b5379e72e4ee4a4b07a9f52dc40e6bb1d8cf408674e0b1984",
+          "pose": "rise",
+          "sourceAnchor": [
+            185.0,
+            997
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            33,
+            78
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            33,
+            79,
+            222,
+            371
+          ],
+          "visibleBoundsAlpha16": [
+            37,
+            82,
+            219,
+            369
+          ],
+          "rgbaSha256": "dc4b34eb46b494398110ece8d7c592e5c6f22a8cd22453c176ff55bb80fbd8d8",
+          "alphaSha256": "6982e0feff530cfb2a78f3209310c00c0b17eb24a384a3cde526a7c3fc9a6275",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 5,
+          "crop": [
+            410,
+            508,
+            735,
+            876
+          ],
+          "visibleBox": [
+            416,
+            514,
+            729,
+            870
+          ],
+          "foreignSourcePixelsExcluded": 10,
+          "extractedRGBASha256": "3cc2d4462d0c2c853099ef50dbde6bd8701c4066900b6f208f97cf5ea8f270b6",
+          "pose": "apex",
+          "sourceAnchor": [
+            572.5,
+            997
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            30,
+            77
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            31,
+            79,
+            226,
+            299
+          ],
+          "visibleBoundsAlpha16": [
+            34,
+            81,
+            223,
+            295
+          ],
+          "rgbaSha256": "2236b42ad87139d9d1a423ed736531a704a3de11792a5786b3fdf21a35e5c366",
+          "alphaSha256": "4d67839757cd03e243db5a90a77b62d55ff9ac1fdb17586cf730210827bb4799",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 6,
+          "crop": [
+            814,
+            512,
+            1192,
+            998
+          ],
+          "visibleBox": [
+            820,
+            518,
+            1186,
+            992
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "bc3927b4cd062e8adfc338d5df14a7fb938cc79e825860093f6cfd425b8b3245",
+          "pose": "fall",
+          "sourceAnchor": [
+            1003.0,
+            997
+          ],
+          "anchorMethod": "shared source row ground for drawn airborne/tucked poses",
+          "outputOffset": [
+            14,
+            80
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            15,
+            80,
+            241,
+            372
+          ],
+          "visibleBoundsAlpha16": [
+            17,
+            83,
+            239,
+            369
+          ],
+          "rgbaSha256": "6adb835a3ead0e69cddfd027b0caf38ab47f77077f054a1ef5534520e6873e45",
+          "alphaSha256": "8dd825627aa40de3a05332f4bb6b098161c81874563465bf30fa3cf900a0b99c",
+          "sourceCanvasVisibleEdgeContact": []
+        },
+        {
+          "index": 7,
+          "crop": [
+            1200,
+            540,
+            1504,
+            1003
+          ],
+          "visibleBox": [
+            1206,
+            546,
+            1498,
+            997
+          ],
+          "foreignSourcePixelsExcluded": 0,
+          "extractedRGBASha256": "eb921ecf6aea7c057a30fcf2a9e881561e09f8c1230a8c671b075144475d51ca",
+          "pose": "land",
+          "sourceAnchor": [
+            1352.0,
+            997
+          ],
+          "anchorMethod": "lowest opaque supporting sole",
+          "outputOffset": [
+            36,
+            96
+          ],
+          "isotropicScale": 0.6029,
+          "alphaBounds": [
+            36,
+            97,
+            219,
+            375
+          ],
+          "visibleBoundsAlpha16": [
+            39,
+            99,
+            216,
+            372
+          ],
+          "rgbaSha256": "826a75b3dd0522eea44e0be77814ea7aaf5b10ff76d9fae3aea054c87cfb44b7",
+          "alphaSha256": "bb159ea9f7d040f0a40f0b9d76cdfabc0fccd3e07c24225359cad3b8bc9b1929",
+          "sourceCanvasVisibleEdgeContact": []
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Every run direction has eight distinct authored stride drawings.",
+    "Each action direction currently has one drawing per idle/start/stop/turn/rise/apex/fall/land.",
+    "Alpha segmentation and unique frame hashes supplement visual inspection; they do not prove animation quality."
+  ]
+}

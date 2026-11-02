@@ -9,6 +9,7 @@
     if(!actor||!root.MindCharacterMotion)return actor;
     if(!actors.has(actor))actors.set(actor,{motion:root.MindCharacterMotion.create(),styles:new Map(),view:null,reduced:null,preference:null});
     root.MindNativeAvatar?.register(actor);
+    root.MindLayeredAvatar?.register(actor);
     actor.classList.add('motion-managed');return actor;
   }
   function style(actor,record,key,value){
@@ -32,6 +33,7 @@
     attribute(actor,'motionAction',visual.action);attribute(actor,'motionView',record.view);
     attribute(actor,'motionReduced',reduced?'true':'false');
     if(root.MindNativeAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
+    if(root.MindLayeredAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     style(actor,record,'--motion-column',record.view==='up'?'33.333333%':record.view==='down'?'0%':'100%');
     style(actor,record,'--motion-row',run&&visual.phase>=.5?'100%':'0%');
     style(actor,record,'--motion-mirror',record.view==='left'?-1:1);
@@ -49,11 +51,12 @@
   function needsFrame(actor){
     // One stationary sample after the final interpolated move stops the gait.
     // Otherwise a remote with intent=false could remain on its last run frame.
-    const record=actors.get(actor);return !!record&&(record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches||!!root.MindNativeAvatar?.needsFrame(actor));
+    const record=actors.get(actor);return !!record&&(record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches||!!root.MindNativeAvatar?.needsFrame(actor)||!!root.MindLayeredAvatar?.needsFrame(actor));
   }
   function dispose(actor){
     const record=actors.get(actor);if(!record)return;
     root.MindNativeAvatar?.dispose(actor);
+    root.MindLayeredAvatar?.dispose(actor);
     for(const key of record.styles.keys())actor.style.removeProperty?.(key);
     actor.classList.remove('motion-managed');delete actor.dataset.motionAction;delete actor.dataset.motionView;delete actor.dataset.motionReduced;
     actors.delete(actor);

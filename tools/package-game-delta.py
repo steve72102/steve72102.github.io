@@ -44,7 +44,7 @@ with zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as arch
             archive.writestr(name, data)
 data = stream.getvalue()
 assert data[:len(prefix)] == prefix
-assert len(data) <= 40_000_000
+assert len(data) <= 128_000_000
 with zipfile.ZipFile(io.BytesIO(data)) as verify:
     assert len(verify.namelist()) == len(set(verify.namelist())) == len(wanted)
     assert verify.testzip() is None
@@ -55,10 +55,10 @@ parts = list(baseline['parts'])
 tail = data[len(prefix):]
 # Fold small earlier tails into the replacement tail when the manifest is full.
 # The ZIP bytes stay identical; only their download boundaries change.
-while len(parts) + (len(tail) + 2_999_999) // 3_000_000 > 16 and parts:
+while len(parts) + (len(tail) + 2_999_999) // 3_000_000 > 64 and parts:
     previous_part = parts.pop()
     tail = (out / previous_part['file']).read_bytes() + tail
-assert len(parts) + (len(tail) + 2_999_999) // 3_000_000 <= 16
+assert len(parts) + (len(tail) + 2_999_999) // 3_000_000 <= 64
 for start in range(0, len(tail), 3_000_000):
     chunk = tail[start:start+3_000_000]
     name = f'mind-quest-{digest[:12]}-{len(parts)+1:02d}.part'

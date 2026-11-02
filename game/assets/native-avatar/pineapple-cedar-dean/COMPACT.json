@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "character": "cedar-dean",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 96,
+    "frameHeight": 144,
+    "anchorX": 48,
+    "anchorY": 139.5
+  },
+  "processing": "Uniform 0.375 LANCZOS reduction of reviewed native atlas; WebP quality 94 method 6. No pose synthesis, mirroring or repainted pixels. High resolution previews retain original 1024x768 sheets.",
+  "assets": [
+    {
+      "source": "down-run.webp",
+      "sourceSHA256": "0a134f60f53b3e0c7fd4453c49441ae1154946f4e03b52fca38535f64d92d593",
+      "file": "actor-down-run.webp",
+      "bytes": 43646,
+      "sha256": "3121e7a9caad4dacfa0f6eacee996c28b5c09ce4cc2c081e09516d563a7e143d",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "down-actions.webp",
+      "sourceSHA256": "391c9ed89f8e0641fe656dff83da5ce38b4cae105b4b1020990e8766dfbb110d",
+      "file": "actor-down-actions.webp",
+      "bytes": 48648,
+      "sha256": "54f0d0fe195bec06193b64e7870600539a23fd0aeb1429a3faeb8e705e8f87a2",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "up-run.webp",
+      "sourceSHA256": "c8aa34af4124e80be5fb3fcde7d4a60902a7438e6cc436a43695c4b261a7af9c",
+      "file": "actor-up-run.webp",
+      "bytes": 34816,
+      "sha256": "d449ab0749f3f46ba4af08f1a9e685b8a3678f7aa802722a7c503edd33a2bb80",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "up-actions.webp",
+      "sourceSHA256": "5002a63b3589e324e8afba63d20494610aa9b09a64537dbf5f2987e3f101100a",
+      "file": "actor-up-actions.webp",
+      "bytes": 39670,
+      "sha256": "3f37f97a22b99e26e7e7140e3811be05dc8632a89a76a4cae686dad7649701d8",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "left-run.webp",
+      "sourceSHA256": "6f49afc948684f96cc1af33d60b3e737c4bfe0256a9f36070526f5b07ddd06f5",
+      "file": "actor-left-run.webp",
+      "bytes": 48424,
+      "sha256": "f88733cd5f375a864dac6097f91c59a83c6341fdcc445f17ac69c4f1808eba91",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "left-actions.webp",
+      "sourceSHA256": "00385989595a69ff2fe208d7c0672dcf3ac0464f2c919b7fb16345736e779428",
+      "file": "actor-left-actions.webp",
+      "bytes": 46126,
+      "sha256": "974d6ea87c78a49428c89bb676792b6a4b51e5b94e6a9ed767b66bbbece65f4e",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "right-run.webp",
+      "sourceSHA256": "40b7932cc061f026cb8f3dcde68055de99fd6271cad54173e6f89f48a37130f4",
+      "file": "actor-right-run.webp",
+      "bytes": 49530,
+      "sha256": "2d2d0a53be12fd779d561eafab89c98bcd9810c05aec34b31d6cd8d30627896f",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "right-actions.webp",
+      "sourceSHA256": "e84a1be44077c75741114057ce53de6447c8bc553cb6df17caa1b1f453c599e3",
+      "file": "actor-right-actions.webp",
+      "bytes": 47794,
+      "sha256": "a65895cb75f8f10a57f6041fb01f61775ccbcc4aa006ac52eaf0f147096fe4ee",
+      "width": 384,
+      "height": 288
+    }
+  ]
+}

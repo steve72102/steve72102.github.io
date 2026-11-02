@@ -1,0 +1,30 @@
+{
+  "tool": "builtin image_gen__imagegen",
+  "transparent_background": true,
+  "jobs": [
+    {
+      "key": "wish-jackets-c-v2",
+      "base": "wish-jackets-c",
+      "ref": "original-png/exec-722c5230-9be5-433f-930a-de60bba4057f.png",
+      "prompt": "Technical atlas-spacing edit of the supplied image. Preserve all TWENTY-FOUR exact richly detailed garment pieces, their designs, colors, fabrics, embroidery, sleeves, and current view order. Do not redesign or simplify any part. Only SHRINK and reposition the pieces so each can be cropped independently.\nThe output is SIX columns by FOUR rows on a true transparent PNG. Each individual torso or sleeve must have bounding width NO MORE than 13% of the total image width, and bounding height NO MORE than 20% of the total image height. Place cell centers at x=8.33%,25%,41.67%,58.33%,75%,91.67%, and y=12.5%,37.5%,62.5%,87.5%. This leaves broad completely transparent gutters between all rows and columns. No collar, hem, cuff or tiny pendant can enter another piece's rectangular crop. Even the long torso pieces must fit fully inside their cell without touching anything. Smaller complete objects are better than clipped or touching objects.\nKeep the existing order exactly: row1 first outfit front torso/left sleeve/right sleeve then back torso/left sleeve/right sleeve; row2 first outfit right-view triplet then left-view triplet; row3 second outfit front and back triplets; row4 second outfit right and left triplets. Exactly six pieces in every row, 24 total. Keep all parts disconnected. Torso remains sleeveless, full shoulder-to-wrist sleeves separate. Preserve four genuine views. Actual alpha transparency; remove any background color, shadows, scenery or haze. No text or drawn grid.\nFor this particular input keep the BLUE AURORA long robe and the IVORY/GOLD CELESTIAL long robe. Four genuine directions, both torsos sleeveless with separate full sleeves. Preserve LONG torso proportions, though the entire piece is resized to fit. The empty space between rows must be fully transparent alpha=0, with no haze joining robes vertically."
+    },
+    {
+      "key": "knowledge-pharmacology-v2",
+      "base": "knowledge-pharmacology",
+      "ref": "original-png/exec-9463173d-ae33-4539-b06e-d46c930f5b82.png",
+      "prompt": "Technical sprite-atlas repair. Keep these exact four ornate violet/gold item designs and four real views, with the same jewelry and material detail, but make the objects SMALLER and fully separated in a regular FOUR-column FOUR-row grid. Row1 ring, row2 amulet, row3 star staff, row4 crown. Columns front/back/right/left. Each object's complete bounding rectangle must be no wider than 18% or taller than 18% of the TOTAL canvas; place them at grid centers x/y=12.5%,37.5%,62.5%,87.5%. This leaves 7% wide completely transparent lanes between rows and columns. No touching, overlap, clipped gems or cut-off pendants.\nFor row3 only, orient each staff UPRIGHT VERTICALLY (top orb above its grip, bottom tip below), and extend the slender straight shaft so it is clearly a long handheld study staff, not a short diagonal wand. Keep the ornate star/orbit crystal head and distinct front/back/side constructions. All other designs unchanged. Real alpha background: no opaque colors, no blurry background, no haze or glow outside the physical objects. No labels, numbers, grid, stand or extra objects."
+    },
+    {
+      "key": "knowledge-herbal-v2",
+      "base": "knowledge-herbal",
+      "ref": "original-png/exec-fa2fe823-1dff-4836-9467-433ee2a86c53.png",
+      "prompt": "Technical atlas repair only: preserve exactly all sixteen rich forest-green/gold objects and their existing four different views. Keep the satchel in row1, hand mirror in row2, moon lantern in row3, tree codex in row4. Do not redesign or simplify anything. Re-layout them into a FOUR-column FOUR-row grid with much more transparent space. Each complete object's bounding box must be no wider than 18% and no taller than 18% of the total canvas. Place object centers at x/y=12.5%,37.5%,62.5%,87.5%. Every object must be entirely inside its own cell, leaving broad continuous 7%-wide fully transparent lanes between all columns and rows.\nEspecially separate the mirror handle from the lantern handle below it, and the lantern bottom from the book top; no touching or haze connecting objects. Keep full handles, page edges, bookmarks, clasps and jewelry. Preserve genuine front/back/right/left construction, including the mirror's engraved back versus its glass face, bag back seams, lantern frame and book page/spine differences. Real alpha transparency around and between objects, no colored blurry background, no external glow, no cast shadow, no checkerboard, no numbers, labels or grid lines."
+    },
+    {
+      "key": "wish-hats-v2",
+      "base": "wish-hats",
+      "ref": "original-png/exec-3f097fc9-e812-46a2-8fea-a38529516c64.png",
+      "prompt": "Technical atlas-spacing edit only. Keep these exact twenty-eight rich hats/crowns, their seven designs and four genuine directions. Do not redesign, mirror or simplify any object. Re-layout them into a rigorously FOUR-column SEVEN-row portrait grid on actual alpha transparency. Every complete hat/crown including its brims, chains and tassels must fit well inside its cell, with at least 12% of the CELL width empty at both sides and 12% of the CELL height empty above and below. Scale all pieces slightly smaller as necessary; broad continuous transparent gutters between rows are critical. No piece's rectangular crop can include a pixel from a neighboring row.\nPreserve current row order: mint collecting hat, green cedar cap, pink sakura beret, blue research cap, violet prism crown, coral kapok hat, violet-blue morning-star circlet. Preserve columns front/back/right/left and their real different details. Keep lovely cloth texture, seams, gold embroidery, gemstones, pearl drops and full silhouettes. No people/heads, background, shadows, haze, labels, numbers, grid or painted checkerboard."
+    }
+  ]
+}

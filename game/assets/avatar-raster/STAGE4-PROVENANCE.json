@@ -1,0 +1,793 @@
+{
+  "schemaVersion": 1,
+  "generation": "Original artwork produced earlier in this project using built-in image generation; reviewed and connected to live renderers in Stage4.",
+  "runtimeGeneration": false,
+  "pillowVersion": "12.3.0",
+  "webpVersion": "1.6.0",
+  "losslessMasterDecodedRGBAEquality": true,
+  "assets": [
+    {
+      "key": "bach",
+      "master": "masters/bach.webp",
+      "masterBytes": 1671858,
+      "masterSHA256": "34212f6a867baccd774d7c44c1cc944468ea6346ebb0d727ed5e3299e1335059",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "a167f24489912f96a6f036e585b4dc4a22e45a4ea4069ab6a7ceadf807b597aa",
+      "originalPNG": {
+        "file": "exec-a129e76c-1807-4efc-8d54-f722d53ed177.png",
+        "bytes": 2392065,
+        "sha256": "bbb70bf8c7254d11fac34950b560dc71f5707f42b64df442e95a51f3be6ca2fd"
+      },
+      "runtime": "game/assets/avatar-raster/bach.webp",
+      "runtimeBytes": 546940,
+      "runtimeSHA256": "5ae411e504b0184ea129e7a1f2b57b3fdb23adf232cb76ea637a942fac260920",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "e943f7c6102d19557e63410040b74b2540c22ac1def6feeec60f2f3b50edd40b",
+      "encodingStandardizedForRebuild": true,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "bach-long",
+      "master": "masters/bach-long.webp",
+      "masterBytes": 1049166,
+      "masterSHA256": "cac20841054b2d8d1c09298e4b310558db825670bfee1974a18d1796cb091a7a",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "rgbaSHA256": "742bcd46fa54ef6808e27c4786c3ead244cc1cf8c69965676475be616fa905e2",
+      "originalPNG": {
+        "file": "exec-2c436266-d581-420f-9cee-08d9ea94aca9.png",
+        "bytes": 1530886,
+        "sha256": "a7b606f43265d5dc7d752cd12d3e54ca80ae86487bce4dff7f1c96a5c6f23822"
+      },
+      "runtime": "game/assets/avatar-raster/bach-long.webp",
+      "runtimeBytes": 484778,
+      "runtimeSHA256": "940aa6b552c58993bdc58dbcd6ba84a47e82e3acd8ff4fd72958cae30ed8719c",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "940aa6b552c58993bdc58dbcd6ba84a47e82e3acd8ff4fd72958cae30ed8719c",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "heads-down",
+      "master": "masters/heads-down.webp",
+      "masterBytes": 1634132,
+      "masterSHA256": "4a9357753f3f940ad30ab9207ff32837e765c27b522990f3435eb30ec6e586c4",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "79235d1bdb3827b88b16cd8ee67e0caccd98d3bd335c9ffff9646860a0b0ef72",
+      "originalPNG": {
+        "file": "exec-8b5b15c6-e68c-4b59-9189-cff84e45d78b.png",
+        "bytes": 2466267,
+        "sha256": "8d0b61af8c0565d835a9375795a03a3ea5c1b1095e4c1e3a81e8f4dfef7a14ee"
+      },
+      "runtime": "game/assets/avatar-raster/heads-down.webp",
+      "runtimeBytes": 510204,
+      "runtimeSHA256": "45adc689b0dbb617957d929f68417850750782e6a249129fb8ebb606941a9665",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "45adc689b0dbb617957d929f68417850750782e6a249129fb8ebb606941a9665",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "heads-up",
+      "master": "masters/heads-up.webp",
+      "masterBytes": 1736194,
+      "masterSHA256": "1a83673341daa5dfa59cba7b6ad95fe2c84e1ba62aa6e5b02af10dc91e4c09ee",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "d6c97919217eadbdcd98be9eefdcf25581fe320f203aba58389321090441b7ad",
+      "originalPNG": {
+        "file": "exec-3b073e38-846f-4692-9532-79bf82305792.png",
+        "bytes": 2618678,
+        "sha256": "6b8f914fccf8e80b8776b078e08a4a39461dc146c07f14ca6b3db93e3d10bf27"
+      },
+      "runtime": "game/assets/avatar-raster/heads-up.webp",
+      "runtimeBytes": 553054,
+      "runtimeSHA256": "a65ed0f97f3e897363b5511d7d8d25464445ef442bb977ae10d412229980d53f",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "a65ed0f97f3e897363b5511d7d8d25464445ef442bb977ae10d412229980d53f",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "heads-right",
+      "master": "masters/heads-right.webp",
+      "masterBytes": 1766302,
+      "masterSHA256": "ff4abe8bb102cac868361c92dcedbb6b96ae6f75ee3615ce4ef0388e60c42d56",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "4c7045f4869da5110535e777bea992ff83fb7a28368bea6722e2ccce3e61fc20",
+      "originalPNG": {
+        "file": "exec-75d429c2-e97f-4b2b-b3bb-c5617fc800e1.png",
+        "bytes": 2629278,
+        "sha256": "db5ac197f365d0b83620207d9c2a89a6d418c7ec6205b622ec2cd584fbbd17ba"
+      },
+      "runtime": "game/assets/avatar-raster/heads-right.webp",
+      "runtimeBytes": 596894,
+      "runtimeSHA256": "278cdf5f8ad0bec1bf61120b8fe0fbf422ab7c2707d3227988024502ff2508f6",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "278cdf5f8ad0bec1bf61120b8fe0fbf422ab7c2707d3227988024502ff2508f6",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "heads-left",
+      "master": "masters/heads-left.webp",
+      "masterBytes": 1648554,
+      "masterSHA256": "d7db6477b984b6a89c20a3544268861c536c394aed6972aaa2bd488e720e2021",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "5975a08614fec65036a42d15ad804211a34fdc8a23cdb3e4b5ada1f5949c4b76",
+      "originalPNG": {
+        "file": "exec-bfa524e6-69ee-4329-896c-146829d08b5f.png",
+        "bytes": 2494512,
+        "sha256": "68804c5a7bea8ae0a260fd5b9d5c28d5097e1ce3df203a5513a3c4f4dc6fab43"
+      },
+      "runtime": "game/assets/avatar-raster/heads-left.webp",
+      "runtimeBytes": 512484,
+      "runtimeSHA256": "7f13d76e87a8002f615fa36ba72abb75d766b658968d0ffff0d62c07a7e0fcdd",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "7f13d76e87a8002f615fa36ba72abb75d766b658968d0ffff0d62c07a7e0fcdd",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-citrus",
+      "master": "masters/fruit-citrus.webp",
+      "masterBytes": 2065070,
+      "masterSHA256": "e5499423935a0faae59ead3689808ed5d92fd44d33f4315f29f7c533671a7329",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "c684be0fcc4b757a7f39ef5c0d6b0395f0f0e819c193f1bb10bdcd3d97f008ed",
+      "originalPNG": {
+        "file": "exec-cff40372-e1d1-4b7a-94fc-4ca76c3f4e41.png",
+        "bytes": 2766261,
+        "sha256": "ddf9f59c45d5f88997066298ad24d9fef1677750bf8bcde7b29e266a10f4b0d9"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-citrus.webp",
+      "runtimeBytes": 700180,
+      "runtimeSHA256": "21aab78712f2dcf3675e2f4dff19f5d8c7c15059f7db7ef67dd07927a631e3be",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "21aab78712f2dcf3675e2f4dff19f5d8c7c15059f7db7ef67dd07927a631e3be",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-berry",
+      "master": "masters/fruit-berry.webp",
+      "masterBytes": 1884096,
+      "masterSHA256": "ec153e1216bd46bb176cc2b9af36e0f358c958c2c8ee19efd49bf41f32fb85c6",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "5b8ba381eab2e4143ac1f0bcb10743f2684cfb88438ba3e8e3d6b3ef0c02b8f7",
+      "originalPNG": {
+        "file": "exec-be424dc4-6c8a-4190-8d38-8913d704c349.png",
+        "bytes": 2661114,
+        "sha256": "ac4309fb610969f0b4ae4f7b1ed3ee4d5d8b530a355ddd39b579f11fd3b274de"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-berry.webp",
+      "runtimeBytes": 666448,
+      "runtimeSHA256": "f3445c37aecaab7a06db6343d1bd91960d8a2e60688f3dbce501bbe3ded69ceb",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "f3445c37aecaab7a06db6343d1bd91960d8a2e60688f3dbce501bbe3ded69ceb",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-pomelo",
+      "master": "masters/fruit-pomelo.webp",
+      "masterBytes": 1833662,
+      "masterSHA256": "51a47cc0ea5f2bb0ecfba065dc364edb7ebf28708de06017e561a63b83a63c41",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "d6271629ae928d652507f5d16a2183cb9d17e50c28f134d0a09b8e82c886a670",
+      "originalPNG": {
+        "file": "exec-63b8e1ab-f7d1-47c4-825d-3f147889d6af.png",
+        "bytes": 2630630,
+        "sha256": "3ae563da43ea3beee5d20c8df2cf9d5894be5c4d05d34bc83fe6dd7e1b65a2bd"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-pomelo.webp",
+      "runtimeBytes": 631272,
+      "runtimeSHA256": "99a73ea92f34966aa14481caba6288d89c28fe93ea5e64b7f2f8540d5c726cb8",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "99a73ea92f34966aa14481caba6288d89c28fe93ea5e64b7f2f8540d5c726cb8",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-pineapple",
+      "master": "masters/fruit-pineapple.webp",
+      "masterBytes": 1950630,
+      "masterSHA256": "1201258841b20ae3a12681a1e268bec26c18c85fccc445186430fb7d87318528",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "84e780d7e4a48858b3f0991f495ce2e2a56b029d20372a0630a9d9408f5b0904",
+      "originalPNG": {
+        "file": "exec-0afd9789-b09b-4359-94e5-997cce5ff290.png",
+        "bytes": 2710046,
+        "sha256": "64771d7e4674ba0b7690a32a66539b780bd4702c48f49b4e42bb6d736a6bf32d"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-pineapple.webp",
+      "runtimeBytes": 648180,
+      "runtimeSHA256": "d0b5a51787a01528b3719fd8f049953f122ab01185a95947c7dbe0e41b685ec4",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "d0b5a51787a01528b3719fd8f049953f122ab01185a95947c7dbe0e41b685ec4",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-cherry",
+      "master": "masters/fruit-cherry.webp",
+      "masterBytes": 1826888,
+      "masterSHA256": "d6fac3c436d60eba244df216cbd08694a24ae8a6436f94272dceb519732ea4bf",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "fb5181a96f4066d3a5566d5b6b4bc89bf0d17b1753e2dd27fec68168617ae3ec",
+      "originalPNG": {
+        "file": "exec-3e6d6d03-d879-4c37-aa00-8430154f5e93.png",
+        "bytes": 2567936,
+        "sha256": "a6585c6452a52fde87455acfa8c5dee0acfbd26b252f5fb50d28a0c7374398f6"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-cherry.webp",
+      "runtimeBytes": 606230,
+      "runtimeSHA256": "6a081befccb117718d4d23d8daee7c8fb068f9c28dde2dbf909c8e28383b82fd",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "6a081befccb117718d4d23d8daee7c8fb068f9c28dde2dbf909c8e28383b82fd",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "fruit-grape",
+      "master": "masters/fruit-grape.webp",
+      "masterBytes": 1914358,
+      "masterSHA256": "cff45740e5356d5828d82ac069112a5be984892ef4a537419122b6b9b442b296",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "62f92f2605b03a70098641ccececbe8f719ca1cf4a761b9f133f78e1c73088c5",
+      "originalPNG": {
+        "file": "exec-2317e5f2-287e-41cf-a89d-c6253bb55ab3.png",
+        "bytes": 2638744,
+        "sha256": "c4336312e95c10d173ef13f95cf54368c05b1b92886da0b812a612af24a0d9c1"
+      },
+      "runtime": "game/assets/avatar-raster/fruit-grape.webp",
+      "runtimeBytes": 668288,
+      "runtimeSHA256": "a0c1ffb05953e7cde5e28b06fa0c41310465d89b0af313870b3504cabdb5839d",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "a0c1ffb05953e7cde5e28b06fa0c41310465d89b0af313870b3504cabdb5839d",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "schumann",
+      "master": "masters/schumann.webp",
+      "masterBytes": 1630414,
+      "masterSHA256": "d1731b512c02dde4eda78deed3d74fff04bb43bfbfd281cf91f101c2203209ac",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "dbea1097245477763ccc74d7185e07545f625dd5311b1be7ae5225093467aaf4",
+      "originalPNG": {
+        "file": "exec-19bb2bd2-5754-4684-b710-621f56506c5e.png",
+        "bytes": 2416340,
+        "sha256": "7e770496fb9da0ba854e456193bdda99d7f64aea5798f215be5dd5b94cddc760"
+      },
+      "runtime": "game/assets/avatar-raster/schumann.webp",
+      "runtimeBytes": 525074,
+      "runtimeSHA256": "4a3e59b57d33d1b6758bf157ed819f88308bcf4b12459981a6d34fbb8ea85597",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "4a3e59b57d33d1b6758bf157ed819f88308bcf4b12459981a6d34fbb8ea85597",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "mozart",
+      "master": "masters/mozart.webp",
+      "masterBytes": 1698412,
+      "masterSHA256": "d2586b84224f5c242344b4c4adfe96c802f4102742a5de69f9ce4def10fb7ad5",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "08269a0d73bd9ffbe869e8bb9b13eaeb146382d6cd6acdde7f359cf008d0845a",
+      "originalPNG": {
+        "file": "exec-69f7707b-604b-4ce6-b119-dc2a53788642.png",
+        "bytes": 2474631,
+        "sha256": "0bf9d436669ebed1fdbe05bd38f58fc774cce792bd6dfe4c2b8f6df6feec65ee"
+      },
+      "runtime": "game/assets/avatar-raster/mozart.webp",
+      "runtimeBytes": 554440,
+      "runtimeSHA256": "b971deacbc13da78a56dac40e85a30c181cd8f1f7df05611745f47da9cb32d65",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "b971deacbc13da78a56dac40e85a30c181cd8f1f7df05611745f47da9cb32d65",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "haydn",
+      "master": "masters/haydn.webp",
+      "masterBytes": 1763074,
+      "masterSHA256": "354f82564ae0d3f9e0a17115686c8011523e122aa19c050caa8026c0fd0f5694",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "31be30a3af3704e5ff4c00f62848af4e3e41d2d041ac9aa743bbc44d17d69896",
+      "originalPNG": {
+        "file": "exec-cfeecbe4-2431-48fa-a2ca-4989eac72613.png",
+        "bytes": 2619235,
+        "sha256": "6051add28b48ce2d13b33acd89b41783c729a8102b90f1f5909a0bd6751112f6"
+      },
+      "runtime": "game/assets/avatar-raster/haydn.webp",
+      "runtimeBytes": 609212,
+      "runtimeSHA256": "2e5cebe60eb85d13d6459ba80fbf21646aec61a9ce296a8e2b284c550369bd22",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "2e5cebe60eb85d13d6459ba80fbf21646aec61a9ce296a8e2b284c550369bd22",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "requiem",
+      "master": "masters/requiem.webp",
+      "masterBytes": 1765256,
+      "masterSHA256": "e5d19255ea4be1c7540070a465e27ad4325ae61ba42129448ebce0af91064f3b",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "94fd10ec938632635cc83f472d99298c5860daafff29ca85425e0c0e461723c6",
+      "originalPNG": {
+        "file": "exec-323c61c8-d6a1-4d8e-9e5b-5f1de1c98a58.png",
+        "bytes": 2629560,
+        "sha256": "10de647ebaebd72aa6a3d37f3798224062487179738a5d046284b9a8e05ffc37"
+      },
+      "runtime": "game/assets/avatar-raster/requiem.webp",
+      "runtimeBytes": 602012,
+      "runtimeSHA256": "a10f71c5e9264622305d47503ec3991394af040f66020ee888d91b36c001f2b6",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "a10f71c5e9264622305d47503ec3991394af040f66020ee888d91b36c001f2b6",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "letter",
+      "master": "masters/letter.webp",
+      "masterBytes": 1829322,
+      "masterSHA256": "39d66b79647e787c0e2ed0f3cae05f922f9b6308edb689e6ab6ed5887aaa2cc0",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "b66705932274231adca513833ede62ee926595293f19011d4b0cdc1e4378a589",
+      "originalPNG": {
+        "file": "exec-0b785820-5b5a-4690-944c-53f4a59a7637.png",
+        "bytes": 2629552,
+        "sha256": "7d890210496a7bdd42286922d4f2faed9d1c89e3d27fc8f219e185bc53f055e2"
+      },
+      "runtime": "game/assets/avatar-raster/letter.webp",
+      "runtimeBytes": 639568,
+      "runtimeSHA256": "6d05b31d36c8ab8c057f7417d9f8fc931f12f7a3b7c975742f60fabddc979c7c",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "6d05b31d36c8ab8c057f7417d9f8fc931f12f7a3b7c975742f60fabddc979c7c",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "tide",
+      "master": "masters/tide.webp",
+      "masterBytes": 1874830,
+      "masterSHA256": "5da1671155b6e697f3f8faaf983918d18c73930dcb509557ca7a6e69f9320f2e",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "0fd18703d2869a60070afa46299f6bad5d6cb70ea95d5638881e8cb19bba6241",
+      "originalPNG": {
+        "file": "exec-9e4846e3-948e-4fbc-a608-3453ec186a96.png",
+        "bytes": 2636873,
+        "sha256": "27afa278f794c8be24d7084b0b8c5df86727ba8ece89a8f38fbe75f29e2cf218"
+      },
+      "runtime": "game/assets/avatar-raster/tide.webp",
+      "runtimeBytes": 571132,
+      "runtimeSHA256": "aded5c2e668f321fee901f964d7eff1fb6adeea76df4fa3760ebb8d79b443999",
+      "encoding": {
+        "quality": 94,
+        "method": 3,
+        "exact": true
+      },
+      "previousUnpublishedRuntimeSHA256": "aded5c2e668f321fee901f964d7eff1fb6adeea76df4fa3760ebb8d79b443999",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "classic-cloaks",
+      "master": "masters/classic-cloaks.webp",
+      "masterBytes": 1123054,
+      "masterSHA256": "3dd16ab297267b8bfe49ae2209f44fa0e039c49ef635a9df43205f3aa69d964f",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "rgbaSHA256": "22591e25fa01edbb6b220321f07b10fa56f1fa73e0ccd30f73c74826ed083ca7",
+      "originalPNG": {
+        "file": "exec-fac6526c-9233-4610-9ec2-144a3b080058.png",
+        "bytes": 1535959,
+        "sha256": "96bb95e7dae3ee0ae18d34035332be5832b2bef78d0113ef1db12ccb06f509a5"
+      },
+      "runtime": "game/assets/avatar-raster/classic-cloaks.webp",
+      "runtimeBytes": 438852,
+      "runtimeSHA256": "d8d615a43ceaaf03747552b91eb44adc68ed13b1d0032d993fa2423a08296dba",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "d8d615a43ceaaf03747552b91eb44adc68ed13b1d0032d993fa2423a08296dba",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "classic-boots",
+      "master": "masters/classic-boots.webp",
+      "masterBytes": 1986714,
+      "masterSHA256": "2682e36fc85c2ddba71d49f096d13592c723c2e9a59584a4f9270a5e669bb391",
+      "dimensions": [
+        2048,
+        768
+      ],
+      "rgbaSHA256": "cbaeb92f670230d9d9060a6e46b8c68841d4cc3b79b84eee8c49c7f7320f57b2",
+      "originalPNG": {
+        "file": "exec-ae2e9410-0a57-4dab-afd5-0b3947e12c7f.png",
+        "bytes": 2751540,
+        "sha256": "9fa5260f3a736798fb2d5389ab6fd4012adfefaff342bcb9747eb36690ba324f"
+      },
+      "runtime": "game/assets/avatar-raster/classic-boots.webp",
+      "runtimeBytes": 569350,
+      "runtimeSHA256": "cbcace14e97845402798774fe47d9f3b42be1c76f829a32a944e188ff6cf0b24",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "cbcace14e97845402798774fe47d9f3b42be1c76f829a32a944e188ff6cf0b24",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "classic-badges",
+      "master": "masters/classic-badges.webp",
+      "masterBytes": 1564512,
+      "masterSHA256": "e5aafbd571e575cb8e7bede2dc1a9ca6d26110e9c94406c123d725121846d59f",
+      "dimensions": [
+        1448,
+        1086
+      ],
+      "rgbaSHA256": "c85c00afe0432b23e04665e9baaf287a2c40f62375c14fc358bc1483aae0a01d",
+      "originalPNG": {
+        "file": "exec-01b9f8e1-6597-47c9-b3d6-0115597ef8df.png",
+        "bytes": 2263802,
+        "sha256": "81057c6a24dd4ebc13f71cdb344a5bfdcb5435926c5b3dcda9d8e3a0fca4d46d"
+      },
+      "runtime": "game/assets/avatar-raster/classic-badges.webp",
+      "runtimeBytes": 821682,
+      "runtimeSHA256": "7fcc3038bb91a58ef069c89d01f7e47c2f0ea85a93be9fd009917af78b0b6fc5",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "7fcc3038bb91a58ef069c89d01f7e47c2f0ea85a93be9fd009917af78b0b6fc5",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "wish-jackets-a",
+      "master": "masters/wish-jackets-a.webp",
+      "masterBytes": 1627244,
+      "masterSHA256": "20e759115bb0bf5b39f9f2efb939a1302cf2ce46d4370158efafed0b6212fa78",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "d37d5e54576e705fea0d4ffae3133f898a1e10636874538a26a8d7e0b4bb2e54",
+      "originalPNG": {
+        "file": "exec-8a5503f0-5620-4791-bd85-fd288fd0a35a.png",
+        "bytes": 2361898,
+        "sha256": "068d23b161983e0f43e9a3f5edb2dc90c8012929c13b3559bd57881efda6aa0a"
+      },
+      "runtime": "game/assets/avatar-raster/wish-jackets-a.webp",
+      "runtimeBytes": 446060,
+      "runtimeSHA256": "19667e4683d823b39efb8cbd5a7c0a737e8501d3885a557fb146087477ff9a9d",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "19667e4683d823b39efb8cbd5a7c0a737e8501d3885a557fb146087477ff9a9d",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "wish-jackets-b",
+      "master": "masters/wish-jackets-b.webp",
+      "masterBytes": 1807504,
+      "masterSHA256": "ca890ffeadbc2315ffc081a8f1d727f3dd58c91d95c8f141f31550ace06d4b78",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "d0cebbed86fac10b3b52691012f91acdffee8d43e54bd42929ab13357885ba3c",
+      "originalPNG": {
+        "file": "exec-a2ecb851-0a85-4708-a68c-1c98dc6d2498.png",
+        "bytes": 2479465,
+        "sha256": "a3f390163c8bebe2f72a0e829c1ea3d91eaaae78bdd72c025bf6227b17a9212a"
+      },
+      "runtime": "game/assets/avatar-raster/wish-jackets-b.webp",
+      "runtimeBytes": 486880,
+      "runtimeSHA256": "0b09b25290ccadd1b3c651b29f527677cbc9f91537980bec3df99f9dc43272ef",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "0b09b25290ccadd1b3c651b29f527677cbc9f91537980bec3df99f9dc43272ef",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "wish-jackets-c",
+      "master": "masters/wish-jackets-c.webp",
+      "masterBytes": 1766980,
+      "masterSHA256": "bad142dc0c70e91f9bd6575e070cbc1640e311a6dba0f537d4f2fbe5277d168f",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "4493a411d70579efd8e22ef9206ac5f5f842ee483e9707ac199e04b6a25cd95c",
+      "originalPNG": {
+        "file": "exec-a365fda5-dd42-40cb-a461-beb224d0b26d.png",
+        "bytes": 2385542,
+        "sha256": "074d10962e952de223a4a3c6915f08d5ad527dc7a8baff523c75dd64e7b8f6bb"
+      },
+      "runtime": "game/assets/avatar-raster/wish-jackets-c.webp",
+      "runtimeBytes": 494120,
+      "runtimeSHA256": "cd7296db4022a359028ed3283eb937aa9d8081cd525f51eaa0e1a6aa2252f2ed",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "cd7296db4022a359028ed3283eb937aa9d8081cd525f51eaa0e1a6aa2252f2ed",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "wish-capes",
+      "master": "masters/wish-capes.webp",
+      "masterBytes": 1916552,
+      "masterSHA256": "66486e5b298709abd9aa03e7883e56fa02fedc90f817af3bd2b3e2a649cfd9b2",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "rgbaSHA256": "200922dd88d93161cca34f999fce37c8b478fd3a6d8f835c1540eb54bf6ca7fe",
+      "originalPNG": {
+        "file": "exec-48881baf-debb-4d88-95a7-5d426d365b41.png",
+        "bytes": 2741019,
+        "sha256": "fc8e108ff5bcd4dc360ea497e547a82b0303e67f5e5bccc695e1fd2681b62ecd"
+      },
+      "runtime": "game/assets/avatar-raster/wish-capes.webp",
+      "runtimeBytes": 566234,
+      "runtimeSHA256": "1fdcca4b9bbae1457b2c824f4659242b301443e2ae7595c9339826c83701db1a",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "1fdcca4b9bbae1457b2c824f4659242b301443e2ae7595c9339826c83701db1a",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "wish-hats",
+      "master": "masters/wish-hats.webp",
+      "masterBytes": 1955500,
+      "masterSHA256": "1afbc59c327de9f7fc6392270cc30c975b0583be19296172d511251ce9c89771",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "rgbaSHA256": "69744e180cac5ac46c93b0918dfef2f0ad1ca6f803e1dabf05757cc57f53deae",
+      "originalPNG": {
+        "file": "exec-becaddec-f830-462a-8dba-a22df80cfd13.png",
+        "bytes": 2690478,
+        "sha256": "b30a26060850c4942dd3513ab9ec5746e94bffbee3f81329e5ee6f68e0c5f93f"
+      },
+      "runtime": "game/assets/avatar-raster/wish-hats.webp",
+      "runtimeBytes": 601506,
+      "runtimeSHA256": "decca66369e45410e9f24b35610b73e90418174713987747df4e660ad4bac4f0",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "decca66369e45410e9f24b35610b73e90418174713987747df4e660ad4bac4f0",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "knowledge-pharmaceutics",
+      "master": "masters/knowledge-pharmaceutics.webp",
+      "masterBytes": 1656690,
+      "masterSHA256": "96a88dbf18fcfdc5644d57b5d4ea5a6a8ac820a746994dd3cac42302e267fa50",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgbaSHA256": "0c25fbf344899bae4855e71e676e65c6cbb08f7ea8ca01f414d59af84f9f6574",
+      "originalPNG": {
+        "file": "exec-9ae5e168-aeaa-44a4-8532-95e806e17dbd.png",
+        "bytes": 2288912,
+        "sha256": "490435740bbe592ab115a00e08f5795c4b3d120ce04e3a32122b039143503a09"
+      },
+      "runtime": "game/assets/avatar-raster/knowledge-pharmaceutics.webp",
+      "runtimeBytes": 752192,
+      "runtimeSHA256": "c1c4b08d0d1d93beb492b863a2c6599acd5ed68e73b86ff822da6f68d4536dca",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "c1c4b08d0d1d93beb492b863a2c6599acd5ed68e73b86ff822da6f68d4536dca",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "knowledge-pharmacology",
+      "master": "masters/knowledge-pharmacology.webp",
+      "masterBytes": 1397074,
+      "masterSHA256": "47f2ed24cf70033a422dfddf051e1085394cf72a3c66d547c1fe2140e09a8120",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgbaSHA256": "ca84fb598821b9b7e374669ea6039d0f410dd8f64400b2bd534bed97a03c9a65",
+      "originalPNG": {
+        "file": "exec-ac3be3a4-4a64-4ba7-b4a3-d796af1d82e9.png",
+        "bytes": 1983065,
+        "sha256": "a8a75acad245fcb2a5e4d76db959cd76050a07b57ada8f1c850e9c9dfc5c3b64"
+      },
+      "runtime": "game/assets/avatar-raster/knowledge-pharmacology.webp",
+      "runtimeBytes": 678520,
+      "runtimeSHA256": "6f3232b4489fd881e0990860ba9ee865c0f0b6272cb364f45fdbbb53a4b2bed5",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "6f3232b4489fd881e0990860ba9ee865c0f0b6272cb364f45fdbbb53a4b2bed5",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    },
+    {
+      "key": "knowledge-herbal",
+      "master": "masters/knowledge-herbal.webp",
+      "masterBytes": 1396802,
+      "masterSHA256": "1a2fc3f28af75234bb5ea1ce3e8b23eaadc0f130a77459456ac70a319954cc5c",
+      "dimensions": [
+        1254,
+        1254
+      ],
+      "rgbaSHA256": "279fcf282dbd4e17c615323a5bf024c7c0608a42788fdc22c13930bdef5be17f",
+      "originalPNG": {
+        "file": "exec-ae8b705d-0971-4489-a1da-a9c04df9ca1e.png",
+        "bytes": 1864660,
+        "sha256": "1ce4ed906e9d15090f47256a62da43001d84d4967bf2d338a6814c7ff4293c84"
+      },
+      "runtime": "game/assets/avatar-raster/knowledge-herbal.webp",
+      "runtimeBytes": 576002,
+      "runtimeSHA256": "ac816eb9ddd6672b15e1786aa8b929fffb88f3230a20532468a2f937b5dc4d4e",
+      "encoding": {
+        "quality": 95,
+        "method": 6,
+        "exact": false
+      },
+      "previousUnpublishedRuntimeSHA256": "ac816eb9ddd6672b15e1786aa8b929fffb88f3230a20532468a2f937b5dc4d4e",
+      "encodingStandardizedForRebuild": false,
+      "sourceMethod": "original independently authored directional component art, not full painted motion frames"
+    }
+  ]
+}

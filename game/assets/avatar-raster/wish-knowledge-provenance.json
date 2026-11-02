@@ -1,0 +1,116 @@
+{
+  "atlases": [
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-8a5503f0-5620-4791-bd85-fd288fd0a35a.png",
+      "sourceSHA256": "068d23b161983e0f43e9a3f5edb2dc90c8012929c13b3559bd57881efda6aa0a",
+      "runtimeFile": "wish-jackets-a.webp",
+      "runtimeSHA256": "19667e4683d823b39efb8cbd5a7c0a737e8501d3885a557fb146087477ff9a9d",
+      "runtimeBytes": 446060,
+      "referenceImages": [
+        "level50-mozart.webp",
+        "level60-haydn.webp",
+        "coat-herb.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-a2ecb851-0a85-4708-a68c-1c98dc6d2498.png",
+      "sourceSHA256": "a3f390163c8bebe2f72a0e829c1ea3d91eaaae78bdd72c025bf6227b17a9212a",
+      "runtimeFile": "wish-jackets-b.webp",
+      "runtimeSHA256": "0b09b25290ccadd1b3c651b29f527677cbc9f91537980bec3df99f9dc43272ef",
+      "runtimeBytes": 486880,
+      "referenceImages": [
+        "level50-mozart.webp",
+        "coat-star.webp",
+        "badge-prism.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-a365fda5-dd42-40cb-a461-beb224d0b26d.png",
+      "sourceSHA256": "074d10962e952de223a4a3c6915f08d5ad527dc7a8baff523c75dd64e7b8f6bb",
+      "runtimeFile": "wish-jackets-c.webp",
+      "runtimeSHA256": "cd7296db4022a359028ed3283eb937aa9d8081cd525f51eaa0e1a6aa2252f2ed",
+      "runtimeBytes": 494120,
+      "referenceImages": [
+        "level50-mozart.webp",
+        "coat-star.webp",
+        "badge-sage.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-48881baf-debb-4d88-95a7-5d426d365b41.png",
+      "sourceSHA256": "fc8e108ff5bcd4dc360ea497e547a82b0303e67f5e5bccc695e1fd2681b62ecd",
+      "runtimeFile": "wish-capes.webp",
+      "runtimeSHA256": "1fdcca4b9bbae1457b2c824f4659242b301443e2ae7595c9339826c83701db1a",
+      "runtimeBytes": 566234,
+      "referenceImages": [
+        "coat-dawn.webp",
+        "coat-herb.webp",
+        "coat-star.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-becaddec-f830-462a-8dba-a22df80cfd13.png",
+      "sourceSHA256": "b30a26060850c4942dd3513ab9ec5746e94bffbee3f81329e5ee6f68e0c5f93f",
+      "runtimeFile": "wish-hats.webp",
+      "runtimeSHA256": "decca66369e45410e9f24b35610b73e90418174713987747df4e660ad4bac4f0",
+      "runtimeBytes": 601506,
+      "referenceImages": [
+        "level60-haydn.webp",
+        "badge-prism.webp",
+        "badge-sage.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-9ae5e168-aeaa-44a4-8532-95e806e17dbd.png",
+      "sourceSHA256": "490435740bbe592ab115a00e08f5795c4b3d120ce04e3a32122b039143503a09",
+      "runtimeFile": "knowledge-pharmaceutics.webp",
+      "runtimeSHA256": "c1c4b08d0d1d93beb492b863a2c6599acd5ed68e73b86ff822da6f68d4536dca",
+      "runtimeBytes": 752192,
+      "referenceImages": [
+        "badge-prism.webp",
+        "badge-sage.webp",
+        "coat-dawn.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-ac3be3a4-4a64-4ba7-b4a3-d796af1d82e9.png",
+      "sourceSHA256": "a8a75acad245fcb2a5e4d76db959cd76050a07b57ada8f1c850e9c9dfc5c3b64",
+      "runtimeFile": "knowledge-pharmacology.webp",
+      "runtimeSHA256": "6f3232b4489fd881e0990860ba9ee865c0f0b6272cb364f45fdbbb53a4b2bed5",
+      "runtimeBytes": 678520,
+      "referenceImages": [
+        "badge-prism.webp",
+        "badge-sage.webp",
+        "coat-star.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    },
+    {
+      "tool": "builtin image_gen__imagegen",
+      "sourceFile": "exec-ae8b705d-0971-4489-a1da-a9c04df9ca1e.png",
+      "sourceSHA256": "1ce4ed906e9d15090f47256a62da43001d84d4967bf2d338a6814c7ff4293c84",
+      "runtimeFile": "knowledge-herbal.webp",
+      "runtimeSHA256": "ac816eb9ddd6672b15e1786aa8b929fffb88f3230a20532468a2f937b5dc4d4e",
+      "runtimeBytes": 576002,
+      "referenceImages": [
+        "badge-seed.webp",
+        "badge-sage.webp",
+        "coat-herb.webp"
+      ],
+      "processing": "Pillow WebP encoding only; UV rectangles and arm pins measured from the generated alpha. No pixel repainting, mirroring or SVG substitutes."
+    }
+  ]
+}

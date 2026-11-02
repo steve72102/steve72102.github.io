@@ -1,0 +1,23 @@
+{
+  "assets": [
+    "assets/illustrated-scenes/campus-taiwan.webp",
+    "assets/illustrated-scenes/campus-plaza-motion-base.webp",
+    "assets/illustrated-scenes/district-pharmaceutics.webp",
+    "assets/illustrated-scenes/district-pharmacology.webp",
+    "assets/illustrated-scenes/district-herbal.webp",
+    "assets/illustrated-scenes/district-battle.webp",
+    "assets/illustrated-scenes/district-life.webp",
+    "assets/illustrated-scenes/campus-south.webp",
+    "assets/illustrated-scenes/campus-west-garden.webp",
+    "assets/illustrated-scenes/campus-east-river.webp",
+    "assets/illustrated-scenes/hall-pharmaceutics.webp",
+    "assets/illustrated-scenes/hall-pharmacology.webp",
+    "assets/illustrated-scenes/hall-herbal.webp",
+    "assets/illustrated-scenes/hall-battle.webp",
+    "assets/illustrated-scenes/hall-life.webp",
+    "assets/illustrated-scenes/classroom-pharmacology.webp",
+    "assets/illustrated-scenes/classroom-herbal.webp",
+    "assets/illustrated-scenes/classroom-battle.webp"
+  ],
+  "operatorNote": "Merge these files into existing cache/offline asset lists while preserving Codex local cache version and packaging edits. Stage4 intentionally does not overwrite sw.js, app.js, tools/package-game.py."
+}

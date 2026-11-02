@@ -155,4 +155,5 @@ async function main(){
   check(report.requests.missing.length===0,'no unintended missing production asset');check(report.pageErrors.length===0,'no uncaught browser errors in the actual app',report.pageErrors);
   report.pass=report.checks.every(row=>row.pass);if(!report.pass)process.exitCode=1;
 }
-main().catch(error=>{report.fatal=error.stack||String(error);report.pass=false;console.error(report.fatal);process.exitCode=1;}).finally(()=>{fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:report.pass,checks:report.checks.length,screenshots:report.screenshots.length,report:path.join(out,'report.json')}));});
+if(require.main===module)main().catch(error=>{report.fatal=error.stack||String(error);report.pass=false;console.error(report.fatal);process.exitCode=1;}).finally(()=>{fs.mkdirSync(out,{recursive:true});fs.writeFileSync(path.join(out,'report.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:report.pass,checks:report.checks.length,screenshots:report.screenshots.length,report:path.join(out,'report.json')}));});
+else module.exports={createPage,ready,shot,snap,actualMotion,check,report,out,root,digest};

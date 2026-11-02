@@ -35,7 +35,7 @@
   }
   const fixture=(id,name,material,x,y,description)=>({id,name,material,movable:false,interaction:'inspect',x,y,description});
   function room(key,source,surfaces,props,fixtures=[],extra={}){
-    return {key,source:'./assets/academy/'+source,background:'./assets/scene-objects/'+key+'-clean.webp',atlas:'./assets/scene-objects/props.png',surfaces,props,fixtures,...extra};
+    return {key,source:'./assets/academy/'+source,background:'./assets/illustrated-scenes/'+key+'.webp',atlas:'./assets/scene-objects/props.png',surfaces,props,fixtures,...extra};
   }
   const rooms={};
 

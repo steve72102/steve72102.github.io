@@ -5,7 +5,7 @@
 .walk-actor.native-actor{transform-origin:50% 90%}
 .walk-actor .native-avatar-sprite{
   position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;
-  display:block;pointer-events:none;background-image:url('./assets/native-avatar/pineapple-doctor/down-actions.webp');
+  display:block;pointer-events:none;
   background-size:400% 200%;background-position:0% 0%;background-repeat:no-repeat;
   animation:none!important;transform:none!important;transition:none;contain:layout style;
 }

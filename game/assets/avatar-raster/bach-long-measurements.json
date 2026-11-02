@@ -1,0 +1,147 @@
+{
+  "generatedSource": "original-png/exec-2c436266-d581-420f-9cee-08d9ea94aca9.png",
+  "sourceSha256": "a7b606f43265d5dc7d752cd12d3e54ca80ae86487bce4dff7f1c96a5c6f23822",
+  "runtimeAsset": "game/assets/avatar-raster/bach-long.webp",
+  "runtimeSha256": "940aa6b552c58993bdc58dbcd6ba84a47e82e3acd8ff4fd72958cae30ed8719c",
+  "runtimeBytes": 484778,
+  "width": 1448,
+  "height": 1086,
+  "quality": 94,
+  "method": 3,
+  "alphaPreserved": true,
+  "scope": "Only 12 jacket torso overrides for the three named characters; all other Bach parts remain unchanged.",
+  "measurements": {
+    "professor/down": {
+      "component": 1,
+      "rect": [
+        152,
+        7,
+        272,
+        353
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    },
+    "professor/up": {
+      "component": 4,
+      "rect": [
+        484,
+        9,
+        239,
+        350
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    },
+    "professor/right": {
+      "component": 2,
+      "rect": [
+        789,
+        7,
+        229,
+        351
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    },
+    "professor/left": {
+      "component": 3,
+      "rect": [
+        1076,
+        7,
+        214,
+        354
+      ],
+      "maskRequired": true,
+      "garmentLength": "calf"
+    },
+    "cedar-dean/down": {
+      "component": 7,
+      "rect": [
+        173,
+        358,
+        231,
+        367
+      ],
+      "maskRequired": true,
+      "garmentLength": "full"
+    },
+    "cedar-dean/up": {
+      "component": 8,
+      "rect": [
+        494,
+        360,
+        213,
+        361
+      ],
+      "maskRequired": false,
+      "garmentLength": "full"
+    },
+    "cedar-dean/right": {
+      "component": 5,
+      "rect": [
+        813,
+        357,
+        202,
+        370
+      ],
+      "maskRequired": true,
+      "garmentLength": "full"
+    },
+    "cedar-dean/left": {
+      "component": 6,
+      "rect": [
+        1077,
+        357,
+        183,
+        364
+      ],
+      "maskRequired": false,
+      "garmentLength": "full"
+    },
+    "balance-analyst/down": {
+      "component": 9,
+      "rect": [
+        171,
+        717,
+        226,
+        354
+      ],
+      "maskRequired": true,
+      "garmentLength": "calf"
+    },
+    "balance-analyst/up": {
+      "component": 11,
+      "rect": [
+        494,
+        724,
+        217,
+        347
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    },
+    "balance-analyst/right": {
+      "component": 10,
+      "rect": [
+        792,
+        723,
+        206,
+        348
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    },
+    "balance-analyst/left": {
+      "component": 12,
+      "rect": [
+        1078,
+        724,
+        189,
+        345
+      ],
+      "maskRequired": false,
+      "garmentLength": "calf"
+    }
+  }
+}

@@ -1,0 +1,3059 @@
+{
+  "version": 1,
+  "atlases": {
+    "wish-jackets-a": {
+      "src": "./assets/avatar-raster/wish-jackets-a.webp",
+      "width": 1536,
+      "height": 1024
+    },
+    "wish-jackets-b": {
+      "src": "./assets/avatar-raster/wish-jackets-b.webp",
+      "width": 1536,
+      "height": 1024
+    },
+    "wish-jackets-c": {
+      "src": "./assets/avatar-raster/wish-jackets-c.webp",
+      "width": 1536,
+      "height": 1024
+    },
+    "wish-capes": {
+      "src": "./assets/avatar-raster/wish-capes.webp",
+      "width": 1536,
+      "height": 1024
+    },
+    "wish-hats": {
+      "src": "./assets/avatar-raster/wish-hats.webp",
+      "width": 1024,
+      "height": 1536
+    }
+  },
+  "kits": {
+    "wish-mint-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                69,
+                11,
+                208,
+                242
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                355,
+                22,
+                123,
+                233
+              ],
+              "pins": {
+                "root": [
+                  0.6341,
+                  0.1
+                ],
+                "joint": [
+                  0.5407,
+                  0.52
+                ],
+                "tip": [
+                  0.2683,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                616,
+                22,
+                119,
+                232
+              ],
+              "pins": {
+                "root": [
+                  0.3782,
+                  0.1
+                ],
+                "joint": [
+                  0.4622,
+                  0.52
+                ],
+                "tip": [
+                  0.7143,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                812,
+                15,
+                202,
+                240
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1104,
+                25,
+                116,
+                229
+              ],
+              "pins": {
+                "root": [
+                  0.6293,
+                  0.1
+                ],
+                "joint": [
+                  0.5776,
+                  0.52
+                ],
+                "tip": [
+                  0.3103,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1373,
+                25,
+                122,
+                229
+              ],
+              "pins": {
+                "root": [
+                  0.2869,
+                  0.1
+                ],
+                "joint": [
+                  0.4016,
+                  0.52
+                ],
+                "tip": [
+                  0.6967,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                84,
+                264,
+                160,
+                235
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                383,
+                276,
+                96,
+                223
+              ],
+              "pins": {
+                "root": [
+                  0.3125,
+                  0.1
+                ],
+                "joint": [
+                  0.5625,
+                  0.52
+                ],
+                "tip": [
+                  0.4167,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                600,
+                276,
+                96,
+                223
+              ],
+              "pins": {
+                "root": [
+                  0.6771,
+                  0.1
+                ],
+                "joint": [
+                  0.4219,
+                  0.52
+                ],
+                "tip": [
+                  0.5417,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                822,
+                264,
+                157,
+                234
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1099,
+                276,
+                123,
+                227
+              ],
+              "pins": {
+                "root": [
+                  0.6016,
+                  0.1
+                ],
+                "joint": [
+                  0.4959,
+                  0.52
+                ],
+                "tip": [
+                  0.2602,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1358,
+                276,
+                125,
+                224
+              ],
+              "pins": {
+                "root": [
+                  0.368,
+                  0.1
+                ],
+                "joint": [
+                  0.496,
+                  0.52
+                ],
+                "tip": [
+                  0.752,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-cedar-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                59,
+                509,
+                232,
+                249
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                352,
+                519,
+                122,
+                231
+              ],
+              "pins": {
+                "root": [
+                  0.6721,
+                  0.1
+                ],
+                "joint": [
+                  0.5574,
+                  0.52
+                ],
+                "tip": [
+                  0.3197,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                606,
+                519,
+                121,
+                231
+              ],
+              "pins": {
+                "root": [
+                  0.3554,
+                  0.1
+                ],
+                "joint": [
+                  0.4298,
+                  0.52
+                ],
+                "tip": [
+                  0.6694,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                785,
+                514,
+                232,
+                249
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1084,
+                520,
+                132,
+                239
+              ],
+              "pins": {
+                "root": [
+                  0.6742,
+                  0.1
+                ],
+                "joint": [
+                  0.5379,
+                  0.52
+                ],
+                "tip": [
+                  0.303,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1364,
+                520,
+                133,
+                239
+              ],
+              "pins": {
+                "root": [
+                  0.3233,
+                  0.1
+                ],
+                "joint": [
+                  0.4511,
+                  0.52
+                ],
+                "tip": [
+                  0.6992,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                69,
+                764,
+                186,
+                248
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                371,
+                764,
+                115,
+                238
+              ],
+              "pins": {
+                "root": [
+                  0.313,
+                  0.1
+                ],
+                "joint": [
+                  0.5391,
+                  0.52
+                ],
+                "tip": [
+                  0.4348,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                590,
+                762,
+                116,
+                240
+              ],
+              "pins": {
+                "root": [
+                  0.681,
+                  0.1
+                ],
+                "joint": [
+                  0.4569,
+                  0.52
+                ],
+                "tip": [
+                  0.5603,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                813,
+                763,
+                179,
+                248
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1084,
+                769,
+                138,
+                234
+              ],
+              "pins": {
+                "root": [
+                  0.6594,
+                  0.1
+                ],
+                "joint": [
+                  0.5072,
+                  0.52
+                ],
+                "tip": [
+                  0.2826,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-a",
+              "rect": [
+                1349,
+                770,
+                141,
+                233
+              ],
+              "pins": {
+                "root": [
+                  0.3333,
+                  0.1
+                ],
+                "joint": [
+                  0.4894,
+                  0.52
+                ],
+                "tip": [
+                  0.7163,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-river-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                85,
+                13,
+                218,
+                263
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                395,
+                41,
+                117,
+                224
+              ],
+              "pins": {
+                "root": [
+                  0.5043,
+                  0.1
+                ],
+                "joint": [
+                  0.3675,
+                  0.52
+                ],
+                "tip": [
+                  0.6068,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                596,
+                41,
+                120,
+                224
+              ],
+              "pins": {
+                "root": [
+                  0.5,
+                  0.1
+                ],
+                "joint": [
+                  0.625,
+                  0.52
+                ],
+                "tip": [
+                  0.375,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                806,
+                16,
+                202,
+                260
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1091,
+                43,
+                116,
+                224
+              ],
+              "pins": {
+                "root": [
+                  0.6552,
+                  0.1
+                ],
+                "joint": [
+                  0.4052,
+                  0.52
+                ],
+                "tip": [
+                  0.4138,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1334,
+                43,
+                106,
+                224
+              ],
+              "pins": {
+                "root": [
+                  0.3679,
+                  0.1
+                ],
+                "joint": [
+                  0.5472,
+                  0.52
+                ],
+                "tip": [
+                  0.5377,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                97,
+                279,
+                187,
+                228
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                370,
+                297,
+                129,
+                208
+              ],
+              "pins": {
+                "root": [
+                  0.7054,
+                  0.1
+                ],
+                "joint": [
+                  0.5271,
+                  0.52
+                ],
+                "tip": [
+                  0.3178,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                595,
+                297,
+                124,
+                208
+              ],
+              "pins": {
+                "root": [
+                  0.3065,
+                  0.1
+                ],
+                "joint": [
+                  0.4677,
+                  0.52
+                ],
+                "tip": [
+                  0.6613,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                811,
+                284,
+                185,
+                224
+              ],
+              "anchor": [
+                0.5,
+                0
+              ]
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1087,
+                296,
+                120,
+                209
+              ],
+              "pins": {
+                "root": [
+                  0.6667,
+                  0.1
+                ],
+                "joint": [
+                  0.5167,
+                  0.52
+                ],
+                "tip": [
+                  0.3167,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1331,
+                295,
+                132,
+                210
+              ],
+              "pins": {
+                "root": [
+                  0.2955,
+                  0.1
+                ],
+                "joint": [
+                  0.4848,
+                  0.52
+                ],
+                "tip": [
+                  0.6894,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-prism-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                69,
+                515,
+                246,
+                253
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                364,
+                527,
+                143,
+                231
+              ],
+              "pins": {
+                "root": [
+                  0.5455,
+                  0.1
+                ],
+                "joint": [
+                  0.4406,
+                  0.52
+                ],
+                "tip": [
+                  0.6154,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                576,
+                528,
+                142,
+                230
+              ],
+              "pins": {
+                "root": [
+                  0.4577,
+                  0.1
+                ],
+                "joint": [
+                  0.5634,
+                  0.52
+                ],
+                "tip": [
+                  0.3803,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                788,
+                514,
+                243,
+                255
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1086,
+                527,
+                135,
+                233
+              ],
+              "pins": {
+                "root": [
+                  0.6815,
+                  0.1
+                ],
+                "joint": [
+                  0.5185,
+                  0.52
+                ],
+                "tip": [
+                  0.5259,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1328,
+                527,
+                136,
+                233
+              ],
+              "pins": {
+                "root": [
+                  0.3162,
+                  0.1
+                ],
+                "joint": [
+                  0.4926,
+                  0.52
+                ],
+                "tip": [
+                  0.5147,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                78,
+                766,
+                217,
+                246
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                349,
+                776,
+                148,
+                229
+              ],
+              "pins": {
+                "root": [
+                  0.6959,
+                  0.1
+                ],
+                "joint": [
+                  0.527,
+                  0.52
+                ],
+                "tip": [
+                  0.3649,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                588,
+                776,
+                143,
+                229
+              ],
+              "pins": {
+                "root": [
+                  0.3147,
+                  0.1
+                ],
+                "joint": [
+                  0.4755,
+                  0.52
+                ],
+                "tip": [
+                  0.6154,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                786,
+                769,
+                234,
+                244
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "knee"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1089,
+                776,
+                143,
+                231
+              ],
+              "pins": {
+                "root": [
+                  0.6713,
+                  0.1
+                ],
+                "joint": [
+                  0.4545,
+                  0.52
+                ],
+                "tip": [
+                  0.3706,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-b",
+              "rect": [
+                1335,
+                776,
+                141,
+                230
+              ],
+              "pins": {
+                "root": [
+                  0.3262,
+                  0.1
+                ],
+                "joint": [
+                  0.5248,
+                  0.52
+                ],
+                "tip": [
+                  0.6099,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-aurora-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                37,
+                24,
+                272,
+                235
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                353,
+                41,
+                116,
+                221
+              ],
+              "pins": {
+                "root": [
+                  0.7672,
+                  0.1
+                ],
+                "joint": [
+                  0.5603,
+                  0.52
+                ],
+                "tip": [
+                  0.4224,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                597,
+                40,
+                114,
+                222
+              ],
+              "pins": {
+                "root": [
+                  0.2368,
+                  0.1
+                ],
+                "joint": [
+                  0.4386,
+                  0.52
+                ],
+                "tip": [
+                  0.5526,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                774,
+                25,
+                274,
+                237
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1092,
+                41,
+                124,
+                221
+              ],
+              "pins": {
+                "root": [
+                  0.7581,
+                  0.1
+                ],
+                "joint": [
+                  0.5726,
+                  0.52
+                ],
+                "tip": [
+                  0.4032,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1348,
+                41,
+                123,
+                221
+              ],
+              "pins": {
+                "root": [
+                  0.2276,
+                  0.1
+                ],
+                "joint": [
+                  0.4146,
+                  0.52
+                ],
+                "tip": [
+                  0.5772,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                46,
+                269,
+                235,
+                236
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                331,
+                293,
+                121,
+                215
+              ],
+              "pins": {
+                "root": [
+                  0.7438,
+                  0.1
+                ],
+                "joint": [
+                  0.5537,
+                  0.52
+                ],
+                "tip": [
+                  0.438,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                584,
+                293,
+                123,
+                215
+              ],
+              "pins": {
+                "root": [
+                  0.252,
+                  0.1
+                ],
+                "joint": [
+                  0.4472,
+                  0.52
+                ],
+                "tip": [
+                  0.5528,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                799,
+                269,
+                241,
+                236
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1084,
+                292,
+                127,
+                215
+              ],
+              "pins": {
+                "root": [
+                  0.7559,
+                  0.1
+                ],
+                "joint": [
+                  0.5669,
+                  0.52
+                ],
+                "tip": [
+                  0.4567,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1345,
+                293,
+                131,
+                214
+              ],
+              "pins": {
+                "root": [
+                  0.2366,
+                  0.1
+                ],
+                "joint": [
+                  0.4275,
+                  0.52
+                ],
+                "tip": [
+                  0.542,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-zenith-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                44,
+                514,
+                259,
+                229
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                327,
+                529,
+                133,
+                212
+              ],
+              "pins": {
+                "root": [
+                  0.7406,
+                  0.1
+                ],
+                "joint": [
+                  0.5338,
+                  0.52
+                ],
+                "tip": [
+                  0.5827,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                588,
+                530,
+                134,
+                211
+              ],
+              "pins": {
+                "root": [
+                  0.2463,
+                  0.1
+                ],
+                "joint": [
+                  0.4627,
+                  0.52
+                ],
+                "tip": [
+                  0.4179,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                773,
+                513,
+                278,
+                229
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1089,
+                529,
+                131,
+                212
+              ],
+              "pins": {
+                "root": [
+                  0.7405,
+                  0.1
+                ],
+                "joint": [
+                  0.542,
+                  0.52
+                ],
+                "tip": [
+                  0.6336,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1343,
+                529,
+                136,
+                212
+              ],
+              "pins": {
+                "root": [
+                  0.2574,
+                  0.1
+                ],
+                "joint": [
+                  0.4559,
+                  0.52
+                ],
+                "tip": [
+                  0.3529,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                48,
+                747,
+                246,
+                225
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                327,
+                758,
+                132,
+                211
+              ],
+              "pins": {
+                "root": [
+                  0.7273,
+                  0.1
+                ],
+                "joint": [
+                  0.4924,
+                  0.52
+                ],
+                "tip": [
+                  0.5076,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                581,
+                757,
+                136,
+                212
+              ],
+              "pins": {
+                "root": [
+                  0.2574,
+                  0.1
+                ],
+                "joint": [
+                  0.5,
+                  0.52
+                ],
+                "tip": [
+                  0.4632,
+                  0.9
+                ]
+              }
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "jacket.torso": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                779,
+                746,
+                245,
+                226
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "full"
+            },
+            "jacket.armL": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1087,
+                756,
+                132,
+                214
+              ],
+              "pins": {
+                "root": [
+                  0.7348,
+                  0.1
+                ],
+                "joint": [
+                  0.5227,
+                  0.52
+                ],
+                "tip": [
+                  0.5909,
+                  0.9
+                ]
+              }
+            },
+            "jacket.armR": {
+              "atlas": "wish-jackets-c",
+              "rect": [
+                1340,
+                757,
+                135,
+                217
+              ],
+              "pins": {
+                "root": [
+                  0.2444,
+                  0.1
+                ],
+                "joint": [
+                  0.4815,
+                  0.52
+                ],
+                "tip": [
+                  0.4222,
+                  0.9
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "wish-sakura-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                22,
+                43,
+                403,
+                337
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "cape.front": {
+              "hidden": true
+            },
+            "cape.back": {
+              "atlas": "wish-capes",
+              "rect": [
+                451,
+                44,
+                381,
+                332
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                866,
+                42,
+                254,
+                340
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                1251,
+                43,
+                257,
+                339
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "short"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    },
+    "wish-bloom-coat": {
+      "views": {
+        "down": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                9,
+                412,
+                426,
+                559
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "cape.front": {
+              "hidden": true
+            },
+            "cape.back": {
+              "atlas": "wish-capes",
+              "rect": [
+                452,
+                415,
+                393,
+                563
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                857,
+                414,
+                329,
+                558
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "cape.front": {
+              "atlas": "wish-capes",
+              "rect": [
+                1213,
+                414,
+                315,
+                563
+              ],
+              "anchor": [
+                0.5,
+                0
+              ],
+              "garmentLength": "calf"
+            },
+            "cape.back": {
+              "hidden": true
+            }
+          }
+        }
+      }
+    },
+    "wish-mint-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                19,
+                56,
+                255,
+                182
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1.06
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                285,
+                56,
+                222,
+                183
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1.06
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                521,
+                56,
+                236,
+                186
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1.06
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                777,
+                56,
+                230,
+                198
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1.06
+            }
+          }
+        }
+      }
+    },
+    "wish-cedar-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                30,
+                263,
+                230,
+                159
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                289,
+                261,
+                203,
+                195
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                522,
+                265,
+                232,
+                199
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                780,
+                262,
+                231,
+                203
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    },
+    "wish-sakura-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                19,
+                464,
+                244,
+                171
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                288,
+                467,
+                214,
+                182
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                520,
+                473,
+                223,
+                170
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                788,
+                469,
+                220,
+                183
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    },
+    "wish-river-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                26,
+                667,
+                231,
+                155
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                294,
+                671,
+                203,
+                155
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                519,
+                682,
+                242,
+                155
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                779,
+                675,
+                236,
+                163
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    },
+    "wish-prism-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                33,
+                848,
+                237,
+                194
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                290,
+                854,
+                220,
+                172
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                533,
+                866,
+                214,
+                164
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                809,
+                866,
+                195,
+                163
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    },
+    "wish-bloom-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                21,
+                1070,
+                241,
+                184
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                289,
+                1064,
+                217,
+                188
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                522,
+                1072,
+                235,
+                204
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                779,
+                1072,
+                222,
+                190
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    },
+    "wish-aurora-hat": {
+      "views": {
+        "down": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                28,
+                1274,
+                234,
+                183
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "up": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                285,
+                1278,
+                221,
+                181
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "right": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                530,
+                1274,
+                207,
+                200
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        },
+        "left": {
+          "parts": {
+            "hat": {
+              "atlas": "wish-hats",
+              "rect": [
+                804,
+                1274,
+                207,
+                200
+              ],
+              "anchor": [
+                0.5,
+                0.86
+              ],
+              "scale": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "catalog": {
+    "wish-mint-coat": {
+      "kit": "wish-mint-coat",
+      "slot": "jacket"
+    },
+    "wish-cedar-coat": {
+      "kit": "wish-cedar-coat",
+      "slot": "jacket"
+    },
+    "wish-river-coat": {
+      "kit": "wish-river-coat",
+      "slot": "jacket"
+    },
+    "wish-prism-coat": {
+      "kit": "wish-prism-coat",
+      "slot": "jacket"
+    },
+    "wish-aurora-coat": {
+      "kit": "wish-aurora-coat",
+      "slot": "jacket"
+    },
+    "wish-zenith-coat": {
+      "kit": "wish-zenith-coat",
+      "slot": "jacket"
+    },
+    "wish-sakura-coat": {
+      "kit": "wish-sakura-coat",
+      "slot": "cape"
+    },
+    "wish-bloom-coat": {
+      "kit": "wish-bloom-coat",
+      "slot": "cape"
+    },
+    "wish-mint-hat": {
+      "kit": "wish-mint-hat",
+      "slot": "hat"
+    },
+    "wish-cedar-hat": {
+      "kit": "wish-cedar-hat",
+      "slot": "hat"
+    },
+    "wish-sakura-hat": {
+      "kit": "wish-sakura-hat",
+      "slot": "hat"
+    },
+    "wish-river-hat": {
+      "kit": "wish-river-hat",
+      "slot": "hat"
+    },
+    "wish-prism-hat": {
+      "kit": "wish-prism-hat",
+      "slot": "hat"
+    },
+    "wish-bloom-hat": {
+      "kit": "wish-bloom-hat",
+      "slot": "hat"
+    },
+    "wish-aurora-hat": {
+      "kit": "wish-aurora-hat",
+      "slot": "hat"
+    }
+  },
+  "validation": {
+    "wish-jackets-a": {
+      "parts": 24,
+      "padding": 0,
+      "alphaThreshold": 16,
+      "alphaZeroPixels": 929440,
+      "alphaPreservedExactly": true,
+      "significantPixelsOutsideRects": 0,
+      "overlappingSignificantPixels": 0,
+      "rects": [
+        [
+          69,
+          11,
+          208,
+          242
+        ],
+        [
+          355,
+          22,
+          123,
+          233
+        ],
+        [
+          616,
+          22,
+          119,
+          232
+        ],
+        [
+          812,
+          15,
+          202,
+          240
+        ],
+        [
+          1104,
+          25,
+          116,
+          229
+        ],
+        [
+          1373,
+          25,
+          122,
+          229
+        ],
+        [
+          84,
+          264,
+          160,
+          235
+        ],
+        [
+          383,
+          276,
+          96,
+          223
+        ],
+        [
+          600,
+          276,
+          96,
+          223
+        ],
+        [
+          822,
+          264,
+          157,
+          234
+        ],
+        [
+          1099,
+          276,
+          123,
+          227
+        ],
+        [
+          1358,
+          276,
+          125,
+          224
+        ],
+        [
+          59,
+          509,
+          232,
+          249
+        ],
+        [
+          352,
+          519,
+          122,
+          231
+        ],
+        [
+          606,
+          519,
+          121,
+          231
+        ],
+        [
+          785,
+          514,
+          232,
+          249
+        ],
+        [
+          1084,
+          520,
+          132,
+          239
+        ],
+        [
+          1364,
+          520,
+          133,
+          239
+        ],
+        [
+          69,
+          764,
+          186,
+          248
+        ],
+        [
+          371,
+          764,
+          115,
+          238
+        ],
+        [
+          590,
+          762,
+          116,
+          240
+        ],
+        [
+          813,
+          763,
+          179,
+          248
+        ],
+        [
+          1084,
+          769,
+          138,
+          234
+        ],
+        [
+          1349,
+          770,
+          141,
+          233
+        ]
+      ]
+    },
+    "wish-jackets-b": {
+      "parts": 24,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "alphaZeroPixels": 936139,
+      "alphaPreservedExactly": true,
+      "significantPixelsOutsideRects": 0,
+      "overlappingSignificantPixels": 0,
+      "rects": [
+        [
+          85,
+          13,
+          218,
+          263
+        ],
+        [
+          395,
+          41,
+          117,
+          224
+        ],
+        [
+          596,
+          41,
+          120,
+          224
+        ],
+        [
+          806,
+          16,
+          202,
+          260
+        ],
+        [
+          1091,
+          43,
+          116,
+          224
+        ],
+        [
+          1334,
+          43,
+          106,
+          224
+        ],
+        [
+          97,
+          279,
+          187,
+          228
+        ],
+        [
+          370,
+          297,
+          129,
+          208
+        ],
+        [
+          595,
+          297,
+          124,
+          208
+        ],
+        [
+          811,
+          284,
+          185,
+          224
+        ],
+        [
+          1087,
+          296,
+          120,
+          209
+        ],
+        [
+          1331,
+          295,
+          132,
+          210
+        ],
+        [
+          69,
+          515,
+          246,
+          253
+        ],
+        [
+          364,
+          527,
+          143,
+          231
+        ],
+        [
+          576,
+          528,
+          142,
+          230
+        ],
+        [
+          788,
+          514,
+          243,
+          255
+        ],
+        [
+          1086,
+          527,
+          135,
+          233
+        ],
+        [
+          1328,
+          527,
+          136,
+          233
+        ],
+        [
+          78,
+          766,
+          217,
+          246
+        ],
+        [
+          349,
+          776,
+          148,
+          229
+        ],
+        [
+          588,
+          776,
+          143,
+          229
+        ],
+        [
+          786,
+          769,
+          234,
+          244
+        ],
+        [
+          1089,
+          776,
+          143,
+          231
+        ],
+        [
+          1335,
+          776,
+          141,
+          230
+        ]
+      ]
+    },
+    "wish-jackets-c": {
+      "parts": 24,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "alphaZeroPixels": 923220,
+      "alphaPreservedExactly": true,
+      "significantPixelsOutsideRects": 0,
+      "overlappingSignificantPixels": 0,
+      "rects": [
+        [
+          37,
+          24,
+          272,
+          235
+        ],
+        [
+          353,
+          41,
+          116,
+          221
+        ],
+        [
+          597,
+          40,
+          114,
+          222
+        ],
+        [
+          774,
+          25,
+          274,
+          237
+        ],
+        [
+          1092,
+          41,
+          124,
+          221
+        ],
+        [
+          1348,
+          41,
+          123,
+          221
+        ],
+        [
+          46,
+          269,
+          235,
+          236
+        ],
+        [
+          331,
+          293,
+          121,
+          215
+        ],
+        [
+          584,
+          293,
+          123,
+          215
+        ],
+        [
+          799,
+          269,
+          241,
+          236
+        ],
+        [
+          1084,
+          292,
+          127,
+          215
+        ],
+        [
+          1345,
+          293,
+          131,
+          214
+        ],
+        [
+          44,
+          514,
+          259,
+          229
+        ],
+        [
+          327,
+          529,
+          133,
+          212
+        ],
+        [
+          588,
+          530,
+          134,
+          211
+        ],
+        [
+          773,
+          513,
+          278,
+          229
+        ],
+        [
+          1089,
+          529,
+          131,
+          212
+        ],
+        [
+          1343,
+          529,
+          136,
+          212
+        ],
+        [
+          48,
+          747,
+          246,
+          225
+        ],
+        [
+          327,
+          758,
+          132,
+          211
+        ],
+        [
+          581,
+          757,
+          136,
+          212
+        ],
+        [
+          779,
+          746,
+          245,
+          226
+        ],
+        [
+          1087,
+          756,
+          132,
+          214
+        ],
+        [
+          1340,
+          757,
+          135,
+          217
+        ]
+      ]
+    },
+    "wish-capes": {
+      "parts": 8,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "alphaZeroPixels": 684966,
+      "alphaPreservedExactly": true,
+      "significantPixelsOutsideRects": 0,
+      "overlappingSignificantPixels": 0,
+      "rects": [
+        [
+          22,
+          43,
+          403,
+          337
+        ],
+        [
+          451,
+          44,
+          381,
+          332
+        ],
+        [
+          866,
+          42,
+          254,
+          340
+        ],
+        [
+          1251,
+          43,
+          257,
+          339
+        ],
+        [
+          9,
+          412,
+          426,
+          559
+        ],
+        [
+          452,
+          415,
+          393,
+          563
+        ],
+        [
+          857,
+          414,
+          329,
+          558
+        ],
+        [
+          1213,
+          414,
+          315,
+          563
+        ]
+      ]
+    },
+    "wish-hats": {
+      "parts": 28,
+      "padding": 2,
+      "alphaThreshold": 16,
+      "alphaZeroPixels": 729661,
+      "alphaPreservedExactly": true,
+      "significantPixelsOutsideRects": 0,
+      "overlappingSignificantPixels": 0,
+      "rects": [
+        [
+          19,
+          56,
+          255,
+          182
+        ],
+        [
+          285,
+          56,
+          222,
+          183
+        ],
+        [
+          521,
+          56,
+          236,
+          186
+        ],
+        [
+          777,
+          56,
+          230,
+          198
+        ],
+        [
+          30,
+          263,
+          230,
+          159
+        ],
+        [
+          289,
+          261,
+          203,
+          195
+        ],
+        [
+          522,
+          265,
+          232,
+          199
+        ],
+        [
+          780,
+          262,
+          231,
+          203
+        ],
+        [
+          19,
+          464,
+          244,
+          171
+        ],
+        [
+          288,
+          467,
+          214,
+          182
+        ],
+        [
+          520,
+          473,
+          223,
+          170
+        ],
+        [
+          788,
+          469,
+          220,
+          183
+        ],
+        [
+          26,
+          667,
+          231,
+          155
+        ],
+        [
+          294,
+          671,
+          203,
+          155
+        ],
+        [
+          519,
+          682,
+          242,
+          155
+        ],
+        [
+          779,
+          675,
+          236,
+          163
+        ],
+        [
+          33,
+          848,
+          237,
+          194
+        ],
+        [
+          290,
+          854,
+          220,
+          172
+        ],
+        [
+          533,
+          866,
+          214,
+          164
+        ],
+        [
+          809,
+          866,
+          195,
+          163
+        ],
+        [
+          21,
+          1070,
+          241,
+          184
+        ],
+        [
+          289,
+          1064,
+          217,
+          188
+        ],
+        [
+          522,
+          1072,
+          235,
+          204
+        ],
+        [
+          779,
+          1072,
+          222,
+          190
+        ],
+        [
+          28,
+          1274,
+          234,
+          183
+        ],
+        [
+          285,
+          1278,
+          221,
+          181
+        ],
+        [
+          530,
+          1274,
+          207,
+          200
+        ],
+        [
+          804,
+          1274,
+          207,
+          200
+        ]
+      ]
+    }
+  }
+}

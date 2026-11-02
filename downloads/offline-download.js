@@ -3,7 +3,7 @@
   const hash=async(data,crypto)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',data)),n=>n.toString(16).padStart(2,'0')).join('');
   async function assemble(manifest,load,progress=()=>{},crypto=globalThis.crypto){
     const validHash=s=>typeof s==='string'&&/^[a-f0-9]{64}$/.test(s);
-    if(manifest?.version!==1||manifest.filename!=='mind-quest-offline.zip'||!Number.isSafeInteger(manifest.size)||manifest.size<1||manifest.size>40000000||!validHash(manifest.sha256)||!Array.isArray(manifest.parts)||!manifest.parts.length||manifest.parts.length>16)throw Error('下載清單尚未準備完成，請稍後再試。');
+    if(manifest?.version!==1||manifest.filename!=='mind-quest-offline.zip'||!Number.isSafeInteger(manifest.size)||manifest.size<1||manifest.size>128000000||!validHash(manifest.sha256)||!Array.isArray(manifest.parts)||!manifest.parts.length||manifest.parts.length>64)throw Error('下載清單尚未準備完成，請稍後再試。');
     const names=new Set();let total=0;
     for(const part of manifest.parts){if(!/^mind-quest-[a-f0-9]{12}-\d{2}\.part$/.test(part.file)||names.has(part.file)||!Number.isSafeInteger(part.bytes)||part.bytes<1||part.bytes>3000000||!validHash(part.sha256))throw Error('下載清單不完整，請重新整理。');names.add(part.file);total+=part.bytes;}
     if(total!==manifest.size)throw Error('下載大小不一致，請稍後再試。');

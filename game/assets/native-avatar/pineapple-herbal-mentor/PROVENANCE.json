@@ -1,0 +1,51 @@
+{
+  "assetId": "pineapple-herbal-mentor",
+  "identity": "Bottom-left scholar in user-approved reference: elderly woman, short stocky adult body, broad waist, round face/cheeks, wavy short silver bob, small round spectacles.",
+  "artMethod": "Built-in image_gen; eight separately authored transparent sheets, four cardinal views, original paintings for each pose. No mirrored directions, warped whole sprites, or generated in-between frames.",
+  "references": [
+    {
+      "file": "outfit-references/original-public/level30-bach-cast.webp",
+      "sha256": "9ab222f7099dd99fbc81d4e76e169670d9a1f50aba4276b0696383f2b0b9f9f3",
+      "purpose": "approved ten-scholar identities"
+    },
+    {
+      "file": "stage3-production/extra-masters/turnaround-reference.webp",
+      "sha256": "cf7e5dd621acf017513a90f7c173bf824e6744af0433d870d598ee5eba89750e",
+      "purpose": "approved pineapple full outfit"
+    }
+  ],
+  "sourcePrompts": "art-source/characters/pineapple-herbal-mentor/generation-records.json",
+  "packingManifest": "art-source/characters/pineapple-herbal-mentor/packing-manifest.json",
+  "visualReview": [
+    "All eight source sheets visually checked for identity, body completeness, cardinal direction, outfit consistency, and distinct running/action poses.",
+    "Packed down-actions, left-run, up-actions, right-actions checked for whole shoes/hair/cape/book and absence of adjacent-frame fragments.",
+    "Both hands consistently hold chest notebook; back views correctly occlude it."
+  ],
+  "scope": "64 authored poses for complete eight-slot pineapple outfit only. Actions have one painting per state per direction, not multi-frame transition animations.",
+  "originals": "Native PNG retained, exact lossless WebP master decodes to identical RGBA including invisible RGB.",
+  "pipeline": {
+    "operations": [
+      "original alpha-component attribution",
+      "explicit cropped region extraction retaining own RGBA",
+      "isotropic Lanczos downscale",
+      "integer translation",
+      "transparent atlas packing",
+      "lossless WebP"
+    ],
+    "noMirroring": true,
+    "noWarp": true,
+    "noSynthesisedPoses": true,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0",
+    "extractionDisclosure": "Eight disconnected source alpha>16 silhouettes define ownership; other-pose pixels within overlapping bounding rectangles are excluded by nearest-silhouette assignment. Own RGBA pixels are retained exactly before resampling. Original PNG/WebP masters retain every source pixel."
+  },
+  "bodyHeightCalibration": {
+    "doctorReferenceVisibleHeight": 295,
+    "doctorBodyHeight": 450,
+    "characterBodyHeight": 409,
+    "desiredIdleHeight": 268.1222222222222,
+    "actualIdleHeight": 269,
+    "commonScale": 0.5483
+  },
+  "licensedDependencies": "User-approved design references and built-in image generation; no third-party game/brand/logo or runtime AI dependency."
+}

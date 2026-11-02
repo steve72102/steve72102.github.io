@@ -1,0 +1,53 @@
+{
+  "key": "grape",
+  "name": "葡萄星象",
+  "music": "Synth-pop",
+  "prompt": "Use case: style-transfer.\nAsset type: production transparent RPG modular clothing texture sheet, used on articulated ten-scholar characters, not a fashion poster.\nInput image 1 is the APPROVED TECHNICAL LAYOUT reference. Preserve its 1024 by 1536 portrait canvas, exact four columns, eight row bands, object separation and empty gutters. It is not the new colour or clothing-design reference. Generate ONE complete NEW clothing kit in the design specified below, with the same rich photographic cloth rendering, real seam depth, woven surfaces, embroidery, lining and small hardware as the approved reference. Distinct tailored silhouettes, not a palette swap. Mature-proportioned academy clothes; no flat vector illustration, no cartoon outlines.\nFOUR VIEW COLUMNS from left to right: straight FRONT, straight BACK, true RIGHT profile, true LEFT profile. Column boundaries x=0/256/512/768/1024. Repaint the true opposite side; do not mirror the whole garment. Asymmetric openings, clasps and pockets must follow the same physical garment around all four views.\nEIGHT ROWS, kept inside these y bands, top to bottom:\n1 SHIRT y20–200: torso separated from straight hanging sleeves, no hands attached.\n2 JACKET y214–446: open jacket torso separated from its straight hanging sleeves. The front opening and neckline are TRANSPARENT; no shirt, cape, body or skin painted into the jacket torso. The jacket is its own independent item.\n3 TROUSERS y457–735: waist and two straight legs connected as one pair for front/back; full independent profile trousers in both side columns. Keep a leg gap.\n4 SHOES y745–845: a pair for front/back and the corresponding clear side shoe for each profile.\n5 CAPE y886–1062: one separate shoulder cape per view. No jacket or shirt attached; preserve neckline opening and floating fabric edges.\n6 HAT y1080–1210: a separate full hat in each genuine view, no hair/head.\n7 ACCESSORY y1230–1315: one small original matching brooch in each genuine view, including its sensible rear fastening and side thickness.\n8 HANDHELD y1348–1500: matching closed study notebook centered, with the two neutral bare hands separately spaced to either side exactly like the layout. Hands retain the reference skin tone/anatomy and are not holding the book.\nAcross rows1/2 keep torso and sleeves disconnected by transparent gutters as in the approved layout. One sleeve in a narrow profile cell is acceptable; do not merge sleeves onto torso. Every complete item stays in its own cell, no clipped hems or soles, no objects crossing row or column boundaries.\nRendering: full-colour finely textured original 3D/painterly game material, realistic soft neutral upper-left light, folds with thickness, delicate embroidery at close view. Opaque clothing, true transparent alpha background and transparent inter-object gaps. No coloured backdrop, no opaque gradient, no checkerboard painting, no floor/shadows, no people/full bodies, no heads, no hangers, no mannequins, no panels, labels, numbers, grid lines, logos or brand symbols. Preserve all four views and all eight independent slots.\nDESIGN FOR THIS KIT:\nA richly layered celestial scholarly collection in deep grape/star purple, mint turquoise, moon-white and delicate pale gold. JACKET: a long curved-collar purple coat with a slightly asymmetric hem, beautifully textured velvet-wool, fine gold edge piping and sparse embroidered orbit curves; a clean transparent opening. SHIRT: moon-white textured high-collar knit with restrained purple collar edge. TROUSERS: dark night-purple straight trousers with one fine gold side seam. SHOES: purple low walking shoes with moon-white sole panels, mint laces and subtle gold edging. CAPE: independent flowing mint-turquoise shoulder cape with real drape, sparse purple grape-like star clusters and fine gold orbital embroidery, transparent neck opening. HAT: a soft mint cap with a small purple grape-star embroidered cluster, no head/hair. BROOCH: a few small purple enamel grape beads suspended along a pale-gold orbit and tiny crescent leaf. BOOK: deep-purple observation folio with mint spine and finely embossed gold orbital lines. Synth-pop waveforms become subtle curved seam embroidery and spaced bead rhythm. Luxurious but wearable layered textile surfaces, no armor, no copied franchise insignia.",
+  "referenced_image_paths": [
+    "original-png/exec-a129e76c-1807-4efc-8d54-f722d53ed177.png"
+  ],
+  "transparent_background": true,
+  "method": "built-in image_gen",
+  "plannedAsset": "game/assets/avatar-raster/fruit-grape.webp",
+  "status": "prompt recorded before generation",
+  "result": {
+    "generatedSource": "original-png/exec-2317e5f2-287e-41cf-a89d-c6253bb55ab3.png",
+    "asset": "game/assets/avatar-raster/fruit-grape.webp",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "bytes": 2638744,
+    "sha256": "c4336312e95c10d173ef13f95cf54368c05b1b92886da0b812a612af24a0d9c1",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "alphaZeroPixels": 647747,
+    "alphaNearOpaquePixels": 606231,
+    "pixelCount": 1572864,
+    "alphaBounds": [
+      0,
+      0,
+      1024,
+      1522
+    ],
+    "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+    "inspection": [
+      "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+      "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+      "Alpha background retained without bitmap recoloring or masking.",
+      "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+      "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+    ]
+  },
+  "runtime": {
+    "asset": "game/assets/avatar-raster/fruit-grape.webp",
+    "bytes": 668288,
+    "sha256": "a0c1ffb05953e7cde5e28b06fa0c41310465d89b0af313870b3504cabdb5839d",
+    "width": 1024,
+    "height": 1536,
+    "quality": 94,
+    "method": 3,
+    "alphaPreserved": true
+  }
+}

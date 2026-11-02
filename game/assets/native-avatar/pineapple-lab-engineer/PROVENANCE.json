@@ -1,0 +1,164 @@
+{
+  "assetId": "pineapple-lab-engineer",
+  "identity": "Bottom-row second scholar in user-approved reference: broad-shouldered middle-aged man, square broad face, swept salt-and-pepper hair, neat short gray stubble beard and moustache, no glasses.",
+  "artMethod": "Built-in image_gen; eight separately authored transparent sheets, four cardinal views, original painting for every pose. No mirrored directions, whole-sprite warping, or generated in-between frames.",
+  "references": [
+    {
+      "file": "outfit-references/original-public/level30-bach-cast.webp",
+      "sha256": "9ab222f7099dd99fbc81d4e76e169670d9a1f50aba4276b0696383f2b0b9f9f3",
+      "purpose": "approved ten-scholar identities"
+    },
+    {
+      "file": "stage3-production/extra-masters/turnaround-reference.webp",
+      "sha256": "cf7e5dd621acf017513a90f7c173bf824e6744af0433d870d598ee5eba89750e",
+      "purpose": "approved pineapple full outfit"
+    },
+    {
+      "file": "stage4-production/characters/lab-engineer/turnaround.png",
+      "sha256": "0d29c899c35c6fb3fecf9970176066c6c775e246bf65dd6708aace1e07c1547b",
+      "purpose": "character-specific authored turnaround; final pose art explicitly removes extra hip book on reference left profile"
+    }
+  ],
+  "sourcePrompts": "art-source/characters/pineapple-lab-engineer/generation-records.json",
+  "turnaroundPrompts": "art-source/characters/pineapple-lab-engineer/references/generation-records.json",
+  "packingManifest": "art-source/characters/pineapple-lab-engineer/packing-manifest.json",
+  "visualReview": [
+    "All eight final source sheets and all eight packed atlas sheets inspected for broad middle-aged identity, complete shoes, cap, independently authored cardinal views and readable pose changes.",
+    "Only one chest-held notebook in both hands. All final poses omit the stray hip book visible in one direction of the earlier turnaround; back poses naturally occlude the chest book.",
+    "Down-run source was redrawn to separate two touching alpha components; left/right run sources were redrawn to restore clipped toe tips and add spacing. Full rejected source hashes and corrective prompts are retained.",
+    "Corrected run sheets were authored with more spacing and therefore lower original pixel density. Same first contact-pose measurement calibrates one factor for each whole sheet; no individual frame height is normalized.",
+    "Calibrated packed running and idle checked together; clothing, cap, face and body visual scale now agree.",
+    "Manifest previewBox is computed from down-idle. Up-idle includes 2px soft-alpha above its top; integration must use verified four-way effective previewBox [36,72,183,308]. No visible alpha>16 pixels are lost by the original box.",
+    "Back-running row-scale drift was corrected through new original painting; final first/fifth cap-region widths 101/103px versus superseded 104/96px, shoulder/cape silhouette widths281/278 versus283/263. First correction candidate rejected for touching alpha. Final eight poses share one scale, no whole-row or per-frame resize; see up-run-proportion-review.json."
+  ],
+  "scope": "64 authored poses for complete eight-slot pineapple outfit only. Four directions each have eight run drawings and one drawing for each idle/start/stop/turn/rise/apex/fall/land; not multi-frame action transitions or authored independent clothing layers.",
+  "originals": "Final native PNGs retained locally. Delivered lossless WebP masters decode to identical original RGBA including invisible RGB. Superseded originals are not required in the delivered asset package; their SHA256 and prompts remain in provenance.",
+  "pipeline": {
+    "operations": [
+      "original alpha-component attribution",
+      "explicit cropped region extraction retaining own RGBA",
+      "isotropic Lanczos downscale",
+      "integer translation",
+      "transparent atlas packing",
+      "lossless WebP"
+    ],
+    "noMirroring": true,
+    "noWarp": true,
+    "noSynthesisedPoses": true,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0",
+    "extractionDisclosure": "Eight disconnected source alpha>16 silhouettes define ownership; other-pose pixels within overlapping bounding rectangles are excluded by nearest-silhouette assignment. Own RGBA pixels are retained exactly before resampling. Original PNG/WebP masters retain every source pixel."
+  },
+  "bodyHeightCalibration": {
+    "doctorReferenceVisibleHeight": 295,
+    "doctorBodyHeight": 450,
+    "characterBodyHeight": 452,
+    "desiredIdleHeight": 296.31111111111113,
+    "actualIdleHeight": 286,
+    "commonScale": 0.5767
+  },
+  "sourceDensityCalibration": {
+    "schemaVersion": 1,
+    "character": "lab-engineer",
+    "scope": "Only three complete run correction sheets; each sheet uses one density factor across all eight authored poses. No pose-specific equal-height scaling.",
+    "sheets": {
+      "down-run": {
+        "factor": 1.165137614678899,
+        "method": "Same first grounded contact pose, alpha>16 visible cap-to-supporting-sole height, one density factor for entire eight-pose master",
+        "referenceSourcePngSha256": "7e0a7c152d74f8ba75d6c7e6842cf3e17fb84dbe0bf5e20c95e84e62d84de775",
+        "referenceSourceDimensions": [
+          1536,
+          1024
+        ],
+        "referenceMeasurementWindow": [
+          0,
+          0,
+          420,
+          514
+        ],
+        "referenceAlpha16BoundsInWindow": [
+          73,
+          6,
+          366,
+          514
+        ],
+        "referenceContactPoseHeight": 508,
+        "finalSourcePngSha256": "b50e0866e72c148acd7068a21ae7e3a7aee2859149735e7b8810baa4bf4fe8e4",
+        "finalContactPoseAlpha16Bounds": [
+          98,
+          72,
+          351,
+          508
+        ],
+        "finalContactPoseHeight": 436,
+        "reason": "Spacing/complete-toe correction redrew the entire source sheet at smaller pixel density; restore original consistent visual body scale without normalizing individual pose heights."
+      },
+      "left-run": {
+        "factor": 1.161662817551963,
+        "method": "Same first grounded contact pose, alpha>16 visible cap-to-supporting-sole height, one density factor for entire eight-pose master",
+        "referenceSourcePngSha256": "db7a2a92656cae3b2e5bc4ede7698996268e6483d323f93267ce576ff796026a",
+        "referenceSourceDimensions": [
+          1536,
+          1024
+        ],
+        "referenceMeasurementWindow": [
+          0,
+          0,
+          430,
+          524
+        ],
+        "referenceAlpha16BoundsInWindow": [
+          4,
+          14,
+          400,
+          517
+        ],
+        "referenceContactPoseHeight": 503,
+        "finalSourcePngSha256": "6fb24e950e8e492f6d4449dce372e4ae1fa80fefe2c0d7b4de4243f34cb1cd01",
+        "finalContactPoseAlpha16Bounds": [
+          43,
+          44,
+          385,
+          477
+        ],
+        "finalContactPoseHeight": 433,
+        "reason": "Spacing/complete-toe correction redrew the entire source sheet at smaller pixel density; restore original consistent visual body scale without normalizing individual pose heights."
+      },
+      "right-run": {
+        "factor": 1.234256926952141,
+        "method": "Same first grounded contact pose, alpha>16 visible cap-to-supporting-sole height, one density factor for entire eight-pose master",
+        "referenceSourcePngSha256": "9221f732e067a9e53c5885ae63d297c053803b1b7b57a2b4b0064d2f192a9c3c",
+        "referenceSourceDimensions": [
+          1536,
+          1024
+        ],
+        "referenceMeasurementWindow": [
+          0,
+          0,
+          430,
+          519
+        ],
+        "referenceAlpha16BoundsInWindow": [
+          30,
+          20,
+          385,
+          510
+        ],
+        "referenceContactPoseHeight": 490,
+        "finalSourcePngSha256": "a2f9e396ceb3ff59878779ff6915078706ab83ac04134e0dcce66c96bedce18f",
+        "finalContactPoseAlpha16Bounds": [
+          50,
+          74,
+          347,
+          471
+        ],
+        "finalContactPoseHeight": 397,
+        "reason": "Spacing/complete-toe correction redrew the entire source sheet at smaller pixel density; restore original consistent visual body scale without normalizing individual pose heights."
+      }
+    }
+  },
+  "fitConstraint": "Common character scale is 0.5767 so widest complete rightward stride and cape retain transparent cell margin. Down-idle actual 286px vs body-height target 296.311px is explicitly recorded; other poses share this same body scale.",
+  "licensedDependencies": "User-approved design references and built-in image generation; no copied third-party game/brand/logo assets and no runtime AI dependency.",
+  "upRunScaleReview": "art-source/characters/pineapple-lab-engineer/up-run-proportion-review.json",
+  "sourceGenerationRecords": 13
+}

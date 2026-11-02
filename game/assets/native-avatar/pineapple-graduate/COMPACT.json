@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "character": "graduate",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 96,
+    "frameHeight": 144,
+    "anchorX": 48,
+    "anchorY": 139.5
+  },
+  "processing": "Uniform 0.375 LANCZOS reduction of reviewed native atlas; WebP quality 94 method 6. No pose synthesis, mirroring or repainted pixels. High resolution previews retain original 1024x768 sheets.",
+  "assets": [
+    {
+      "source": "down-run.webp",
+      "sourceSHA256": "32e60b14b16ae1a7369927be626eb1b3f783c03d680323751c10f1a534b5c562",
+      "file": "actor-down-run.webp",
+      "bytes": 34986,
+      "sha256": "676a70e7a2329ce1310da96c7e0d2a09735a48479e58eb9d80fdaa8399f41920",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "down-actions.webp",
+      "sourceSHA256": "de5ad63f2ff0b0c36e02a8c7b695cd71f7b8ce5a1e73bc77b2b5635f58245118",
+      "file": "actor-down-actions.webp",
+      "bytes": 42954,
+      "sha256": "6358d65bc3c85cce11677b879dcdc6a561bd25d4e5211fb2f986f9296259b3fd",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "up-run.webp",
+      "sourceSHA256": "305789608eb17444e5976c89f606693e952d3b7e95e3a07b6cebf47f1e7a63d1",
+      "file": "actor-up-run.webp",
+      "bytes": 33130,
+      "sha256": "4cb42cf3151a4b732b93eaa5ae03b3f00b20fdc7924b71aeee15c64f8bfdb26c",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "up-actions.webp",
+      "sourceSHA256": "a563fdba254d435cf2edb0470ac1f10c489eb51bd8753567afd24d66df256be6",
+      "file": "actor-up-actions.webp",
+      "bytes": 39432,
+      "sha256": "f1c46f8d3daa60db39f275436e73c54b8011202749da79011e43fdd3d08868ed",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "left-run.webp",
+      "sourceSHA256": "b7e795ae7c743338154930f0eeb6e2254e8e41bb752c53bbb92399fe05758838",
+      "file": "actor-left-run.webp",
+      "bytes": 42098,
+      "sha256": "b778d093e47a0bee85c5ec9f4f2c0ab41b2d157b63f977f81d94ef0c0307a9c1",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "left-actions.webp",
+      "sourceSHA256": "3b89d1fa6e019ced61a594a6296017ce9d327c11064a92d999e2599935b25847",
+      "file": "actor-left-actions.webp",
+      "bytes": 39416,
+      "sha256": "d289d8a2dc9b90781bfff2e463b35799572d4be6c87935dbffa5e6595d066fd9",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "right-run.webp",
+      "sourceSHA256": "d578a7ca2b67f4ed3ee9a885ec2f2496ddce297fd89bdeddfff6a794874f8300",
+      "file": "actor-right-run.webp",
+      "bytes": 38450,
+      "sha256": "cf3e7a95d91625fd154cc38b7c8b1b7e346842fdba005674aefebe960268ba0b",
+      "width": 384,
+      "height": 288
+    },
+    {
+      "source": "right-actions.webp",
+      "sourceSHA256": "c48aa2c0fb2947e4c016f3a62eb6239f70b57b735016becc72d50af5107b3a90",
+      "file": "actor-right-actions.webp",
+      "bytes": 42482,
+      "sha256": "b5a44006a1ce2691b5ce147dd59323985514add4749144d394178e47da18fa37",
+      "width": 384,
+      "height": 288
+    }
+  ]
+}

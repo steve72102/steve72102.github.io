@@ -433,3 +433,46 @@ Firestore Emulator 建議命令：`firebase emulators:exec --only firestore --pr
 驗收：`node tools/run-game-tests.cjs --unit`；真 index 畫面測試為 `tools/native-avatar.browser.cjs` 與 `SCENE_ART_CHARACTER=doctor node tools/scene-native-art.browser.cjs`，需本機 Playwright／Chromium。它們使用隔離測試存檔並封鎖正式網路；合成遠端外觀與 60 個元件不是實際多人連線證明。發布前仍需 Codex 驗證正式 service worker 更新／離線重載、實體手機與跨裝置登入存檔。
 
 本批不修改錢包、共池、學習、商城券、戰鬥、Google／Firebase 安全規則，不加入公開管理入口。其餘九位、其他套裝與混搭、其他場景仍屬後續原畫批次；這不是全案完成或已部署聲明。
+
+## Stage 4 全角色、原創分件與其餘場景增量（交由 Codex 整合發布）
+
+本批的「前」版本是上述 Stage3 第一批完成樹，不是單獨的舊公開 commit。增量 manifest 逐檔列出前後 bytes/SHA256；請先檢查，不重套 Step1、Step2 或 Stage3。`game/index.html`、`game/sw.js`、`tools/package-game.py` 採 `tools/integrate-stage4-art.py` 讀取接手者目前內容後加入本批標記區塊，保留既有 cache 版號與其他本機修改。`game/app.js` 不改。
+
+### 兩種原創人物素材各自負責的範圍
+
+- `native-avatar.js`：十位學者各有自己的鳳梨完整八件套。保留 doctor 首批 64 格；其餘九位新增 576 個原創姿勢，均有正／背／左／右各 8 格跑步，以及各一張待機、起跑、停步、轉向、上升、頂點、下降、落地。這是八格完整步態加八種狀態原畫，沒有宣稱每一種短轉場另有八格。新角色標準圖集為 1024×768；場內使用等比縮小的 384×288 圖集，商城使用大圖裁區。四向預覽共用涵蓋四向待機的裁區，身形、年齡、髮型和身高按人物保留。
+- `raster-art.js`、`raster-outfit.js`、`layered-avatar.js`：29 張原創分件圖包含十人四向頭部、7 套既有等級造型、6 套水果系列、學院單件、許願池單件和 12 件知識手持，共 140 個可穿戴品項。八槽獨立判定；未穿戴的外套、披肩、帽子、配件、手持不會因整套原畫被偷加。分件依十人各自骨架、UV、關節、衣長、頭髮與手持合成四向 24 格動作圖。這些是原創分件的骨架動畫，不冒稱另畫了所有混搭的 24 張整人原畫。
+- 商城整套與單件、四向試穿、衣櫥、HUD、自己與遠端公開外觀走同一組品項與渲染選擇。單件圖使用真正穿戴的相同原畫部位。完整鳳梨套裝少任一槽立即回到分件混搭；來源失敗時退回相同裝備的既有 SVG。首次未快取混搭仍先顯示原裝備，不等圖集準備完成才出現角色。
+- 動作仍由既有實際位移、跳躍和落地訊號控制。圖格／素材快取各有 64 MiB 上限，同外觀共享；不另為每個角色加動畫時鐘。合成 60 個本機外觀的測試不是 60 人真實連線或硬體 FPS 證明。
+
+### 場景與物理
+
+新增接入 18 張原創彩繪：總覽、中央廣場、五區前庭、三條周邊步道、五棟大廳、其餘三間教室。保留第一批藥劑教室，覆蓋既有 18 個可玩視圖與 1 張總覽；同棟／班級／樓層沿用同棟視覺模板。專案原本沒有生活工坊獨立教室，沒有虛構新房間。
+
+全部原生背景為 1536×1024。無損母檔與網頁 WebP 分開，沒有把上採樣標成 4K 原畫。新圖沿用舊構圖與 27 個場景／樓層的可走區、障礙、門口、階梯、桌面高度與物件位置。固定櫃體遮擋裁自當前背景；404 時背景與遮擋一起回退同一張原圖。可推桌椅、可掉落／破碎器皿與動態樹、鳥、水流、噴泉、金球、外圈仍由既有獨立物件控制。遠景裝飾並沒有被宣稱每一個都可拿取或摔碎。
+
+### 尚未完成的單件切換連續性
+
+最終實際畫面審查發現，professor 完整鳳梨原畫卸帽後切至分件，肩／衣輪廓、髮束、身形與持書姿勢也會變化。此項 exactSingleSlotVisualContinuity 為 not-accepted；新整人原畫的八槽逐格拆層仍未完成。相同 loadout 跨介面共用渲染已實作，但兩條素材路徑並未視覺完全一致。不得以行為測試通過宣稱全部美術要求完成；仍須原創分件與姿勢對齊。
+
+### 可重建的美術與驗收
+
+`game/assets/avatar-raster/STAGE4-PROVENANCE.json`、`game/assets/illustrated-scenes/STAGE4-PROVENANCE.json`、各新 `native-avatar/pineapple-*/manifest.json` 與 `PROVENANCE.json` 記錄實際來源、原生尺寸、編碼與雜湊。新全身原畫使用八個分離的人物輪廓歸屬提取，沒有補畫、鏡像或合成中間姿勢。母檔以 lossless exact WebP 保留完整原 PNG RGBA；歷史生成 PNG 的 SHA256 另列，避免重複打包同一像素。
+
+開發時的重建版本：Pillow 12.3.0、libwebp 1.6.0；新人物區域提取另用 numpy 2.3.5、scipy 1.17.0。遊戲執行不需要這些套件，也不呼叫 AI 或付費 API。每份母檔可由交付的工具核對並重建：
+
+```sh
+node tools/build-raster-art.cjs
+python tools/rebuild-layered-art.py --source /path/to/art-source/layered --repo .
+python tools/rebuild-native-cast.py --source /path/to/art-source/characters --repo . --character professor
+python tools/stage4-scenes-assets.py --manifest /path/to/art-source/scenes/scenes-rebuild.json --repo . --check
+python tools/audit-native-cast.py --repo .
+node --test --test-reporter=tap --test-isolation=none tools/run-game-tests.cjs
+node tools/native-cast.browser.cjs
+node tools/layered-avatar.browser.cjs
+node tools/illustrated-scenes.browser.cjs
+```
+
+瀏覽器使用可丟棄的本機驗收存檔、Playwright/Chromium 及繁中字型，正式流量被阻擋。完整報告、實際畫面、來源 SHA 及未測清單隨小包交付。單元測試不包含 Firebase emulator rules 套件；Google 跨端、正式交易重放、真實 60 人、實體手機及發布後 cache／離線成品，仍須接手者在對應環境驗收。
+
+本批不改學習、樓層解鎖、兩回合對戰、券／金幣規則、背包容量、雲端安全或存檔格式；不調整任何玩家等級、錢包、共池，不加入管理後門。交付包不是部署完成的聲明。

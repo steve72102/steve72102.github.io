@@ -1,0 +1,261 @@
+[
+  {
+    "key": "citrus",
+    "source": {
+      "generatedSource": "original-png/exec-cff40372-e1d1-4b7a-94fc-4ca76c3f4e41.png",
+      "asset": "game/assets/avatar-raster/fruit-citrus.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2766261,
+      "sha256": "ddf9f59c45d5f88997066298ad24d9fef1677750bf8bcde7b29e266a10f4b0d9",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 654619,
+      "alphaNearOpaquePixels": 666738,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1014,
+        1536
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-citrus.webp",
+      "bytes": 700180,
+      "sha256": "21aab78712f2dcf3675e2f4dff19f5d8c7c15059f7db7ef67dd07927a631e3be",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  },
+  {
+    "key": "berry",
+    "source": {
+      "generatedSource": "original-png/exec-be424dc4-6c8a-4190-8d38-8913d704c349.png",
+      "asset": "game/assets/avatar-raster/fruit-berry.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2661114,
+      "sha256": "ac4309fb610969f0b4ae4f7b1ed3ee4d5d8b530a355ddd39b579f11fd3b274de",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 652589,
+      "alphaNearOpaquePixels": 610576,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1024,
+        1536
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-berry.webp",
+      "bytes": 666448,
+      "sha256": "f3445c37aecaab7a06db6343d1bd91960d8a2e60688f3dbce501bbe3ded69ceb",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  },
+  {
+    "key": "pomelo",
+    "source": {
+      "generatedSource": "original-png/exec-63b8e1ab-f7d1-47c4-825d-3f147889d6af.png",
+      "asset": "game/assets/avatar-raster/fruit-pomelo.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2630630,
+      "sha256": "3ae563da43ea3beee5d20c8df2cf9d5894be5c4d05d34bc83fe6dd7e1b65a2bd",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 717236,
+      "alphaNearOpaquePixels": 627207,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1014,
+        1536
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling.",
+        "Jacket front includes a white underlap panel; treat this as jacket lining and avoid claiming an empty alpha opening throughout."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-pomelo.webp",
+      "bytes": 631272,
+      "sha256": "99a73ea92f34966aa14481caba6288d89c28fe93ea5e64b7f2f8540d5c726cb8",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  },
+  {
+    "key": "pineapple",
+    "source": {
+      "generatedSource": "original-png/exec-0afd9789-b09b-4359-94e5-997cce5ff290.png",
+      "asset": "game/assets/avatar-raster/fruit-pineapple.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2710046,
+      "sha256": "64771d7e4674ba0b7690a32a66539b780bd4702c48f49b4e42bb6d736a6bf32d",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 715701,
+      "alphaNearOpaquePixels": 666570,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1023,
+        1536
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-pineapple.webp",
+      "bytes": 648180,
+      "sha256": "d0b5a51787a01528b3719fd8f049953f122ab01185a95947c7dbe0e41b685ec4",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  },
+  {
+    "key": "cherry",
+    "source": {
+      "generatedSource": "original-png/exec-3e6d6d03-d879-4c37-aa00-8430154f5e93.png",
+      "asset": "game/assets/avatar-raster/fruit-cherry.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2567936,
+      "sha256": "a6585c6452a52fde87455acfa8c5dee0acfbd26b252f5fb50d28a0c7374398f6",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 722528,
+      "alphaNearOpaquePixels": 603360,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1020,
+        1536
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-cherry.webp",
+      "bytes": 606230,
+      "sha256": "6a081befccb117718d4d23d8daee7c8fb068f9c28dde2dbf909c8e28383b82fd",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  },
+  {
+    "key": "grape",
+    "source": {
+      "generatedSource": "original-png/exec-2317e5f2-287e-41cf-a89d-c6253bb55ab3.png",
+      "asset": "game/assets/avatar-raster/fruit-grape.webp",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "bytes": 2638744,
+      "sha256": "c4336312e95c10d173ef13f95cf54368c05b1b92886da0b812a612af24a0d9c1",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "alphaZeroPixels": 647747,
+      "alphaNearOpaquePixels": 606231,
+      "pixelCount": 1572864,
+      "alphaBounds": [
+        0,
+        0,
+        1024,
+        1522
+      ],
+      "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+      "inspection": [
+        "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+        "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+        "Alpha background retained without bitmap recoloring or masking.",
+        "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+        "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+      ]
+    },
+    "runtime": {
+      "asset": "game/assets/avatar-raster/fruit-grape.webp",
+      "bytes": 668288,
+      "sha256": "a0c1ffb05953e7cde5e28b06fa0c41310465d89b0af313870b3504cabdb5839d",
+      "width": 1024,
+      "height": 1536,
+      "quality": 94,
+      "method": 3,
+      "alphaPreserved": true
+    }
+  }
+]

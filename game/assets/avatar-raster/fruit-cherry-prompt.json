@@ -1,0 +1,53 @@
+{
+  "key": "cherry",
+  "name": "櫻桃街頭",
+  "music": "Disco",
+  "prompt": "Use case: style-transfer.\nAsset type: production transparent RPG modular clothing texture sheet, used on articulated ten-scholar characters, not a fashion poster.\nInput image 1 is the APPROVED TECHNICAL LAYOUT reference. Preserve its 1024 by 1536 portrait canvas, exact four columns, eight row bands, object separation and empty gutters. It is not the new colour or clothing-design reference. Generate ONE complete NEW clothing kit in the design specified below, with the same rich photographic cloth rendering, real seam depth, woven surfaces, embroidery, lining and small hardware as the approved reference. Distinct tailored silhouettes, not a palette swap. Mature-proportioned academy clothes; no flat vector illustration, no cartoon outlines.\nFOUR VIEW COLUMNS from left to right: straight FRONT, straight BACK, true RIGHT profile, true LEFT profile. Column boundaries x=0/256/512/768/1024. Repaint the true opposite side; do not mirror the whole garment. Asymmetric openings, clasps and pockets must follow the same physical garment around all four views.\nEIGHT ROWS, kept inside these y bands, top to bottom:\n1 SHIRT y20–200: torso separated from straight hanging sleeves, no hands attached.\n2 JACKET y214–446: open jacket torso separated from its straight hanging sleeves. The front opening and neckline are TRANSPARENT; no shirt, cape, body or skin painted into the jacket torso. The jacket is its own independent item.\n3 TROUSERS y457–735: waist and two straight legs connected as one pair for front/back; full independent profile trousers in both side columns. Keep a leg gap.\n4 SHOES y745–845: a pair for front/back and the corresponding clear side shoe for each profile.\n5 CAPE y886–1062: one separate shoulder cape per view. No jacket or shirt attached; preserve neckline opening and floating fabric edges.\n6 HAT y1080–1210: a separate full hat in each genuine view, no hair/head.\n7 ACCESSORY y1230–1315: one small original matching brooch in each genuine view, including its sensible rear fastening and side thickness.\n8 HANDHELD y1348–1500: matching closed study notebook centered, with the two neutral bare hands separately spaced to either side exactly like the layout. Hands retain the reference skin tone/anatomy and are not holding the book.\nAcross rows1/2 keep torso and sleeves disconnected by transparent gutters as in the approved layout. One sleeve in a narrow profile cell is acceptable; do not merge sleeves onto torso. Every complete item stays in its own cell, no clipped hems or soles, no objects crossing row or column boundaries.\nRendering: full-colour finely textured original 3D/painterly game material, realistic soft neutral upper-left light, folds with thickness, delicate embroidery at close view. Opaque clothing, true transparent alpha background and transparent inter-object gaps. No coloured backdrop, no opaque gradient, no checkerboard painting, no floor/shadows, no people/full bodies, no heads, no hangers, no mannequins, no panels, labels, numbers, grid lines, logos or brand symbols. Preserve all four views and all eight independent slots.\nDESIGN FOR THIS KIT:\nA vivid tailored streetwear collection in cherry red, ink black, ice blue and creamy white with restrained reflective stitch accents. JACKET: cropped cherry-red bomber jacket with ice-blue contrast sleeves (separate sleeves), black ribbed cuffs/hem, small silver zipper details, subtle dotted reflective stitching around curved seams. SHIRT: cream cotton short scholarly layer with a small twin-cherry emblem, no text. TROUSERS: black tapered technical-cotton trousers with slim ice-blue side stripes and gathered ankles, visibly textured fabric. SHOES: low red/cream/ice-blue trainers with real layered panels and stitched laces. CAPE: independent short ice-blue hooded shoulder cape, empty neckline with red drawcord details and black fine piping; no jacket connected. HAT: low black curved-brim baseball cap with cherry-red edge and a tiny twin-cherry embroidery. BROOCH: red enamel twin cherries and one green leaf in a thin gold outline. BOOK: ice-blue cloth travel notebook with cherry-red patches and black binding strap. Disco rhythm becomes bright colour blocking and finely reflective dotted seams, not a disco ball costume or glitter background. Comfortable fitted proportions and contemporary rich material surfaces.",
+  "referenced_image_paths": [
+    "original-png/exec-a129e76c-1807-4efc-8d54-f722d53ed177.png"
+  ],
+  "transparent_background": true,
+  "method": "built-in image_gen",
+  "plannedAsset": "game/assets/avatar-raster/fruit-cherry.webp",
+  "status": "prompt recorded before generation",
+  "result": {
+    "generatedSource": "original-png/exec-3e6d6d03-d879-4c37-aa00-8430154f5e93.png",
+    "asset": "game/assets/avatar-raster/fruit-cherry.webp",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "bytes": 2567936,
+    "sha256": "a6585c6452a52fde87455acfa8c5dee0acfbd26b252f5fb50d28a0c7374398f6",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "alphaZeroPixels": 722528,
+    "alphaNearOpaquePixels": 603360,
+    "pixelCount": 1572864,
+    "alphaBounds": [
+      0,
+      0,
+      1020,
+      1536
+    ],
+    "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+    "inspection": [
+      "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+      "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+      "Alpha background retained without bitmap recoloring or masking.",
+      "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+      "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+    ]
+  },
+  "runtime": {
+    "asset": "game/assets/avatar-raster/fruit-cherry.webp",
+    "bytes": 606230,
+    "sha256": "6a081befccb117718d4d23d8daee7c8fb068f9c28dde2dbf909c8e28383b82fd",
+    "width": 1024,
+    "height": 1536,
+    "quality": 94,
+    "method": 3,
+    "alphaPreserved": true
+  }
+}

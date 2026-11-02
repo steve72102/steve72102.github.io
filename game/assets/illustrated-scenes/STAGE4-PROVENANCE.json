@@ -1,0 +1,447 @@
+{
+  "schemaVersion": 1,
+  "stage": "stage4-scenes",
+  "baseline": "Stage3 first-playable delivered result on 8685f199810150c8e5ef478de2dfe5cccee93522",
+  "assets": [
+    {
+      "key": "campus-taiwan",
+      "master": "masters/campus-taiwan.webp",
+      "masterSHA256": "9adbd20505f28d5ec92650932a6f19da12e08f6cf66a6a0f267ad54157b0c502",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/campus-taiwan.webp",
+      "runtimeBytes": 861356,
+      "runtimeSHA256": "b9531db2f39cbd4029f1407c8f6e51cb9ae75e3a5442fea20a104c589acfd6aa",
+      "originalPNG": {
+        "file": "exec-b299f502-9f19-4aad-b5f2-f2770d2e3de9.png",
+        "bytes": 4077818,
+        "sha256": "4b7f674c71555ea383f7665fba008c2f2c9bc8bc2d694d4dd72f5b717de1172e"
+      },
+      "masterBytes": 3024620,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Original overview map: keep five district buildings at the exact same northwest/north/northeast/southwest/southeast locations, central fountain, southern bridge and allpaths. The static gold armillary sculpture shown in this overview stays.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/campus-taiwan.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "campus-plaza-motion-base",
+      "master": "masters/campus-plaza-motion-base.webp",
+      "masterSHA256": "d7a540adb03d853aa1f6249f69f27342928811daf262074af15ced76086ee04c",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/campus-plaza-motion-base.webp",
+      "runtimeBytes": 674750,
+      "runtimeSHA256": "2997735ddc7b239434a2a69a5f6b10397d534ed2a2aaff7bdd044df6bc6d9f01",
+      "originalPNG": {
+        "file": "exec-1d0a2e6b-0731-482b-9e79-379d17a7e228.png",
+        "bytes": 3349867,
+        "sha256": "d4ce35ee7a572fc596b401c83190f9140fc45bc97648f7e0dfc0d2bdfd4f0732"
+      },
+      "masterBytes": 2553810,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Asset type: high-resolution painted game environment plate, aspect3:2. Input image1 is the exact existing environment geometry/reference; input image2 is the approved original pharmacy cart illustration STYLE reference only.\nRepaint image1 in a rich, colorful, luminous hand-painted storybook RPG illustration matching image2's confident painted forms, warm outlined woodgrain, soft luminous shading, clear material separation, charming lush foliage and finely drawn details. The user specifically wants illustrated artwork, NOT a real photograph or photorealistic architectural rendering. Keep colors clean and bright, sophisticated fullcolor, rich tealgreens, terracotta and cream light. Clear brush-made contours and stylized sculpted forms with detailed texture; no flat vector shapes, no blur, no pixelart.\nGEOMETRY LOCK: keep the camera, crop, perspective, vanishing point, floor plan, the edges and positions of every wall/door/stair/path/river/furniture in image1. The game has collision polygons aligned to these coordinates, so do not move, widen, rotate, add or remove any structures. Change only the visual rendering/material treatment. Bright central academy plaza. Preserve ALL dry paths, bridges, steps, surrounding building silhouettes and doorway positions, benches and planting beds. Preserve the central oval pool and empty circular pedestal exactly: the animated gold orb is drawn separately by the game and must NOT be painted into this plate. The wood vendor cart is a style reference only, do NOT add it to this scene.\nOutput the highest supported NATIVE detail/resolution, requested 3072x2048 (3:2), fullbleed, no border, no text or watermark. Do not produce a collage or a photo with an illustration filter. Draw this scene afresh as a coherent illustration while precisely tracing its spatial layout. Nopeople, noUI, nocartinsert.",
+      "geometryReference": "scene-references/outdoor/campus-plaza-motion-base.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "district-pharmaceutics",
+      "master": "masters/district-pharmaceutics.webp",
+      "masterSHA256": "c3a93c90e632ee69e673c168705981c6c300389f770fe22aeb6505cb8d367930",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/district-pharmaceutics.webp",
+      "runtimeBytes": 688402,
+      "runtimeSHA256": "1bb9a16c0a5a903c8ff6f0f4442600dc23457cfa6eaa7f582910210017529690",
+      "originalPNG": {
+        "file": "exec-a89fd6ae-12c6-4f4f-bab2-f0caf550fffd.png",
+        "bytes": 3458282,
+        "sha256": "144d92b3f9b8cc5638e50f3fe1f69c726c8ff5a896a9b4fcfd68227d9b113f7b"
+      },
+      "masterBytes": 2621230,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Warm redbrick arch-fronted pharmaceutics building, preserve main stairs/door onthe rightofcenter and bridge path edges.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/district-pharmaceutics.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "district-pharmacology",
+      "master": "masters/district-pharmacology.webp",
+      "masterSHA256": "76a52d66e42f590d60f6251408e89ff7429d7dc7683a29fb1422ed6c95c1f374",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/district-pharmacology.webp",
+      "runtimeBytes": 709312,
+      "runtimeSHA256": "c56b401098c5c755e5fc868c055e4e6e4da7fb4d201da161fbda29c5c14bd0d0",
+      "originalPNG": {
+        "file": "exec-426587ea-ecec-48b8-8482-e18304c3468d.png",
+        "bytes": 3562437,
+        "sha256": "15b75d04bf2288f81ee076bb50bae15c99de00bda4a9c89d13eb792adf2f6125"
+      },
+      "masterBytes": 2705046,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Clean cream contemporary pharmacology building, central glassbay/door, axialstairs, lefthand cascading stream.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/district-pharmacology.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "district-herbal",
+      "master": "masters/district-herbal.webp",
+      "masterSHA256": "296123e75709ffa97b0e18cbfda21c32f5ea2b0404f773c8fbe1b210de994666",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/district-herbal.webp",
+      "runtimeBytes": 643664,
+      "runtimeSHA256": "1772d9762e1d2994bc439ff76fce0aad2a123e571e11313b46536bb507bdb94d",
+      "originalPNG": {
+        "file": "exec-6bb8d714-0801-42aa-8f94-8b9891c552d0.png",
+        "bytes": 3333497,
+        "sha256": "c1ed69e4f751c0fef2b8597d524f25527205ce4390884a250dae31c933f64d75"
+      },
+      "masterBytes": 2491336,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Redbrick herbal hall with right-side greenhouse, broad centralstairs, exact rightbranch into greenhouse and bothstreambanks.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/district-herbal.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "district-battle",
+      "master": "masters/district-battle.webp",
+      "masterSHA256": "42c320cca7178cee4fc4bc7687d758d090e49369fc15e99c94103149e6e39d3e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/district-battle.webp",
+      "runtimeBytes": 609120,
+      "runtimeSHA256": "cca97942a1e7893c1c78d0e05e90bc558894eb46206c24395b767dcf4bd65c80",
+      "originalPNG": {
+        "file": "exec-a8dd8141-16bb-4d1b-bcdc-12153f9ce187.png",
+        "bytes": 3164233,
+        "sha256": "706583932b7ce68ab65e414f7293a4e3b7bcc0149d1e9c511f149dbdd6dd0aca"
+      },
+      "masterBytes": 2429718,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Modern cream battle building onraisedrightterrace with skybridge, right-sidedstairs and leftcascades.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/district-battle.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "district-life",
+      "master": "masters/district-life.webp",
+      "masterSHA256": "0c479551ff45e8e8585c9908712d38d4e8423f3c6c60de9789cf692faa112186",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/district-life.webp",
+      "runtimeBytes": 683300,
+      "runtimeSHA256": "9ba171a8fed0907eea733695c7cde229a9a9ff748a229fbd947dcbc119c9b3ef",
+      "originalPNG": {
+        "file": "exec-80f59047-7ca2-41d8-88b1-b6ea42fe7e49.png",
+        "bytes": 3434472,
+        "sha256": "7ed21b56c85b101288f8931ad0f8fed3391c493bcef439a8906c7fea6f2f593c"
+      },
+      "masterBytes": 2551766,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Redbrick life workshop, vinecovered woodenpergola onright, leftriver, curveddrypath and centralrightstairs.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/district-life.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "campus-south",
+      "master": "masters/campus-south.webp",
+      "masterSHA256": "19a8b04f43b3839fe75cc2374755319af36c6a29413e68862ba80a9bd1cb00fd",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/campus-south.webp",
+      "runtimeBytes": 568008,
+      "runtimeSHA256": "ca396b2fb0357aecc31aed93bcac6884c27a7a19ecf3f05ea1a226cff8d4fde0",
+      "originalPNG": {
+        "file": "exec-d7cfee0d-e370-4a4c-b0e8-3ed60d156120.png",
+        "bytes": 3116287,
+        "sha256": "2b031ae18a8dd29037e97d70d734e2a7850c472787711567f2366a287a8dc812"
+      },
+      "masterBytes": 2327174,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Southernstonebridge, allthree distantpathbranches unchanged, leftredbrick andrightmodernbuildings, allbanks/railingssame.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/campus-south.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "campus-west-garden",
+      "master": "masters/campus-west-garden.webp",
+      "masterSHA256": "b2a38aef154435f9174e72803b74957bb030703aebf1930c24d930e3e7782d25",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/campus-west-garden.webp",
+      "runtimeBytes": 648690,
+      "runtimeSHA256": "afb4bcf5682be67148dfbdfd20bfe1922283307fb741aa4f1cd3146ddf56523a",
+      "originalPNG": {
+        "file": "exec-31e8990b-7d36-44ba-b635-0b2148ffc92e.png",
+        "bytes": 3344845,
+        "sha256": "da1ad8c906c7127ebc03e44f458d345995a401faa719b5ff47c382497d98806a"
+      },
+      "masterBytes": 2509646,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Cherry blossom medicinal garden path with raisedcentralherbisland, leftriverandbridge, leftdistanttowerstairs andrighthallentrysteps; keep drylooparoundisland andexactedgeofherbisland.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/campus-west-garden.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "campus-east-river",
+      "master": "masters/campus-east-river.webp",
+      "masterSHA256": "8186cfb4b8fefe575df20faec87eb7814ef075da571fe48b15ece128e31771d8",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/campus-east-river.webp",
+      "runtimeBytes": 690306,
+      "runtimeSHA256": "0d86cab038adb3c52dfc9767946fa5a853e875c59626e41b4f3c16ea0ce41c56",
+      "originalPNG": {
+        "file": "exec-070f0877-6446-4675-abd6-76ee843cd10b.png",
+        "bytes": 3456204,
+        "sha256": "935a9c4a29e35d3fca0ab24c5966940c34339f52402a08a88fa0725604e6d78c"
+      },
+      "masterBytes": 2580576,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Use case: style-transfer. Production illustrated game environment, 3:2 landscape. Image1 is the EXACT spatial layout to preserve; image2 is the approved pharmacycart material/art style; image3 is the approved freshly painted centralplaza whose illustrated finish the other environments shouldmatch.\nRepaint image1 as a richly detailed colorful HAND-PAINTED RPGillustration, with confident brush contours, softly sculpted forms, warm woodgrain, drawn stone facets, lush carefully painted leaves and bright luminous daylight. No photorealism, no realphotos, no photographictexturefilter, no flatvector. Matchimage2/image3's rich materials and originalstorybooksophistication.\nGEOMETRYLOCK: retainimage1's exact camera/crop/perspective and every doorway, path, step, bridge, waterline, building, bench, planter, railing, fixed furnishing and shadowlocation. These coordinates match livegamecollision; do notmoveorchange widths, donotaddstructures, noalteredfloorplan. Kapok riverside trail, riveronright, centraluppergreenhousestairs, leftskybridgearchpassage, exact dryrightbranch underpergola tosmallrightstonebridge. Preserve every terrace andrail footprint.\nKeep entirecomposition fullbleed. This is one coherent paintedscene, not a collage. Nopeople, noUI, notext/logo/watermark. Do NOT add the vendorcart; it is styleonly. Output highest supported native detail, requested3072x2048; precise smallarchitectural andbotanicaldetails, clear readablefullcolor.",
+      "geometryReference": "scene-references/outdoor/campus-east-river.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "hall-pharmaceutics",
+      "master": "masters/hall-pharmaceutics.webp",
+      "masterSHA256": "67ae3ef7104096224b31a4c37823f705af639f24ae958e2b73a4a3b9ea0fa93d",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/hall-pharmaceutics.webp",
+      "runtimeBytes": 437350,
+      "runtimeSHA256": "b8d1de1e2333c70e5e2527ec15ba6ca342a95d99f452794e70d6a46313417e47",
+      "originalPNG": {
+        "file": "exec-b8425b20-2037-435f-b37d-0ba5ebb8cfdd.png",
+        "bytes": 2557205,
+        "sha256": "6d6fd1d6f07defb4d54bc8c3386fc848dd2819a0f217fcfe5102b3f7c2d0e300"
+      },
+      "masterBytes": 1936230,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Redraw reference image 1 as an original richly painted game environment illustration for a Traditional Chinese pharmacy academy RPG. This is the exact existing hall-pharmaceutics interior clean background plate, whose gameplay perspective and walkable spaces must remain registered. Reference 2 is the user's richly illustrated small fountain vendor cart: follow its colorful detailed illustrated materials, attractive warm wood, cream masonry, clear emerald/teal accents, gentle brushwork and luminous soft daylight. Reference 3 is our approved illustrated pharmaceutics classroom: use the same visual world and rendering quality. This is an illustration, not a photograph, not a photographic filter, not a flat vector.\nCRITICAL GEOMETRY LOCK: preserve the original camera, image composition, room architecture, every fixed cabinet/bench, doorway, staircase, pillar, floor seams and room depth at their original image positions. Preserve all empty floor and original clean furniture gaps. Movable desks, chairs and loose cups are rendered separately by the game; DO NOT add movable tables, chairs, cups, beakers, books or decorative objects on these empty floor areas. Do not insert people or UI. Repaint fixed wall displays and architectural ornaments in original clear beautiful decorative detail without inventing readable scientific diagrams or false lettering. Preserve each subject's established interior identity and color family; floors of the same subject remain coherent. Reinterpret surfaces as finely painted stylized semi-realistic illustration with nuanced color, wood grain, glass, metal and plants. Preserve exact landscape 3:2 framing; highest native output available, ideally 3072 by 2048 or greater without mere resizing. No logos, no third-party game motifs. Deliver one complete opaque environment plate.",
+      "geometryReference": "game/assets/scene-objects/hall-pharmaceutics-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "hall-pharmacology",
+      "master": "masters/hall-pharmacology.webp",
+      "masterSHA256": "4e394eb879ca37ae902ce1b477e47d91302375396d2fe97cea29e5c0367fdaab",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/hall-pharmacology.webp",
+      "runtimeBytes": 384212,
+      "runtimeSHA256": "bb729d4e05e8b9e49227b1dd607d6730993361da1e8edc1cef4531fa1410cef1",
+      "originalPNG": {
+        "file": "exec-bd7d1b83-cbfe-4fc5-96a2-f8f94a215f55.png",
+        "bytes": 2514424,
+        "sha256": "824fa05b14eb892155de7a31f774a6310856f13875ad68fa7265173dc1612fb2"
+      },
+      "masterBytes": 1900722,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Create a revised original hand-painted game background illustration from reference 1, preserving its distinct room identity. Keep the modern airy pharmacology laboratory atrium: cream-white columns, pale silver glass railings, expansive modern clear glazing, light maple shelving, cool sage/sky-blue accents, and the exact window bench and staircase. Preserve the existing horizontal shelf elevations. No traditional latticework, hanging herbal scrolls, dark timber pillars or traditional Chinese lanterns.\nUse reference 2 ONLY for richly colored hand-painted rendering quality, detailed attractive surfaces, gentle stylization, and clear illustrated light; do not copy its wood/green color scheme or kiosk architecture into this room. This must read as an illustration and not a real photograph. Native landscape 3:2 at the highest supported native detail.\nGEOMETRY LOCK: precisely preserve all existing room lines, camera position, walkway floor space, windows, built-in bench and cabinet silhouettes, doors and stairs from reference 1. All movable tables/chairs/cups have been deliberately removed from this clean plate because they are interactive separate sprites: preserve their empty areas and do not paint any into the background. No people, no UI, no logos. Preserve floor foreground railings at exact positions, as game collisions and occlusion contours already match them. Enrich color and material detail through painting without changing geometry. Do not add exact anatomical diagrams, chemical structures or readable scientific text.",
+      "geometryReference": "game/assets/scene-objects/hall-pharmacology-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "hall-herbal",
+      "master": "masters/hall-herbal.webp",
+      "masterSHA256": "5ddac2632ffa85049d7da66df1863356f8e93153e6d87f2356bb62847e0b2884",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/hall-herbal.webp",
+      "runtimeBytes": 550008,
+      "runtimeSHA256": "341ebaf15f4dccf544fe3baab768c37ecd7678cf5376ff8c04b4d973f657a683",
+      "originalPNG": {
+        "file": "exec-d4f12723-021f-4e9e-87f6-e62b1e7803b4.png",
+        "bytes": 3059925,
+        "sha256": "8bef43746baa2bd2eb509eae28796826b39d06c67fd8783a397448abd8919320"
+      },
+      "masterBytes": 2229222,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Redraw reference image 1 as an original richly painted game environment illustration for a Traditional Chinese pharmacy academy RPG. This is the exact existing hall-herbal interior clean background plate, whose gameplay perspective and walkable spaces must remain registered. Reference 2 is the user's richly illustrated small fountain vendor cart: follow its colorful detailed illustrated materials, attractive warm wood, cream masonry, clear emerald/teal accents, gentle brushwork and luminous soft daylight. Reference 3 is our approved illustrated pharmaceutics classroom: use the same visual world and rendering quality. This is an illustration, not a photograph, not a photographic filter, not a flat vector.\nCRITICAL GEOMETRY LOCK: preserve the original camera, image composition, room architecture, every fixed cabinet/bench, doorway, staircase, pillar, floor seams and room depth at their original image positions. Preserve all empty floor and original clean furniture gaps. Movable desks, chairs and loose cups are rendered separately by the game; DO NOT add movable tables, chairs, cups, beakers, books or decorative objects on these empty floor areas. Do not insert people or UI. Repaint fixed wall displays and architectural ornaments in original clear beautiful decorative detail without inventing readable scientific diagrams or false lettering. Preserve each subject's established interior identity and color family; floors of the same subject remain coherent. Reinterpret surfaces as finely painted stylized semi-realistic illustration with nuanced color, wood grain, glass, metal and plants. Preserve exact landscape 3:2 framing; highest native output available, ideally 3072 by 2048 or greater without mere resizing. No logos, no third-party game motifs. Deliver one complete opaque environment plate.",
+      "geometryReference": "game/assets/scene-objects/hall-herbal-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "hall-battle",
+      "master": "masters/hall-battle.webp",
+      "masterSHA256": "fb55db2227fb58cf3debe9c5ff9db9437334a0cce20e59e96aee06799f088b2e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/hall-battle.webp",
+      "runtimeBytes": 439646,
+      "runtimeSHA256": "3b84821425ffa9184b4bdcbd94eb3ec8148f475ac606588a09e0300da65fa274",
+      "originalPNG": {
+        "file": "exec-d3d58aae-96b4-40f9-8054-bd30cd885812.png",
+        "bytes": 2628015,
+        "sha256": "3f5a38d34644edda4ec41954ade39a42e657a8f90a4375cfe11d84d8c7fbbd7c"
+      },
+      "masterBytes": 1984876,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Create a revised original hand-painted game background illustration from reference 1, preserving its distinct room identity. Keep the modern celestial science competition hall: cream-white columns, original glass railings and large glazing, pale gold and ivory marble, blue-green central door, circular astronomy floor inlay, exact staircase. CRITICAL retain the large suspended original blue globe with thin gold orbital rings in its exact upper-left-of-center ceiling position from the reference, and the original right-hand fixed abstract molecular display. No apothecary wall jars or herbal banners; no traditional dark wooden structural pillars or Chinese lanterns.\nUse reference 2 ONLY for richly colored hand-painted rendering quality, detailed attractive surfaces, gentle stylization, and clear illustrated light; do not copy its wood/green color scheme or kiosk architecture into this room. This must read as an illustration and not a real photograph. Native landscape 3:2 at the highest supported native detail.\nGEOMETRY LOCK: precisely preserve all existing room lines, camera position, walkway floor space, windows, built-in bench and cabinet silhouettes, doors and stairs from reference 1. All movable tables/chairs/cups have been deliberately removed from this clean plate because they are interactive separate sprites: preserve their empty areas and do not paint any into the background. No people, no UI, no logos. Preserve floor foreground railings at exact positions, as game collisions and occlusion contours already match them. Enrich color and material detail through painting without changing geometry. Do not add exact anatomical diagrams, chemical structures or readable scientific text.",
+      "geometryReference": "game/assets/scene-objects/hall-battle-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "hall-life",
+      "master": "masters/hall-life.webp",
+      "masterSHA256": "b9bd4e30c61a5272cd33f49c26aeba9595361bec9a04b7b020b253910868616b",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/hall-life.webp",
+      "runtimeBytes": 518222,
+      "runtimeSHA256": "2bfa945e8e4678e6a5737083c0d6e0f4a39e7d74876263605a94f472f74354e7",
+      "originalPNG": {
+        "file": "exec-e5ed353a-1f40-4900-9688-045cc7d56fca.png",
+        "bytes": 2898798,
+        "sha256": "57718112f3fc7eda305d47b7ac60ca42510087f16e4fcf466710d4b1c3fc7371"
+      },
+      "masterBytes": 2145298,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Redraw reference image 1 as an original richly painted game environment illustration for a Traditional Chinese pharmacy academy RPG. This is the exact existing hall-life interior clean background plate, whose gameplay perspective and walkable spaces must remain registered. Reference 2 is the user's richly illustrated small fountain vendor cart: follow its colorful detailed illustrated materials, attractive warm wood, cream masonry, clear emerald/teal accents, gentle brushwork and luminous soft daylight. Reference 3 is our approved illustrated pharmaceutics classroom: use the same visual world and rendering quality. This is an illustration, not a photograph, not a photographic filter, not a flat vector.\nCRITICAL GEOMETRY LOCK: preserve the original camera, image composition, room architecture, every fixed cabinet/bench, doorway, staircase, pillar, floor seams and room depth at their original image positions. Preserve all empty floor and original clean furniture gaps. Movable desks, chairs and loose cups are rendered separately by the game; DO NOT add movable tables, chairs, cups, beakers, books or decorative objects on these empty floor areas. Do not insert people or UI. Repaint fixed wall displays and architectural ornaments in original clear beautiful decorative detail without inventing readable scientific diagrams or false lettering. Preserve each subject's established interior identity and color family; floors of the same subject remain coherent. Reinterpret surfaces as finely painted stylized semi-realistic illustration with nuanced color, wood grain, glass, metal and plants. Preserve exact landscape 3:2 framing; highest native output available, ideally 3072 by 2048 or greater without mere resizing. No logos, no third-party game motifs. Deliver one complete opaque environment plate.",
+      "geometryReference": "game/assets/scene-objects/hall-life-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "classroom-pharmacology",
+      "master": "masters/classroom-pharmacology.webp",
+      "masterSHA256": "2ab99a84b6e01898e598d364680fc8abb589870c8ba2f61eb6eee24115f6b0b1",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/classroom-pharmacology.webp",
+      "runtimeBytes": 438106,
+      "runtimeSHA256": "d12c5131cc39a26f650994444d5aefea4539f839d1cdf784699245d5440b7423",
+      "originalPNG": {
+        "file": "exec-bb9e20c2-68c4-4d99-88d4-3e45a49879ae.png",
+        "bytes": 2753581,
+        "sha256": "553b470ec79d673e6f6bdaa06679c3c8e6b1eac1a525561e726b02292fea8a17"
+      },
+      "masterBytes": 1892484,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Create a revised original hand-painted game background illustration from reference 1, preserving its distinct room identity. Keep the modern pharmacology teaching room: cool pale-blue seamless floor, contemporary white/very light maple cabinets, brushed-metal and glass railings, gray metal window frames, large blank light-blue projection screen with dark border, small abstract scientific demonstration models on back shelving. Preserve the exact front lectern. Do not replace the screen with an herbal blackboard, and no traditional carved redwood/herbal scrolls.\nUse reference 2 ONLY for richly colored hand-painted rendering quality, detailed attractive surfaces, gentle stylization, and clear illustrated light; do not copy its wood/green color scheme or kiosk architecture into this room. This must read as an illustration and not a real photograph. Native landscape 3:2 at the highest supported native detail.\nGEOMETRY LOCK: precisely preserve all existing room lines, camera position, walkway floor space, windows, built-in bench and cabinet silhouettes, doors and stairs from reference 1. All movable tables/chairs/cups have been deliberately removed from this clean plate because they are interactive separate sprites: preserve their empty areas and do not paint any into the background. No people, no UI, no logos. Preserve floor foreground railings at exact positions, as game collisions and occlusion contours already match them. Enrich color and material detail through painting without changing geometry. Do not add exact anatomical diagrams, chemical structures or readable scientific text.",
+      "geometryReference": "game/assets/scene-objects/classroom-pharmacology-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "classroom-herbal",
+      "master": "masters/classroom-herbal.webp",
+      "masterSHA256": "ce73aaa716ace303527d5c5d9ccc97ec4abe20d6330407e05f696b5cb350a80e",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/classroom-herbal.webp",
+      "runtimeBytes": 421086,
+      "runtimeSHA256": "e36a354ab5872b0abec4ecf423ce50143cec88710fca7f11abbe6e64023877b3",
+      "originalPNG": {
+        "file": "exec-149adcb9-6811-47ba-b8b1-cd6c737f19f5.png",
+        "bytes": 2612539,
+        "sha256": "eaa633c27afd92756c8185c39165c82aa91a1c833dcde9afd69c340cead237ff"
+      },
+      "masterBytes": 1926934,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Redraw reference image 1 as an original richly painted game environment illustration for a Traditional Chinese pharmacy academy RPG. This is the exact existing classroom-herbal interior clean background plate, whose gameplay perspective and walkable spaces must remain registered. Reference 2 is the user's richly illustrated small fountain vendor cart: follow its colorful detailed illustrated materials, attractive warm wood, cream masonry, clear emerald/teal accents, gentle brushwork and luminous soft daylight. Reference 3 is our approved illustrated pharmaceutics classroom: use the same visual world and rendering quality. This is an illustration, not a photograph, not a photographic filter, not a flat vector.\nCRITICAL GEOMETRY LOCK: preserve the original camera, image composition, room architecture, every fixed cabinet/bench, doorway, staircase, pillar, floor seams and room depth at their original image positions. Preserve all empty floor and original clean furniture gaps. Movable desks, chairs and loose cups are rendered separately by the game; DO NOT add movable tables, chairs, cups, beakers, books or decorative objects on these empty floor areas. Do not insert people or UI. Repaint fixed wall displays and architectural ornaments in original clear beautiful decorative detail without inventing readable scientific diagrams or false lettering. Preserve each subject's established interior identity and color family; floors of the same subject remain coherent. Reinterpret surfaces as finely painted stylized semi-realistic illustration with nuanced color, wood grain, glass, metal and plants. Preserve exact landscape 3:2 framing; highest native output available, ideally 3072 by 2048 or greater without mere resizing. No logos, no third-party game motifs. Deliver one complete opaque environment plate.",
+      "geometryReference": "game/assets/scene-objects/classroom-herbal-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    },
+    {
+      "key": "classroom-battle",
+      "master": "masters/classroom-battle.webp",
+      "masterSHA256": "a407f10d85b0635fd4310099fa55c40eb86a72a5546ef286df6563079dc774d6",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "runtime": "game/assets/illustrated-scenes/classroom-battle.webp",
+      "runtimeBytes": 371190,
+      "runtimeSHA256": "c9aae7cebf9bfb3ff68ec03e140afd02e5e75064273fcc9b482f0bb9c8169699",
+      "originalPNG": {
+        "file": "exec-493ca751-6991-4fdf-919a-f61bcbe19659.png",
+        "bytes": 2446550,
+        "sha256": "4a4e31dbf8ed90452a856eaf3dd01c190879a729b6b8ffa895253dac425fe6c7"
+      },
+      "masterBytes": 1822514,
+      "generation": "Previously authored original imagegen illustration, reviewed and integrated in Stage4; not newly generated during this batch",
+      "prompt": "Create a revised original hand-painted game background illustration from reference 1, preserving its distinct room identity. Keep the contemporary academic competition classroom: ivory polished stone, original slim glass and gold rails, muted teal side padded benches, exact two front lecterns and dark slate board, precise ring-shaped subtle gold floor inlay, large simple windows. Warm white/cream architecture, contemporary understated academic ornament. No all-over timber/apothecary styling, no herbal scrolls or pharmacy jars.\nUse reference 2 ONLY for richly colored hand-painted rendering quality, detailed attractive surfaces, gentle stylization, and clear illustrated light; do not copy its wood/green color scheme or kiosk architecture into this room. This must read as an illustration and not a real photograph. Native landscape 3:2 at the highest supported native detail.\nGEOMETRY LOCK: precisely preserve all existing room lines, camera position, walkway floor space, windows, built-in bench and cabinet silhouettes, doors and stairs from reference 1. All movable tables/chairs/cups have been deliberately removed from this clean plate because they are interactive separate sprites: preserve their empty areas and do not paint any into the background. No people, no UI, no logos. Preserve floor foreground railings at exact positions, as game collisions and occlusion contours already match them. Enrich color and material detail through painting without changing geometry. Do not add exact anatomical diagrams, chemical structures or readable scientific text.",
+      "geometryReference": "game/assets/scene-objects/classroom-battle-clean.webp",
+      "processing": "Lossless RGB WebP master, decoded RGB pixels identical to original PNG; runtime WebP quality 92 method 6, native size preserved, no resize/repaint/warp",
+      "nativeResolutionNote": "Original prompt may request 3072x2048; actual delivered native resolution is 1536x1024. No upscaling or 4K claim.",
+      "artReview": "Original/painted framing compared; final image individually inspected; same fixed furniture and architecture, empty movable-furniture regions. Runtime geometry/occlusion/browser review recorded separately."
+    }
+  ],
+  "preservedStage3": [
+    "classroom-pharmaceutics.webp",
+    "PROVENANCE.json"
+  ],
+  "unchangedOverlays": "The existing original independent props.png, four living-tree species, four bird species, CSS water/fountain/orbit animation remain in use. They are not presented as newly repainted.",
+  "noRuntimeGeneration": true,
+  "noThirdPartyGameAssets": true,
+  "medicalDiagramScope": "Decorative diagrams/model shapes in scene art are not teaching or assessment material; no clinical claims are introduced."
+}

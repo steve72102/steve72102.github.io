@@ -1,0 +1,54 @@
+{
+  "key": "citrus",
+  "name": "柑橘航海",
+  "music": "Afrobeat",
+  "prompt": "Use case: style-transfer.\nAsset type: production transparent RPG modular clothing texture sheet, used on articulated ten-scholar characters, not a fashion poster.\nInput image 1 is the APPROVED TECHNICAL LAYOUT reference. Preserve its 1024 by 1536 portrait canvas, exact four columns, eight row bands, object separation and empty gutters. It is not the new colour or clothing-design reference. Generate ONE complete NEW clothing kit in the design specified below, with the same rich photographic cloth rendering, real seam depth, woven surfaces, embroidery, lining and small hardware as the approved reference. Distinct tailored silhouettes, not a palette swap. Mature-proportioned academy clothes; no flat vector illustration, no cartoon outlines.\nFOUR VIEW COLUMNS from left to right: straight FRONT, straight BACK, true RIGHT profile, true LEFT profile. Column boundaries x=0/256/512/768/1024. Repaint the true opposite side; do not mirror the whole garment. Asymmetric openings, clasps and pockets must follow the same physical garment around all four views.\nEIGHT ROWS, kept inside these y bands, top to bottom:\n1 SHIRT y20–200: torso separated from straight hanging sleeves, no hands attached.\n2 JACKET y214–446: open jacket torso separated from its straight hanging sleeves. The front opening and neckline are TRANSPARENT; no shirt, cape, body or skin painted into the jacket torso. The jacket is its own independent item.\n3 TROUSERS y457–735: waist and two straight legs connected as one pair for front/back; full independent profile trousers in both side columns. Keep a leg gap.\n4 SHOES y745–845: a pair for front/back and the corresponding clear side shoe for each profile.\n5 CAPE y886–1062: one separate shoulder cape per view. No jacket or shirt attached; preserve neckline opening and floating fabric edges.\n6 HAT y1080–1210: a separate full hat in each genuine view, no hair/head.\n7 ACCESSORY y1230–1315: one small original matching brooch in each genuine view, including its sensible rear fastening and side thickness.\n8 HANDHELD y1348–1500: matching closed study notebook centered, with the two neutral bare hands separately spaced to either side exactly like the layout. Hands retain the reference skin tone/anatomy and are not holding the book.\nAcross rows1/2 keep torso and sleeves disconnected by transparent gutters as in the approved layout. One sleeve in a narrow profile cell is acceptable; do not merge sleeves onto torso. Every complete item stays in its own cell, no clipped hems or soles, no objects crossing row or column boundaries.\nRendering: full-colour finely textured original 3D/painterly game material, realistic soft neutral upper-left light, folds with thickness, delicate embroidery at close view. Opaque clothing, true transparent alpha background and transparent inter-object gaps. No coloured backdrop, no opaque gradient, no checkerboard painting, no floor/shadows, no people/full bodies, no heads, no hangers, no mannequins, no panels, labels, numbers, grid lines, logos or brand symbols. Preserve all four views and all eight independent slots.\nDESIGN FOR THIS KIT:\nInput image 2 is the approved CITRUS clothing/fabric/detail reference only; use its orange/ink-teal/ivory palette, citrus-slice embroidery, leaf motifs, woven geometric syncopated borders and fabric richness, but NO characters from it. Create a tailored orange double-breasted short field/sailor jacket with teal collar accents and distinct seam piping; ivory cotton shirt with restrained teal stripes; deep ocean-teal straight utility trousers with fine orange edging; ivory/orange/teal canvas walking shoes; separate short deep-teal sailor-shoulder cape with ivory lining and orange embroidered wave/citrus border; soft orange/ivory sailor field cap with leaf clasp; tiny gilded orange-slice-and-leaf brooch; teal woven notebook with orange protected corners. Afrobeat's interlocking rhythms inform stitched geometric border sequences and offset button details, not borrowed logos or lettering. Each garment is richly dimensional and remains clearly its own slot.",
+  "referenced_image_paths": [
+    "original-png/exec-a129e76c-1807-4efc-8d54-f722d53ed177.png",
+    "original-png/exec-f7518eb3-ed1a-48c6-a124-df057147a0bd.png"
+  ],
+  "transparent_background": true,
+  "method": "built-in image_gen",
+  "plannedAsset": "game/assets/avatar-raster/fruit-citrus.webp",
+  "status": "prompt recorded before generation",
+  "result": {
+    "generatedSource": "original-png/exec-cff40372-e1d1-4b7a-94fc-4ca76c3f4e41.png",
+    "asset": "game/assets/avatar-raster/fruit-citrus.webp",
+    "width": 1024,
+    "height": 1536,
+    "mode": "RGBA",
+    "bytes": 2766261,
+    "sha256": "ddf9f59c45d5f88997066298ad24d9fef1677750bf8bcde7b29e266a10f4b0d9",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "alphaZeroPixels": 654619,
+    "alphaNearOpaquePixels": 666738,
+    "pixelCount": 1572864,
+    "alphaBounds": [
+      0,
+      0,
+      1014,
+      1536
+    ],
+    "status": "generated; per-part UV/component measurements authored; assembled character review pending",
+    "inspection": [
+      "Four authored columns front/back/right/left visibly present; each of eight garment/accessory rows present.",
+      "Separate sleeve imagery, independent cape, hat, brooch, book and hands present.",
+      "Alpha background retained without bitmap recoloring or masking.",
+      "Actual bands drift from template; measure per asset and per view, do not assume equal grid.",
+      "Side-view jacket artwork includes upper sleeve detail; torso/sleeve crop regions require deliberate overlap handling."
+    ]
+  },
+  "runtime": {
+    "asset": "game/assets/avatar-raster/fruit-citrus.webp",
+    "bytes": 700180,
+    "sha256": "21aab78712f2dcf3675e2f4dff19f5d8c7c15059f7db7ef67dd07927a631e3be",
+    "width": 1024,
+    "height": 1536,
+    "quality": 94,
+    "method": 3,
+    "alphaPreserved": true
+  }
+}

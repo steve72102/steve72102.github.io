@@ -1,0 +1,18 @@
+{
+  "tool": "builtin image_gen__imagegen",
+  "transparent_background": true,
+  "jobs": [
+    {
+      "key": "wish-jackets-a-v2",
+      "base": "wish-jackets-a",
+      "ref": "original-png/exec-b72cd5f4-61ea-4b98-b063-5b60431d61e0.png",
+      "prompt": "Technical atlas-spacing edit of the supplied image. Preserve all TWENTY-FOUR exact richly detailed garment pieces, their designs, colors, fabrics, embroidery, sleeves, and current view order. Do not redesign or simplify any part. Only SHRINK and reposition the pieces so each can be cropped independently.\nThe output is SIX columns by FOUR rows on a true transparent PNG. Each individual torso or sleeve must have bounding width NO MORE than 13% of the total image width, and bounding height NO MORE than 20% of the total image height. Place cell centers at x=8.33%,25%,41.67%,58.33%,75%,91.67%, and y=12.5%,37.5%,62.5%,87.5%. This leaves broad completely transparent gutters between all rows and columns. No collar, hem, cuff or tiny pendant can enter another piece's rectangular crop. Even the long torso pieces must fit fully inside their cell without touching anything. Smaller complete objects are better than clipped or touching objects.\nKeep the existing order exactly: row1 first outfit front torso/left sleeve/right sleeve then back torso/left sleeve/right sleeve; row2 first outfit right-view triplet then left-view triplet; row3 second outfit front and back triplets; row4 second outfit right and left triplets. Exactly six pieces in every row, 24 total. Keep all parts disconnected. Torso remains sleeveless, full shoulder-to-wrist sleeves separate. Preserve four genuine views. Actual alpha transparency; remove any background color, shadows, scenery or haze. No text or drawn grid."
+    },
+    {
+      "key": "wish-jackets-b-v2",
+      "base": "wish-jackets-b",
+      "ref": "original-png/exec-642215ee-0bf0-4e38-88ae-0ad2cfcb5650.png",
+      "prompt": "Technical atlas-spacing edit of the supplied image. Preserve all TWENTY-FOUR exact richly detailed garment pieces, their designs, colors, fabrics, embroidery, sleeves, and current view order. Do not redesign or simplify any part. Only SHRINK and reposition the pieces so each can be cropped independently.\nThe output is SIX columns by FOUR rows on a true transparent PNG. Each individual torso or sleeve must have bounding width NO MORE than 13% of the total image width, and bounding height NO MORE than 20% of the total image height. Place cell centers at x=8.33%,25%,41.67%,58.33%,75%,91.67%, and y=12.5%,37.5%,62.5%,87.5%. This leaves broad completely transparent gutters between all rows and columns. No collar, hem, cuff or tiny pendant can enter another piece's rectangular crop. Even the long torso pieces must fit fully inside their cell without touching anything. Smaller complete objects are better than clipped or touching objects.\nKeep the existing order exactly: row1 first outfit front torso/left sleeve/right sleeve then back torso/left sleeve/right sleeve; row2 first outfit right-view triplet then left-view triplet; row3 second outfit front and back triplets; row4 second outfit right and left triplets. Exactly six pieces in every row, 24 total. Keep all parts disconnected. Torso remains sleeveless, full shoulder-to-wrist sleeves separate. Preserve four genuine views. Actual alpha transparency; remove any background color, shadows, scenery or haze. No text or drawn grid."
+    }
+  ]
+}
