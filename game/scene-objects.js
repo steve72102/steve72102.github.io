@@ -25,10 +25,10 @@
   }
   function chair(id,x,y,sprite='wood-chair',flipX=false,size=65){
     const material=sprite==='wood-chair'?'wood':'metal';
-    return surface(id,'原景'+(sprite==='lab-stool'?'實作圓凳':'座椅'),x,y,26,15,22,{material,mass:sprite==='lab-stool'?4:6,movable:true,visual:visual(sprite,x,y+7,size,flipX)});
+    return surface(id,'原景'+(sprite==='lab-stool'?'實作圓凳':'座椅'),x,y,26,15,22,{jumpAssist:true,material,mass:sprite==='lab-stool'?4:6,movable:true,visual:visual(sprite,x,y+7,size,flipX)});
   }
   function table(id,name,x,y,w,d,height,sprite,size,options={}){
-    return surface(id,name,x,y,w,d,height,{mass:24,material:'wood',movable:true,visual:visual(sprite,x,y+d/2,size),...options});
+    return surface(id,name,x,y,w,d,height,{jumpAssist:true,mass:24,material:'wood',movable:true,visual:visual(sprite,x,y+d/2,size),...options});
   }
   function prop(id,name,sprite,support,x,y,size,material,options={}){
     return {id,name,kind:sprite,surface:support,x,y,width:Math.max(10,size*.35),...MATERIALS[material],material,movable:true,visual:visual(sprite,x,y,size),...options};
@@ -63,7 +63,7 @@
   // the established jump reach, but the former twelve prefab vessels are gone.
   const labShelf=[[90,0],[170,1],[237,2],[309,3]].map(([height,index])=>surface('lab-shelf-'+index,'左側固定展示架 '+(index+1),57.5,469,105,26,height,{material:'wood',oneWay:index>0}));
   rooms['hall-pharmacology']=room('hall-pharmacology','hall-nthu-interactive.webp',[
-    ...labShelf,surface('window-bench','窗邊固定長椅',256,447,183,27,55,{material:'stone',arrival:true,polygon:[[164,439],[345,432],[346,450],[174,459]]}),
+    ...labShelf,surface('window-bench','窗邊固定長椅',256,447,183,27,55,{jumpAssist:true,material:'stone',arrival:true,polygon:[[164,439],[345,432],[346,450],[174,459]]}),
     surface('pharma-right-cabinet','右側固定展示櫃',971,391,48,28,75,{material:'wood'})
   ],[
     prop('pharma-shelf-plant-low','低層架陶盆','plant','lab-shelf-0',30,469,47,'ceramic',{mass:3}),
@@ -86,7 +86,7 @@
   ],[fixture('herbal-fixed-cases','木質藥材櫥櫃','wood',35,286,'連牆櫃體、固定層架與遠景瓶罐保留於背景。'),fixture('herbal-garden','庭院樹木與石造花台','stone',775,360,'庭院建築與根植樹木不會被角色推走。')],{extraAreas:[[[5,655],[185,655],[185,440],[165,422],[125,420],[125,440],[5,450]],[[70,460],[185,460],[185,380],[70,380]],[[40,470],[85,470],[85,435],[40,445]]]});
 
   rooms['hall-battle']=room('hall-battle','hall-battle.webp',[
-    surface('battle-left-bench','入口石造長椅',66,421,125,28,40,{material:'stone',arrival:true,polygon:[[5,407],[107,407],[125,427],[5,442]]}),
+    surface('battle-left-bench','入口石造長椅',66,421,125,28,40,{jumpAssist:true,material:'stone',arrival:true,polygon:[[5,407],[107,407],[125,427],[5,442]]}),
     surface('battle-display-counter','右側分子展示櫃',959,393,70,35,35,{material:'wood'})
   ],[
     prop('battle-display-plant','展示櫃陶製花盆','plant','battle-display-counter',965,392,40,'ceramic',{mass:3}),
@@ -96,7 +96,7 @@
   rooms['hall-life']=room('hall-life','hall-life.webp',[
     surface('life-left-counter','左側木質工作櫃',66,410,120,35,82,{material:'wood',arrival:true}),
     surface('life-right-counter','右側木質工作櫃',940,416,105,40,78,{material:'wood'}),
-    surface('life-back-workbench','後方固定工坊桌',354,348,110,31,52,{material:'wood'}),
+    surface('life-back-workbench','後方固定工坊桌',354,348,110,31,52,{jumpAssist:true,material:'wood'}),
     chair('life-work-stool',385,379,'wood-chair',false,45)
   ],[
     prop('life-left-flask','工作櫃玻璃瓶','flask','life-left-counter',38,409,44,'glass'),
@@ -108,9 +108,9 @@
 
   // Teaching benches retain their original fixed stone/wood carcasses. Chairs
   // and individual instruments are independent layers anchored to the same art.
-  const labLeft=surface('prep-left-island','左側固定製劑實作台',238,340,198,118,52,{material:'stone',arrival:true,polygon:[[217,280],[336,280],[303,398],[139,398]]});
-  const labRight=surface('prep-right-island','右側固定製劑實作台',762,340,198,118,52,{material:'stone',polygon:[[664,280],[783,280],[861,398],[697,398]]});
-  const prepSurfaces=[labLeft,labRight,surface('prep-teacher-bench','固定教師實作台',500,174,185,20,40,{material:'stone'})];
+  const labLeft=surface('prep-left-island','左側固定製劑實作台',238,340,198,118,52,{jumpAssist:true,material:'stone',arrival:true,polygon:[[217,280],[336,280],[303,398],[139,398]]});
+  const labRight=surface('prep-right-island','右側固定製劑實作台',762,340,198,118,52,{jumpAssist:true,material:'stone',polygon:[[664,280],[783,280],[861,398],[697,398]]});
+  const prepSurfaces=[labLeft,labRight,surface('prep-teacher-bench','固定教師實作台',500,174,185,20,40,{jumpAssist:true,material:'stone'})];
   const prepProps=[];
   for(const [side,mirror] of [['left',false],['right',true]]){
     const x=value=>mirror?1000-value:value,id='prep-'+side+'-island';
@@ -122,7 +122,7 @@
   prepProps.push(prop('prep-teacher-instrument','講台金屬量測儀器','instrument','prep-teacher-bench',550,174,37,'metal',{mass:4}),prop('prep-teacher-beaker','講台玻璃燒杯','beaker','prep-teacher-bench',463,174,27,'glass'));
   rooms['classroom-pharmaceutics']=room('classroom-pharmaceutics','classroom-pharmaceutics.webp',prepSurfaces,prepProps,[fixture('prep-builtins','連牆製劑櫥櫃與水槽','stone',68,310,'石檯、水槽、櫃體、壁架及遠處密集藥瓶固定於原景。')]);
 
-  const seminarSurfaces=[surface('seminar-lectern','固定講桌',500,157,85,32,40,{material:'wood',arrival:true})],seminarProps=[];
+  const seminarSurfaces=[surface('seminar-lectern','固定講桌',500,157,85,32,40,{jumpAssist:true,material:'wood',arrival:true})],seminarProps=[];
   for(const [index,x,y,w,d,size] of [[0,215,244,177,63,220],[1,164,388,206,78,263],[2,785,244,177,63,220],[3,836,388,206,78,263]]){
     const id='seminar-table-'+index;seminarSurfaces.push(table(id,'原景圓角研討桌 '+(index+1),x,y,w,d,44,'white-table',size,{material:'metal',mass:22}));
     const dx=w/2+21,dy=d/2+21;[[x-dx,y-10],[x-dx,y+24],[x+dx,y-10],[x+dx,y+24],[x-36,y+dy],[x+36,y+dy],[x-37,y-dy],[x+37,y-dy]].forEach(([cx,cy],i)=>seminarSurfaces.push(chair('seminar-chair-'+index+'-'+i,cx,cy,'modern-chair-blue',cx>x,index%2?58:51)));
@@ -131,7 +131,7 @@
   seminarProps.push(prop('seminar-lectern-device','講桌金屬教學器材','instrument','seminar-lectern',494,157,30,'metal',{mass:2}));
   rooms['classroom-pharmacology']=room('classroom-pharmacology','classroom-pharmacology.webp',seminarSurfaces,seminarProps,[fixture('seminar-molecule-display','後牆分子展示與收納櫃','wood',500,115,'固定收納及遠景模型保留原有清大靈感室內風格。')],{extraAreas:[[[20,450],[20,365],[80,300],[80,205],[140,155],[180,155],[180,450]],[[980,450],[980,365],[920,300],[920,205],[860,155],[820,155],[820,450]]]});
 
-  const herbSurfaces=[surface('herb-teacher-bench','固定標本講台',500,174,215,22,47,{material:'wood'})],herbProps=[];
+  const herbSurfaces=[surface('herb-teacher-bench','固定標本講台',500,174,215,22,47,{jumpAssist:true,material:'wood'})],herbProps=[];
   for(const [side,x] of [['left',201],['right',799]]){
     const id='herb-sample-table-'+side;herbSurfaces.push(table(id,'原景木質標本長桌',x,337,194,113,47,'wood-table',260,{arrival:side==='left',mass:28}));
     [[x-118,303],[x-118,343],[x-118,383],[x+118,303],[x+118,343],[x+118,383],[x-42,414],[x+42,414]].forEach(([cx,cy],i)=>herbSurfaces.push(chair('herb-chair-'+side+'-'+i,cx,cy,'wood-chair',cx>x,65)));
@@ -141,7 +141,7 @@
   herbProps.push(prop('herb-teacher-jar','講台藥材標本罐','amber-jar','herb-teacher-bench',555,174,30,'glass'),prop('herb-teacher-mortar','講台石質研缽','mortar','herb-teacher-bench',526,174,34,'stone',{mass:5}));
   rooms['classroom-herbal']=room('classroom-herbal','classroom-herbal.webp',herbSurfaces,herbProps,[fixture('herb-wall-cases','藥材標本櫃與植物圖譜','wood',500,108,'連牆櫥櫃、遠處標本罐及植物圖譜保留於背景。')],{extraAreas:[[[45,450],[45,410],[55,290],[160,155],[200,155],[200,450]],[[955,450],[955,410],[945,290],[840,155],[800,155],[800,450]]]});
 
-  const battleSurfaces=[surface('arena-left-lectern','左側固定競技講台',306,139,70,32,43,{material:'wood',arrival:true}),surface('arena-right-lectern','右側固定競技講台',687,139,70,32,43,{material:'wood'})],battleProps=[];
+  const battleSurfaces=[surface('arena-left-lectern','左側固定競技講台',306,139,70,32,43,{jumpAssist:true,material:'wood',arrival:true}),surface('arena-right-lectern','右側固定競技講台',687,139,70,32,43,{jumpAssist:true,material:'wood'})],battleProps=[];
   for(const [index,x,y,w,d,size] of [[0,250,244,154,55,210],[1,210,350,179,70,240],[2,750,244,154,55,210],[3,790,350,179,70,240]]){
     const id='arena-study-table-'+index;battleSurfaces.push(table(id,'原景拼接研討桌 '+(index+1),x,y,w,d,42,'modular-table',size,{mass:20}));
     [[x-w/2-21,y-9],[x-w/2-21,y+23],[x+w/2+21,y-9],[x+w/2+21,y+23],[x-34,y+d/2+22],[x+34,y+d/2+22]].forEach(([cx,cy],i)=>battleSurfaces.push(chair('arena-chair-'+index+'-'+i,cx,cy,'modern-chair-sage',cx>x,index%2?56:51)));

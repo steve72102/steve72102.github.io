@@ -57,6 +57,16 @@
  .academy-immersive .walk-section>.scene-health{right:10px;bottom:calc(264px + env(safe-area-inset-bottom));max-width:180px}
 }
 @media(max-height:550px) and (orientation:landscape){
+ .academy-immersive .world-top{top:max(8px,env(safe-area-inset-top));gap:8px}
+ .academy-immersive .world-place{display:none}
+ .academy-immersive .world-identity{min-height:50px;min-width:0;max-width:40%;padding:5px 9px 5px 5px;gap:6px}
+ .academy-immersive .world-identity>span{min-width:0}
+ .academy-immersive .world-identity strong{font-size:12px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .academy-immersive .world-identity small{font-size:9px}
+ .academy-immersive .world-face{width:36px;height:36px;flex:none}
+ .academy-immersive .world-online{min-height:50px;padding:7px 9px}
+ .academy-immersive .world-top-actions{gap:5px;min-width:0}
+ .academy-immersive .world-top-actions>.button{min-height:47px;padding:8px 10px;font-size:11px}
  .academy-immersive .world-quest{display:none}
  .academy-immersive .world-route-guide{left:calc(144px + env(safe-area-inset-left));top:max(76px,calc(env(safe-area-inset-top) + 64px));width:clamp(160px,calc(100vw - 408px),210px);max-height:calc(100dvh - 156px)}
  .academy-immersive .world-minimap{top:76px;right:84px;width:100px;height:44px;aspect-ratio:auto}

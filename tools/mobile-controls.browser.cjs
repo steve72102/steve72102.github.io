@@ -8,8 +8,8 @@ const fs=require('node:fs'),path=require('node:path'),assert=require('node:asser
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=path.resolve(__dirname,'..');
 const source=file=>fs.readFileSync(path.join(root,'game',file),'utf8');
-const styles=['style.css','academy.css','daylight.css','campus-walk.css','adventure.css','scene-play.css','social.css','academy-controls.css','wardrobe.css','outfit-scene.css','photo-scene.css'].map(source).join('\n');
-const modules=['world-layout.js','classroom.js','scene-objects.js','campus-walk.js','engine.js','social-economy.js','wish.js','combat.js','academy.js','adventure.js','journey.js','campus-walk-ui.js','academy-ui.js'];
+const styles=['style.css','academy.css','daylight.css','campus-walk.css','adventure.css','scene-play.css','social.css','academy-controls.css','wardrobe.css','outfit-scene.css','photo-scene.css','character-motion.css'].map(source).join('\n');
+const modules=['world-layout.js','classroom.js','scene-objects.js','campus-walk.js','engine.js','social-economy.js','wish.js','combat.js','academy.js','adventure.js','journey.js','character-motion.js','avatar-motion.js','campus-walk-ui.js','academy-ui.js'];
 async function harness(page){
   await page.setContent('<!doctype html><html lang="zh-Hant"><head><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body><main id="main"></main></body></html>');
   await page.addStyleTag({content:styles});
@@ -46,7 +46,7 @@ async function harness(page){
     render();
     for(const step of MindWalk.travelRoute('campus','district:herbal'))walk.onPortal(step.portal);
     Array.from(document.querySelectorAll('button')).find(el=>el.textContent.includes('進入生藥樓')).click();
-    window.__controls={state,ui,get starts(){return starts;},classroom(){const day=MindEconomy.day(),room={id:day+'_herbal_1',number:1,day};state.arena.economy.wallet={rooms:{herbal:room.id}};ui.openClass('herbal',room);}};
+    window.__controls={state,ui,get scene(){return walk.scene;},get starts(){return starts;},classroom(){const day=MindEconomy.day(),room={id:day+'_herbal_1',number:1,day};state.arena.economy.wallet={rooms:{herbal:room.id}};ui.openClass('herbal',room);}};
   });
 }
 function overlap(a,b){return Math.min(a.right,b.right)-Math.max(a.left,b.left)>1&&Math.min(a.bottom,b.bottom)-Math.max(a.top,b.top)>1;}
@@ -61,23 +61,24 @@ async function check(page,label){
   assert.equal(geometry.overflow,false,label+' horizontal overflow');
   for(const r of geometry.rects){assert(r.width>0&&r.height>0,label+' visible '+r.selector);assert(r.left>=-1&&r.top>=-1&&r.right<=geometry.width+1&&r.bottom<=geometry.height+1,label+' inside viewport '+r.selector);}
   for(let i=0;i<geometry.rects.length;i++)for(let j=i+1;j<geometry.rects.length;j++)assert(!overlap(geometry.rects[i],geometry.rects[j]),label+' overlap: '+geometry.rects[i].selector+' / '+geometry.rects[j].selector);
-  const before=await page.evaluate(()=>window.__controls.starts);
-  await page.locator('.world-attend-button').click();
-  assert.equal(await page.evaluate(()=>window.__controls.starts),before+1,label+' attend action');
   const p=await page.locator('.walk-joystick').boundingBox(),cx=p.x+p.width/2,cy=p.y+p.height/2;
   const actor=page.locator('.walk-actor').first(),position=()=>actor.evaluate(el=>({x:Number(el.dataset.x),y:Number(el.dataset.y)}));
-  const start=await position(),cdp=await page.context().newCDPSession(page);
+  const start=await position(),heading=await page.evaluate(start=>{const scene=window.__controls.scene;return [{x:1,y:0},{x:-1,y:0},{x:0,y:1},{x:0,y:-1}].find(d=>MindWalk.clear(scene,start,{x:start.x+d.x*45,y:start.y+d.y*45}));},start),cdp=await page.context().newCDPSession(page);
+  assert(heading,label+' arrival leaves an unobstructed walking direction');
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:cx,y:cy,id:1}]});
-  await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:cx+45,y:cy,id:1}]});
+  await cdp.send('Input.dispatchTouchEvent',{type:'touchMove',touchPoints:[{x:cx+heading.x*45,y:cy+heading.y*45,id:1}]});
   await page.waitForTimeout(200);
-  assert((await position()).x>start.x,label+' actual touch input moves the actor');
+  const moved=await position();assert((moved.x-start.x)*heading.x+(moved.y-start.y)*heading.y>0,label+' actual touch input moves along an open route: '+JSON.stringify({start,moved,heading}));
   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
   const stopped=await position();await page.waitForTimeout(120);assert.deepEqual(await position(),stopped,label+' release stops movement');
   await cdp.detach();
+  const before=await page.evaluate(()=>window.__controls.starts);
+  await page.locator('.world-attend-button').click();
+  assert.equal(await page.evaluate(()=>window.__controls.starts),before+1,label+' attend action');
   await page.locator('.world-exit-button').click();
 }
 async function main(){
-  const browser=await chromium.launch({headless:true});let checked=0;
+  const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_EXECUTABLE?{executablePath:process.env.CHROMIUM_EXECUTABLE}:{})});let checked=0;
   try{
     for(const viewport of [{width:320,height:568},{width:390,height:844},{width:568,height:320},{width:667,height:375},{width:844,height:390}]){
       const context=await browser.newContext({viewport,isMobile:true,hasTouch:true,deviceScaleFactor:1});
@@ -90,4 +91,5 @@ async function main(){
   }finally{await browser.close();}
   console.log('PASS '+checked+' local DOM/layout scenarios. Physical touch, safe-area cutouts and production multiplayer are not covered.');
 }
-main().catch(error=>{console.error(error.stack||error);process.exitCode=1;});
+module.exports={harness,check,source,styles};
+if(require.main===module)main().catch(error=>{console.error(error.stack||error);process.exitCode=1;});

@@ -1,0 +1,15 @@
+/* One distance-driven clock for body art; world transforms and labels stay put. */
+.walk-actor.motion-managed .run-sprite,
+.walk-actor.motion-managed .equipped-sprite{animation:none!important;transform-origin:50% 90%;transition:none}
+.walk-actor.motion-managed .run-sprite{background-position:var(--motion-column,0%) var(--motion-row,0%);transform:rotate(var(--motion-lean,0deg)) scaleX(var(--motion-mirror,1)) scale(var(--motion-scale-x,1),var(--motion-scale-y,1))}
+.walk-actor.motion-managed .equipped-sprite{transform:rotate(var(--motion-lean,0deg)) scale(var(--motion-scale-x,1),var(--motion-scale-y,1))}
+.walk-actor.motion-managed .equipped-sprite .outfit-facing{display:none;transform:none}
+.walk-actor.motion-managed[data-motion-view="down"] .equipped-sprite .outfit-facing-down,
+.walk-actor.motion-managed[data-motion-view="up"] .equipped-sprite .outfit-facing-up,
+.walk-actor.motion-managed[data-motion-view="right"] .equipped-sprite .outfit-facing-right,
+.walk-actor.motion-managed[data-motion-view="left"] .equipped-sprite .outfit-facing-right{display:block}
+.walk-actor.motion-managed[data-motion-view="left"] .equipped-sprite .outfit-facing-right{transform:scaleX(-1)}
+@media(prefers-reduced-motion:reduce){
+ .walk-actor.motion-managed .run-sprite{background-position:var(--motion-column,0%) 0%;transform:scaleX(var(--motion-mirror,1))}
+ .walk-actor.motion-managed .equipped-sprite{transform:none}
+}

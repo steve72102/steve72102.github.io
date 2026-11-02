@@ -66,6 +66,63 @@
     cuts.sort((a,b)=>a-b);for(let i=1;i<cuts.length;i++){const t=(cuts[i-1]+cuts[i])/2;if(!walkable(scene,{x:a.x+dx*t,y:a.y+dy*t},z))return false;}return true;
   }
   function move(scene,p,dx,dy,seconds,sprint=false,z=0){p=nearest(scene,p,z);const length=Math.hypot(dx,dy);if(!Number.isFinite(length)||!length||!Number.isFinite(seconds))return p;const amount=speed(scene)*(sprint?1.5:1)*Math.max(0,Math.min(.05,seconds)),x=dx/length*amount,y=dy/length*amount,both={x:p.x+x,y:p.y+y};if(clear(scene,p,both,z))return both;const horizontal={x:p.x+x,y:p.y},vertical={x:p.x,y:p.y+y};if(x&&clear(scene,p,horizontal,z))return horizontal;if(y&&clear(scene,p,vertical,z))return vertical;return p;}
+  const JUMP=Object.freeze({speed:375,gravity:650,bufferMs:120,coyoteMs:100,edgeAssist:6,maxAssistHeight:90});
+  function jumpVelocity(scene){return JUMP.speed/(scene.scale||1);}
+  function edgeLanding(scene,p,dx,dy,height){
+    const scale=scene.scale||1,radius=JUMP.edgeAssist/scale,length=Math.hypot(dx,dy);
+    if(!length||height>JUMP.maxAssistHeight/scale||!ground(scene,p))return null;
+    const candidates=[];
+    for(const s of scene.surfaces||[]){
+      if(s.jumpAssist!==true||s.oneWay||Math.abs(s.height-height)>.01||inside(p,s.polygon))continue;
+      for(let i=0;i<s.polygon.length;i++){
+        const edge=projection(p,s.polygon[i],s.polygon[(i+1)%s.polygon.length]),inward=Math.hypot(s.x-edge.x,s.y-edge.y)||1;
+        const q={x:edge.x+(s.x-edge.x)/inward*.25/scale,y:edge.y+(s.y-edge.y)/inward*.25/scale},gap=distance(p,q);
+        // A released input never gets a horizontal nudge. Only catch a small
+        // miss toward an explicitly marked desk/chair, over legal floor.
+        if(gap>radius||gap<.001||((q.x-p.x)*dx+(q.y-p.y)*dy)/(gap*length)<.25||!inside(q,s.polygon)||!ground(scene,q)||!clear(scene,p,q,height))continue;
+        candidates.push({surface:s,point:q,distance:gap});
+      }
+    }
+    return candidates.sort((a,b)=>a.distance-b.distance)[0]||null;
+  }
+  function jumpMove(scene,body,dx,dy,seconds,sprint=false,target=null){
+    const dt=Math.max(0,Math.min(.05,seconds)),scale=scene.scale||1,g=JUMP.gravity/scale;
+    if(![body.x,body.y,body.z,body.vz,dx,dy,dt].every(Number.isFinite))throw TypeError('Invalid jump movement');
+    let p={x:body.x,y:body.y},z=Math.max(0,body.z),vz=body.vz,landed=false,assisted=false;
+    const advance=(duration,height)=>{
+      if(!duration||!(dx||dy))return;
+      const remaining=target?Math.min(duration,distance(p,target)/(speed(scene)*(sprint?1.5:1))):duration;
+      p=move(scene,p,dx,dy,remaining,sprint,height);
+    };
+    const support=surface(scene,p,z)?.height||0;
+    if(vz<=0&&Math.abs(z-support)<=.1){
+      z=support;vz=0;advance(dt,z);
+    }else if(dt){
+      const startZ=z,startVz=vz,at=t=>startZ+startVz*t-g*t*t/2;
+      // Split at every crossed tabletop, including the exact descending
+      // intersection. Horizontal collision sees the correct elevation on each
+      // interval, so a frame can never tunnel through a desk then be ejected.
+      const events=[{time:dt,height:null}],heights=new Set([0,...(scene.surfaces||[]).map(s=>s.height)]);
+      for(const height of heights){
+        const discriminant=startVz*startVz+2*g*(startZ-height);if(discriminant<0)continue;
+        const root=Math.sqrt(discriminant);
+        for(const time of [(startVz-root)/g,(startVz+root)/g])if(time>1e-9&&time<=dt+1e-9)events.push({time:Math.min(dt,time),height});
+      }
+      events.sort((a,b)=>a.time-b.time);let elapsed=0;
+      for(const event of events){
+        const end=event.time;advance(end-elapsed,Math.max(0,Math.min(at(elapsed),at(end))));elapsed=end;
+        const height=event.height;if(height===null||startVz-g*end>=0)continue;
+        const direct=height===0?{height:0}:(scene.surfaces||[]).find(s=>Math.abs(s.height-height)<.01&&inside(p,s.polygon));
+        const catchEdge=direct?null:edgeLanding(scene,p,dx,dy,height);
+        if(!direct&&!catchEdge)continue;
+        if(catchEdge){p=catchEdge.point;assisted=true;}
+        z=height;vz=0;landed=true;advance(dt-end,height);break;
+      }
+      if(!landed){z=Math.max(0,at(dt));vz=z===0?0:startVz-g*dt;}
+    }
+    const finalSupport=surface(scene,p,z)?.height||0,grounded=vz===0&&Math.abs(z-finalSupport)<=.1&&walkable(scene,p,z);
+    return {...p,z,vz,grounded,landed,assisted};
+  }
   function route(scene,from,to){
     from=nearest(scene,from);to=nearest(scene,to);if(clear(scene,from,to))return [to];
     // Bounds are scoped to this route, so moved furniture can never leave a stale
@@ -95,5 +152,5 @@
   }
   function near(scene,p,radius=45){return scene.portals.filter(d=>distance(p,d)<=radius/(scene.scale||1)).sort((a,b)=>distance(p,a)-distance(p,b))[0]||null;}
   function direction(key){return {ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0],w:[0,-1],s:[0,1],a:[-1,0],d:[1,0]}[key]||null;}
-  return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,deskArrival,clear,move,route,near,direction};
+  return {WIDTH,HEIGHT,SPEED,campus,district,hall,classrooms,trails,outdoors,outdoor,speed,travelRoute,arrival,mapPoint,distance,projection,inside,surface,maxElevation,ground,walkable,nearest,deskArrival,clear,move,JUMP,jumpVelocity,edgeLanding,jumpMove,route,near,direction};
 });
