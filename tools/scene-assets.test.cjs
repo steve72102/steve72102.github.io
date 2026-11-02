@@ -3,10 +3,13 @@ const test=require('node:test'),assert=require('node:assert/strict'),fs=require(
 const O=require('../game/scene-objects.js'),root=path.resolve(__dirname,'../game');
 test('all original scene reconstruction assets are present, hash-matched, and atlas crops stay inside the actual PNG',()=>{
   const provenance=JSON.parse(fs.readFileSync(path.join(root,'assets/scene-objects/PROVENANCE.json'),'utf8'));
+  const illustrated=JSON.parse(fs.readFileSync(path.join(root,'assets/illustrated-scenes/PROVENANCE.json'),'utf8'));
   assert.equal(provenance.assets.length,10);assert.equal(Object.keys(O.rooms).length,9);
-  const files=new Set(provenance.assets.map(a=>'./assets/scene-objects/'+a.file));
+  assert.equal(illustrated.assets.length,1,'only the reviewed pharmaceutics classroom is replaced in this stage');
+  const sources=[['assets/scene-objects',provenance],['assets/illustrated-scenes',illustrated]];
+  const files=new Set(sources.flatMap(([dir,record])=>record.assets.map(a=>'./'+dir+'/'+a.file)));
   for(const room of Object.values(O.rooms)){assert(files.has(room.background));assert(files.has(room.atlas));}
-  for(const a of provenance.assets){const data=fs.readFileSync(path.join(root,'assets/scene-objects',a.file));assert.equal(data.length,a.bytes,a.file);assert.equal(createHash('sha256').update(data).digest('hex'),a.sha256,a.file);}
+  for(const [dir,record] of sources)for(const a of record.assets){const data=fs.readFileSync(path.join(root,dir,a.file));assert.equal(data.length,a.bytes,a.file);assert.equal(createHash('sha256').update(data).digest('hex'),a.sha256,a.file);}
   const png=fs.readFileSync(path.join(root,O.ATLAS.slice(2)));assert.equal(png.subarray(1,4).toString(),'PNG');
   const width=png.readUInt32BE(16),height=png.readUInt32BE(20);assert.deepEqual([width,height],[...O.ATLAS_SIZE]);assert.equal(png[25],6,'transparent RGBA atlas');
   for(const [id,rect] of Object.entries(O.SPRITE_RECTS)){const [x,y,w,h]=rect;assert(rect.every(Number.isInteger),id);assert(x>=0&&y>=0&&w>0&&h>0&&x+w<=width&&y+h<=height,id);}

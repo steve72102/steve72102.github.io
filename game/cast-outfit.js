@@ -49,6 +49,8 @@
   function preview(state,options={}){
     const A=window.MindAcademy,R=window.MindAdventure,E=window.MindEngine,{character,cut,items,palette}=model(state,A,R,E);
     const direction=['up','right','left'].includes(options.direction)?options.direction:'down',back=direction==='up',side=direction==='right'||direction==='left';
+    const native=options.native!==false&&window.MindNativeAvatar?.preview(state,{direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:()=>preview(state,{...options,native:false})});
+    if(native)return native;
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{xmlns:ns,viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,'data-view':direction,role:'img','aria-label':character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；')});
     let slot='',project=side;
@@ -250,8 +252,9 @@
     }
     return svg;
   }
-  function itemPreview(state,item){
+  function itemPreview(state,item,options={}){
     const R=window.MindAdventure;if(!item||!Object.hasOwn(R.SLOTS,item.slot))return null;
+    const native=options.native!==false&&window.MindNativeAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{native:false})});if(native)return native;
     const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     const boxes={jacket:[20,64,140,188],cape:[25,63,130,144],shirt:[25,64,130,112],pants:[34,136,112,161],shoes:[38,269,104,45],hat:[45,0,90,49],accessory:[90+cut.shoulder-18,99,28,28],handheld:[90+cut.shoulder,132,44,60]};

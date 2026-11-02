@@ -33,6 +33,9 @@
 
 /* Compact controls reserve separate touch lanes and respect device safe areas. */
 @media(max-width:650px){
+ /* The fixed attend button stays available; omit the world-space duplicate
+    before the classroom camera can place it behind the compact HUD. */
+ .academy-immersive .classroom-scene .classroom-start{display:none}
  .academy-immersive .world-route-guide{max-height:max(44px,calc(100dvh - 424px - env(safe-area-inset-bottom)));overscroll-behavior:contain}
  .academy-immersive .world-top{gap:4px}
  .academy-immersive .world-identity{min-width:0;max-width:40%;padding-inline:5px}

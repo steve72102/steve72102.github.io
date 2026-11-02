@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "8685f199810150c8e5ef478de2dfe5cccee93522",
+  "assetId": "pineapple-doctor",
+  "releaseStatus": "local implementation for Codex integration; not deployed by this delivery",
+  "scope": {
+    "character": "doctor",
+    "requiredLoadout": [
+      "fruit-pineapple-jacket",
+      "fruit-pineapple-cape",
+      "fruit-pineapple-shirt",
+      "fruit-pineapple-pants",
+      "fruit-pineapple-shoes",
+      "fruit-pineapple-hat",
+      "fruit-pineapple-accessory",
+      "fruit-pineapple-handheld"
+    ],
+    "directions": [
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "runFramesPerDirection": 8,
+    "actionFramesPerDirection": {
+      "idle": 1,
+      "start": 1,
+      "stop": 1,
+      "turn": 1,
+      "rise": 1,
+      "apex": 1,
+      "fall": 1,
+      "land": 1
+    },
+    "totalRuntimeFrames": 64,
+    "unsupported": "Other nine scholars, other outfits and partial/mixed loadouts retain the established SVG renderer."
+  },
+  "identityReference": {
+    "source": "User-provided and approved ten-scholar reference visible in this conversation; matching public artwork",
+    "publicPath": "game/assets/equipment/level30-bach-cast.webp",
+    "sha256": "9ab222f7099dd99fbc81d4e76e169670d9a1f50aba4276b0696383f2b0b9f9f3",
+    "selection": "top-left young slim adult, side-swept black hair and rectangular glasses"
+  },
+  "clothingReference": {
+    "source": "Previously generated and approved pineapple workwear parts; gold canvas, forest green, cream cotton, brass details",
+    "originalPngSha256": "64771d7e4674ba0b7690a32a66539b780bd4702c48f49b4e42bb6d736a6bf32d",
+    "catalogRuntimeSha256": "d0b5a51787a01528b3719fd8f049953f122ab01185a95947c7dbe0e41b685ec4",
+    "styleReference": "Funk rhythm translated into staggered workwear pockets and diamond stitching; no audio file included"
+  },
+  "creation": {
+    "tool": "built-in image_gen.imagegen",
+    "method": "AI-generated separately drawn cardinal action poses; visually reviewed and iteratively corrected. Not described as hand-drawn by a human.",
+    "bookCarry": "Both hands secure one specimen notebook at the chest; back-view occlusion intentionally hides it.",
+    "specialCorrection": "Right run frame 7 received an independently generated full-pose toe repair; source and calibration are recorded per frame.",
+    "productionOperations": [
+      "explicit crop",
+      "isotropic downscale",
+      "translation to common anchor",
+      "transparent atlas packing",
+      "lossless WebP encoding"
+    ],
+    "notUsed": [
+      "runtime image generation",
+      "paid AI APIs",
+      "mesh deformation of static body parts",
+      "mirrored left/right sprite assets",
+      "Riot/LoL artwork, logo, character or audio"
+    ]
+  },
+  "masters": {
+    "archiveDirectory": "art-source/masters/",
+    "format": "Lossless exact WebP transcoded from original generated PNG, retaining decoded RGBA bytes including alpha and hidden RGB",
+    "nativeSheetDimensions": [
+      1536,
+      1024
+    ],
+    "runtimeSheetDimensions": [
+      1024,
+      768
+    ],
+    "runtimeCell": [
+      256,
+      384
+    ],
+    "runtimeFootAnchor": [
+      128,
+      372
+    ],
+    "upscaled": false,
+    "no4KClaim": true,
+    "rebuildManifest": "art-source/generation-manifest.json",
+    "fullPromptHistory": "art-source/generation-history.json"
+  },
+  "knownScopeLimits": [
+    "This is the first playable art batch, not completion of all ten scholars or all scenes.",
+    "Complete outfit only; the eight item catalog crops are not independent animated clothing layers.",
+    "One authored pose per transition state per direction; additional multi-frame transition polishing is future work.",
+    "A generated four-view turnaround is included as a design reference; actual runtime idle comes from the action atlas.",
+    "Visual originality is documented by inputs and generation history; no blanket intellectual-property guarantee is asserted."
+  ]
+}

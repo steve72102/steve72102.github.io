@@ -8,7 +8,7 @@ window.MindAvatar=(function(){
     if(images.has(key)){const cached=images.get(key);images.delete(key);images.set(key,cached);return cached;}
     const state={appearance:{character:appearance.character},rpg:{loadout}},serializer=new XMLSerializer();
     const rendered=DIRECTIONS.map(direction=>{
-      const svg=window.MindCastOutfit.preview(state,{direction});
+      const svg=window.MindCastOutfit.preview(state,{direction,native:false});
       // createElementNS already supplies namespaceURI. Let XMLSerializer emit
       // its declaration once, without a second unnamespaced xmlns attribute.
       svg.removeAttribute('xmlns');
@@ -22,9 +22,13 @@ window.MindAvatar=(function(){
       const id=loadout?.[slot],gear=R.gear(id);
       wear[slot]=gear?.slot===slot||slot==='handheld'&&E.ITEMS.some(item=>item.id===id)?id:null;
     }
-    const dressed=Object.values(wear).some(Boolean);
-    const body=dressed?node('span',{class:'equipped-sprite','aria-hidden':'true','data-loadout':JSON.stringify(wear)},...sources(look,wear).map(({direction,src})=>node('img',{class:'outfit-facing outfit-facing-'+direction,src,alt:'',draggable:'false',decoding:'async',width:180,height:330}))):node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'});
-    const avatar=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':''),'data-direction':'down','aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
+    const dressed=Object.values(wear).some(Boolean),native=window.MindNativeAvatar?.createBody(node,{appearance:look,rpg:{loadout:wear}});
+    const originalBody=()=>node('span',{class:'equipped-sprite','aria-hidden':'true','data-loadout':JSON.stringify(wear)},...sources(look,wear).map(({direction,src})=>node('img',{class:'outfit-facing outfit-facing-'+direction,src,alt:'',draggable:'false',decoding:'async',width:180,height:330})));
+    // Native sheets are direct image surfaces: an SVG serialized into a data URL
+    // cannot reliably load another external image in the browser's image sandbox.
+    const body=native||(dressed?originalBody():node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}));
+    const avatar=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':'')+(native?' native-actor':''),'data-direction':'down',...(native?{'data-native-avatar':window.MindNativeAvatar.ID}:{}),'aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
+    if(native)window.MindNativeAvatar.register(avatar,originalBody);
     const h=window.MindLobby.honor(honor);if(h){avatar.classList.add('has-honor');avatar.append(node('span',{class:'honor-label '+h.kind,'data-honor-until':h.until},window.MindLobby.honorTitle(h)));}
     const remaining=Math.min(8000,counterAt+8000-Date.now());if(remaining>0){const bubble=node('span',{class:'counter-bubble'},'可悲阿~');bubble.style.setProperty('--bubble-time',remaining+'ms');avatar.append(bubble);}return window.MindAvatarMotion?.register(avatar)||avatar;
   };

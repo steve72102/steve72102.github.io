@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "stage": "stage3-first-playable-art",
+  "base_commit": "8685f199810150c8e5ef478de2dfe5cccee93522",
+  "scope": "One illustrated pharmaceutics classroom; other rooms retain their existing artwork.",
+  "assets": [
+    {
+      "file": "classroom-pharmaceutics.webp",
+      "width": 1536,
+      "height": 1024,
+      "native_generated_dimensions": [
+        1536,
+        1024
+      ],
+      "bytes": 518716,
+      "sha256": "cb0a1f4d7f504b47ab33d0bc223fc0e7cbb4851f9d853b9e64e25bbde7e914f4",
+      "source_master": {
+        "file": "exec-7b8ea3f4-a970-4cfe-af6d-1d2343fded92.png",
+        "format": "PNG",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2726776,
+        "sha256": "b2506d6b33626c13b36346df5d7de6a7077e6ed8116b654b9c730e21e8729677",
+        "delivery": "separate source-art package"
+      },
+      "reference": {
+        "file": "game/assets/scene-objects/classroom-pharmaceutics-clean.webp",
+        "sha256": "a9306cea9aca0a447686aeb22e0c41810d272d84fcda4f5be737747ce684d4b1",
+        "role": "existing user-owned game composition and fixed furniture placement"
+      },
+      "production": {
+        "method": "original imagegen redraw from the existing game composition; reviewed reusable local artwork",
+        "native_resolution_note": "The earlier generation prompt requested 3072 x 2048, but the delivered native image is 1536 x 1024. It has not been upscaled and is not advertised as 4K.",
+        "runtime_processing": "existing WebP copied byte-for-byte; original PNG retained separately",
+        "prompt": "Use case: style-transfer. Asset type: high-resolution painted game environment plate, aspect3:2. Input image1 is the exact existing environment geometry/reference; input image2 is the approved original pharmacy cart illustration STYLE reference only.\nRepaint image1 in a rich, colorful, luminous hand-painted storybook RPG illustration matching image2's confident painted forms, warm outlined woodgrain, soft luminous shading, clear material separation, charming lush foliage and finely drawn details. The user specifically wants illustrated artwork, NOT a real photograph or photorealistic architectural rendering. Keep colors clean and bright, sophisticated fullcolor, rich tealgreens, terracotta and cream light. Clear brush-made contours and stylized sculpted forms with detailed texture; no flat vector shapes, no blur, no pixelart.\nGEOMETRY LOCK: keep the camera, crop, perspective, vanishing point, floor plan, the edges and positions of every wall/door/stair/path/river/furniture in image1. The game has collision polygons aligned to these coordinates, so do not move, widen, rotate, add or remove any structures. Change only the visual rendering/material treatment. Pharmaceutics teaching laboratory with brick arches, sage cabinets, cream stone counters, blackboard. Preserve the exact two fixed side lab islands and back demonstrationcounter/sink positions, aisle and frontsteps. Keep all open floor EMPTY: movable tables, chairs, cups and people are separate game sprites and must NOT be added. Keep fixed cabinets and dense distant bottle shelf details.\nOutput the highest supported NATIVE detail/resolution, requested 3072x2048 (3:2), fullbleed, no border, no text or watermark. Do not produce a collage or a photo with an illustration filter. Draw this scene afresh as a coherent illustration while precisely tracing its spatial layout. Nopeople, noUI, nocartinsert."
+      },
+      "alignment_review": {
+        "logical_scene": [
+          1000,
+          667
+        ],
+        "fixed_surfaces": [
+          "prep-left-island",
+          "prep-right-island",
+          "prep-teacher-bench"
+        ],
+        "geometry_changes": [],
+        "preserved": "All surface IDs, ground polygons, heights, occlusion polygons, arrival metadata, 21 movable stools and 20 portable props are unchanged from baseline 8685f199810150c8e5ef478de2dfe5cccee93522. Fixed benches remain background-only artwork; no duplicate bench sprites.",
+        "visual_review": "Original clean plate and painted replacement inspected side by side. Camera, central aisle, doorway, three fixed bench silhouettes and cabinet arrangement retain the same layout. Exact in-game occlusion and jump review remains part of browser acceptance.",
+        "prop_atlas": "Existing original props.png is reused without edits. Wood, glass, ceramic and metal materials are compatible, while the prop rendering remains more realistic than the painted background."
+      }
+    }
+  ]
+}

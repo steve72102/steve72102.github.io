@@ -44,7 +44,7 @@ with zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as arch
             archive.writestr(name, data)
 data = stream.getvalue()
 assert data[:len(prefix)] == prefix
-assert len(data) <= 32_000_000
+assert len(data) <= 40_000_000
 with zipfile.ZipFile(io.BytesIO(data)) as verify:
     assert len(verify.namelist()) == len(set(verify.namelist())) == len(wanted)
     assert verify.testzip() is None

@@ -1,0 +1,3721 @@
+{
+  "schemaVersion": 1,
+  "assetId": "pineapple-doctor",
+  "baselineCommit": "8685f199810150c8e5ef478de2dfe5cccee93522",
+  "scope": "doctor wearing all eight canonical fruit-pineapple equipment slots; other loadouts use the established renderer",
+  "completeCardinalSet": true,
+  "authoredFrameCount": 64,
+  "layout": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "anchor": [
+      128,
+      372
+    ]
+  },
+  "pipeline": {
+    "operations": [
+      "explicit crop",
+      "isotropic Lanczos downscale",
+      "integer translation",
+      "transparent atlas packing",
+      "lossless WebP"
+    ],
+    "noMirroring": true,
+    "noMeshWarp": true,
+    "noSynthesisedPoses": true,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0"
+  },
+  "sourceManifestSha256": "b832808425bf573a119a1d6be85ee7be7221b2456d88ac8b2e5904408d8755be",
+  "sheets": [
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/down-actions.webp",
+      "direction": "down",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/down-actions.webp",
+      "sourceBytes": 1650822,
+      "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+      "originalGeneratedPngBytes": 2423084,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+      "runtimeBytes": 452328,
+      "runtimeSha256": "2ff45b9c5226e1b2fa2ee1226e4ecb0fe8cc984084b3f291d5b1e87ef4f16a63",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "idle",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            83,
+            6,
+            212,
+            516
+          ],
+          "sourceAnchor": [
+            189.0,
+            518
+          ],
+          "outputOffset": [
+            67,
+            75
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "fa58e3e92a580a4a0992b3f8e503c2b3d7ae15bc7781a640848f512fe9bff135",
+          "alphaSha256": "07b210f27220b86c83000ed47352a3d3ba15ec764889d41be6eb5ea43890ce49",
+          "visibleBoundsAlpha16": [
+            69,
+            77,
+            188,
+            372
+          ],
+          "alphaBounds": [
+            67,
+            75,
+            190,
+            374
+          ],
+          "transparentPixels": 74942,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "start",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            436,
+            23,
+            281,
+            490
+          ],
+          "sourceAnchor": [
+            576.5,
+            509
+          ],
+          "outputOffset": [
+            47,
+            90
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "486d077cf3f6eba8da91d8ef7e5243dd1ae44aebd289534b21ba3a53749761df",
+          "alphaSha256": "cdf7bc8b353f2c4366590ab014939befbc18e17c0e7e2ecbb6a8bf2fa0a20010",
+          "visibleBoundsAlpha16": [
+            50,
+            92,
+            208,
+            372
+          ],
+          "alphaBounds": [
+            47,
+            90,
+            210,
+            374
+          ],
+          "transparentPixels": 75375,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "stop",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            796,
+            20,
+            355,
+            497
+          ],
+          "sourceAnchor": [
+            973.5,
+            513
+          ],
+          "outputOffset": [
+            25,
+            86
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "5edf69e6aa0fb5f94443aed2feb2347265894245b4cc6dfde934be2c3cd0289f",
+          "alphaSha256": "5e2b99c3abd65ded5d70c9b47634e00057b8131381160fae980e29208a8e5d39",
+          "visibleBoundsAlpha16": [
+            27,
+            88,
+            229,
+            372
+          ],
+          "alphaBounds": [
+            25,
+            86,
+            231,
+            374
+          ],
+          "transparentPixels": 71139,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "turn",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            1216,
+            5,
+            314,
+            535
+          ],
+          "sourceAnchor": [
+            1373.0,
+            536
+          ],
+          "outputOffset": [
+            37,
+            64
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "1364e66aaed9b9b972e4075b4670adbee2ac05c6610db7ea2274ec843740a257",
+          "alphaSha256": "c2b6e0ee09f87f99ed921c7158e4bed65c1fd9aa858bb4debefedac665b3020a",
+          "visibleBoundsAlpha16": [
+            39,
+            66,
+            217,
+            372
+          ],
+          "alphaBounds": [
+            37,
+            64,
+            219,
+            374
+          ],
+          "transparentPixels": 71415,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "rise",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            47,
+            540,
+            293,
+            444
+          ],
+          "sourceAnchor": [
+            193.5,
+            1020
+          ],
+          "outputOffset": [
+            43,
+            94
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "61bb854627c3697dc0e646d3ef9996688b5a375036ddf97d73e0e913ae3cfdae",
+          "alphaSha256": "b6ebfd1f02eb370b3d646be1f67c8c11cef370ddcf5a95abcf73784783051ecd",
+          "visibleBoundsAlpha16": [
+            45,
+            96,
+            211,
+            350
+          ],
+          "alphaBounds": [
+            43,
+            94,
+            213,
+            352
+          ],
+          "transparentPixels": 73999,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "apex",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            397,
+            510,
+            322,
+            363
+          ],
+          "sourceAnchor": [
+            558.0,
+            1020
+          ],
+          "outputOffset": [
+            35,
+            76
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "316e6466d0ae85842f9f5a3ddf9d63fea6044604b7fc3ff4904b3df924734b50",
+          "alphaSha256": "7e4566979479ed59529c33e45beffbfcf47c8cac643a32d7dc0f8eb39798106a",
+          "visibleBoundsAlpha16": [
+            37,
+            79,
+            220,
+            285
+          ],
+          "alphaBounds": [
+            35,
+            76,
+            222,
+            287
+          ],
+          "transparentPixels": 77411,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "fall",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            779,
+            528,
+            322,
+            485
+          ],
+          "sourceAnchor": [
+            940.0,
+            1020
+          ],
+          "outputOffset": [
+            35,
+            87
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "a462deac04c431177ad75c467ecb4de255d3b2ceeab0a08aa623e28a887273f3",
+          "alphaSha256": "65f092832f630ab0408836ee93d5c97ac54b2bad66774a41153c2d39cc35f1f6",
+          "visibleBoundsAlpha16": [
+            37,
+            89,
+            220,
+            366
+          ],
+          "alphaBounds": [
+            35,
+            87,
+            222,
+            368
+          ],
+          "transparentPixels": 71339,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "land",
+          "source": "masters/down-actions.webp",
+          "sourceSha256": "61305c5186492a0a2e7deb74336c25b4ae26efbb8c592158a0ff6ae6606ec09b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6ef70e2b4f14fde9d8963b36c4976ab51b40a5dcd1c635c49d8a3df9ad968c39",
+          "originalGeneratedPngBytes": 2423084,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "f8e3fe684a6ae276028c27407d46be3a7e61cefe647a48689a090c2669201637",
+          "sourceCrop": [
+            1202,
+            657,
+            320,
+            354
+          ],
+          "sourceAnchor": [
+            1362.0,
+            1007
+          ],
+          "outputOffset": [
+            35,
+            169
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "739d2116a684483ee41283384f27bc270352b3066d4151c241b04517baec5baa",
+          "alphaSha256": "7672b70095db296ef774501789ac79f7caf31e684908a1a21ebc55a4c51b9ccb",
+          "visibleBoundsAlpha16": [
+            37,
+            171,
+            219,
+            372
+          ],
+          "alphaBounds": [
+            35,
+            169,
+            221,
+            374
+          ],
+          "transparentPixels": 75021,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/down-run.webp",
+      "direction": "down",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/down-run.webp",
+      "sourceBytes": 1529262,
+      "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+      "originalGeneratedPngBytes": 2279703,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+      "runtimeBytes": 422156,
+      "runtimeSha256": "1491248ff41abd1e7fb965817907d1776b15d125b9d3529ac46d34ec95792ed6",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            58,
+            5,
+            263,
+            505
+          ],
+          "sourceAnchor": [
+            189.5,
+            508
+          ],
+          "outputOffset": [
+            52,
+            80
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "9f04928bc28bec8c066d4fac5bd4e309bfe042a7667a207a35b0bfd692770c2f",
+          "alphaSha256": "d079bae409d78afdd0879934107c2b7208e3802aa7b4f6793476e71ece185df0",
+          "visibleBoundsAlpha16": [
+            54,
+            82,
+            203,
+            371
+          ],
+          "alphaBounds": [
+            52,
+            80,
+            205,
+            373
+          ],
+          "transparentPixels": 74029,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            442,
+            8,
+            268,
+            505
+          ],
+          "sourceAnchor": [
+            576.0,
+            508
+          ],
+          "outputOffset": [
+            50,
+            82
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "d60ec2571d842e9b9261dc0e26cbe3608b33360c02995d39d599ff84b6809160",
+          "alphaSha256": "a6943f79555463066d784215b89315847f4b0f2387e040818df1a069828bafb5",
+          "visibleBoundsAlpha16": [
+            52,
+            84,
+            203,
+            373
+          ],
+          "alphaBounds": [
+            50,
+            82,
+            205,
+            375
+          ],
+          "transparentPixels": 73757,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            814,
+            7,
+            277,
+            506
+          ],
+          "sourceAnchor": [
+            952.5,
+            508
+          ],
+          "outputOffset": [
+            48,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "6ecbb8b4c85ab475891b8bc2c71a3bee0b66270f1ce1dc07afa49cba01b3da6a",
+          "alphaSha256": "0654102875ab5398229c2129628bfcba4f6945944bc3035ab0675cb5b0c17ffc",
+          "visibleBoundsAlpha16": [
+            50,
+            83,
+            207,
+            371
+          ],
+          "alphaBounds": [
+            48,
+            81,
+            209,
+            374
+          ],
+          "transparentPixels": 72714,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            1200,
+            1,
+            269,
+            467
+          ],
+          "sourceAnchor": [
+            1334.5,
+            508
+          ],
+          "outputOffset": [
+            50,
+            78
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "1feb9c119c74083d77926541d3dcd00ef43420321f2a8ee62559e54d79a12fb1",
+          "alphaSha256": "6febf4dfb11dba5ba65df623ad19cbe0bbb7b3039381cf1e06b565fb6d2231e9",
+          "visibleBoundsAlpha16": [
+            52,
+            80,
+            204,
+            347
+          ],
+          "alphaBounds": [
+            50,
+            78,
+            206,
+            349
+          ],
+          "transparentPixels": 74775,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            64,
+            509,
+            259,
+            512
+          ],
+          "sourceAnchor": [
+            193.5,
+            1020
+          ],
+          "outputOffset": [
+            53,
+            76
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "ded8b293218caa1eeb9ee25cddc91ed5a28f6a5d8a0ec92e97ba28fba4e6a6e0",
+          "alphaSha256": "59f79ddc5382d6be173f29289bc574f99097a6d27e3d8e3169d3dd1aec0c59fe",
+          "visibleBoundsAlpha16": [
+            55,
+            78,
+            201,
+            371
+          ],
+          "alphaBounds": [
+            53,
+            76,
+            203,
+            373
+          ],
+          "transparentPixels": 74059,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            444,
+            520,
+            261,
+            494
+          ],
+          "sourceAnchor": [
+            574.5,
+            1020
+          ],
+          "outputOffset": [
+            52,
+            82
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "dc1ef96dcde581ff114e7e119089a6525755941a8426f610aa5fb5a3c18278a4",
+          "alphaSha256": "c3aec349e945c425dff078f76e85d65b6e2f9f0291f735ba2ed1b28c7a5f79ee",
+          "visibleBoundsAlpha16": [
+            54,
+            84,
+            201,
+            367
+          ],
+          "alphaBounds": [
+            52,
+            82,
+            203,
+            369
+          ],
+          "transparentPixels": 73972,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            822,
+            518,
+            265,
+            496
+          ],
+          "sourceAnchor": [
+            954.5,
+            1020
+          ],
+          "outputOffset": [
+            51,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "bfc694ad196b387c5f3742a50c4c46f99cd1a2f6b8610fa3c954619c70fdc43a",
+          "alphaSha256": "9b839c0ff09f29455625379c029e8f582c620c32e196e832431ee680bc1ec3a9",
+          "visibleBoundsAlpha16": [
+            53,
+            83,
+            203,
+            367
+          ],
+          "alphaBounds": [
+            51,
+            81,
+            205,
+            369
+          ],
+          "transparentPixels": 74070,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "run",
+          "source": "masters/down-run.webp",
+          "sourceSha256": "b889521c32ffb4927cd1b4a2cc1a66e995e31e616c804e923f70e5e0b1e238d5",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "2681af641ed6ec6761dcf59e3c96fbe5ce75c3a77091dd0ef6930948f6e9da76",
+          "originalGeneratedPngBytes": 2279703,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "cf703f064f47a4d984f1f298733189a5cea187d3eb81afe09d7741dd1d340aac",
+          "sourceCrop": [
+            1220,
+            505,
+            251,
+            480
+          ],
+          "sourceAnchor": [
+            1345.5,
+            1020
+          ],
+          "outputOffset": [
+            55,
+            73
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "ac4b8a1128454670a4e1b02c4b5abe73e5545d293fa69b59fb7165aacdae7c9b",
+          "alphaSha256": "4ff150025f6c82906aac7f596120d52752c7822e2307ef98f3b1453f4bd6c14e",
+          "visibleBoundsAlpha16": [
+            57,
+            75,
+            199,
+            349
+          ],
+          "alphaBounds": [
+            55,
+            73,
+            201,
+            351
+          ],
+          "transparentPixels": 74713,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/up-actions.webp",
+      "direction": "up",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/up-actions.webp",
+      "sourceBytes": 1612196,
+      "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+      "originalGeneratedPngBytes": 2378178,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+      "runtimeBytes": 433564,
+      "runtimeSha256": "633a4190d5eff4b9741b7887985f554d9050a09ef83afb22073cb27a9753e6e1",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "idle",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            73,
+            7,
+            222,
+            517
+          ],
+          "sourceAnchor": [
+            184.0,
+            520
+          ],
+          "outputOffset": [
+            64,
+            74
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "7b9f37ec52f5b002f437ffd0c915cfd5f3141389a990aaac0a6ec2f41543cb3f",
+          "alphaSha256": "cb6503d89df27e20b522f889e410aa02d1c906c36f04a0eb770c051a31202d46",
+          "visibleBoundsAlpha16": [
+            66,
+            76,
+            191,
+            372
+          ],
+          "alphaBounds": [
+            64,
+            74,
+            193,
+            374
+          ],
+          "transparentPixels": 73700,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "start",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            458,
+            34,
+            264,
+            484
+          ],
+          "sourceAnchor": [
+            590.0,
+            514
+          ],
+          "outputOffset": [
+            51,
+            94
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "c09b3f171b8de7f843464b8b40642f55cc687411e567c683a830780a2d744a7a",
+          "alphaSha256": "9d173e1a7499d7e108f8066b0d7dfb3ab7b0847ae75d985451011a06f9ee22ee",
+          "visibleBoundsAlpha16": [
+            53,
+            96,
+            202,
+            373
+          ],
+          "alphaBounds": [
+            51,
+            94,
+            204,
+            375
+          ],
+          "transparentPixels": 73554,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "stop",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            770,
+            20,
+            352,
+            500
+          ],
+          "sourceAnchor": [
+            946.0,
+            516
+          ],
+          "outputOffset": [
+            26,
+            84
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "dd1ed0c37ad61686d6a5ec1668176fd83ee3fa1b17c02b5c5909b1e648c9800f",
+          "alphaSha256": "67a87034d0131ab1dba162fe98775e66be10a6db39f5b16dc766f47c1127e004",
+          "visibleBoundsAlpha16": [
+            28,
+            86,
+            228,
+            372
+          ],
+          "alphaBounds": [
+            26,
+            84,
+            230,
+            374
+          ],
+          "transparentPixels": 70333,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "turn",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            1224,
+            7,
+            303,
+            519
+          ],
+          "sourceAnchor": [
+            1375.5,
+            522
+          ],
+          "outputOffset": [
+            40,
+            73
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "1aa611147a8f054ae08db54376cd04bead766d043be8e4cf191578ec9746021e",
+          "alphaSha256": "bf66a09f27228f91db74f7b2f17ccbf12aaa826c393127fcdf74b100d6c25999",
+          "visibleBoundsAlpha16": [
+            42,
+            75,
+            214,
+            372
+          ],
+          "alphaBounds": [
+            40,
+            73,
+            216,
+            374
+          ],
+          "transparentPixels": 71894,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "rise",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            56,
+            529,
+            281,
+            472
+          ],
+          "sourceAnchor": [
+            196.5,
+            1020
+          ],
+          "outputOffset": [
+            47,
+            87
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "3b253b3b9e27719213fbadc1d7003d7a94139f2e788eeddc0396785d7be3453a",
+          "alphaSha256": "af1b31e0727e8fa270cfbc63ca2c1b1b6d9bf54d4c60f8f74c1062a18099f640",
+          "visibleBoundsAlpha16": [
+            49,
+            89,
+            208,
+            359
+          ],
+          "alphaBounds": [
+            47,
+            87,
+            210,
+            361
+          ],
+          "transparentPixels": 74090,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "apex",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            418,
+            528,
+            322,
+            345
+          ],
+          "sourceAnchor": [
+            579.0,
+            1020
+          ],
+          "outputOffset": [
+            35,
+            87
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "4d7d23ec2f8d24f4a2aca8104d5d6af500bab2689c3eb273474c2095d1ac1128",
+          "alphaSha256": "b87b1e149842b6183ba0fd2b678a8fabaa299651b1ce2284753645a755b74b4a",
+          "visibleBoundsAlpha16": [
+            37,
+            90,
+            220,
+            285
+          ],
+          "alphaBounds": [
+            35,
+            87,
+            222,
+            287
+          ],
+          "transparentPixels": 77725,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "fall",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            827,
+            523,
+            277,
+            483
+          ],
+          "sourceAnchor": [
+            965.5,
+            1020
+          ],
+          "outputOffset": [
+            48,
+            84
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "01b993aa5076e84f691990ab7560eb0f7f8a1ab1bc03db6792896a0dabc7a004",
+          "alphaSha256": "79ebdbcf3cc12f3f2bf9c7ab95d53cee0276a0ad7b85206488fe0365032e168f",
+          "visibleBoundsAlpha16": [
+            50,
+            86,
+            207,
+            362
+          ],
+          "alphaBounds": [
+            48,
+            84,
+            209,
+            364
+          ],
+          "transparentPixels": 73269,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "land",
+          "source": "masters/up-actions.webp",
+          "sourceSha256": "6c26b9251009cae7b7278e4043efe2d5f4dd2090a9ae7dc35bfcc1c9a9bf223d",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "15953310f204d9267d192f7cec5665c75a7c33124a61e327ab04f0a247052284",
+          "originalGeneratedPngBytes": 2378178,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "d62da80e6d3703aa92c950f0ed276dbafc34811404e34c778ea38051fcfaf942",
+          "sourceCrop": [
+            1223,
+            642,
+            275,
+            344
+          ],
+          "sourceAnchor": [
+            1360.5,
+            982
+          ],
+          "outputOffset": [
+            48,
+            175
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "5d5732e0bb322a295a994daeb624daa7225b414bf2cf30ee1b38b540f1d30375",
+          "alphaSha256": "d307685ab7a004d05a404947787f535f9659ef26f1aa5f6f12926388b82b7a58",
+          "visibleBoundsAlpha16": [
+            50,
+            177,
+            206,
+            373
+          ],
+          "alphaBounds": [
+            48,
+            175,
+            208,
+            375
+          ],
+          "transparentPixels": 76089,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/up-run.webp",
+      "direction": "up",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/up-run.webp",
+      "sourceBytes": 1455430,
+      "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+      "originalGeneratedPngBytes": 2181667,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+      "runtimeBytes": 393670,
+      "runtimeSha256": "a08885c98b6c14dfa36053bcb8607e3ecc2c517f58b252f0e201a56a892d49bb",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            68,
+            7,
+            259,
+            507
+          ],
+          "sourceAnchor": [
+            197.5,
+            508
+          ],
+          "outputOffset": [
+            53,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "5c6fc826c9ee06997a42a1e5437465de6f811880cc4ce1f69fd80e5d62a71df7",
+          "alphaSha256": "8700bf05e6068f636671ce202d4b3e1ff5f08dc0ecc2b2322aa3fd9c66c7a04c",
+          "visibleBoundsAlpha16": [
+            55,
+            83,
+            201,
+            373
+          ],
+          "alphaBounds": [
+            53,
+            81,
+            203,
+            375
+          ],
+          "transparentPixels": 71913,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            451,
+            6,
+            272,
+            503
+          ],
+          "sourceAnchor": [
+            587.0,
+            508
+          ],
+          "outputOffset": [
+            49,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "ab242d289a121e6e60a56e0737f6a904b10af8bbdec9c8bee46d658945cf4b37",
+          "alphaSha256": "bcd51456b9d37c76a603d9286a1307eac223c4d9af317388e6efc304d3375064",
+          "visibleBoundsAlpha16": [
+            51,
+            83,
+            205,
+            371
+          ],
+          "alphaBounds": [
+            49,
+            81,
+            207,
+            373
+          ],
+          "transparentPixels": 71132,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            827,
+            6,
+            269,
+            509
+          ],
+          "sourceAnchor": [
+            961.5,
+            508
+          ],
+          "outputOffset": [
+            50,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "d3a47c56783d709dbb124a30e66e5fafbc348f39f7782e9ad770c2f1c55168f8",
+          "alphaSha256": "790c574b52327b87a6531dddfddc4f2a0ffc7a96f67bcbcb3a005d2ad102f63b",
+          "visibleBoundsAlpha16": [
+            52,
+            83,
+            204,
+            374
+          ],
+          "alphaBounds": [
+            50,
+            81,
+            206,
+            376
+          ],
+          "transparentPixels": 71752,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            1213,
+            7,
+            266,
+            491
+          ],
+          "sourceAnchor": [
+            1346.0,
+            508
+          ],
+          "outputOffset": [
+            51,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "9b51bf6435c2cf049d7bbf50d1ac904d6fae705cafed610d11dcd7cd6efc6abb",
+          "alphaSha256": "9655685a86147e84e20ceb186cc8cd0ea274655c856bcfd2be4397b0affe4b7b",
+          "visibleBoundsAlpha16": [
+            53,
+            83,
+            203,
+            364
+          ],
+          "alphaBounds": [
+            51,
+            81,
+            205,
+            366
+          ],
+          "transparentPixels": 72628,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            75,
+            513,
+            267,
+            481
+          ],
+          "sourceAnchor": [
+            208.5,
+            1020
+          ],
+          "outputOffset": [
+            51,
+            78
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "4f6de1b81f4cc0e46e9eeb0c72effda422e10270f9649aa262037cef6a1374e7",
+          "alphaSha256": "dc53374f106c367241aa2fb30534a4998c6859bf55998e5ae52c10e78360796e",
+          "visibleBoundsAlpha16": [
+            53,
+            80,
+            204,
+            355
+          ],
+          "alphaBounds": [
+            51,
+            78,
+            206,
+            357
+          ],
+          "transparentPixels": 73273,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            450,
+            512,
+            258,
+            501
+          ],
+          "sourceAnchor": [
+            579.0,
+            1020
+          ],
+          "outputOffset": [
+            53,
+            77
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "2f5c5002d1e82df3f534be56c1f9af1153e992e08283fe04a2768a807ce295a2",
+          "alphaSha256": "3977a4922ee3f19b04d2dd6ec8d1bb0a4315762dd1fd388e3b37a2704da4b42d",
+          "visibleBoundsAlpha16": [
+            55,
+            79,
+            201,
+            366
+          ],
+          "alphaBounds": [
+            53,
+            77,
+            203,
+            368
+          ],
+          "transparentPixels": 72226,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            823,
+            512,
+            273,
+            502
+          ],
+          "sourceAnchor": [
+            959.5,
+            1020
+          ],
+          "outputOffset": [
+            49,
+            77
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "8cabf36e17396ab61a892039a966c58669cfac2b51f801eb40fe069d0d5a4b65",
+          "alphaSha256": "99e55d4aa23fbe5f92fa587a046d512495125a9e0bfb7ad43179c82975a6bf81",
+          "visibleBoundsAlpha16": [
+            51,
+            77,
+            205,
+            366
+          ],
+          "alphaBounds": [
+            49,
+            77,
+            207,
+            368
+          ],
+          "transparentPixels": 73111,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "run",
+          "source": "masters/up-run.webp",
+          "sourceSha256": "3c51c8b602b8467d87d49a501ed3ef4f2a46f190bd123d968fb1af2f84bdb362",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "cb00637dab199a043a5a9ca3af48cc03c523025a6f5254270519b26ffdb2eb39",
+          "originalGeneratedPngBytes": 2181667,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "ed621ac636ca54d4fad4fcaef73110f0aa5b41e256710fa9ae3a21fd1313fbb3",
+          "sourceCrop": [
+            1222,
+            512,
+            278,
+            504
+          ],
+          "sourceAnchor": [
+            1361.0,
+            1020
+          ],
+          "outputOffset": [
+            47,
+            77
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "f2a05dc7316902e13abeabefc4f44f22a26cbf6047c730d29d2bd1dd0f48b331",
+          "alphaSha256": "1a1a4a73c4fba4612efcce89d8b262e40e49b6679ad89c84079d51d8072b46b2",
+          "visibleBoundsAlpha16": [
+            49,
+            79,
+            206,
+            367
+          ],
+          "alphaBounds": [
+            47,
+            77,
+            208,
+            369
+          ],
+          "transparentPixels": 73266,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/left-actions.webp",
+      "direction": "left",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/left-actions.webp",
+      "sourceBytes": 1458064,
+      "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+      "originalGeneratedPngBytes": 2189926,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+      "runtimeBytes": 393346,
+      "runtimeSha256": "71df0288a39f3bc7701a12201c4aa47a4ec1ebc7bc0891c606d84ad6bf6a37a5",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "idle",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            100,
+            10,
+            195,
+            507
+          ],
+          "sourceAnchor": [
+            197.5,
+            513
+          ],
+          "outputOffset": [
+            71,
+            80
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "48984dd6ee7ae59a3f5e6fa22ec26fff55e16d8aa87ad895fbe7d0ef5cf7b172",
+          "alphaSha256": "1597c0b20c27aa43079d02b059fac57dbf464ef0566e0dd398e3ffd0f6d4183e",
+          "visibleBoundsAlpha16": [
+            73,
+            82,
+            182,
+            372
+          ],
+          "alphaBounds": [
+            71,
+            80,
+            184,
+            374
+          ],
+          "transparentPixels": 77907,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "start",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            411,
+            27,
+            340,
+            476
+          ],
+          "sourceAnchor": [
+            581.0,
+            499
+          ],
+          "outputOffset": [
+            29,
+            98
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "60d9b278872d8f070afa71f627d2032bf78178718084d8df7602b16213175b24",
+          "alphaSha256": "008fa2ed3eb4a97bfa49fcb55f4bd7c7169f6f9f62e5e7b00c5c7026e73240eb",
+          "visibleBoundsAlpha16": [
+            31,
+            100,
+            224,
+            372
+          ],
+          "alphaBounds": [
+            29,
+            98,
+            226,
+            374
+          ],
+          "transparentPixels": 74039,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "stop",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            773,
+            5,
+            335,
+            508
+          ],
+          "sourceAnchor": [
+            940.5,
+            509
+          ],
+          "outputOffset": [
+            31,
+            80
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "b5c2f27ea68efe00f0f2080960e2f3bf526ec0610c1ee6ffdfe720d43db680a9",
+          "alphaSha256": "d2a159e9c0d77cd4f7423dfa43286aa57f1b61fad8b2f00c455356f09310461f",
+          "visibleBoundsAlpha16": [
+            33,
+            82,
+            223,
+            373
+          ],
+          "alphaBounds": [
+            31,
+            80,
+            225,
+            375
+          ],
+          "transparentPixels": 72308,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "turn",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            1239,
+            24,
+            273,
+            486
+          ],
+          "sourceAnchor": [
+            1375.5,
+            506
+          ],
+          "outputOffset": [
+            49,
+            92
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "6388e0cf6d5670cf073b13560e6d7a5c35e9dd956dd83b1c13dbea590acde97e",
+          "alphaSha256": "4ef3ef6ad45c69b197ab4594ff4605ec1958b2937014dc5461674d2df663b0f7",
+          "visibleBoundsAlpha16": [
+            51,
+            94,
+            205,
+            372
+          ],
+          "alphaBounds": [
+            49,
+            92,
+            207,
+            374
+          ],
+          "transparentPixels": 71885,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "rise",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            88,
+            514,
+            244,
+            447
+          ],
+          "sourceAnchor": [
+            210.0,
+            1020
+          ],
+          "outputOffset": [
+            57,
+            79
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "14c978bb359644f446f871e436eacee5357d4e36742ea558cae84da54f805abd",
+          "alphaSha256": "50f824b04482c8e13bf6861781aa9164888da6f5e42394d7596dd5d00ec01cd9",
+          "visibleBoundsAlpha16": [
+            59,
+            81,
+            197,
+            336
+          ],
+          "alphaBounds": [
+            57,
+            79,
+            199,
+            338
+          ],
+          "transparentPixels": 76394,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "apex",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            469,
+            514,
+            255,
+            377
+          ],
+          "sourceAnchor": [
+            596.5,
+            1020
+          ],
+          "outputOffset": [
+            54,
+            79
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "9122a574eb412b4b5691c7acf6858126804c5d6969796346afc156eea2976b99",
+          "alphaSha256": "f050c7c69d5830b479e8231adc3d45c076ace889758e0adca536bfec5e6f29b2",
+          "visibleBoundsAlpha16": [
+            56,
+            81,
+            200,
+            296
+          ],
+          "alphaBounds": [
+            54,
+            79,
+            202,
+            298
+          ],
+          "transparentPixels": 78211,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "fall",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            840,
+            510,
+            259,
+            501
+          ],
+          "sourceAnchor": [
+            969.5,
+            1020
+          ],
+          "outputOffset": [
+            53,
+            76
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "000ad888b307997cdfbb6e5cbd705fad023cf158a2e1b90ba7fe276a2b0536e7",
+          "alphaSha256": "0ef3c344af044159c749706f3dc0b14fbc99b039b29baf3f87aa372e340cd210",
+          "visibleBoundsAlpha16": [
+            55,
+            78,
+            201,
+            365
+          ],
+          "alphaBounds": [
+            53,
+            76,
+            203,
+            367
+          ],
+          "transparentPixels": 74689,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "land",
+          "source": "masters/left-actions.webp",
+          "sourceSha256": "7e963d59ffb78feaa357b01fbe8b0388dffc835438e37325cce30d869bf69b0b",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38ac47ec493cdd452eef35e534a5d697cceb0ecb5a831d6a8e90b0345189ce44",
+          "originalGeneratedPngBytes": 2189926,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "b9fa97fe40a2c57cc68ffba5ff95df8e8c5e2b799cbb7b7a9d648f7a040d4ac8",
+          "sourceCrop": [
+            1215,
+            621,
+            275,
+            392
+          ],
+          "sourceAnchor": [
+            1352.5,
+            1009
+          ],
+          "outputOffset": [
+            48,
+            147
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "a6167cff9cd30ec5ef93887ad0273a76abe5b501010c52f5af2492aa29aa1826",
+          "alphaSha256": "2f36481c2aec5943fbe69caa0397aa7839f0aba6cbdfe3439a431bc774e4c088",
+          "visibleBoundsAlpha16": [
+            50,
+            149,
+            206,
+            372
+          ],
+          "alphaBounds": [
+            48,
+            147,
+            208,
+            374
+          ],
+          "transparentPixels": 73426,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/left-run.webp",
+      "direction": "left",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/left-run.webp",
+      "sourceBytes": 1454024,
+      "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+      "originalGeneratedPngBytes": 2199382,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+      "runtimeBytes": 384982,
+      "runtimeSha256": "59911206bfc54bf6b08cc55a214c86e0381f5b4d0b51b2b16f3698c342809e63",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            9,
+            7,
+            375,
+            498
+          ],
+          "sourceAnchor": [
+            196.5,
+            508
+          ],
+          "outputOffset": [
+            19,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "34e260da79b4a0425005ba6ddd6fccc8f8d034fa81ebadd0fb879e15f7a62399",
+          "alphaSha256": "05b4d344e4022f6ef816615fd951e9219d2d09b16046a446a88b924d8e0137f8",
+          "visibleBoundsAlpha16": [
+            21,
+            83,
+            234,
+            368
+          ],
+          "alphaBounds": [
+            19,
+            81,
+            236,
+            370
+          ],
+          "transparentPixels": 75427,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            479,
+            7,
+            232,
+            504
+          ],
+          "sourceAnchor": [
+            595.0,
+            508
+          ],
+          "outputOffset": [
+            61,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "c46bfa394eac6e328781f41ae070f852577b9ed8b8a3b4fbc201fe083b628ee3",
+          "alphaSha256": "c422017d0f115fb22c0c1c93e08e09333b640e44d884454b78d7dbe21f4ae7ab",
+          "visibleBoundsAlpha16": [
+            63,
+            83,
+            194,
+            371
+          ],
+          "alphaBounds": [
+            61,
+            81,
+            196,
+            373
+          ],
+          "transparentPixels": 77704,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            791,
+            8,
+            311,
+            500
+          ],
+          "sourceAnchor": [
+            946.5,
+            508
+          ],
+          "outputOffset": [
+            38,
+            82
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "d3ce9df172fe1891f0e385a6cb899b16eae8583402942ec1bb08253c9419be02",
+          "alphaSha256": "353450548a2b71b564e12ac1068dd3cc3d7271000713f1ab210a2ea837c66e18",
+          "visibleBoundsAlpha16": [
+            40,
+            84,
+            216,
+            370
+          ],
+          "alphaBounds": [
+            38,
+            82,
+            218,
+            372
+          ],
+          "transparentPixels": 76819,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            1157,
+            7,
+            376,
+            503
+          ],
+          "sourceAnchor": [
+            1345.0,
+            508
+          ],
+          "outputOffset": [
+            19,
+            81
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "f3f1e176946c75c24b1688b13ac808507feee86b5280e007f41c838773350829",
+          "alphaSha256": "ca917884d588dfb126f6f7101f818c175ec18bc9491d4a1bb2302cdebb84011d",
+          "visibleBoundsAlpha16": [
+            21,
+            83,
+            235,
+            371
+          ],
+          "alphaBounds": [
+            19,
+            81,
+            237,
+            373
+          ],
+          "transparentPixels": 76500,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            4,
+            510,
+            368,
+            491
+          ],
+          "sourceAnchor": [
+            188.0,
+            1020
+          ],
+          "outputOffset": [
+            21,
+            76
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "7016080ddf8cbc0ad6206f3b8f71ae03eb3801d499ad085c160010a2b259f582",
+          "alphaSha256": "a62574cb077123023ec8138f7205dcecef8e48c2a55445d680e7d47b88fe9cd0",
+          "visibleBoundsAlpha16": [
+            23,
+            78,
+            232,
+            359
+          ],
+          "alphaBounds": [
+            21,
+            76,
+            234,
+            361
+          ],
+          "transparentPixels": 74688,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            482,
+            512,
+            237,
+            504
+          ],
+          "sourceAnchor": [
+            600.5,
+            1020
+          ],
+          "outputOffset": [
+            59,
+            77
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "4709205c72bf5b7177bb3bef6a06883cd4b8c952da237e84cbf7cd3586f389ff",
+          "alphaSha256": "2ed4ce3b4c6477053ee5578263a6dbfaf9cf13aa2c2e800fab7fde4991ebde37",
+          "visibleBoundsAlpha16": [
+            61,
+            79,
+            194,
+            367
+          ],
+          "alphaBounds": [
+            59,
+            77,
+            196,
+            369
+          ],
+          "transparentPixels": 78107,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            785,
+            510,
+            329,
+            500
+          ],
+          "sourceAnchor": [
+            949.5,
+            1020
+          ],
+          "outputOffset": [
+            33,
+            76
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "1ea522eaf7d93d65a76b8270ab87f95c2ca05c7c9a9082a5c32ced3c8249885e",
+          "alphaSha256": "ee83fa844164b229aff8b9757557d0107e4f4f8ea19cbbb9a2e6f38d6c8ba3df",
+          "visibleBoundsAlpha16": [
+            35,
+            78,
+            222,
+            363
+          ],
+          "alphaBounds": [
+            33,
+            76,
+            224,
+            366
+          ],
+          "transparentPixels": 75637,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "run",
+          "source": "masters/left-run.webp",
+          "sourceSha256": "bd62a9fd065c885c91172bbcc9bedc5f8d2e7d4130bf1bda0f72849076bdbee6",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "dcc6c016db0838828edccdf5aea94e2fa49bb816e48716d406316cb58cecbb9c",
+          "originalGeneratedPngBytes": 2199382,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "74683d6f700094ee87736b9d90630eaf72fcd50a14bbd0a7073320a4aaf0ef43",
+          "sourceCrop": [
+            1155,
+            511,
+            381,
+            493
+          ],
+          "sourceAnchor": [
+            1347.0,
+            1020
+          ],
+          "outputOffset": [
+            17,
+            77
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "f800617828d99856ac2eb88132b4f9f25c4b043e09a5e2b2257e8289ac34808a",
+          "alphaSha256": "39f28b60548df883a5a11411ae365464b128b26ca3be4bbf8449dfa4f390aaad",
+          "visibleBoundsAlpha16": [
+            19,
+            79,
+            237,
+            361
+          ],
+          "alphaBounds": [
+            17,
+            77,
+            238,
+            363
+          ],
+          "transparentPixels": 74962,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/right-actions.webp",
+      "direction": "right",
+      "actionSet": "actions",
+      "sourceMethod": "authored-frame",
+      "source": "masters/right-actions.webp",
+      "sourceBytes": 1729666,
+      "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+      "originalGeneratedPngBytes": 2513134,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+      "runtimeBytes": 500012,
+      "runtimeSha256": "10964c38c759009d91f43d7be1e1b08faa19f4a71e8ae7397d907c7396408cd2",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "idle",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            94,
+            11,
+            218,
+            519
+          ],
+          "sourceAnchor": [
+            203.0,
+            529
+          ],
+          "outputOffset": [
+            65,
+            72
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "234553fc33f1702c480a8bcff7f9f640bec4bd220c0b1d43f4076bcb82bf5bd9",
+          "alphaSha256": "51dc27a6a5714dda4d5aa9bdcd924f56dcb14bbe0bb50c5c5b1cf3a16f271989",
+          "visibleBoundsAlpha16": [
+            67,
+            74,
+            189,
+            373
+          ],
+          "alphaBounds": [
+            65,
+            72,
+            191,
+            373
+          ],
+          "transparentPixels": 73648,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "start",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            391,
+            22,
+            362,
+            494
+          ],
+          "sourceAnchor": [
+            572.0,
+            515
+          ],
+          "outputOffset": [
+            23,
+            86
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "57ab629ee1e502539a3e26946fcaf6fa91ffc832a6f2fcc7592d3999837564b0",
+          "alphaSha256": "bba82cea63f8bfd7148d19de3f93a848b8b574c96b839b95a1233cab1ced0126",
+          "visibleBoundsAlpha16": [
+            25,
+            88,
+            231,
+            373
+          ],
+          "alphaBounds": [
+            23,
+            86,
+            233,
+            373
+          ],
+          "transparentPixels": 67349,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "stop",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            802,
+            20,
+            367,
+            508
+          ],
+          "sourceAnchor": [
+            985.5,
+            525
+          ],
+          "outputOffset": [
+            22,
+            79
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "0d641fe60fe804a4c2271445fade1c306bb13f5afb764a8753dfec699b78936b",
+          "alphaSha256": "80f7799c2070b9fe2e25c727e4defded7a42cbd9f43477357b9abbd8efbfd5ca",
+          "visibleBoundsAlpha16": [
+            24,
+            81,
+            233,
+            372
+          ],
+          "alphaBounds": [
+            22,
+            79,
+            235,
+            374
+          ],
+          "transparentPixels": 66685,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "turn",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            1210,
+            14,
+            308,
+            520
+          ],
+          "sourceAnchor": [
+            1364.0,
+            530
+          ],
+          "outputOffset": [
+            39,
+            73
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "872e3fd7173624bef4d1c1244d50dd9c55242b9b065b0c0aeb400ce46dd4ddf0",
+          "alphaSha256": "5364d8a996bccecc9fe9cc9ad40b0fc8eca579bdc91ffbd66a77eb459893b0d0",
+          "visibleBoundsAlpha16": [
+            41,
+            75,
+            216,
+            373
+          ],
+          "alphaBounds": [
+            39,
+            73,
+            218,
+            375
+          ],
+          "transparentPixels": 69146,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "rise",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            41,
+            529,
+            320,
+            471
+          ],
+          "sourceAnchor": [
+            201.0,
+            1020
+          ],
+          "outputOffset": [
+            35,
+            87
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "000c2e5ad4f2deff78618dcfea9802b2c9b34e7da78217dad7231f6198c1cf5b",
+          "alphaSha256": "6489526c1449e997fbc46f573eb5635945a24f51749adf5bb8ac541823aaaacd",
+          "visibleBoundsAlpha16": [
+            37,
+            88,
+            219,
+            358
+          ],
+          "alphaBounds": [
+            35,
+            87,
+            221,
+            360
+          ],
+          "transparentPixels": 68672,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "apex",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            409,
+            515,
+            335,
+            371
+          ],
+          "sourceAnchor": [
+            576.5,
+            1020
+          ],
+          "outputOffset": [
+            31,
+            79
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "3cddd390377ff1ddf3f08e0cede4b972f3a4df78e37ef7cbd6316d67f63ed746",
+          "alphaSha256": "a73439ba5ee5dcaec07f63afe7277879fbd0e27ef972883b29f44ca588fb4cbe",
+          "visibleBoundsAlpha16": [
+            33,
+            80,
+            223,
+            292
+          ],
+          "alphaBounds": [
+            31,
+            79,
+            225,
+            294
+          ],
+          "transparentPixels": 74332,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "fall",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            788,
+            525,
+            305,
+            465
+          ],
+          "sourceAnchor": [
+            940.5,
+            1020
+          ],
+          "outputOffset": [
+            40,
+            85
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "f9cbea24db04f5d9a280981ee41dd25647c77bf59af8cf5ad413f106b05e7b1a",
+          "alphaSha256": "44602acecb2a419e3eda61bbec583572466dd1e50bd01cd09a8f7a8e12118c02",
+          "visibleBoundsAlpha16": [
+            42,
+            87,
+            215,
+            353
+          ],
+          "alphaBounds": [
+            40,
+            85,
+            217,
+            355
+          ],
+          "transparentPixels": 71385,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "land",
+          "source": "masters/right-actions.webp",
+          "sourceSha256": "728139ebc3c3ce85ed7d35056f90cc360d09e5ab3850e9211ba5fdeb00406b3f",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "6972b98a404ee614daff448b6b46eaee88b6a17cf84ac7957ef5cadaf7d2fea2",
+          "originalGeneratedPngBytes": 2513134,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "946569ac0774993c83cf65f832ff684981430c3e76d8f81c71d3e411c739dd88",
+          "sourceCrop": [
+            1186,
+            637,
+            311,
+            377
+          ],
+          "sourceAnchor": [
+            1341.5,
+            1010
+          ],
+          "outputOffset": [
+            38,
+            156
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "632e6ec6d2317c8eb863c4bf24bcf6c95f93e0f962784cd518e3a2b131c5438f",
+          "alphaSha256": "6392647e076b1f4603aaa1751bd5c8473036872452e81486f5e130de2b52da5c",
+          "visibleBoundsAlpha16": [
+            40,
+            158,
+            216,
+            373
+          ],
+          "alphaBounds": [
+            38,
+            156,
+            218,
+            375
+          ],
+          "transparentPixels": 72417,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    },
+    {
+      "path": "./assets/native-avatar/pineapple-doctor/right-run.webp",
+      "direction": "right",
+      "actionSet": "run",
+      "sourceMethod": "authored-frame",
+      "source": "masters/right-run.webp",
+      "sourceBytes": 1470270,
+      "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+      "sourceDimensions": [
+        1536,
+        1024
+      ],
+      "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+      "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+      "originalGeneratedPngBytes": 2206947,
+      "originalGeneratedPngDimensions": [
+        1536,
+        1024
+      ],
+      "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+      "runtimeBytes": 388616,
+      "runtimeSha256": "6a3cad1ac820c7429ee8646a1d8237cd0df909181421f30284842aaaebca9754",
+      "runtimeDimensions": [
+        1024,
+        768
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            13,
+            13,
+            374,
+            498
+          ],
+          "sourceAnchor": [
+            200.0,
+            508
+          ],
+          "outputOffset": [
+            20,
+            85
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "346e8007af4c61cfda730c9985759d7853c5285145148d39469d6aefa56ddc54",
+          "alphaSha256": "02e78824700d5708fec5b8002de85932c4f6c93d3c303786e312cf29aedfb5d8",
+          "visibleBoundsAlpha16": [
+            22,
+            87,
+            235,
+            372
+          ],
+          "alphaBounds": [
+            20,
+            85,
+            237,
+            374
+          ],
+          "transparentPixels": 75649,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 1,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            450,
+            19,
+            225,
+            495
+          ],
+          "sourceAnchor": [
+            562.5,
+            508
+          ],
+          "outputOffset": [
+            63,
+            88
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "8d7220ffe3aa200bb50b837e49b2092cb4519f0b5edd4d3ce2422c903054bb1a",
+          "alphaSha256": "4b0f64c64748f1a34945a4c149015b3802c8bf76fccc4cf28ad783ad6539163a",
+          "visibleBoundsAlpha16": [
+            65,
+            90,
+            191,
+            373
+          ],
+          "alphaBounds": [
+            63,
+            88,
+            193,
+            375
+          ],
+          "transparentPixels": 76752,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 2,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            805,
+            14,
+            281,
+            495
+          ],
+          "sourceAnchor": [
+            945.5,
+            508
+          ],
+          "outputOffset": [
+            47,
+            85
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "4b1e3879c8b1d1246765c3867b70e6a26e26b1663f3ee361ba1378cb113ed97a",
+          "alphaSha256": "862b19147464703cb733ead1e30d9acd560e3848ccc92081185fe755ba615fb7",
+          "visibleBoundsAlpha16": [
+            49,
+            87,
+            208,
+            370
+          ],
+          "alphaBounds": [
+            47,
+            85,
+            210,
+            372
+          ],
+          "transparentPixels": 76356,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 3,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            1161,
+            18,
+            375,
+            487
+          ],
+          "sourceAnchor": [
+            1349.0,
+            508
+          ],
+          "outputOffset": [
+            19,
+            88
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "064d19977528cb6fc4637ae17e6ebd236909b9cdfd1150283b3dea6c4a2f3e36",
+          "alphaSha256": "bb058acb5874d3ef4c52f7910fd424ffb25c629375108845b78c90b063fb2156",
+          "visibleBoundsAlpha16": [
+            21,
+            90,
+            235,
+            368
+          ],
+          "alphaBounds": [
+            19,
+            88,
+            236,
+            370
+          ],
+          "transparentPixels": 76023,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 4,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            5,
+            522,
+            430,
+            487
+          ],
+          "sourceAnchor": [
+            220.0,
+            1020
+          ],
+          "outputOffset": [
+            3,
+            83
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "0cd0fab0cc5f63089da2d908dad189a585dc4f5e3af16990659dd867fe903366",
+          "alphaSha256": "0930debaef35d0ab52e0e84439317040cfd620138b76b19eceb303b8f5ff8636",
+          "visibleBoundsAlpha16": [
+            5,
+            85,
+            250,
+            363
+          ],
+          "alphaBounds": [
+            3,
+            83,
+            252,
+            365
+          ],
+          "transparentPixels": 73520,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 5,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            470,
+            525,
+            225,
+            489
+          ],
+          "sourceAnchor": [
+            582.5,
+            1020
+          ],
+          "outputOffset": [
+            63,
+            85
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "a066a4326d12991a737a6d00c11b70da0df4a4c6fa1023601ab04ae4f8baa146",
+          "alphaSha256": "e5d58d20e2293194ca73093525fab6e4cdae371910600e6ee0a50974f9de31f6",
+          "visibleBoundsAlpha16": [
+            65,
+            87,
+            191,
+            367
+          ],
+          "alphaBounds": [
+            63,
+            85,
+            193,
+            369
+          ],
+          "transparentPixels": 78077,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 6,
+          "pose": "run",
+          "source": "masters/right-run.webp",
+          "sourceSha256": "4cd8aae81b6abb01810060e4482a4bc55ab4e7eaddda6904591a1c5665bf5562",
+          "sourceDimensions": [
+            1536,
+            1024
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "c8f074288e8a215d2914a3a00e8a6fa2e157f2f7f7f2a069b35601eaab05f8c1",
+          "originalGeneratedPngBytes": 2206947,
+          "originalGeneratedPngDimensions": [
+            1536,
+            1024
+          ],
+          "decodedRGBASha256": "47fb6f06c9e5a9217aa9c400297d3fe64eef069d6496443fa450474cd03666da",
+          "sourceCrop": [
+            809,
+            522,
+            293,
+            492
+          ],
+          "sourceAnchor": [
+            955.5,
+            1020
+          ],
+          "outputOffset": [
+            43,
+            83
+          ],
+          "isotropicScale": 0.58,
+          "sourceCanvasEdgeContact": [],
+          "rgbaSha256": "12eca998fa8063639f925e7fee764dd4c5e0c0d954ba1fffda721060a8d10903",
+          "alphaSha256": "84e4ea93e0e38569256899f1ad5c5493c7feb49e80c39d65907ebea9357369d0",
+          "visibleBoundsAlpha16": [
+            45,
+            85,
+            211,
+            366
+          ],
+          "alphaBounds": [
+            43,
+            83,
+            213,
+            368
+          ],
+          "transparentPixels": 76270,
+          "alphaRange": [
+            0,
+            255
+          ]
+        },
+        {
+          "index": 7,
+          "pose": "run",
+          "source": "masters/right-run-frame7.webp",
+          "sourceSha256": "7bde8b6ff9b02077316818529b8f0be9e29eb068c2ec66fd1804287589722f95",
+          "sourceDimensions": [
+            1115,
+            1410
+          ],
+          "sourceFormat": "lossless exact WebP, unchanged native dimensions and RGBA bytes",
+          "originalGeneratedPngSha256": "38253d78bd0256ce0e07d561960c69d9bcda8d0e5cccbc720153f3d3dac2c73f",
+          "originalGeneratedPngBytes": 1020349,
+          "originalGeneratedPngDimensions": [
+            1115,
+            1410
+          ],
+          "decodedRGBASha256": "8868b05c844d7746764410e4eb259d5a500ea041fd124ab71aa0acd485e5ed02",
+          "sourceCrop": [
+            15,
+            20,
+            1100,
+            1369
+          ],
+          "sourceAnchor": [
+            566.0,
+            1451.4607218683652
+          ],
+          "outputOffset": [
+            17,
+            85
+          ],
+          "isotropicScale": 0.2007200587803086,
+          "sourceCanvasEdgeContact": [],
+          "sourceReplacementReason": "Independently redrawn same right-facing pose repairs the source-sheet shoe tip at the image edge; preserve the prior 471px pose height at scale0.58 and 23px airborne sole offset. No mirroring, warping or in-between generation.",
+          "rgbaSha256": "2422a1857f8c62b229f6c951b01087f5a970ad0cea21c9f34abdbc133b3ad419",
+          "alphaSha256": "f31b039ad77695a2bb3dcb3f4968dbd36b70951d956a7203aa29422f8af2e706",
+          "visibleBoundsAlpha16": [
+            17,
+            85,
+            238,
+            360
+          ],
+          "alphaBounds": [
+            17,
+            85,
+            238,
+            360
+          ],
+          "transparentPixels": 77177,
+          "alphaRange": [
+            0,
+            255
+          ]
+        }
+      ],
+      "validation": {
+        "allFramesHaveAlpha": true,
+        "allFramesHaveVisiblePadding": true,
+        "encodedAlphaMatchesPackedAlpha": true,
+        "uniquePackedFrames": 8,
+        "uniquenessDoesNotProveCorrectGait": true
+      }
+    }
+  ],
+  "notes": [
+    "Original PNG pixels are retained in the separately delivered masters.",
+    "Any source edge contact is disclosed per frame; packing cannot restore missing original pixels.",
+    "Pose anatomy, leading foot and hand consistency require visual review in addition to this file validation."
+  ]
+}

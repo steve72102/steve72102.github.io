@@ -1,0 +1,17 @@
+/* 256 x 384 cells, common foot (128,372). A constant 1.2 display scale restores
+   the painted figure's readable height without changing its proportions. The
+   3:4 actor rectangle and 2:3 frame give width=106.6667%, height=120%; its foot
+   remains at the existing 50%,90% world anchor. No mirroring or animated warp. */
+.walk-actor.native-actor{transform-origin:50% 90%}
+.walk-actor .native-avatar-sprite{
+  position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;
+  display:block;pointer-events:none;background-image:url('./assets/native-avatar/pineapple-doctor/down-actions.webp');
+  background-size:400% 200%;background-position:0% 0%;background-repeat:no-repeat;
+  animation:none!important;transform:none!important;transition:none;contain:layout style;
+}
+.walk-actor.native-actor .player-name{bottom:110%}
+.walk-actor.native-actor .honor-label{bottom:calc(110% + 25px)}
+.walk-actor.native-actor .counter-bubble{bottom:calc(109% + 14px)}
+.walk-actor.native-actor.has-honor .counter-bubble{bottom:calc(110% + 53px)}
+.native-outfit-preview,.outfit-live-stage>.native-outfit-preview,.native-item-preview,svg[data-native-catalog],.native-hud-preview{overflow:hidden}
+.native-outfit-preview image,.native-item-preview image,svg[data-native-catalog] image{pointer-events:none}

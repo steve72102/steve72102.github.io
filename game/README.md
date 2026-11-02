@@ -418,3 +418,18 @@ Firestore Emulator 建議命令：`firebase emulators:exec --only firestore --pr
 - 沿用原角色與裝備素材。兩格圖集、三張靜態裝備視圖及左向鏡像限制仍在；本階段沒有假稱新增骨骼動畫或獨立左右原畫。
 
 快取版號為 20261102-step2-motion。新增純顯示模型、adapter、CSS 與對應驗收；沒有更動財務、券、Firebase 安全、登入、題目、多人協定或正式帳號。本地補丁與測試不代表已發布；接手前保留所有未發布修改，不要與完整 r4 重複套用。
+
+
+## Stage 3 第一批人物原畫與藥劑教室（本地增量，交由 Codex 發布）
+
+本批基於已發布的 `8685f199810150c8e5ef478de2dfe5cccee93522`，不重套 Step1／Step2。完成 `doctor` 穿齊 `fruit-pineapple` 八槽時的四向透明圖集：每向 8 格跑步與 8 格待機／起跑／停步／轉向／上升／頂點／下降／落地，共 64 格。由 imagegen 個別繪製姿勢，管線只裁切、等比例縮放和對齊，不以左右鏡像、靜態人體網格變形補幀。書冊固定雙手抱持。
+
+`native-avatar.js` 共用商城整套試穿、衣櫥、HUD、自己與遠端玩家外觀選擇，沿用既有實際位移與動作模型、同一 RAF。只有 doctor 完整八槽相符時使用新圖；其他角色或部分／混搭走原 SVG，缺圖時也回退同一套實際裝備。商城八單件使用已批准鳳梨原創材質圖；本批沒有宣稱完成逐槽原畫混搭。圖集按需載入／快取，60 個相同外觀共用圖檔。
+
+`classroom-pharmaceutics` 使用原生 1536×1024 的原創重繪背景。三座固定桌、21 張可推凳、20 件道具、可走區、遮擋與桌面高度保留；新背景同時供遮擋層使用。舊獨立道具圖集沿用。650px 以下教室隱藏被 HUD 遮擋的重複場景上課鈕，保留固定上課鈕。原生人物以 90% ground transform-origin 校準鞋底，不改碰撞。
+
+原尺寸無損母檔、來源、生成提示、逐格裁區與重建輸入另包交付；實際原生圖不是 4K。`tools/build-native-assets.py` 只在開發時需要 Pillow，玩家不用安裝、付費或訂閱任何 AI。遊戲執行不呼叫 imagegen。
+
+驗收：`node tools/run-game-tests.cjs --unit`；真 index 畫面測試為 `tools/native-avatar.browser.cjs` 與 `SCENE_ART_CHARACTER=doctor node tools/scene-native-art.browser.cjs`，需本機 Playwright／Chromium。它們使用隔離測試存檔並封鎖正式網路；合成遠端外觀與 60 個元件不是實際多人連線證明。發布前仍需 Codex 驗證正式 service worker 更新／離線重載、實體手機與跨裝置登入存檔。
+
+本批不修改錢包、共池、學習、商城券、戰鬥、Google／Firebase 安全規則，不加入公開管理入口。其餘九位、其他套裝與混搭、其他場景仍屬後續原畫批次；這不是全案完成或已部署聲明。

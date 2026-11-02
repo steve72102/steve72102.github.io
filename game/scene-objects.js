@@ -120,7 +120,10 @@
   }
   prepSurfaces.push(chair('prep-teacher-stool',560,201,'lab-stool',false,45));
   prepProps.push(prop('prep-teacher-instrument','講台金屬量測儀器','instrument','prep-teacher-bench',550,174,37,'metal',{mass:4}),prop('prep-teacher-beaker','講台玻璃燒杯','beaker','prep-teacher-bench',463,174,27,'glass'));
-  rooms['classroom-pharmaceutics']=room('classroom-pharmaceutics','classroom-pharmaceutics.webp',prepSurfaces,prepProps,[fixture('prep-builtins','連牆製劑櫥櫃與水槽','stone',68,310,'石檯、水槽、櫃體、壁架及遠處密集藥瓶固定於原景。')]);
+  // The original painted replacement preserves this room's three built-in
+  // benches. Keep their support/occlusion geometry and all independent props;
+  // only the plate changes, so a fixed bench is never drawn a second time.
+  rooms['classroom-pharmaceutics']=room('classroom-pharmaceutics','classroom-pharmaceutics.webp',prepSurfaces,prepProps,[fixture('prep-builtins','連牆製劑櫥櫃與水槽','stone',68,310,'石檯、水槽、櫃體、壁架及遠處密集藥瓶固定於原景。')],{background:'./assets/illustrated-scenes/classroom-pharmaceutics.webp'});
 
   const seminarSurfaces=[surface('seminar-lectern','固定講桌',500,157,85,32,40,{jumpAssist:true,material:'wood',arrival:true})],seminarProps=[];
   for(const [index,x,y,w,d,size] of [[0,215,244,177,63,220],[1,164,388,206,78,263],[2,785,244,177,63,220],[3,836,388,206,78,263]]){
