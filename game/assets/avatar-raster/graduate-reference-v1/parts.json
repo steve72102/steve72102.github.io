@@ -759,6 +759,236 @@
               0.5120481927710844
             ]
           }
+        },
+        "runHands": {
+          "R": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              855,
+              276,
+              69,
+              64
+            ],
+            "mask": [
+              [
+                [
+                  0.391304347826087,
+                  0.046875
+                ],
+                [
+                  0.4782608695652174,
+                  0.03125
+                ],
+                [
+                  0.5797101449275363,
+                  0.078125
+                ],
+                [
+                  0.7536231884057971,
+                  0.125
+                ],
+                [
+                  0.8695652173913043,
+                  0.171875
+                ],
+                [
+                  0.927536231884058,
+                  0.28125
+                ],
+                [
+                  0.9130434782608695,
+                  0.359375
+                ],
+                [
+                  0.9565217391304348,
+                  0.421875
+                ],
+                [
+                  0.927536231884058,
+                  0.5625
+                ],
+                [
+                  0.8695652173913043,
+                  0.640625
+                ],
+                [
+                  0.8405797101449275,
+                  0.75
+                ],
+                [
+                  0.7391304347826086,
+                  0.828125
+                ],
+                [
+                  0.6086956521739131,
+                  0.859375
+                ],
+                [
+                  0.4927536231884058,
+                  0.828125
+                ],
+                [
+                  0.36231884057971014,
+                  0.90625
+                ],
+                [
+                  0.18840579710144928,
+                  0.953125
+                ],
+                [
+                  0.0,
+                  0.90625
+                ],
+                [
+                  0.0,
+                  0.625
+                ],
+                [
+                  0.17391304347826086,
+                  0.484375
+                ],
+                [
+                  0.2898550724637681,
+                  0.3125
+                ],
+                [
+                  0.36231884057971014,
+                  0.171875
+                ]
+              ]
+            ],
+            "anchor": [
+              0.14492753623188406,
+              0.796875
+            ],
+            "displayWidth": 27.6,
+            "sourceArmAngle": -1.8657333856437035
+          },
+          "L": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              1471,
+              232,
+              58,
+              64
+            ],
+            "mask": [
+              [
+                [
+                  0.20689655172413793,
+                  0.03125
+                ],
+                [
+                  0.5689655172413793,
+                  0.03125
+                ],
+                [
+                  0.6724137931034483,
+                  0.09375
+                ],
+                [
+                  0.7413793103448276,
+                  0.28125
+                ],
+                [
+                  0.8103448275862069,
+                  0.453125
+                ],
+                [
+                  0.9655172413793104,
+                  0.609375
+                ],
+                [
+                  0.9655172413793104,
+                  0.96875
+                ],
+                [
+                  0.7241379310344828,
+                  0.921875
+                ],
+                [
+                  0.5689655172413793,
+                  0.828125
+                ],
+                [
+                  0.43103448275862066,
+                  0.71875
+                ],
+                [
+                  0.27586206896551724,
+                  0.734375
+                ],
+                [
+                  0.13793103448275862,
+                  0.6875
+                ],
+                [
+                  0.06896551724137931,
+                  0.59375
+                ],
+                [
+                  0.06896551724137931,
+                  0.484375
+                ],
+                [
+                  0.034482758620689655,
+                  0.40625
+                ],
+                [
+                  0.034482758620689655,
+                  0.328125
+                ],
+                [
+                  0.0,
+                  0.265625
+                ],
+                [
+                  0.05172413793103448,
+                  0.171875
+                ],
+                [
+                  0.15517241379310345,
+                  0.125
+                ]
+              ]
+            ],
+            "anchor": [
+              0.8103448275862069,
+              0.84375
+            ],
+            "displayWidth": 23.2,
+            "sourceArmAngle": -3.989409626983199
+          }
+        },
+        "runForearms": {
+          "R": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              193,
+              369,
+              45,
+              96
+            ],
+            "displayWidth": 22.816901408450704,
+            "anchor": [
+              0.5555555555555556,
+              0.8854166666666666
+            ]
+          },
+          "L": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              401,
+              369,
+              48,
+              96
+            ],
+            "displayWidth": 24.338028169014084,
+            "anchor": [
+              0.5208333333333334,
+              0.8854166666666666
+            ]
+          }
         }
       },
       "left": {
@@ -835,7 +1065,713 @@
           }
         },
         "handheldHidden": true,
-        "reason": "Own sealed up actions0 has no visible hand pixels; both hands and held book are naturally occluded by the torso."
+        "reason": "Own sealed up actions0 has no visible hand pixels; both hands and held book are naturally occluded by the torso.",
+        "equipmentCutouts": {
+          "fruit-pineapple-jacket": {
+            "jacket.torso": [
+              [
+                [
+                  0.0,
+                  0.433789954
+                ],
+                [
+                  0.061728395,
+                  0.493150685
+                ],
+                [
+                  0.160493827,
+                  0.529680365
+                ],
+                [
+                  0.25308642,
+                  0.575342466
+                ],
+                [
+                  0.148148148,
+                  0.621004566
+                ],
+                [
+                  0.117283951,
+                  0.689497717
+                ],
+                [
+                  0.0,
+                  0.689497717
+                ]
+              ],
+              [
+                [
+                  1.0,
+                  0.433789954
+                ],
+                [
+                  0.944444444,
+                  0.493150685
+                ],
+                [
+                  0.858024691,
+                  0.529680365
+                ],
+                [
+                  0.783950617,
+                  0.575342466
+                ],
+                [
+                  0.87037037,
+                  0.621004566
+                ],
+                [
+                  0.913580247,
+                  0.689497717
+                ],
+                [
+                  1.0,
+                  0.689497717
+                ]
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "directionFits": {
+      "left": {
+        "head": {
+          "neckStartV": 0.8084507042253521,
+          "neckScale": 0.55
+        }
+      },
+      "up": {
+        "arms": {
+          "elbowHalfWidth": 66,
+          "wristHalfWidth": 28,
+          "elbowDrop": 58,
+          "wristDrop": 75,
+          "behindTorso": true,
+          "shoulderInset": 0,
+          "occlusionOrder": "shirt sleeves < shirt torso < jacket sleeves < jacket torso < cape"
+        }
+      }
+    },
+    "enabledUiDirections": [
+      "down",
+      "left",
+      "up"
+    ],
+    "downRun8": {
+      "id": "graduate-down-run8-v1",
+      "method": "Own native parts with fixed 3D bone lengths and orthographic frontal projection; not eight newly painted frames.",
+      "frames": 8,
+      "phaseOffset": {
+        "L": 0,
+        "R": 0.5
+      },
+      "upperLeg": 81.3941056007,
+      "lowerLeg": 106.9638559908,
+      "upperArm": 60.33802816901408,
+      "lowerArm": 60.33802816901408,
+      "footY": [
+        470,
+        470,
+        470,
+        410,
+        405,
+        420,
+        428,
+        454
+      ],
+      "footZ": [
+        28,
+        0,
+        -28,
+        -62,
+        -55,
+        -22,
+        12,
+        38
+      ],
+      "footHalfX": [
+        34.4788732394,
+        34.4788732394,
+        34.4788732394,
+        42,
+        36,
+        24,
+        18,
+        24
+      ],
+      "bodyBob": [
+        8,
+        12,
+        6,
+        -6,
+        8,
+        12,
+        6,
+        -6
+      ],
+      "stanceEnd": 0.25,
+      "flightFrames": [
+        3,
+        7
+      ],
+      "referenceSleeveForearmEnd": 0.3277310924369748,
+      "referencePantCuffRatio": 0.8405797101449275,
+      "canonical": {
+        "normal": {
+          "width": 256,
+          "height": 384,
+          "ground": [
+            128,
+            372
+          ],
+          "scale": 0.75,
+          "translate": [
+            8,
+            4.5
+          ]
+        },
+        "compact": {
+          "width": 96,
+          "height": 144,
+          "ground": [
+            48,
+            139.5
+          ],
+          "scale": 0.28125,
+          "translate": [
+            3,
+            1.6875
+          ]
+        }
+      },
+      "shoulderHalfWidth": 39.5,
+      "kneeOutwardBend": 0.38,
+      "referenceSleevePins": {
+        "R": {
+          "root": [
+            0.72,
+            0.09239130434782608
+          ],
+          "joint": [
+            0.41333333333333333,
+            0.7336956521739131
+          ],
+          "tip": [
+            0.37333333333333335,
+            0.9347826086956522
+          ]
+        },
+        "L": {
+          "root": [
+            0.265625,
+            0.09239130434782608
+          ],
+          "joint": [
+            0.578125,
+            0.7336956521739131
+          ],
+          "tip": [
+            0.59375,
+            0.9347826086956522
+          ]
+        }
+      },
+      "mesh": "RUN8-only shared joint cross-section; capped miter and adaptive knee/elbow width prevent UV-triangle reversal without moving bone endpoints.",
+      "referenceShoulderSeams": {
+        "R": [
+          [
+            202,
+            248
+          ],
+          [
+            220,
+            248
+          ],
+          [
+            230,
+            247
+          ],
+          [
+            240,
+            245
+          ],
+          [
+            250,
+            242
+          ],
+          [
+            280,
+            238
+          ],
+          [
+            310,
+            237
+          ]
+        ],
+        "L": [
+          [
+            202,
+            397
+          ],
+          [
+            220,
+            397
+          ],
+          [
+            230,
+            398
+          ],
+          [
+            240,
+            400
+          ],
+          [
+            250,
+            402
+          ],
+          [
+            280,
+            405
+          ],
+          [
+            310,
+            407
+          ]
+        ]
+      },
+      "sourceCutouts": {
+        "pants.legR": {
+          "atlas": "graduate-reference-v1",
+          "rect": [
+            204,
+            463,
+            116,
+            342
+          ],
+          "cutouts": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.2413793103448276,
+                0.0
+              ],
+              [
+                0.25,
+                0.04678362573099415
+              ],
+              [
+                0.2672413793103448,
+                0.08187134502923976
+              ],
+              [
+                0.2672413793103448,
+                0.12573099415204678
+              ],
+              [
+                0.25862068965517243,
+                0.15789473684210525
+              ],
+              [
+                0.23275862068965517,
+                0.19298245614035087
+              ],
+              [
+                0.19827586206896552,
+                0.21052631578947367
+              ],
+              [
+                0.0,
+                0.21052631578947367
+              ]
+            ]
+          ],
+          "sourcePolygonsXY": [
+            [
+              [
+                204,
+                463
+              ],
+              [
+                232,
+                463
+              ],
+              [
+                233,
+                479
+              ],
+              [
+                235,
+                491
+              ],
+              [
+                235,
+                506
+              ],
+              [
+                234,
+                517
+              ],
+              [
+                231,
+                529
+              ],
+              [
+                227,
+                535
+              ],
+              [
+                204,
+                535
+              ]
+            ]
+          ]
+        },
+        "pants.legL": {
+          "atlas": "graduate-reference-v1",
+          "rect": [
+            320,
+            463,
+            116,
+            342
+          ],
+          "cutouts": [
+            [
+              [
+                1.0,
+                0.0
+              ],
+              [
+                0.7844827586206896,
+                0.0
+              ],
+              [
+                0.7758620689655172,
+                0.04093567251461988
+              ],
+              [
+                0.7672413793103449,
+                0.08187134502923976
+              ],
+              [
+                0.7586206896551724,
+                0.12280701754385964
+              ],
+              [
+                0.75,
+                0.1608187134502924
+              ],
+              [
+                0.7586206896551724,
+                0.19005847953216373
+              ],
+              [
+                0.8017241379310345,
+                0.21052631578947367
+              ],
+              [
+                1.0,
+                0.21052631578947367
+              ]
+            ]
+          ],
+          "sourcePolygonsXY": [
+            [
+              [
+                436,
+                463
+              ],
+              [
+                411,
+                463
+              ],
+              [
+                410,
+                477
+              ],
+              [
+                409,
+                491
+              ],
+              [
+                408,
+                505
+              ],
+              [
+                407,
+                518
+              ],
+              [
+                408,
+                528
+              ],
+              [
+                413,
+                535
+              ],
+              [
+                436,
+                535
+              ]
+            ]
+          ]
+        },
+        "shirt.torso": {
+          "atlas": "graduate-reference-v1",
+          "rect": [
+            235,
+            182,
+            173,
+            246
+          ],
+          "cutouts": [
+            [
+              [
+                0.0,
+                0.5853658536585366
+              ],
+              [
+                0.13872832369942195,
+                0.6016260162601627
+              ],
+              [
+                0.1329479768786127,
+                0.6219512195121951
+              ],
+              [
+                0.14450867052023122,
+                0.6422764227642277
+              ],
+              [
+                0.15028901734104047,
+                0.6626016260162602
+              ],
+              [
+                0.1329479768786127,
+                0.6829268292682927
+              ],
+              [
+                0.11560693641618497,
+                0.7032520325203252
+              ],
+              [
+                0.11560693641618497,
+                0.7235772357723578
+              ],
+              [
+                0.12716763005780346,
+                0.7439024390243902
+              ],
+              [
+                0.11560693641618497,
+                0.7642276422764228
+              ],
+              [
+                0.09826589595375723,
+                0.7845528455284553
+              ],
+              [
+                0.08670520231213873,
+                0.8048780487804879
+              ],
+              [
+                0.09826589595375723,
+                0.8252032520325203
+              ],
+              [
+                0.0,
+                0.8455284552845529
+              ]
+            ],
+            [
+              [
+                1.0,
+                0.5853658536585366
+              ],
+              [
+                0.861271676300578,
+                0.6016260162601627
+              ],
+              [
+                0.8554913294797688,
+                0.6219512195121951
+              ],
+              [
+                0.8497109826589595,
+                0.6422764227642277
+              ],
+              [
+                0.8439306358381503,
+                0.6626016260162602
+              ],
+              [
+                0.8554913294797688,
+                0.6829268292682927
+              ],
+              [
+                0.8728323699421965,
+                0.7032520325203252
+              ],
+              [
+                0.8728323699421965,
+                0.7235772357723578
+              ],
+              [
+                0.8670520231213873,
+                0.7439024390243902
+              ],
+              [
+                0.8728323699421965,
+                0.7642276422764228
+              ],
+              [
+                0.8901734104046243,
+                0.7845528455284553
+              ],
+              [
+                0.9017341040462428,
+                0.8048780487804879
+              ],
+              [
+                0.8901734104046243,
+                0.8252032520325203
+              ],
+              [
+                0.9248554913294798,
+                0.8455284552845529
+              ],
+              [
+                1.0,
+                0.8455284552845529
+              ]
+            ]
+          ],
+          "sourcePolygonsXY": [
+            [
+              [
+                235,
+                326
+              ],
+              [
+                259,
+                330
+              ],
+              [
+                258,
+                335
+              ],
+              [
+                260,
+                340
+              ],
+              [
+                261,
+                345
+              ],
+              [
+                258,
+                350
+              ],
+              [
+                255,
+                355
+              ],
+              [
+                255,
+                360
+              ],
+              [
+                257,
+                365
+              ],
+              [
+                255,
+                370
+              ],
+              [
+                252,
+                375
+              ],
+              [
+                250,
+                380
+              ],
+              [
+                252,
+                385
+              ],
+              [
+                235,
+                390
+              ]
+            ],
+            [
+              [
+                408,
+                326
+              ],
+              [
+                384,
+                330
+              ],
+              [
+                383,
+                335
+              ],
+              [
+                382,
+                340
+              ],
+              [
+                381,
+                345
+              ],
+              [
+                383,
+                350
+              ],
+              [
+                386,
+                355
+              ],
+              [
+                386,
+                360
+              ],
+              [
+                385,
+                365
+              ],
+              [
+                386,
+                370
+              ],
+              [
+                389,
+                375
+              ],
+              [
+                391,
+                380
+              ],
+              [
+                389,
+                385
+              ],
+              [
+                395,
+                390
+              ],
+              [
+                408,
+                390
+              ]
+            ]
+          ]
+        }
       }
     }
   },
@@ -851,12 +1787,135 @@
   "baselineWearableAtlasDependencies": "Unchanged: selected true eight-slot clothing still resolves through existing raster-art manifest.",
   "defaultWearablePolicy": "Only null shirt/pants/shoes on down preview use separately clipped own reference gray garments. An actual equipment ID always retains its own registered cloth source; other directions retain their existing directional garment parts.",
   "enabledUiDirections": [
-    "down"
+    "down",
+    "left",
+    "up"
   ],
   "heldUiDirections": {
-    "up": "Prototype sleeve openings need own-source natural occlusion; existing sealed UI source is retained.",
-    "left": "Prototype own-head neck segment is too long; existing sealed UI source is retained.",
-    "right": "Prototype side silhouette is not yet calibrated to the selected body; existing sealed UI source is retained."
+    "right": "Approved existing resolver remains active. No graduate-reference-v1 right preview profile in this batch."
   },
-  "uiPolicy": "MindCastOutfit enables this profile only for down; up/left/right retain the pre-patch resolver. Direct profile prototypes are evidence, not accepted UI coverage."
+  "uiPolicy": "MindCastOutfit enables this profile only for down; up/left/right retain the pre-patch resolver. Direct profile prototypes are evidence, not accepted UI coverage.",
+  "sideBackCalibration": {
+    "method": "Existing own native parts plus profile-specific geometry; no pixel painting, borrowed identity parts or new runtime source. Synthetic evidence only.",
+    "left": {
+      "sourceAtlas": "./assets/avatar-raster/heads-left.webp",
+      "sourceRectXYWH": [
+        605,
+        92,
+        300,
+        355
+      ],
+      "neckBandLocalY": [
+        287,
+        355
+      ],
+      "nativeFaceHairPolicy": "Rows above local y287 retain the same uniform scale; a single translation follows neck compression while neck-base anchor stays fixed. Original source and mask retained.",
+      "neckScale": 0.55
+    },
+    "up": {
+      "observationAtlas": "./assets/native-avatar/pineapple-graduate/up-actions.webp",
+      "observationCellXYXY": [
+        0,
+        0,
+        256,
+        384
+      ],
+      "sealedOwnBody": "./assets/painted-avatar/graduate-up-v1/up-actions-0-body-front.webp",
+      "visibleOwnHands": false,
+      "strategy": "Native elbows bend toward the unseen front of the body. Fold both sleeve meshes inward; render both behind same-slot torso. No skin is invented and no foreign hands are used. Existing true shirt/jacket and fallback clothes provide occlusion. Book/pin remain hidden from back.",
+      "torsoMask": {
+        "item": "fruit-pineapple-jacket",
+        "part": "jacket.torso",
+        "atlas": "./assets/avatar-raster/fruit-pineapple.webp",
+        "sourceRectXYWH": [
+          318,
+          220,
+          162,
+          219
+        ],
+        "reason": "Subtract only the two hollow terminal sleeve openings from the existing 143-point torso mask; original mask remains unchanged. Keep shoulder seam cloth, central green yoke/straps, back panel and hem. Actual folded sleeve meshes provide the arm silhouette.",
+        "localCutoutPolygonsXY": [
+          [
+            [
+              0,
+              95
+            ],
+            [
+              10,
+              108
+            ],
+            [
+              26,
+              116
+            ],
+            [
+              41,
+              126
+            ],
+            [
+              24,
+              136
+            ],
+            [
+              19,
+              151
+            ],
+            [
+              0,
+              151
+            ]
+          ],
+          [
+            [
+              162,
+              95
+            ],
+            [
+              153,
+              108
+            ],
+            [
+              139,
+              116
+            ],
+            [
+              127,
+              126
+            ],
+            [
+              141,
+              136
+            ],
+            [
+              148,
+              151
+            ],
+            [
+              162,
+              151
+            ]
+          ]
+        ],
+        "originalMaskRetained": true
+      }
+    }
+  },
+  "run8Provenance": {
+    "newPaintedFrames": 0,
+    "referenceUnmodified": true,
+    "head": "Approved standing attachment own head, same rect/mask and fixed size.",
+    "fists": "Independently masked own anatomical R fist from middle running figure and L fist from right running figure. No mirror.",
+    "runOnlyParts": [
+      "runHands",
+      "runForearms",
+      "referenceSleevePins"
+    ],
+    "worldAcquireUnchanged": true,
+    "seamPolicy": "RUN gray shoulder/axilla seam binds matching source pixels to own torso mapping; weight fades after source y250 through315. No alpha expansion or painted patch.",
+    "runOnlyOwnershipCorrections": {
+      "pants.legR/legL": "Remove pixels of original standing fingers carried into leg crop edges; no replacement skin/cloth.",
+      "shirt.torso": "Remove standing inner sleeve fragments from below source y326, where torso crop crosses original underarm gap. These original cloth pixels remain in moving sleeve parts.",
+      "idle": "Original plan masks and source remain in use; these cutouts are applied only while graduateRun8 pose marker exists."
+    }
+  }
 }

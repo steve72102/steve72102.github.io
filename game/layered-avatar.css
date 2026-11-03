@@ -8,3 +8,25 @@
 .outfit-view-controls .button{min-width:44px;min-height:36px;padding:6px 10px}
 .outfit-view-controls .button[aria-pressed="true"]{background:#e3eddf;border-color:#5e7c53;color:#29412c}
 @media(max-width:650px){.outfit-view-controls .button{min-height:44px}}
+
+/* Graduate DOWN alone owns these surfaces. A 96x144 cell has foot (48,139.5):
+   x=-3.33333333%+106.66666667%*(48/96)=50%;
+   y=-26.25%+120%*(139.5/144)=90%, exactly the sealed native/painted anchor.
+   It is not the older generic layered 72x120 / 80%-width display rectangle. */
+.walk-actor>.graduate-down-avatar-canvas,
+.walk-actor>.graduate-down-idle-bridge{position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;display:none!important;pointer-events:none;overflow:hidden;animation:none!important;transform:none!important;transition:none;contain:layout style}
+/* The accepted SVG is 180x306, foot (90,275.625). In the canonical cell it uses
+   translate(3,1.6875)+scale(.5), the same uniform fit as the raster RUN8 bridge.
+   No source shape is scaled independently and the world actor is never moved. */
+.walk-actor>.graduate-down-idle-bridge>svg{position:absolute;left:3.125%;top:1.171875%;width:93.75%;height:106.25%;max-width:none;display:block;animation:none!important;transform:none!important;transition:none}
+.walk-actor[data-graduate-down-owner="active"]{transform-origin:50% 90%}
+.walk-actor[data-graduate-down-owner="active"]>.painted-avatar-canvas,
+.walk-actor[data-graduate-down-owner="active"]>.native-avatar-sprite,
+.walk-actor[data-graduate-down-owner="active"]>.layered-avatar-canvas,
+.walk-actor[data-graduate-down-owner="active"]>.equipped-sprite,
+.walk-actor[data-graduate-down-owner="active"]>.run-sprite,
+.walk-actor[data-graduate-down-owner="active"]>.painted-loading-body,
+.walk-actor[data-graduate-down-owner="active"]>.layered-loading-body,
+.walk-actor[data-graduate-down-owner="active"]>.painted-coverage-fallback{display:none!important}
+.walk-actor[data-graduate-down-owner="active"][data-graduate-down-status="ready"]>.graduate-down-avatar-canvas{display:block!important}
+.walk-actor[data-graduate-down-owner="active"]:not([data-graduate-down-status="ready"])>.graduate-down-idle-bridge{display:block!important}

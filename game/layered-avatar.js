@@ -113,5 +113,105 @@
       canvas.dataset.renderStatus='ready';root.MindRasterOutfit.dispose(source);
     });return canvas;
   }
-  return {SLOTS,ranges,publicState,available,cell,createBody,register,update,needsFrame,dispose,preview,itemPreview,portrait};
+  // This owner is deliberately separate from the generic layered actors. A late
+  // generic failure calls dispose(actor); it must not retire this DOWN bridge.
+  // The shared motion clock drives it. It never owns a RAF or a private atlas bake.
+  const graduateDownActors=new WeakMap(),GRADUATE_PROFILE='graduate-reference-v1';
+  const GRADUATE_CELL=Object.freeze({width:96,height:144,footX:48,footY:139.5});
+  function graduateDownStatus(record,value,message=''){
+    if(!record.active)return;
+    record.actor.dataset.graduateDownStatus=value;
+    if(message)record.actor.dataset.graduateDownFailure=message;
+    else delete record.actor.dataset.graduateDownFailure;
+    if(value!=='ready'){
+      record.actor.dataset.graduateDownPose='idle-bridge';
+      delete record.actor.dataset.graduateDownFrame;
+      delete record.actor.dataset.graduateDownPhase;
+    }
+  }
+  function registerGraduateDown(actor,state,options={}){
+    if(state?.appearance?.character!=='graduate'||!actor?.append||!actor.dataset)return false;
+    if(graduateDownActors.has(actor))return true;
+    const document=actor.ownerDocument||root.document;if(!document?.createElement)return false;
+    const clean=publicState(state);
+    Object.freeze(clean.appearance);Object.freeze(clean.rpg.loadout);Object.freeze(clean.rpg);Object.freeze(clean);
+    const fallback=options.fallback||(()=>root.MindCastOutfit?.preview(clean,{direction:'down',bodyProfile:GRADUATE_PROFILE,painted:false,native:false,raster:false}));
+    const original=fallback();
+    // Accept only the new, fitted DOWN bridge. Silently accepting the legacy SVG
+    // here would restore the very body proportions this owner is meant to keep.
+    if(!original||original.getAttribute?.('data-body-profile')!==GRADUATE_PROFILE||original.getAttribute?.('viewBox')!=='0 0 180 306')throw Error('Graduate DOWN fallback must use the accepted body profile.');
+    const surface=document.createElement('canvas'),bridge=document.createElement('span');
+    surface.width=GRADUATE_CELL.width;surface.height=GRADUATE_CELL.height;surface.className='graduate-down-avatar-canvas';
+    surface.setAttribute('aria-hidden','true');surface.dataset.artMethod='authored-parts-skeletal-run8';surface.dataset.bodyProfile=GRADUATE_PROFILE;
+    surface.dataset.footAnchor='48 139.5';bridge.className='graduate-down-idle-bridge';bridge.setAttribute('aria-hidden','true');bridge.dataset.bodyProfile=GRADUATE_PROFILE;bridge.dataset.footAnchor='48 139.5';
+    original.setAttribute('preserveAspectRatio','xMidYMin meet');original.setAttribute('aria-hidden','true');bridge.append(original);
+    const active=(actor.dataset.motionView||actor.dataset.direction||'down')==='down';
+    const record={actor,surface,bridge,state:clean,active,dead:false,visual:{action:'idle',phase:0,reducedMotion:false},epoch:0,pending:false,failed:false,handle:null,controller:null,painted:null};
+    graduateDownActors.set(actor,record);actor.append(bridge,surface);
+    if(active){actor.dataset.graduateDownOwner='active';graduateDownStatus(record,'idle-bridge');}
+    return true;
+  }
+  function validGraduateAtlas(atlas){
+    const layout=atlas?.layout,indices=layout?.run;
+    return atlas?.canvas&&atlas.width===96&&atlas.height===144&&atlas.columns===3&&atlas.count===9&&atlas.direction==='down'&&atlas.profile===GRADUATE_PROFILE&&
+      atlas.anchor?.[0]===48&&atlas.anchor?.[1]===139.5&&layout?.idle===0&&Array.isArray(indices)&&indices.length===8&&indices.every((value,index)=>value===index+1)&&
+      atlas.canvas.width>=atlas.width*atlas.columns&&atlas.canvas.height>=atlas.height*Math.ceil(atlas.count/atlas.columns);
+  }
+  function paintGraduateDown(record){
+    if(!record.active||!record.handle||record.failed)return;
+    const atlas=record.handle.value,visual=record.visual,run=visual.action==='run'&&!visual.reducedMotion,phase=Number.isFinite(visual.phase)?((visual.phase%1)+1)%1:0;
+    const gait=run?Math.min(7,Math.floor(phase*8)):null,index=run?atlas.layout.run[gait]:atlas.layout.idle,key=atlas.key+':'+index;
+    if(record.painted!==key){
+      const ctx=record.surface.getContext('2d');if(!ctx)throw Error('Graduate DOWN canvas is unavailable.');
+      ctx.clearRect(0,0,record.surface.width,record.surface.height);
+      ctx.drawImage(atlas.canvas,index%atlas.columns*atlas.width,Math.floor(index/atlas.columns)*atlas.height,atlas.width,atlas.height,0,0,record.surface.width,record.surface.height);
+      record.painted=key;
+    }
+    graduateDownStatus(record,'ready');record.actor.dataset.graduateDownPose=run?'run':'idle-bridge';record.actor.dataset.graduateDownFrame=String(index);
+    if(run)record.actor.dataset.graduateDownPhase=String(gait);else delete record.actor.dataset.graduateDownPhase;
+  }
+  function failGraduateDown(record,error){
+    record.handle?.release?.();record.handle=null;record.pending=false;record.failed=true;record.painted=null;record.controller=null;
+    graduateDownStatus(record,'fallback',String(error?.message||'Graduate DOWN asset unavailable.'));
+  }
+  function requestGraduateDown(record){
+    if(record.pending||record.handle||record.failed||!record.active)return;
+    const acquire=root.MindRasterOutfit?.acquireGraduateDown;
+    if(typeof acquire!=='function'){failGraduateDown(record,Error('Graduate DOWN atlas is unavailable.'));return;}
+    record.controller=root.AbortController?new root.AbortController():null;record.pending=true;
+    const epoch=++record.epoch;graduateDownStatus(record,'loading');
+    const current=()=>graduateDownActors.get(record.actor)===record&&!record.dead&&record.active&&record.epoch===epoch;
+    let request;
+    try{request=acquire.call(root.MindRasterOutfit,record.state,{signal:record.controller?.signal});}
+    catch(error){if(current())failGraduateDown(record,error);return;}
+    Promise.resolve(request).then(handle=>{
+      if(!current()){handle?.release?.();return;}
+      record.handle=handle;record.pending=false;record.controller=null;
+      try{if(typeof handle?.release!=='function'||!validGraduateAtlas(handle?.value))throw Error('Graduate DOWN atlas does not match the registered layout.');paintGraduateDown(record);}
+      catch(error){failGraduateDown(record,error);}
+    }).catch(error=>{if(current())failGraduateDown(record,error);});
+  }
+  function retireGraduateRequest(record){
+    record.epoch++;record.controller?.abort();record.controller=null;record.handle?.release?.();record.handle=null;record.pending=false;record.failed=false;record.painted=null;
+  }
+  function updateGraduateDown(actor,visual,input={}){
+    const record=graduateDownActors.get(actor);if(!record||record.dead)return false;
+    if(input.direction!=='down'){
+      if(record.active){record.active=false;retireGraduateRequest(record);delete actor.dataset.graduateDownOwner;delete actor.dataset.graduateDownStatus;delete actor.dataset.graduateDownFailure;delete actor.dataset.graduateDownPose;delete actor.dataset.graduateDownFrame;delete actor.dataset.graduateDownPhase;}
+      return false;
+    }
+    record.visual={action:visual?.action||'idle',phase:visual?.phase||0,reducedMotion:visual?.reducedMotion===true};
+    if(!record.active){record.active=true;actor.dataset.graduateDownOwner='active';graduateDownStatus(record,'idle-bridge');}
+    requestGraduateDown(record);
+    try{paintGraduateDown(record);}catch(error){failGraduateDown(record,error);}
+    return true;
+  }
+  function ownsGraduateDown(actor){const record=graduateDownActors.get(actor);return !!record&&!record.dead&&record.active;}
+  function needsGraduateDownFrame(actor){const record=graduateDownActors.get(actor);return !!record&&!record.dead&&record.active&&record.pending;}
+  function disposeGraduateDown(actor){
+    const record=graduateDownActors.get(actor);if(!record)return;record.dead=true;record.active=false;retireGraduateRequest(record);graduateDownActors.delete(actor);
+    record.surface.remove();record.bridge.remove();
+    for(const key of ['graduateDownOwner','graduateDownStatus','graduateDownFailure','graduateDownPose','graduateDownFrame','graduateDownPhase'])delete actor.dataset[key];
+  }
+  return {SLOTS,ranges,publicState,available,cell,createBody,register,update,needsFrame,dispose,preview,itemPreview,portrait,registerGraduateDown,updateGraduateDown,ownsGraduateDown,needsGraduateDownFrame,disposeGraduateDown};
 });

@@ -40,6 +40,12 @@ window.MindAvatar=(function(){
     }}:{});
     if(native)window.MindNativeAvatar.register(avatar,originalBody);
     if(layered)window.MindLayeredAvatar.register(avatar,originalBody);
+    if(look.character==='graduate'){
+      // Keep only the already-sanitized public character and exact eight slots.
+      // The independent owner preserves sealed renderers for the other views.
+      const downState={appearance:{character:look.character},rpg:{loadout:{...wear}}};
+      window.MindLayeredAvatar?.registerGraduateDown?.(avatar,downState,{fallback:()=>window.MindCastOutfit.preview(downState,{direction:'down',bodyProfile:'graduate-reference-v1',painted:false,native:false,raster:false})});
+    }
     const h=window.MindLobby.honor(honor);if(h){avatar.classList.add('has-honor');avatar.append(node('span',{class:'honor-label '+h.kind,'data-honor-until':h.until},window.MindLobby.honorTitle(h)));}
     const remaining=Math.min(8000,counterAt+8000-Date.now());if(remaining>0){const bubble=node('span',{class:'counter-bubble'},'可悲阿~');bubble.style.setProperty('--bubble-time',remaining+'ms');avatar.append(bubble);}return window.MindAvatarMotion?.register(avatar)||avatar;
   };

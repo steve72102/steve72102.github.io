@@ -42,6 +42,9 @@
     actor.classList.toggle('walking',moving);
     attribute(actor,'motionAction',visual.action);attribute(actor,'motionView',record.view);
     attribute(actor,'motionReduced',reduced?'true':'false');
+    // Only the registered graduate's final DOWN view owns this surface. Call
+    // on every view so leaving DOWN releases it before the sealed dispatch.
+    if(root.MindLayeredAvatar?.updateGraduateDown?.(actor,visual,{...input,direction:record.view}))return visual;
     if(root.MindPaintedAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     if(root.MindNativeAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     if(root.MindLayeredAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
@@ -62,9 +65,14 @@
   function needsFrame(actor){
     // One stationary sample after the final interpolated move stops the gait.
     // Otherwise a remote with intent=false could remain on its last run frame.
-    const record=actors.get(actor);return !!record&&(record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches||!!root.MindPaintedAvatar?.needsFrame(actor)||!!root.MindNativeAvatar?.needsFrame(actor)||!!root.MindLayeredAvatar?.needsFrame(actor));
+    const record=actors.get(actor);if(!record)return false;
+    const motionNeedsFrame=record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches;
+    // Paused sealed/native transients cannot keep an active DOWN owner awake.
+    if(root.MindLayeredAvatar?.ownsGraduateDown?.(actor))return !!(motionNeedsFrame||root.MindLayeredAvatar?.needsGraduateDownFrame?.(actor));
+    return !!(motionNeedsFrame||root.MindPaintedAvatar?.needsFrame(actor)||root.MindNativeAvatar?.needsFrame(actor)||root.MindLayeredAvatar?.needsFrame(actor));
   }
   function dispose(actor){
+    root.MindLayeredAvatar?.disposeGraduateDown?.(actor);
     const record=actors.get(actor);if(!record)return;
     root.MindPaintedAvatar?.dispose(actor);
     root.MindNativeAvatar?.dispose(actor);

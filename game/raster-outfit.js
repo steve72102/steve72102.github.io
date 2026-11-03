@@ -27,13 +27,13 @@
     'dawn-intern':{height:405,shoulders:78,waist:58,hips:58,head:77,leg:159,arm:113,limb:26,fit:'short'},
     'river-fellow':{height:457,shoulders:86,waist:64,hips:62,head:76,leg:194,arm:130,limb:27,fit:'slim'}
   };
-  // Opt-in UI calibration from the user's standing reference. World bodies and
-  // scene atlas acquisition deliberately keep the original profiles. The JSON
+  // Opt-in calibration from the user's standing reference. Generic acquire and
+  // world bodies keep original profiles; explicit acquireGraduateDown is the exception. The JSON
   // beside reference.png records the same source rectangles and measurements.
-  const GRADUATE_REFERENCE={"id":"graduate-reference-v1","character":"graduate","referenceScale":0.5070422535211268,"landmarks":{"top":58.0,"chin":135.5774647887324,"neck":155.35211267605632,"shoulder":158.3943661971831,"waist":260.30985915492954,"hip":282.11267605633805,"knee":363.23943661971833,"sole":490},"body":{"height":432,"shoulders":106.47887323943662,"waist":73.01408450704226,"hips":48.399487836107554,"head":86.70422535211267,"leg":187.88732394366195,"arm":120.67605633802816,"limb":27.887323943661972,"fit":"regular"},"geometry":{"legWidth":46.140845070422536,"shoeWidth":58.309859154929576,"shoulderHalfWidth":53.23943661971831,"wristX":{"L":53.74647887323943,"R":-51.71830985915493},"kneeHalfWidth":27.887323943661972,"ankleHalfWidth":34.478873239436616,"shirtTop":148.25352112676057,"shirtHem":266.90140845070425,"jacketHem":292.2535211267606,"calf":431.6901408450704,"fullHem":479.85915492957747,"equippedDownLegWidth":64},"atlases":{"graduate-reference-v1":{"src":"./assets/avatar-raster/graduate-reference-v1/reference.png","width":1774,"height":887},"graduate-reference-left-body":{"src":"./assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp","width":256,"height":384},"graduate-reference-right-body":{"src":"./assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp","width":256,"height":384}},"parts":{"down":{"head":{"atlas":"graduate-reference-v1","rect":[237,16,171,205],"mask":[[[0.0,0.0],[1.0,0.0],[1.0,0.8097561],[0.66081871,0.8097561],[0.63157895,0.86341463],[0.56725146,0.90243902],[0.52631579,0.97073171],[0.48538012,0.99512195],[0.44444444,0.92682927],[0.3625731,0.87317073],[0.32163743,0.8097561],[0.0,0.8097561]]],"neckMask":[[[0.35672515,0.76585366],[0.61403509,0.76585366],[0.64327485,0.83414634],[0.57309942,0.89268293],[0.52631579,0.97073171],[0.48538012,0.99512195],[0.44444444,0.92682927],[0.3625731,0.87317073],[0.32748538,0.81463415]]],"anchor":[0.4853801169590643,0.9463414634146341],"hatPin":[0.4853801169590643,0.2682926829268293]},"hands":{"L":{"atlas":"graduate-reference-v1","rect":[400,442,49,94],"anchor":[0.5306122448979592,0.1276595744680851],"displayWidth":24.845070422535212},"R":{"atlas":"graduate-reference-v1","rect":[194,442,44,93],"anchor":[0.5454545454545454,0.12903225806451613],"displayWidth":22.309859154929576}},"defaults":{"shirt.torso":{"atlas":"graduate-reference-v1","rect":[235,182,173,246],"referenceBox":[235,182,173,246],"displayWidth":87.71830985915493,"mask":[[[0.2716763,0.0],[0.69942197,0.0],[0.94219653,0.09349593],[1.0,0.2804878],[1.0,0.68292683],[0.97687861,0.93089431],[0.90751445,1.0],[0.06358382,1.0],[0.0,0.89837398],[0.0,0.68292683],[0.0,0.29674797],[0.06936416,0.12601626]]]},"shirt.armR":{"atlas":"graduate-reference-v1","rect":[183,202,75,184],"referenceBox":[183,202,75,184],"displayWidth":38.028169014084504,"mask":[[[0.61333333,0.0],[0.89333333,0.05978261],[1.0,0.23913043],[0.84,0.5],[0.77333333,0.75543478],[0.69333333,0.91847826],[0.54666667,1.0],[0.09333333,0.95652174],[0.0,0.85326087],[0.13333333,0.61956522],[0.25333333,0.35326087],[0.37333333,0.15217391]]],"sleeveEndRatio":0.6638655462184874,"pins":{"root":[0.5,0.07608695652173914],"joint":[0.5,0.7228260869565217],"tip":[0.5,0.9347826086956522]}},"shirt.armL":{"atlas":"graduate-reference-v1","rect":[393,202,64,184],"referenceBox":[393,202,64,184],"displayWidth":32.45070422535211,"mask":[[[0.21875,0.0],[0.546875,0.05978261],[0.75,0.22826087],[0.84375,0.50543478],[1.0,0.85326087],[0.890625,0.95652174],[0.359375,1.0],[0.203125,0.89673913],[0.125,0.71195652],[0.0,0.5],[0.0,0.2173913]]],"sleeveEndRatio":0.6638655462184874,"pins":{"root":[0.5,0.07608695652173914],"joint":[0.5,0.7228260869565217],"tip":[0.5,0.9347826086956522]}},"pants.pelvis":{"atlas":"graduate-reference-v1","rect":[224,415,190,49],"referenceBox":[224,415,190,49],"displayWidth":96.33802816901408,"mask":[[[0.08947368,0.0],[0.92631579,0.0],[0.95263158,1.0],[0.05789474,1.0]]]},"pants.legR":{"atlas":"graduate-reference-v1","rect":[204,463,116,342],"referenceBox":[204,463,116,342],"displayWidth":58.816901408450704,"mask":[[[0.26724138,0.0],[1.0,0.0],[1.0,0.11111111],[0.86206897,0.28947368],[0.80172414,0.4619883],[0.74137931,0.72222222],[0.69827586,0.89766082],[0.5862069,1.0],[0.12931034,1.0],[0.0,0.92397661],[0.02586207,0.80701754],[0.09482759,0.5877193],[0.12931034,0.37134503],[0.1637931,0.16666667]]],"pins":{"root":[0.5,0.02],"joint":[0.5,0.4590643274853801],"tip":[0.5,0.9678362573099415]}},"pants.legL":{"atlas":"graduate-reference-v1","rect":[320,463,116,342],"referenceBox":[320,463,116,342],"displayWidth":58.816901408450704,"mask":[[[0.0,0.0],[0.73275862,0.0],[0.78448276,0.16666667],[0.81034483,0.38304094],[0.85344828,0.58187135],[0.92241379,0.80994152],[1.0,0.92690058],[0.79310345,1.0],[0.30172414,1.0],[0.18965517,0.9005848],[0.15517241,0.72222222],[0.12068966,0.46491228],[0.07758621,0.28070175],[0.0,0.11111111]]],"pins":{"root":[0.5,0.02],"joint":[0.5,0.4590643274853801],"tip":[0.5,0.9678362573099415]}},"pants.pocketL":{"hidden":true},"pants.pocketR":{"hidden":true},"shoes.R":{"atlas":"graduate-reference-v1","rect":[177,789,121,84],"referenceBox":[177,789,121,84],"displayWidth":61.352112676056336},"shoes.L":{"atlas":"graduate-reference-v1","rect":[341,789,123,84],"referenceBox":[341,789,123,84],"displayWidth":62.36619718309859}},"bareHands":{"R":{"atlas":"graduate-reference-v1","rect":[193,369,45,166],"referenceBox":[193,369,45,166],"displayWidth":22.816901408450704,"anchor":[0.5555555555555556,0.5120481927710844]},"L":{"atlas":"graduate-reference-v1","rect":[401,369,48,166],"referenceBox":[401,369,48,166],"displayWidth":24.338028169014084,"anchor":[0.5208333333333334,0.5120481927710844]}}},"left":{"hands":{"L":{"atlas":"graduate-reference-left-body","rect":[89,191,20,27],"anchor":[0.78,0.84],"displayWidth":19},"R":{"atlas":"graduate-reference-left-body","rect":[100,208,17,16],"anchor":[0.88,0.35],"displayWidth":18}}},"right":{"hands":{"L":{"atlas":"graduate-reference-right-body","rect":[161,190,16,19],"anchor":[0.4,0.84],"displayWidth":17},"R":{"atlas":"graduate-reference-right-body","rect":[133,202,47,19],"anchor":[0.1,0.5],"displayWidth":36}}},"up":{"hands":{"L":{"hidden":true},"R":{"hidden":true}},"handheldHidden":true,"reason":"Own sealed up actions0 has no visible hand pixels; both hands and held book are naturally occluded by the torso."}}};
+  const GRADUATE_REFERENCE={"id":"graduate-reference-v1","character":"graduate","referenceScale":0.5070422535211268,"landmarks":{"top":58.0,"chin":135.5774647887324,"neck":155.35211267605632,"shoulder":158.3943661971831,"waist":260.30985915492954,"hip":282.11267605633805,"knee":363.23943661971833,"sole":490},"body":{"height":432,"shoulders":106.47887323943662,"waist":73.01408450704226,"hips":48.399487836107554,"head":86.70422535211267,"leg":187.88732394366195,"arm":120.67605633802816,"limb":27.887323943661972,"fit":"regular"},"geometry":{"legWidth":46.140845070422536,"shoeWidth":58.309859154929576,"shoulderHalfWidth":53.23943661971831,"wristX":{"L":53.74647887323943,"R":-51.71830985915493},"kneeHalfWidth":27.887323943661972,"ankleHalfWidth":34.478873239436616,"shirtTop":148.25352112676057,"shirtHem":266.90140845070425,"jacketHem":292.2535211267606,"calf":431.6901408450704,"fullHem":479.85915492957747,"equippedDownLegWidth":64},"atlases":{"graduate-reference-v1":{"src":"./assets/avatar-raster/graduate-reference-v1/reference.png","width":1774,"height":887},"graduate-reference-left-body":{"src":"./assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp","width":256,"height":384},"graduate-reference-right-body":{"src":"./assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp","width":256,"height":384}},"parts":{"down":{"head":{"atlas":"graduate-reference-v1","rect":[237,16,171,205],"mask":[[[0.0,0.0],[1.0,0.0],[1.0,0.8097561],[0.66081871,0.8097561],[0.63157895,0.86341463],[0.56725146,0.90243902],[0.52631579,0.97073171],[0.48538012,0.99512195],[0.44444444,0.92682927],[0.3625731,0.87317073],[0.32163743,0.8097561],[0.0,0.8097561]]],"neckMask":[[[0.35672515,0.76585366],[0.61403509,0.76585366],[0.64327485,0.83414634],[0.57309942,0.89268293],[0.52631579,0.97073171],[0.48538012,0.99512195],[0.44444444,0.92682927],[0.3625731,0.87317073],[0.32748538,0.81463415]]],"anchor":[0.4853801169590643,0.9463414634146341],"hatPin":[0.4853801169590643,0.2682926829268293]},"hands":{"L":{"atlas":"graduate-reference-v1","rect":[400,442,49,94],"anchor":[0.5306122448979592,0.1276595744680851],"displayWidth":24.845070422535212},"R":{"atlas":"graduate-reference-v1","rect":[194,442,44,93],"anchor":[0.5454545454545454,0.12903225806451613],"displayWidth":22.309859154929576}},"defaults":{"shirt.torso":{"atlas":"graduate-reference-v1","rect":[235,182,173,246],"referenceBox":[235,182,173,246],"displayWidth":87.71830985915493,"mask":[[[0.2716763,0.0],[0.69942197,0.0],[0.94219653,0.09349593],[1.0,0.2804878],[1.0,0.68292683],[0.97687861,0.93089431],[0.90751445,1.0],[0.06358382,1.0],[0.0,0.89837398],[0.0,0.68292683],[0.0,0.29674797],[0.06936416,0.12601626]]]},"shirt.armR":{"atlas":"graduate-reference-v1","rect":[183,202,75,184],"referenceBox":[183,202,75,184],"displayWidth":38.028169014084504,"mask":[[[0.61333333,0.0],[0.89333333,0.05978261],[1.0,0.23913043],[0.84,0.5],[0.77333333,0.75543478],[0.69333333,0.91847826],[0.54666667,1.0],[0.09333333,0.95652174],[0.0,0.85326087],[0.13333333,0.61956522],[0.25333333,0.35326087],[0.37333333,0.15217391]]],"sleeveEndRatio":0.6638655462184874,"pins":{"root":[0.5,0.07608695652173914],"joint":[0.5,0.7228260869565217],"tip":[0.5,0.9347826086956522]}},"shirt.armL":{"atlas":"graduate-reference-v1","rect":[393,202,64,184],"referenceBox":[393,202,64,184],"displayWidth":32.45070422535211,"mask":[[[0.21875,0.0],[0.546875,0.05978261],[0.75,0.22826087],[0.84375,0.50543478],[1.0,0.85326087],[0.890625,0.95652174],[0.359375,1.0],[0.203125,0.89673913],[0.125,0.71195652],[0.0,0.5],[0.0,0.2173913]]],"sleeveEndRatio":0.6638655462184874,"pins":{"root":[0.5,0.07608695652173914],"joint":[0.5,0.7228260869565217],"tip":[0.5,0.9347826086956522]}},"pants.pelvis":{"atlas":"graduate-reference-v1","rect":[224,415,190,49],"referenceBox":[224,415,190,49],"displayWidth":96.33802816901408,"mask":[[[0.08947368,0.0],[0.92631579,0.0],[0.95263158,1.0],[0.05789474,1.0]]]},"pants.legR":{"atlas":"graduate-reference-v1","rect":[204,463,116,342],"referenceBox":[204,463,116,342],"displayWidth":58.816901408450704,"mask":[[[0.26724138,0.0],[1.0,0.0],[1.0,0.11111111],[0.86206897,0.28947368],[0.80172414,0.4619883],[0.74137931,0.72222222],[0.69827586,0.89766082],[0.5862069,1.0],[0.12931034,1.0],[0.0,0.92397661],[0.02586207,0.80701754],[0.09482759,0.5877193],[0.12931034,0.37134503],[0.1637931,0.16666667]]],"pins":{"root":[0.5,0.02],"joint":[0.5,0.4590643274853801],"tip":[0.5,0.9678362573099415]}},"pants.legL":{"atlas":"graduate-reference-v1","rect":[320,463,116,342],"referenceBox":[320,463,116,342],"displayWidth":58.816901408450704,"mask":[[[0.0,0.0],[0.73275862,0.0],[0.78448276,0.16666667],[0.81034483,0.38304094],[0.85344828,0.58187135],[0.92241379,0.80994152],[1.0,0.92690058],[0.79310345,1.0],[0.30172414,1.0],[0.18965517,0.9005848],[0.15517241,0.72222222],[0.12068966,0.46491228],[0.07758621,0.28070175],[0.0,0.11111111]]],"pins":{"root":[0.5,0.02],"joint":[0.5,0.4590643274853801],"tip":[0.5,0.9678362573099415]}},"pants.pocketL":{"hidden":true},"pants.pocketR":{"hidden":true},"shoes.R":{"atlas":"graduate-reference-v1","rect":[177,789,121,84],"referenceBox":[177,789,121,84],"displayWidth":61.352112676056336},"shoes.L":{"atlas":"graduate-reference-v1","rect":[341,789,123,84],"referenceBox":[341,789,123,84],"displayWidth":62.36619718309859}},"bareHands":{"R":{"atlas":"graduate-reference-v1","rect":[193,369,45,166],"referenceBox":[193,369,45,166],"displayWidth":22.816901408450704,"anchor":[0.5555555555555556,0.5120481927710844]},"L":{"atlas":"graduate-reference-v1","rect":[401,369,48,166],"referenceBox":[401,369,48,166],"displayWidth":24.338028169014084,"anchor":[0.5208333333333334,0.5120481927710844]}},"runHands":{"R":{"atlas":"graduate-reference-v1","rect":[855,276,69,64],"mask":[[[0.391304347826087,0.046875],[0.4782608695652174,0.03125],[0.5797101449275363,0.078125],[0.7536231884057971,0.125],[0.8695652173913043,0.171875],[0.927536231884058,0.28125],[0.9130434782608695,0.359375],[0.9565217391304348,0.421875],[0.927536231884058,0.5625],[0.8695652173913043,0.640625],[0.8405797101449275,0.75],[0.7391304347826086,0.828125],[0.6086956521739131,0.859375],[0.4927536231884058,0.828125],[0.36231884057971014,0.90625],[0.18840579710144928,0.953125],[0.0,0.90625],[0.0,0.625],[0.17391304347826086,0.484375],[0.2898550724637681,0.3125],[0.36231884057971014,0.171875]]],"anchor":[0.14492753623188406,0.796875],"displayWidth":27.6,"sourceArmAngle":-1.8657333856437035},"L":{"atlas":"graduate-reference-v1","rect":[1471,232,58,64],"mask":[[[0.20689655172413793,0.03125],[0.5689655172413793,0.03125],[0.6724137931034483,0.09375],[0.7413793103448276,0.28125],[0.8103448275862069,0.453125],[0.9655172413793104,0.609375],[0.9655172413793104,0.96875],[0.7241379310344828,0.921875],[0.5689655172413793,0.828125],[0.43103448275862066,0.71875],[0.27586206896551724,0.734375],[0.13793103448275862,0.6875],[0.06896551724137931,0.59375],[0.06896551724137931,0.484375],[0.034482758620689655,0.40625],[0.034482758620689655,0.328125],[0.0,0.265625],[0.05172413793103448,0.171875],[0.15517241379310345,0.125]]],"anchor":[0.8103448275862069,0.84375],"displayWidth":23.2,"sourceArmAngle":-3.989409626983199}},"runForearms":{"R":{"atlas":"graduate-reference-v1","rect":[193,369,45,96],"displayWidth":22.816901408450704,"anchor":[0.5555555555555556,0.8854166666666666]},"L":{"atlas":"graduate-reference-v1","rect":[401,369,48,96],"displayWidth":24.338028169014084,"anchor":[0.5208333333333334,0.8854166666666666]}}},"left":{"hands":{"L":{"atlas":"graduate-reference-left-body","rect":[89,191,20,27],"anchor":[0.78,0.84],"displayWidth":19},"R":{"atlas":"graduate-reference-left-body","rect":[100,208,17,16],"anchor":[0.88,0.35],"displayWidth":18}}},"right":{"hands":{"L":{"atlas":"graduate-reference-right-body","rect":[161,190,16,19],"anchor":[0.4,0.84],"displayWidth":17},"R":{"atlas":"graduate-reference-right-body","rect":[133,202,47,19],"anchor":[0.1,0.5],"displayWidth":36}}},"up":{"hands":{"L":{"hidden":true},"R":{"hidden":true}},"handheldHidden":true,"reason":"Own sealed up actions0 has no visible hand pixels; both hands and held book are naturally occluded by the torso.","equipmentCutouts":{"fruit-pineapple-jacket":{"jacket.torso":[[[0.0,0.433789954],[0.061728395,0.493150685],[0.160493827,0.529680365],[0.25308642,0.575342466],[0.148148148,0.621004566],[0.117283951,0.689497717],[0.0,0.689497717]],[[1.0,0.433789954],[0.944444444,0.493150685],[0.858024691,0.529680365],[0.783950617,0.575342466],[0.87037037,0.621004566],[0.913580247,0.689497717],[1.0,0.689497717]]]}}}},"directionFits":{"left":{"head":{"neckStartV":0.8084507042253521,"neckScale":0.55}},"up":{"arms":{"elbowHalfWidth":66,"wristHalfWidth":28,"elbowDrop":58,"wristDrop":75,"behindTorso":true,"shoulderInset":0,"occlusionOrder":"shirt sleeves < shirt torso < jacket sleeves < jacket torso < cape"}}},"enabledUiDirections":["down","left","up"],"downRun8":{"id":"graduate-down-run8-v1","method":"Own native parts with fixed 3D bone lengths and orthographic frontal projection; not eight newly painted frames.","frames":8,"phaseOffset":{"L":0,"R":0.5},"upperLeg":81.3941056007,"lowerLeg":106.9638559908,"upperArm":60.33802816901408,"lowerArm":60.33802816901408,"footY":[470,470,470,410,405,420,428,454],"footZ":[28,0,-28,-62,-55,-22,12,38],"footHalfX":[34.4788732394,34.4788732394,34.4788732394,42,36,24,18,24],"bodyBob":[8,12,6,-6,8,12,6,-6],"stanceEnd":0.25,"flightFrames":[3,7],"referenceSleeveForearmEnd":0.3277310924369748,"referencePantCuffRatio":0.8405797101449275,"canonical":{"normal":{"width":256,"height":384,"ground":[128,372],"scale":0.75,"translate":[8,4.5]},"compact":{"width":96,"height":144,"ground":[48,139.5],"scale":0.28125,"translate":[3,1.6875]}},"shoulderHalfWidth":39.5,"kneeOutwardBend":0.38,"referenceSleevePins":{"R":{"root":[0.72,0.09239130434782608],"joint":[0.41333333333333333,0.7336956521739131],"tip":[0.37333333333333335,0.9347826086956522]},"L":{"root":[0.265625,0.09239130434782608],"joint":[0.578125,0.7336956521739131],"tip":[0.59375,0.9347826086956522]}},"mesh":"RUN8-only shared joint cross-section; capped miter and adaptive knee/elbow width prevent UV-triangle reversal without moving bone endpoints.","referenceShoulderSeams":{"R":[[202,248],[220,248],[230,247],[240,245],[250,242],[280,238],[310,237]],"L":[[202,397],[220,397],[230,398],[240,400],[250,402],[280,405],[310,407]]},"sourceCutouts":{"pants.legR":{"atlas":"graduate-reference-v1","rect":[204,463,116,342],"cutouts":[[[0.0,0.0],[0.2413793103448276,0.0],[0.25,0.04678362573099415],[0.2672413793103448,0.08187134502923976],[0.2672413793103448,0.12573099415204678],[0.25862068965517243,0.15789473684210525],[0.23275862068965517,0.19298245614035087],[0.19827586206896552,0.21052631578947367],[0.0,0.21052631578947367]]],"sourcePolygonsXY":[[[204,463],[232,463],[233,479],[235,491],[235,506],[234,517],[231,529],[227,535],[204,535]]]},"pants.legL":{"atlas":"graduate-reference-v1","rect":[320,463,116,342],"cutouts":[[[1.0,0.0],[0.7844827586206896,0.0],[0.7758620689655172,0.04093567251461988],[0.7672413793103449,0.08187134502923976],[0.7586206896551724,0.12280701754385964],[0.75,0.1608187134502924],[0.7586206896551724,0.19005847953216373],[0.8017241379310345,0.21052631578947367],[1.0,0.21052631578947367]]],"sourcePolygonsXY":[[[436,463],[411,463],[410,477],[409,491],[408,505],[407,518],[408,528],[413,535],[436,535]]]},"shirt.torso":{"atlas":"graduate-reference-v1","rect":[235,182,173,246],"cutouts":[[[0.0,0.5853658536585366],[0.13872832369942195,0.6016260162601627],[0.1329479768786127,0.6219512195121951],[0.14450867052023122,0.6422764227642277],[0.15028901734104047,0.6626016260162602],[0.1329479768786127,0.6829268292682927],[0.11560693641618497,0.7032520325203252],[0.11560693641618497,0.7235772357723578],[0.12716763005780346,0.7439024390243902],[0.11560693641618497,0.7642276422764228],[0.09826589595375723,0.7845528455284553],[0.08670520231213873,0.8048780487804879],[0.09826589595375723,0.8252032520325203],[0.0,0.8455284552845529]],[[1.0,0.5853658536585366],[0.861271676300578,0.6016260162601627],[0.8554913294797688,0.6219512195121951],[0.8497109826589595,0.6422764227642277],[0.8439306358381503,0.6626016260162602],[0.8554913294797688,0.6829268292682927],[0.8728323699421965,0.7032520325203252],[0.8728323699421965,0.7235772357723578],[0.8670520231213873,0.7439024390243902],[0.8728323699421965,0.7642276422764228],[0.8901734104046243,0.7845528455284553],[0.9017341040462428,0.8048780487804879],[0.8901734104046243,0.8252032520325203],[0.9248554913294798,0.8455284552845529],[1.0,0.8455284552845529]]],"sourcePolygonsXY":[[[235,326],[259,330],[258,335],[260,340],[261,345],[258,350],[255,355],[255,360],[257,365],[255,370],[252,375],[250,380],[252,385],[235,390]],[[408,326],[384,330],[383,335],[382,340],[381,345],[383,350],[386,355],[386,360],[385,365],[386,370],[389,375],[391,380],[389,385],[395,390],[408,390]]]}}}};
   function freezeTree(value){if(value&&typeof value==='object'){Object.values(value).forEach(freezeTree);Object.freeze(value);}return value;}
   freezeTree(GRADUATE_REFERENCE);
-  function previewBodyProfile(character,options={}){return character==='graduate'&&options.bodyProfile===GRADUATE_REFERENCE.id?GRADUATE_REFERENCE:null;}
+  function previewBodyProfile(character,options={}){return character==='graduate'&&options.bodyProfile===GRADUATE_REFERENCE.id&&GRADUATE_REFERENCE.enabledUiDirections.includes(direction(options.direction))?GRADUATE_REFERENCE:null;}
   const PROFILE_SOURCE_PATHS=new Set(Object.values(GRADUATE_REFERENCE.atlases).map(a=>a.src));
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),mix=(a,b,t)=>a+(b-a)*t,point=(x,y)=>({x,y});
   const shoeWidth=(p,part)=>p.bodyProfile?(p.bodyProfile.geometry.shoeWidth*(p.side?1.1:1)*(part.scale||1)):(p.side?52:42)*clamp(p.body.limb/29,.88,1.22)*(part.scale||1);
@@ -55,8 +55,26 @@
     if(p<.5)return {forward:1-4*p,lift:0,contact:true};
     const t=(p-.5)*2;return {forward:-1+2*t,lift:Math.sin(Math.PI*t),contact:false};
   }
+  const GRADUATE_DOWN_FRAME=Object.freeze({width:96,height:144,columns:3,count:9});
+  const GRADUATE_DOWN_LAYOUT=Object.freeze({idle:0,run:Object.freeze([1,2,3,4,5,6,7,8])});
+  function cyclic(values,phase){const t=((phase%1)+1)%1*values.length,i=Math.floor(t),u=t-i,n=values.length,a=values[(i+n-1)%n],b=values[i],c=values[(i+1)%n],d=values[(i+2)%n];return .5*((2*b)+(-a+c)*u+(2*a-5*b+4*c-d)*u*u+(-a+3*b-3*c+d)*u*u*u);}
+  function ik3(start,target,upper,lower,bend){
+    const delta={x:target.x-start.x,y:target.y-start.y,z:(target.z||0)-(start.z||0)},raw=Math.hypot(delta.x,delta.y,delta.z),d=clamp(raw,Math.abs(upper-lower)+.000001,upper+lower-.000001),axis={x:delta.x/raw,y:delta.y/raw,z:delta.z/raw};
+    const dot=axis.x*bend.x+axis.y*bend.y+axis.z*bend.z,perp={x:bend.x-axis.x*dot,y:bend.y-axis.y*dot,z:bend.z-axis.z*dot},pl=Math.hypot(perp.x,perp.y,perp.z),along=(upper*upper-lower*lower+d*d)/(2*d),height=Math.sqrt(Math.max(0,upper*upper-along*along));
+    const joint={x:start.x+axis.x*along+perp.x/pl*height,y:start.y+axis.y*along+perp.y/pl*height,z:(start.z||0)+axis.z*along+perp.z/pl*height},tip={x:start.x+axis.x*d,y:start.y+axis.y*d,z:(start.z||0)+axis.z*d};return {root:{...start,z:start.z||0},joint,tip};
+  }
+  function graduateDownRunPose(p,phase){
+    const cfg=p.bodyProfile.downRun8,t=((phase%1)+1)%1,bob=cyclic(cfg.bodyBob,t),sway=Math.sin(t*Math.PI*2)*2,b=p.body;
+    p.phase=t;p.bob=bob;p.graduateRun8=cfg.id;p.hip=point(160+sway,p.bodyProfile.landmarks.hip+bob);p.chest=point(160-sway,p.bodyProfile.landmarks.shoulder+15+bob);p.neck=point(160-sway,p.bodyProfile.landmarks.neck+bob);p.waist=point(160,p.bodyProfile.landmarks.waist+bob);p.headAngle=0;
+    for(const name of ['L','R']){
+      const sign=name==='L'?1:-1,q=(t+cfg.phaseOffset[name])%1,contact=q<=cfg.stanceEnd,root={x:p.hip.x+sign*b.hips*.44,y:p.hip.y,z:0},target={x:160+sign*cyclic(cfg.footHalfX,q),y:contact?470:Math.min(470,cyclic(cfg.footY,q)),z:cyclic(cfg.footZ,q)},armFront=(1+Math.cos((q+.5)*Math.PI*2))/2;
+      const shoulder={x:p.chest.x+sign*cfg.shoulderHalfWidth,y:p.bodyProfile.landmarks.shoulder+bob,z:0},wrist={x:p.chest.x+sign*mix(64,24,armFront),y:shoulder.y+mix(104,37,armFront),z:mix(-45,72,armFront)};
+      p.limbs[name]={leg:ik3(root,target,cfg.upperLeg,cfg.lowerLeg,{x:sign*cfg.kneeOutwardBend,y:0,z:1}),arm:ik3(shoulder,wrist,cfg.upperArm,cfg.lowerArm,{x:sign,y:0,z:0}),footTarget:target,contact,footAngle:contact?0:sign*Math.sin(q*Math.PI*2)*.1};
+    }
+    p.frontArm=p.limbs.L.arm.tip.z>=p.limbs.R.arm.tip.z?'L':'R';p.frontLeg=p.limbs.L.leg.joint.z>=p.limbs.R.leg.joint.z?'L':'R';p.flight=!p.limbs.L.contact&&!p.limbs.R.contact;return p;
+  }
   function pose(character,view='down',phase=0,action='idle',options={}){
-    const profile=previewBodyProfile(character,options),b=body(character,options),d=direction(view),side=d==='left'||d==='right',facing=d==='left'?-1:1,run=action==='run',t=run?phase:0;
+    const d=direction(view),profile=previewBodyProfile(character,{...options,direction:d}),b=profile?{...profile.body}:body(character),side=d==='left'||d==='right',facing=d==='left'?-1:1,run=action==='run',t=run?phase:0;
     const bob=run?Math.cos(t*Math.PI*4)*(profile?5:2.8):0,ankleY=SPACE.foot-20,hipY=profile?profile.landmarks.hip+bob:ankleY-b.leg+bob,shoulderY=profile?profile.landmarks.shoulder+bob:SPACE.foot-b.height+b.head+27+bob;
     const hipWidth=b.hips*(side?.23:.88),shoulderWidth=b.shoulders*(side?.22:1),viewWidth=side?.66:1;
     const p={character,direction:d,phase:t,action,body:b,side,viewWidth,bob,root:point(160,SPACE.foot),hip:point(160,hipY),chest:point(160,shoulderY+15),neck:point(160,shoulderY-14),headAngle:run?Math.sin(t*Math.PI*2)*.018:0,limbs:{},near:d==='left'?'L':'R'};
@@ -102,22 +120,47 @@
       }
       p.phase=progress;
     }
+    // The graduate's own rear idle source holds both forearms in front of the
+    // torso, with no visible hands. Keep the existing sleeve textures on that
+    // folded projection; torso ordering below occludes their open cuff ends.
+    const rearArms=d==='up'&&profile?.directionFits?.up?.arms;
+    if(rearArms)for(const name of ['L','R']){
+      const screen=name==='L'?-1:1,old=p.limbs[name].arm,sway=run?Math.sin((t+(name==='R'?.5:0))*Math.PI*2)*3:0;
+      p.limbs[name].arm={root:point(old.root.x-screen*(rearArms.shoulderInset||0),old.root.y),joint:point(160+screen*(rearArms.elbowHalfWidth+sway),old.root.y+rearArms.elbowDrop),tip:point(160+screen*rearArms.wristHalfWidth,old.root.y+rearArms.wristDrop)};
+    }
+    if(run&&d==='down'&&profile?.downRun8)return graduateDownRunPose(p,phase);
     return p;
   }
   // Continuous linear skinning around the knee/elbow. Every vertex in the shared
   // transition uses the same two matrices; neighboring triangles cannot expose a
   // hinge-shaped transparent gap. The original cloth pixels remain the texture.
-  function limbMesh(limb,width,pins={}){
+  function limbMesh(limb,width,pins={},extraRows=[],cols=3){
     const r=pins.root||[.5,.09],j=pins.joint||[.5,.52],tip=pins.tip||[.5,.93],a=sub(limb.joint,limb.root),b=sub(limb.tip,limb.joint),l1=length(a),l2=length(b),angle1=Math.atan2(a.y,a.x)-Math.PI/2,angle2=Math.atan2(b.y,b.x)-Math.PI/2;
-    const rows=[0,r[1],Math.max(r[1],j[1]-.13),j[1],Math.min(tip[1],j[1]+.13),tip[1],1].sort((x,y)=>x-y);
+    const rows=[0,r[1],Math.max(r[1],j[1]-.13),j[1],Math.min(tip[1],j[1]+.13),tip[1],1,...extraRows].sort((x,y)=>x-y);
     const vertices=[];
-    for(const v of rows)for(const u of [0,.5,1]){
+    for(const v of rows)for(const u of Array.from({length:cols},(_,i)=>i/(cols-1))){
       const y=v<=j[1]?(v-r[1])/(j[1]-r[1])*l1:l1+(v-j[1])/(tip[1]-j[1])*l2;
       const center=v<=j[1]?mix(r[0],j[0],clamp((v-r[1])/(j[1]-r[1]),0,1)):mix(j[0],tip[0],clamp((v-j[1])/(tip[1]-j[1]),0,1));
       const x=(u-center)*width,upper=add(limb.root,rotate(point(x,y),angle1)),lower=add(limb.joint,rotate(point(x,y-l1),angle2)),w=clamp((v-(j[1]-.13))/.26,0,1);
       vertices.push({u,v,x:mix(upper.x,lower.x,w),y:mix(upper.y,lower.y,w)});
     }
-    return grid(vertices,3,rows.length);
+    return grid(vertices,cols,rows.length);
+  }
+  function referenceRunSleeveMesh(p,part,n,arm,width){
+    const cfg=p.bodyProfile.downRun8,[sx,sy,sw,sh]=part.rect,k=p.bodyProfile.referenceScale,pins=cfg.referenceSleevePins[n],rows=[220,230,240,250,275,300].map(y=>(y-sy)/sh),mesh=limbMesh(arm,width,pins,rows,5),seams=cfg.referenceShoulderSeams[n];
+    function seamAt(y){for(let i=1;i<seams.length;i++)if(y<=seams[i][0]){const a=seams[i-1],b=seams[i];return mix(a[1],b[1],clamp((y-a[0])/(b[0]-a[0]),0,1));}return seams.at(-1)[1];}
+    for(const v of mesh.vertices){const x=sx+v.u*sw,y=sy+v.v*sh,seam=seamAt(y),inside=n==='R'?(x-(seam-22))/14:((seam+22)-x)/14,weight=clamp(inside,0,1)*clamp((315-y)/65,0,1),tv=(y-182)/246,target={x:mix(p.chest.x,p.hip.x,tv)+(x-321.5)*k,y:SPACE.foot+(y-870)*k+p.bob};v.x=mix(v.x,target.x,weight);v.y=mix(v.y,target.y,weight);}
+    return mesh;
+  }
+  function joinedLimbMesh(limb,width,pins={}){
+    const r=pins.root||[.5,.09],j=pins.joint||[.5,.52],t=pins.tip||[.5,.93],a=sub(limb.joint,limb.root),b=sub(limb.tip,limb.joint),l1=length(a),l2=length(b),d1=point(a.x/l1,a.y/l1),d2=point(b.x/l2,b.y/l2),n1=point(d1.y,-d1.x),n2=point(d2.y,-d2.x),dot=clamp(d1.x*d2.x+d1.y*d2.y,-.999,1),m=point((n1.x+n2.x)/(1+dot),(n1.y+n2.y)/(1+dot)),tanHalf=Math.sqrt((1-dot)/(1+dot));
+    let jointWidth=Math.min(width,.7*Math.min(l1,l2)/(Math.max(j[0],1-j[0])*Math.max(.001,tanHalf))),mesh;
+    for(let attempt=0;attempt<8;attempt++){
+      const vertices=[],rows=[0,r[1],j[1],t[1],1];
+      for(const v of rows)for(const u of [0,.5,1]){const qr=add(limb.root,point(n1.x*(u-r[0])*width,n1.y*(u-r[0])*width)),qj=add(limb.joint,point(m.x*(u-j[0])*jointWidth,m.y*(u-j[0])*jointWidth)),qt=add(limb.tip,point(n2.x*(u-t[0])*width,n2.y*(u-t[0])*width)),before=v<=j[1],q=before?(v-r[1])/(j[1]-r[1]):(v-j[1])/(t[1]-j[1]),from=before?qr:qj,to=before?qj:qt;vertices.push({u,v,x:mix(from.x,to.x,q),y:mix(from.y,to.y,q)});}
+      mesh=grid(vertices,3,rows.length);if(mesh.triangles.every(ids=>{const [a,b,c]=ids.map(i=>vertices[i]);return (b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x)>=-.000001;}))return {...mesh,jointWidth};jointWidth*=.8;
+    }
+    return {...mesh,jointWidth};
   }
   function grid(vertices,cols,rows){const triangles=[];for(let y=0;y<rows-1;y++)for(let x=0;x<cols-1;x++){const a=y*cols+x,b=a+1,c=a+cols,d=c+1;triangles.push([a,b,c],[b,d,c]);}return {vertices,triangles};}
   function quad(x,y,w,h,angle=0,anchor=[.5,0]){
@@ -132,7 +175,7 @@
       // measured UI fit, compress that collar-to-shoulder interval separately
       // from chest/waist length; the head and all world geometry are untouched.
       const fittedV=p.bodyProfile&&!part.referenceBox&&(kind==='shirt'||kind==='jacket')?(v<=.2?v*.4:.08+(v-.2)*1.15):v;
-      vertices.push({u,v,x:160+(u-.5)*width+lag,y:anchorY+fittedV*height+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
+      vertices.push({u,v,x:(p.graduateRun8?mix(p.chest.x,p.hip.x,v):160)+(u-.5)*width+lag,y:anchorY+fittedV*height+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
     }
     return grid(vertices,cols,rows);
   }
@@ -158,7 +201,7 @@
   }
   function plan(state,view,manifest,env,onlySlot=null,options={}){
     if(!manifest||manifest.version!==1)throw Error('服裝圖像正在準備中。');
-    const look=appearance(state,env),d=direction(view),profile=previewBodyProfile(look.character,options),fit=body(look.character,options).fit,parts={},items={};
+    const look=appearance(state,env),d=direction(view),profile=previewBodyProfile(look.character,{...options,direction:d}),fit=body(look.character,{...options,direction:d}).fit,parts={},items={};
     if(profile)manifest={...manifest,atlases:{...manifest.atlases,...profile.atlases}};
     for(const slot of SLOTS){
       if(onlySlot&&slot!==onlySlot)continue;
@@ -166,7 +209,7 @@
       if(!entry){if(id)throw Error('這件裝備的實際穿戴素材尚未完成。');continue;}
       const kit=manifest.kits?.[entry.kit],variant=kit?.bodyVariants?.[look.character]||kit?.bodyVariants?.[fit],raw=kit?.views?.[d],custom=variant?.views?.[d];
       if(!raw)throw Error('這套服裝缺少此方向的原畫。');
-      for(const key of PARTS[slot]){const part=(!id&&profile?.parts[d]?.defaults?.[key])||custom?.parts?.[key]||raw.parts?.[key];if(part?.hidden||!part&&OPTIONAL_PARTS.has(key))continue;parts[key]={...checkedPart(part,manifest),slot,item:id||null};}
+      for(const key of PARTS[slot]){const part=(!id&&profile?.parts[d]?.defaults?.[key])||custom?.parts?.[key]||raw.parts?.[key];if(part?.hidden||!part&&OPTIONAL_PARTS.has(key))continue;const cutouts=id&&profile?.parts[d]?.equipmentCutouts?.[id]?.[key];parts[key]={...checkedPart(cutouts?{...part,cutouts:[...(part.cutouts?(typeof part.cutouts[0]?.[0]==='number'?[part.cutouts]:part.cutouts):[]),...cutouts]}:part,manifest),slot,item:id||null};}
       if(!onlySlot)for(const side of ['L','R']){const key='hand.'+side,part=custom?.parts?.[key]||raw.parts?.[key];if(part&&!parts[key])parts[key]={...checkedPart(part,manifest),slot:'body'};}
       items[slot]=id||null;
     }
@@ -174,6 +217,7 @@
       const head=profile?.parts[d]?.head||manifest.heads?.[look.character]?.[d];parts.head={...checkedPart(head,manifest),slot:'body'};
       if(head.neckMask){parts['head.neck']={...parts.head,mask:head.neckMask,cutouts:null};parts.head.cutouts=head.neckMask;}
       for(const side of ['L','R']){const key='hand.'+side,part=profile?(d==='down'&&!look.loadout.shirt&&!look.loadout.jacket?profile.parts[d].bareHands[side]:profile.parts[d]?.hands?.[side]):manifest.hands?.[look.character]?.[d]?.[side]||manifest.hands?.[d]?.[side];if(profile&&part?.hidden){delete parts[key];continue;}if(part)parts[key]={...checkedPart(part,manifest),slot:'body'};if(!parts[key])throw Error('角色手部素材尚未備妥。');}
+      if(profile?.parts[d]?.runHands)for(const n of ['L','R']){parts['hand.run'+n]={...checkedPart(profile.parts[d].runHands[n],manifest),slot:'body'};if(!look.loadout.shirt&&!look.loadout.jacket)parts['forearm.run'+n]={...checkedPart(profile.parts[d].runForearms[n],manifest),slot:'body'};}
       if(profile?.parts[d]?.handheldHidden)delete parts.handheld;
     }
     const result={character:look.character,direction:d,parts,items,onlySlot,key:JSON.stringify([manifest.revision||1,look.character,d,...SLOTS.map(slot=>look.loadout[slot]),onlySlot,...(profile?[profile.id]:[])])};
@@ -182,11 +226,15 @@
   function partMesh(key,part,p){
     const b=p.body,s=part.scale||1,aspect=part.rect[3]/part.rect[2],side=p.side;
     if(p.bodyProfile&&part.referenceBox&&p.action==='idle'){const [x,y,w,h]=part.referenceBox,k=p.bodyProfile.referenceScale;return quad(160+(x+w/2-320)*k,SPACE.foot+(y-870)*k,w*k,h*k,0,[.5,0]);}
-    if(/\.arm[LR]$/.test(key)){const n=key.at(-1);let arm=p.limbs[n].arm;if(p.bodyProfile){if(part.sleeveEndRatio){arm={...arm,tip:point(mix(arm.root.x,arm.tip.x,part.sleeveEndRatio),mix(arm.root.y,arm.tip.y,part.sleeveEndRatio))};}else arm={...arm,root:point(arm.root.x,arm.root.y+10),joint:point(arm.joint.x,arm.joint.y+4)};}return limbMesh(arm,(p.bodyProfile&&part.displayWidth?part.displayWidth:b.limb*(key.startsWith('jacket')?1.25:1.02))*s,part.pins);}
+    if(p.graduateRun8&&part.referenceBox&&(key==='shirt.torso'||key==='pants.pelvis')){
+      const [x,y,w,h]=part.referenceBox,k=p.bodyProfile.referenceScale,top=SPACE.foot+(y-870)*k+p.bob,cx=160+(x+w/2-320)*k+(p.hip.x-160);
+      if(key==='shirt.torso')return clothMesh(p,w*k,h*k,top,'shirt',part);return quad(cx,top,w*k,h*k,0,[.5,0]);
+    }
+    if(/\.arm[LR]$/.test(key)){const n=key.at(-1);let arm=p.limbs[n].arm;if(p.bodyProfile){if(part.sleeveEndRatio){const start=p.graduateRun8?arm.joint:arm.root,ratio=p.graduateRun8?p.bodyProfile.downRun8.referenceSleeveForearmEnd:part.sleeveEndRatio;arm={...arm,tip:point(mix(start.x,arm.tip.x,ratio),mix(start.y,arm.tip.y,ratio))};}else arm={...arm,root:point(arm.root.x,arm.root.y+10),joint:point(arm.joint.x,arm.joint.y+4)};}const width=(p.bodyProfile&&part.displayWidth?part.displayWidth:b.limb*(key.startsWith('jacket')?1.25:1.02))*s;return p.graduateRun8&&part.referenceBox?referenceRunSleeveMesh(p,part,n,arm,width):limbMesh(arm,width,part.pins);}
     // Equipped DOWN leg crops include transparent side margins. Fit the existing
     // pixels to the measured thigh silhouette without moving any joints or the
     // separate reference-pixel defaults. This avoids a flat gap below the pelvis.
-    if(/\.leg[LR]$/.test(key)){const n=key.at(-1),g=p.bodyProfile?.geometry,width=p.bodyProfile?(p.direction==='down'&&part.item&&!part.referenceBox?g.equippedDownLegWidth:g.legWidth)*(side?.92:1):b.limb*(side?1.65:p.direction==='up'?2.2:2.65);return limbMesh(p.limbs[n].leg,width*s,part.pins);}
+    if(/\.leg[LR]$/.test(key)){const n=key.at(-1),g=p.bodyProfile?.geometry,width=p.graduateRun8&&part.referenceBox?part.displayWidth:p.bodyProfile?(p.direction==='down'&&part.item&&!part.referenceBox?g.equippedDownLegWidth:g.legWidth)*(side?.92:1):b.limb*(side?1.65:p.direction==='up'?2.2:2.65);let leg=p.limbs[n].leg;if(p.graduateRun8&&part.referenceBox){const r=p.bodyProfile.downRun8.referencePantCuffRatio;leg={...leg,tip:point(mix(leg.joint.x,leg.tip.x,r),mix(leg.joint.y,leg.tip.y,r))};}return (p.graduateRun8?joinedLimbMesh:limbMesh)(leg,width*s,part.pins);}
     if(/^pants\.pocket[LR]$/.test(key)){
       const n=key.at(-1),leg=p.limbs[n].leg,screen=(n==='L'?1:-1)*(p.direction==='up'?-1:1),angle=Math.atan2(leg.joint.y-leg.root.y,leg.joint.x-leg.root.x)-Math.PI/2,w=b.limb*s;
       const offset=rotate(point(screen*b.limb*.25,b.leg*.14),angle);return quad(leg.root.x+offset.x,leg.root.y+offset.y,w,w*aspect,angle,part.anchor||[screen>0?.2:.8,.05]);
@@ -207,19 +255,29 @@
       return clothMesh(p,w,h,p.neck.y+5,'cape');
     }
     if(key.startsWith('shoes.')){const n=key.at(-1),leg=p.limbs[n].leg,w=shoeWidth(p,part);return quad(leg.tip.x,leg.tip.y-2,w,w*aspect,p.limbs[n].footAngle,part.anchor||[.5,.45]);}
-    if(key.startsWith('hand.')){const n=key.at(-1),arm=p.limbs[n].arm,w=(p.bodyProfile&&part.displayWidth?part.displayWidth:17)*s,angle=Math.atan2(arm.tip.y-arm.joint.y,arm.tip.x-arm.joint.x)-Math.PI/2;return quad(arm.tip.x,arm.tip.y,w,w*aspect,angle,part.anchor||[.5,.12]);}
+    if(key.startsWith('forearm.run')){const n=key.at(-1),arm=p.limbs[n].arm,w=part.displayWidth*s,foreshorten=length(sub(arm.tip,arm.joint))/p.bodyProfile.downRun8.lowerArm,angle=Math.atan2(arm.tip.y-arm.joint.y,arm.tip.x-arm.joint.x)-Math.PI/2;return quad(arm.tip.x,arm.tip.y,w,w*aspect*foreshorten,angle,part.anchor);}
+    if(key.startsWith('hand.')){const n=key.at(-1),arm=p.limbs[n].arm,w=(p.bodyProfile&&part.displayWidth?part.displayWidth:17)*s,angle=Math.atan2(arm.tip.y-arm.joint.y,arm.tip.x-arm.joint.x)-Math.PI/2-(part.sourceArmAngle||0);return quad(arm.tip.x,arm.tip.y,w,w*aspect,angle,part.anchor||[.5,.12]);}
     if(key==='handheld'){
       const hand=part.hand==='R'?'R':'L',arm=p.limbs[hand].arm,w=31*s,angle=Math.atan2(arm.tip.y-arm.joint.y,arm.tip.x-arm.joint.x)-Math.PI/2;
       return quad(arm.tip.x,arm.tip.y-5,w,w*aspect,angle*.65,part.anchor||[.35,.16]);
     }
     if(key==='head'||key==='head.neck'){
-      const w=b.head*(p.bodyProfile?(side?.96:1):(part.widthScale||1))*s,h=w*aspect;return quad(p.neck.x,p.neck.y+(p.bodyProfile?0:14),w,h,p.headAngle,part.anchor||[.5,.88]);
+      const w=b.head*(p.bodyProfile?(side?.96:1):(part.widthScale||1))*s,h=w*aspect,anchor=part.anchor||[.5,.88],fit=p.bodyProfile?.directionFits?.[p.direction]?.head;
+      if(fit){
+        const split=fit.neckStartV,map=v=>v<=split?v:split+(v-split)*fit.neckScale,mappedAnchor=map(anchor[1]),vertices=[];
+        // Source y < 287 is the native hair/face. Only the lower neck band is
+        // shortened; head/face retain one uniform scale and a rigid translation.
+        for(const v of [0,split,1])for(const u of [0,1]){const q=rotate(point((u-anchor[0])*w,(map(v)-mappedAnchor)*h),p.headAngle);vertices.push({u,v,x:p.neck.x+q.x,y:p.neck.y+q.y});}
+        return grid(vertices,2,3);
+      }
+      return quad(p.neck.x,p.neck.y+(p.bodyProfile?0:14),w,h,p.headAngle,anchor);
     }
     if(key==='hat'){
       const head=p.headPart,w=b.head*(p.bodyProfile?1.16:1.28)*s,headWidth=b.head*(p.bodyProfile?(side?.96:1):(head?.widthScale||1))*(head?.scale||1),headHeight=head?headWidth*head.rect[3]/head.rect[2]:b.head,anchor=head?.anchor||[.5,.88];
       // Hat bands follow the skull/face rather than the bounding box of long or
       // curly hair. A measured pin can refine an authored side-view head.
-      const x=p.neck.x+(head?.hatPin?(head.hatPin[0]-anchor[0])*headWidth:0),y=p.neck.y+(p.bodyProfile?0:14)+(head?.hatPin?(head.hatPin[1]-anchor[1])*headHeight:-b.head);
+      const fit=p.bodyProfile?.directionFits?.[p.direction]?.head,headShift=fit?Math.max(0,anchor[1]-fit.neckStartV)*(1-fit.neckScale)*headHeight:0;
+      const x=p.neck.x+(head?.hatPin?(head.hatPin[0]-anchor[0])*headWidth:0),y=p.neck.y+(p.bodyProfile?0:14)+(head?.hatPin?(head.hatPin[1]-anchor[1])*headHeight:-b.head)+headShift;
       return quad(x,y,w,w*aspect,p.headAngle,part.anchor||[.5,.65]);
     }
     if(key==='accessory'){
@@ -229,12 +287,21 @@
     return null;
   }
   function layers(p,parts){
-    const near=p.near,far=near==='L'?'R':'L',arm=n=>['shirt.arm'+n,'jacket.arm'+n,'handheld','hand.'+n],leg=n=>['pants.leg'+n,'pants.pocket'+n,'shoes.'+n];
+    const near=p.near,far=near==='L'?'R':'L',arm=n=>['shirt.arm'+n,'jacket.arm'+n,...(p.graduateRun8?['forearm.run'+n]:[]),'handheld',p.graduateRun8?'hand.run'+n:'hand.'+n],leg=n=>['pants.leg'+n,'pants.pocket'+n,'shoes.'+n];
     // The book belongs to an anatomical hand, not the side of the screen. Keep
     // the far hand behind the torso and the near hand in front in each view.
     const held=parts.handheld?.hand==='R'?'R':'L',armLayer=n=>arm(n).filter(key=>key!=='handheld'||held===n);
+    if(p.graduateRun8){const frontArm=p.frontArm,backArm=frontArm==='L'?'R':'L',frontLeg=p.frontLeg,backLeg=frontLeg==='L'?'R':'L',list=['cape.back',...leg(backLeg),...armLayer(backArm),'pants.pelvis','head.neck','shirt.torso','jacket.torso','cape.front','accessory',...leg(frontLeg),...armLayer(frontArm),'head','hat'];return list.filter((key,i)=>parts[key]&&list.indexOf(key)===i);}
     const list=['cape.back',...leg(far),...armLayer(far),'pants.pelvis',...leg(near),'head.neck','shirt.torso','jacket.torso',...armLayer(near),'cape.front','accessory','head','hat'];
-    if(p.direction==='up'){const i=list.indexOf('cape.back');list.splice(i,1);list.splice(list.indexOf('head'),0,'cape.back');}
+    if(p.direction==='up'){
+      if(p.bodyProfile?.directionFits?.up?.arms?.behindTorso){
+        // Each sleeve terminates behind its own torso. The outer jacket sleeves
+        // must still cover the shirt torso, otherwise removing the extra source
+        // sleeve pixels would expose false white seams through the gold coat.
+        for(const slot of ['shirt','jacket']){const keys=[slot+'.arm'+far,slot+'.arm'+near];for(const key of keys){const i=list.indexOf(key);if(i>=0)list.splice(i,1);}list.splice(list.indexOf(slot+'.torso'),0,...keys);}
+      }
+      const i=list.indexOf('cape.back');list.splice(i,1);list.splice(list.indexOf('head'),0,'cape.back');
+    }
     return list.filter((key,i)=>parts[key]&&list.indexOf(key)===i);
   }
   function fitFeet(p,parts){
@@ -245,9 +312,9 @@
       // Calibrate the shin to the authored ankle/sole pair. The ankle marker in
       // the artwork stays fixed; a tall boot is not moved down off its leg just
       // to make its sole touch the ground.
-      limbs[n]={...p.limbs[n],leg:{...old,joint:point(old.joint.x,old.joint.y+delta*.5),tip:point(old.tip.x,old.tip.y+delta)}};
+      limbs[n]={...p.limbs[n],leg:p.graduateRun8?ik3(old.root,{...p.limbs[n].footTarget,y:p.limbs[n].footTarget.y+delta},p.bodyProfile.downRun8.upperLeg,p.bodyProfile.downRun8.lowerLeg,{x:(n==='L'?1:-1)*p.bodyProfile.downRun8.kneeOutwardBend,y:0,z:1}):{...old,joint:point(old.joint.x,old.joint.y+delta*.5),tip:point(old.tip.x,old.tip.y+delta)}};
     }
-    return {...p,limbs};
+    return {...p,limbs,...(p.graduateRun8?{frontLeg:limbs.L.leg.joint.z>=limbs.R.leg.joint.z?'L':'R'}:{})};
   }
   function expandTriangle(points,pad){
     const [a,b,c]=points,sign=Math.sign((b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x))||1;
@@ -276,14 +343,18 @@
       yield;
     }
   }
+  function partsForPose(parts,p){
+    if(!p.graduateRun8)return parts;const clips=p.bodyProfile.downRun8.sourceCutouts||{};
+    return Object.fromEntries(Object.entries(parts).map(([key,part])=>{const clip=clips[key];if(!clip||part.atlas!==clip.atlas||part.rect.some((v,i)=>v!==clip.rect[i]))return [key,part];return [key,{...part,cutouts:[...(part.cutouts||[]),...clip.cutouts]}];}));
+  }
   function* drawSteps(ctx,prepared,p,width,height,options={}){
     if(options.bodyProfile&&p.bodyProfile?.id!==options.bodyProfile)p=pose(p.character,p.direction,p.phase,p.action,options);
-    p={...fitFeet(p,prepared.plan.parts),headPart:prepared.plan.parts.head,onlySlot:prepared.plan.onlySlot};ctx.save();try{ctx.clearRect(0,0,width,height);const list=layers(p,prepared.plan.parts).map(key=>[key,partMesh(key,prepared.plan.parts[key],p)]).filter(([,mesh])=>mesh);if(!list.length)return;
+    const parts=partsForPose(prepared.plan.parts,p);p={...fitFeet(p,parts),headPart:parts.head,onlySlot:prepared.plan.onlySlot};ctx.save();try{ctx.clearRect(0,0,width,height);const list=layers(p,parts).map(key=>[key,partMesh(key,parts[key],p)]).filter(([,mesh])=>mesh);if(!list.length)return;
     if(prepared.plan.onlySlot){
       const vertices=list.flatMap(([,mesh])=>mesh.vertices),xs=vertices.map(v=>v.x),ys=vertices.map(v=>v.y),left=Math.min(...xs)-7,top=Math.min(...ys)-7,w=Math.max(...xs)-left+7,h=Math.max(...ys)-top+7,s=Math.min(width/w,height/h)*.88;
       ctx.translate((width-w*s)/2,(height-h*s)/2);ctx.scale(s,s);ctx.translate(-left,-top);
-    }else ctx.scale(width/SPACE.width,height/SPACE.height);
-    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';for(const [key,mesh] of list)yield* drawPartSteps(ctx,prepared.plan.parts[key],prepared.sources[prepared.plan.parts[key].atlas],mesh);
+    }else if(options.canonicalGraduateDown){const k=width/256*.75;ctx.translate(width/2,height*372/384);ctx.scale(k,k);ctx.translate(-160,-490);}else ctx.scale(width/SPACE.width,height/SPACE.height);
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';for(const [key,mesh] of list)yield* drawPartSteps(ctx,parts[key],prepared.sources[parts[key].atlas],mesh);
     }finally{ctx.restore();}
   }
   function draw(ctx,prepared,p,width,height,options={}){for(const unused of drawSteps(ctx,prepared,p,width,height,options)){} }
@@ -323,8 +394,8 @@
     const previews=new WeakMap();let jobs=Promise.resolve();
     function queue(job){const next=jobs.catch(()=>{}).then(job);jobs=next.catch(()=>{});return next;}
     async function yieldTask(){if(E.yieldTask)return E.yieldTask();if(E.setTimeout)return new Promise(resolve=>E.setTimeout(resolve,0));}
-    async function drawBudgeted(ctx,prepared,p,width,height,alive,budget){
-      for(const unused of drawSteps(ctx,prepared,p,width,height)){
+    async function drawBudgeted(ctx,prepared,p,width,height,alive,budget,options={}){
+      for(const unused of drawSteps(ctx,prepared,p,width,height,options)){
         if(!alive())throw aborted();
         // This is a cooperative budget: a single Canvas operation cannot be
         // preempted, but no second triangle starts after an expired 5ms slice.
@@ -334,14 +405,14 @@
     async function bitmap(atlas,tier,region,profileId=null){
       const scale=tier==='scene'?.5:1,w=Math.max(1,Math.round(region.width*scale)),h=Math.max(1,Math.round(region.height*scale)),mapping={x:region.x,y:region.y,scaleX:w/region.width,scaleY:h/region.height};
       if(E.loadImage)return {image:await E.loadImage(atlas.src,w,h,{...region,sourceWidth:atlas.width,sourceHeight:atlas.height}),...mapping};
-      if(typeof atlas.src!=='string'||!(/^\.\/assets\/avatar-raster\/[a-z0-9-]+\.webp$/.test(atlas.src)||tier==='preview'&&profileId===GRADUATE_REFERENCE.id&&PROFILE_SOURCE_PATHS.has(atlas.src)))throw Error('服裝素材必須使用已登錄的本機路徑。');
+      if(typeof atlas.src!=='string'||!(/^\.\/assets\/avatar-raster\/[a-z0-9-]+\.webp$/.test(atlas.src)||profileId===GRADUATE_REFERENCE.id&&(tier==='preview'&&PROFILE_SOURCE_PATHS.has(atlas.src)||tier==='graduate-down-scene'&&atlas.src==='./assets/avatar-raster/graduate-reference-v1/reference.png')))throw Error('服裝素材必須使用已登錄的本機路徑。');
       if(E.locationProtocol!=='file:'&&E.fetch&&E.createImageBitmap){const response=await E.fetch(atlas.src,{credentials:'same-origin'});if(!response.ok)throw Error('服裝圖像載入失敗。');const blob=await response.blob(),original=await E.createImageBitmap(blob);if(original.width!==atlas.width||original.height!==atlas.height){original.close();throw Error('服裝圖像尺寸與清單不一致。');}try{return {image:await E.createImageBitmap(original,region.x,region.y,region.width,region.height,{resizeWidth:w,resizeHeight:h,resizeQuality:'high'}),...mapping};}finally{original.close();}}
       const image=await new Promise((resolve,reject)=>{const img=new E.Image();img.onload=()=>resolve(img);img.onerror=()=>reject(Error('服裝圖像載入失敗。'));img.src=atlas.src;});
       if((image.naturalWidth||image.width)!==atlas.width||(image.naturalHeight||image.height)!==atlas.height)throw Error('服裝圖像尺寸與清單不一致。');
       const c=makeCanvas(w,h);c.getContext('2d').drawImage(image,region.x,region.y,region.width,region.height,0,0,w,h);return {image:c,...mapping};
     }
     async function prepare(state,view,tier='scene',onlySlot=null,alive=()=>true,options={}){
-      const base=manifest(),profile=tier==='preview'?previewBodyProfile(state?.appearance?.character,options):null,data=profile?{...base,atlases:{...base.atlases,...profile.atlases}}:base,p=plan(state,view,data,E,onlySlot,profile?options:{}),ids=[...new Set(Object.values(p.parts).map(part=>part.atlas))],handles=[];
+      const base=manifest(),profile=tier==='preview'||tier==='graduate-down-scene'&&direction(view)==='down'?previewBodyProfile(state?.appearance?.character,{...options,direction:view}):null,data=profile?{...base,atlases:{...base.atlases,...profile.atlases}}:base,p=plan(state,view,data,E,onlySlot,profile?options:{}),ids=[...new Set(Object.values(p.parts).map(part=>part.atlas))],handles=[];
       try{
         // Decode one texture at a time. All records refer to explicit measured
         // source rectangles; no runtime assumption about an imagegen grid.
@@ -366,6 +437,17 @@
         }catch(error){canvas.width=1;canvas.height=1;throw error;}finally{prepared.release();}
       }),options);
     }
+    async function acquireGraduateDown(state,options={}){
+      const snapshot=JSON.parse(JSON.stringify({appearance:state?.appearance,rpg:{loadout:state?.rpg?.loadout||{}}}));
+      if(appearance(snapshot,E).character!=='graduate')throw Error('此跑步分件只支援 graduate。');
+      const opts={bodyProfile:GRADUATE_REFERENCE.id,direction:'down'},p=plan(snapshot,'down',manifest(),E,null,opts),key=JSON.stringify([GRADUATE_REFERENCE.downRun8.id,p.key]),F=GRADUATE_DOWN_FRAME,cost=F.width*F.height*F.count*4;
+      return frameCache.acquire(key,cost,alive=>queue(async()=>{
+        if(!alive())throw aborted();const prepared=await prepare(snapshot,'down','graduate-down-scene',null,alive,opts),canvas=makeCanvas(F.width*F.columns,F.height*Math.ceil(F.count/F.columns)),ctx=canvas.getContext('2d');
+        try{const budget={started:E.now()};for(let i=0;i<F.count;i++){if(!alive())throw aborted();const x=i%F.columns*F.width,y=Math.floor(i/F.columns)*F.height,p=pose('graduate','down',i===0?0:(i-1)/8,i===0?'idle':'run',opts);ctx.save();try{ctx.beginPath();ctx.rect(x,y,F.width,F.height);ctx.clip();ctx.translate(x,y);await drawBudgeted(ctx,prepared,p,F.width,F.height,alive,budget,{canonicalGraduateDown:true});}finally{ctx.restore();}}
+          if(!alive())throw aborted();return {...(E.canvasURL?await E.canvasURL(canvas):{}),canvas,...F,direction:'down',ground:{x:48,y:139.5},anchor:[48,139.5],layout:GRADUATE_DOWN_LAYOUT,profile:GRADUATE_REFERENCE.id,renderMethod:'authored-parts-skeletal',key};
+        }catch(error){canvas.width=1;canvas.height=1;throw error;}finally{prepared.release();}
+      }),options);
+    }
     function status(canvas,value,message=''){canvas.dataset.renderStatus=value;canvas.setAttribute?.('aria-label',message||'角色實際穿戴圖');}
     function stopPreview(record){if(record.frame)E.cancelAnimationFrame?.(record.frame);record.frame=0;}
     function dispose(canvas){const record=previews.get(canvas);if(!record)return;record.dead=true;record.epoch++;stopPreview(record);record.dialog?.removeEventListener?.('close',record.onDialogClose);record.dialog=null;record.prepared?.release();record.prepared=null;previews.delete(canvas);}
@@ -386,7 +468,7 @@
     }
     function setPose(canvas,options={}){
       const r=previews.get(canvas);if(!r||r.dead)return Promise.reject(Error('預覽已關閉。'));
-      const d=direction(options.direction||r.direction),requested=Object.prototype.hasOwnProperty.call(options,'bodyProfile')?options.bodyProfile:r.bodyProfile,profile=previewBodyProfile(r.state?.appearance?.character,{bodyProfile:requested}),bodyProfile=profile?.id||null,changed=d!==r.direction||bodyProfile!==r.bodyProfile;r.direction=d;r.bodyProfile=bodyProfile;
+      const d=direction(options.direction||r.direction),requested=Object.prototype.hasOwnProperty.call(options,'bodyProfile')?options.bodyProfile:r.requestedBodyProfile,profile=previewBodyProfile(r.state?.appearance?.character,{bodyProfile:requested,direction:d}),bodyProfile=profile?.id||null,changed=d!==r.direction||bodyProfile!==r.bodyProfile;r.direction=d;r.requestedBodyProfile=requested;r.bodyProfile=bodyProfile;
       if(bodyProfile){canvas.dataset.bodyProfile=bodyProfile;canvas.dataset.renderMethod='authored-parts-skeletal';}else{delete canvas.dataset.bodyProfile;delete canvas.dataset.renderMethod;}if(typeof options.animate==='boolean')r.animate=options.animate&&!E.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
       if(!changed&&r.prepared?.plan.direction===d){paintPreview(canvas,r);animatePreview(canvas,r);if(!r.animate){r.prepared.release();r.prepared=null;}r.promise=Promise.resolve(canvas);return r.promise;}
       const epoch=++r.epoch;stopPreview(r);status(canvas,'loading','正在載入實際服裝');
@@ -403,7 +485,7 @@
       const item=E.MindAdventure?.gear(id),knowledge=E.MindEngine?.ITEMS?.find(item=>item.id===id),slot=item?.slot||(knowledge?'handheld':null);if(!slot)throw Error('找不到這件裝配。');
       const copy={appearance:state?.appearance,rpg:{loadout:{[slot]:id}}};return preview(copy,{...options,onlySlot:slot,animate:false});
     }
-    return {preview,itemPreview,setPose,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),dispose,acquire,prepare,describe:(state,options={})=>plan(state,options.direction||'down',manifest(),E,options.onlySlot||null,options),stats:()=>({frames:frameCache.stats(),sources:sourceCache.stats()}),clearUnused(){frameCache.clear();sourceCache.clear();},draw};
+    return {preview,itemPreview,setPose,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),dispose,acquire,acquireGraduateDown,prepare,describe:(state,options={})=>plan(state,options.direction||'down',manifest(),E,options.onlySlot||null,options),stats:()=>({frames:frameCache.stats(),sources:sourceCache.stats()}),clearUnused(){frameCache.clear();sourceCache.clear();},draw};
   }
-  return {...createRuntime(),createRuntime,DIRECTIONS,SLOTS,PARTS,SPACE,FRAME,POSES,SCENE_BYTES,SOURCE_BYTES,direction,body,previewBodyProfile,pose,stride,ik,limbMesh,quad,clothMesh,triangleTransform,partMesh,layers,fitFeet,drawSteps,plan,checkedPart,appearance,createCache,sourceRegion};
+  return {...createRuntime(),createRuntime,DIRECTIONS,SLOTS,PARTS,SPACE,FRAME,POSES,SCENE_BYTES,SOURCE_BYTES,direction,body,previewBodyProfile,pose,stride,ik,ik3,cyclic,graduateDownRunPose,GRADUATE_DOWN_FRAME,GRADUATE_DOWN_LAYOUT,limbMesh,joinedLimbMesh,referenceRunSleeveMesh,quad,clothMesh,triangleTransform,partMesh,layers,fitFeet,drawSteps,partsForPose,plan,checkedPart,appearance,createCache,sourceRegion};
 });

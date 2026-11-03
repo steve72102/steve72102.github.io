@@ -47,6 +47,7 @@
     return '#'+[n>>16&255,n>>8&255,n&255].map(v=>f(v).toString(16).padStart(2,'0')).join('');
   }
   const GRADUATE_REFERENCE='graduate-reference-v1';
+  const GRADUATE_UI_DIRECTIONS=Object.freeze(['down','left','up']);
   // UI-only vector fallback for the accepted graduate reference. Coordinates
   // are fitted by anatomical region; no bitmap or other character is stretched.
   const graduateY={
@@ -62,17 +63,19 @@
     let i=1;while(i<points.length-1&&value>points[i][0])i++;
     const [a,b]=[points[i-1],points[i]];return a[1]+(value-a[0])*(b[1]-a[1])/(b[0]-a[0]);
   }
-  function graduatePoint(x,y,region,frontNeck=false){
+  function graduatePoint(x,y,region,frontNeck=false,view='down'){
+    if(region==='up-torso')region='torso';
     const dx=x-90;
     if(region==='head')return [90+dx*(47.0598591549/52),fitted(y,graduateY.head)];
     if(region==='neck')return [90+dx*.5,fitted(y,frontNeck?graduateY.frontNeck:graduateY.neck)];
     if(region==='shadow')return [90+dx*.94,280.125+(y-316)*.8];
     const wristScale=(dx<0?29.0915492958:30.2323943662)/49;
-    if(region==='handheld'||region==='grip')return [120.2323943662+(x-139)*.75,167.2447183099+(y-165)*.75];
+    if(region==='handheld'||region==='grip')return [(view==='left'?60.9084507042:120.2323943662)+(x-139)*.75,167.2447183099+(y-165)*.75];
     if(region==='hand')return [90+dx*wristScale,fitted(y,graduateY.arm)];
     if(region==='shoes')return [(dx<0?70.6056338028:109.3943661972)+(x-(dx<0?67:113))*(32.7992957746/38),fitted(y,graduateY.shoes)];
     if(region==='pants')return [90+dx*fitted(y,[[144,41.0704225352/54],[187,47.6302816901/68],[236,1.1],[287,1.2]]),fitted(y,graduateY.pants)];
     const bodyX=90+dx*fitted(y,[[73,59.8943661972/64],[164,41.0704225352/62],[187,47.6302816901/68],[236,1],[311,1]]);let bodyY=fitted(y,graduateY.torso);
+    if(region==='accessory'&&view==='left')return [66+(x-115)*.8,fitted(112,graduateY.torso)+(y-112)*.8];
     if(region==='cape'||region==='accessory')return [bodyX,bodyY];
     if(frontNeck&&region==='torso'&&y>=73&&y<=82){
       const centre=Math.max(0,1-Math.abs(dx)/20),collarY=87.3855633803+(y-80)*.35;
@@ -82,7 +85,7 @@
     const armX=90+dx*fitted(y,[[73,59.8943661972/64],[145,wristScale]]),armY=fitted(y,graduateY.arm);
     return [bodyX+(armX-bodyX)*arm,bodyY+(armY-bodyY)*arm];
   }
-  function graduatePath(data,region,frontNeck=false){
+  function graduatePath(data,region,frontNeck=false,view='down'){
     const tokens=data.match(/[a-zA-Z]|[-+]?(?:\d*\.?\d+)(?:e[-+]?\d+)?/g)||[],out=[];
     const sizes={M:2,L:2,H:1,V:1,Q:4,C:6,S:4,T:2};let i=0,command='',x=0,y=0,start=[0,0];
     const number=n=>String(Math.round(n*10000)/10000);
@@ -95,19 +98,20 @@
       if(values.some(n=>!Number.isFinite(n)))throw Error('Invalid graduate preview point');
       if(kind==='H'||kind==='V'){
         if(kind==='H')x=values[0]+(relative?x:0);else y=values[0]+(relative?y:0);
-        out.push('L'+graduatePoint(x,y,region,frontNeck).map(number).join(' '));continue;
+        out.push('L'+graduatePoint(x,y,region,frontNeck,view).map(number).join(' '));continue;
       }
       const points=[];for(let k=0;k<count;k+=2)points.push([values[k]+(relative?x:0),values[k+1]+(relative?y:0)]);
-      out.push(kind+points.flatMap(point=>graduatePoint(...point,region,frontNeck).map(number)).join(' '));
+      out.push(kind+points.flatMap(point=>graduatePoint(...point,region,frontNeck,view).map(number)).join(' '));
       [x,y]=points[points.length-1];if(kind==='M'){start=[x,y];command=relative?'l':'L';}
     }
     return out.join(' ');
   }
-  function graduateAttributes(tag,attrs,region,frontNeck=false){
+  function graduateAttributes(tag,attrs,region,frontNeck=false,view='down'){
     const a={...attrs};
-    if(tag==='path')a.d=graduatePath(a.d,region,frontNeck);
+    if(region==='profile-direct'||region==='folded-up-arm')return a;
+    if(tag==='path')a.d=graduatePath(a.d,region,frontNeck,view);
     else if(tag==='ellipse'){
-      const [cx,cy]=graduatePoint(a.cx,a.cy,region,frontNeck),left=graduatePoint(a.cx-a.rx,a.cy,region,frontNeck),right=graduatePoint(a.cx+a.rx,a.cy,region,frontNeck),top=graduatePoint(a.cx,a.cy-a.ry,region,frontNeck),bottom=graduatePoint(a.cx,a.cy+a.ry,region,frontNeck);
+      const [cx,cy]=graduatePoint(a.cx,a.cy,region,frontNeck,view),left=graduatePoint(a.cx-a.rx,a.cy,region,frontNeck,view),right=graduatePoint(a.cx+a.rx,a.cy,region,frontNeck,view),top=graduatePoint(a.cx,a.cy-a.ry,region,frontNeck,view),bottom=graduatePoint(a.cx,a.cy+a.ry,region,frontNeck,view);
       const handLeft=a.cx<90;a.cx=cx;a.cy=cy;a.rx=region==='hand'?a.rx*(handLeft?.9804137324:1.0918243838):Math.abs(right[0]-left[0])/2;a.ry=region==='hand'?a.ry*(11.6936619718/8):Math.abs(bottom[1]-top[1])/2;
     }
     return a;
@@ -117,9 +121,9 @@
     const direction=['up','right','left'].includes(options.direction)?options.direction:'down',back=direction==='up',side=direction==='right'||direction==='left';
     // Existing world callers explicitly disable raster and do not opt into a
     // bodyProfile. An explicit profile survives the UI's asset-failure fallback.
-    // This batch accepts only the measured front preview. Side/back keep their
-    // sealed source selection until their own neck/sleeve fitting is complete.
-    const bodyProfile=character.id==='graduate'&&direction==='down'&&(options.bodyProfile===GRADUATE_REFERENCE||(options.bodyProfile!==false&&options.raster!==false))?GRADUATE_REFERENCE:null;
+    // The accepted front and fitted left/back UI views share one body policy.
+    // RIGHT and default world callers retain the sealed resolver order.
+    const bodyProfile=character.id==='graduate'&&GRADUATE_UI_DIRECTIONS.includes(direction)&&(options.bodyProfile===GRADUATE_REFERENCE||(options.bodyProfile!==false&&options.raster!==false))?GRADUATE_REFERENCE:null;
     const loadout=Object.fromEntries(Object.keys(R.SLOTS).map(s=>[s,state.rpg?.loadout?.[s]||null]));
     const actualLabel=character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；');
     if(bodyProfile){
@@ -139,11 +143,15 @@
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{xmlns:ns,viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,'data-view':direction,role:'img','aria-label':character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；')});
     if(bodyProfile)set(svg,{viewBox:'0 0 180 306',width:180,height:306,preserveAspectRatio:'xMidYMax meet','data-body-profile':bodyProfile,'data-render-method':'vector-fallback','data-art-method':'vector-fallback-preview','data-fallback-loadout':'actual-loadout','data-loadout':JSON.stringify(loadout),'data-foot-anchor':'90 275.625','data-occluded-slots':back?['accessory','handheld'].filter(s=>items[s]).join(' '):'','data-occluded-body-parts':back?'hands':''});
+    if(bodyProfile&&direction==='left')svg.setAttribute('data-side-method','independent-left-vector');
+    if(bodyProfile&&back)svg.setAttribute('data-arm-occlusion','folded-front-behind-torso');
     let slot='',project=side,anatomy='torso';
     function add(tag,attrs){
-      const region=slot==='hat'?'head':slot==='cape'?'cape':slot==='accessory'?'accessory':slot==='handheld'?'handheld':anatomy,a=bodyProfile?graduateAttributes(tag,attrs,region,direction==='down'):{...attrs};
+      const region=slot==='hat'?'head':slot==='cape'?'cape':slot==='accessory'?'accessory':slot==='handheld'?'handheld':anatomy,a=bodyProfile?graduateAttributes(tag,attrs,region,true,direction):{...attrs};
       if(slot){a['data-equipment-slot']=slot;a['data-gear-id']=items[slot]?.id||'';}
-      if(project)a.transform=(direction==='left'?'translate(144 0) scale(-.6 1)':'translate(36 0) scale(.6 1)')+(a.transform?' '+a.transform:'');
+      if(bodyProfile&&back&&anatomy==='folded-up-arm')a['data-profile-part']='folded-sleeve';
+      if(bodyProfile&&back&&anatomy==='up-torso')a['data-profile-part']='occluding-torso';
+      if(project)a.transform=(bodyProfile&&direction==='left'?(slot==='hat'?'translate(13.5 0) scale(.85 1)':'translate(36 0) scale(.6 1)'):(direction==='left'?'translate(144 0) scale(-.6 1)':'translate(36 0) scale(.6 1)'))+(a.transform?' '+a.transform:'');
       return svg.appendChild(set(document.createElementNS(ns,tag),a));
     }
     const path=(d,fill,stroke='#514d53',width=1.1)=>add('path',{d,fill,stroke,'stroke-width':width,'stroke-linejoin':'round','stroke-linecap':'round'});
@@ -155,6 +163,16 @@
     const skin=['cedar-dean','lab-engineer'].includes(character.id)?'#ddb08e':character.id==='herbal-mentor'?'#e5b79b':'#efc6a6',skinEdge='#a87965';
     const hair=cut.hair.includes('silver')?'#c1bdba':cut.hair==='gray'?'#66615d':'#302e38';
     function garment(d,color){path(d,color,tint(color,-.37),1.1);}
+    function foldedUpSleeves(color,cuffColor=null){
+      // Both forearms turn toward the chest. The following torso is painted
+      // over their wrists, so hidden hands never leave an empty rear cuff.
+      const previous=anatomy;anatomy='folded-up-arm';
+      garment('M64 89.0968L54 94Q47 109 46 123Q47 130 68 136L81 127Q66 125 62 119L68 100Z',color);
+      garment('M116 89.0968L126 94Q133 110 134 124Q133 131 112 136L99 127Q114 125 118 120L112 100Z',color);
+      line('M50 125Q57 131 67 133',tint(color,.15),1.5);line('M130 126Q123 131 113 133',tint(color,.15),1.5);
+      if(cuffColor){garment('M69 127L80 126 82 133 70 136Z',cuffColor);garment('M111 127L100 126 98 133 110 136Z',cuffColor);}
+      anatomy=previous;
+    }
     function motif(kind,x,y,r,c){
       const a=c[4]||c[0],green=c[5]||c[1];
       if(kind==='citrus'||kind==='pomelo'){
@@ -248,8 +266,13 @@
     }
     anatomy='torso';slot=has('shirt')?'shirt':'';
     const tc=has('shirt')?p('shirt'):['#abb3a7','#a4bca8','#f3eddf','#6d7e74'],tk=style('shirt');
-    garment('M'+(sl+3)+' 73L'+(sl-11)+' 83 36 145 47 153 '+(sl-2)+' 116 '+(sl+1)+' 164Q90 171 '+(sr-1)+' 164L'+(sr+2)+' 116 133 153 144 145 '+(sr+11)+' 83 '+(sr-3)+' 73 90 80Z',tc[2]);
-    line('M'+(sl-7)+' 91L43 142M'+(sr+7)+' 91L137 142',tint(tc[2],-.11),2.6);
+    if(bodyProfile&&back){
+      foldedUpSleeves(tc[2]);anatomy='up-torso';
+      garment('M'+(sl+3)+' 73L'+(sl+1)+' 164Q90 171 '+(sr-1)+' 164L'+(sr-3)+' 73Q90 68 '+(sl+3)+' 73Z',tc[2]);anatomy='torso';
+    }else{
+      garment('M'+(sl+3)+' 73L'+(sl-11)+' 83 36 145 47 153 '+(sl-2)+' 116 '+(sl+1)+' 164Q90 171 '+(sr-1)+' 164L'+(sr+2)+' 116 133 153 144 145 '+(sr+11)+' 83 '+(sr-3)+' 73 90 80Z',tc[2]);
+      line('M'+(sl-7)+' 91L43 142M'+(sr+7)+' 91L137 142',tint(tc[2],-.11),2.6);
+    }
     if(has('shirt')&&!back){
       if(['mozart','requiem','grape','pomelo'].includes(tk))garment('M78 69Q90 74 102 69L104 82Q90 87 76 82Z',tint(tc[2],-.035));else line('M77 74Q90 90 103 74',tc[3],1.1);
       if(tk==='letter'||tk==='citrus')for(let y=100;y<150;y+=9)line('M'+(sl+6)+' '+y+'H'+(sr-6),tc[1],1.4);
@@ -260,10 +283,15 @@
       slot='jacket';const c=p('jacket'),j=style('jacket'),s=shape('jacket'),hem=s.hem+bodyShift,fl=s.flare+cut.flare*.2,lh=sl-fl,rh=sr+fl;
       const left='M'+sl+' 73L'+(sl-12)+' 82Q'+(sl-16)+' 113 35 145L47 154 '+(sl-2)+' 116 '+lh+' '+(hem-2)+'Q'+(sl+9)+' '+(hem+5)+' 86 '+hem+'L87 82Z';
       const right='M'+sr+' 73L'+(sr+12)+' 82Q'+(sr+16)+' 113 145 145L133 154 '+(sr+2)+' 116 '+rh+' '+(hem-2)+'Q'+(sr-9)+' '+(hem+5)+' 94 '+hem+'L93 82Z';
-      if(back)garment('M'+sl+' 73L'+(sl-12)+' 82Q'+(sl-16)+' 113 35 145L47 154 '+(sl-2)+' 116 '+lh+' '+(hem-2)+'Q90 '+(hem+6)+' '+rh+' '+(hem-2)+'L'+(sr+2)+' 116 133 154 145 145Q'+(sr+16)+' 113 '+(sr+12)+' 82L'+sr+' 73Q90 65 '+sl+' 73Z',c[0]);
+      if(bodyProfile&&back){
+        foldedUpSleeves(c[0],c[1]);anatomy='up-torso';
+        garment('M'+sl+' 73L'+lh+' '+(hem-2)+'Q90 '+(hem+6)+' '+rh+' '+(hem-2)+'L'+sr+' 73Q90 65 '+sl+' 73Z',c[0]);anatomy='torso';
+      }else if(back)garment('M'+sl+' 73L'+(sl-12)+' 82Q'+(sl-16)+' 113 35 145L47 154 '+(sl-2)+' 116 '+lh+' '+(hem-2)+'Q90 '+(hem+6)+' '+rh+' '+(hem-2)+'L'+(sr+2)+' 116 133 154 145 145Q'+(sr+16)+' 113 '+(sr+12)+' 82L'+sr+' 73Q90 65 '+sl+' 73Z',c[0]);
       else{garment(left,c[0]);garment(right,c[0]);}
-      line('M'+(sl-5)+' 88Q'+(sl-8)+' 118 40 145M'+(sr+5)+' 88Q'+(sr+8)+' 118 140 145',tint(c[0],.19),2.2);
-      garment('M35 143L48 148 46 155 34 150Z',c[1]);garment('M132 148L145 143 146 150 134 155Z',c[1]);
+      if(!(bodyProfile&&back)){
+        line('M'+(sl-5)+' 88Q'+(sl-8)+' 118 40 145M'+(sr+5)+' 88Q'+(sr+8)+' 118 140 145',tint(c[0],.19),2.2);
+        garment('M35 143L48 148 46 155 34 150Z',c[1]);garment('M132 148L145 143 146 150 134 155Z',c[1]);
+      }
       if(back){seams(j,c,sl+9,sr-9,94,hem-8);line('M90 86V'+(hem-5),tint(c[0],-.15),.7);if(FRUIT.has(j))motif(j,90,126,8,c);}
       else{
         if(['wrap','stand'].includes(s.collar)){path('M79 72L88 81 83 '+(hem-8)+' 78 '+(hem-8)+' 83 84 '+(sl+7)+' 77Z',c[1],c[2],.6);line('M97 82L100 '+(hem-7),c[2],1.1);}
@@ -281,7 +309,17 @@
     slot='';anatomy='hand';if(!(bodyProfile&&back)){ellipse(41,156,6.4,8,skin,skinEdge,.8);ellipse(139,156,6.4,8,skin,skinEdge,.8);}anatomy='head';
     if(['long','streak','silver-bob','bob'].includes(cut.hair)&&back)garment('M67 31Q54 68 63 99Q90 111 117 99Q126 68 113 31Z',hair);
     anatomy='neck';path('M78 59L78 73Q90 82 102 73L102 59Z',skin,skinEdge,.85);anatomy='head';project=false;
-    if(side){
+    if(bodyProfile&&direction==='left'){
+      // Independently described graduate LEFT contour; no right-facing image
+      // or vector is reflected to create this low-detail failure preview.
+      anatomy='profile-direct';
+      path('M98 36Q84 31 74 40L71 49 69 54 63 58 69 62 71 69Q76 77 87 78L94 75 100 67Q111 59 107 47Z',skin,skinEdge,.9);
+      path('M108 50Q112 39 100 34Q91 29 80 34L71 34 74 39 67 41 73 44 70 49 77 46 80 52 86 47 91 53 95 50 100 61 106 66Q111 59 108 50Z',hair,hair,.8);
+      ellipse(99,59,4.1,5.7,skin,skinEdge,.7);
+      line('M72.8 51.5Q76 49.8 79.8 51',tint(hair,.09),1.3);
+      ellipse(76.5,55.6,2.8,3.4,'#fffaf0');ellipse(75.8,55.9,1.5,2.5,'#514547');circle(75.2,54.8,.6,'#fffaf0');
+      line('M69.8 62.5L72 63M70.7 67Q74 68.5 78 67','#a16768',.9);anatomy='head';
+    }else if(side){
       const start=svg.children.length;
       path('M77 15Q100 9 109 28L111 37 119 43 111 48 108 58Q101 68 85 64L78 69 73 53Q60 40 77 15Z',skin,skinEdge,.9);
       path('M75 14Q93 4 105 18L109 31 99 25 96 42 89 39 86 53 77 57Q65 43 69 27Z',hair,hair,.8);
