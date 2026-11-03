@@ -1,0 +1,593 @@
+{
+  "schema": 1,
+  "sourcesRecipe": {
+    "bytes": 24113,
+    "sha256": "6e55c538b879f12087a700697c122892555aa80d7fd3aa16bc91ff0d3c1b336e"
+  },
+  "method": "Lossless normal cells; compact is LANCZOS0.375x from the same accepted cell. No new poses.",
+  "pillow": "12.3.0",
+  "libwebp": "1.6.0",
+  "sourceLayerCount": 16,
+  "authoredCells": 1,
+  "runtimeFrames": 1,
+  "all64Complete": false,
+  "files": [
+    {
+      "file": "down-actions-0-base-under.webp",
+      "pass": "base-under",
+      "tier": "normal",
+      "bytes": 10938,
+      "sha256": "d7269d666b5baae5bf3f08764c531fc136b44034d89b5527ae36f4b322479e43",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "fa989415cbf782ecd20f1b03e621de80738ec29acf5c6dc4246ce4ff670dc5e5",
+      "alphaBBox": [
+        78,
+        128,
+        179,
+        228
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-base-under.webp",
+      "pass": "base-under",
+      "tier": "compact",
+      "bytes": 2686,
+      "sha256": "4eb7dc6fdae1e7555f810ccab31d8ebbc28cd7ab669169ed1d18e5ed248ffa16",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "e1e11caca7427087a5f917c6667cc3cdfa45e9f894f3e5abb68a252c6c9c5ae4",
+      "alphaBBox": [
+        27,
+        46,
+        69,
+        88
+      ]
+    },
+    {
+      "file": "down-actions-0-bare-feet.webp",
+      "pass": "bare-feet",
+      "tier": "normal",
+      "bytes": 4634,
+      "sha256": "8625a92efec5ddf8482e0358d679b0d1533de2c0f1382f7e40e4ad7b187495cf",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "72b57618e8c9f69ab54b619e724634cd6647531fa992e5ad727016fb36ab5bd5",
+      "alphaBBox": [
+        73,
+        333,
+        185,
+        373
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-bare-feet.webp",
+      "pass": "bare-feet",
+      "tier": "compact",
+      "bytes": 1192,
+      "sha256": "72acce5804df56e06474c73c5fc5fcd1e2fa15001a157077b9647152289a92b7",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "4bbbeb98be0d601bf8b9c8d116e2d38400b4cf0ca6b999edcce33ab6a6ccfa01",
+      "alphaBBox": [
+        25,
+        122,
+        72,
+        142
+      ]
+    },
+    {
+      "file": "down-actions-0-pants.webp",
+      "pass": "pants",
+      "tier": "normal",
+      "bytes": 22816,
+      "sha256": "b81a4c705cf0a9a81c555034690cab1e9e0434891363c8b13fb4feae7431416d",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "aa4ecb95a66305856c4c56cfddcec15b74f23dd5bc3a96fc3574fde1819459c6",
+      "alphaBBox": [
+        80,
+        205,
+        178,
+        346
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-pants.webp",
+      "pass": "pants",
+      "tier": "compact",
+      "bytes": 4602,
+      "sha256": "d0b72588e0bbd89f53d32eef6a05db110892f815b4d7cdf6d84a4cd92098ab40",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "afb3ac33dc4e94583d78b1fb058a3e88583c812f96c3a7961a33f53498be4f8b",
+      "alphaBBox": [
+        28,
+        75,
+        68,
+        130
+      ]
+    },
+    {
+      "file": "down-actions-0-shoes.webp",
+      "pass": "shoes",
+      "tier": "normal",
+      "bytes": 8006,
+      "sha256": "782d948ee1a8da81fbf9ad807f2076a546ea9a62461cd9ad0720292e3a5a9588",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "7735a59a1f5d44b9ed8f98cbe5813f4c325b9b8e547b73826c906b0a42aeff00",
+      "alphaBBox": [
+        74,
+        333,
+        184,
+        374
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-shoes.webp",
+      "pass": "shoes",
+      "tier": "compact",
+      "bytes": 1686,
+      "sha256": "48f49c0fa37b9bde3fcfa39a32cf72b28aed13da2e898002a35f9ae9bd5a577f",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "b596e3b9c0dcff3885d25cb97133cf58e2165f3b1e9f8bfdd9031669905e87ea",
+      "alphaBBox": [
+        27,
+        122,
+        70,
+        142
+      ]
+    },
+    {
+      "file": "down-actions-0-shoes-hidden.webp",
+      "pass": "shoes-hidden",
+      "tier": "normal",
+      "bytes": 194,
+      "sha256": "29313c689a25206065b8a6bb8ab923e7e77714c22ac946dd8d51ed5e4a0245f3",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "f8a060591c8d0faccb9c7eab88a6dc8e2e135acefb211c22ec4c0d73f1beb351",
+      "alphaBBox": [
+        109,
+        340,
+        148,
+        345
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-shoes-hidden.webp",
+      "pass": "shoes-hidden",
+      "tier": "compact",
+      "bytes": 176,
+      "sha256": "461d353e3d1989c0263f6d9da23d2de5377890538f5d17c3880c0948725d614f",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "13435f2df81db73d14eb11b9c24dce70bd4a92d04b587368dccd0f353c34870f",
+      "alphaBBox": [
+        38,
+        125,
+        58,
+        132
+      ]
+    },
+    {
+      "file": "down-actions-0-native-ankles.webp",
+      "pass": "native-ankles",
+      "tier": "normal",
+      "bytes": 400,
+      "sha256": "533e753439428040d079243d615d8f475dcff31912815c63bbead1ab91c66eb9",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "85f3215b12f591b82a508b2c1b9b6439c1317b972ea61ff2312a5865b26b7cf5",
+      "alphaBBox": [
+        104,
+        335,
+        151,
+        345
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-native-ankles.webp",
+      "pass": "native-ankles",
+      "tier": "compact",
+      "bytes": 312,
+      "sha256": "e638275910296b013e696806227122846aedfac2f974d05594d371ad5f7cdf14",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "4d61244d69e29f2dd3edc57e0f9ccb47796e6f299d105065e20f3f1c1116a9a6",
+      "alphaBBox": [
+        37,
+        123,
+        59,
+        132
+      ]
+    },
+    {
+      "file": "down-actions-0-bare-pants.webp",
+      "pass": "bare-pants",
+      "tier": "normal",
+      "bytes": 11900,
+      "sha256": "5917b4a93cc15c2454e6e3df1b419d3193fdf1b4870051bf4deefc4e4a6a731b",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "27660f18be5f18770b9e8f27d21314ab2040d99d0e13842ff3869b26b01f8544",
+      "alphaBBox": [
+        80,
+        207,
+        175,
+        345
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-bare-pants.webp",
+      "pass": "bare-pants",
+      "tier": "compact",
+      "bytes": 2658,
+      "sha256": "8a6485e306d6882c3677b222257a9df4e95c3282b4004d30cdb692adec67f3d4",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "63952d33e4fb2d4f3e44406c97d9f3e5a8b6f3bff9bcf797b5110c8cd94336b9",
+      "alphaBBox": [
+        33,
+        75,
+        63,
+        132
+      ]
+    },
+    {
+      "file": "down-actions-0-shirt.webp",
+      "pass": "shirt",
+      "tier": "normal",
+      "bytes": 12070,
+      "sha256": "a8be7434e510e4da418ce527d5b0b05f916257580fcd6b0f01f15296b77df77e",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "73d1576c10ca921209fabd01170b75496f19795be5611e12972affc8e7bbc243",
+      "alphaBBox": [
+        81,
+        128,
+        177,
+        217
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-shirt.webp",
+      "pass": "shirt",
+      "tier": "compact",
+      "bytes": 2960,
+      "sha256": "aacc596db813fbed1ec5d4ad2de18c22cd4b0c2832c39009ff230f7169935418",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "957a1c78eaf1fd302b2aef3c5d4cfdd67ea56389491cd18364ec89fec78a871b",
+      "alphaBBox": [
+        28,
+        46,
+        69,
+        84
+      ]
+    },
+    {
+      "file": "down-actions-0-cape-under-jacket.webp",
+      "pass": "cape-under-jacket",
+      "tier": "normal",
+      "bytes": 1422,
+      "sha256": "0b1bbbc490ace28a3ad0267c380f99677b863087538d9a7b803f9ce5a2e16f2c",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "ec912a11373f3dc2193e5b60d11559d5180f56afca11a5b28ec8f24a07d71a8a",
+      "alphaBBox": [
+        103,
+        127,
+        158,
+        151
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-cape-under-jacket.webp",
+      "pass": "cape-under-jacket",
+      "tier": "compact",
+      "bytes": 682,
+      "sha256": "b610a02a657bf1922ca0baae3f11b9071cc5de20232e3f245cb6869f4873175d",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "7f656b987a97aada17a9095fa75b378e91bef643bb96c7a8818a987fcfba3580",
+      "alphaBBox": [
+        36,
+        45,
+        62,
+        59
+      ]
+    },
+    {
+      "file": "down-actions-0-jacket.webp",
+      "pass": "jacket",
+      "tier": "normal",
+      "bytes": 14178,
+      "sha256": "0fb66bc1252d5a18b936eae5919aad86d082bbf2f8c5bb64f2c40a04911fa230",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "38c58b113aadff17f2b4e59f970577c639787f06f5a6365b1714c47a7f324823",
+      "alphaBBox": [
+        72,
+        124,
+        186,
+        231
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-jacket.webp",
+      "pass": "jacket",
+      "tier": "compact",
+      "bytes": 3524,
+      "sha256": "61707a40205a12634c9c6a40d1ae3f7fccec3b6bc458a6abab4801399287d222",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "812948d5a62adc80c7423708a8f47bba2ddfef42343db9589028de3376db5120",
+      "alphaBBox": [
+        26,
+        44,
+        70,
+        89
+      ]
+    },
+    {
+      "file": "down-actions-0-cape.webp",
+      "pass": "cape",
+      "tier": "normal",
+      "bytes": 7238,
+      "sha256": "37032acce2bd33ac0d4cf1513884c2d19e5a71526b36a07ab14d156e0478f62f",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "0db57646f3fdae1b8e72e033f06e77c6c5fd20c81760fed5b24f0ca3cc481c64",
+      "alphaBBox": [
+        67,
+        134,
+        190,
+        186
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-cape.webp",
+      "pass": "cape",
+      "tier": "compact",
+      "bytes": 1696,
+      "sha256": "15dbb14d8431de7d302cdbc8e4f8f13f4e607f06c6117c4e0577f13ea7b851af",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "40687770a3ccf3be2919cd2b131d1389216efde86919a384a06c75fcf3726355",
+      "alphaBBox": [
+        24,
+        49,
+        73,
+        72
+      ]
+    },
+    {
+      "file": "down-actions-0-accessory.webp",
+      "pass": "accessory",
+      "tier": "normal",
+      "bytes": 632,
+      "sha256": "d61a3282083ee89a682974771d13f65ed5175b4f7a50e488690ef2ffd58f47a1",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "a5c19563750f5b11eee84c52646fc71984111cf37964688153695c15dc057d6d",
+      "alphaBBox": [
+        156,
+        148,
+        165,
+        163
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-accessory.webp",
+      "pass": "accessory",
+      "tier": "compact",
+      "bytes": 286,
+      "sha256": "67c6ae1ea0ffd0d5bca26d8b0529d6faa3a2492abc55b4ce67dff306eedc9d7b",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "dc1bebc813198265ccf7b4b227d417c1d7cf6bfd78215a619eb2edf1e90f301a",
+      "alphaBBox": [
+        56,
+        53,
+        64,
+        64
+      ]
+    },
+    {
+      "file": "down-actions-0-handheld.webp",
+      "pass": "handheld",
+      "tier": "normal",
+      "bytes": 4022,
+      "sha256": "b9d1c987a04e01bdeff0c764b05fc0699a0a93520c57663203052e2a7b0e26e3",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "0e07a5784b9b43380d835a6a596ea9433d5f9d0892b8874aacdd0d97eff45ccb",
+      "alphaBBox": [
+        113,
+        154,
+        161,
+        210
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-handheld.webp",
+      "pass": "handheld",
+      "tier": "compact",
+      "bytes": 1296,
+      "sha256": "4e899ee24a52fbe405530bfb33e20c6261e8ce9f0b4f4c04b36dc3dddfd414d4",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "b2cafc2013eba53600a38c6b15031f8d3a6cac75fd376f3a7b7bef33768210df",
+      "alphaBBox": [
+        40,
+        55,
+        63,
+        81
+      ]
+    },
+    {
+      "file": "down-actions-0-bare-hair.webp",
+      "pass": "bare-hair",
+      "tier": "normal",
+      "bytes": 1224,
+      "sha256": "4dd1bee35f36c5dceb860b67bef00b2c19bcdf0a56c1cd997bf78bd899e15bb0",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "74e7159b7e4582517f667c3ab21d94e062740c5a5d9f3ff00ed7cb29d3747934",
+      "alphaBBox": [
+        105,
+        84,
+        154,
+        115
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-bare-hair.webp",
+      "pass": "bare-hair",
+      "tier": "compact",
+      "bytes": 538,
+      "sha256": "669ba323a7c9e7857c0f290a266ecb334feb05a2f868978ba52b06a658af7eab",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "1f513b74258ee5c75c9fa071bbdb5402e724728aa86f1361929218e3255c8fc4",
+      "alphaBBox": [
+        37,
+        29,
+        59,
+        46
+      ]
+    },
+    {
+      "file": "down-actions-0-hat.webp",
+      "pass": "hat",
+      "tier": "normal",
+      "bytes": 3088,
+      "sha256": "5aa92d9d49b7b1c8e0cc7d34e110f7d7aed969abfef729bfe43b12d90f82fd1c",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "ace225c67267c08973d40ac906dafea22f942e3f5ac627b926ccaa94163b9f71",
+      "alphaBBox": [
+        101,
+        75,
+        157,
+        111
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-hat.webp",
+      "pass": "hat",
+      "tier": "compact",
+      "bytes": 800,
+      "sha256": "3d274128f8da8cab8e64dbf4bb6bdfdb8bb5a8372172c68fecaa8a5e8e39a3af",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "6fd8ee4486306809ee9a3f2e2ab9ee6ced1691bddc6d50eb96dd25645f0f2508",
+      "alphaBBox": [
+        36,
+        26,
+        60,
+        43
+      ]
+    },
+    {
+      "file": "down-actions-0-body-front.webp",
+      "pass": "body-front",
+      "tier": "normal",
+      "bytes": 6616,
+      "sha256": "275793c23df36d085b78b85a498ddb0f188a63da0c2832064f64ece54ac30472",
+      "dimensions": [
+        256,
+        384
+      ],
+      "rgbaSha256": "d3b2a19c03e1bfa6a826db1e6ba2cf674322097737b71736476a3461f28fdd46",
+      "alphaBBox": [
+        102,
+        93,
+        171,
+        202
+      ]
+    },
+    {
+      "file": "compact-down-actions-0-body-front.webp",
+      "pass": "body-front",
+      "tier": "compact",
+      "bytes": 1728,
+      "sha256": "0ca09ea660a10b0beeb489632866126da5fccfc5e5d59b47e147a2cb76d77933",
+      "dimensions": [
+        96,
+        144
+      ],
+      "rgbaSha256": "083f8509f673bb313c0c7efb821e033c6957d04bd95a9bb11c41d39782b6f49b",
+      "alphaBBox": [
+        36,
+        32,
+        67,
+        78
+      ]
+    }
+  ],
+  "deployed": false
+}

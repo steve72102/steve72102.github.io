@@ -1,0 +1,5154 @@
+{
+  "schema": 2,
+  "id": "doctor-up-v1",
+  "character": "doctor",
+  "status": "pilot",
+  "storage": "single-cells",
+  "extensionOf": {
+    "id": "doctor-v1",
+    "revision": "painted-93ac308a70791260"
+  },
+  "label": "星序博士・向上跑步及待機起停轉跳16格八欄原畫分件",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "width": 1024,
+    "height": 768,
+    "anchorX": 128,
+    "anchorY": 372
+  },
+  "coverage": {
+    "version": 1,
+    "cells": [
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 0
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 1
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 2
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 3
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 4
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 5
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 6
+      },
+      {
+        "direction": "up",
+        "sheet": "run",
+        "frame": 7
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 0
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 1
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 2
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 3
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 4
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 5
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 6
+      },
+      {
+        "direction": "up",
+        "sheet": "actions",
+        "frame": 7
+      }
+    ]
+  },
+  "previewBox": [
+    16,
+    52,
+    224,
+    326
+  ],
+  "portraitBox": [
+    72,
+    58,
+    136,
+    122
+  ],
+  "items": {
+    "jacket": [
+      "fruit-pineapple-jacket"
+    ],
+    "cape": [
+      "fruit-pineapple-cape"
+    ],
+    "shirt": [
+      "fruit-pineapple-shirt"
+    ],
+    "pants": [
+      "fruit-pineapple-pants"
+    ],
+    "shoes": [
+      "fruit-pineapple-shoes"
+    ],
+    "hat": [
+      "fruit-pineapple-hat"
+    ],
+    "accessory": [
+      "fruit-pineapple-accessory"
+    ],
+    "handheld": [
+      "fruit-pineapple-handheld"
+    ]
+  },
+  "loadoutCoverage": {
+    "mode": "allowlist",
+    "entries": [
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      }
+    ]
+  },
+  "passes": [
+    {
+      "id": "base-under",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 0,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-base-under.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-base-under.webp"
+        }
+      ]
+    },
+    {
+      "id": "base-sleeves-underwear",
+      "ownerSlot": "shirt",
+      "itemId": null,
+      "z": 1,
+      "requires": {
+        "jacket": null
+      },
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-base-sleeves-underwear.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 5,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-feet.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-feet.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-pants",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 20,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet-order-30",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 30,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-feet-order-30.webp"
+        }
+      ]
+    },
+    {
+      "id": "shoes",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 30,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-shoes.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-shoes.webp"
+        }
+      ]
+    },
+    {
+      "id": "native-ankles",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 32,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-native-ankles.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-native-ankles.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-pants-order-35",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 35,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-pants-order-35.webp"
+        }
+      ]
+    },
+    {
+      "id": "shirt",
+      "ownerSlot": "shirt",
+      "itemId": "fruit-pineapple-shirt",
+      "z": 40,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-shirt.webp"
+        }
+      ]
+    },
+    {
+      "id": "pants",
+      "ownerSlot": "pants",
+      "itemId": "fruit-pineapple-pants",
+      "z": 41,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-pants.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet-order-42",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 42,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-feet-order-42.webp"
+        }
+      ]
+    },
+    {
+      "id": "cape-under-jacket",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 45,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-cape-under-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-cape-under-jacket.webp"
+        }
+      ]
+    },
+    {
+      "id": "jacket-cuffs-under-shirt",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 49,
+      "requires": {
+        "shirt": null
+      },
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-jacket-cuffs-under-shirt.webp"
+        }
+      ]
+    },
+    {
+      "id": "jacket",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 50,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-jacket.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-jacket.webp"
+        }
+      ]
+    },
+    {
+      "id": "cape",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 60,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-cape.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-cape.webp"
+        }
+      ]
+    },
+    {
+      "id": "accessory",
+      "ownerSlot": "accessory",
+      "itemId": "fruit-pineapple-accessory",
+      "z": 65,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-accessory.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-accessory.webp"
+        }
+      ]
+    },
+    {
+      "id": "handheld",
+      "ownerSlot": "handheld",
+      "itemId": "fruit-pineapple-handheld",
+      "z": 70,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-handheld.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-handheld.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-hair",
+      "ownerSlot": "hat",
+      "itemId": null,
+      "z": 75,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-bare-hair.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-bare-hair.webp"
+        }
+      ]
+    },
+    {
+      "id": "hat",
+      "ownerSlot": "hat",
+      "itemId": "fruit-pineapple-hat",
+      "z": 80,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-hat.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-hat.webp"
+        }
+      ]
+    },
+    {
+      "id": "body-front",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 90,
+      "frames": [
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-0-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-0-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-1-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-1-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-2-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-2-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-3-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-3-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-4-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-4-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-5-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-5-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-6-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-6-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-run-7-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-run-7-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-0-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-0-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-1-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-1-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-2-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-2-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-3-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-3-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-4-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-4-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-5-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-5-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-6-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-6-body-front.webp"
+        },
+        {
+          "direction": "up",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-up-v1/up-actions-7-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-up-v1/compact-up-actions-7-body-front.webp"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "method": "Each own native up pose independently partitioned; built-in image_gen supplies concealed garment material, cap-under hair and socked underclothes. No reflection, reused other-pose mask, skeletal replacement or whole-person deformation.",
+    "authoredAddedCellCount": 16,
+    "existingNativePosesIndependentlyLayered": 16,
+    "newMovementPosesInvented": 0,
+    "preservedSealedIdle": "doctor-v1 down/actions/0",
+    "preservedDownExtension": "doctor-down-v1@painted-def2793e41e24565",
+    "independentlyLayeredDoctorCellsIncludingPriorIdle": 32,
+    "remainingDoctorCells": 32,
+    "fourDirectionsComplete": false,
+    "all64PosesComplete": false,
+    "normalIdentity": "Visible own-native hair, neck, ears, face and hands retain their RGBA; invisible rear-view regions are recorded as occluded, not fabricated.",
+    "clothAlphaCleanup": "Original near-opaque cloth alpha may be promoted from >=240 to255; original visible RGB and native source atlases are retained.",
+    "compact": "Same-source LANCZOS 0.375 resize; non-body passes clear only resized body-front alpha>=248 identity core. Antialias edges may blend naturally.",
+    "logicalSlots": 8,
+    "paintPasses": 20,
+    "explicitTransparentPassCells": 120,
+    "frontItemsOnRearView": "handheld and accessory remain their true front items, naturally occluded by the body; native rear cape fasteners remain cape detail.",
+    "fallback": "Exact actual-loadout fallback for unsupported left/right cells, foreign items and failed current cells; down assets and load race/fallback code remain unchanged.",
+    "publicBaseline": "43fec29001a32a5f2f9e9f9058fb0e664f677f18",
+    "nativeSources": [
+      {
+        "path": "game/assets/native-avatar/pineapple-doctor/up-run.webp",
+        "bytes": 393670,
+        "sha256": "a08885c98b6c14dfa36053bcb8607e3ecc2c517f58b252f0e201a56a892d49bb"
+      },
+      {
+        "path": "game/assets/native-avatar/pineapple-doctor/up-actions.webp",
+        "bytes": 433564,
+        "sha256": "633a4190d5eff4b9741b7887985f554d9050a09ef83afb22073cb27a9753e6e1"
+      }
+    ],
+    "runtimeAIOrPaidAPI": false,
+    "deployed": false
+  },
+  "revision": "painted-03b51fa343409f2b"
+}

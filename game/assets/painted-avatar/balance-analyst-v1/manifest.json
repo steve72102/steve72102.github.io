@@ -1,0 +1,2928 @@
+{
+  "schema": 2,
+  "id": "balance-analyst-v1",
+  "character": "balance-analyst",
+  "revision": "painted-64f2e2e23b4b944c",
+  "status": "pilot",
+  "storage": "single-cells",
+  "label": "沐衡分析師・正面待機256組同底稿穿搭",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "width": 1024,
+    "height": 768,
+    "anchorX": 128,
+    "anchorY": 372
+  },
+  "coverage": {
+    "version": 1,
+    "cells": [
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 0
+      }
+    ]
+  },
+  "previewBox": [
+    51,
+    73,
+    154,
+    307
+  ],
+  "portraitBox": [
+    85,
+    78,
+    86,
+    105
+  ],
+  "itemBoxes": {
+    "jacket": [
+      69,
+      131,
+      116,
+      113
+    ],
+    "cape": [
+      57,
+      137,
+      142,
+      63
+    ],
+    "shirt": [
+      78,
+      134,
+      104,
+      100
+    ],
+    "pants": [
+      80,
+      207,
+      95,
+      127
+    ],
+    "shoes": [
+      89,
+      330,
+      81,
+      44
+    ],
+    "hat": [
+      97,
+      79,
+      61,
+      39
+    ],
+    "accessory": [
+      155,
+      152,
+      13,
+      19
+    ],
+    "handheld": [
+      108,
+      158,
+      46,
+      45
+    ]
+  },
+  "items": {
+    "jacket": [
+      "fruit-pineapple-jacket"
+    ],
+    "cape": [
+      "fruit-pineapple-cape"
+    ],
+    "shirt": [
+      "fruit-pineapple-shirt"
+    ],
+    "pants": [
+      "fruit-pineapple-pants"
+    ],
+    "shoes": [
+      "fruit-pineapple-shoes"
+    ],
+    "hat": [
+      "fruit-pineapple-hat"
+    ],
+    "accessory": [
+      "fruit-pineapple-accessory"
+    ],
+    "handheld": [
+      "fruit-pineapple-handheld"
+    ]
+  },
+  "loadoutCoverage": {
+    "mode": "allowlist",
+    "entries": [
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      }
+    ]
+  },
+  "passes": [
+    {
+      "id": "base-under",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 0,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-base-under.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-base-under.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 5,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-bare-feet.webp"
+        }
+      ]
+    },
+    {
+      "id": "shoes",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 30,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-shoes.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-shoes.webp"
+        }
+      ]
+    },
+    {
+      "id": "pants",
+      "ownerSlot": "pants",
+      "itemId": "fruit-pineapple-pants",
+      "z": 35,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-pants.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-pants",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 35,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-bare-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "shirt",
+      "ownerSlot": "shirt",
+      "itemId": "fruit-pineapple-shirt",
+      "z": 40,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-shirt.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-shirt.webp"
+        }
+      ]
+    },
+    {
+      "id": "shirt-hem-under-pants",
+      "ownerSlot": "shirt",
+      "itemId": "fruit-pineapple-shirt",
+      "z": 41,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-shirt-hem-under-pants.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-shirt-hem-under-pants.webp"
+        }
+      ],
+      "requires": {
+        "pants": null
+      }
+    },
+    {
+      "id": "jacket-cuffs-under-shirt",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 49,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-jacket-cuffs-under-shirt.webp"
+        }
+      ],
+      "requires": {
+        "shirt": null
+      }
+    },
+    {
+      "id": "jacket",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 50,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-jacket.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-jacket.webp"
+        }
+      ]
+    },
+    {
+      "id": "cape",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 60,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-cape.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-cape.webp"
+        }
+      ]
+    },
+    {
+      "id": "accessory",
+      "ownerSlot": "accessory",
+      "itemId": "fruit-pineapple-accessory",
+      "z": 65,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-accessory.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-accessory.webp"
+        }
+      ]
+    },
+    {
+      "id": "handheld",
+      "ownerSlot": "handheld",
+      "itemId": "fruit-pineapple-handheld",
+      "z": 70,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-handheld.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-handheld.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-hair",
+      "ownerSlot": "hat",
+      "itemId": null,
+      "z": 75,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-bare-hair.webp"
+        }
+      ]
+    },
+    {
+      "id": "hat",
+      "ownerSlot": "hat",
+      "itemId": "fruit-pineapple-hat",
+      "z": 80,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-hat.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-hat.webp"
+        }
+      ]
+    },
+    {
+      "id": "body-front",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 90,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 0,
+          "image": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-body-front.webp",
+          "compactImage": "./assets/painted-avatar/balance-analyst-v1/compact-down-actions-0-body-front.webp"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "method": "Own mature slender balance-analyst visible pixels plus six separately authored own cloth/crown sources; approved standalone pineapple pin",
+    "fixedIdentity": "Own analyst mature face, silver-streak swept fringe, low bun, neck skin and both forearms/hands; no foreign body or masks",
+    "authoredCellCount": 1,
+    "fourDirectionsComplete": false,
+    "all64PosesComplete": false,
+    "compact": "0.375x from the same accepted normal cell",
+    "fallback": "Existing true-loadout Native/Layered/SVG outside this explicit down/actions/0 pose and pineapple/null items",
+    "nullClothes": "Modest warm-grey own-body knit underclothes and socks",
+    "hat": "Own green cap in hat slot; independently painted silver-streak crown for hat=null",
+    "handheld": "Own native gold/green book; no fixed book pixels on the hand layer",
+    "creativeRuntimeDependency": false
+  }
+}

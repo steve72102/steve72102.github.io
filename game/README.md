@@ -476,3 +476,9 @@ node tools/illustrated-scenes.browser.cjs
 瀏覽器使用可丟棄的本機驗收存檔、Playwright/Chromium 及繁中字型，正式流量被阻擋。完整報告、實際畫面、來源 SHA 及未測清單隨小包交付。單元測試不包含 Firebase emulator rules 套件；Google 跨端、正式交易重放、真實 60 人、實體手機及發布後 cache／離線成品，仍須接手者在對應環境驗收。
 
 本批不改學習、樓層解鎖、兩回合對戰、券／金幣規則、背包容量、雲端安全或存檔格式；不調整任何玩家等級、錢包、共池，不加入管理後門。交付包不是部署完成的聲明。
+
+## Stage5 doctor 正面待機分層小批次
+
+本批為 doctor 自己的 down/actions/0 單格原畫：16個pass、19組明列穿脫、256×384正常與96×144 compact，共用商城／衣櫥／頭像／場景渲染。其他63格與未明列混搭繼續走既有同裝備動畫，不代表完整64格已補完。原教授註冊與素材保留。
+
+接手、基底、來源、重建與未測範圍見 `../docs/DOCTOR-IDLE-HANDOFF.md`；新增資產清單為 `../tools/doctor-pilot-runtime-assets.json`，需由Codex合併至自己的快取／離線發布流程。入口、版號、離線打包工具與玩家資料未改。

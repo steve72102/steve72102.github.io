@@ -1,183 +1,208 @@
 {
   "version": 1,
   "filename": "mind-quest-offline.zip",
-  "size": 96499619,
-  "sha256": "60df8d4f34a426f4f143dbf62de5130e7b5aee1d6e5113005d44be1f512fe1f7",
+  "size": 118727531,
+  "sha256": "96200523e188e317312f54620b4e647386e5b4986a1a2b610bd785f25b9cb1b2",
   "parts": [
     {
-      "file": "mind-quest-def3050ac969-01.part",
+      "file": "mind-quest-96200523e188-01.part",
       "bytes": 3000000,
-      "sha256": "e911b45b1cd95fd12677436a413d486868f54aa705794feb45d5d2519371aa36"
+      "sha256": "1623d0d668fc10b68f71bd8e3f0235d43fc65f861788942c88d96c0ea0943510"
     },
     {
-      "file": "mind-quest-def3050ac969-02.part",
+      "file": "mind-quest-96200523e188-02.part",
       "bytes": 3000000,
-      "sha256": "85711bedf723afd5df1ca2b1cd789f07b44351ffebd674d4773ac5da8c4f26db"
+      "sha256": "8fac8ed7d43105dde0c4fb9d3537876a6c3a7fa29d5fc39203885211f1334a56"
     },
     {
-      "file": "mind-quest-def3050ac969-03.part",
+      "file": "mind-quest-96200523e188-03.part",
       "bytes": 3000000,
-      "sha256": "ddf7970ed2a2e18e5a58726bbbeb40f88704583b5d51f0f1ef76d6ce0ff0fb51"
+      "sha256": "62c21d27a3e99731d775f5247ad8982f31d09c1168ee5e30140baf1c2ca2f5bf"
     },
     {
-      "file": "mind-quest-def3050ac969-04.part",
+      "file": "mind-quest-96200523e188-04.part",
       "bytes": 3000000,
-      "sha256": "e5566c5fad1f2477da790c8efe4cf156807c7f0bec221752e190c413a9452091"
+      "sha256": "e54896af19c6a47702bd47e9bbab70a1fd841e0524a7af3bd54f051441d00c92"
     },
     {
-      "file": "mind-quest-def3050ac969-05.part",
+      "file": "mind-quest-96200523e188-05.part",
       "bytes": 3000000,
-      "sha256": "d9da3866fa1b7de1c5f5ed3843dd0ebb602424fd150ad6ce2dc047ff1cea976a"
+      "sha256": "a87b43dbf7208e8dfc3470fd325a3bc9c05f9f73be9464d50bd880f6cbb7ddd1"
     },
     {
-      "file": "mind-quest-def3050ac969-06.part",
+      "file": "mind-quest-96200523e188-06.part",
       "bytes": 3000000,
-      "sha256": "c5518a741266bf28ffe0d23cd5e594d38d4d0af59ffc4b4238557ac634ec75fa"
+      "sha256": "eb7a0c4b068173a2be668d094dc6d67f169c7df3e81a9d2e879178711bc3dd02"
     },
     {
-      "file": "mind-quest-def3050ac969-07.part",
+      "file": "mind-quest-96200523e188-07.part",
       "bytes": 3000000,
-      "sha256": "3dc9daececb6d4c3152cce4bde6874b3ea843f08c36a1710ec47c4511dc56e17"
+      "sha256": "8a582116f0fcdc4a309f0ece213fa6ea80a9c33c1543b810ac315834108240ea"
     },
     {
-      "file": "mind-quest-def3050ac969-08.part",
+      "file": "mind-quest-96200523e188-08.part",
       "bytes": 3000000,
-      "sha256": "98b992edb98474b2b8cd67f6410ffa1b74c4f3493ed50f5a37fe6638b7359e7d"
+      "sha256": "c74a79b4bcf4ee42010950d5fcd799d2e0e972d8809d794134ebee07784f949f"
     },
     {
-      "file": "mind-quest-def3050ac969-09.part",
+      "file": "mind-quest-96200523e188-09.part",
       "bytes": 3000000,
-      "sha256": "5ab210662d3449a7b3ca5df497d3063767337e2dff1d98209cc57d8f062af3bc"
+      "sha256": "dc7229fddcff3efe7542b8fe25f5418dc44a27f5c17cc1986632bad9ff94e093"
     },
     {
-      "file": "mind-quest-def3050ac969-10.part",
-      "bytes": 1584726,
-      "sha256": "178d4b7e922190367994558f464aae8b25b1bba6005efc11b81b5deff4972a45"
-    },
-    {
-      "file": "mind-quest-124c63487313-11.part",
-      "bytes": 91432,
-      "sha256": "b57403d8f238f0e9a7aada41e8164c5731e189eee8bedb025105924d7f997a5c"
-    },
-    {
-      "file": "mind-quest-d7b91358f648-12.part",
+      "file": "mind-quest-96200523e188-10.part",
       "bytes": 3000000,
-      "sha256": "d22d72f166f0d1aae8f9c7cc6354ee8741af66400957ddf5bcc4016a469ca09b"
+      "sha256": "3ca7945e03386ad3514ce39e7442ae6c930419733ace9f4aa040d8828f70106b"
     },
     {
-      "file": "mind-quest-d7b91358f648-13.part",
-      "bytes": 1662500,
-      "sha256": "31dac7543011633e5c680523a14989678bd50fbc2d17be679e43d76462cb2e40"
-    },
-    {
-      "file": "mind-quest-60df8d4f34a4-14.part",
+      "file": "mind-quest-96200523e188-11.part",
       "bytes": 3000000,
-      "sha256": "c4d79b3a80aeca48b33acb955481c592a91010930227ce9906a6e2e762a2350b"
+      "sha256": "77b5a1947ed49e6c931da33bc648aa0e35d2277f74ddc99f695e4d069adbb3c8"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-15.part",
+      "file": "mind-quest-96200523e188-12.part",
       "bytes": 3000000,
-      "sha256": "71a8f4e29dd6f8a6ddd7447ae0f272f3115dafe23e96883c413cbfb8fa4aa6bb"
+      "sha256": "f37a00725dd5bba2cdf71f77c40c7466436d88e4444f023f0cc85f48e6e242b3"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-16.part",
+      "file": "mind-quest-96200523e188-13.part",
       "bytes": 3000000,
-      "sha256": "729711572629b6255b99acb0401a7e8faa5c092a077a0c0b34e60bebca750b21"
+      "sha256": "baf7939ae30ae497c6cebabaa803091613a1fd06085896c128f3c445dca84ac0"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-17.part",
+      "file": "mind-quest-96200523e188-14.part",
       "bytes": 3000000,
-      "sha256": "3b5111371f1e7cac7aee6104751721d9a4e841d7bcfc1075af05728784543d1f"
+      "sha256": "9818e4e1dfcbf1fda8e608d1e22fefa7f639911bd457a2b8de7dea9dad0561e6"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-18.part",
+      "file": "mind-quest-96200523e188-15.part",
       "bytes": 3000000,
-      "sha256": "7409679500ff200dead8bd3d4a26f20cd1f86c734fb399929ddda661e20c800b"
+      "sha256": "7c5de87ba2ecfd3d42d4736697eba57955ed839085a0e53f073a3ed3189d1762"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-19.part",
+      "file": "mind-quest-96200523e188-16.part",
       "bytes": 3000000,
-      "sha256": "b2674235cdcf0df863e8a2ffea75f68c4a92d96d4ac3c510445158293be18d10"
+      "sha256": "a2af6b33b1a2d23380d8be91d32dee156ff68416afa79fea4f81d5b1ab8cecc6"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-20.part",
+      "file": "mind-quest-96200523e188-17.part",
       "bytes": 3000000,
-      "sha256": "e83a364ee73784f599abf646cfea78ecb9246cf725ea7b751e7e94c6ec0ffe3a"
+      "sha256": "1e707100aa534d10eb98a5a31f0233295602c3b871f073006b966deacb303726"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-21.part",
+      "file": "mind-quest-96200523e188-18.part",
       "bytes": 3000000,
-      "sha256": "a3dcc5bc2fc25660cf890b9a581e977c2eac8fdb6468475ef9c218592b87189e"
+      "sha256": "b6d1b8776d413f4a0346540f1ff79aa8b41841d8f80f00b1e16da67a4c5d7e89"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-22.part",
+      "file": "mind-quest-96200523e188-19.part",
       "bytes": 3000000,
-      "sha256": "a17f9f865d52fe9d2a27dc7215fb665209f0567158ff3bf3301be9e7ec94b1eb"
+      "sha256": "45acd972d92e1c2bb72c9dc9acfcaec52faa20ae04f7e20d56f86e416916d16f"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-23.part",
+      "file": "mind-quest-96200523e188-20.part",
       "bytes": 3000000,
-      "sha256": "515343545fd548923f4a3b99f7007ee4c260c94903bc5c7f4ff66e553704e228"
+      "sha256": "6224062f21dcebde05b956e8c68a27999df84452c9920ce46d2f147fee22abc5"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-24.part",
+      "file": "mind-quest-96200523e188-21.part",
       "bytes": 3000000,
-      "sha256": "460497f4b047ed34fddacff86ca33862ab8a1212e1e6a120071a6b43003c236d"
+      "sha256": "99f189b53908347335a4c3dc9f4c6482c56fe200f4a83f6d6f95b0d0c818b94c"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-25.part",
+      "file": "mind-quest-96200523e188-22.part",
       "bytes": 3000000,
-      "sha256": "80b8ba0819893c912d2a8402e900121531a93f5187491cd98d780a7f9de26b99"
+      "sha256": "97cab618842e44607a41d262a5ae8ab44e4242233eeec588f2749b92ed4f1fef"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-26.part",
+      "file": "mind-quest-96200523e188-23.part",
       "bytes": 3000000,
-      "sha256": "651c66d3fab06f401cb7892d0694bcb540a5f455597fba91dc21e986b270ac21"
+      "sha256": "8943828e41865ffe7b45d0959c43d85781b8a043dabe5b5ff12646fde5ba96f5"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-27.part",
+      "file": "mind-quest-96200523e188-24.part",
       "bytes": 3000000,
-      "sha256": "a93b8c7c011cf3712b60e500d2206e275dc2c76dfea2b69c03b98af7c0c61d69"
+      "sha256": "48a788b9a844c444be298848691c25efa22631184b66ed74b80a93db228596f2"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-28.part",
+      "file": "mind-quest-96200523e188-25.part",
       "bytes": 3000000,
-      "sha256": "aced74335baa152d23a4b6d4e2e255485650c6115d16ef9196b9ac8084f8b458"
+      "sha256": "c8207a8a6db9993a1160e5765ea7236a3a951a60bcffc9ae535a049a666d66a8"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-29.part",
+      "file": "mind-quest-96200523e188-26.part",
       "bytes": 3000000,
-      "sha256": "3d860c4fc7c62c7e32dbec9c25cb5c0549449871b7ab52f6452d173763f32775"
+      "sha256": "d0384f29e34a7374ca05e6ec73e711a1ba3c1e9b81bf16d8bfcc3fbbaa868e32"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-30.part",
+      "file": "mind-quest-96200523e188-27.part",
       "bytes": 3000000,
-      "sha256": "555af8631bc7de2b961f36d5e6dc0f97398e3f11a429b10ee332e0aebbeecf64"
+      "sha256": "df40222131e5566876fc188334974660cd65c44d3c56462c06f89f05223008dc"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-31.part",
+      "file": "mind-quest-96200523e188-28.part",
       "bytes": 3000000,
-      "sha256": "2a293a170a5751cfb9208e1f50f25049ea7ccdd779be86096f31779a98abf12e"
+      "sha256": "89ad7d072c76831f4c3d9804bfeb1d4c123b7b758e0d2d51ad353d77e3da1c6f"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-32.part",
+      "file": "mind-quest-96200523e188-29.part",
       "bytes": 3000000,
-      "sha256": "293cb904030c1b4699511ed9dd079a549a5bdb14e4cf0a9801511610e82e4168"
+      "sha256": "482756dfdae78684d6dfd2c53d039c9c90b869f27bf17bd7874195deae8208a2"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-33.part",
+      "file": "mind-quest-96200523e188-30.part",
       "bytes": 3000000,
-      "sha256": "6a153d8fc1f5f7f2f03caf7465dfb48b44ad0682febde3c821e89beb3c7f7bfb"
+      "sha256": "1a3cfa07ff6c629e9948e7c16f7026c2178366fc55d49a184f461c2da6ac447e"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-34.part",
+      "file": "mind-quest-96200523e188-31.part",
       "bytes": 3000000,
-      "sha256": "439f385f13549afec4f9d3166ea4dfa5f4b4bbc78f7191a481e02a55776c0b4f"
+      "sha256": "00221473ad3c15897f106dc17ccd5d7f89737a622c2fe3b25fa90d7cc9976835"
     },
     {
-      "file": "mind-quest-60df8d4f34a4-35.part",
-      "bytes": 160961,
-      "sha256": "4b7e164e9681b2e8fe524e1539837a6769e6b532b7098ca051bf88787f5cc37a"
+      "file": "mind-quest-96200523e188-32.part",
+      "bytes": 3000000,
+      "sha256": "96ee3ec0ff7c343f6b90cf3c00317c0fab6a3128b7ecf3e345e949874f8b78f7"
+    },
+    {
+      "file": "mind-quest-96200523e188-33.part",
+      "bytes": 3000000,
+      "sha256": "201afc1deab0c86a29695bbab884475be37e68f55936b498df234915f8ca3510"
+    },
+    {
+      "file": "mind-quest-96200523e188-34.part",
+      "bytes": 3000000,
+      "sha256": "0b4dea51ff0a2983bdbebbf4f1b30608fe4fbf5b11196eae791b48ad253395dc"
+    },
+    {
+      "file": "mind-quest-96200523e188-35.part",
+      "bytes": 3000000,
+      "sha256": "d9065a33df2c78138cf75a80237d32b55b9e768f03cd474ee6b267fb0b3668be"
+    },
+    {
+      "file": "mind-quest-96200523e188-36.part",
+      "bytes": 3000000,
+      "sha256": "53118d5814854780b9b3853f3521025838ec01bf320477abc5105be30b77de9e"
+    },
+    {
+      "file": "mind-quest-96200523e188-37.part",
+      "bytes": 3000000,
+      "sha256": "eee4b073b487506bb4283555d535a8fd9407d898a852092aace967283e6b665a"
+    },
+    {
+      "file": "mind-quest-96200523e188-38.part",
+      "bytes": 3000000,
+      "sha256": "8298bf79a6ea9ee3e1cad31efb482f7ccba1057e8409d2b6f6c9f93c0105d8cc"
+    },
+    {
+      "file": "mind-quest-96200523e188-39.part",
+      "bytes": 3000000,
+      "sha256": "ad2869bbb0fca4587c39dc872d341b2096dc44115d98e95579a9dc1deb713137"
+    },
+    {
+      "file": "mind-quest-96200523e188-40.part",
+      "bytes": 1727531,
+      "sha256": "77548ccb4a8c1b63b7867762340288a79008305d0f75307796049c993dc36a60"
     }
   ]
 }

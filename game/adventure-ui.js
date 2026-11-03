@@ -22,19 +22,17 @@ window.MindAdventureUI=function(ctx){
   }
   function liveStage(ids,setKey='',character){
     const s=previewState(ids,character),name=window.MindAcademy.character(s.appearance.character).name;
-    let picture=outfitPreview(s);const stage=node('div',{class:'outfit-live-stage'+(setKey?' palette-'+setKey:''),'data-live-outfit':ids.join(' ')},picture,node('span',{class:'outfit-live-caption'},'實際穿戴版型 · '+name));
-    if(!character){
-      const controls=node('div',{class:'outfit-view-controls',role:'group','aria-label':'試穿方向'});
-      for(const [direction,label] of [['down','正面'],['up','背面'],['left','左側'],['right','右側']]){
-        const button=btn(label,()=>{const next=outfitPreview(s,{direction});window.MindRasterOutfit?.dispose(picture);picture.replaceWith(next);picture=next;for(const b of controls.children)b.setAttribute('aria-pressed',b===button?'true':'false');},'secondary small');
-        button.setAttribute('aria-pressed',direction==='down'?'true':'false');button.setAttribute('data-outfit-view',direction);controls.append(button);
-      }
-      stage.append(controls);
+    let picture=outfitPreview(s);const stage=node('div',{class:'outfit-live-stage'+(setKey?' palette-'+setKey:''),'data-live-outfit':ids.join(' '),'data-outfit-character':s.appearance.character,'data-outfit-direction':'down'},picture,node('span',{class:'outfit-live-caption'},'實際穿戴版型 · '+name));
+    const controls=node('div',{class:'outfit-view-controls',role:'group','aria-label':name+'試穿方向'});
+    for(const [direction,label] of [['down','正面'],['up','背面'],['left','左側'],['right','右側']]){
+      const button=btn(label,()=>{const next=outfitPreview(s,{direction});window.MindPaintedAvatar?.dispose(picture);window.MindRasterOutfit?.dispose(picture);picture.replaceWith(next);picture=next;stage.setAttribute('data-outfit-direction',direction);for(const b of controls.children)b.setAttribute('aria-pressed',b===button?'true':'false');},'secondary small');
+      button.setAttribute('aria-pressed',direction==='down'?'true':'false');button.setAttribute('data-outfit-view',direction);controls.append(button);
     }
+    stage.append(controls);
     return stage;
   }
   function castGallery(set,ids){
-    openModal(node('p',{class:'eyebrow'},'TEN SCHOLARS · ONE COLLECTION'),node('h2',{},set.name+' · 十人版型'),note('以下以每位人物自己的肩寬、衣長與身形呈現同一套裝配；選角與預覽不會改動你的穿戴。'),node('div',{class:'outfit-cast-gallery'},window.MindAcademy.CHARACTERS.map(person=>node('figure',{},liveStage(ids,set.key,person.id),node('figcaption',{},person.name)))));
+    openModal(node('p',{class:'eyebrow'},'TEN SCHOLARS · ONE COLLECTION'),node('h2',{},set.name+' · 十人版型'),note('以下以每位人物自己的肩寬、衣長與身形呈現同一套裝配。可分別查看四個方向；預覽不會改變人物選擇、穿戴或存檔。'),node('div',{class:'outfit-cast-gallery'},window.MindAcademy.CHARACTERS.map(person=>node('figure',{},liveStage(ids,set.key,person.id),node('figcaption',{},person.name)))));
   }
   function setIds(set,prefix){return Object.keys(R.SLOTS).map(slot=>prefix+'-'+set.key+'-'+slot);}
   function wearSet(set,ids){

@@ -1,0 +1,16 @@
+/* Authored 256×384 frames and the same (128,372) anchor as NativeAvatar.
+   Compositing keeps every layer in that frame; no wardrobe-dependent fitting. */
+.walk-actor.painted-actor{transform-origin:50% 90%}
+.walk-actor .painted-avatar-canvas{
+  position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;
+  display:block;pointer-events:none;animation:none!important;transform:none!important;
+  transition:none;contain:layout style;
+}
+.walk-actor.painted-actor .player-name{bottom:110%}
+.walk-actor.painted-actor .honor-label{bottom:calc(110% + 25px)}
+.walk-actor.painted-actor .counter-bubble{bottom:calc(109% + 14px)}
+.walk-actor.painted-actor.has-honor .counter-bubble{bottom:calc(110% + 53px)}
+.painted-outfit-preview,.outfit-live-stage>.painted-outfit-preview,.painted-item-preview{
+  display:block;object-fit:contain;overflow:hidden;
+}
+.painted-hud-preview{object-fit:cover}

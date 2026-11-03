@@ -1,0 +1,5042 @@
+{
+  "schema": 2,
+  "id": "doctor-down-v1",
+  "character": "doctor",
+  "revision": "painted-def2793e41e24565",
+  "status": "pilot",
+  "storage": "single-cells",
+  "extensionOf": {
+    "id": "doctor-v1",
+    "revision": "painted-93ac308a70791260"
+  },
+  "label": "星序博士・向下跑步及起停轉跳15格八欄原畫",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "width": 1024,
+    "height": 768,
+    "anchorX": 128,
+    "anchorY": 372
+  },
+  "coverage": {
+    "version": 1,
+    "cells": [
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 0
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 1
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 2
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 3
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 4
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 5
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 6
+      },
+      {
+        "direction": "down",
+        "sheet": "run",
+        "frame": 7
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 1
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 2
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 3
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 4
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 5
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 6
+      },
+      {
+        "direction": "down",
+        "sheet": "actions",
+        "frame": 7
+      }
+    ]
+  },
+  "previewBox": [
+    16,
+    52,
+    224,
+    326
+  ],
+  "portraitBox": [
+    72,
+    58,
+    136,
+    122
+  ],
+  "itemBoxes": {
+    "jacket": [
+      49,
+      84,
+      169,
+      215
+    ],
+    "cape": [
+      35,
+      104,
+      187,
+      189
+    ],
+    "shirt": [
+      53,
+      119,
+      152,
+      180
+    ],
+    "pants": [
+      45,
+      175,
+      183,
+      199
+    ],
+    "shoes": [
+      25,
+      229,
+      206,
+      146
+    ],
+    "hat": [
+      92,
+      64,
+      109,
+      147
+    ],
+    "accessory": [
+      135,
+      136,
+      44,
+      122
+    ],
+    "handheld": [
+      102,
+      146,
+      74,
+      146
+    ]
+  },
+  "items": {
+    "jacket": [
+      "fruit-pineapple-jacket"
+    ],
+    "cape": [
+      "fruit-pineapple-cape"
+    ],
+    "shirt": [
+      "fruit-pineapple-shirt"
+    ],
+    "pants": [
+      "fruit-pineapple-pants"
+    ],
+    "shoes": [
+      "fruit-pineapple-shoes"
+    ],
+    "hat": [
+      "fruit-pineapple-hat"
+    ],
+    "accessory": [
+      "fruit-pineapple-accessory"
+    ],
+    "handheld": [
+      "fruit-pineapple-handheld"
+    ]
+  },
+  "loadoutCoverage": {
+    "mode": "allowlist",
+    "entries": [
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": null
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": null,
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": null,
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": null,
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": null,
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": null,
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": null,
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": null,
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      },
+      {
+        "jacket": "fruit-pineapple-jacket",
+        "cape": "fruit-pineapple-cape",
+        "shirt": "fruit-pineapple-shirt",
+        "pants": "fruit-pineapple-pants",
+        "shoes": "fruit-pineapple-shoes",
+        "hat": "fruit-pineapple-hat",
+        "accessory": "fruit-pineapple-accessory",
+        "handheld": "fruit-pineapple-handheld"
+      }
+    ]
+  },
+  "passes": [
+    {
+      "id": "base-under",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 0,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-base-under.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-base-under.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-base-under.webp"
+        }
+      ]
+    },
+    {
+      "id": "base-sleeves-underwear",
+      "ownerSlot": "shirt",
+      "itemId": null,
+      "z": 1,
+      "requires": {
+        "jacket": null
+      },
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-base-sleeves-underwear.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-base-sleeves-underwear.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-base-sleeves-underwear.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 5,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-feet.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-feet.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-feet.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-pants",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 20,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet-order-30",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 30,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-feet-order-30.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-feet-order-30.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-feet-order-30.webp"
+        }
+      ]
+    },
+    {
+      "id": "shoes",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 30,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-shoes.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-shoes.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-shoes.webp"
+        }
+      ]
+    },
+    {
+      "id": "native-ankles",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 32,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-native-ankles.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-native-ankles.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-native-ankles.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-pants-order-35",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 35,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-pants-order-35.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-pants-order-35.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-pants-order-35.webp"
+        }
+      ]
+    },
+    {
+      "id": "shirt",
+      "ownerSlot": "shirt",
+      "itemId": "fruit-pineapple-shirt",
+      "z": 40,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-shirt.webp"
+        }
+      ]
+    },
+    {
+      "id": "pants",
+      "ownerSlot": "pants",
+      "itemId": "fruit-pineapple-pants",
+      "z": 41,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-pants.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-pants.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-pants.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-feet-order-42",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 42,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-feet-order-42.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-feet-order-42.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-feet-order-42.webp"
+        }
+      ]
+    },
+    {
+      "id": "cape-under-jacket",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 45,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-cape-under-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-cape-under-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-cape-under-jacket.webp"
+        }
+      ]
+    },
+    {
+      "id": "jacket-cuffs-under-shirt",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 49,
+      "requires": {
+        "shirt": null
+      },
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-jacket-cuffs-under-shirt.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-jacket-cuffs-under-shirt.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-jacket-cuffs-under-shirt.webp"
+        }
+      ]
+    },
+    {
+      "id": "jacket",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 50,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-jacket.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-jacket.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-jacket.webp"
+        }
+      ]
+    },
+    {
+      "id": "cape",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 60,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-cape.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-cape.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-cape.webp"
+        }
+      ]
+    },
+    {
+      "id": "accessory",
+      "ownerSlot": "accessory",
+      "itemId": "fruit-pineapple-accessory",
+      "z": 65,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-accessory.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-accessory.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-accessory.webp"
+        }
+      ]
+    },
+    {
+      "id": "handheld",
+      "ownerSlot": "handheld",
+      "itemId": "fruit-pineapple-handheld",
+      "z": 70,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-handheld.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-handheld.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-handheld.webp"
+        }
+      ]
+    },
+    {
+      "id": "bare-hair",
+      "ownerSlot": "hat",
+      "itemId": null,
+      "z": 75,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-bare-hair.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-bare-hair.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-bare-hair.webp"
+        }
+      ]
+    },
+    {
+      "id": "hat",
+      "ownerSlot": "hat",
+      "itemId": "fruit-pineapple-hat",
+      "z": 80,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-hat.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-hat.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-hat.webp"
+        }
+      ]
+    },
+    {
+      "id": "body-front",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 90,
+      "frames": [
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 0,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-0-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-0-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-1-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-1-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-2-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-2-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-3-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-3-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-4-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-4-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-5-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-5-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-6-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-6-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "run",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-run-7-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-run-7-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 1,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-1-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-1-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 2,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-2-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-2-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 3,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-3-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-3-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 4,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-4-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-4-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 5,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-5-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-5-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 6,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-6-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-6-body-front.webp"
+        },
+        {
+          "direction": "down",
+          "sheet": "actions",
+          "frame": 7,
+          "image": "./assets/painted-avatar/doctor-down-v1/down-actions-7-body-front.webp",
+          "compactImage": "./assets/painted-avatar/doctor-down-v1/compact-down-actions-7-body-front.webp"
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "method": "Each own doctor native pose independently partitioned, with image_gen-authored concealed garment material, own crown and socks. No other pose/character mask, reflection or whole-person deformation.",
+    "authoredAddedCellCount": 15,
+    "preservedSealedIdle": "doctor-v1 down/actions/0",
+    "independentlyLayeredDoctorCellsIncludingPriorIdle": 16,
+    "remainingDoctorCells": 48,
+    "fourDirectionsComplete": false,
+    "all64PosesComplete": false,
+    "normalIdentity": "Own native body-front RGBA retained; all other passes clear its nontransparent pixels.",
+    "clothAlphaCleanup": "Original cloth RGB retained; native cloth alpha>=240 promoted to255; source PNGs retained unchanged.",
+    "compact": "Each layer uniformly resized to96x144 with LANCZOS, then all non-body layers clear the resized body-front alpha>=248 core; semitransparent edges retain natural garment occlusion.",
+    "logicalSlots": 8,
+    "paintPasses": 20,
+    "explicitTransparentPassCells": 75,
+    "fallback": "Existing exact-loadout fallback outside the15 additions and preserved down/actions/0; no claim of newly painted other directions/sets.",
+    "runtimeAIOrPaidAPI": false,
+    "deployed": false
+  }
+}

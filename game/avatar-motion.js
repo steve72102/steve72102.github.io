@@ -4,10 +4,12 @@
   // saves, equipment IDs and the existing network movement intent stay untouched.
   const actors=new WeakMap(),media=root.matchMedia?.('(prefers-reduced-motion: reduce)');
   const VIEWS=['right','down','left','up'],angles={right:0,down:90,left:180,up:270};
+  const EVENT_CLOCK_SKEW_MS=50;
   const difference=(to,from)=>((to-from+540)%360)-180;
   function register(actor){
     if(!actor||!root.MindCharacterMotion)return actor;
     if(!actors.has(actor))actors.set(actor,{motion:root.MindCharacterMotion.create(),styles:new Map(),view:null,reduced:null,preference:null});
+    root.MindPaintedAvatar?.register(actor);
     root.MindNativeAvatar?.register(actor);
     root.MindLayeredAvatar?.register(actor);
     actor.classList.add('motion-managed');return actor;
@@ -21,6 +23,14 @@
     if(!root.MindCharacterMotion)return null;
     if(!actors.has(actor))register(actor);
     const record=actors.get(actor);if(!record)return null;
+    // An input event can paint with performance.now() just before a queued RAF
+    // paints with its slightly older timestamp. Keep this actor's presentation
+    // clock monotonic across that bounded overlap; a real clock/scene reset or
+    // teleport still reaches the existing reset logic. Never mutate the caller.
+    const previous=record.motion.sample;
+    if(previous&&input.teleport!==true&&String(input.scene??'')===previous.scene&&(input.scale??1)===previous.scale&&Number.isFinite(input.time)&&input.time<previous.time&&previous.time-input.time<=EVENT_CLOCK_SKEW_MS&&Number.isFinite(input.frameMs)&&input.frameMs>=0&&input.frameMs<=EVENT_CLOCK_SKEW_MS){
+      input={...input,time:previous.time};
+    }
     const reduced=input.reducedMotion??!!media?.matches;
     record.motion=root.MindCharacterMotion.update(record.motion,{...input,reducedMotion:reduced});
     record.reduced=reduced;record.preference=!!media?.matches;const visual=record.motion.visual;
@@ -32,6 +42,7 @@
     actor.classList.toggle('walking',moving);
     attribute(actor,'motionAction',visual.action);attribute(actor,'motionView',record.view);
     attribute(actor,'motionReduced',reduced?'true':'false');
+    if(root.MindPaintedAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     if(root.MindNativeAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     if(root.MindLayeredAvatar?.update(actor,visual,{...input,direction:record.view}))return visual;
     style(actor,record,'--motion-column',record.view==='up'?'33.333333%':record.view==='down'?'0%':'100%');
@@ -51,10 +62,11 @@
   function needsFrame(actor){
     // One stationary sample after the final interpolated move stops the gait.
     // Otherwise a remote with intent=false could remain on its last run frame.
-    const record=actors.get(actor);return !!record&&(record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches||!!root.MindNativeAvatar?.needsFrame(actor)||!!root.MindLayeredAvatar?.needsFrame(actor));
+    const record=actors.get(actor);return !!record&&(record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches||!!root.MindPaintedAvatar?.needsFrame(actor)||!!root.MindNativeAvatar?.needsFrame(actor)||!!root.MindLayeredAvatar?.needsFrame(actor));
   }
   function dispose(actor){
     const record=actors.get(actor);if(!record)return;
+    root.MindPaintedAvatar?.dispose(actor);
     root.MindNativeAvatar?.dispose(actor);
     root.MindLayeredAvatar?.dispose(actor);
     for(const key of record.styles.keys())actor.style.removeProperty?.(key);

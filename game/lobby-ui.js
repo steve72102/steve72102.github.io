@@ -8,7 +8,7 @@ window.MindAvatar=(function(){
     if(images.has(key)){const cached=images.get(key);images.delete(key);images.set(key,cached);return cached;}
     const state={appearance:{character:appearance.character},rpg:{loadout}},serializer=new XMLSerializer();
     const rendered=DIRECTIONS.map(direction=>{
-      const svg=window.MindCastOutfit.preview(state,{direction,native:false,raster:false});
+      const svg=window.MindCastOutfit.preview(state,{direction,painted:false,native:false,raster:false});
       // createElementNS already supplies namespaceURI. Let XMLSerializer emit
       // its declaration once, without a second unnamespaced xmlns attribute.
       svg.removeAttribute('xmlns');
@@ -22,15 +22,22 @@ window.MindAvatar=(function(){
       const id=loadout?.[slot],gear=R.gear(id);
       wear[slot]=gear?.slot===slot||slot==='handheld'&&E.ITEMS.some(item=>item.id===id)?id:null;
     }
-    const dressed=Object.values(wear).some(Boolean),state={appearance:look,rpg:{loadout:wear}},native=window.MindNativeAvatar?.createBody(node,state),layered=!native&&window.MindLayeredAvatar?.createBody(node,state);
+    const dressed=Object.values(wear).some(Boolean),state={appearance:look,rpg:{loadout:wear}},painted=window.MindPaintedAvatar?.createBody(node,state,{local:!remote}),native=!painted&&window.MindNativeAvatar?.createBody(node,state),layered=!painted&&!native&&window.MindLayeredAvatar?.createBody(node,state);
     const originalBody=()=>node('span',{class:'equipped-sprite','aria-hidden':'true','data-loadout':JSON.stringify(wear)},...sources(look,wear).map(({direction,src})=>node('img',{class:'outfit-facing outfit-facing-'+direction,src,alt:'',draggable:'false',decoding:'async',width:180,height:330})));
     // Native sheets are direct image surfaces: an SVG serialized into a data URL
     // cannot reliably load another external image in the browser's image sandbox.
-    const body=native||layered||(dressed?originalBody():node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}));
+    const body=painted||native||layered||(dressed?originalBody():node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}));
     // A newly encountered combination may queue behind other local bakes. Keep
     // its truthful existing appearance visible until the detailed frame is ready.
-    const loading=layered?originalBody():null;if(loading)loading.classList.add('layered-loading-body');
-    const avatar=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':'')+(native?' native-actor':layered?' layered-actor':''),'data-direction':'down',...(native?{'data-native-avatar':native.dataset.nativeAtlas}:{}),'aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),loading,body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
+    const loading=(painted&&!painted.dataset.paintedRetainedFrame)||layered?originalBody():null;if(loading)loading.classList.add(painted?'painted-loading-body':'layered-loading-body');
+    const avatar=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed||painted?' geared-actor':'')+(painted?' painted-actor':native?' native-actor':layered?' layered-actor':''),'data-direction':'down',...(painted?{'data-painted-avatar':painted.dataset.paintedAtlas}:{}),...(native?{'data-native-avatar':native.dataset.nativeAtlas}:{}),'aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),loading,body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
+    if(painted)window.MindPaintedAvatar.register(avatar,originalBody,painted.dataset.paintedCoverage==='pilot'?{coverageFallback:()=>{
+      // A one-frame pilot supplements the existing renderer. Unsupported views
+      // still run the real Native/Layered animation with this exact loadout.
+      const exact=window.MindNativeAvatar?.createBody(node,state);if(exact)return {element:exact,kind:'native',api:window.MindNativeAvatar};
+      const mixed=window.MindLayeredAvatar?.createBody(node,state);if(mixed)return {element:mixed,kind:'layered',api:window.MindLayeredAvatar};
+      return {element:originalBody(),kind:'legacy',api:null};
+    }}:{});
     if(native)window.MindNativeAvatar.register(avatar,originalBody);
     if(layered)window.MindLayeredAvatar.register(avatar,originalBody);
     const h=window.MindLobby.honor(honor);if(h){avatar.classList.add('has-honor');avatar.append(node('span',{class:'honor-label '+h.kind,'data-honor-until':h.until},window.MindLobby.honorTitle(h)));}
