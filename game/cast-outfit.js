@@ -46,20 +46,102 @@
     const n=parseInt(color.slice(1),16),f=v=>Math.round(amount>=0?v+(255-v)*amount:v*(1+amount));
     return '#'+[n>>16&255,n>>8&255,n&255].map(v=>f(v).toString(16).padStart(2,'0')).join('');
   }
+  const GRADUATE_REFERENCE='graduate-reference-v1';
+  // UI-only vector fallback for the accepted graduate reference. Coordinates
+  // are fitted by anatomical region; no bitmap or other character is stretched.
+  const graduateY={
+    head:[[7,32.625],[66,76.2623239437]],
+    neck:[[59,71.0858614101],[73,89.0968309859],[82,97.9167659817]],
+    frontNeck:[[59,71.0858614101],[73,88],[82,86.7711267606]],
+    torso:[[73,89.0968309859],[164,146.4242957746],[187,158.6883802817],[236,204.3221830986],[311,275.625]],
+    arm:[[73,89.0968309859],[116,123.6073943662],[145,154.9806338028],[156,167.2447183099],[164,178.9383802817]],
+    pants:[[144,146.4242957746],[187,158.6883802817],[236,204.3221830986],[287,253.3],[311,275.625]],
+    shoes:[[279,251.25],[307.2666666667,275.625]]
+  };
+  function fitted(value,points){
+    let i=1;while(i<points.length-1&&value>points[i][0])i++;
+    const [a,b]=[points[i-1],points[i]];return a[1]+(value-a[0])*(b[1]-a[1])/(b[0]-a[0]);
+  }
+  function graduatePoint(x,y,region,frontNeck=false){
+    const dx=x-90;
+    if(region==='head')return [90+dx*(47.0598591549/52),fitted(y,graduateY.head)];
+    if(region==='neck')return [90+dx*.5,fitted(y,frontNeck?graduateY.frontNeck:graduateY.neck)];
+    if(region==='shadow')return [90+dx*.94,280.125+(y-316)*.8];
+    const wristScale=(dx<0?29.0915492958:30.2323943662)/49;
+    if(region==='handheld'||region==='grip')return [120.2323943662+(x-139)*.75,167.2447183099+(y-165)*.75];
+    if(region==='hand')return [90+dx*wristScale,fitted(y,graduateY.arm)];
+    if(region==='shoes')return [(dx<0?70.6056338028:109.3943661972)+(x-(dx<0?67:113))*(32.7992957746/38),fitted(y,graduateY.shoes)];
+    if(region==='pants')return [90+dx*fitted(y,[[144,41.0704225352/54],[187,47.6302816901/68],[236,1.1],[287,1.2]]),fitted(y,graduateY.pants)];
+    const bodyX=90+dx*fitted(y,[[73,59.8943661972/64],[164,41.0704225352/62],[187,47.6302816901/68],[236,1],[311,1]]);let bodyY=fitted(y,graduateY.torso);
+    if(region==='cape'||region==='accessory')return [bodyX,bodyY];
+    if(frontNeck&&region==='torso'&&y>=73&&y<=82){
+      const centre=Math.max(0,1-Math.abs(dx)/20),collarY=87.3855633803+(y-80)*.35;
+      bodyY+=(collarY-bodyY)*centre;
+    }
+    const arm=y<=155?Math.max(0,Math.min(1,(Math.abs(dx)-40)/4)):0;
+    const armX=90+dx*fitted(y,[[73,59.8943661972/64],[145,wristScale]]),armY=fitted(y,graduateY.arm);
+    return [bodyX+(armX-bodyX)*arm,bodyY+(armY-bodyY)*arm];
+  }
+  function graduatePath(data,region,frontNeck=false){
+    const tokens=data.match(/[a-zA-Z]|[-+]?(?:\d*\.?\d+)(?:e[-+]?\d+)?/g)||[],out=[];
+    const sizes={M:2,L:2,H:1,V:1,Q:4,C:6,S:4,T:2};let i=0,command='',x=0,y=0,start=[0,0];
+    const number=n=>String(Math.round(n*10000)/10000);
+    while(i<tokens.length){
+      if(/^[a-zA-Z]$/.test(tokens[i]))command=tokens[i++];
+      const kind=command.toUpperCase(),relative=command!==kind;
+      if(kind==='Z'){out.push('Z');[x,y]=start;command='';continue;}
+      const count=sizes[kind];if(!count||i+count>tokens.length)throw Error('Unsupported graduate preview path');
+      const values=tokens.slice(i,i+count).map(Number);i+=count;
+      if(values.some(n=>!Number.isFinite(n)))throw Error('Invalid graduate preview point');
+      if(kind==='H'||kind==='V'){
+        if(kind==='H')x=values[0]+(relative?x:0);else y=values[0]+(relative?y:0);
+        out.push('L'+graduatePoint(x,y,region,frontNeck).map(number).join(' '));continue;
+      }
+      const points=[];for(let k=0;k<count;k+=2)points.push([values[k]+(relative?x:0),values[k+1]+(relative?y:0)]);
+      out.push(kind+points.flatMap(point=>graduatePoint(...point,region,frontNeck).map(number)).join(' '));
+      [x,y]=points[points.length-1];if(kind==='M'){start=[x,y];command=relative?'l':'L';}
+    }
+    return out.join(' ');
+  }
+  function graduateAttributes(tag,attrs,region,frontNeck=false){
+    const a={...attrs};
+    if(tag==='path')a.d=graduatePath(a.d,region,frontNeck);
+    else if(tag==='ellipse'){
+      const [cx,cy]=graduatePoint(a.cx,a.cy,region,frontNeck),left=graduatePoint(a.cx-a.rx,a.cy,region,frontNeck),right=graduatePoint(a.cx+a.rx,a.cy,region,frontNeck),top=graduatePoint(a.cx,a.cy-a.ry,region,frontNeck),bottom=graduatePoint(a.cx,a.cy+a.ry,region,frontNeck);
+      const handLeft=a.cx<90;a.cx=cx;a.cy=cy;a.rx=region==='hand'?a.rx*(handLeft?.9804137324:1.0918243838):Math.abs(right[0]-left[0])/2;a.ry=region==='hand'?a.ry*(11.6936619718/8):Math.abs(bottom[1]-top[1])/2;
+    }
+    return a;
+  }
   function preview(state,options={}){
     const A=window.MindAcademy,R=window.MindAdventure,E=window.MindEngine,{character,cut,items,palette}=model(state,A,R,E);
     const direction=['up','right','left'].includes(options.direction)?options.direction:'down',back=direction==='up',side=direction==='right'||direction==='left';
-    const painted=options.painted!==false&&window.MindPaintedAvatar?.preview(state,{...options,direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:(requested={})=>preview(state,{...options,...requested,painted:false})});
+    // Existing world callers explicitly disable raster and do not opt into a
+    // bodyProfile. An explicit profile survives the UI's asset-failure fallback.
+    // This batch accepts only the measured front preview. Side/back keep their
+    // sealed source selection until their own neck/sleeve fitting is complete.
+    const bodyProfile=character.id==='graduate'&&direction==='down'&&(options.bodyProfile===GRADUATE_REFERENCE||(options.bodyProfile!==false&&options.raster!==false))?GRADUATE_REFERENCE:null;
+    const loadout=Object.fromEntries(Object.keys(R.SLOTS).map(s=>[s,state.rpg?.loadout?.[s]||null]));
+    const actualLabel=character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；');
+    if(bodyProfile){
+      const layered=options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,bodyProfile,label:options.label||actualLabel,fallback:()=>preview(state,{...options,bodyProfile,painted:false,native:false,raster:false})});
+      if(layered){
+        if(layered.dataset?.renderMethod==='vector-fallback')return layered;
+        layered.setAttribute('data-body-profile',bodyProfile);layered.setAttribute('data-render-method','authored-parts-skeletal');layered.setAttribute('data-art-method','authored-parts-skeletal-preview');layered.setAttribute('data-loadout',JSON.stringify(loadout));
+        return layered;
+      }
+    }
+    const painted=!bodyProfile&&options.painted!==false&&window.MindPaintedAvatar?.preview(state,{...options,direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:(requested={})=>preview(state,{...options,...requested,painted:false})});
     if(painted)return painted;
-    const native=options.native!==false&&window.MindNativeAvatar?.preview(state,{direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:()=>preview(state,{...options,painted:false,native:false})});
+    const native=!bodyProfile&&options.native!==false&&window.MindNativeAvatar?.preview(state,{direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:()=>preview(state,{...options,painted:false,native:false})});
     if(native)return native;
-    const layered=options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,fallback:()=>preview(state,{...options,painted:false,native:false,raster:false})});
+    const layered=!bodyProfile&&options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,fallback:()=>preview(state,{...options,painted:false,native:false,raster:false})});
     if(layered)return layered;
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{xmlns:ns,viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,'data-view':direction,role:'img','aria-label':character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；')});
-    let slot='',project=side;
+    if(bodyProfile)set(svg,{viewBox:'0 0 180 306',width:180,height:306,preserveAspectRatio:'xMidYMax meet','data-body-profile':bodyProfile,'data-render-method':'vector-fallback','data-art-method':'vector-fallback-preview','data-fallback-loadout':'actual-loadout','data-loadout':JSON.stringify(loadout),'data-foot-anchor':'90 275.625','data-occluded-slots':back?['accessory','handheld'].filter(s=>items[s]).join(' '):'','data-occluded-body-parts':back?'hands':''});
+    let slot='',project=side,anatomy='torso';
     function add(tag,attrs){
-      const a={...attrs};
+      const region=slot==='hat'?'head':slot==='cape'?'cape':slot==='accessory'?'accessory':slot==='handheld'?'handheld':anatomy,a=bodyProfile?graduateAttributes(tag,attrs,region,direction==='down'):{...attrs};
       if(slot){a['data-equipment-slot']=slot;a['data-gear-id']=items[slot]?.id||'';}
       if(project)a.transform=(direction==='left'?'translate(144 0) scale(-.6 1)':'translate(36 0) scale(.6 1)')+(a.transform?' '+a.transform:'');
       return svg.appendChild(set(document.createElementNS(ns,tag),a));
@@ -142,7 +224,8 @@
       }
       slot='';
     }
-    project=false;ellipse(90,316,side?31:45,6,'#3553451f');project=side;if(!back)cape(true);
+    project=false;anatomy='shadow';ellipse(90,316,side?31:45,6,'#3553451f');anatomy='torso';project=side;if(!back)cape(true);
+    anatomy='pants';
     slot=has('pants')?'pants':'';
     const pc=has('pants')?p('pants'):['#8d8c88','#b4b0a3','#e9e3d4','#777a78'],pk=style('pants');
     const wide=['pomelo','cherry','grape','requiem'].includes(pk),leg=cut.shoulder>34?4:0,edge=wide?5:0;
@@ -156,14 +239,14 @@
       if(!FRUIT.has(pk))seams(pk,pc,sl+7,sl+15,171,260);
       line('M'+(64-leg-edge)+' 283Q75 287 85 283M95 283Q106 287 '+(116+leg+edge)+' 283',pc[2],1);
     }
-    slot=has('shoes')?'shoes':'';
+    anatomy='shoes';slot=has('shoes')?'shoes':'';
     const sc=has('shoes')?p('shoes'):['#7b7771','#ada59a','#e9e0d0','#595953'],sk=style('shoes');
     for(const sign of [-1,1]){
       const x=90+sign*(15+leg),d=sign<0?'M'+(x-10)+' 279L'+(x+10)+' 279 '+(x+11)+' 303Q'+x+' 311 '+(x-27)+' 304L'+(x-25)+' 294Z':'M'+(x-10)+' 279L'+(x+10)+' 279 '+(x+25)+' 294 '+(x+27)+' 304Q'+x+' 311 '+(x-11)+' 303Z';
       garment(d,sc[0]);line('M'+(x-12)+' 300Q'+x+' 304 '+(x+13)+' 300',sc[2],3.1);path('M'+(x-7)+' 282H'+(x+7)+'L'+(x+10)+' 293H'+(x-10)+'Z',sc[1],sc[3],.7);
       if(!back)for(let y=285;y<=291;y+=3)line('M'+(x-6)+' '+y+'H'+(x+6),sc[2],.8);if(FRUIT.has(sk))circle(x+sign*12,295,2.1,sc[4]);
     }
-    slot=has('shirt')?'shirt':'';
+    anatomy='torso';slot=has('shirt')?'shirt':'';
     const tc=has('shirt')?p('shirt'):['#abb3a7','#a4bca8','#f3eddf','#6d7e74'],tk=style('shirt');
     garment('M'+(sl+3)+' 73L'+(sl-11)+' 83 36 145 47 153 '+(sl-2)+' 116 '+(sl+1)+' 164Q90 171 '+(sr-1)+' 164L'+(sr+2)+' 116 133 153 144 145 '+(sr+11)+' 83 '+(sr-3)+' 73 90 80Z',tc[2]);
     line('M'+(sl-7)+' 91L43 142M'+(sr+7)+' 91L137 142',tint(tc[2],-.11),2.6);
@@ -195,9 +278,9 @@
       line('M'+(lh+3)+' '+(hem-5)+'Q90 '+(hem+1)+' '+(rh-3)+' '+(hem-5),c[1],2);
     }
     if(back)cape(true);else cape(false);
-    slot='';ellipse(41,156,6.4,8,skin,skinEdge,.8);ellipse(139,156,6.4,8,skin,skinEdge,.8);
+    slot='';anatomy='hand';if(!(bodyProfile&&back)){ellipse(41,156,6.4,8,skin,skinEdge,.8);ellipse(139,156,6.4,8,skin,skinEdge,.8);}anatomy='head';
     if(['long','streak','silver-bob','bob'].includes(cut.hair)&&back)garment('M67 31Q54 68 63 99Q90 111 117 99Q126 68 113 31Z',hair);
-    path('M78 59L78 73Q90 82 102 73L102 59Z',skin,skinEdge,.85);project=false;
+    anatomy='neck';path('M78 59L78 73Q90 82 102 73L102 59Z',skin,skinEdge,.85);anatomy='head';project=false;
     if(side){
       const start=svg.children.length;
       path('M77 15Q100 9 109 28L111 37 119 43 111 48 108 58Q101 68 85 64L78 69 73 53Q60 40 77 15Z',skin,skinEdge,.9);
@@ -239,20 +322,20 @@
       if(j==='tide'){line('M66 20Q90 28 114 20',c[0],2);path('M111 27L125 39 117 40 108 29Z',c[1],c[0],.6);}
       if(back)line('M83 24H97',c[2],1.4);
     }
-    if(has('accessory')){
+    if(has('accessory')&&!(bodyProfile&&back)){
       slot='accessory';const c=p('accessory'),j=style('accessory'),x=back?sr-3:sr-7,y=back?85:112;
       if(FRUIT.has(j))motif(j,x,y,5.3,c);
       else if(j==='bach')line('M'+(x-5)+' '+(y+3)+'Q'+x+' '+(y-7)+' '+(x+5)+' '+(y-2),c[2],2);
       else if(j==='requiem')for(const [dx,dy] of [[0,-6],[6,-1],[3,5],[-4,4],[-6,-2]])path('M'+x+' '+y+'L'+(x+dx)+' '+(y+dy)+' '+(x+dx/2+1)+' '+(y+dy/2-1)+'Z',c[2],c[0],.5);
       else{circle(x,y,5.8,c[1],c[0],1);path('M'+(x-3)+' '+y+'L'+x+' '+(y-3)+' '+(x+3)+' '+y+' '+x+' '+(y+3)+'Z',c[2],c[0],.6);}
     }
-    if(has('handheld')){
+    if(has('handheld')&&!(bodyProfile&&back)){
       slot='handheld';const c=p('handheld'),j=style('handheld'),x=sr+6;
       garment('M'+x+' 146L'+(x+25)+' 142 '+(x+29)+' 179 '+(x+4)+' 184Z',c[0]);path('M'+(x+3)+' 146L'+(x+24)+' 143 '+(x+25)+' 147 '+(x+4)+' 151Z',c[2],c[3],.6);
       line('M'+(x+4)+' 151L'+(x+7)+' 180',c[1],2.2);line('M'+(x+23)+' 148L'+(x+26)+' 178',c[1],2.2);
       if(FRUIT.has(j))motif(j,x+16,162,6,c);else if(j==='tide')seams('tide',c,x+8,x+22,155,177);
       else{line('M'+(x+10)+' 157L'+(x+21)+' 155M'+(x+11)+' 164L'+(x+22)+' 162',c[2],1.1);if(j==='letter')line('M'+(x+9)+' 172L'+(x+15)+' 167 '+(x+22)+' 171',c[1],1.2);}
-      slot='';path('M'+(x-1)+' 163Q'+(x+7)+' 158 '+(x+11)+' 165L'+(x+8)+' 173 '+x+' 174Z',skin,skinEdge,.75);
+      slot='';anatomy='grip';path('M'+(x-1)+' 163Q'+(x+7)+' 158 '+(x+11)+' 165L'+(x+8)+' 173 '+x+' 174Z',skin,skinEdge,.75);
     }
     return svg;
   }
@@ -260,11 +343,12 @@
     const R=window.MindAdventure;if(!item||!Object.hasOwn(R.SLOTS,item.slot))return null;
     const painted=options.painted!==false&&window.MindPaintedAvatar?.itemPreview(state,item,{...options,fallback:(requested={})=>itemPreview(state,item,{...options,...requested,painted:false})});if(painted)return painted;
     const native=options.native!==false&&window.MindNativeAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{...options,painted:false,native:false})});if(native)return native;
-    const layered=options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
-    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
+    const bodyProfile=state.appearance?.character==='graduate'?GRADUATE_REFERENCE:null;
+    const layered=options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
+    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     const boxes={jacket:[20,64,140,188],cape:[25,63,130,144],shirt:[25,64,130,112],pants:[34,136,112,161],shoes:[38,269,104,45],hat:[45,0,90,49],accessory:[90+cut.shoulder-18,99,28,28],handheld:[90+cut.shoulder,132,44,60]};
-    svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('viewBox',boxes[item.slot].join(' '));svg.setAttribute('role','img');svg.setAttribute('aria-label',item.name+'：遊戲實際穿戴版型');svg.setAttribute('data-gear-id',item.id);
+    svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('viewBox',(bodyProfile?[0,0,180,306]:boxes[item.slot]).join(' '));svg.setAttribute('role','img');svg.setAttribute('aria-label',item.name+'：遊戲實際穿戴版型');svg.setAttribute('data-gear-id',item.id);
     for(const part of full.querySelectorAll('[data-equipment-slot="'+item.slot+'"]'))svg.append(part.cloneNode(true));
     return svg;
   }

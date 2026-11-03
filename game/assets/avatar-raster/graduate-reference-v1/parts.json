@@ -1,0 +1,862 @@
+{
+  "schema": 1,
+  "id": "graduate-reference-v1",
+  "scope": "Graduate UI preview only; authored raster parts with skeletal rendering, not new painted animation frames.",
+  "source": {
+    "file": "reference.png",
+    "bytes": 1241195,
+    "sha256": "b2616ee44949716de7b14365dbe186b259b94bbba48ff32e2b1aa15628a22752",
+    "retainedByteExactly": true,
+    "dimensions": [
+      1774,
+      887
+    ]
+  },
+  "measurement": {
+    "coordinateSpace": "User attachment pixel coordinates, first standing figure; hand/neck clips manually inspected.",
+    "visibleLandmarksY": {
+      "headTop": 18,
+      "chin": 171,
+      "shoulder": 216,
+      "waist": 417,
+      "hip": 460,
+      "knee": 620,
+      "sole": 870
+    },
+    "approxVisibleWidths": {
+      "hair": 165,
+      "shoulders": 210,
+      "waistAtY417": 144,
+      "hipAtY460": 167
+    },
+    "jointInference": "Hip/knee/ankle centers are pose guides inferred inside clothing, not claimed naked anatomy measurements.",
+    "sourceCropPolicy": "Whole source PNG retained. Rectangles/clip polygons define parts at runtime; no repaint, mirroring, recoloring or source alpha editing."
+  },
+  "runtime": {
+    "id": "graduate-reference-v1",
+    "character": "graduate",
+    "referenceScale": 0.5070422535211268,
+    "landmarks": {
+      "top": 58.0,
+      "chin": 135.5774647887324,
+      "neck": 155.35211267605632,
+      "shoulder": 158.3943661971831,
+      "waist": 260.30985915492954,
+      "hip": 282.11267605633805,
+      "knee": 363.23943661971833,
+      "sole": 490
+    },
+    "body": {
+      "height": 432,
+      "shoulders": 106.47887323943662,
+      "waist": 73.01408450704226,
+      "hips": 48.399487836107554,
+      "head": 86.70422535211267,
+      "leg": 187.88732394366195,
+      "arm": 120.67605633802816,
+      "limb": 27.887323943661972,
+      "fit": "regular"
+    },
+    "geometry": {
+      "legWidth": 46.140845070422536,
+      "shoeWidth": 58.309859154929576,
+      "shoulderHalfWidth": 53.23943661971831,
+      "wristX": {
+        "L": 53.74647887323943,
+        "R": -51.71830985915493
+      },
+      "kneeHalfWidth": 27.887323943661972,
+      "ankleHalfWidth": 34.478873239436616,
+      "shirtTop": 148.25352112676057,
+      "shirtHem": 266.90140845070425,
+      "jacketHem": 292.2535211267606,
+      "calf": 431.6901408450704,
+      "fullHem": 479.85915492957747,
+      "equippedDownLegWidth": 64
+    },
+    "atlases": {
+      "graduate-reference-v1": {
+        "src": "./assets/avatar-raster/graduate-reference-v1/reference.png",
+        "width": 1774,
+        "height": 887
+      },
+      "graduate-reference-left-body": {
+        "src": "./assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp",
+        "width": 256,
+        "height": 384
+      },
+      "graduate-reference-right-body": {
+        "src": "./assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp",
+        "width": 256,
+        "height": 384
+      }
+    },
+    "parts": {
+      "down": {
+        "head": {
+          "atlas": "graduate-reference-v1",
+          "rect": [
+            237,
+            16,
+            171,
+            205
+          ],
+          "mask": [
+            [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.0
+              ],
+              [
+                1.0,
+                0.8097561
+              ],
+              [
+                0.66081871,
+                0.8097561
+              ],
+              [
+                0.63157895,
+                0.86341463
+              ],
+              [
+                0.56725146,
+                0.90243902
+              ],
+              [
+                0.52631579,
+                0.97073171
+              ],
+              [
+                0.48538012,
+                0.99512195
+              ],
+              [
+                0.44444444,
+                0.92682927
+              ],
+              [
+                0.3625731,
+                0.87317073
+              ],
+              [
+                0.32163743,
+                0.8097561
+              ],
+              [
+                0.0,
+                0.8097561
+              ]
+            ]
+          ],
+          "neckMask": [
+            [
+              [
+                0.35672515,
+                0.76585366
+              ],
+              [
+                0.61403509,
+                0.76585366
+              ],
+              [
+                0.64327485,
+                0.83414634
+              ],
+              [
+                0.57309942,
+                0.89268293
+              ],
+              [
+                0.52631579,
+                0.97073171
+              ],
+              [
+                0.48538012,
+                0.99512195
+              ],
+              [
+                0.44444444,
+                0.92682927
+              ],
+              [
+                0.3625731,
+                0.87317073
+              ],
+              [
+                0.32748538,
+                0.81463415
+              ]
+            ]
+          ],
+          "anchor": [
+            0.4853801169590643,
+            0.9463414634146341
+          ],
+          "hatPin": [
+            0.4853801169590643,
+            0.2682926829268293
+          ]
+        },
+        "hands": {
+          "L": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              400,
+              442,
+              49,
+              94
+            ],
+            "anchor": [
+              0.5306122448979592,
+              0.1276595744680851
+            ],
+            "displayWidth": 24.845070422535212
+          },
+          "R": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              194,
+              442,
+              44,
+              93
+            ],
+            "anchor": [
+              0.5454545454545454,
+              0.12903225806451613
+            ],
+            "displayWidth": 22.309859154929576
+          }
+        },
+        "defaults": {
+          "shirt.torso": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              235,
+              182,
+              173,
+              246
+            ],
+            "referenceBox": [
+              235,
+              182,
+              173,
+              246
+            ],
+            "displayWidth": 87.71830985915493,
+            "mask": [
+              [
+                [
+                  0.2716763,
+                  0.0
+                ],
+                [
+                  0.69942197,
+                  0.0
+                ],
+                [
+                  0.94219653,
+                  0.09349593
+                ],
+                [
+                  1.0,
+                  0.2804878
+                ],
+                [
+                  1.0,
+                  0.68292683
+                ],
+                [
+                  0.97687861,
+                  0.93089431
+                ],
+                [
+                  0.90751445,
+                  1.0
+                ],
+                [
+                  0.06358382,
+                  1.0
+                ],
+                [
+                  0.0,
+                  0.89837398
+                ],
+                [
+                  0.0,
+                  0.68292683
+                ],
+                [
+                  0.0,
+                  0.29674797
+                ],
+                [
+                  0.06936416,
+                  0.12601626
+                ]
+              ]
+            ]
+          },
+          "shirt.armR": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              183,
+              202,
+              75,
+              184
+            ],
+            "referenceBox": [
+              183,
+              202,
+              75,
+              184
+            ],
+            "displayWidth": 38.028169014084504,
+            "mask": [
+              [
+                [
+                  0.61333333,
+                  0.0
+                ],
+                [
+                  0.89333333,
+                  0.05978261
+                ],
+                [
+                  1.0,
+                  0.23913043
+                ],
+                [
+                  0.84,
+                  0.5
+                ],
+                [
+                  0.77333333,
+                  0.75543478
+                ],
+                [
+                  0.69333333,
+                  0.91847826
+                ],
+                [
+                  0.54666667,
+                  1.0
+                ],
+                [
+                  0.09333333,
+                  0.95652174
+                ],
+                [
+                  0.0,
+                  0.85326087
+                ],
+                [
+                  0.13333333,
+                  0.61956522
+                ],
+                [
+                  0.25333333,
+                  0.35326087
+                ],
+                [
+                  0.37333333,
+                  0.15217391
+                ]
+              ]
+            ],
+            "sleeveEndRatio": 0.6638655462184874,
+            "pins": {
+              "root": [
+                0.5,
+                0.07608695652173914
+              ],
+              "joint": [
+                0.5,
+                0.7228260869565217
+              ],
+              "tip": [
+                0.5,
+                0.9347826086956522
+              ]
+            }
+          },
+          "shirt.armL": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              393,
+              202,
+              64,
+              184
+            ],
+            "referenceBox": [
+              393,
+              202,
+              64,
+              184
+            ],
+            "displayWidth": 32.45070422535211,
+            "mask": [
+              [
+                [
+                  0.21875,
+                  0.0
+                ],
+                [
+                  0.546875,
+                  0.05978261
+                ],
+                [
+                  0.75,
+                  0.22826087
+                ],
+                [
+                  0.84375,
+                  0.50543478
+                ],
+                [
+                  1.0,
+                  0.85326087
+                ],
+                [
+                  0.890625,
+                  0.95652174
+                ],
+                [
+                  0.359375,
+                  1.0
+                ],
+                [
+                  0.203125,
+                  0.89673913
+                ],
+                [
+                  0.125,
+                  0.71195652
+                ],
+                [
+                  0.0,
+                  0.5
+                ],
+                [
+                  0.0,
+                  0.2173913
+                ]
+              ]
+            ],
+            "sleeveEndRatio": 0.6638655462184874,
+            "pins": {
+              "root": [
+                0.5,
+                0.07608695652173914
+              ],
+              "joint": [
+                0.5,
+                0.7228260869565217
+              ],
+              "tip": [
+                0.5,
+                0.9347826086956522
+              ]
+            }
+          },
+          "pants.pelvis": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              224,
+              415,
+              190,
+              49
+            ],
+            "referenceBox": [
+              224,
+              415,
+              190,
+              49
+            ],
+            "displayWidth": 96.33802816901408,
+            "mask": [
+              [
+                [
+                  0.08947368,
+                  0.0
+                ],
+                [
+                  0.92631579,
+                  0.0
+                ],
+                [
+                  0.95263158,
+                  1.0
+                ],
+                [
+                  0.05789474,
+                  1.0
+                ]
+              ]
+            ]
+          },
+          "pants.legR": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              204,
+              463,
+              116,
+              342
+            ],
+            "referenceBox": [
+              204,
+              463,
+              116,
+              342
+            ],
+            "displayWidth": 58.816901408450704,
+            "mask": [
+              [
+                [
+                  0.26724138,
+                  0.0
+                ],
+                [
+                  1.0,
+                  0.0
+                ],
+                [
+                  1.0,
+                  0.11111111
+                ],
+                [
+                  0.86206897,
+                  0.28947368
+                ],
+                [
+                  0.80172414,
+                  0.4619883
+                ],
+                [
+                  0.74137931,
+                  0.72222222
+                ],
+                [
+                  0.69827586,
+                  0.89766082
+                ],
+                [
+                  0.5862069,
+                  1.0
+                ],
+                [
+                  0.12931034,
+                  1.0
+                ],
+                [
+                  0.0,
+                  0.92397661
+                ],
+                [
+                  0.02586207,
+                  0.80701754
+                ],
+                [
+                  0.09482759,
+                  0.5877193
+                ],
+                [
+                  0.12931034,
+                  0.37134503
+                ],
+                [
+                  0.1637931,
+                  0.16666667
+                ]
+              ]
+            ],
+            "pins": {
+              "root": [
+                0.5,
+                0.02
+              ],
+              "joint": [
+                0.5,
+                0.4590643274853801
+              ],
+              "tip": [
+                0.5,
+                0.9678362573099415
+              ]
+            }
+          },
+          "pants.legL": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              320,
+              463,
+              116,
+              342
+            ],
+            "referenceBox": [
+              320,
+              463,
+              116,
+              342
+            ],
+            "displayWidth": 58.816901408450704,
+            "mask": [
+              [
+                [
+                  0.0,
+                  0.0
+                ],
+                [
+                  0.73275862,
+                  0.0
+                ],
+                [
+                  0.78448276,
+                  0.16666667
+                ],
+                [
+                  0.81034483,
+                  0.38304094
+                ],
+                [
+                  0.85344828,
+                  0.58187135
+                ],
+                [
+                  0.92241379,
+                  0.80994152
+                ],
+                [
+                  1.0,
+                  0.92690058
+                ],
+                [
+                  0.79310345,
+                  1.0
+                ],
+                [
+                  0.30172414,
+                  1.0
+                ],
+                [
+                  0.18965517,
+                  0.9005848
+                ],
+                [
+                  0.15517241,
+                  0.72222222
+                ],
+                [
+                  0.12068966,
+                  0.46491228
+                ],
+                [
+                  0.07758621,
+                  0.28070175
+                ],
+                [
+                  0.0,
+                  0.11111111
+                ]
+              ]
+            ],
+            "pins": {
+              "root": [
+                0.5,
+                0.02
+              ],
+              "joint": [
+                0.5,
+                0.4590643274853801
+              ],
+              "tip": [
+                0.5,
+                0.9678362573099415
+              ]
+            }
+          },
+          "pants.pocketL": {
+            "hidden": true
+          },
+          "pants.pocketR": {
+            "hidden": true
+          },
+          "shoes.R": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              177,
+              789,
+              121,
+              84
+            ],
+            "referenceBox": [
+              177,
+              789,
+              121,
+              84
+            ],
+            "displayWidth": 61.352112676056336
+          },
+          "shoes.L": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              341,
+              789,
+              123,
+              84
+            ],
+            "referenceBox": [
+              341,
+              789,
+              123,
+              84
+            ],
+            "displayWidth": 62.36619718309859
+          }
+        },
+        "bareHands": {
+          "R": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              193,
+              369,
+              45,
+              166
+            ],
+            "referenceBox": [
+              193,
+              369,
+              45,
+              166
+            ],
+            "displayWidth": 22.816901408450704,
+            "anchor": [
+              0.5555555555555556,
+              0.5120481927710844
+            ]
+          },
+          "L": {
+            "atlas": "graduate-reference-v1",
+            "rect": [
+              401,
+              369,
+              48,
+              166
+            ],
+            "referenceBox": [
+              401,
+              369,
+              48,
+              166
+            ],
+            "displayWidth": 24.338028169014084,
+            "anchor": [
+              0.5208333333333334,
+              0.5120481927710844
+            ]
+          }
+        }
+      },
+      "left": {
+        "hands": {
+          "L": {
+            "atlas": "graduate-reference-left-body",
+            "rect": [
+              89,
+              191,
+              20,
+              27
+            ],
+            "anchor": [
+              0.78,
+              0.84
+            ],
+            "displayWidth": 19
+          },
+          "R": {
+            "atlas": "graduate-reference-left-body",
+            "rect": [
+              100,
+              208,
+              17,
+              16
+            ],
+            "anchor": [
+              0.88,
+              0.35
+            ],
+            "displayWidth": 18
+          }
+        }
+      },
+      "right": {
+        "hands": {
+          "L": {
+            "atlas": "graduate-reference-right-body",
+            "rect": [
+              161,
+              190,
+              16,
+              19
+            ],
+            "anchor": [
+              0.4,
+              0.84
+            ],
+            "displayWidth": 17
+          },
+          "R": {
+            "atlas": "graduate-reference-right-body",
+            "rect": [
+              133,
+              202,
+              47,
+              19
+            ],
+            "anchor": [
+              0.1,
+              0.5
+            ],
+            "displayWidth": 36
+          }
+        }
+      },
+      "up": {
+        "hands": {
+          "L": {
+            "hidden": true
+          },
+          "R": {
+            "hidden": true
+          }
+        },
+        "handheldHidden": true,
+        "reason": "Own sealed up actions0 has no visible hand pixels; both hands and held book are naturally occluded by the torso."
+      }
+    }
+  },
+  "runtimeDependencies": [
+    "./assets/avatar-raster/graduate-reference-v1/reference.png",
+    "./assets/avatar-raster/graduate-reference-v1/parts.json",
+    "./assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp",
+    "./assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp",
+    "./assets/avatar-raster/heads-up.webp",
+    "./assets/avatar-raster/heads-left.webp",
+    "./assets/avatar-raster/heads-right.webp"
+  ],
+  "baselineWearableAtlasDependencies": "Unchanged: selected true eight-slot clothing still resolves through existing raster-art manifest.",
+  "defaultWearablePolicy": "Only null shirt/pants/shoes on down preview use separately clipped own reference gray garments. An actual equipment ID always retains its own registered cloth source; other directions retain their existing directional garment parts.",
+  "enabledUiDirections": [
+    "down"
+  ],
+  "heldUiDirections": {
+    "up": "Prototype sleeve openings need own-source natural occlusion; existing sealed UI source is retained.",
+    "left": "Prototype own-head neck segment is too long; existing sealed UI source is retained.",
+    "right": "Prototype side silhouette is not yet calibrated to the selected body; existing sealed UI source is retained."
+  },
+  "uiPolicy": "MindCastOutfit enables this profile only for down; up/left/right retain the pre-patch resolver. Direct profile prototypes are evidence, not accepted UI coverage."
+}
