@@ -235,8 +235,17 @@
     if(!fit||!part.item||!['shirt','jacket'].includes(kind)||['knee','calf','full'].includes(part.garmentLength))return {length:1,waist:1};
     return {length:kind==='jacket'?fit.jacketLength:fit.shirtLength,waist:fit.waistEase};
   }
+  // The neck socket is measured separately in each Citrus source view.
+  // Adjust the collar rows around that socket and blend back into the torso.
+  const CITRUS_COLLAR_SOCKETS={
+    '72,23,119,181':[.50,7], '61,215,154,198':[.49,5], '10,892,251,171':[.50,8],
+    '327,24,121,177':[.50,4], '305,213,174,214':[.50,5], '268,890,264,178':[.52,6],
+    '620,24,96,181':[.43,4], '606,211,151,215':[.47,5], '546,891,214,179':[.56,6],
+    '824,24,98,181':[.59,4], '781,211,155,215':[.58,5], '786,891,215,183':[.44,6]
+  };
   function clothMesh(p,width,height,anchorY,kind,part={}){
     const rows=6,cols=5,vertices=[],swing=p.action==='run'?Math.sin(p.phase*Math.PI*2-(kind==='cape'?.8:.35)):p.action==='rise'?-.35:p.action==='fall'?.3:p.action==='turn'?(p.phase-.5)*.65:p.action==='land'?Math.sin(p.phase*Math.PI)*.32:0;
+    const socket=part.atlas==='fruit-citrus'?CITRUS_COLLAR_SOCKETS[part.rect?.join(',')]:null;
     const tailoring=tailoredGarment(p,part,kind),lengthScale=clamp((part.lengthScale||1)*tailoring.length,.8,1.8),hemStart=clamp(part.hemStart??.65,.4,.75),extra=height*(lengthScale-1);
     for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
       const u=x/(cols-1),v=y/(rows-1),tail=Math.max(0,(v-.35)/.65),lag=(kind==='cape'?16:6)*swing*tail*tail;
@@ -247,7 +256,10 @@
       const upper=Math.max(0,1-v/.6),shoulderBand=Math.max(0,1-Math.abs(v-.2)/.4);
       const fittedY=anchorY+fittedV*height-p.body.shoulders*.064*upper;
       const center=p.athleteRun8?p.hip.x+(p.hip.y-fittedY)*p.torsoForward/Math.cos(p.runTorsoLeanDegrees*Math.PI/180):160;
-      vertices.push({u,v,x:center+(u-.5)*width*(1+.07*shoulderBand)*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:fittedY+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
+      const collarWeight=Math.max(0,1-v/.4);
+      const collarX=socket?((.5-socket[0])*width+p.neck.x-center)*collarWeight:0;
+      const collarY=socket?socket[1]*collarWeight:0;
+      vertices.push({u,v,x:center+collarX+(u-.5)*width*(1+.07*shoulderBand)*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:fittedY+collarY+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
     }
     return grid(vertices,cols,rows);
   }
@@ -377,7 +389,7 @@
       // rounded acromion, narrower ribcage and each actor's own waist/hip.
       // The 210-unit shoulder reference supplies ratios, not a shared body.
       const shoulderY=Math.max(neckY+18*k,(p.limbs.L.arm.root.y+p.limbs.R.arm.root.y)/2+9*k),neckBaseY=mix(neckY,shoulderY,.32),chestY=Math.max(shoulderY+12*k,p.chest.y+28*k),waistY=p.waist?.y||mix(chestY,p.hip.y,.76),hipSpan=Math.abs(p.limbs.L.leg.root.x-p.limbs.R.leg.root.x)+b.limb*.62;
-      const rows=[[neckCenter,neckY-5*k,neckWidth*1.04,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
+      const rows=[[neckCenter,neckY-7*k,neckWidth*1.04,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
       for(const [cx,cy,w,v,curve] of rows)for(const u of [0,.25,.5,.75,1])vertices.push({u,v,x:cx+(u-.5)*w,y:cy-curve*(1-Math.pow(Math.abs(u-.5)*2,2))});return grid(vertices,5,rows.length);
     }
     const n=key.at(-1),arm=key.startsWith('body.arm'),original=p.limbs[n][arm?'arm':'leg'],inward=original.root.x<p.chest.x?1:-1;
