@@ -236,13 +236,14 @@
     athleteRunActors.set(actor,record);actor.append(surface);return true;
   }
   function validAthleteRunAtlas(atlas,record){
+    if(record.action==='idle')return atlas?.canvas?.width===96&&atlas.canvas.height===144&&atlas.width===96&&atlas.height===144&&atlas.columns===1&&atlas.count===1&&atlas.direction===record.direction&&atlas.character===record.state.appearance.character&&atlas.motion==='native-body-idle-v1'&&atlas.anchor?.[0]===48&&atlas.anchor?.[1]===139.5&&atlas.layout?.idle?.[0]===0;
     const run=atlas?.layout?.run;
     return atlas?.canvas&&atlas.width===96&&atlas.height===144&&atlas.columns===4&&atlas.count===8&&atlas.direction===record.direction&&atlas.character===record.state.appearance.character&&atlas.motion==='athlete-run8-v1'&&
       atlas.anchor?.[0]===48&&atlas.anchor?.[1]===139.5&&Array.isArray(run)&&run.length===8&&run.every((value,index)=>value===index)&&atlas.canvas.width>=384&&atlas.canvas.height>=288;
   }
   function paintAthleteRun(record){
     if(!record.active||record.failed||!record.handle)return;
-    const atlas=record.handle.value,phase=Number.isFinite(record.visual?.phase)?((record.visual.phase%1)+1)%1:0,gait=Math.min(7,Math.floor(phase*8)),index=atlas.layout.run[gait],key=atlas.key+':'+index;
+    const atlas=record.handle.value,phase=Number.isFinite(record.visual?.phase)?((record.visual.phase%1)+1)%1:0,gait=record.action==='idle'?0:Math.min(7,Math.floor(phase*8)),index=atlas.layout[record.action][gait],key=atlas.key+':'+index;
     if(record.painted!==key){
       const ctx=record.surface.getContext('2d');if(!ctx)throw Error('Athlete RUN8 canvas is unavailable.');
       ctx.clearRect(0,0,96,144);ctx.drawImage(atlas.canvas,index%atlas.columns*atlas.width,Math.floor(index/atlas.columns)*atlas.height,atlas.width,atlas.height,0,0,96,144);record.painted=key;
@@ -257,7 +258,7 @@
   }
   function requestAthleteRun(record){
     if(!record.active||record.pending||record.handle||record.failed)return;
-    const acquire=root.MindRasterOutfit?.acquireAthleteRun;if(typeof acquire!=='function'){failAthleteRun(record,Error('Athlete RUN8 atlas is unavailable.'));return;}
+    const acquire=record.action==='idle'?root.MindRasterOutfit?.acquireFittedIdle:root.MindRasterOutfit?.acquireAthleteRun;if(typeof acquire!=='function'){failAthleteRun(record,Error('Athlete RUN8 atlas is unavailable.'));return;}
     record.controller=root.AbortController?new root.AbortController():null;record.pending=true;const epoch=++record.epoch;athleteRunStatus(record,'loading');
     const current=()=>athleteRunActors.get(record.actor)===record&&!record.dead&&record.active&&record.epoch===epoch;
     let request;try{request=acquire.call(root.MindRasterOutfit,record.state,record.direction,{signal:record.controller?.signal});}catch(error){if(current())failAthleteRun(record,error);return;}
@@ -269,12 +270,13 @@
   }
   function updateAthleteRun(actor,visual,input={}){
     const record=athleteRunActors.get(actor);if(!record||record.dead)return false;
-    const run=visual?.action==='run'&&visual.reducedMotion!==true,direction=input.direction;
-    if(!run||!['down','left','up','right'].includes(direction)){
+    const action=visual?.action,direction=input.direction;
+    const supported=action==='idle'?typeof root.MindRasterOutfit?.acquireFittedIdle==='function':action==='run'&&visual.reducedMotion!==true;
+    if(!supported||!['down','left','up','right'].includes(direction)){
       if(record.active){record.active=false;retireAthleteRunRequest(record);record.direction=null;record.status='idle';for(const key of ['athleteRunOwner','athleteRunStatus','athleteRunFailure','athleteRunDirection','athleteRunFrame','athleteRunPhase'])delete actor.dataset[key];}
       return false;
     }
-    if(!record.active||record.direction!==direction){retireAthleteRunRequest(record);record.active=true;record.direction=direction;record.actor.dataset.athleteRunOwner='active';athleteRunStatus(record,'loading');}
+    if(!record.active||record.direction!==direction||record.action!==action){retireAthleteRunRequest(record);record.active=true;record.direction=direction;record.action=action;record.actor.dataset.athleteRunOwner='active';athleteRunStatus(record,'loading');}
     record.visual={phase:visual.phase};requestAthleteRun(record);try{paintAthleteRun(record);}catch(error){failAthleteRun(record,error);}
     return record.status==='ready';
   }

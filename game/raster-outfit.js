@@ -67,7 +67,7 @@
   // these are articulated poses, not eight freshly painted athlete frames.
   const ATHLETE_RUN=freezeTree({id:'athlete-run8-v1',frames:8,stanceEnd:.25,
     footLift:[0,0,0,76,110,104,63,24],footForward:[32,0,-44,-66,-42,18,55,52],
-    bodyBob:[19,22,19,-7,19,22,19,-7],armOpposition:.72,armOffsetDegrees:-6,torsoLeanDegrees:8,
+    bodyBob:[19,22,19,-7,19,22,19,-7],armOpposition:.72,armOffsetDegrees:-6,torsoLeanDegrees:18,
     elbowDegrees:[93,91,88,84,91,97,101,97],kneeOutwardBend:.065,
     phaseNames:['touchdown','support','toe-off','flight-recovery','opposite-touchdown','opposite-support','opposite-toe-off','flight-extension']});
   function runProjection(view,v){
@@ -89,6 +89,7 @@
     p.neck=runProjection(p.direction,torsoAt(profile?profile.landmarks.neck:shoulderY-36));
     if(profile)p.waist=runProjection(p.direction,torsoAt(profile.landmarks.waist,0));
     p.runTorsoLeanDegrees=cfg.torsoLeanDegrees;
+    p.torsoForward=runProjection(p.direction,torsoAt(hipY-1,0)).x-160;
     p.headAngle=0;p.phaseName=cfg.phaseNames[Math.floor(t*8)%8];
     for(const name of ['L','R']){
       const sign=name==='L'?1:-1,q=(t+(name==='R'?.5:0))%1,contact=q<=cfg.stanceEnd,root={x:sway+sign*hipHalf,y:hipY+bob,z:0};
@@ -239,7 +240,10 @@
       // measured UI fit, compress that collar-to-shoulder interval separately
       // from chest/waist length; the head and all world geometry are untouched.
       const fittedV=p.bodyProfile&&!part.referenceBox&&(kind==='shirt'||kind==='jacket')?(v<=.2?v*.4:.08+(v-.2)*1.15):v;
-      vertices.push({u,v,x:(p.athleteRun8?mix(p.chest.x,p.hip.x,v):160)+(u-.5)*width*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:anchorY+fittedV*height+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
+      const upper=Math.max(0,1-v/.6),shoulderBand=Math.max(0,1-Math.abs(v-.2)/.4);
+      const fittedY=anchorY+fittedV*height-p.body.shoulders*.045*upper;
+      const center=p.athleteRun8?p.hip.x+(p.hip.y-fittedY)*p.torsoForward/Math.cos(p.runTorsoLeanDegrees*Math.PI/180):160;
+      vertices.push({u,v,x:center+(u-.5)*width*(1+.07*shoulderBand)*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:fittedY+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
     }
     return grid(vertices,cols,rows);
   }
@@ -341,8 +345,8 @@
       // Calibrated inside the approved source contour: sloping trapezius,
       // rounded acromion, narrower ribcage and each actor's own waist/hip.
       // The 210-unit shoulder reference supplies ratios, not a shared body.
-      const shoulderY=Math.max(neckY+24*k,(p.limbs.L.arm.root.y+p.limbs.R.arm.root.y)/2+16*k),neckBaseY=mix(neckY,shoulderY,.40),chestY=Math.max(shoulderY+12*k,p.chest.y+28*k),waistY=p.waist?.y||mix(chestY,p.hip.y,.76),hipSpan=Math.abs(p.limbs.L.leg.root.x-p.limbs.R.leg.root.x)+b.limb*.62;
-      const rows=[[neckCenter,neckY,neckWidth,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
+      const shoulderY=Math.max(neckY+18*k,(p.limbs.L.arm.root.y+p.limbs.R.arm.root.y)/2+9*k),neckBaseY=mix(neckY,shoulderY,.32),chestY=Math.max(shoulderY+12*k,p.chest.y+28*k),waistY=p.waist?.y||mix(chestY,p.hip.y,.76),hipSpan=Math.abs(p.limbs.L.leg.root.x-p.limbs.R.leg.root.x)+b.limb*.62;
+      const rows=[[neckCenter,neckY-2*k,neckWidth,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
       for(const [cx,cy,w,v,curve] of rows)for(const u of [0,.25,.5,.75,1])vertices.push({u,v,x:cx+(u-.5)*w,y:cy-curve*(1-Math.pow(Math.abs(u-.5)*2,2))});return grid(vertices,5,rows.length);
     }
     const n=key.at(-1),arm=key.startsWith('body.arm'),original=p.limbs[n][arm?'arm':'leg'],inward=original.root.x<p.chest.x?1:-1;
@@ -625,13 +629,14 @@
     // Original directional body parts feed the athlete skeleton; this is not
     // eight newly painted frames, and it never replaces the source atlases.
     async function acquireAthleteRun(state,view='down',options={}){
+      const idle=options.idle===true,action=idle?'idle':'run';
       const snapshot=JSON.parse(JSON.stringify({appearance:state?.appearance,rpg:{loadout:state?.rpg?.loadout||{}}})),d=direction(view);
       const opts={bodyProfile:snapshot.appearance?.character==='graduate'?GRADUATE_REFERENCE.id:null,direction:d},p=plan(snapshot,d,manifest(),E,null,opts),profile=p.bodyProfile||null;
-      const F={width:96,height:144,columns:4,count:8},key=JSON.stringify(['native-body-athlete-run8-v1',p.key]),cost=F.width*F.height*F.count*4;
+      const F={width:96,height:144,columns:idle?1:4,count:idle?1:8},key=JSON.stringify(['native-body-athlete-run8-v1',action,p.key]),cost=F.width*F.height*F.count*4;
       return frameCache.acquire(key,cost,alive=>queue(async()=>{
         if(!alive())throw aborted();const prepared=await prepare(snapshot,d,'athlete-scene',null,alive,opts),canvas=makeCanvas(F.width*F.columns,F.height*Math.ceil(F.count/F.columns)),ctx=canvas.getContext('2d');
-        try{const budget={started:E.now()};for(let i=0;i<8;i++){if(!alive())throw aborted();const x=i%F.columns*F.width,y=Math.floor(i/F.columns)*F.height,p=pose(prepared.plan.character,d,i/8,'run',opts);ctx.save();try{ctx.beginPath();ctx.rect(x,y,F.width,F.height);ctx.clip();ctx.translate(x,y);await drawBudgeted(ctx,prepared,p,F.width,F.height,alive,budget,{canonicalActor:true});}finally{ctx.restore();}}
-          if(!alive())throw aborted();return {canvas,...F,character:p.character,direction:d,ground:{x:48,y:139.5},anchor:[48,139.5],layout:{run:[0,1,2,3,4,5,6,7]},profile,motion:'athlete-run8-v1',bodyFit:'native-body-underlay-v1',renderMethod:'native-parts-athlete-skeleton',key};
+        try{const budget={started:E.now()};for(let i=0;i<F.count;i++){if(!alive())throw aborted();const x=i%F.columns*F.width,y=Math.floor(i/F.columns)*F.height,p=pose(prepared.plan.character,d,i/8,action,opts);ctx.save();try{ctx.beginPath();ctx.rect(x,y,F.width,F.height);ctx.clip();ctx.translate(x,y);await drawBudgeted(ctx,prepared,p,F.width,F.height,alive,budget,{canonicalActor:true});}finally{ctx.restore();}}
+          if(!alive())throw aborted();return {canvas,...F,character:p.character,direction:d,ground:{x:48,y:139.5},anchor:[48,139.5],layout:idle?{idle:[0]}:{run:[0,1,2,3,4,5,6,7]},profile,motion:idle?'native-body-idle-v1':'athlete-run8-v1',bodyFit:'native-body-underlay-v1',renderMethod:'native-parts-athlete-skeleton',key};
         }catch(error){canvas.width=1;canvas.height=1;throw error;}finally{prepared.release();}
       }),options);
     }
@@ -683,7 +688,7 @@
       const item=E.MindAdventure?.gear(id),knowledge=E.MindEngine?.ITEMS?.find(item=>item.id===id),slot=item?.slot||(knowledge?'handheld':null);if(!slot)throw Error('找不到這件裝配。');
       const copy={appearance:state?.appearance,rpg:{loadout:{[slot]:id}}};return preview(copy,{...options,onlySlot:slot,animate:false});
     }
-    return {preview,itemPreview,setPose,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),dispose,acquire,acquireAthleteRun,acquireGraduateDown,prepare,describe:(state,options={})=>plan(state,options.direction||'down',manifest(),E,options.onlySlot||null,options),stats:()=>({frames:frameCache.stats(),sources:sourceCache.stats()}),clearUnused(){frameCache.clear();sourceCache.clear();},draw};
+    return {preview,itemPreview,setPose,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),dispose,acquire,acquireAthleteRun,acquireFittedIdle:(state,view,options)=>acquireAthleteRun(state,view,{...options,idle:true}),acquireGraduateDown,prepare,describe:(state,options={})=>plan(state,options.direction||'down',manifest(),E,options.onlySlot||null,options),stats:()=>({frames:frameCache.stats(),sources:sourceCache.stats()}),clearUnused(){frameCache.clear();sourceCache.clear();},draw};
   }
   return {...createRuntime(),createRuntime,DIRECTIONS,SLOTS,PARTS,SPACE,FRAME,POSES,SCENE_BYTES,SOURCE_BYTES,direction,body,previewBodyProfile,pose,stride,ik,ik3,cyclic,graduateDownRunPose,athleticRunPose,runProjection,ATHLETE_RUN,athleteLimbMesh,GRADUATE_DOWN_FRAME,GRADUATE_DOWN_LAYOUT,limbMesh,joinedLimbMesh,referenceRunSleeveMesh,quad,clothMesh,TAILORED_FITS,tailoredGarment,triangleTransform,partMesh,layers,fitFeet,drawSteps,partsForPose,plan,checkedPart,appearance,createCache,sourceRegion,OWN_HAND_ATLAS,OWN_HAND_PARTS};
 });

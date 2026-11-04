@@ -45,3 +45,16 @@
 .walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.painted-coverage-fallback,
 .walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.graduate-down-avatar-canvas,
 .walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.graduate-down-idle-bridge{display:none!important}
+
+/* Render around the existing world foot anchor, without rescaling the map. */
+@media (min-width: 701px) and (max-width: 1400px) and (any-pointer: coarse) {
+  .walk-world > .walk-actor {
+    --actor-display-scale: 1.19;
+    transform-origin: 50% 90%;
+  }
+}
+
+/* Compact run/idle canvases extend above the older portrait rectangle. */
+.walk-actor[data-athlete-run-status="ready"] > .player-name {
+  bottom: 127%;
+}
