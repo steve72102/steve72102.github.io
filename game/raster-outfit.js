@@ -44,7 +44,11 @@
     if(typeof value==='string'&&value.includes('-')){const bits=value.split('-');return bits.includes(fallback)?fallback:bits.includes('down')?'down':bits.includes('up')?'up':fallback;}
     return fallback;
   }
-  function body(character,options={}){const profile=previewBodyProfile(character,options);return {...(profile?.body||BODIES[character]||BODIES.graduate)};}
+  const SHOULDER_FIT=Object.freeze({doctor:1.15,professor:1.10,graduate:1.14,researcher:1.08,'cedar-dean':1.15,'herbal-mentor':1.08,'lab-engineer':1.12,'balance-analyst':1.10,'dawn-intern':1.10,'river-fellow':1.15});
+  function body(character,options={}){
+    const profile=previewBodyProfile(character,options),b=profile?.body||BODIES[character]||BODIES.graduate;
+    return {...b,shoulders:b.shoulders*(SHOULDER_FIT[character]||SHOULDER_FIT.graduate)};
+  }
   function ik(start,end,upper,lower,bend=1){
     const delta=sub(end,start),d=clamp(length(delta),Math.abs(upper-lower)+.001,upper+lower-.001),angle=Math.atan2(delta.y,delta.x),a=Math.acos(clamp((upper*upper+d*d-lower*lower)/(2*upper*d),-1,1));
     const joint=add(start,point(Math.cos(angle+bend*a)*upper,Math.sin(angle+bend*a)*upper));
@@ -67,7 +71,7 @@
   // these are articulated poses, not eight freshly painted athlete frames.
   const ATHLETE_RUN=freezeTree({id:'athlete-run8-v1',frames:8,stanceEnd:.25,
     footLift:[0,0,0,76,110,104,63,24],footForward:[32,0,-44,-66,-42,18,55,52],
-    bodyBob:[19,22,19,-7,19,22,19,-7],armOpposition:.72,armOffsetDegrees:-6,torsoLeanDegrees:18,
+    bodyBob:[19,22,19,-7,19,22,19,-7],armOpposition:.72,armOffsetDegrees:-6,torsoLeanDegrees:30,
     elbowDegrees:[93,91,88,84,91,97,101,97],kneeOutwardBend:.065,
     phaseNames:['touchdown','support','toe-off','flight-recovery','opposite-touchdown','opposite-support','opposite-toe-off','flight-extension']});
   function runProjection(view,v){
@@ -80,7 +84,7 @@
     const cfg=ATHLETE_RUN,profile=p.bodyProfile,graduate=p.direction==='down'&&profile?.downRun8,b=p.body,t=((phase%1)+1)%1,k=b.leg/187.8873239437;
     const bob=cyclic(cfg.bodyBob,t)*k,sway=Math.sin(t*Math.PI*2)*1.5*k,hipY=profile?profile.landmarks.hip:470-b.leg,shoulderY=profile?profile.landmarks.shoulder:SPACE.foot-b.height+b.head+49;
     const legUpper=graduate?graduate.upperLeg:b.leg*.44,legLower=graduate?graduate.lowerLeg:b.leg*.56,armUpper=graduate?graduate.upperArm:b.arm*.5,armLower=graduate?graduate.lowerArm:b.arm*.5;
-    const shoulderHalf=graduate?graduate.shoulderHalfWidth:b.shoulders*(profile?.5:.475),hipHalf=b.hips*.44,leanAngle=cfg.torsoLeanDegrees*Math.PI/180;
+    const shoulderHalf=graduate?graduate.shoulderHalfWidth*SHOULDER_FIT.graduate:b.shoulders*(profile?.5:.475),hipHalf=b.hips*.44,leanAngle=cfg.torsoLeanDegrees*Math.PI/180;
     const torsoAt=(y,x=-sway)=>({x,y:hipY+bob+(y-hipY)*Math.cos(leanAngle),z:(hipY-y)*Math.sin(leanAngle)});
     p.phase=t;p.bob=bob;p.athleteRun8=cfg.id;p.runLengths={legUpper,legLower,armUpper,armLower};
     if(graduate)p.graduateRun8=graduate.id;
@@ -115,7 +119,7 @@
   }
   function graduateDownRunPose(p,phase){return athleticRunPose(p,phase);}
   function pose(character,view='down',phase=0,action='idle',options={}){
-    const d=direction(view),profile=previewBodyProfile(character,{...options,direction:d}),b=profile?{...profile.body}:body(character),side=d==='left'||d==='right',facing=d==='left'?-1:1,run=action==='run',t=run?phase:0;
+    const d=direction(view),profile=previewBodyProfile(character,{...options,direction:d}),b=body(character,{...options,direction:d}),side=d==='left'||d==='right',facing=d==='left'?-1:1,run=action==='run',t=run?phase:0;
     const bob=run?Math.cos(t*Math.PI*4)*(profile?5:2.8):0,ankleY=SPACE.foot-20,hipY=profile?profile.landmarks.hip+bob:ankleY-b.leg+bob,shoulderY=profile?profile.landmarks.shoulder+bob:SPACE.foot-b.height+b.head+27+bob;
     const hipWidth=b.hips*(side?.23:.88),shoulderWidth=b.shoulders*(side?.22:1),viewWidth=side?.66:1;
     const p={character,direction:d,phase:t,action,body:b,side,viewWidth,bob,root:point(160,SPACE.foot),hip:point(160,hipY),chest:point(160,shoulderY+15),neck:point(160,shoulderY-14),headAngle:run?Math.sin(t*Math.PI*2)*.018:0,limbs:{},near:d==='left'?'L':'R'};
@@ -241,7 +245,7 @@
       // from chest/waist length; the head and all world geometry are untouched.
       const fittedV=p.bodyProfile&&!part.referenceBox&&(kind==='shirt'||kind==='jacket')?(v<=.2?v*.4:.08+(v-.2)*1.15):v;
       const upper=Math.max(0,1-v/.6),shoulderBand=Math.max(0,1-Math.abs(v-.2)/.4);
-      const fittedY=anchorY+fittedV*height-p.body.shoulders*.045*upper;
+      const fittedY=anchorY+fittedV*height-p.body.shoulders*.064*upper;
       const center=p.athleteRun8?p.hip.x+(p.hip.y-fittedY)*p.torsoForward/Math.cos(p.runTorsoLeanDegrees*Math.PI/180):160;
       vertices.push({u,v,x:center+(u-.5)*width*(1+.07*shoulderBand)*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:fittedY+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
     }
@@ -346,7 +350,7 @@
       // rounded acromion, narrower ribcage and each actor's own waist/hip.
       // The 210-unit shoulder reference supplies ratios, not a shared body.
       const shoulderY=Math.max(neckY+18*k,(p.limbs.L.arm.root.y+p.limbs.R.arm.root.y)/2+9*k),neckBaseY=mix(neckY,shoulderY,.32),chestY=Math.max(shoulderY+12*k,p.chest.y+28*k),waistY=p.waist?.y||mix(chestY,p.hip.y,.76),hipSpan=Math.abs(p.limbs.L.leg.root.x-p.limbs.R.leg.root.x)+b.limb*.62;
-      const rows=[[neckCenter,neckY-2*k,neckWidth,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
+      const rows=[[neckCenter,neckY-5*k,neckWidth*1.04,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
       for(const [cx,cy,w,v,curve] of rows)for(const u of [0,.25,.5,.75,1])vertices.push({u,v,x:cx+(u-.5)*w,y:cy-curve*(1-Math.pow(Math.abs(u-.5)*2,2))});return grid(vertices,5,rows.length);
     }
     const n=key.at(-1),arm=key.startsWith('body.arm'),original=p.limbs[n][arm?'arm':'leg'],inward=original.root.x<p.chest.x?1:-1;
