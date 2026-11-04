@@ -1917,5 +1917,75 @@
       "shirt.torso": "Remove standing inner sleeve fragments from below source y326, where torso crop crosses original underarm gap. These original cloth pixels remain in moving sleeve parts.",
       "idle": "Original plan masks and source remain in use; these cutouts are applied only while graduateRun8 pose marker exists."
     }
+  },
+  "athleteMotionRevision": {
+    "id": "athlete-run8-v1",
+    "frames": 8,
+    "newAuthoredFrames": 0,
+    "method": "Existing own native directional parts articulated on a fixed-length 3D skeleton; proper yaw projection; no sprite mirroring.",
+    "sourceImagesChanged": false,
+    "bodyDimensionsChanged": false,
+    "headAndOwnHandSourcesChanged": false,
+    "phaseNames": [
+      "touchdown",
+      "support",
+      "toe-off",
+      "flight-recovery",
+      "opposite-touchdown",
+      "opposite-support",
+      "opposite-toe-off",
+      "flight-extension"
+    ],
+    "stanceEnd": 0.25,
+    "sampledFlightFrames": [
+      3,
+      7
+    ],
+    "contactFootTargetY": 470,
+    "modelSoleGroundY": 490,
+    "footLift": [
+      0,
+      0,
+      0,
+      76,
+      110,
+      104,
+      63,
+      24
+    ],
+    "footForward": [
+      32,
+      0,
+      -44,
+      -66,
+      -42,
+      18,
+      55,
+      52
+    ],
+    "bodyBob": [
+      19,
+      22,
+      19,
+      -7,
+      19,
+      22,
+      19,
+      -7
+    ],
+    "torsoLeanDegrees": 8,
+    "armRule": "clamp(-0.72 * (ipsilateralThighDegrees - contralateralThighDegrees) - 6, -52, 42)",
+    "elbowDegrees": [
+      93,
+      91,
+      88,
+      84,
+      91,
+      97,
+      101,
+      97
+    ],
+    "provenance": "World Athletics London 2017 men 200m biomechanical report; Arellano & Kram 2014 DOI 10.1242/jeb.100420. This is a stylised inference, not motion capture or exact replication of an individual athlete.",
+    "renderEvidence": "Headless renderer only; real browser and real multiplayer await recipient acceptance."
   }
 }

@@ -30,7 +30,8 @@
     "assets/illustrated-scenes/hall-herbal.webp",
     "assets/illustrated-scenes/hall-life.webp",
     "assets/illustrated-scenes/hall-pharmaceutics.webp",
-    "assets/illustrated-scenes/hall-pharmacology.webp"
+    "assets/illustrated-scenes/hall-pharmacology.webp",
+    "assets/avatar-raster/own-native-front-hand-fragments-v1.png"
   ],
   "lazy": [
     "assets/avatar-raster/bach-long.webp",
@@ -205,7 +206,11 @@
     "assets/native-avatar/pineapple-river-fellow/right-actions.webp",
     "assets/native-avatar/pineapple-river-fellow/right-run.webp",
     "assets/native-avatar/pineapple-river-fellow/up-actions.webp",
-    "assets/native-avatar/pineapple-river-fellow/up-run.webp"
+    "assets/native-avatar/pineapple-river-fellow/up-run.webp",
+    "assets/avatar-raster/graduate-reference-v1/reference.png",
+    "assets/avatar-raster/graduate-reference-v1/parts.json",
+    "assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp",
+    "assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp"
   ],
   "offline": [
     "raster-art.js",
@@ -456,6 +461,12 @@
     "assets/native-avatar/pineapple-river-fellow/right-run.webp",
     "assets/native-avatar/pineapple-river-fellow/up-actions.webp",
     "assets/native-avatar/pineapple-river-fellow/up-run.webp",
-    "assets/avatar-raster/STAGE4-PROVENANCE.json"
+    "assets/avatar-raster/STAGE4-PROVENANCE.json",
+    "assets/avatar-raster/graduate-reference-v1/reference.png",
+    "assets/avatar-raster/graduate-reference-v1/parts.json",
+    "assets/painted-avatar/graduate-left-v1/left-actions-0-body-front.webp",
+    "assets/painted-avatar/graduate-right-v1/right-actions-0-body-front.webp",
+    "assets/avatar-raster/own-native-front-hand-fragments-v1.png",
+    "assets/avatar-raster/own-native-front-hand-fragments-v1.json"
   ]
 }

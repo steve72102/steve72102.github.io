@@ -100,7 +100,7 @@
   }
   function itemPreview(state,item,options={}){
     if(!root.MindRasterOutfit||!root.document)return null;
-    try{return restorePreview(root.MindRasterOutfit.itemPreview(publicState(state),item.id,options),options.fallback);}catch{return null;}
+    try{const canvas=restorePreview(root.MindRasterOutfit.itemPreview(publicState(state),item.id,options),options.fallback);canvas.dataset.character=state.appearance.character;canvas.dataset.gearId=item.id;canvas.dataset.equipmentSlot=item.slot;canvas.dataset.bodyFit='native-body-underlay-v1';return canvas;}catch{return null;}
   }
   function portrait(state,options={}){
     if(!available(state))return null;
@@ -213,5 +213,76 @@
     record.surface.remove();record.bridge.remove();
     for(const key of ['graduateDownOwner','graduateDownStatus','graduateDownFailure','graduateDownPose','graduateDownFrame','graduateDownPhase'])delete actor.dataset[key];
   }
-  return {SLOTS,ranges,publicState,available,cell,createBody,register,update,needsFrame,dispose,preview,itemPreview,portrait,registerGraduateDown,updateGraduateDown,ownsGraduateDown,needsGraduateDownFrame,disposeGraduateDown};
+  // All-character RUN8 uses an independent, run-only owner. Original authored
+  // surfaces remain intact for idle/actions and truthful same-loadout fallback.
+  // The shared movement clock is the only animation clock; loading never hides
+  // an existing body, and every direction request owns a cancelable epoch.
+  const athleteRunActors=new WeakMap();
+  const ATHLETE_RUN_CELL=Object.freeze({width:96,height:144,footX:48,footY:139.5});
+  function athleteRunStatus(record,status,message=''){
+    record.status=status;record.actor.dataset.athleteRunStatus=status;
+    if(message)record.actor.dataset.athleteRunFailure=message;else delete record.actor.dataset.athleteRunFailure;
+    if(status!=='ready'){delete record.actor.dataset.athleteRunFrame;delete record.actor.dataset.athleteRunPhase;}
+  }
+  function registerAthleteRun(actor,state){
+    if(!actor?.append||!actor.dataset||!available(state))return false;
+    if(athleteRunActors.has(actor))return true;
+    const document=actor.ownerDocument||root.document;if(!document?.createElement)return false;
+    const clean=publicState(state);
+    Object.freeze(clean.appearance);Object.freeze(clean.rpg.loadout);Object.freeze(clean.rpg);Object.freeze(clean);
+    const surface=document.createElement('canvas');surface.width=ATHLETE_RUN_CELL.width;surface.height=ATHLETE_RUN_CELL.height;
+    surface.className='athlete-run-avatar-canvas';surface.setAttribute('aria-hidden','true');surface.dataset.artMethod='native-parts-athlete-skeleton-run8';surface.dataset.bodyFit='native-body-underlay-v1';surface.dataset.footAnchor='48 139.5';
+    const record={actor,surface,state:clean,active:false,dead:false,visual:null,direction:null,epoch:0,pending:false,failed:false,status:'idle',handle:null,controller:null,painted:null};
+    athleteRunActors.set(actor,record);actor.append(surface);return true;
+  }
+  function validAthleteRunAtlas(atlas,record){
+    const run=atlas?.layout?.run;
+    return atlas?.canvas&&atlas.width===96&&atlas.height===144&&atlas.columns===4&&atlas.count===8&&atlas.direction===record.direction&&atlas.character===record.state.appearance.character&&atlas.motion==='athlete-run8-v1'&&
+      atlas.anchor?.[0]===48&&atlas.anchor?.[1]===139.5&&Array.isArray(run)&&run.length===8&&run.every((value,index)=>value===index)&&atlas.canvas.width>=384&&atlas.canvas.height>=288;
+  }
+  function paintAthleteRun(record){
+    if(!record.active||record.failed||!record.handle)return;
+    const atlas=record.handle.value,phase=Number.isFinite(record.visual?.phase)?((record.visual.phase%1)+1)%1:0,gait=Math.min(7,Math.floor(phase*8)),index=atlas.layout.run[gait],key=atlas.key+':'+index;
+    if(record.painted!==key){
+      const ctx=record.surface.getContext('2d');if(!ctx)throw Error('Athlete RUN8 canvas is unavailable.');
+      ctx.clearRect(0,0,96,144);ctx.drawImage(atlas.canvas,index%atlas.columns*atlas.width,Math.floor(index/atlas.columns)*atlas.height,atlas.width,atlas.height,0,0,96,144);record.painted=key;
+    }
+    athleteRunStatus(record,'ready');record.actor.dataset.athleteRunDirection=record.direction;record.actor.dataset.athleteRunFrame=String(index);record.actor.dataset.athleteRunPhase=String(gait);
+  }
+  function retireAthleteRunRequest(record){
+    record.epoch++;record.controller?.abort();record.controller=null;record.handle?.release?.();record.handle=null;record.pending=false;record.failed=false;record.painted=null;
+  }
+  function failAthleteRun(record,error){
+    record.handle?.release?.();record.handle=null;record.pending=false;record.failed=true;record.controller=null;record.painted=null;athleteRunStatus(record,'fallback',String(error?.message||'Athlete RUN8 asset unavailable.'));
+  }
+  function requestAthleteRun(record){
+    if(!record.active||record.pending||record.handle||record.failed)return;
+    const acquire=root.MindRasterOutfit?.acquireAthleteRun;if(typeof acquire!=='function'){failAthleteRun(record,Error('Athlete RUN8 atlas is unavailable.'));return;}
+    record.controller=root.AbortController?new root.AbortController():null;record.pending=true;const epoch=++record.epoch;athleteRunStatus(record,'loading');
+    const current=()=>athleteRunActors.get(record.actor)===record&&!record.dead&&record.active&&record.epoch===epoch;
+    let request;try{request=acquire.call(root.MindRasterOutfit,record.state,record.direction,{signal:record.controller?.signal});}catch(error){if(current())failAthleteRun(record,error);return;}
+    Promise.resolve(request).then(handle=>{
+      if(!current()){handle?.release?.();return;}
+      record.handle=handle;record.pending=false;record.controller=null;
+      try{if(typeof handle?.release!=='function'||!validAthleteRunAtlas(handle?.value,record))throw Error('Athlete RUN8 atlas does not match the registered character, view or layout.');paintAthleteRun(record);}catch(error){failAthleteRun(record,error);}
+    }).catch(error=>{if(current())failAthleteRun(record,error);});
+  }
+  function updateAthleteRun(actor,visual,input={}){
+    const record=athleteRunActors.get(actor);if(!record||record.dead)return false;
+    const run=visual?.action==='run'&&visual.reducedMotion!==true,direction=input.direction;
+    if(!run||!['down','left','up','right'].includes(direction)){
+      if(record.active){record.active=false;retireAthleteRunRequest(record);record.direction=null;record.status='idle';for(const key of ['athleteRunOwner','athleteRunStatus','athleteRunFailure','athleteRunDirection','athleteRunFrame','athleteRunPhase'])delete actor.dataset[key];}
+      return false;
+    }
+    if(!record.active||record.direction!==direction){retireAthleteRunRequest(record);record.active=true;record.direction=direction;record.actor.dataset.athleteRunOwner='active';athleteRunStatus(record,'loading');}
+    record.visual={phase:visual.phase};requestAthleteRun(record);try{paintAthleteRun(record);}catch(error){failAthleteRun(record,error);}
+    return record.status==='ready';
+  }
+  function ownsAthleteRun(actor){const record=athleteRunActors.get(actor);return !!record&&!record.dead&&record.active&&record.status==='ready';}
+  function needsAthleteRunFrame(actor){const record=athleteRunActors.get(actor);return !!record&&!record.dead&&record.active&&record.pending;}
+  function disposeAthleteRun(actor){
+    const record=athleteRunActors.get(actor);if(!record)return;record.dead=true;record.active=false;retireAthleteRunRequest(record);athleteRunActors.delete(actor);record.surface.remove();
+    for(const key of ['athleteRunOwner','athleteRunStatus','athleteRunFailure','athleteRunDirection','athleteRunFrame','athleteRunPhase'])delete actor.dataset[key];
+  }
+  return {SLOTS,ranges,publicState,available,cell,createBody,register,update,needsFrame,dispose,preview,itemPreview,portrait,registerGraduateDown,updateGraduateDown,ownsGraduateDown,needsGraduateDownFrame,disposeGraduateDown,registerAthleteRun,updateAthleteRun,ownsAthleteRun,needsAthleteRunFrame,disposeAthleteRun};
 });

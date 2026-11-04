@@ -1,0 +1,1819 @@
+{
+  "schema": 1,
+  "id": "own-native-front-hand-fragments-v1",
+  "status": "measured-native-visible-fragments",
+  "runtimeDependency": "none",
+  "newAuthoredHandDrawings": 0,
+  "atlas": {
+    "src": "./assets/avatar-raster/own-native-front-hand-fragments-v1.png",
+    "width": 256,
+    "height": 704,
+    "facts": {
+      "bytes": 36346,
+      "sha256": "1b967cd7df03021f2207bfec0105225cdf2bb2f59aaa41bb5991ae6841b9e04e",
+      "crc32": "92577d17"
+    }
+  },
+  "characters": {
+    "doctor": {
+      "R": {
+        "ownerCharacter": "doctor",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          16,
+          21,
+          21
+        ],
+        "anchor": [
+          0.09523809523809523,
+          0.5714285714285714
+        ],
+        "displayWidth": 32.03389830508475,
+        "sourceArmAngle": -1.7359450042095235,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          120,
+          181,
+          21,
+          21
+        ],
+        "sourceWristPin": [
+          122,
+          193
+        ],
+        "sourcePalmCenter": [
+          134,
+          191
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/doctor-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 6616,
+          "sha256": "275793c23df36d085b78b85a498ddb0f188a63da0c2832064f64ece54ac30472",
+          "crc32": "5260f299"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "77c7939d088d2f4626e2b7c8b8038c7afeb1d2e93c82b43dff4f5a537c020050",
+        "sourceModelScale": 1.5254237288135593,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "doctor",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          16,
+          22,
+          22
+        ],
+        "anchor": [
+          0.8636363636363636,
+          0.5909090909090909
+        ],
+        "displayWidth": 33.559322033898304,
+        "sourceArmAngle": -4.446136931233765,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          139,
+          180,
+          22,
+          22
+        ],
+        "sourceWristPin": [
+          158,
+          193
+        ],
+        "sourcePalmCenter": [
+          147,
+          190
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/doctor-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 6616,
+          "sha256": "275793c23df36d085b78b85a498ddb0f188a63da0c2832064f64ece54ac30472",
+          "crc32": "5260f299"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "b23008a494ed9bf0c0119ca6acb35889e7c5040034a587073b352097d186da90",
+        "sourceModelScale": 1.5254237288135593,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "professor": {
+      "R": {
+        "ownerCharacter": "professor",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          80,
+          20,
+          21
+        ],
+        "anchor": [
+          0.2,
+          0.8095238095238095
+        ],
+        "displayWidth": 30.508474576271183,
+        "sourceArmAngle": -2.4149503129080676,
+        "sourceDirection": "right",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          169,
+          168,
+          20,
+          21
+        ],
+        "sourceWristPin": [
+          173,
+          185
+        ],
+        "sourcePalmCenter": [
+          181,
+          176
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/professor-v1/right-actions-body-front.webp",
+        "sourceFacts": {
+          "bytes": 147130,
+          "sha256": "78abb39909e304aeb996a5610a3a66712c3279f29490770a35f549a8ef0bd303",
+          "crc32": "f9adbb92"
+        },
+        "sourceDimensions": [
+          1024,
+          768
+        ],
+        "sourceRGBAHash": "01eca6bf26f5f7046d2c6513098fef4007f41965599f64aed74d63844a97cd86",
+        "sourceModelScale": 1.5254237288135593,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "professor",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          80,
+          20,
+          20
+        ],
+        "anchor": [
+          0.85,
+          0.8
+        ],
+        "displayWidth": 30.508474576271183,
+        "sourceArmAngle": -3.9795738785981833,
+        "sourceDirection": "left",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          66,
+          182,
+          20,
+          20
+        ],
+        "sourceWristPin": [
+          83,
+          198
+        ],
+        "sourcePalmCenter": [
+          73,
+          189
+        ],
+        "sourceMaskPolygon": [
+          [
+            68,
+            182
+          ],
+          [
+            73,
+            183
+          ],
+          [
+            74,
+            187
+          ],
+          [
+            80,
+            190
+          ],
+          [
+            86,
+            193
+          ],
+          [
+            86,
+            200
+          ],
+          [
+            78,
+            198
+          ],
+          [
+            72,
+            194
+          ],
+          [
+            68,
+            192
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/professor-v1/left-actions-body-front.webp",
+        "sourceFacts": {
+          "bytes": 144584,
+          "sha256": "934d1d90cd8d3b71980875a63e9bd8999edd951d01c81fe7fb423de00146c19d",
+          "crc32": "17f77516"
+        },
+        "sourceDimensions": [
+          1024,
+          768
+        ],
+        "sourceRGBAHash": "245a833c9d5e4dc814001cbc5c57989f27ab9d31b0baab6d8838af7663429e31",
+        "sourceModelScale": 1.5254237288135593,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "researcher": {
+      "R": {
+        "ownerCharacter": "researcher",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          144,
+          24,
+          20
+        ],
+        "anchor": [
+          0.08333333333333333,
+          0.75
+        ],
+        "displayWidth": 36.52173913043478,
+        "sourceArmAngle": -1.9379701606131157,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          129,
+          190,
+          24,
+          20
+        ],
+        "sourceWristPin": [
+          131,
+          205
+        ],
+        "sourcePalmCenter": [
+          144,
+          200
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/researcher-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8802,
+          "sha256": "573ecbcd1c2696a5e7703a5934c03c60550970e95f8cf55572ca4aaf3c5b57f1",
+          "crc32": "5180edd6"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "caa7f5aafa50b334ac27c11979478b1137a673cc52e06c4d2a32ca84474e5382",
+        "sourceModelScale": 1.5217391304347827,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "researcher",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          144,
+          25,
+          17
+        ],
+        "anchor": [
+          0.92,
+          0.5294117647058824
+        ],
+        "displayWidth": 38.04347826086957,
+        "sourceArmAngle": -4.641081515599399,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          122,
+          207,
+          25,
+          17
+        ],
+        "sourceWristPin": [
+          145,
+          216
+        ],
+        "sourcePalmCenter": [
+          131,
+          215
+        ],
+        "sourceMaskPolygon": [
+          [
+            122,
+            213
+          ],
+          [
+            128,
+            211
+          ],
+          [
+            135,
+            211
+          ],
+          [
+            139,
+            208
+          ],
+          [
+            147,
+            209
+          ],
+          [
+            147,
+            224
+          ],
+          [
+            122,
+            224
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/researcher-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8802,
+          "sha256": "573ecbcd1c2696a5e7703a5934c03c60550970e95f8cf55572ca4aaf3c5b57f1",
+          "crc32": "5180edd6"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "1a79429822fe1fed4b46f5cee6251da1aac44f945b321ba0d00fa88630281b2a",
+        "sourceModelScale": 1.5217391304347827,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "cedar-dean": {
+      "R": {
+        "ownerCharacter": "cedar-dean",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          208,
+          22,
+          23
+        ],
+        "anchor": [
+          0.13636363636363635,
+          0.7391304347826086
+        ],
+        "displayWidth": 33.6989966555184,
+        "sourceArmAngle": -2.158798930342464,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          117,
+          174,
+          22,
+          23
+        ],
+        "sourceWristPin": [
+          120,
+          191
+        ],
+        "sourcePalmCenter": [
+          132,
+          183
+        ],
+        "sourceMaskPolygon": [
+          [
+            117,
+            184
+          ],
+          [
+            125,
+            180
+          ],
+          [
+            129,
+            174
+          ],
+          [
+            134,
+            174
+          ],
+          [
+            139,
+            177
+          ],
+          [
+            135,
+            183
+          ],
+          [
+            135,
+            196
+          ],
+          [
+            117,
+            196
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/cedar-dean-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 7976,
+          "sha256": "52855e1e3e8188a962b1200292853133b17f49753f4c4e10f39495c10a24ee4e",
+          "crc32": "f20f4657"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "9e2abc108e80334cc4f3e6fe6f585430a6f01082865199af431424e1617da9b5",
+        "sourceModelScale": 1.5317725752508362,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "cedar-dean",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          208,
+          25,
+          21
+        ],
+        "anchor": [
+          0.92,
+          0.7142857142857143
+        ],
+        "displayWidth": 38.29431438127091,
+        "sourceArmAngle": -4.369365039963986,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          131,
+          176,
+          25,
+          21
+        ],
+        "sourceWristPin": [
+          154,
+          191
+        ],
+        "sourcePalmCenter": [
+          140,
+          186
+        ],
+        "sourceMaskPolygon": [
+          [
+            135,
+            176
+          ],
+          [
+            141,
+            176
+          ],
+          [
+            146,
+            180
+          ],
+          [
+            156,
+            185
+          ],
+          [
+            156,
+            197
+          ],
+          [
+            139,
+            196
+          ],
+          [
+            131,
+            189
+          ],
+          [
+            134,
+            183
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/cedar-dean-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 7976,
+          "sha256": "52855e1e3e8188a962b1200292853133b17f49753f4c4e10f39495c10a24ee4e",
+          "crc32": "f20f4657"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "1bab9bf2b2bf83698bf90e1dba7ced3b077a61e930d70c982bba63f81fd4cb5a",
+        "sourceModelScale": 1.5317725752508362,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "herbal-mentor": {
+      "R": {
+        "ownerCharacter": "herbal-mentor",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          272,
+          25,
+          23
+        ],
+        "anchor": [
+          0.12,
+          0.8260869565217391
+        ],
+        "displayWidth": 38.01115241635687,
+        "sourceArmAngle": -2.0988707752212563,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          118,
+          196,
+          25,
+          23
+        ],
+        "sourceWristPin": [
+          121,
+          215
+        ],
+        "sourcePalmCenter": [
+          133,
+          208
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/herbal-mentor-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 10082,
+          "sha256": "8122efa3adf2cbefc9bffe579da6e77db5982ce6e828b322f10447ccc552d66f",
+          "crc32": "291737ca"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "86d889ab5427b6fc8269ddbdea3ed5237fe33685e8133cd7841184ef29abd98e",
+        "sourceModelScale": 1.520446096654275,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "herbal-mentor",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          272,
+          25,
+          21
+        ],
+        "anchor": [
+          0.92,
+          0.6190476190476191
+        ],
+        "displayWidth": 38.01115241635687,
+        "sourceArmAngle": -4.501295647161943,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          137,
+          210,
+          25,
+          21
+        ],
+        "sourceWristPin": [
+          160,
+          223
+        ],
+        "sourcePalmCenter": [
+          146,
+          220
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/herbal-mentor-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 10082,
+          "sha256": "8122efa3adf2cbefc9bffe579da6e77db5982ce6e828b322f10447ccc552d66f",
+          "crc32": "291737ca"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "6b225a6f913df1e937df0e5c4aa5e418288d0541e9dd0564060042445c80e065",
+        "sourceModelScale": 1.520446096654275,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "lab-engineer": {
+      "R": {
+        "ownerCharacter": "lab-engineer",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          336,
+          27,
+          25
+        ],
+        "anchor": [
+          0.1111111111111111,
+          0.84
+        ],
+        "displayWidth": 42.67132867132867,
+        "sourceArmAngle": -2.1421338066285234,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          128,
+          181,
+          27,
+          25
+        ],
+        "sourceWristPin": [
+          131,
+          202
+        ],
+        "sourcePalmCenter": [
+          145,
+          193
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/lab-engineer-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8252,
+          "sha256": "041884661c2bd131c642b029bfbc37a81db6cf5b02342fa8646a5439f1b3d310",
+          "crc32": "f7c9d85e"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "5b3a6f6952d1ff13c6bad2dd9b516178288cf62ad1fba5a4945721cbbbf95e92",
+        "sourceModelScale": 1.5804195804195804,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "lab-engineer",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          336,
+          30,
+          20
+        ],
+        "anchor": [
+          0.9,
+          0.6
+        ],
+        "displayWidth": 47.41258741258741,
+        "sourceArmAngle": -4.579837448088016,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          118,
+          204,
+          30,
+          20
+        ],
+        "sourceWristPin": [
+          145,
+          216
+        ],
+        "sourcePalmCenter": [
+          130,
+          214
+        ],
+        "sourceMaskPolygon": [
+          [
+            118,
+            211
+          ],
+          [
+            127,
+            208
+          ],
+          [
+            133,
+            208
+          ],
+          [
+            138,
+            205
+          ],
+          [
+            148,
+            207
+          ],
+          [
+            148,
+            224
+          ],
+          [
+            118,
+            224
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/lab-engineer-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8252,
+          "sha256": "041884661c2bd131c642b029bfbc37a81db6cf5b02342fa8646a5439f1b3d310",
+          "crc32": "f7c9d85e"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "edfe51c7f5d8458763855ee13ddac70c4582a86898729f0718edf7450e26e94e",
+        "sourceModelScale": 1.5804195804195804,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "balance-analyst": {
+      "R": {
+        "ownerCharacter": "balance-analyst",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          400,
+          26,
+          23
+        ],
+        "anchor": [
+          0.11538461538461539,
+          0.782608695652174
+        ],
+        "displayWidth": 39.5807560137457,
+        "sourceArmAngle": -1.97568811307998,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          129,
+          174,
+          26,
+          23
+        ],
+        "sourceWristPin": [
+          132,
+          192
+        ],
+        "sourcePalmCenter": [
+          146,
+          186
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 9362,
+          "sha256": "7b3038c8d619b8cbff1d575ef4150c2a0d5bc4972a3eb5ec673bffa705e9f76a",
+          "crc32": "1fb28ad8"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "d1ce05e13310aefec98c2fd8216aa856c9785f1199d1a90721e1d3c36f08d88c",
+        "sourceModelScale": 1.52233676975945,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "balance-analyst",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          400,
+          26,
+          20
+        ],
+        "anchor": [
+          0.8846153846153846,
+          0.65
+        ],
+        "displayWidth": 39.5807560137457,
+        "sourceArmAngle": -4.485590132330804,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          126,
+          194,
+          26,
+          20
+        ],
+        "sourceWristPin": [
+          149,
+          207
+        ],
+        "sourcePalmCenter": [
+          136,
+          204
+        ],
+        "sourceMaskPolygon": [
+          [
+            126,
+            202
+          ],
+          [
+            135,
+            199
+          ],
+          [
+            142,
+            199
+          ],
+          [
+            150,
+            197
+          ],
+          [
+            152,
+            214
+          ],
+          [
+            126,
+            214
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 9362,
+          "sha256": "7b3038c8d619b8cbff1d575ef4150c2a0d5bc4972a3eb5ec673bffa705e9f76a",
+          "crc32": "1fb28ad8"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "bf5850c308bdc7592c5cc18a91ef653b07e29bcfc32b3b25fad53819ff5485cf",
+        "sourceModelScale": 1.52233676975945,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "dawn-intern": {
+      "R": {
+        "ownerCharacter": "dawn-intern",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          464,
+          22,
+          19
+        ],
+        "anchor": [
+          0.13636363636363635,
+          0.7894736842105263
+        ],
+        "displayWidth": 33.49624060150376,
+        "sourceArmAngle": -2.0344439357957027,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          128,
+          198,
+          22,
+          19
+        ],
+        "sourceWristPin": [
+          131,
+          213
+        ],
+        "sourcePalmCenter": [
+          143,
+          207
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/dawn-intern-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 9522,
+          "sha256": "b2969bbcd28a78e86799279691fc9da78084aae2d742a89c0e46b79a38083e97",
+          "crc32": "bc864950"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "60162324e9ce88bd10861cbe44686cb8f9f82ebf858d8c98e0fe834a8f2cabed",
+        "sourceModelScale": 1.5225563909774436,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "dawn-intern",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          464,
+          25,
+          17
+        ],
+        "anchor": [
+          0.92,
+          0.5294117647058824
+        ],
+        "displayWidth": 38.06390977443609,
+        "sourceArmAngle": -4.635617089114912,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          123,
+          214,
+          25,
+          17
+        ],
+        "sourceWristPin": [
+          146,
+          223
+        ],
+        "sourcePalmCenter": [
+          133,
+          222
+        ],
+        "sourceMaskPolygon": null,
+        "sourceFile": "./assets/painted-avatar/dawn-intern-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 9522,
+          "sha256": "b2969bbcd28a78e86799279691fc9da78084aae2d742a89c0e46b79a38083e97",
+          "crc32": "bc864950"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "4c6c6262a6874bb4c5de3bd49f52fa9eae659513d1bd8a66e91707eddf3bc42c",
+        "sourceModelScale": 1.5225563909774436,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "river-fellow": {
+      "R": {
+        "ownerCharacter": "river-fellow",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          528,
+          26,
+          23
+        ],
+        "anchor": [
+          0.11538461538461539,
+          0.8260869565217391
+        ],
+        "displayWidth": 39.73913043478261,
+        "sourceArmAngle": -2.0344439357957027,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          126,
+          166,
+          26,
+          23
+        ],
+        "sourceWristPin": [
+          129,
+          185
+        ],
+        "sourcePalmCenter": [
+          143,
+          178
+        ],
+        "sourceMaskPolygon": [
+          [
+            126,
+            176
+          ],
+          [
+            133,
+            171
+          ],
+          [
+            139,
+            167
+          ],
+          [
+            146,
+            166
+          ],
+          [
+            152,
+            169
+          ],
+          [
+            151,
+            179
+          ],
+          [
+            145,
+            184
+          ],
+          [
+            134,
+            185
+          ],
+          [
+            126,
+            185
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/river-fellow-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8652,
+          "sha256": "40b601efe36819d8d86ce6617ee52d3185e4da474844180e1b94b485bd81c0b2",
+          "crc32": "bfbff2f2"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "51259fda22be48d21aef285864a41fcc18d7e242922eb900c11c1c8b53781e48",
+        "sourceModelScale": 1.528428093645485,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "river-fellow",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          528,
+          25,
+          19
+        ],
+        "anchor": [
+          0.88,
+          0.631578947368421
+        ],
+        "displayWidth": 38.21070234113713,
+        "sourceArmAngle": -4.559739651989425,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        },
+        "sourceRect": [
+          129,
+          187,
+          25,
+          19
+        ],
+        "sourceWristPin": [
+          151,
+          199
+        ],
+        "sourcePalmCenter": [
+          138,
+          197
+        ],
+        "sourceMaskPolygon": [
+          [
+            129,
+            192
+          ],
+          [
+            134,
+            189
+          ],
+          [
+            142,
+            190
+          ],
+          [
+            154,
+            188
+          ],
+          [
+            154,
+            206
+          ],
+          [
+            129,
+            206
+          ]
+        ],
+        "sourceFile": "./assets/painted-avatar/river-fellow-v1/down-actions-0-body-front.webp",
+        "sourceFacts": {
+          "bytes": 8652,
+          "sha256": "40b601efe36819d8d86ce6617ee52d3185e4da474844180e1b94b485bd81c0b2",
+          "crc32": "bfbff2f2"
+        },
+        "sourceDimensions": [
+          256,
+          384
+        ],
+        "sourceRGBAHash": "c37893db20c5a8cf6d95ec4790f53835f489837763ce0263a2819e57b240c18e",
+        "sourceModelScale": 1.528428093645485,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    },
+    "graduate": {
+      "R": {
+        "ownerCharacter": "graduate",
+        "anatomicalHand": "R",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          24,
+          592,
+          69,
+          64
+        ],
+        "anchor": [
+          0.14492753623188406,
+          0.796875
+        ],
+        "displayWidth": 27.6,
+        "sourceArmAngle": -1.8657333856437035,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "referencePose": "center-run",
+          "gameFrame": null
+        },
+        "sourceRect": [
+          855,
+          276,
+          69,
+          64
+        ],
+        "sourceWristPin": [
+          865,
+          327
+        ],
+        "sourcePalmCenter": [
+          892,
+          305
+        ],
+        "sourceMaskPolygon": [
+          [
+            882.0,
+            279.0
+          ],
+          [
+            888.0,
+            278.0
+          ],
+          [
+            895.0,
+            281.0
+          ],
+          [
+            907.0,
+            284.0
+          ],
+          [
+            915.0,
+            287.0
+          ],
+          [
+            919.0,
+            294.0
+          ],
+          [
+            918.0,
+            299.0
+          ],
+          [
+            921.0,
+            303.0
+          ],
+          [
+            919.0,
+            312.0
+          ],
+          [
+            915.0,
+            317.0
+          ],
+          [
+            913.0,
+            324.0
+          ],
+          [
+            906.0,
+            329.0
+          ],
+          [
+            897.0,
+            331.0
+          ],
+          [
+            889.0,
+            329.0
+          ],
+          [
+            880.0,
+            334.0
+          ],
+          [
+            868.0,
+            337.0
+          ],
+          [
+            855,
+            334.0
+          ],
+          [
+            855,
+            316.0
+          ],
+          [
+            867.0,
+            307.0
+          ],
+          [
+            875.0,
+            296.0
+          ],
+          [
+            880.0,
+            287.0
+          ]
+        ],
+        "sourceFile": "./assets/avatar-raster/graduate-reference-v1/reference.png",
+        "sourceFacts": {
+          "bytes": 1241195,
+          "sha256": "b2616ee44949716de7b14365dbe186b259b94bbba48ff32e2b1aa15628a22752",
+          "crc32": "c5b7ff2b"
+        },
+        "sourceDimensions": [
+          1774,
+          887
+        ],
+        "sourceRGBAHash": "ea551dd3b5ad52aa141bcdb214105cbd5d343f2094a2af861aa6450222aa05e3",
+        "sourceModelScale": 0.4,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      },
+      "L": {
+        "ownerCharacter": "graduate",
+        "anatomicalHand": "L",
+        "atlas": "own-native-front-hand-fragments-v1",
+        "rect": [
+          152,
+          592,
+          58,
+          64
+        ],
+        "anchor": [
+          0.8103448275862069,
+          0.84375
+        ],
+        "displayWidth": 23.2,
+        "sourceArmAngle": -3.989409626983199,
+        "sourceDirection": "down",
+        "sourcePose": {
+          "referencePose": "rightmost-run",
+          "gameFrame": null
+        },
+        "sourceRect": [
+          1471,
+          232,
+          58,
+          64
+        ],
+        "sourceWristPin": [
+          1518,
+          286
+        ],
+        "sourcePalmCenter": [
+          1497,
+          256
+        ],
+        "sourceMaskPolygon": [
+          [
+            1483.0,
+            234.0
+          ],
+          [
+            1504.0,
+            234.0
+          ],
+          [
+            1510.0,
+            238.0
+          ],
+          [
+            1514.0,
+            250.0
+          ],
+          [
+            1518.0,
+            261.0
+          ],
+          [
+            1527.0,
+            271.0
+          ],
+          [
+            1527.0,
+            294.0
+          ],
+          [
+            1513.0,
+            291.0
+          ],
+          [
+            1504.0,
+            285.0
+          ],
+          [
+            1496.0,
+            278.0
+          ],
+          [
+            1487.0,
+            279.0
+          ],
+          [
+            1479.0,
+            276.0
+          ],
+          [
+            1475.0,
+            270.0
+          ],
+          [
+            1475.0,
+            263.0
+          ],
+          [
+            1473.0,
+            258.0
+          ],
+          [
+            1473.0,
+            253.0
+          ],
+          [
+            1471,
+            249.0
+          ],
+          [
+            1474.0,
+            243.0
+          ],
+          [
+            1480.0,
+            240.0
+          ]
+        ],
+        "sourceFile": "./assets/avatar-raster/graduate-reference-v1/reference.png",
+        "sourceFacts": {
+          "bytes": 1241195,
+          "sha256": "b2616ee44949716de7b14365dbe186b259b94bbba48ff32e2b1aa15628a22752",
+          "crc32": "c5b7ff2b"
+        },
+        "sourceDimensions": [
+          1774,
+          887
+        ],
+        "sourceRGBAHash": "c1f01693431068a75b9dae65259e9fd7a5e797625536c5ea9033132b309dfb28",
+        "sourceModelScale": 0.4,
+        "visibleOnly": true,
+        "containsBookPixels": false,
+        "isolationBasis": "Accepted isolated body-front layer; wrist/palm crop and explicit source-space overlap mask when hands touch; retain only own palm alpha component."
+      }
+    }
+  },
+  "sources": {
+    "doctor": {
+      "R": {
+        "path": "./assets/painted-avatar/doctor-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 6616,
+        "sha256": "275793c23df36d085b78b85a498ddb0f188a63da0c2832064f64ece54ac30472",
+        "crc32": "5260f299",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/doctor-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 6616,
+        "sha256": "275793c23df36d085b78b85a498ddb0f188a63da0c2832064f64ece54ac30472",
+        "crc32": "5260f299",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "professor": {
+      "R": {
+        "path": "./assets/painted-avatar/professor-v1/right-actions-body-front.webp",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "bytes": 147130,
+        "sha256": "78abb39909e304aeb996a5610a3a66712c3279f29490770a35f549a8ef0bd303",
+        "crc32": "f9adbb92",
+        "sourceDirection": "right",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/professor-v1/left-actions-body-front.webp",
+        "dimensions": [
+          1024,
+          768
+        ],
+        "bytes": 144584,
+        "sha256": "934d1d90cd8d3b71980875a63e9bd8999edd951d01c81fe7fb423de00146c19d",
+        "crc32": "17f77516",
+        "sourceDirection": "left",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "researcher": {
+      "R": {
+        "path": "./assets/painted-avatar/researcher-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8802,
+        "sha256": "573ecbcd1c2696a5e7703a5934c03c60550970e95f8cf55572ca4aaf3c5b57f1",
+        "crc32": "5180edd6",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/researcher-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8802,
+        "sha256": "573ecbcd1c2696a5e7703a5934c03c60550970e95f8cf55572ca4aaf3c5b57f1",
+        "crc32": "5180edd6",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "cedar-dean": {
+      "R": {
+        "path": "./assets/painted-avatar/cedar-dean-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 7976,
+        "sha256": "52855e1e3e8188a962b1200292853133b17f49753f4c4e10f39495c10a24ee4e",
+        "crc32": "f20f4657",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/cedar-dean-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 7976,
+        "sha256": "52855e1e3e8188a962b1200292853133b17f49753f4c4e10f39495c10a24ee4e",
+        "crc32": "f20f4657",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "herbal-mentor": {
+      "R": {
+        "path": "./assets/painted-avatar/herbal-mentor-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 10082,
+        "sha256": "8122efa3adf2cbefc9bffe579da6e77db5982ce6e828b322f10447ccc552d66f",
+        "crc32": "291737ca",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/herbal-mentor-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 10082,
+        "sha256": "8122efa3adf2cbefc9bffe579da6e77db5982ce6e828b322f10447ccc552d66f",
+        "crc32": "291737ca",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "lab-engineer": {
+      "R": {
+        "path": "./assets/painted-avatar/lab-engineer-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8252,
+        "sha256": "041884661c2bd131c642b029bfbc37a81db6cf5b02342fa8646a5439f1b3d310",
+        "crc32": "f7c9d85e",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/lab-engineer-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8252,
+        "sha256": "041884661c2bd131c642b029bfbc37a81db6cf5b02342fa8646a5439f1b3d310",
+        "crc32": "f7c9d85e",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "balance-analyst": {
+      "R": {
+        "path": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 9362,
+        "sha256": "7b3038c8d619b8cbff1d575ef4150c2a0d5bc4972a3eb5ec673bffa705e9f76a",
+        "crc32": "1fb28ad8",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/balance-analyst-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 9362,
+        "sha256": "7b3038c8d619b8cbff1d575ef4150c2a0d5bc4972a3eb5ec673bffa705e9f76a",
+        "crc32": "1fb28ad8",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "dawn-intern": {
+      "R": {
+        "path": "./assets/painted-avatar/dawn-intern-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 9522,
+        "sha256": "b2969bbcd28a78e86799279691fc9da78084aae2d742a89c0e46b79a38083e97",
+        "crc32": "bc864950",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/dawn-intern-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 9522,
+        "sha256": "b2969bbcd28a78e86799279691fc9da78084aae2d742a89c0e46b79a38083e97",
+        "crc32": "bc864950",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "river-fellow": {
+      "R": {
+        "path": "./assets/painted-avatar/river-fellow-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8652,
+        "sha256": "40b601efe36819d8d86ce6617ee52d3185e4da474844180e1b94b485bd81c0b2",
+        "crc32": "bfbff2f2",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      },
+      "L": {
+        "path": "./assets/painted-avatar/river-fellow-v1/down-actions-0-body-front.webp",
+        "dimensions": [
+          256,
+          384
+        ],
+        "bytes": 8652,
+        "sha256": "40b601efe36819d8d86ce6617ee52d3185e4da474844180e1b94b485bd81c0b2",
+        "crc32": "bfbff2f2",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "sheet": "actions",
+          "frame": 0
+        }
+      }
+    },
+    "graduate": {
+      "R": {
+        "path": "./assets/avatar-raster/graduate-reference-v1/reference.png",
+        "dimensions": [
+          1774,
+          887
+        ],
+        "bytes": 1241195,
+        "sha256": "b2616ee44949716de7b14365dbe186b259b94bbba48ff32e2b1aa15628a22752",
+        "crc32": "c5b7ff2b",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "referencePose": "center-run",
+          "gameFrame": null
+        }
+      },
+      "L": {
+        "path": "./assets/avatar-raster/graduate-reference-v1/reference.png",
+        "dimensions": [
+          1774,
+          887
+        ],
+        "bytes": 1241195,
+        "sha256": "b2616ee44949716de7b14365dbe186b259b94bbba48ff32e2b1aa15628a22752",
+        "crc32": "c5b7ff2b",
+        "sourceDirection": "down",
+        "sourcePose": {
+          "referencePose": "rightmost-run",
+          "gameFrame": null
+        }
+      }
+    }
+  },
+  "limitations": [
+    "These are visible hand/palm fragments from accepted body-front originals; occluded surfaces are not invented.",
+    "Eight roles use DOWN body-front sources; professor R uses RIGHT and L uses LEFT; graduate uses its approved frontal running fists. Reuse in another view must declare sourceViewReuse, not four new authored hand views.",
+    "Grasp-shaped hands remain grasp-shaped when handheld is null, but the isolated source contains no book pixels.",
+    "This registry does not authorize blanket hiding of hands in new UP poses. The original UP native pose hides hands; a new visible wrist needs an own source fragment or truthful native fallback.",
+    "Graduate accepted DOWN/LEFT/UP profile-specific sources keep priority. The added graduate fists fill the generic RIGHT path which previously borrowed Bach hands."
+  ],
+  "sourceIndexMeaning": "Per-character anatomical R/L actual extraction files; each record is derived from its measured hand entry. Source view may differ from rendered view."
+}
