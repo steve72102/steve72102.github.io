@@ -17,7 +17,56 @@ test('all 10 body fits have finite articulated limbs in four authored views and 
 
 test('front idle legs are straight and planted while running alternates real feet and opposing arms',()=>{
  const idle=M.pose('doctor','down');for(const side of ['L','R']){const leg=idle.limbs[side].leg;assert.equal(leg.root.x,leg.joint.x);assert.equal(leg.joint.x,leg.tip.x);}
- const first=M.pose('doctor','right',.125,'run'),second=M.pose('doctor','right',.625,'run');assert(first.limbs.L.leg.tip.x>first.limbs.R.leg.tip.x);assert(second.limbs.L.leg.tip.x<second.limbs.R.leg.tip.x);assert(first.limbs.L.arm.tip.x<first.limbs.R.arm.tip.x);assert(first.limbs.L.contact!==second.limbs.L.contact);
+ // Reviewed gait change: phase .125 is support and .625 is opposite support.
+ // A recovering ankle can be ahead while its knee is already coming back; arm
+ // opposition must follow the thighs, not the old projected ankle-X heuristic.
+ const first=M.pose('doctor','right',.125,'run'),second=M.pose('doctor','right',.625,'run');
+ assert(first.limbs.L.contact);assert(!first.limbs.R.contact);assert(!second.limbs.L.contact);assert(second.limbs.R.contact);
+ for(const p of [first,second]){const a=p.limbs.L.anatomical,b=p.limbs.R.anatomical;assert((a.thighDegrees-b.thighDegrees)*(a.upperArmDegrees-b.upperArmDegrees)<0,'arms oppose the contralateral thigh swing');assert.notEqual(p.limbs.L.leg.tip.x,p.limbs.R.leg.tip.x);assert.notEqual(p.limbs.L.arm.tip.x,p.limbs.R.arm.tip.x);}
+ assert.notDeepEqual(first.limbs,second.limbs);
+});
+
+test('professor reference fit keeps an adult bust-to-waist contour across four views and run poses',()=>{
+ const art=require('../game/raster-art.js'),s=state('professor',{});
+ for(const d of M.DIRECTIONS){
+  const parts=M.plan(s,d,art,env).parts;
+  for(const [phase,action] of [[0,'idle'],[.125,'run'],[.625,'run']]){
+   const p=M.pose('professor',d,phase,action);p.headPart=parts.head;
+   const mesh=M.partMesh('body.torso',parts['body.torso'],p),row=i=>mesh.vertices.slice(i*mesh.columns,(i+1)*mesh.columns);
+   assert.equal(mesh.columns,7);assert(mesh.vertices.every(v=>Number.isFinite(v.x)&&Number.isFinite(v.y)));
+   const bust=row(4),waist=row(7),bustWidth=bust.at(-1).x-bust[0].x,waistWidth=waist.at(-1).x-waist[0].x;
+   assert(bustWidth>waistWidth*1.3,d+' fuller bust and defined waist');
+   if(d==='right')assert(bust.at(-1).x-row(6).at(-1).x>15,'right anterior bust projects beyond abdomen');
+   if(d==='left')assert(row(6)[0].x-bust[0].x>15,'left anterior bust projects beyond abdomen');
+  }
+ }
+});
+
+test('all ten actors keep their own heads and finite four-view shell surfaces through RUN8',()=>{
+ const art=require('../game/raster-art.js'),signatures=new Set();
+ for(const actor of A.CHARACTERS){
+  const s=state(actor.id,{});
+  for(const d of M.DIRECTIONS){
+   const parts=M.plan(s,d,art,env).parts;
+   assert.deepEqual(parts.head.rect,art.heads[actor.id][d].rect,actor.id+' owns its source head');
+   for(const phase of [0,.125,.375,.625,.875]){
+    const p=M.pose(actor.id,d,phase,phase?'run':'idle');p.headPart=parts.head;
+    for(const key of ['body.torso','body.armL','body.armR','body.legL','body.legR','body.footL','body.footR']){
+     const mesh=M.partMesh(key,parts[key],p);
+     assert.equal(mesh.columns,7,actor.id+' '+d+' '+key);
+     assert(mesh.vertices.every(v=>Number.isFinite(v.x)&&Number.isFinite(v.y)),actor.id+' '+d+' finite '+key);
+    }
+   }
+   if(d==='down'){
+    const p=M.pose(actor.id,d);p.headPart=parts.head;
+    const mesh=M.partMesh('body.torso',parts['body.torso'],p),row=i=>mesh.vertices.slice(i*7,(i+1)*7);
+    signatures.add([actor.id,...[4,7,9].map(i=>(row(i).at(-1).x-row(i)[0].x).toFixed(2))].join(':'));
+   }
+  }
+ }
+ assert.equal(signatures.size,10);
+ const opt={bodyProfile:'graduate-reference-v1',direction:'down'},p=M.pose('graduate','down',0,'idle',opt);
+ assert(p.bodyProfile,'graduate opt-in reference remains available');
 });
 
 test('mesh corrects angled source limb centerlines continuously through knees and elbows',()=>{
@@ -54,8 +103,10 @@ test('sixty current 24-pose atlases and eight retiring views fit within the decl
 });
 
 function runtimeFixture(options={}){
+ // A full figure now pins its own-hand atlas as the third texture; the
+ // zero-pin disposal assertions remain unchanged.
  const m=options.manifest||manifest(),events=[],frames=new Map();let clock=0,serial=0,workTime=0,bakes=0;const yields=[];
- const context=()=>({save(){},restore(){},clearRect(){},scale(){},translate(){},beginPath(){},rect(){},clip(){},moveTo(){},lineTo(){},closePath(){},transform(...args){assert(args.every(Number.isFinite));},drawImage(image){events.push(image.src);workTime+=options.drawCost||0;}});
+ const context=()=>({save(){},restore(){},clearRect(){},scale(){},translate(){},beginPath(){},rect(){},clip(){},moveTo(){},lineTo(){},quadraticCurveTo(){},fill(){},fillRect(){},createLinearGradient(){return {addColorStop(){}};},createRadialGradient(){return {addColorStop(){}};},closePath(){},transform(...args){assert(args.every(Number.isFinite));},drawImage(image){events.push(image.src);workTime+=options.drawCost||0;}});
  const createCanvas=(width,height)=>({width,height,dataset:{},attrs:{},isConnected:false,setAttribute(k,v){this.attrs[k]=v;},getContext:()=>context()});
  const runtime=M.createRuntime({...env,manifest:()=>m,createCanvas,loadImage:async src=>({src}),canvasURL:async()=>{bakes++;return {url:'blob:fixture-'+(++serial),objectURL:true};},URL:{revokeObjectURL:url=>events.push('release:'+url)},requestAnimationFrame:fn=>{frames.set(++serial,fn);return serial;},cancelAnimationFrame:id=>frames.delete(id),document:{hidden:false},now:()=>workTime,yieldTask:async()=>{yields.push({workTime,draws:events.length});await options.onYield?.();},matchMedia:()=>({matches:false})});
  return {runtime,events,frames,yields,bakes:()=>bakes,tick(){clock+=40;const list=[...frames.values()];frames.clear();for(const fn of list)fn(clock);}};
@@ -63,7 +114,7 @@ function runtimeFixture(options={}){
 
 test('canvas preview contract releases static texture pins and stops animated previews after DOM removal',async()=>{
  const f=runtimeFixture(),c=f.runtime.preview(state());await f.runtime.ready(c);assert.equal(c.dataset.renderStatus,'ready');assert(f.events.includes('cloth.png'));assert.equal(f.runtime.stats().sources.pinned,0);assert.equal(f.frames.size,0);
- c.isConnected=true;await f.runtime.setPose(c,{direction:'right',animate:true});assert.equal(f.runtime.stats().sources.pinned,2);assert.equal(f.frames.size,1);f.tick();const first=f.events.length;f.tick();assert(f.events.length>first);c.isConnected=false;f.tick();assert.equal(f.frames.size,0);assert.equal(f.runtime.stats().sources.pinned,0);f.runtime.dispose(c);
+ c.isConnected=true;await f.runtime.setPose(c,{direction:'right',animate:true});assert.equal(f.runtime.stats().sources.pinned,3);assert.equal(f.frames.size,1);f.tick();const first=f.events.length;f.tick();assert(f.events.length>first);c.isConnected=false;f.tick();assert.equal(f.frames.size,0);assert.equal(f.runtime.stats().sources.pinned,0);f.runtime.dispose(c);
 });
 
 
@@ -74,7 +125,15 @@ test('base clothes are rendering defaults only and optional cargo panels do not 
 test('authored ankle and sole anchors stay grounded across body fits, views, and strides',()=>{
  for(const c of A.CHARACTERS)for(const d of M.DIRECTIONS)for(const phase of [0,.125,.375,.625,.875]){
   const p=M.pose(c.id,d,phase,phase?'run':'idle'),before=JSON.stringify(p),parts=Object.fromEntries(['L','R'].map(side=>['shoes.'+side,{atlas:'fixture',rect:[0,0,80,d==='down'?120:78],anchor:[.46,.72]}])),fitted=M.fitFeet(p,parts);
-  for(const side of ['L','R']){const mesh=M.partMesh('shoes.'+side,parts['shoes.'+side],fitted),soleY=(mesh.vertices[2].y+mesh.vertices[3].y)/2;assert(Math.abs(soleY-(p.limbs[side].leg.tip.y+20))<1e-8,c.id+' '+d);}
+  for(const side of ['L','R']){const mesh=M.partMesh('shoes.'+side,parts['shoes.'+side],fitted),soleY=(mesh.vertices[2].y+mesh.vertices[3].y)/2;
+   if(!p.athleteRun8)assert(Math.abs(soleY-(p.limbs[side].leg.tip.y+20))<1e-8,c.id+' '+d+' unchanged idle fit');
+   else {const leg=fitted.limbs[side].leg,dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y,(a.z||0)-(b.z||0));assert(Math.abs(dist(leg.root,leg.joint)-p.runLengths.legUpper)<1e-8);assert(Math.abs(dist(leg.joint,leg.tip)-p.runLengths.legLower)<1e-8);
+    // During flight the fixed-length IK may clamp an unreachable synthetic boot
+    // target. Never stretch the bones to satisfy its arbitrary crop padding.
+    if(p.limbs[side].contact)assert(Math.abs(soleY-M.SPACE.foot)<1e-8,c.id+' '+d+' support sole stays on ground');
+    else assert(Number.isFinite(soleY)&&soleY<M.SPACE.foot,c.id+' '+d+' flight sole remains above ground');
+   }
+  }
   assert.equal(JSON.stringify(p),before,'fit does not mutate the motion skeleton');
  }
 });
@@ -85,7 +144,7 @@ test('hem fitting preserves upper cloth features and full coats reach the intend
 });
 
 test('neck skin layers behind collars while the remaining head and long hair stay in front',()=>{
- const m=manifest(),neck=[[[.4,.7],[.6,.7],[.6,1],[.4,1]]];m.heads.doctor.down.neckMask=neck;const p=M.plan(state(),'down',m,env),order=M.layers(M.pose('doctor'),p.parts);assert.equal(p.parts['head.neck'].mask,neck);assert.equal(p.parts.head.cutouts,neck);assert(order.indexOf('head.neck')<order.indexOf('jacket.torso'));assert(order.indexOf('head')>order.indexOf('jacket.torso'));
+ const m=manifest(),neck=[[[.4,.7],[.6,.7],[.6,1],[.4,1]]];m.heads.doctor.down.neckMask=neck;const p=M.plan(state(),'down',m,env),order=M.layers(M.pose('doctor'),p.parts);assert(p.parts['head.neck'].mask.flat().every(([,v])=>v<=.835+1e-9));assert(p.parts['head.neck'].mask.flat().some(([,v])=>Math.abs(v-.835)<1e-9));assert.equal(p.parts.head.cutouts,neck);assert(order.indexOf('head.neck')<order.indexOf('jacket.torso'));assert(order.indexOf('head')>order.indexOf('jacket.torso'));
 });
 
 test('one canceled cache subscriber does not discard an appearance still used by another actor',async()=>{
@@ -102,7 +161,7 @@ test('canceling the last actor aborts unfinished baking and releases every acqui
 });
 
 test('switching run preview back to idle and never mounting a preview both release source pins',async()=>{
- const f=runtimeFixture(),c=f.runtime.preview(state(),{animate:true});c.isConnected=true;await f.runtime.ready(c);assert.equal(f.runtime.stats().sources.pinned,2);await f.runtime.setPose(c,{animate:false});assert.equal(f.frames.size,0);assert.equal(f.runtime.stats().sources.pinned,0);
+ const f=runtimeFixture(),c=f.runtime.preview(state(),{animate:true});c.isConnected=true;await f.runtime.ready(c);assert.equal(f.runtime.stats().sources.pinned,3);await f.runtime.setPose(c,{animate:false});assert.equal(f.frames.size,0);assert.equal(f.runtime.stats().sources.pinned,0);
  const unused=f.runtime.preview(state(),{animate:true});await f.runtime.ready(unused);for(let i=0;i<5;i++)f.tick();assert.equal(f.frames.size,0);assert.equal(f.runtime.stats().sources.pinned,0);
 });
 
@@ -113,14 +172,14 @@ test('retired pending directions free reservations immediately and cannot overwr
 });
 
 test('closing a fitting dialog disposes animation even when its canvas remains connected',async()=>{
- const f=runtimeFixture(),listeners=new Map(),dialog={open:true,addEventListener:(type,fn)=>listeners.set(type,fn),removeEventListener:(type,fn)=>{if(listeners.get(type)===fn)listeners.delete(type);}},c=f.runtime.preview(state(),{animate:true});c.isConnected=true;c.closest=()=>dialog;await f.runtime.ready(c);f.tick();assert.equal(f.runtime.stats().sources.pinned,2);assert.equal(listeners.size,1);
+ const f=runtimeFixture(),listeners=new Map(),dialog={open:true,addEventListener:(type,fn)=>listeners.set(type,fn),removeEventListener:(type,fn)=>{if(listeners.get(type)===fn)listeners.delete(type);}},c=f.runtime.preview(state(),{animate:true});c.isConnected=true;c.closest=()=>dialog;await f.runtime.ready(c);f.tick();assert.equal(f.runtime.stats().sources.pinned,3);assert.equal(listeners.size,1);
  dialog.open=false;listeners.get('close')();assert.equal(c.isConnected,true);assert.equal(f.runtime.stats().sources.pinned,0);assert.equal(f.frames.size,0);assert.equal(listeners.size,0);
  const direct=f.runtime.preview(state(),{animate:true});direct.isConnected=true;direct.closest=()=>({open:false});await f.runtime.ready(direct);f.tick();assert.equal(f.runtime.stats().sources.pinned,0);assert.equal(f.frames.size,0);
 });
 
 
 test('measured source regions keep full preview detail while excluding unused atlas rows and columns',async()=>{
- const f=runtimeFixture(),prepared=await f.runtime.prepare(state(),'left','preview');try{const source=prepared.sources.cloth;assert(source.x>0);assert.equal(source.scaleX,1);assert.equal(source.scaleY,1);assert(f.runtime.stats().sources.bytes<512*256*4+400*100*4);for(const part of Object.values(prepared.plan.parts)){const atlas=manifest().atlases[part.atlas],region=M.sourceRegion([part],atlas);assert(region.x<=part.rect[0]);assert(region.y<=part.rect[1]);assert(region.x+region.width>=part.rect[0]+part.rect[2]);assert(region.y+region.height>=part.rect[1]+part.rect[3]);}}finally{prepared.release();}
+ const f=runtimeFixture(),prepared=await f.runtime.prepare(state(),'left','preview');try{const source=prepared.sources.cloth;assert(source.x>0);assert.equal(source.scaleX,1);assert.equal(source.scaleY,1);assert(f.runtime.stats().sources.bytes<512*256*4+400*100*4);for(const part of Object.values(prepared.plan.parts)){const atlas=manifest().atlases[part.atlas]||(part.atlas==='own-native-front-hand-fragments-v1'?M.OWN_HAND_ATLAS:null),region=M.sourceRegion([part],atlas);assert(region.x<=part.rect[0]);assert(region.y<=part.rect[1]);assert(region.x+region.width>=part.rect[0]+part.rect[2]);assert(region.y+region.height>=part.rect[1]+part.rect[3]);}}finally{prepared.release();}
 });
 
 test('eight distinct equipped styles can retain two full-detail preview directions while a scene atlas bakes',async()=>{
