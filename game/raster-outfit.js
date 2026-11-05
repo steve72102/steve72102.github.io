@@ -245,6 +245,8 @@
   };
   function clothMesh(p,width,height,anchorY,kind,part={}){
     const rows=6,cols=5,vertices=[],swing=p.action==='run'?Math.sin(p.phase*Math.PI*2-(kind==='cape'?.8:.35)):p.action==='rise'?-.35:p.action==='fall'?.3:p.action==='turn'?(p.phase-.5)*.65:p.action==='land'?Math.sin(p.phase*Math.PI)*.32:0;
+    const anatomy=p.anatomy||(p.limbs.L&&p.limbs.R?anatomicalBody(p):null);
+    const neckBase=anatomy?.landmarks.neckBase||p.neck;
     const socket=part.atlas==='fruit-citrus'?CITRUS_COLLAR_SOCKETS[part.rect?.join(',')]:null;
     const tailoring=tailoredGarment(p,part,kind),lengthScale=clamp((part.lengthScale||1)*tailoring.length,.8,1.8),hemStart=clamp(part.hemStart??.65,.4,.75),extra=height*(lengthScale-1);
     for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){
@@ -257,8 +259,8 @@
       const fittedY=anchorY+fittedV*height-p.body.shoulders*.064*upper;
       const center=p.athleteRun8?p.hip.x+(p.hip.y-fittedY)*p.torsoForward/Math.cos(p.runTorsoLeanDegrees*Math.PI/180):160;
       const collarWeight=Math.max(0,1-v/.4);
-      const collarX=socket?((.5-socket[0])*width+p.neck.x-center)*collarWeight:0;
-      const collarY=socket?socket[1]*collarWeight:0;
+      const collarX=socket?((.5-(socket?.[0]??.5))*width+neckBase.x-center)*collarWeight:(neckBase.x-center)*collarWeight;
+      const collarY=Math.max(socket?.[1]??0,neckBase.y-13-anchorY)*collarWeight;
       vertices.push({u,v,x:center+collarX+(u-.5)*width*(1+.07*shoulderBand)*(1-(1-tailoring.waist)*Math.pow(Math.sin(Math.PI*v),2))+lag,y:fittedY+collarY+extra*clamp((v-hemStart)/(1-hemStart),0,1)+Math.abs(u-.5)*tail*swing*3});
     }
     return grid(vertices,cols,rows);
@@ -378,24 +380,256 @@
     // stay fixed. The original torso occludes the small native-pixel overlap.
     return {...mesh,vertices:mesh.vertices.map(q=>{const w=clamp((jointV-q.v)/(jointV-(fit.capMode==='whole'?(fit.capBand??.22):capV)),0,1)*(fit.capMode==='whole'?1:clamp((q.u-.5)/(fit.cap[0]-.5),0,1));return w?{...q,x:q.x+dx*w,y:q.y+dy*w}:q;})};
   }
+  // Section widths are relative to the actor's own skeleton. Depth, muscle
+  // and soft tissue contribute independently to the skin silhouette.
+  const ANATOMICAL_BASES=Object.freeze({
+    male:{shoulder:.86,ribs:.71,waist:.84,pelvis:.91,depth:.68,arm:.64,leg:.87,muscle:.035,fat:.018},
+    female:{shoulder:.81,ribs:.67,waist:.79,pelvis:.95,depth:.62,arm:.59,leg:.88,muscle:.030,fat:.030}
+  });
+  const FEMALE_BASE_ACTORS=new Set(['professor','researcher','herbal-mentor','balance-analyst','dawn-intern']);
+  function anatomicalBody(p){
+    const base=ANATOMICAL_BASES[FEMALE_BASE_ACTORS.has(p.character)?'female':'male'];
+    const b=p.body,side=p.side,depth=side?base.depth:1;
+    const shoulderL=p.limbs.L.arm.root,shoulderR=p.limbs.R.arm.root;
+    const neckBase=point(p.neck.x,p.neck.y+(p.bodyProfile?0:14));
+    const chest=point(p.chest.x,Math.max(p.chest.y,(shoulderL.y+shoulderR.y)/2+4));
+    const pelvis=p.hip,waist=p.waist||point(mix(chest.x,pelvis.x,.72),mix(chest.y,pelvis.y,.72));
+    const landmarks={
+      skullTop:point(p.neck.x,neckBase.y-b.head),chin:point(p.neck.x,neckBase.y-b.head*.24),neckBase,
+      clavicleL:point(mix(neckBase.x,shoulderL.x,.7),mix(neckBase.y,shoulderL.y,.7)),
+      clavicleR:point(mix(neckBase.x,shoulderR.x,.7),mix(neckBase.y,shoulderR.y,.7)),
+      shoulderL,shoulderR,sternum:chest,ribcageCenter:chest,waist,pelvis
+    };
+    for(const side of ['L','R']){
+      const {arm,leg}=p.limbs[side];
+      landmarks['elbow'+side]=arm.joint;
+      landmarks['wrist'+side]=arm.tip;
+      landmarks['hip'+side]=leg.root;
+      landmarks['knee'+side]=leg.joint;
+      landmarks['ankle'+side]=leg.tip;
+      landmarks['sole'+side]=point(leg.tip.x,leg.tip.y+SPACE.foot-470);
+    }
+    const section=(bone,ratio)=>bone*(ratio+base.muscle+base.fat)*depth;
+    return {landmarks,skin:{
+      shoulder:section(b.shoulders,base.shoulder),ribs:section(b.shoulders,base.ribs),
+      waist:section(b.waist,base.waist),pelvis:section(b.hips,base.pelvis),
+      arm:b.limb*(base.arm+base.muscle+base.fat),leg:b.limb*(base.leg+base.muscle+base.fat)
+    }};
+  }
+  const BODY_SHELL_CAST=new Set(Object.keys(BODIES));
+  const castShell=p=>BODY_SHELL_CAST.has(p.character)&&!p.bodyProfile;
+  // Shell profiles are projected from the same transverse and sagittal radii in
+  // each view. The hips close below the femoral heads, leaving room for gait.
+  const PILOT_PROFILES=freezeTree({
+    doctor:[[0,.25,.26,0],[.11,.29,.30,0],[.20,.57,.38,0],[.28,.89,.47,.01],[.38,.96,.61,.037],[.49,.87,.58,.036],[.61,.73,.49,.025],[.73,.65,.45,.01],[.83,.72,.53,-.021],[.94,.80,.63,-.051],[1.02,.75,.58,-.041],[1.12,.33,.33,-.014]],
+    // Adult reference: fuller anterior bust, defined underbust and waist,
+    // then a gradual flare through the pelvis. Keep the source head and gait.
+    professor:[[0,.22,.24,0],[.11,.25,.27,0],[.20,.48,.34,0],[.28,.80,.52,.035],[.38,.94,.75,.145],[.49,.75,.69,.130],[.61,.66,.47,.030],[.73,.59,.43,.008],[.83,.76,.56,-.025],[.94,.91,.69,-.064],[1.02,.82,.63,-.044],[1.12,.35,.35,-.012]]
+  });
+  // Each actor retains their authored body dimensions and source head. These
+  // width adjustments distinguish build and age without resizing the face.
+  const CAST_SHELL_FITS=freezeTree({
+    graduate:{base:'doctor',width:[1,1.02,1.02,1.05,1.04,1],depth:1.02},
+    researcher:{base:'professor',width:[1,1.02,.96,1.27,1.06,1],depth:1.03},
+    'cedar-dean':{base:'doctor',width:[1,.92,.91,.98,.94,1],depth:.93},
+    'herbal-mentor':{base:'professor',width:[1,1.01,1.01,1.42,1.12,1.04],depth:1.10},
+    'lab-engineer':{base:'doctor',width:[1,1.05,1.03,1.17,.96,1],depth:1.05},
+    'balance-analyst':{base:'professor',width:[1,.96,.97,1.15,.98,1],depth:1},
+    'dawn-intern':{base:'professor',width:[1,.92,.96,1.15,.94,1],depth:.96},
+    'river-fellow':{base:'doctor',width:[1,.95,.90,.94,.91,1],depth:.94}
+  });
+  function castShellProfile(character){
+    const fit=CAST_SHELL_FITS[character];if(!fit)return PILOT_PROFILES[character];
+    const knots=[0,.28,.38,.73,.94,1.12],base=PILOT_PROFILES[fit.base];
+    return base.map(([t,width,depth,bias])=>{
+      let i=knots.findIndex(v=>v>=t);if(i<0)i=knots.length-1;
+      const factor=i===0?fit.width[0]:mix(fit.width[i-1],fit.width[i],(t-knots[i-1])/(knots[i]-knots[i-1]));
+      return [t,width*factor,depth*fit.depth,bias];
+    });
+  }
+  function sectionGrid(rows){
+    const columns=7,vertices=[];
+    for(const [x,y,width,v,arch=0] of rows)for(let i=0;i<columns;i++){
+      const u=i/(columns-1);
+      vertices.push({u,v,x:x+(u-.5)*width,y:y-arch*Math.sin(Math.PI*u)});
+    }
+    return {...grid(vertices,columns,rows.length),columns};
+  }
+  function jawLine(head){
+    const polygons=typeof head.neckMask[0][0]==='number'?[head.neckMask]:head.neckMask;
+    const heights=polygons.flat().map(point=>point[1]);
+    return mix(Math.min(...heights),Math.max(...heights),.45);
+  }
+  function trimJawMask(head){
+    const limit=jawLine(head);
+    const polygons=typeof head.neckMask[0][0]==='number'?[head.neckMask]:head.neckMask;
+    return polygons.map(polygon=>polygon.flatMap((a,i)=>{
+      const b=polygon[(i+1)%polygon.length],inside=a[1]<=limit,exits=inside!==(b[1]<=limit);
+      const crossing=exits?[[mix(a[0],b[0],(limit-a[1])/(b[1]-a[1])),limit]]:[];
+      return inside?[a,...crossing]:crossing;
+    })).filter(polygon=>polygon.length>=3);
+  }
+  function pilotTorso(p,part){
+    const head=partMesh('head.neck',p.headPart,p);
+    const seam=jawLine(p.headPart),[u0,u1]=neckInterval(p.headPart,seam)||[part.neckUV[0],part.neckUV[2]];
+    const left=meshPoint(head,u0,seam),right=meshPoint(head,u1,seam);
+    const neck=point((left.x+right.x)/2,(left.y+right.y)/2-3);
+    const scale=p.body.shoulders,forward=p.direction==='left'?-1:1;
+    const jawWidth=Math.max(14,Math.abs(right.x-left.x));
+    return sectionGrid(castShellProfile(p.character).map(([t,width,depth,bias],i)=>{
+      const x=t<.34?mix(neck.x,p.chest.x,t/.34):mix(p.chest.x,p.hip.x,clamp((t-.34)/.66,0,1));
+      const span=scale*(p.side?depth:width),neckBlend=clamp(t/.23,0,1);
+      return [x+(p.side?forward*bias*scale:0),mix(neck.y,p.hip.y,t),
+        mix(jawWidth,span,neckBlend),i/11,i===3?5:i===11?-8:0];
+    }));
+  }
+  function pilotFoot(p,n){
+    const ankle=p.limbs[n].leg.tip,forward=p.direction==='left'?-1:1;
+    const length=p.body.leg*(p.character==='doctor'?.263:.242),width=p.body.limb*.94;
+    const side=[[-16,0,.29],[-6,0,.34],[2,.062,.47],[9,.21,.73],[15,.25,1],[20,.24,.99],[22,.22,.83]];
+    const front=[[-16,0,.45],[-6,0,.50],[2,0,.62],[9,0,.78],[15,0,1],[20,0,1.05],[22,0,.87]];
+    const mesh=sectionGrid((p.side?side:front).map(([y,x,w],i)=>[
+      ankle.x+x*length*forward,ankle.y+y,w*(p.side?length:width),i/6,i===4?2:0
+    ]));
+    for(const vertex of mesh.vertices){
+      const q=rotate(point(vertex.x-ankle.x,vertex.y-ankle.y),p.limbs[n].footAngle);
+      vertex.x=ankle.x+q.x;
+      vertex.y=ankle.y+q.y;
+    }
+    return mesh;
+  }
+  function pilotLimb(p,n,arm){
+    const {root,joint,tip}=p.limbs[n][arm?'arm':'leg'];
+    const width=(p.anatomy||anatomicalBody(p)).skin[arm?'arm':'leg'];
+    const profile=arm?[[-.055,.24],[.005,.66],[.068,.94],[.16,1],[.28,.92],[.48,.67],[.59,.74],[.70,.81],[.84,.64],[1.03,.44]]:
+      [[-.18,.76],[-.06,1],[.09,1.22],[.24,1.17],[.39,.91],[.51,.73],[.62,.84],[.73,.89],[.87,.62],[1.02,.46]];
+    const vertices=[];
+    const inward=Math.sign(p.chest.x-root.x);
+    for(let i=0;i<profile.length;i++){
+      const [v,taper]=profile[i],upper=v<.5,a=upper?root:joint,b=upper?joint:tip,t=upper?v*2:(v-.5)*2;
+      const before=upper?root:point(mix(root.x,joint.x,.75),mix(root.y,joint.y,.75));
+      const after=upper?point(mix(joint.x,tip.x,.25),mix(joint.y,tip.y,.25)):tip;
+      const bend=clamp(1-Math.abs(v-.5)*6,0,1);
+      const dx=mix(b.x-a.x,after.x-before.x,bend),dy=mix(b.y-a.y,after.y-before.y,bend),len=Math.max(1,Math.hypot(dx,dy));
+      const x=mix(a.x,b.x,t)+(arm?inward*clamp(1-v/.24,0,1)*(p.side?6:24):0);
+      const y=mix(a.y,b.y,t);
+      for(let j=0;j<7;j++){
+        const u=j/6,offset=(u-.5)*width*taper*(arm?1.32:1.48);
+        vertices.push({u,v:i/(profile.length-1),x:x+dy/len*offset,y:y-dx/len*offset});
+      }
+    }
+    return {...grid(vertices,7,profile.length),columns:7};
+  }
+  function shellBand(ctx,mesh,first,last,palette,scale=1,torsoView=null){
+    const columns=mesh.columns,rows=mesh.vertices.length/columns;
+    const sample=(row,i)=>{
+      const v=mesh.vertices[row*columns+i],c=mesh.vertices[row*columns+(columns-1)/2];
+      return {x:mix(c.x,v.x,scale),y:v.y};
+    };
+    const left=[],right=[];
+    for(let row=first;row<=Math.min(last,rows-1);row++){
+      left.push(sample(row,0));right.push(sample(row,columns-1));
+    }
+    const points=[...left,...Array.from({length:columns-2},(_,i)=>sample(left.length+first-1,i+1)),
+      ...right.reverse(),...Array.from({length:columns-2},(_,i)=>sample(first,columns-2-i))];
+    ctx.beginPath();
+    for(let i=0;i<points.length;i++){
+      const a=points[i],b=points[(i+1)%points.length],x=(a.x+b.x)/2,y=(a.y+b.y)/2;
+      if(i===0)ctx.moveTo(x,y);else ctx.quadraticCurveTo(a.x,a.y,x,y);
+    }
+    ctx.quadraticCurveTo(points[0].x,points[0].y,(points[0].x+points[1].x)/2,(points[0].y+points[1].y)/2);
+    ctx.closePath();
+    const cx=(left[0].x+right.at(-1).x)/2,cy=(left[0].y+right.at(-1).y)/2;
+    const bx=(left.at(-1).x+right[0].x)/2,by=(left.at(-1).y+right[0].y)/2;
+    const span=Math.max(...left.map((a,i)=>Math.hypot(a.x-right[left.length-1-i].x,a.y-right[left.length-1-i].y)))/2;
+    const len=Math.hypot(bx-cx,by-cy)||1;
+    const dx=(by-cy)/len*span,dy=(cx-bx)/len*span;
+    const shade=ctx.createLinearGradient((cx+bx)/2-dx,(cy+by)/2-dy,(cx+bx)/2+dx,(cy+by)/2+dy);
+    palette.forEach(([at,color])=>shade.addColorStop(at,color));
+    ctx.fillStyle=shade;
+    ctx.fill();
+    if(torsoView){
+      ctx.save();
+      ctx.clip();
+      // Soft light follows the chest, the abdomen, and the lateral hip
+      // volumes on this view. It ends at the same closed skin silhouette.
+      const forms=torsoView==='up'?[[.37,4,.29,.23],[.63,4,.29,.23],[.5,9,.35,.17]]:
+        torsoView==='down'?[[.32,4,.29,.18],[.68,4,.29,.18],[.5,7,.25,.21],[.29,9,.20,.12],[.71,9,.20,.12]]:
+        [[torsoView==='left'?.37:.63,4,.36,.19],[.5,7,.27,.20],[torsoView==='left'?.66:.34,9,.36,.17]];
+      for(const [u,row,w,h] of forms){
+        const a=sample(row,0),b=sample(row,columns-1);
+        ctx.save();
+        ctx.translate(mix(a.x,b.x,u),mix(a.y,b.y,u));
+        ctx.scale(Math.max(1,Math.abs(b.x-a.x)*w),Math.max(1,Math.abs(by-cy)*h));
+        const light=ctx.createRadialGradient(0,0,0,0,0,1);
+        light.addColorStop(0,'rgba(255,224,196,.39)');
+        light.addColorStop(1,'rgba(255,224,196,0)');
+        ctx.fillStyle=light;
+        ctx.fillRect(-1,-1,2,2);
+        ctx.restore();
+      }
+      ctx.restore();
+    }
+  }
+  const BASE_SKIN_SHADE=freezeTree({
+    doctor:[[0,'#b57d65'],[.26,'#daa28b'],[.46,'#f4c5ab'],[.68,'#edb69b'],[1,'#bd8268']],
+    professor:[[0,'#bb896f'],[.23,'#e0ad95'],[.46,'#f8d1b8'],[.72,'#edc0a5'],[1,'#bf8a73']]
+  });
+  // Medians of each actor's own neck pixels in heads-down.webp. Only the
+  // gradient hue changes; the face, hand and hair art remain source pixels.
+  const SOURCE_SKIN_RGB=freezeTree({doctor:[251,203,174],professor:[253,212,190],graduate:[251,199,170],researcher:[252,210,185],
+    'cedar-dean':[245,186,157],'herbal-mentor':[253,212,187],'lab-engineer':[246,179,145],
+    'balance-analyst':[252,208,185],'dawn-intern':[253,210,184],'river-fellow':[246,186,155]});
+  function shiftedShade(character){
+    const base=FEMALE_BASE_ACTORS.has(character)?'professor':'doctor',delta=SOURCE_SKIN_RGB[character].map((v,i)=>v-SOURCE_SKIN_RGB[base][i]);
+    return BASE_SKIN_SHADE[base].map(([at,color])=>[at,'#'+[0,1,2].map(i=>clamp(parseInt(color.slice(1+i*2,3+i*2),16)+delta[i],0,255).toString(16).padStart(2,'0')).join('')]);
+  }
+  const SKIN_SHADE=freezeTree(Object.fromEntries(Object.keys(BODIES).map(character=>[character,
+    BASE_SKIN_SHADE[character]||shiftedShade(character)])));
+  const FITTING_SHADE=freezeTree({
+    top:[[0,'#506d79'],[.45,'#a9c4c6'],[1,'#5b7884']],
+    pants:[[0,'#344758'],[.46,'#6b8293'],[1,'#3c4e63']],
+    coverage:[[0,'#b78975'],[.48,'#eac0a8'],[1,'#bb8e77']],
+    inner:[[0,'#525566'],[.45,'#8a8c9d'],[1,'#57596d']]
+  });
   function bodyBaseMesh(key,part,p){
     // All actors use the same surface rule with their own body dimensions and
     // native neck pixels. Shoulder markers describe the authored cloth seam;
     // they are not an invitation to add another skin radius outside the body.
-    const b=p.body,k=b.shoulders/210;
+    const b=p.body,k=b.shoulders/210,pilot=castShell(p);
+    if(key.startsWith('body.foot'))return pilotFoot(p,key.at(-1));
+    if(pilot&&key==='body.torso')return pilotTorso(p,part);
+    if(key==='body.neck'){
+      const head=partMesh('head.neck',p.headPart,p);
+      const points=typeof p.headPart.neckMask[0]?.[0]==='number'?p.headPart.neckMask:p.headPart.neckMask.flat();
+      const top=Math.min(...points.map(q=>q[1])),bottom=Math.max(...points.map(q=>q[1]));
+      const [a,,z]=part.neckUV;
+      const overlap=pilot?11*k:7*k;
+      const rows=[.12,.42,.72,.94].map((t,i)=>{
+        const v=mix(top,bottom,t),span=neckInterval(p.headPart,v)||[a,z];
+        const mid=(span[0]+span[1])/2,half=(span[1]-span[0])*.36;
+        const left=meshPoint(head,mid-half,v),right=meshPoint(head,mid+half,v);
+        return [left,right].map((q,j)=>({u:j,v:i/3,x:q.x,y:q.y+(i===3?overlap:0)}));
+      });
+      return grid(rows.flat(),2,rows.length);
+    }
     if(key==='body.torso'){
-      const head=partMesh('head',p.headPart,p),[u0,v,u1]=part.neckUV,a=meshPoint(head,u0+(u1-u0)*.09,v),z=meshPoint(head,u1-(u1-u0)*.09,v),neckCenter=(a.x+z.x)/2,neckWidth=Math.abs(z.x-a.x),neckY=(a.y+z.y)/2;
+      const head=partMesh('head.neck',p.headPart,p),[u0,v,u1]=part.neckUV,a=meshPoint(head,u0+(u1-u0)*.09,v),z=meshPoint(head,u1-(u1-u0)*.09,v),neckCenter=(a.x+z.x)/2,neckWidth=Math.abs(z.x-a.x),neckY=(a.y+z.y)/2;
       // Calibrated inside the approved source contour: sloping trapezius,
       // rounded acromion, narrower ribcage and each actor's own waist/hip.
       // The 210-unit shoulder reference supplies ratios, not a shared body.
       const shoulderY=Math.max(neckY+18*k,(p.limbs.L.arm.root.y+p.limbs.R.arm.root.y)/2+9*k),neckBaseY=mix(neckY,shoulderY,.32),chestY=Math.max(shoulderY+12*k,p.chest.y+28*k),waistY=p.waist?.y||mix(chestY,p.hip.y,.76),hipSpan=Math.abs(p.limbs.L.leg.root.x-p.limbs.R.leg.root.x)+b.limb*.62;
-      const rows=[[neckCenter,neckY-7*k,neckWidth*1.04,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),140*k*p.viewWidth,.21,4*k],[p.chest.x,shoulderY,184*k*p.viewWidth,.32,7*k],[p.chest.x,chestY,156*k*p.viewWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,b.waist*.89*p.viewWidth,.80,0],[p.hip.x,p.hip.y,Math.max(b.hips*.98*p.viewWidth,hipSpan),1,0]],vertices=[];
+      const skin=(p.anatomy||anatomicalBody(p)).skin;
+      const shoulderWidth=skin.shoulder,ribWidth=skin.ribs,waistWidth=skin.waist;
+      const pelvisWidth=Math.max(skin.pelvis,hipSpan);
+      const rows=[[neckCenter,neckY-14*k,neckWidth*1.20,0,0],[mix(neckCenter,p.chest.x,.2),neckBaseY,neckWidth*1.06,.10,0],[p.chest.x,mix(neckBaseY,shoulderY,.5),shoulderWidth*.76,.21,4*k],[p.chest.x,shoulderY,shoulderWidth,.32,7*k],[p.chest.x,chestY,ribWidth,.47,0],[mix(p.chest.x,p.hip.x,.8),waistY,waistWidth,.80,0],[p.hip.x,p.hip.y,pelvisWidth,1,0]],vertices=[];
       for(const [cx,cy,w,v,curve] of rows)for(const u of [0,.25,.5,.75,1])vertices.push({u,v,x:cx+(u-.5)*w,y:cy-curve*(1-Math.pow(Math.abs(u-.5)*2,2))});return grid(vertices,5,rows.length);
     }
     const n=key.at(-1),arm=key.startsWith('body.arm'),original=p.limbs[n][arm?'arm':'leg'],inward=original.root.x<p.chest.x?1:-1;
+    if(pilot)return pilotLimb(p,n,arm);
     // Keep all pose joints fixed. Reconstruct the skin capsule inside and
     // below the original surface attachment, joining its actual elbow/wrist.
-    const limb=arm?{...original,root:point(original.root.x+inward*20*k,original.root.y+24*k),joint:point(original.joint.x+inward*8*k,original.joint.y)}:original,width=b.limb*(arm?.66:.9),mesh=joinedLimbMesh(limb,width,{root:[.5,.025],joint:[.5,.52],tip:[.5,.975]});
+    const limb=arm?{...original,root:point(original.root.x+inward*20*k,original.root.y+24*k),joint:point(original.joint.x+inward*8*k,original.joint.y)}:original,width=(p.anatomy||anatomicalBody(p)).skin[arm?'arm':'leg'],mesh=joinedLimbMesh(limb,width,{root:[.5,.025],joint:[.5,.52],tip:[.5,.975]});
     for(let row=0;row<mesh.vertices.length;row+=3){const center=mesh.vertices[row+1],v=center.v,taper=v<=.025?mix(.12,.8,v/.025):v<=.52?mix(.8,.9,(v-.025)/.495):mix(.9,arm?.62:.58,(v-.52)/.48);for(let i=0;i<3;i++){const q=mesh.vertices[row+i];q.x=center.x+(q.x-center.x)*taper;q.y=center.y+(q.y-center.y)*taper;}}
     return mesh;
   }
@@ -425,8 +659,17 @@
     for(const slot of ['shirt','jacket'])for(const n of ['L','R']){const key=slot+'.arm'+n,part=parts[key],fit=part&&sleeveSeamRecord(key,part,parts[slot+'.torso'],d);if(fit)parts[key]={...part,shoulderSeam:fit};}
     if(!onlySlot){
       const head=profile?.parts[d]?.head||manifest.heads?.[look.character]?.[d];parts.head={...checkedPart(head,manifest),slot:'body'};
-      if(head.neckMask){parts['head.neck']={...parts.head,mask:head.neckMask,cutouts:null,neckCoverageOverlap:true};parts.head.cutouts=head.neckMask;}
-      const skin=bodySkinPart(head,look.character);if(skin)for(const key of ['body.torso','body.armL','body.armR','body.legL','body.legR'])parts[key]={...skin};
+      if(head.neckMask){
+        const pilot=BODY_SHELL_CAST.has(look.character)&&!profile;
+        parts['head.neck']={...parts.head,mask:pilot?trimJawMask(head):head.neckMask,cutouts:null,neckCoverageOverlap:!pilot};
+        parts.head.cutouts=head.neckMask;
+      }
+      const skin=bodySkinPart(head,look.character);
+      if(skin){
+        const keys=['body.neck','body.torso','body.armL','body.armR','body.legL','body.legR'];
+        if(BODY_SHELL_CAST.has(look.character)&&!profile)keys.push('body.footL','body.footR');
+        for(const key of keys)parts[key]={...skin};
+      }
       for(const side of ['L','R']){const key='hand.'+side,part=profile?(d==='down'&&!look.loadout.shirt&&!look.loadout.jacket?profile.parts[d].bareHands[side]:profile.parts[d]?.hands?.[side]):manifest.hands?.[look.character]?.[d]?.[side]||manifest.hands?.[d]?.[side];if(profile&&part?.hidden){delete parts[key];continue;}const own=OWN_HAND_PARTS[look.character]?.[side],selected=profile?part:(own||part);if(selected)parts[key]={...checkedPart(selected,manifest),slot:'body'};if(!parts[key])throw Error('角色手部素材尚未備妥。');}
       for(const n of ['L','R']){const own=OWN_HAND_PARTS[look.character]?.[n];if(own)parts['hand.athlete'+n]={...checkedPart(own,manifest),slot:'body'};}
       if(profile?.parts[d]?.runHands)for(const n of ['L','R']){parts['hand.run'+n]={...checkedPart(profile.parts[d].runHands[n],manifest),slot:'body'};if(!look.loadout.shirt&&!look.loadout.jacket)parts['forearm.run'+n]={...checkedPart(profile.parts[d].runForearms[n],manifest),slot:'body'};}
@@ -491,7 +734,24 @@
       return quad(arm.tip.x,arm.tip.y-5,w,w*aspect,angle*.65,part.anchor||[.35,.16]);
     }
     if(key==='head'||key==='head.neck'){
-      const w=b.head*(p.bodyProfile?(side?.96:1):(part.widthScale||1))*s,h=w*aspect,anchor=part.anchor||[.5,.88],fit=p.bodyProfile?.directionFits?.[p.direction]?.head;
+      const w=b.head*(p.character==='doctor'?1.055:1)*(p.bodyProfile?(side?.96:1):(part.widthScale||1))*s,h=w*aspect,anchor=part.anchor||[.5,.88],fit=p.bodyProfile?.directionFits?.[p.direction]?.head;
+      if(key==='head.neck'&&part.neckMask){
+        const points=typeof part.neckMask[0]?.[0]==='number'?part.neckMask:part.neckMask.flat();
+        const start=Math.min(...points.map(q=>q[1]));
+        const end=Math.max(...points.map(q=>q[1]));
+        const map=v=>fit&&v>fit.neckStartV?fit.neckStartV+(v-fit.neckStartV)*fit.neckScale:v;
+        const rows=[...new Set([0,start,(start+end)/2,end,1,...(fit?[fit.neckStartV]:[])])].sort((a,b)=>a-b);
+        const vertices=[];
+        for(const v of rows)for(const u of [0,1]){
+          const progress=clamp((v-start)/Math.max(.001,end-start),0,1);
+          // Keep the jaw seam fixed. Pull the lower skin into the neck socket,
+          // especially in profile, where the source includes the rear slope.
+          const taper=castShell(p)?1:1-(side?Math.sqrt(progress)*.62:progress*.26);
+          const q=rotate(point((u-anchor[0])*w*taper,(map(v)-map(anchor[1]))*h),p.headAngle);
+          vertices.push({u,v,x:p.neck.x+q.x,y:p.neck.y+(p.bodyProfile?0:14)+q.y});
+        }
+        return grid(vertices,2,rows.length);
+      }
       if(fit){
         const split=fit.neckStartV,map=v=>v<=split?v:split+(v-split)*fit.neckScale,mappedAnchor=map(anchor[1]),vertices=[];
         // Source y < 287 is the native hair/face. Only the lower neck band is
@@ -517,7 +777,7 @@
     return null;
   }
   function layers(p,parts){
-    const near=p.near,far=near==='L'?'R':'L',arm=n=>['shirt.arm'+n,'jacket.arm'+n,...(p.graduateRun8?['forearm.run'+n]:[]),'handheld',p.graduateRun8?'hand.run'+n:'hand.'+n],leg=n=>['pants.leg'+n,'pants.pocket'+n,'shoes.'+n],base=['body.leg'+far,'body.leg'+near,'body.arm'+far,'body.arm'+near,'shirt.torso.rearCollar','jacket.torso.rearCollar','cape.front.rearCollar','body.torso'];
+    const near=p.near,far=near==='L'?'R':'L',arm=n=>['shirt.arm'+n,'jacket.arm'+n,...(p.graduateRun8?['forearm.run'+n]:[]),'handheld',p.graduateRun8?'hand.run'+n:'hand.'+n],leg=n=>['pants.leg'+n,'pants.pocket'+n,'shoes.'+n],base=['body.foot'+far,'body.foot'+near,'body.leg'+far,'body.leg'+near,'body.arm'+far,'body.arm'+near,'shirt.torso.rearCollar','jacket.torso.rearCollar','cape.front.rearCollar','body.torso','body.neck'];
     // The book belongs to an anatomical hand, not the side of the screen. Keep
     // the far hand behind the torso and the near hand in front in each view.
     const held=parts.handheld?.hand==='R'?'R':'L',armLayer=n=>arm(n).filter(key=>key!=='handheld'||held===n);
@@ -578,14 +838,47 @@
     if(!p.graduateRun8)return parts;const clips=p.bodyProfile.downRun8.sourceCutouts||{};
     return Object.fromEntries(Object.entries(parts).map(([key,part])=>{const clip=clips[key];if(!clip||part.atlas!==clip.atlas||part.rect.some((v,i)=>v!==clip.rect[i]))return [key,part];return [key,{...part,cutouts:[...(part.cutouts||[]),...clip.cutouts]}];}));
   }
+  function drawFittingInnerwear(ctx,torso,character){
+    if(FEMALE_BASE_ACTORS.has(character))shellBand(ctx,torso,4,6,FITTING_SHADE.inner,1.03);
+    shellBand(ctx,torso,8,11,FITTING_SHADE.inner,1.03);
+  }
   function* drawSteps(ctx,prepared,p,width,height,options={}){
     if(options.bodyProfile&&p.bodyProfile?.id!==options.bodyProfile)p=pose(p.character,p.direction,p.phase,p.action,options);
-    const parts=partsForPose(prepared.plan.parts,p);p={...fitFeet(p,parts),headPart:parts.head,onlySlot:prepared.plan.onlySlot};ctx.save();try{ctx.clearRect(0,0,width,height);const list=layers(p,parts).map(key=>[key,partMesh(key,parts[key],p)]).filter(([,mesh])=>mesh);if(!list.length)return;
+    const parts=partsForPose(prepared.plan.parts,p);p={...(castShell(p)?p:fitFeet(p,parts)),headPart:parts.head,onlySlot:prepared.plan.onlySlot};ctx.save();try{ctx.clearRect(0,0,width,height);p.anatomy=anatomicalBody(p);
+    const skinMeshes=new Map(Object.keys(parts).filter(key=>parts[key].slot==='body').map(key=>[key,partMesh(key,parts[key],p)]));
+    const list=layers(p,parts).map(key=>[key,skinMeshes.has(key)?skinMeshes.get(key):partMesh(key,parts[key],p)]).filter(([,mesh])=>mesh);if(!list.length)return;
     if(prepared.plan.onlySlot){
       const vertices=list.flatMap(([,mesh])=>mesh.vertices),xs=vertices.map(v=>v.x),ys=vertices.map(v=>v.y),left=Math.min(...xs)-7,top=Math.min(...ys)-7,w=Math.max(...xs)-left+7,h=Math.max(...ys)-top+7,s=Math.min(width/w,height/h)*.88;
       ctx.translate((width-w*s)/2,(height-h*s)/2);ctx.scale(s,s);ctx.translate(-left,-top);
     }else if(options.canonicalGraduateDown||options.canonicalActor){const k=width/256*.75;ctx.translate(width/2,height*372/384);ctx.scale(k,k);ctx.translate(-160,-490);}else ctx.scale(width/SPACE.width,height/SPACE.height);
-    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';for(const [key,mesh] of list)yield* drawPartSteps(ctx,parts[key],prepared.sources[parts[key].atlas],mesh);
+    const pilot=castShell(p);
+    ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';
+    for(const [key,mesh] of list){
+      if(options.fittingSimple&&pilot&&['shirt','pants'].includes(parts[key].slot))continue;
+      if(pilot&&key.startsWith('body.foot')&&parts['shoes.'+key.at(-1)])continue;
+      // Authored shirt/jacket crops provide the visible dressed silhouette.
+      // Their old side-view cutouts do not enclose a fuller bare chest; keep
+      // the torso shell under the clothing instead of exposing a skin wedge.
+      if(pilot&&FEMALE_BASE_ACTORS.has(p.character)&&key==='body.torso'&&!options.fittingSimple&&(parts['shirt.torso']||parts['jacket.torso']))continue;
+      if(pilot&&mesh.columns&&key.startsWith('body.')){
+        shellBand(ctx,mesh,0,Infinity,SKIN_SHADE[p.character],1,key==='body.torso'?p.direction:null);
+        if(key==='body.torso'&&FEMALE_BASE_ACTORS.has(p.character)){
+          if(!parts['shirt.torso']&&!parts['jacket.torso'])shellBand(ctx,mesh,3,6,FITTING_SHADE.coverage,1.045);
+          if(!parts['pants.pelvis'])shellBand(ctx,mesh,8,11,FITTING_SHADE.coverage,1.06);
+        }
+        if(options.fittingSimple){
+          if(key==='body.torso'){
+            shellBand(ctx,mesh,8,11,FITTING_SHADE.pants,1.055);
+            shellBand(ctx,mesh,2,9,FITTING_SHADE.top,1.105);
+          }else if(key.startsWith('body.leg'))shellBand(ctx,mesh,0,9,FITTING_SHADE.pants,1.10);
+          else if(key.startsWith('body.arm'))shellBand(ctx,mesh,0,4,FITTING_SHADE.top,1.10);
+        }
+        yield;
+      }else if(!(pilot&&key==='body.neck')){
+        yield* drawPartSteps(ctx,parts[key],prepared.sources[parts[key].atlas],mesh);
+      }
+    }
+    if(options.fittingInnerwear&&castShell(p)&&skinMeshes.get('body.torso'))drawFittingInnerwear(ctx,skinMeshes.get('body.torso'),p.character);
     }finally{ctx.restore();}
   }
   function draw(ctx,prepared,p,width,height,options={}){for(const unused of drawSteps(ctx,prepared,p,width,height,options)){} }
@@ -733,5 +1026,5 @@
     }
     return {preview,itemPreview,setPose,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),dispose,acquire,acquireAthleteRun,acquireFittedIdle:(state,view,options)=>acquireAthleteRun(state,view,{...options,idle:true}),acquireGraduateDown,prepare,describe:(state,options={})=>plan(state,options.direction||'down',manifest(),E,options.onlySlot||null,options),stats:()=>({frames:frameCache.stats(),sources:sourceCache.stats()}),clearUnused(){frameCache.clear();sourceCache.clear();},draw};
   }
-  return {...createRuntime(),createRuntime,DIRECTIONS,SLOTS,PARTS,SPACE,FRAME,POSES,SCENE_BYTES,SOURCE_BYTES,direction,body,previewBodyProfile,pose,stride,ik,ik3,cyclic,graduateDownRunPose,athleticRunPose,runProjection,ATHLETE_RUN,athleteLimbMesh,GRADUATE_DOWN_FRAME,GRADUATE_DOWN_LAYOUT,limbMesh,joinedLimbMesh,referenceRunSleeveMesh,quad,clothMesh,TAILORED_FITS,tailoredGarment,triangleTransform,partMesh,layers,fitFeet,drawSteps,partsForPose,plan,checkedPart,appearance,createCache,sourceRegion,OWN_HAND_ATLAS,OWN_HAND_PARTS};
+  return {...createRuntime(),createRuntime,DIRECTIONS,SLOTS,PARTS,SPACE,FRAME,POSES,SCENE_BYTES,SOURCE_BYTES,direction,body,previewBodyProfile,pose,stride,ik,ik3,cyclic,graduateDownRunPose,athleticRunPose,runProjection,anatomicalBody,ATHLETE_RUN,athleteLimbMesh,GRADUATE_DOWN_FRAME,GRADUATE_DOWN_LAYOUT,limbMesh,joinedLimbMesh,referenceRunSleeveMesh,quad,clothMesh,TAILORED_FITS,tailoredGarment,triangleTransform,partMesh,layers,fitFeet,drawSteps,partsForPose,plan,checkedPart,appearance,createCache,sourceRegion,OWN_HAND_ATLAS,OWN_HAND_PARTS};
 });
