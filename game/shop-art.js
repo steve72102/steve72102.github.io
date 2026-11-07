@@ -13,7 +13,17 @@ window.MindShopArt=(()=>{
       node('img',{src:'./assets/shop/'+key(id)+'.webp',alt:'',width:768,height:768,loading:'lazy',decoding:'async'}),
       node('span',{class:'region-crown-text','aria-hidden':'true'},node('small',{},'自以為'),node('strong',{},regions[key(id)]+'最強')));
     const gear=equipment(id);
-    if(gear&&window.MindCastOutfit?.itemPreview){const svg=window.MindCastOutfit.itemPreview(state,gear);if(svg){svg.setAttribute('class',className+' shop-equipment-actual');return svg;}}
+    if(gear){
+      const academy=window.MindAcademy,look=academy?.restore(state?.appearance),hero=academy?.character(look?.character||'doctor');
+      const style=(gear.style||'classic').replace(/[^a-z0-9-]/gi,'');
+      // Use the same rendered cast artwork as the lobby. The coloured layer
+      // is deliberately clipped below the face, preserving the approved 3D
+      // character while making every level collection visibly distinct.
+      return node('span',{class:className+' shop-equipment-actual portrait-equipped outfit-style-'+style,role:'img','aria-label':(name||gear.name)+' · '+hero.name+' 的立體裝備預覽'},
+        node('img',{class:'portrait-equipped-art',src:'./assets/academy/'+hero.image,alt:'',loading:'lazy',decoding:'async'}),
+        node('span',{class:'portrait-outfit-tint','data-outfit-style':style}),
+        node('span',{class:'portrait-outfit-badge'},'Lv.'+(gear.level||10)));
+    }
     return node('img',{class:className,src:'./assets/shop/'+key(id)+'.webp',alt:name,width:768,height:768,loading:'lazy',decoding:'async'});
   }
   function card(ctx,id,name,label){
@@ -23,3 +33,4 @@ window.MindShopArt=(()=>{
   }
   return Object.freeze({has,image,card});
 })();
+
