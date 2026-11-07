@@ -4,8 +4,13 @@ window.MindAvatar=function({node,appearance,name,loadout,remote=false,honor=null
  // The campus has accepted rendered character art.  Keep that art as the
  // lobby body and tint only the clothing zone, instead of swapping it for a
  // flat SVG mannequin whenever a player equips an item.
- const body=node('span',{class:dressed?'equipped-sprite portrait-equipped outfit-style-'+style:'run-sprite sprite-'+look.character,'aria-hidden':'true'});
- if(dressed){body.append(node('img',{class:'portrait-equipped-art',src:'./assets/academy/'+hero.image,alt:'',draggable:'false'}),node('span',{class:'portrait-outfit-tint','data-outfit-style':style}),node('span',{class:'portrait-outfit-badge'},'Lv.'+(jacket?.level||10)));}
+ // The lobby is a character showcase. Always use the approved rendered
+ // character, even before the first item is equipped. The old run atlas is
+ // reserved for compact scene movement, so it cannot turn the lobby back
+ // into the flat placeholder figure.
+ const body=node('span',{class:'equipped-sprite portrait-equipped'+(dressed?' outfit-style-'+style:' portrait-base'),'aria-hidden':'true'});
+ body.append(node('img',{class:'portrait-equipped-art',src:'./assets/academy/'+hero.image,alt:'',draggable:'false'}));
+ if(dressed)body.append(node('span',{class:'portrait-outfit-tint','data-outfit-style':style}),node('span',{class:'portrait-outfit-badge'},'Lv.'+(jacket?.level||10)));
  return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
 };
 window.MindLobbyUI=function(ctx){
