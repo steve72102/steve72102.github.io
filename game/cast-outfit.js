@@ -126,11 +126,11 @@
     const bodyProfile=character.id==='graduate'&&GRADUATE_UI_DIRECTIONS.includes(direction)&&(options.bodyProfile===GRADUATE_REFERENCE||(options.bodyProfile!==false&&options.raster!==false))?GRADUATE_REFERENCE:null;
     const loadout=Object.fromEntries(Object.keys(R.SLOTS).map(s=>[s,state.rpg?.loadout?.[s]||null]));
     const actualLabel=character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；');
-    if(bodyProfile||(options.raster!==false&&options.bodyFit!==false)){
+    if(bodyProfile){
       const layered=options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,bodyProfile,label:options.label||actualLabel,fallback:()=>preview(state,{...options,bodyProfile,painted:false,native:false,raster:false})});
       if(layered){
         if(layered.dataset?.renderMethod==='vector-fallback')return layered;
-        if(bodyProfile)layered.setAttribute('data-body-profile',bodyProfile);layered.setAttribute('data-body-fit','native-body-underlay-v1');layered.setAttribute('data-render-method','authored-parts-skeletal');layered.setAttribute('data-art-method','authored-parts-skeletal-preview');layered.setAttribute('data-loadout',JSON.stringify(loadout));
+        layered.setAttribute('data-body-profile',bodyProfile);layered.setAttribute('data-render-method','authored-parts-skeletal');layered.setAttribute('data-art-method','authored-parts-skeletal-preview');layered.setAttribute('data-loadout',JSON.stringify(loadout));
         return layered;
       }
     }
@@ -138,11 +138,10 @@
     if(painted)return painted;
     const native=!bodyProfile&&options.native!==false&&window.MindNativeAvatar?.preview(state,{direction,label:character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；'),fallback:()=>preview(state,{...options,painted:false,native:false})});
     if(native)return native;
-    const layered=!bodyProfile&&options.bodyFit===false&&options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,fallback:()=>preview(state,{...options,painted:false,native:false,raster:false})});
+    const layered=!bodyProfile&&options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,fallback:()=>preview(state,{...options,painted:false,native:false,raster:false})});
     if(layered)return layered;
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{xmlns:ns,viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,'data-view':direction,role:'img','aria-label':character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；')});
-    set(svg,{'data-render-method':'vector-fallback','data-art-method':'vector-fallback-preview','data-fallback-loadout':'actual-loadout','data-loadout':JSON.stringify(loadout)});
     if(bodyProfile)set(svg,{viewBox:'0 0 180 306',width:180,height:306,preserveAspectRatio:'xMidYMax meet','data-body-profile':bodyProfile,'data-render-method':'vector-fallback','data-art-method':'vector-fallback-preview','data-fallback-loadout':'actual-loadout','data-loadout':JSON.stringify(loadout),'data-foot-anchor':'90 275.625','data-occluded-slots':back?['accessory','handheld'].filter(s=>items[s]).join(' '):'','data-occluded-body-parts':back?'hands':''});
     if(bodyProfile&&direction==='left')svg.setAttribute('data-side-method','independent-left-vector');
     if(bodyProfile&&back)svg.setAttribute('data-arm-occlusion','folded-front-behind-torso');
@@ -281,7 +280,7 @@
       else{line('M90 86V158',tint(tc[2],-.16),.9);for(const y of [97,113,129,145])circle(91,y,1.1,tc[3]);}
     }
     if(has('jacket')){
-      slot='jacket';const c=p('jacket'),j=style('jacket'),s=shape('jacket'),tailoring={professor:.86,researcher:.95,'dawn-intern':.94}[character.id]||1,hem=73+(s.hem+bodyShift-73)*(s.hem>=200?1:tailoring),fl=s.flare+cut.flare*.2,lh=sl-fl,rh=sr+fl;
+      slot='jacket';const c=p('jacket'),j=style('jacket'),s=shape('jacket'),hem=s.hem+bodyShift,fl=s.flare+cut.flare*.2,lh=sl-fl,rh=sr+fl;
       const left='M'+sl+' 73L'+(sl-12)+' 82Q'+(sl-16)+' 113 35 145L47 154 '+(sl-2)+' 116 '+lh+' '+(hem-2)+'Q'+(sl+9)+' '+(hem+5)+' 86 '+hem+'L87 82Z';
       const right='M'+sr+' 73L'+(sr+12)+' 82Q'+(sr+16)+' 113 145 145L133 154 '+(sr+2)+' 116 '+rh+' '+(hem-2)+'Q'+(sr-9)+' '+(hem+5)+' 94 '+hem+'L93 82Z';
       if(bodyProfile&&back){
@@ -380,14 +379,10 @@
   }
   function itemPreview(state,item,options={}){
     const R=window.MindAdventure;if(!item||!Object.hasOwn(R.SLOTS,item.slot))return null;
-    const bodyProfile=state.appearance?.character==='graduate'?GRADUATE_REFERENCE:null;
-    if(options.raster!==false&&options.bodyFit!==false){
-      const fitted=window.MindLayeredAvatar?.itemPreview(state,item,{...options,bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});
-      if(fitted)return fitted;
-    }
     const painted=options.painted!==false&&window.MindPaintedAvatar?.itemPreview(state,item,{...options,fallback:(requested={})=>itemPreview(state,item,{...options,...requested,painted:false})});if(painted)return painted;
     const native=options.native!==false&&window.MindNativeAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{...options,painted:false,native:false})});if(native)return native;
-    const layered=options.bodyFit===false&&options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
+    const bodyProfile=state.appearance?.character==='graduate'?GRADUATE_REFERENCE:null;
+    const layered=options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
     const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     const boxes={jacket:[20,64,140,188],cape:[25,63,130,144],shirt:[25,64,130,112],pants:[34,136,112,161],shoes:[38,269,104,45],hat:[45,0,90,49],accessory:[90+cut.shoulder-18,99,28,28],handheld:[90+cut.shoulder,132,44,60]};
@@ -397,3 +392,4 @@
   }
   return {CUTS,COLORS,SHAPES,model,preview,itemPreview};
 });
+
