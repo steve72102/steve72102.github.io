@@ -117,6 +117,12 @@
     return a;
   }
   function preview(state,options={}){
+    if(options.original!==false){
+      const character=window.MindAcademy.character(state.appearance?.character);
+      const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),image=document.createElementNS(ns,'image');
+      svg.setAttribute('viewBox','0 0 180 330');svg.setAttribute('role','img');svg.setAttribute('aria-label',character.name);
+      image.setAttribute('href','./assets/academy/'+character.image);image.setAttribute('width','180');image.setAttribute('height','330');image.setAttribute('preserveAspectRatio','xMidYMax meet');svg.append(image);return svg;
+    }
     const A=window.MindAcademy,R=window.MindAdventure,E=window.MindEngine,{character,cut,items,palette}=model(state,A,R,E);
     const direction=['up','right','left'].includes(options.direction)?options.direction:'down',back=direction==='up',side=direction==='right'||direction==='left';
     // Existing world callers explicitly disable raster and do not opt into a
@@ -383,7 +389,7 @@
     const native=options.native!==false&&window.MindNativeAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{...options,painted:false,native:false})});if(native)return native;
     const bodyProfile=state.appearance?.character==='graduate'?GRADUATE_REFERENCE:null;
     const layered=options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
-    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
+    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile,original:false}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     const boxes={jacket:[20,64,140,188],cape:[25,63,130,144],shirt:[25,64,130,112],pants:[34,136,112,161],shoes:[38,269,104,45],hat:[45,0,90,49],accessory:[90+cut.shoulder-18,99,28,28],handheld:[90+cut.shoulder,132,44,60]};
     svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('viewBox',(bodyProfile?[0,0,180,306]:boxes[item.slot]).join(' '));svg.setAttribute('role','img');svg.setAttribute('aria-label',item.name+'：遊戲實際穿戴版型');svg.setAttribute('data-gear-id',item.id);

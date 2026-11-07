@@ -1,55 +1,7 @@
-window.MindAvatar=(function(){
-  'use strict';
-  // Scene images use the wardrobe's exact renderer. Cache only public appearance
-  // and equipped item IDs; names, account IDs and private saves never enter SVGs.
-  const images=new Map(),CACHE_LIMIT=96,DIRECTIONS=['down','up','right'];
-  function sources(appearance,loadout){
-    const key=JSON.stringify([appearance.character,...Object.keys(window.MindAdventure.SLOTS).map(slot=>loadout[slot]||null)]);
-    if(images.has(key)){const cached=images.get(key);images.delete(key);images.set(key,cached);return cached;}
-    const state={appearance:{character:appearance.character},rpg:{loadout}},serializer=new XMLSerializer();
-    const rendered=DIRECTIONS.map(direction=>{
-      const svg=window.MindCastOutfit.preview(state,{direction,painted:false,native:false,raster:false});
-      // createElementNS already supplies namespaceURI. Let XMLSerializer emit
-      // its declaration once, without a second unnamespaced xmlns attribute.
-      svg.removeAttribute('xmlns');
-      return {direction,src:'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(serializer.serializeToString(svg))};
-    });
-    images.set(key,rendered);if(images.size>CACHE_LIMIT)images.delete(images.keys().next().value);return rendered;
-  }
-  return function({node,appearance,name,loadout,remote=false,counterAt=0,honor=null}){
-    const A=window.MindAcademy,R=window.MindAdventure,E=window.MindEngine,look=A.restore(appearance),wear={};
-    for(const slot of Object.keys(R.SLOTS)){
-      const id=loadout?.[slot],gear=R.gear(id);
-      wear[slot]=gear?.slot===slot||slot==='handheld'&&E.ITEMS.some(item=>item.id===id)?id:null;
-    }
-    const dressed=Object.values(wear).some(Boolean),state={appearance:look,rpg:{loadout:wear}},painted=window.MindPaintedAvatar?.createBody(node,state,{local:!remote}),native=!painted&&window.MindNativeAvatar?.createBody(node,state),layered=!painted&&!native&&window.MindLayeredAvatar?.createBody(node,state);
-    const originalBody=()=>node('span',{class:'equipped-sprite','aria-hidden':'true','data-loadout':JSON.stringify(wear)},...sources(look,wear).map(({direction,src})=>node('img',{class:'outfit-facing outfit-facing-'+direction,src,alt:'',draggable:'false',decoding:'async',width:180,height:330})));
-    // Native sheets are direct image surfaces: an SVG serialized into a data URL
-    // cannot reliably load another external image in the browser's image sandbox.
-    const body=painted||native||layered||(dressed?originalBody():node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}));
-    // A newly encountered combination may queue behind other local bakes. Keep
-    // its truthful existing appearance visible until the detailed frame is ready.
-    const loading=(painted&&!painted.dataset.paintedRetainedFrame)||layered?originalBody():null;if(loading)loading.classList.add(painted?'painted-loading-body':'layered-loading-body');
-    const avatar=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed||painted?' geared-actor':'')+(painted?' painted-actor':native?' native-actor':layered?' layered-actor':''),'data-direction':'down',...(painted?{'data-painted-avatar':painted.dataset.paintedAtlas}:{}),...(native?{'data-native-avatar':native.dataset.nativeAtlas}:{}),'aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),loading,body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
-    if(painted)window.MindPaintedAvatar.register(avatar,originalBody,painted.dataset.paintedCoverage==='pilot'?{coverageFallback:()=>{
-      // A one-frame pilot supplements the existing renderer. Unsupported views
-      // still run the real Native/Layered animation with this exact loadout.
-      const exact=window.MindNativeAvatar?.createBody(node,state);if(exact)return {element:exact,kind:'native',api:window.MindNativeAvatar};
-      const mixed=window.MindLayeredAvatar?.createBody(node,state);if(mixed)return {element:mixed,kind:'layered',api:window.MindLayeredAvatar};
-      return {element:originalBody(),kind:'legacy',api:null};
-    }}:{});
-    if(native)window.MindNativeAvatar.register(avatar,originalBody);
-    if(layered)window.MindLayeredAvatar.register(avatar,originalBody);
-    if(look.character==='graduate'){
-      // Keep only the already-sanitized public character and exact eight slots.
-      // The independent owner preserves sealed renderers for the other views.
-      const downState={appearance:{character:look.character},rpg:{loadout:{...wear}}};
-      window.MindLayeredAvatar?.registerGraduateDown?.(avatar,downState,{fallback:()=>window.MindCastOutfit.preview(downState,{direction:'down',bodyProfile:'graduate-reference-v1',painted:false,native:false,raster:false})});
-    }
-    const h=window.MindLobby.honor(honor);if(h){avatar.classList.add('has-honor');avatar.append(node('span',{class:'honor-label '+h.kind,'data-honor-until':h.until},window.MindLobby.honorTitle(h)));}
-    const remaining=Math.min(8000,counterAt+8000-Date.now());if(remaining>0){const bubble=node('span',{class:'counter-bubble'},'可悲阿~');bubble.style.setProperty('--bubble-time',remaining+'ms');avatar.append(bubble);}return window.MindAvatarMotion?.register(avatar)||avatar;
-  };
-})();
+window.MindAvatar=function({node,appearance,name,loadout,remote=false}){
+  const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),coat=R.gear(loadout?.coat),boots=R.gear(loadout?.boots),badge=R.gear(loadout?.badge);
+  return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(coat?' coat-'+coat.color:'')+(boots?' has-boots':'')+(badge?' has-badge':''),'data-direction':'down','aria-label':name,role:'img'},node('span',{class:'traveler-shadow'}),node('span',{class:'outfit-aura','aria-hidden':'true'}),node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}),look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name),badge?node('span',{class:'worn-badge','aria-hidden':'true'},'✦'):null);
+};
 window.MindLobbyUI=function(ctx){
   'use strict';const {node,btn,note,openModal,closeModal,getState,save,toast}=ctx,L=window.MindLobby,W=window.MindWalk,P=window.MindScenePlay;
   const props=window.MindSceneUI({node});let solo=P.fresh(),lastProps=0;
