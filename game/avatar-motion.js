@@ -42,9 +42,6 @@
     actor.classList.toggle('walking',moving);
     attribute(actor,'motionAction',visual.action);attribute(actor,'motionView',record.view);
     attribute(actor,'motionReduced',reduced?'true':'false');
-    // Once ready, the same eight athletic phases own running for every identity.
-    // Pending/failed assets leave the existing exact-loadout renderer visible.
-    if(root.MindLayeredAvatar?.updateAthleteRun?.(actor,visual,{...input,direction:record.view}))return visual;
     // Only the registered graduate's final DOWN view owns this surface. Call
     // on every view so leaving DOWN releases it before the sealed dispatch.
     if(root.MindLayeredAvatar?.updateGraduateDown?.(actor,visual,{...input,direction:record.view}))return visual;
@@ -70,13 +67,11 @@
     // Otherwise a remote with intent=false could remain on its last run frame.
     const record=actors.get(actor);if(!record)return false;
     const motionNeedsFrame=record.motion.visual.moving||record.motion.visual.needsFrame||record.preference!==!!media?.matches;
-    if(root.MindLayeredAvatar?.ownsAthleteRun?.(actor))return !!(motionNeedsFrame||root.MindLayeredAvatar?.needsAthleteRunFrame?.(actor));
     // Paused sealed/native transients cannot keep an active DOWN owner awake.
     if(root.MindLayeredAvatar?.ownsGraduateDown?.(actor))return !!(motionNeedsFrame||root.MindLayeredAvatar?.needsGraduateDownFrame?.(actor));
     return !!(motionNeedsFrame||root.MindPaintedAvatar?.needsFrame(actor)||root.MindNativeAvatar?.needsFrame(actor)||root.MindLayeredAvatar?.needsFrame(actor));
   }
   function dispose(actor){
-    root.MindLayeredAvatar?.disposeAthleteRun?.(actor);
     root.MindLayeredAvatar?.disposeGraduateDown?.(actor);
     const record=actors.get(actor);if(!record)return;
     root.MindPaintedAvatar?.dispose(actor);
@@ -88,3 +83,4 @@
   }
   root.MindAvatarMotion={register,update,needsFrame,dispose};
 })(typeof window==='object'?window:globalThis);
+
