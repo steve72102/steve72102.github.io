@@ -1,17 +1,10 @@
 window.MindAvatar=function({node,appearance,name,loadout,remote=false,honor=null}){
- const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),title=window.MindLobby.honor(honor),wear=R.loadout(loadout||{}),dressed=Object.values(wear).some(Boolean),hero=A.character(look.character);
- const jacket=R.gear(wear.jacket)||R.gear(wear.cape)||R.gear(wear.shirt),style=(jacket?.style||'classic').replace(/[^a-z0-9-]/gi,'');
- // The campus has accepted rendered character art.  Keep that art as the
- // lobby body and tint only the clothing zone, instead of swapping it for a
- // flat SVG mannequin whenever a player equips an item.
- // The lobby is a character showcase. Always use the approved rendered
- // character, even before the first item is equipped. The old run atlas is
- // reserved for compact scene movement, so it cannot turn the lobby back
- // into the flat placeholder figure.
- const body=node('span',{class:'equipped-sprite portrait-equipped'+(dressed?' outfit-style-'+style:' portrait-base'),'aria-hidden':'true'});
- body.append(node('img',{class:'portrait-equipped-art',src:'./assets/academy/'+hero.image,alt:'',draggable:'false'}));
- if(dressed)body.append(node('span',{class:'portrait-outfit-tint','data-outfit-style':style}),node('span',{class:'portrait-outfit-badge'},'Lv.'+(jacket?.level||10)));
- return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
+ const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),title=window.MindLobby.honor(honor);
+ // Restore the 2026-10-30 animated academy cast.  The source atlas carries
+ // its own down/up/side frames and is the only lobby representation that is
+ // allowed to follow the player's movement direction.
+ const cape=R.gear(loadout?.cape)||R.gear(loadout?.coat),shoes=R.gear(loadout?.shoes)||R.gear(loadout?.boots),badge=R.gear(loadout?.accessory)||R.gear(loadout?.badge);
+ return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(cape?' coat-'+cape.color:'')+(shoes?' has-boots':'')+(badge?' has-badge':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),node('span',{class:'outfit-aura','aria-hidden':'true'}),node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}),look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name),badge?node('span',{class:'worn-badge','aria-hidden':'true'},'✦'):null);
 };
 window.MindLobbyUI=function(ctx){
   'use strict';const {node,btn,note,openModal,closeModal,getState,save,toast}=ctx,L=window.MindLobby,W=window.MindWalk,P=window.MindScenePlay;
