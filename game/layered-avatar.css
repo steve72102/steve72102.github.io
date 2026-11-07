@@ -31,30 +31,3 @@
 .walk-actor[data-graduate-down-owner="active"][data-graduate-down-status="ready"]>.graduate-down-avatar-canvas{display:block!important}
 .walk-actor[data-graduate-down-owner="active"]:not([data-graduate-down-status="ready"])>.graduate-down-idle-bridge{display:block!important}
 
-/* Athletic RUN8 shares the canonical 256x384 / (128,372) foot anchor, rendered
-   as 96x144 / (48,139.5). Only a ready surface hides the prior exact loadout. */
-.walk-actor>.athlete-run-avatar-canvas{position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;display:none!important;pointer-events:none;overflow:hidden;animation:none!important;transform:none!important;transition:none;contain:layout style}
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.athlete-run-avatar-canvas{display:block!important}
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.painted-avatar-canvas,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.native-avatar-sprite,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.layered-avatar-canvas,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.equipped-sprite,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.run-sprite,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.painted-loading-body,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.layered-loading-body,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.painted-coverage-fallback,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.graduate-down-avatar-canvas,
-.walk-actor[data-athlete-run-owner="active"][data-athlete-run-status="ready"]>.graduate-down-idle-bridge{display:none!important}
-
-/* Render around the existing world foot anchor, without rescaling the map. */
-@media (min-width: 701px) and (max-width: 1400px) and (any-pointer: coarse) {
-  .walk-world > .walk-actor {
-    --actor-display-scale: 1.19;
-    transform-origin: 50% 90%;
-  }
-}
-
-/* Compact run/idle canvases extend above the older portrait rectangle. */
-.walk-actor[data-athlete-run-status="ready"] > .player-name {
-  bottom: 127%;
-}
