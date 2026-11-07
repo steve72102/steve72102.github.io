@@ -3,6 +3,8 @@
   const MAX=100000000,SLOTS={jacket:'外套',cape:'披風',shirt:'上衣',pants:'褲子',shoes:'鞋子',hat:'帽子',accessory:'配戴物',handheld:'手持物'};
   const STYLE_SLOTS=Object.keys(SLOTS);
   const STYLE_SETS=[
+{"level":10,"key":"prism","name":"虹彩啟程","color":"prism","names":["虹彩燕尾短外套","七色扇形肩披","珊瑚立領衫","寶藍束腳褲","金邊步行鞋","稜光貝雷帽","虹晶胸章","彩頁觀察冊"],"text":"洋紅燕尾、青綠扇披與金色稜線，八欄可獨立混搭。","music":"原創彩色學院"},
+{"level":20,"key":"solar","name":"晴橙學院","color":"solar","names":["晴橙雙排外套","藍綠斜裁肩披","檸黃格線衫","紫藍闊腿褲","橙白高幫鞋","晴空報童帽","日輪筆記徽","晴空研習板"],"text":"晴橙雙排與不對稱肩披，搭配紫藍闊腿和明黃格線。","music":"原創彩色學院"},
     {level:30,key:'bach',name:'單線行旅',music:'巴哈｜無伴奏大提琴組曲第一號〈前奏曲〉',image:'./assets/equipment/level30-bach.webp',castImage:'./assets/equipment/level30-bach-cast.webp',color:'brown',names:['行旅採樣外套','墨綠短肩披','米白棉襯衣','耐磨收納褲','低筒步行鞋','軟質野外帽','單線研究別針','採樣筆記本'],text:'一條連續細線穿過現代野外採樣服。'},
     {level:40,key:'schumann',name:'記憶書房',music:'舒曼｜〈夢幻曲〉',image:'./assets/equipment/level40-schumann.webp',castImage:'./assets/equipment/level40-schumann-cast.webp',color:'lilac',names:['霧紫圓角外套','淺紫短圍肩','燕麥棉襯衣','暖灰直筒褲','淺色低跟便鞋','針織軟帽','折頁書籤別針','回想手札'],text:'柔和的回折與留白，像安靜整理一頁筆記。'},
     {level:50,key:'mozart',name:'幾何序曲',music:'莫札特｜《魔笛》序曲',image:'./assets/equipment/level50-mozart.webp',castImage:'./assets/equipment/level50-mozart-cast.webp',color:'cobalt',names:['交疊裁片外套','藍白平整披片','奶油白高領衣','炭灰俐落長褲','藍灰簡線低鞋','分片布帽','幾何量測徽記','折頁學習圖冊'],text:'交錯幾何裁片與清楚的現代線條。'},

@@ -28,10 +28,12 @@
     cherry:['#d74465','#4052a0','#fff4e3','#333f69','#faab7b','#88c9b0'],
     grape:['#7751ad','#3c8caa','#f3e9f6','#3c385d','#df87b9','#81cbbd']
   };
+  Object.assign(COLORS,{"prism":["#ef3b96","#18b9ae","#fff09a","#523db8"],"solar":["#ff9234","#19a5ba","#fff06a","#6951bb"],"brown":["#ee7640","#078f8a","#fff19a","#4b5cbd"],"lilac":["#bd4cd8","#f49bbf","#fff3aa","#5863bf"],"cobalt":["#236fe7","#33c8d2","#fff4ad","#de508d"],"sage":["#21a87a","#bce659","#fff3c3","#3465ac"],"ink":["#6334ae","#efb83f","#fce9a4","#283a7d"],"dusk":["#ee5d93","#397acb","#fff091","#475184"],"teal":["#00a9aa","#ff966f","#fff5a9","#5b4ca4"]});
   const SHAPES={
-    bach:{hem:187,cape:118,flare:4,collar:'field'},schumann:{hem:160,cape:111,flare:5,collar:'round'},
-    mozart:{hem:166,cape:107,flare:2,collar:'angle'},haydn:{hem:169,cape:114,flare:7,collar:'round'},
-    requiem:{hem:221,cape:156,flare:9,collar:'stand'},letter:{hem:163,cape:116,flare:6,collar:'field'},tide:{hem:166,cape:112,flare:9,collar:'open'},
+prism:{hem:180,cape:132,flare:21,collar:'angle'},solar:{hem:154,cape:143,flare:13,collar:'field'},
+    bach:{hem:207,cape:109,flare:4,collar:'field'},schumann:{hem:158,cape:136,flare:18,collar:'round'},
+    mozart:{hem:178,cape:102,flare:2,collar:'angle'},haydn:{hem:193,cape:121,flare:12,collar:'round'},
+    requiem:{hem:221,cape:156,flare:9,collar:'stand'},letter:{hem:149,cape:113,flare:4,collar:'field'},tide:{hem:171,cape:128,flare:15,collar:'open'},
     citrus:{hem:150,cape:111,flare:5,collar:'sailor'},berry:{hem:160,cape:124,flare:9,collar:'yoke'},
     pomelo:{hem:213,cape:147,flare:12,collar:'wrap'},pineapple:{hem:166,cape:110,flare:3,collar:'work'},
     cherry:{hem:142,cape:106,flare:2,collar:'bomber'},grape:{hem:184,cape:139,flare:8,collar:'angle'}
@@ -117,7 +119,7 @@
     return a;
   }
   function preview(state,options={}){
-    if(options.original!==false){
+    if(options.original!==false&&!Object.values(state.rpg?.loadout||{}).some(Boolean)){
       const character=window.MindAcademy.character(state.appearance?.character);
       const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),image=document.createElementNS(ns,'image');
       svg.setAttribute('viewBox','0 0 180 330');svg.setAttribute('role','img');svg.setAttribute('aria-label',character.name);
@@ -309,6 +311,8 @@
         if(j==='mozart'||j==='grape')path('M'+(sl+2)+' 83L82 102 81 126 '+(sl+1)+' 113Z',c[1],c[3],.7);
         if(j==='berry')path('M'+(sl-1)+' 81L'+(sl+5)+' 94 79 88 82 96 '+(sl+4)+' 106 '+(sl-4)+' 96Z',c[2],c[3],.7);
       }
+      if(j==='prism'){path('M'+lh+' '+(hem-25)+'L90 '+(hem+22)+' '+rh+' '+(hem-25),c[1],c[3],1.4);for(let y=104;y<hem-20;y+=17)path('M78 '+y+'l12 -7 12 7-12 7Z',c[2],c[1],1);}
+      if(j==='solar'){for(const x of [77,102])for(let y=103;y<hem-8;y+=17)circle(x,y,2.3,c[2],c[1],1);path('M'+sl+' 90L90 122 '+sr+' 90',c[1],c[3],2);}
       line('M'+(lh+3)+' '+(hem-5)+'Q90 '+(hem+1)+' '+(rh-3)+' '+(hem-5),c[1],2);
     }
     if(back)cape(true);else cape(false);

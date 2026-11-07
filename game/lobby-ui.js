@@ -1,7 +1,8 @@
 window.MindAvatar=function({node,appearance,name,loadout,remote=false,honor=null}){
-  const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),coat=R.gear(loadout?.coat),boots=R.gear(loadout?.boots),badge=R.gear(loadout?.badge);
-  const title=window.MindLobby.honor(honor);
-  return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(coat?' coat-'+coat.color:'')+(boots?' has-boots':'')+(badge?' has-badge':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),node('span',{class:'outfit-aura','aria-hidden':'true'}),node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}),look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name),badge?node('span',{class:'worn-badge','aria-hidden':'true'},'✦'):null);
+ const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),title=window.MindLobby.honor(honor),wear=R.loadout(loadout||{}),dressed=Object.values(wear).some(Boolean);
+ const body=node('span',{class:dressed?'equipped-sprite':'run-sprite sprite-'+look.character,'aria-hidden':'true'});
+ if(dressed){for(const direction of ['down','up','left','right']){const svg=window.MindCastOutfit.preview({appearance:look,rpg:{loadout:wear}},{direction,original:false,bodyProfile:false,painted:false,native:false,raster:false});svg.setAttribute('class','outfit-facing outfit-facing-'+direction);body.append(svg);}}
+ return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(dressed?' geared-actor':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),body,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name));
 };
 window.MindLobbyUI=function(ctx){
   'use strict';const {node,btn,note,openModal,closeModal,getState,save,toast}=ctx,L=window.MindLobby,W=window.MindWalk,P=window.MindScenePlay;
