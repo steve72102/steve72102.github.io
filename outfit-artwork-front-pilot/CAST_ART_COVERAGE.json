@@ -1,0 +1,247 @@
+{
+  "generatedAt": "2026-11-15T08:47:22.538Z",
+  "stage": "isolated-art-candidates",
+  "note": "Existing native/painted manifests cover the older pineapple outfit and do not prove COMMON coverage. Portrait candidates are not runtime sprites.",
+  "cast": [
+    {
+      "id": "doctor",
+      "sourcePortrait": {
+        "path": "game/assets/academy/doctor-portrait.png",
+        "bytes": 1866113,
+        "sha256": "1164a6cbb49d735ed7b36d5b5abc074acf610f0ce3872e4dc78caef559c42b8c"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/doctor-run.webp",
+        "bytes": 281394,
+        "sha256": "288778122dc12c66494fa44ecc326c9a2a3f210741e915cf86f2d15c829db018"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/common-front-masked-preview.png",
+        "bytes": 2519657,
+        "sha256": "e7a4a41fe51b36ec3b9ba6eb0ea86069a746a0e05a60337769556e7bd9118ede"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "professor",
+      "sourcePortrait": {
+        "path": "game/assets/academy/professor-portrait.png",
+        "bytes": 1743231,
+        "sha256": "0cb031303e6459c0910f5a65aec1edcab06e792a25151724d3665d4dd369de2e"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/professor-run.webp",
+        "bytes": 235358,
+        "sha256": "c2a7c92bd6742049b1f79d21f270ad760c2ec6a8d613a43dfee063b97bcd3119"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/professor-common-front-masked-preview.png",
+        "bytes": 2606458,
+        "sha256": "ccba076c52bc811bd3e69cd89fa8f8bd2a931285346c66cd2e8a614e176a54da"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "researcher",
+      "sourcePortrait": {
+        "path": "game/assets/academy/researcher-portrait.png",
+        "bytes": 1787148,
+        "sha256": "7ffa3b75608acd73d19c1105f84b374ab31db2fc7b82ca2ed93edb71a6f3336a"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/researcher-run.webp",
+        "bytes": 242326,
+        "sha256": "2cc0d93b395fddb07dc7bf37ffdc0919587be9461adb9fc2d99fa0168ffc5582"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/researcher-common-front-masked-preview.png",
+        "bytes": 2682989,
+        "sha256": "f997db62eb1a6f6f2e2c64ec388a1bc03374d8f22a5336f9d04651d4e5f8b50d"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "lab-engineer",
+      "sourcePortrait": {
+        "path": "game/assets/academy/lab-engineer-portrait.png",
+        "bytes": 1821226,
+        "sha256": "37cc68276bab8927deb0d27860cba88a527f23b0a022388bfd61355b71af8765"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/lab-engineer-run.webp",
+        "bytes": 211024,
+        "sha256": "5d9b94709ccee9138c15302708596abf239c22ee9baa55f8a33ecc1b3d700d86"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/lab-engineer-common-front-masked-preview.png",
+        "bytes": 2724777,
+        "sha256": "3fe45b8350b0de258bb5679d68803bc6a75faef8c070118b81a43ecb8ca2fb0d"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "herbal-mentor",
+      "sourcePortrait": {
+        "path": "game/assets/academy/herbal-mentor-portrait.png",
+        "bytes": 1967427,
+        "sha256": "3624f45ebab0245a739145e924965b065d150d1e3f1f76284e499b8aad12f6ad"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/herbal-mentor-run.webp",
+        "bytes": 255940,
+        "sha256": "acc549e97b6f6c9bae123098a5f13eee5ea8c741eb04f3be451c3e242aacca80"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/herbal-mentor-common-front-masked-preview.png",
+        "bytes": 2958320,
+        "sha256": "6317efe8c909f5f72ca59a2c637909d1eb56d4945b4a72feda668439acb0e787"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "graduate",
+      "sourcePortrait": {
+        "path": "game/assets/academy/graduate-portrait.png",
+        "bytes": 1727031,
+        "sha256": "829c0326de977d304f3b892f8c6347ec369f9e0645152f2db5a48dc84c29ffd9"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/graduate-run.webp",
+        "bytes": 193998,
+        "sha256": "3ca26a68b0481f5e394ad7feec57cb1f235ab406c0ac118459f1dd51ef76ab97"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/graduate-common-front-masked-preview.png",
+        "bytes": 2705986,
+        "sha256": "1d0d1ead7bdab3227f496d4c77ab6aa460d8ff01527498ee2a026b283969dc35"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "dawn-intern",
+      "sourcePortrait": {
+        "path": "game/assets/academy/dawn-intern-portrait.png",
+        "bytes": 1675266,
+        "sha256": "ccf354734f612add523ae01bad5c597d6f209f01d590440708b739841f32ed4c"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/dawn-intern-run.webp",
+        "bytes": 222186,
+        "sha256": "28a585e7a8aefe8321a127ab530f5683ab020661c63c259aa3272c7edd5cf91a"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/dawn-intern-common-front-masked-preview.png",
+        "bytes": 2596389,
+        "sha256": "787795c73853e80cb359bc480761c575895113c2af3b9b3bd567eaa2b6ace46d"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "cedar-dean",
+      "sourcePortrait": {
+        "path": "game/assets/academy/cedar-dean-portrait.png",
+        "bytes": 1876064,
+        "sha256": "7f3250a49687a215637fdb33d40200af8315433f27dcc52a8c08f39fabc86cc8"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/cedar-dean-run.webp",
+        "bytes": 256108,
+        "sha256": "9b779afa86a117290033a21eec560dc6de3f2e87678524e7af6bcb4eb5b468a1"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/cedar-dean-common-front-masked-preview.png",
+        "bytes": 2675088,
+        "sha256": "23eef6b5f12095f3e4e0900f36ca619bf52c5cb5414c85977094e16dbdae71e7"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "balance-analyst",
+      "sourcePortrait": {
+        "path": "game/assets/academy/balance-analyst-portrait.png",
+        "bytes": 1678830,
+        "sha256": "4c45cfca1904636887d034b40584b2a5e4834226852fff6cd11c01c390bb3361"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/balance-analyst-run.webp",
+        "bytes": 234740,
+        "sha256": "27871b312afbc992d19f8a0bc49f789403959c252070c122b68d16bb8327ed0d"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/balance-analyst-common-front-masked-preview.png",
+        "bytes": 2547389,
+        "sha256": "7f955d81d4bae0110497695e3cac1ea1389d0c1b9bec55b470ad6a9c1ad99957"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    },
+    {
+      "id": "river-fellow",
+      "sourcePortrait": {
+        "path": "game/assets/academy/river-fellow-portrait.png",
+        "bytes": 1787816,
+        "sha256": "ce775df4cd5bf8f51f9ad4dcb549f4780be80b4aea0d67cef817faca0295faa6"
+      },
+      "sourceRun": {
+        "path": "game/assets/academy/river-fellow-run.webp",
+        "bytes": 205242,
+        "sha256": "451514ba8f82043b99456ed630e3492369f532d3af37d2ba3f94ba512e6c68de"
+      },
+      "existingNativeManifest": true,
+      "existingPaintedManifest": true,
+      "commonFrontCandidate": {
+        "path": "artifacts/outfit-recipe-pilot/pilot/outfit-artwork-front-pilot/original-character-review/river-fellow-common-front-masked-preview.png",
+        "bytes": 2479253,
+        "sha256": "e84246d39f1e0f80f8f6f21ac2708c7f89b64d877302ea536778b667b69d6940"
+      },
+      "commonFourView": "missing",
+      "commonEightSlotLayers": "missing",
+      "commonRun8": "missing",
+      "shopBagSceneVisualQa": "not-tested"
+    }
+  ]
+}
