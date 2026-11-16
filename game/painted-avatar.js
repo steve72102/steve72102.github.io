@@ -226,10 +226,21 @@
       if(!match||!E.fetch)throw Error('只可載入登錄格式的本機原畫清單。');
       const response=await E.fetch(url,{credentials:'same-origin'});if(!response.ok)throw Error('原畫清單載入失敗。');const raw=await response.json();if(own(raw,'id')!==match[1])throw Error('原畫清單資料夾不相符。');return registerManifest(raw);
     }
+    // Keep save/loadout IDs intact. Until every legacy professor garment has
+    // painted art, use the sealed professor pieces as a visual proxy only when
+    // a Crossline item is present; never return the geometric avatar.
+    function visualOutfitState(m,clean){
+      if(!m?.outfitOf||m.character!=='professor'||m.outfitOf.family!=='crossline-common-professor'||!clean||!m.outfitOf.newItemIds.some(id=>SLOTS.some(slot=>clean.rpg.loadout[slot]===id)))return clean;
+      const loadout=Object.fromEntries(SLOTS.map(slot=>{
+        const id=clean.rpg.loadout[slot];
+        return [slot,id===null||m.items[slot].includes(id)?id:m.items[slot][0]??null];
+      }));
+      return {appearance:clean.appearance,rpg:{loadout}};
+    }
     function availableProfile(state){
       const clean=publicState(state),m=clean&&manifests.get(clean.appearance.character)?.manifest;
       if(!m?.outfitOnly&&matchesLoadout(m,clean))return m;
-      return clean?(outfitManifests.get(clean.appearance.character)||[]).find(record=>matchesLoadout(record.manifest,clean))?.manifest||null:null;
+      return clean?(outfitManifests.get(clean.appearance.character)||[]).find(record=>matchesLoadout(record.manifest,visualOutfitState(record.manifest,clean)))?.manifest||null:null;
     }
     // The original API still means full 64-frame support. Pilot use is always
     // frame-aware and never changes movement to fit the one available picture.
@@ -248,7 +259,8 @@
       if(!pilot){view=direction(view);type=sheet(type);}
       const m=frameProfile(clean,view,type,pilot?frame:0);if(!m)throw Error('此角色、裝備或影格尚無支援的逐格分層原畫。');
       const tier=options.tier==='art'?'art':'scene',onlySlot=options.onlySlot||null;if(onlySlot&&!SLOTS.includes(onlySlot))throw Error('原畫單件欄位不合法。');
-      const selected=m.passes.filter(p=>(onlySlot?p.ownerSlot===onlySlot&&p.itemId===clean.rpg.loadout[onlySlot]:p.ownerSlot===null||p.itemId===clean.rpg.loadout[p.ownerSlot])&&Object.entries(p.requires||{}).every(([slot,item])=>clean.rpg.loadout[slot]===item));
+      const visual=visualOutfitState(m,clean),fallbackSlots=SLOTS.filter(slot=>visual.rpg.loadout[slot]!==clean.rpg.loadout[slot]);
+      const selected=m.passes.filter(p=>(onlySlot?p.ownerSlot===onlySlot&&p.itemId===visual.rpg.loadout[onlySlot]:p.ownerSlot===null||p.itemId===visual.rpg.loadout[p.ownerSlot])&&Object.entries(p.requires||{}).every(([slot,item])=>visual.rpg.loadout[slot]===item));
       const passes=selected.map(p=>{
         const index=m.passes.indexOf(p),compact=tier==='scene'&&(pilot||!!p.compactImages),f=pilot?p.frames.find(c=>c.direction===view&&c.sheet===type&&c.frame===frame):null;
         return {id:p.id,ownerSlot:p.ownerSlot,itemId:p.itemId,requires:p.requires||null,z:p.zByDirection?.[view]??p.z,index,url:pilot?(compact?f.compactImage:f.image):(compact?p.compactImages:p.images)[view][type],sourceWidth:pilot?(compact?COMPACT_CELL.width:CELL.width):(compact?COMPACT.width:ATLAS.width),sourceHeight:pilot?(compact?COMPACT_CELL.height:CELL.height):(compact?COMPACT.height:ATLAS.height)};
@@ -256,7 +268,7 @@
       const atlas=pilot?(tier==='scene'?COMPACT_CELL:CELL):(tier==='scene'?COMPACT:ATLAS),parts=[m.id,m.revision,registered.get(manifestKey(m)).token,view,type,tier,onlySlot,...SLOTS.map(slot=>clean.rpg.loadout[slot])];
       if(pilot)parts.push('single-cell',frame);
       const key=JSON.stringify(parts);
-      return freeze({key,id:m.id,revision:m.revision,character:m.character,direction:view,sheet:type,tier,onlySlot,loadout:clean.rpg.loadout,passes,atlas,anchor:[128,372],previewBox:m.previewBox,portraitBox:m.portraitBox,...(pilot?{storage:'single-cells',frame}: {})});
+      return freeze({key,id:m.id,revision:m.revision,character:m.character,direction:view,sheet:type,tier,onlySlot,loadout:clean.rpg.loadout,visualFallbackSlots:fallbackSlots,passes,atlas,anchor:[128,372],previewBox:m.previewBox,portraitBox:m.portraitBox,...(pilot?{storage:'single-cells',frame}: {})});
     }
     async function decode(pass,signal){
       if(signal?.aborted)throw aborted();if(failures.has(pass.url))throw Error('原畫層目前無法使用。');let image;
@@ -334,6 +346,9 @@
       const surface=actor?.querySelector?.('.painted-avatar-canvas'),state=bodies.get(surface);if(!surface||!state)return false;
       const p=availableProfile(state);if(!p)return false;
       actor.dataset.paintedAvatar=p.id;
+      // The legacy run sprite is a sibling of this canvas. Hide it from the
+      // first registration frame so a painted character never appears twice.
+      actor.classList.add('painted-actor');
       if(p.status==='pilot')actor.dataset.paintedCoverage='pilot';
       actors.set(actor,{actor,surface,state,fallback,pilot:p.status==='pilot',blockedFrameKeys:new Set(),cellRequest:null,coverageFactory:options.coverageFallback||null,coverageFallback:null,retaining:false,visual:null,input:null,previousVisual:null,previousInput:null,selected:null,handle:null,controller:null,deadline:null,epoch:0,pending:false,requested:null,painted:null,failed:false});return true;
     }
@@ -406,7 +421,7 @@
       const key=atlas.key+':'+frame;if(record.painted===key)return;
       const index=atlas.plan.storage==='single-cells'?0:frame;
       const ctx=record.surface.getContext('2d');ctx.clearRect(0,0,record.surface.width,record.surface.height);ctx.drawImage(atlas.canvas,index%atlas.columns*atlas.width,Math.floor(index/atlas.columns)*atlas.height,atlas.width,atlas.height,0,0,record.surface.width,record.surface.height);
-      if(record.pilot){hideCoverageFallback(record);record.surface.style.display='';record.actor.classList.add('painted-actor');record.actor.dataset.paintedSource='painted';record.actor.dataset.paintedAssetStatus='ready';}
+      hideCoverageFallback(record);record.surface.style.display='';record.actor.classList.add('painted-actor');record.actor.dataset.paintedSource='painted';record.actor.dataset.paintedAssetStatus='ready';
       record.actor.querySelector?.('.painted-loading-body')?.remove?.();record.painted=key;
       delete record.actor.dataset.paintedFailure;
       delete record.surface.dataset.paintedRetainedFrame;
