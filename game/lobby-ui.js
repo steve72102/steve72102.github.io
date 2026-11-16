@@ -1,10 +1,14 @@
 window.MindAvatar=function({node,appearance,name,loadout,remote=false,honor=null}){
- const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),title=window.MindLobby.honor(honor);
+ const A=window.MindAcademy,R=window.MindAdventure,look=A.restore(appearance),title=window.MindLobby.honor(honor),wear=R.loadout(loadout||{});
  // Restore the 2026-10-30 animated academy cast.  The source atlas carries
  // its own down/up/side frames and is the only lobby representation that is
  // allowed to follow the player's movement direction.
- const cape=R.gear(loadout?.cape)||R.gear(loadout?.coat),shoes=R.gear(loadout?.shoes)||R.gear(loadout?.boots),badge=R.gear(loadout?.accessory)||R.gear(loadout?.badge);
- return node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(cape?' coat-'+cape.color:'')+(shoes?' has-boots':'')+(badge?' has-badge':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),node('span',{class:'outfit-aura','aria-hidden':'true'}),node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}),look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name),badge?node('span',{class:'worn-badge','aria-hidden':'true'},'✦'):null);
+ const cape=R.gear(wear.cape)||R.gear(wear.jacket)||R.gear(wear.coat),shoes=R.gear(wear.shoes)||R.gear(wear.boots),badge=R.gear(wear.accessory)||R.gear(wear.badge),style=(cape?.style||cape?.color||'').replace(/[^a-z0-9-]/gi,''),level=cape?.level||0;
+ const actor=node('div',{class:'walk-actor'+(remote?' remote-actor':' local-actor')+(cape?' coat-'+(cape.color||style):'')+(style?' run-outfit-'+style:'')+(level?' run-outfit-level-'+level:'')+(shoes?' has-boots':'')+(badge?' has-badge':''),'data-direction':'down','aria-label':name,role:'img'},title?node('span',{class:'honor-label '+title.kind,'data-honor-until':title.until},window.MindLobby.honorTitle(title)):null,node('span',{class:'traveler-shadow'}),node('span',{class:'outfit-aura','aria-hidden':'true'}),node('span',{class:'run-sprite sprite-'+look.character,'aria-hidden':'true'}),level?node('span',{class:'run-outfit-level','aria-hidden':'true'},'Lv.'+level):null,look.pet?node('img',{class:'walk-pet',src:'./assets/academy/'+A.pet(look.pet).image,alt:'',draggable:'false'}):null,node('span',{class:'player-name'},remote?name:'◆ '+name),badge?node('span',{class:'worn-badge','aria-hidden':'true'},'✦'):null);
+ const paintedState={appearance:look,rpg:{loadout:wear}};
+ const painted=window.MindPaintedAvatar?.createBody(node,paintedState,{local:!remote});
+ if(painted){actor.append(painted);window.MindCrosslineWarmup?.(paintedState);}
+ return actor;
 };
 window.MindLobbyUI=function(ctx){
   'use strict';const {node,btn,note,openModal,closeModal,getState,save,toast}=ctx,L=window.MindLobby,W=window.MindWalk,P=window.MindScenePlay;

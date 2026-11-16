@@ -43,6 +43,8 @@
     {id:'badge-prism',name:'稜光分析章',slot:'badge',tier:1,price:260,attack:5,hp:10,guard:1,color:'leaf',text:'從不同角度，檢查同一份證據。'},
     {id:'badge-sage',name:'賢者知識章',slot:'badge',tier:3,price:900,attack:9,hp:20,guard:3,color:'gold',text:'真正的力量，是願意一直學習。'}
   ];
+  // Doctor artwork pilot: the new ID uses the established jacket price and starter stats.
+  GEAR.push({id:'style-fusion-academy-crossline-common-jacket',name:'交線學院・普通外套',slot:'jacket',tier:0,price:240,attack:2,hp:6,guard:1,color:'pine',style:'crossline',source:'crossline-pilot',character:'doctor',text:'星序博士專屬試作：深綠布面與細金縫線，保留原角色的臉髮與手部。'});
   GEAR.push(...F.GEAR);
   for(let i=0;i<GEAR.length;i++)GEAR[i]={...GEAR[i],slot:canonicalSlot(GEAR[i])};
   for(const set of STYLE_SETS)for(let i=0;i<STYLE_SLOTS.length;i++)GEAR.push({id:'style-'+set.key+'-'+STYLE_SLOTS[i],name:set.names[i],slot:STYLE_SLOTS[i],tier:0,level:set.level,source:'milestone',style:set.key,color:set.color,price:null,attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:set.text});

@@ -14,6 +14,10 @@ window.MindShopArt=(()=>{
       node('span',{class:'region-crown-text','aria-hidden':'true'},node('small',{},'自以為'),node('strong',{},regions[key(id)]+'最強')));
     const gear=equipment(id);
     if(gear){
+      if(id==='style-fusion-academy-crossline-common-jacket'){
+        const actual=window.MindCastOutfit?.itemPreview(state,gear,{direction:'down'});
+        if(actual)return node('span',{class:className+' shop-equipment-actual crossline-actual-art',role:'img','aria-label':(name||gear.name)+' · 與角色穿戴共用的分件原畫'},actual);
+      }
       const academy=window.MindAcademy,look=academy?.restore(state?.appearance),hero=academy?.character(look?.character||'doctor');
       const style=(gear.style||'classic').replace(/[^a-z0-9-]/gi,'');
       // Use the same rendered cast artwork as the lobby. The coloured layer

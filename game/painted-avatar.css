@@ -1,6 +1,7 @@
 /* Authored 256×384 frames and the same (128,372) anchor as NativeAvatar.
    Compositing keeps every layer in that frame; no wardrobe-dependent fitting. */
 .walk-actor.painted-actor{transform-origin:50% 90%}
+.walk-actor.painted-actor>.run-sprite{display:none}
 .walk-actor .painted-avatar-canvas{
   position:absolute;left:-3.33333333%;top:-26.25%;width:106.66666667%;height:120%;
   display:block;pointer-events:none;animation:none!important;transform:none!important;

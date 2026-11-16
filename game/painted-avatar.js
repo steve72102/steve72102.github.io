@@ -63,11 +63,12 @@
     const keys=cells.map(c=>cellKey(c.direction,c.sheet,c.frame));if(new Set(keys).size!==keys.length)throw Error('試作原畫格不可重複。');
     return keys;
   }
-  function checkPilotFrames(frames,id,coverage){
+  function checkPilotFrames(frames,id,coverage,borrowedSources=[]){
     if(!Array.isArray(frames)||frames.length!==coverage.length)throw Error('每個試作分件都必須有明列的實際單格。');
     const keys=[];
     for(const f of frames){
-      if(!validCell(f)||!safeURL(f.image,id)||!safeURL(f.compactImage,id)||f.image===f.compactImage)throw Error('試作單格與 compact 必須使用各自安全且明列的本機素材。');
+      const allowed=[id,...borrowedSources];
+      if(!validCell(f)||!allowed.some(source=>safeURL(f.image,source))||!allowed.some(source=>safeURL(f.compactImage,source))||f.image===f.compactImage)throw Error('試作單格與 compact 必須使用各自安全且明列的本機素材。');
       keys.push(cellKey(f.direction,f.sheet,f.frame));
     }
     if(!sameSet(keys,coverage))throw Error('試作分件與實際覆蓋格不一致。');
@@ -87,6 +88,7 @@
     if((!(m.schema===1&&['draft','complete'].includes(m.status))&&!pilot)||!identifier(m.id)||!identifier(m.character)||!identifier(m.revision))throw Error('原畫清單版本、角色或狀態不合法。');
     if(!m.atlas||Object.entries(ATLAS).some(([key,value])=>m.atlas[key]!==value))throw Error('原畫清單必須使用固定 256×384 影格與 (128,372) 錨點。');
     const pilotCells=pilot?checkPilotCoverage(m):null;
+    if(m.borrowedSources!==undefined&&(!pilot||!Array.isArray(m.borrowedSources)||m.borrowedSources.some(id=>!identifier(id)||id===m.id)||new Set(m.borrowedSources).size!==m.borrowedSources.length))throw Error('借用分件來源不合法。');
     if(!pilot){
       if(!m.coverage||!Array.isArray(m.coverage.directions)||m.coverage.directions.some(view=>!DIRECTIONS.includes(view))||!m.coverage.sheets)throw Error('原畫清單缺少影格覆蓋記錄。');
       for(const type of SHEETS){const cells=m.coverage.sheets[type];if(!Array.isArray(cells)||cells.some(n=>!Number.isInteger(n)||n<0||n>7)||new Set(cells).size!==cells.length)throw Error('原畫影格覆蓋不合法。');}
@@ -109,7 +111,7 @@
       if(p.zByDirection){if(Object.keys(p.zByDirection).some(view=>!DIRECTIONS.includes(view))||Object.values(p.zByDirection).some(z=>!Number.isInteger(z)||Math.abs(z)>1024))throw Error('方向遮擋順序不合法。');}
       if(pilot){
         if(p.images!==undefined||p.compactImages!==undefined)throw Error('試作單格不可偽裝成完整圖集欄位。');
-        checkPilotFrames(p.frames,m.id,pilotCells);
+        checkPilotFrames(p.frames,m.id,pilotCells,m.borrowedSources||[]);
       }else{checkImages(p.images,m.id,complete);if(p.compactImages)checkImages(p.compactImages,m.id,complete);}
     }
     if(complete||pilot){
@@ -155,7 +157,7 @@
     const E={document:root.document,Image:root.Image,AbortController:root.AbortController,locationProtocol:root.location?.protocol||'',now:root.performance?.now?.bind(root.performance)||Date.now};
     for(const name of ['fetch','createImageBitmap','setTimeout','clearTimeout'])if(typeof root[name]==='function')E[name]=root[name].bind(root);
     Object.assign(E,env);
-    const manifests=new Map(),frameManifests=new Map(),registered=new Map(),actors=new WeakMap(),bodies=new WeakMap(),previews=new WeakMap(),failures=new Set();
+    const manifests=new Map(),frameManifests=new Map(),outfitManifests=new Map(),registered=new Map(),actors=new WeakMap(),bodies=new WeakMap(),previews=new WeakMap(),failures=new Set();
     const sourceCache=createCache(env.sourceBytes||SOURCE_BYTES,value=>{value.image.close?.();if(value.image.getContext){value.image.width=1;value.image.height=1;}},E.AbortController);
     const frameCache=createCache(env.frameBytes||FRAME_BYTES,value=>{value.canvas.width=1;value.canvas.height=1;},E.AbortController);
     let jobs=Promise.resolve(),sequence=0,lastLocalSnapshot=null;
@@ -170,7 +172,7 @@
     const matchesLoadout=(m,clean)=>!!m&&!!clean&&['complete','pilot'].includes(m.status)&&SLOTS.every(slot=>clean.rpg.loadout[slot]===null||m.items[slot].includes(clean.rpg.loadout[slot]))&&(m.status!=='pilot'||m.loadoutCoverage.entries.some(entry=>SLOTS.every(slot=>entry[slot]===clean.rpg.loadout[slot])));
     function registerManifest(raw){
       const manifest=validateManifest(raw),key=manifestKey(manifest),serialized=JSON.stringify(manifest),old=registered.get(key);
-      if(manifest.extensionOf!==undefined)throw Error('分格增量必須使用 registerFrameManifest，不可覆寫角色底稿。');
+      if(manifest.extensionOf!==undefined||manifest.outfitOf!==undefined||manifest.borrowedSources!==undefined)throw Error('增量不得覆寫角色底稿。');
       if(old){if(old.serialized!==serialized)throw Error('同一原畫版本不可悄悄改變來源。');return old.manifest;}
       if((frameManifests.get(manifest.character)||[]).some(record=>record.manifest.extensionOf.id!==manifest.id||record.manifest.extensionOf.revision!==manifest.revision))throw Error('已有分格增量依賴此角色的封版底稿，請重新載入相符版本。');
       const record={manifest,serialized,token:++sequence};registered.set(key,record);manifests.set(manifest.character,record);return manifest;
@@ -180,7 +182,7 @@
     // A new revision is installed on reload, never over live cached source URLs.
     function registerFrameManifest(raw){
       const manifest=validateManifest(raw),ref=manifest.extensionOf,base=manifests.get(manifest.character)?.manifest;
-      if(manifest.status!=='pilot'||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),['id','revision'])||!identifier(ref.id)||!identifier(ref.revision)||ref.id===manifest.id)throw Error('分格增量必須是試作單格並明列不同的封版底稿 id/revision。');
+      if(manifest.status!=='pilot'||manifest.outfitOf!==undefined||manifest.borrowedSources!==undefined||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),['id','revision'])||!identifier(ref.id)||!identifier(ref.revision)||ref.id===manifest.id)throw Error('分格增量必須是試作單格並明列不同的封版底稿 id/revision。');
       if(!base||!['complete','pilot'].includes(base.status)||base.id!==ref.id||base.revision!==ref.revision)throw Error('分格增量缺少相符的封版底稿，已保留原有外觀。');
       if(SLOTS.some(slot=>manifest.items[slot].some(id=>!base.items[slot].includes(id)))||manifest.loadoutCoverage.entries.some(loadout=>!matchesLoadout(base,{rpg:{loadout}})))throw Error('分格增量不得擴張底稿未宣告的裝備或穿戴組合。');
       const key=manifestKey(manifest),serialized=JSON.stringify(manifest),old=registered.get(key);
@@ -190,6 +192,30 @@
       if(manifest.coverage.cells.some(c=>coversCell(base,c.direction,c.sheet,c.frame)||records.some(record=>coversCell(record.manifest,c.direction,c.sheet,c.frame))))throw Error('分格增量不可重疊封版底稿或其他增量的實際影格。');
       const record={manifest,serialized,token:++sequence};registered.set(key,record);frameManifests.set(manifest.character,[...records,record]);return manifest;
     }
+    // An outfit series may add new item IDs without replacing the sealed
+    // character base. Sibling pilots split a 64-cell series into <=63-cell
+    // manifests while retaining one loadout contract and disjoint coverage.
+    function registerOutfitManifest(raw){
+      const manifest=validateManifest(raw),ref=manifest.outfitOf,base=manifests.get(manifest.character)?.manifest;
+      if(manifest.status!=='pilot'||manifest.extensionOf!==undefined||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),['id','revision','family'])||!identifier(ref.id)||!identifier(ref.revision)||!identifier(ref.family))throw Error('服裝系列必須明列封版底稿及系列識別。');
+      if(!base||base.id!==ref.id||base.revision!==ref.revision||!['complete','pilot'].includes(base.status))throw Error('服裝系列缺少相符的封版底稿。');
+      const sources=new Set([base.id,...(frameManifests.get(manifest.character)||[]).map(record=>record.manifest.id)]);
+      if((manifest.borrowedSources||[]).some(id=>!sources.has(id)))throw Error('服裝系列只能借用已登記的同角色原畫來源。');
+      if(manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(base,{rpg:{loadout}})))throw Error('服裝系列不得搶走原裝備穿戴組合。');
+      const key=manifestKey(manifest),serialized=JSON.stringify(manifest),old=registered.get(key);
+      if(old){if(old.serialized!==serialized)throw Error('同一服裝系列版本不可悄悄改變來源。');return old.manifest;}
+      const records=outfitManifests.get(manifest.character)||[];
+      if([...registered.values()].some(record=>record.manifest.id===manifest.id))throw Error('服裝系列 id 已登記其他版本。');
+      const contract=JSON.stringify({items:manifest.items,loadouts:manifest.loadoutCoverage});
+      for(const record of records){
+        const other=record.manifest,sibling=other.outfitOf?.family===ref.family;
+        if(sibling){
+          if(other.outfitOf.id!==ref.id||other.outfitOf.revision!==ref.revision||JSON.stringify({items:other.items,loadouts:other.loadoutCoverage})!==contract)throw Error('同系列分格必須共用底稿與穿戴資料。');
+          if(manifest.coverage.cells.some(c=>coversCell(other,c.direction,c.sheet,c.frame)))throw Error('同系列分格不可重疊。');
+        }else if(manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(other,{rpg:{loadout}})))throw Error('不同系列不可宣告相同穿戴組合。');
+      }
+      const record={manifest,serialized,token:++sequence};registered.set(key,record);outfitManifests.set(manifest.character,[...records,record]);return manifest;
+    }
     async function loadManifest(url){
       const match=typeof url==='string'&&/^\.\/assets\/painted-avatar\/([a-z0-9][a-z0-9-]{0,95})\/manifest\.json$/.exec(url);
       if(!match||!E.fetch)throw Error('只可載入登錄格式的本機原畫清單。');
@@ -197,7 +223,8 @@
     }
     function availableProfile(state){
       const clean=publicState(state),m=clean&&manifests.get(clean.appearance.character)?.manifest;
-      return matchesLoadout(m,clean)?m:null;
+      if(!m?.outfitOnly&&matchesLoadout(m,clean))return m;
+      return clean?(outfitManifests.get(clean.appearance.character)||[]).find(record=>matchesLoadout(record.manifest,clean))?.manifest||null:null;
     }
     // The original API still means full 64-frame support. Pilot use is always
     // frame-aware and never changes movement to fit the one available picture.
@@ -207,6 +234,7 @@
       if(!validCell({direction:view,sheet:type,frame}))return null;
       const clean=publicState(state),m=availableProfile(clean);if(!m)return null;
       if(coversCell(m,view,type,frame))return m;
+      if(m.outfitOf)return (outfitManifests.get(m.character)||[]).find(record=>record.manifest.outfitOf?.family===m.outfitOf.family&&matchesLoadout(record.manifest,clean)&&coversCell(record.manifest,view,type,frame))?.manifest||null;
       return (frameManifests.get(m.character)||[]).find(record=>matchesLoadout(record.manifest,clean)&&coversCell(record.manifest,view,type,frame))?.manifest||null;
     }
     const supportsFrame=(state,view='down',type='actions',frame=0)=>!!frameProfile(state,view,type,frame);
@@ -529,7 +557,7 @@
       // Other equipment slots are empty, so no unowned outfit is implied.
       const canvas=preview(itemState,{...options,cropSlot:item.slot});if(canvas){canvas.dataset.gearId=item.id;canvas.dataset.equipmentSlot=item.slot;canvas.dataset.previewContext='same-body-item-crop';}return canvas;
     }
-    return {registerManifest,registerFrameManifest,loadManifest,profile,supports,supportsFrame,plan,describe:plan,acquire,createBody,register,update,needsFrame,dispose,preview,portrait,itemPreview,setFrame,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),stats:()=>({sources:sourceCache.stats(),frames:frameCache.stats(),failedSources:failures.size}),clearUnused(){sourceCache.clear();frameCache.clear();},clearFailures(){failures.clear();}};
+    return {registerManifest,registerFrameManifest,registerOutfitManifest,loadManifest,profile,supports,supportsFrame,plan,describe:plan,acquire,createBody,register,update,needsFrame,dispose,preview,portrait,itemPreview,setFrame,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),stats:()=>({sources:sourceCache.stats(),frames:frameCache.stats(),failedSources:failures.size}),clearUnused(){sourceCache.clear();frameCache.clear();},clearFailures(){failures.clear();}};
   }
   return {SLOTS,DIRECTIONS,SHEETS,ATLAS,COMPACT,CELL,COMPACT_CELL,SOURCE_BYTES,FRAME_BYTES,PILOT_LOAD_TIMEOUT_MS,publicState,direction,safeURL,validateManifest,createCache,createRuntime,...createRuntime()};
 });
