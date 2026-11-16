@@ -14,9 +14,9 @@ window.MindShopArt=(()=>{
       node('span',{class:'region-crown-text','aria-hidden':'true'},node('small',{},'自以為'),node('strong',{},regions[key(id)]+'最強')));
     const gear=equipment(id);
     if(gear){
-      if(gear.source==='crossline-professor'||id==='style-fusion-academy-crossline-common-jacket'){
-        const actual=window.MindCastOutfit?.itemPreview(state,gear,{direction:'down'});
-        if(actual)return node('span',{class:className+' shop-equipment-actual crossline-actual-art',role:'img','aria-label':(name||gear.name)+' · 與角色穿戴共用的分件原畫'},actual);
+      if(gear.source==='crossline-professor'){
+        return node('span',{class:className+' shop-equipment-actual crossline-actual-art',role:'img','aria-label':(name||gear.name)+' · 無人物裝備原畫'},
+          node('img',{src:'./assets/shop/crossline-professor-common-'+gear.slot+'-v1.png',alt:'',loading:'lazy',decoding:'async'}));
       }
       const academy=window.MindAcademy,look=academy?.restore(state?.appearance),hero=academy?.character(look?.character||'doctor');
       const style=(gear.style||'classic').replace(/[^a-z0-9-]/gi,'');
@@ -32,7 +32,7 @@ window.MindShopArt=(()=>{
   }
   function card(ctx,id,name,label){
     return ctx.node('button',{type:'button',class:'shop-artwork','aria-label':'放大欣賞'+name+'卡面',onClick:()=>ctx.openModal(
-      image(ctx.node,id,name+'原創卡面','shop-art-expanded',ctx.getState?.()),ctx.node('h2',{},name),ctx.node('p',{class:'note'},window.MindAdventure?.gear(id)?'此圖與服飾背包、櫥窗和學院角色共用相同穿戴圖層。':'學院原創插畫 · 點關閉返回商城')
+      image(ctx.node,id,name+'原創卡面','shop-art-expanded',ctx.getState?.()),ctx.node('h2',{},name),ctx.node('p',{class:'note'},window.MindAdventure?.gear(id)?.source==='crossline-professor'?'此圖是單件裝備原畫；試穿與場景會顯示實際穿戴分件。':'學院原創插畫 · 點關閉返回商城')
     )},image(ctx.node,id,'','shop-item-image',ctx.getState?.()),label?ctx.node('span',{class:'shop-art-label'},label):null,ctx.node('span',{class:'shop-art-zoom','aria-hidden':'true'},'⊕ 放大欣賞'));
   }
   return Object.freeze({has,image,card});

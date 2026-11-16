@@ -575,7 +575,7 @@
       // A catalogue crop shows the actual item on this same fixed body. The
       // hand/hair occlusion cutouts are not presented as holes in a flat garment.
       // Other equipment slots are empty, so no unowned outfit is implied.
-      const canvas=preview(itemState,{...options,cropSlot:item.slot});if(canvas){canvas.dataset.gearId=item.id;canvas.dataset.equipmentSlot=item.slot;canvas.dataset.previewContext='same-body-item-crop';}return canvas;
+      const canvas=preview(itemState,{...options,cropSlot:item.slot,onlySlot:item.slot});if(canvas){canvas.dataset.gearId=item.id;canvas.dataset.equipmentSlot=item.slot;canvas.dataset.previewContext='isolated-equipment-layer';}return canvas;
     }
     return {registerManifest,registerFrameManifest,registerOutfitManifest,loadManifest,profile,supports,supportsFrame,plan,describe:plan,acquire,createBody,register,update,needsFrame,dispose,preview,portrait,itemPreview,setFrame,ready:canvas=>previews.get(canvas)?.promise||Promise.resolve(canvas),stats:()=>({sources:sourceCache.stats(),frames:frameCache.stats(),failedSources:failures.size}),clearUnused(){sourceCache.clear();frameCache.clear();},clearFailures(){failures.clear();}};
   }
