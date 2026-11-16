@@ -14,7 +14,7 @@ window.MindShopArt=(()=>{
       node('span',{class:'region-crown-text','aria-hidden':'true'},node('small',{},'自以為'),node('strong',{},regions[key(id)]+'最強')));
     const gear=equipment(id);
     if(gear){
-      if(id==='style-fusion-academy-crossline-common-jacket'){
+      if(gear.source==='crossline-professor'||id==='style-fusion-academy-crossline-common-jacket'){
         const actual=window.MindCastOutfit?.itemPreview(state,gear,{direction:'down'});
         if(actual)return node('span',{class:className+' shop-equipment-actual crossline-actual-art',role:'img','aria-label':(name||gear.name)+' · 與角色穿戴共用的分件原畫'},actual);
       }

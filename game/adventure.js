@@ -45,6 +45,12 @@
   ];
   // Doctor artwork pilot: the new ID uses the established jacket price and starter stats.
   GEAR.push({id:'style-fusion-academy-crossline-common-jacket',name:'交線學院・普通外套',slot:'jacket',tier:0,price:240,attack:2,hp:6,guard:1,color:'pine',style:'crossline',source:'crossline-pilot',character:'doctor',text:'星序博士專屬試作：深綠布面與細金縫線，保留原角色的臉髮與手部。'});
+  const professorPieces={jacket:'苔光學院外套',shirt:'奶白摺領襯衫',pants:'深棕活動長褲',shoes:'金葉扣帶鞋',accessory:'金葉胸飾',handheld:'苔光研習冊'};
+  for(let i=0;i<STYLE_SLOTS.length;i++){
+    const slot=STYLE_SLOTS[i];
+    if(slot==='hat'||slot==='cape')continue;
+    GEAR.push({id:'style-fusion-academy-crossline-professor-common-'+slot,name:professorPieces[slot],slot,tier:0,source:'crossline-professor',character:'professor',style:'crossline',color:'pine',price:FRUIT_PRICES[i],attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:'交線學院苔光教授服裝：原畫分件與同系列金色枝葉細節。'});
+  }
   GEAR.push(...F.GEAR);
   for(let i=0;i<GEAR.length;i++)GEAR[i]={...GEAR[i],slot:canonicalSlot(GEAR[i])};
   for(const set of STYLE_SETS)for(let i=0;i<STYLE_SLOTS.length;i++)GEAR.push({id:'style-'+set.key+'-'+STYLE_SLOTS[i],name:set.names[i],slot:STYLE_SLOTS[i],tier:0,level:set.level,source:'milestone',style:set.key,color:set.color,price:null,attack:[2,1,0,0,1,1,2,0][i],hp:[6,4,4,4,2,2,0,0][i],guard:[1,1,0,0,0,0,0,0][i],text:set.text});

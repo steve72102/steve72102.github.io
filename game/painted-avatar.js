@@ -47,13 +47,14 @@
     const name=url.slice(prefix.length);
     return extension==='json'?name==='manifest.json':/^[a-z0-9][a-z0-9-]*\.(?:webp|png)$/.test(name);
   }
-  function checkImages(images,id,complete){
+  function checkImages(images,id,complete,borrowedSources=[]){
+    const allowed=[id,...borrowedSources];
     if(!images||typeof images!=='object'||Array.isArray(images))throw Error('原畫層缺少方向圖集。');
     for(const view of Object.keys(images)){
       if(!DIRECTIONS.includes(view)||!images[view]||typeof images[view]!=='object')throw Error('原畫方向不合法。');
-      for(const type of Object.keys(images[view]))if(!SHEETS.includes(type)||!safeURL(images[view][type],id))throw Error('原畫來源必須是此清單登錄的本機圖集。');
+      for(const type of Object.keys(images[view]))if(!SHEETS.includes(type)||!allowed.some(source=>safeURL(images[view][type],source)))throw Error('原畫來源必須是此清單登錄的本機圖集。');
     }
-    if(complete&&DIRECTIONS.some(view=>SHEETS.some(type=>!safeURL(images[view]?.[type],id))))throw Error('完整原畫層必須有四方向 run/actions 圖集。');
+    if(complete&&DIRECTIONS.some(view=>SHEETS.some(type=>!allowed.some(source=>safeURL(images[view]?.[type],source)))))throw Error('完整原畫層必須有四方向 run/actions 圖集。');
   }
   const cellKey=(view,type,frame)=>view+'/'+type+'/'+frame;
   const validCell=c=>!!c&&DIRECTIONS.includes(c.direction)&&SHEETS.includes(c.sheet)&&Number.isInteger(c.frame)&&c.frame>=0&&c.frame<8;
@@ -88,7 +89,7 @@
     if((!(m.schema===1&&['draft','complete'].includes(m.status))&&!pilot)||!identifier(m.id)||!identifier(m.character)||!identifier(m.revision))throw Error('原畫清單版本、角色或狀態不合法。');
     if(!m.atlas||Object.entries(ATLAS).some(([key,value])=>m.atlas[key]!==value))throw Error('原畫清單必須使用固定 256×384 影格與 (128,372) 錨點。');
     const pilotCells=pilot?checkPilotCoverage(m):null;
-    if(m.borrowedSources!==undefined&&(!pilot||!Array.isArray(m.borrowedSources)||m.borrowedSources.some(id=>!identifier(id)||id===m.id)||new Set(m.borrowedSources).size!==m.borrowedSources.length))throw Error('借用分件來源不合法。');
+    if(m.borrowedSources!==undefined&&(!(pilot||(complete&&m.outfitOf))||!Array.isArray(m.borrowedSources)||m.borrowedSources.some(id=>!identifier(id)||id===m.id)||new Set(m.borrowedSources).size!==m.borrowedSources.length))throw Error('借用分件來源不合法。');
     if(!pilot){
       if(!m.coverage||!Array.isArray(m.coverage.directions)||m.coverage.directions.some(view=>!DIRECTIONS.includes(view))||!m.coverage.sheets)throw Error('原畫清單缺少影格覆蓋記錄。');
       for(const type of SHEETS){const cells=m.coverage.sheets[type];if(!Array.isArray(cells)||cells.some(n=>!Number.isInteger(n)||n<0||n>7)||new Set(cells).size!==cells.length)throw Error('原畫影格覆蓋不合法。');}
@@ -112,7 +113,7 @@
       if(pilot){
         if(p.images!==undefined||p.compactImages!==undefined)throw Error('試作單格不可偽裝成完整圖集欄位。');
         checkPilotFrames(p.frames,m.id,pilotCells,m.borrowedSources||[]);
-      }else{checkImages(p.images,m.id,complete);if(p.compactImages)checkImages(p.compactImages,m.id,complete);}
+      }else{checkImages(p.images,m.id,complete,m.borrowedSources||[]);if(p.compactImages)checkImages(p.compactImages,m.id,complete,m.borrowedSources||[]);}
     }
     if(complete||pilot){
       for(const id of ['base-under','body-front'])if(!m.passes.some(p=>p.id===id&&p.ownerSlot===null))throw Error('完整分層必須保留固定底稿與原臉髮手前景。');
@@ -169,7 +170,7 @@
     function pilotTimeout(){return Error('試作原畫載入逾時，已使用原有裝備外觀。');}
     const manifestKey=m=>m.id+'@'+m.revision;
     const coversCell=(m,view,type,frame)=>m.status==='complete'||m.status==='pilot'&&m.coverage.cells.some(c=>c.direction===view&&c.sheet===type&&c.frame===frame);
-    const matchesLoadout=(m,clean)=>!!m&&!!clean&&['complete','pilot'].includes(m.status)&&SLOTS.every(slot=>clean.rpg.loadout[slot]===null||m.items[slot].includes(clean.rpg.loadout[slot]))&&(m.status!=='pilot'||m.loadoutCoverage.entries.some(entry=>SLOTS.every(slot=>entry[slot]===clean.rpg.loadout[slot])));
+    const matchesLoadout=(m,clean)=>!!m&&!!clean&&['complete','pilot'].includes(m.status)&&SLOTS.every(slot=>clean.rpg.loadout[slot]===null||m.items[slot].includes(clean.rpg.loadout[slot]))&&(m.status!=='pilot'||m.loadoutCoverage.entries.some(entry=>SLOTS.every(slot=>entry[slot]===clean.rpg.loadout[slot])))&&(!m.outfitOf||m.status==='pilot'||m.outfitOf.newItemIds?.some(id=>SLOTS.some(slot=>clean.rpg.loadout[slot]===id)));
     function registerManifest(raw){
       const manifest=validateManifest(raw),key=manifestKey(manifest),serialized=JSON.stringify(manifest),old=registered.get(key);
       if(manifest.extensionOf!==undefined||manifest.outfitOf!==undefined||manifest.borrowedSources!==undefined)throw Error('增量不得覆寫角色底稿。');
@@ -197,22 +198,26 @@
     // manifests while retaining one loadout contract and disjoint coverage.
     function registerOutfitManifest(raw){
       const manifest=validateManifest(raw),ref=manifest.outfitOf,base=manifests.get(manifest.character)?.manifest;
-      if(manifest.status!=='pilot'||manifest.extensionOf!==undefined||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),['id','revision','family'])||!identifier(ref.id)||!identifier(ref.revision)||!identifier(ref.family))throw Error('服裝系列必須明列封版底稿及系列識別。');
+      const completeOutfit=manifest.status==='complete';
+      if(!['pilot','complete'].includes(manifest.status)||manifest.extensionOf!==undefined||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),completeOutfit?['id','revision','family','newItemIds']:['id','revision','family'])||!identifier(ref.id)||!identifier(ref.revision)||!identifier(ref.family))throw Error('服裝系列必須明列封版底稿及系列識別。');
       if(!base||base.id!==ref.id||base.revision!==ref.revision||!['complete','pilot'].includes(base.status))throw Error('服裝系列缺少相符的封版底稿。');
       const sources=new Set([base.id,...(frameManifests.get(manifest.character)||[]).map(record=>record.manifest.id)]);
       if((manifest.borrowedSources||[]).some(id=>!sources.has(id)))throw Error('服裝系列只能借用已登記的同角色原畫來源。');
-      if(manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(base,{rpg:{loadout}})))throw Error('服裝系列不得搶走原裝備穿戴組合。');
+      if(completeOutfit){
+        if(!Array.isArray(ref.newItemIds)||!ref.newItemIds.length||ref.newItemIds.some(id=>!identifier(id)||SLOTS.some(slot=>base.items[slot].includes(id))||!SLOTS.some(slot=>manifest.items[slot].includes(id)))||new Set(ref.newItemIds).size!==ref.newItemIds.length)throw Error('完整服裝系列必須明列新裝備 ID。');
+      }else if(manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(base,{rpg:{loadout}})))throw Error('服裝系列不得搶走原裝備穿戴組合。');
       const key=manifestKey(manifest),serialized=JSON.stringify(manifest),old=registered.get(key);
       if(old){if(old.serialized!==serialized)throw Error('同一服裝系列版本不可悄悄改變來源。');return old.manifest;}
       const records=outfitManifests.get(manifest.character)||[];
       if([...registered.values()].some(record=>record.manifest.id===manifest.id))throw Error('服裝系列 id 已登記其他版本。');
-      const contract=JSON.stringify({items:manifest.items,loadouts:manifest.loadoutCoverage});
+      const contract=JSON.stringify({items:manifest.items,loadouts:manifest.loadoutCoverage,newItemIds:ref.newItemIds});
       for(const record of records){
         const other=record.manifest,sibling=other.outfitOf?.family===ref.family;
         if(sibling){
-          if(other.outfitOf.id!==ref.id||other.outfitOf.revision!==ref.revision||JSON.stringify({items:other.items,loadouts:other.loadoutCoverage})!==contract)throw Error('同系列分格必須共用底稿與穿戴資料。');
+          if(other.outfitOf.id!==ref.id||other.outfitOf.revision!==ref.revision||JSON.stringify({items:other.items,loadouts:other.loadoutCoverage,newItemIds:other.outfitOf.newItemIds})!==contract)throw Error('同系列分格必須共用底稿與穿戴資料。');
           if(manifest.coverage.cells.some(c=>coversCell(other,c.direction,c.sheet,c.frame)))throw Error('同系列分格不可重疊。');
-        }else if(manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(other,{rpg:{loadout}})))throw Error('不同系列不可宣告相同穿戴組合。');
+        }else if(completeOutfit&&other.status==='complete'&&ref.newItemIds.some(id=>other.outfitOf.newItemIds?.includes(id)))throw Error('不同完整服裝系列不可重複接管同一裝備 ID。');
+        else if(!completeOutfit&&manifest.loadoutCoverage.entries.some(loadout=>matchesLoadout(other,{rpg:{loadout}})))throw Error('不同系列不可宣告相同穿戴組合。');
       }
       const record={manifest,serialized,token:++sequence};registered.set(key,record);outfitManifests.set(manifest.character,[...records,record]);return manifest;
     }
