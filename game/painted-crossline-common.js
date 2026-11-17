@@ -6,11 +6,12 @@
   const base='doctor-v1',directions=['down','left','right','up'];
   const jacket='style-fusion-academy-crossline-common-jacket';
   const professorPrefix='style-fusion-academy-crossline-professor-common-';
+  const riverJacket='wish-river-coat';
   const warmups=new Map();
   root.MindCrosslineWarmup=state=>{
     const character=state?.appearance?.character;
     const loadout=state?.rpg?.loadout;
-    if(!(character==='doctor'&&loadout?.jacket===jacket||character==='professor'&&Object.values(loadout||{}).some(id=>id?.startsWith?.(professorPrefix))))return Promise.resolve(false);
+    if(!(character==='doctor'&&loadout?.jacket===jacket||character==='professor'&&(loadout?.jacket===riverJacket||Object.values(loadout||{}).some(id=>id?.startsWith?.(professorPrefix)))))return Promise.resolve(false);
     const key=JSON.stringify(state.rpg.loadout);
     if(warmups.has(key))return warmups.get(key);
     const job=(async()=>{
@@ -38,6 +39,7 @@
     P.registerOutfitManifest(await read('doctor-crossline-common-motion-v1'));
     P.registerManifest({...await read('professor-v1'),outfitOnly:true});
     P.registerOutfitManifest(await read('professor-crossline-common-v1'));
+    P.registerOutfitManifest(await read('professor-river-coat-v1'));
     return true;
   })().catch(error=>{root.console?.error?.('交線學院博士外套素材未載入；原遊戲外觀維持可用。',error);return false;});
 })(typeof window==='object'?window:globalThis);

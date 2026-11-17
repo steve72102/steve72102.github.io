@@ -1,0 +1,923 @@
+{
+  "schema": 1,
+  "id": "professor-river-coat-v1",
+  "character": "professor",
+  "revision": "river-material-v1-20261117",
+  "status": "complete",
+  "label": "溪藍研習衣教授四方向 RUN8 材質試作",
+  "atlas": {
+    "columns": 4,
+    "rows": 2,
+    "frameWidth": 256,
+    "frameHeight": 384,
+    "width": 1024,
+    "height": 768,
+    "anchorX": 128,
+    "anchorY": 372
+  },
+  "coverage": {
+    "directions": [
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "sheets": {
+      "actions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "run": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "previewBox": [
+    31,
+    66,
+    193,
+    318
+  ],
+  "portraitBox": [
+    74,
+    74,
+    106,
+    106
+  ],
+  "itemBoxes": {
+    "jacket": [
+      55,
+      70,
+      170,
+      202
+    ],
+    "cape": [
+      71,
+      133,
+      151,
+      83
+    ],
+    "shirt": [
+      83,
+      117,
+      126,
+      141
+    ],
+    "pants": [
+      89,
+      188,
+      116,
+      153
+    ],
+    "shoes": [
+      93,
+      309,
+      108,
+      75
+    ],
+    "hat": [
+      93,
+      53,
+      108,
+      75
+    ],
+    "accessory": [
+      164,
+      141,
+      48,
+      64
+    ],
+    "handheld": [
+      127,
+      147,
+      67,
+      66
+    ]
+  },
+  "items": {
+    "jacket": [
+      "fruit-pineapple-jacket",
+      "style-fusion-academy-crossline-professor-common-jacket",
+      "wish-river-coat"
+    ],
+    "cape": [
+      "fruit-pineapple-cape"
+    ],
+    "shirt": [
+      "fruit-pineapple-shirt",
+      "style-fusion-academy-crossline-professor-common-shirt"
+    ],
+    "pants": [
+      "fruit-pineapple-pants",
+      "style-fusion-academy-crossline-professor-common-pants"
+    ],
+    "shoes": [
+      "fruit-pineapple-shoes",
+      "style-fusion-academy-crossline-professor-common-shoes"
+    ],
+    "hat": [
+      "fruit-pineapple-hat",
+      "fruit-berry-hat"
+    ],
+    "accessory": [
+      "fruit-pineapple-accessory",
+      "style-fusion-academy-crossline-professor-common-accessory"
+    ],
+    "handheld": [
+      "fruit-pineapple-handheld",
+      "style-fusion-academy-crossline-professor-common-handheld"
+    ]
+  },
+  "passes": [
+    {
+      "id": "base-under",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 0,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-base-under.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-base-under.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-base-under.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-base-under.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-base-under.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-base-under.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-base-under.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-base-under.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-base-under.webp"
+        }
+      }
+    },
+    {
+      "id": "bare-feet",
+      "ownerSlot": "shoes",
+      "itemId": null,
+      "z": 5,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-bare-feet.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-bare-feet.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-bare-feet.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-bare-feet.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-bare-feet.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-bare-feet.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-bare-feet.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-bare-feet.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-bare-feet.webp"
+        }
+      }
+    },
+    {
+      "id": "bare-pants",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 10,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-bare-pants.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-bare-pants.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-bare-pants.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-bare-pants.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-bare-pants.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-bare-pants.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-bare-pants.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-bare-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-bare-pants.webp"
+        }
+      }
+    },
+    {
+      "id": "calf-underpaint",
+      "ownerSlot": "pants",
+      "itemId": null,
+      "z": 15,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-calf-underpaint.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-calf-underpaint.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-calf-underpaint.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-calf-underpaint.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-calf-underpaint.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-calf-underpaint.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-calf-underpaint.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-calf-underpaint.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-calf-underpaint.webp"
+        }
+      },
+      "requires": {
+        "shoes": "fruit-pineapple-shoes"
+      }
+    },
+    {
+      "id": "pants",
+      "ownerSlot": "pants",
+      "itemId": "fruit-pineapple-pants",
+      "z": 20,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-pants.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-pants.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-pants.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-pants.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-pants.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-pants.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-pants.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-pants.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-pants.webp"
+        }
+      }
+    },
+    {
+      "id": "shoes",
+      "ownerSlot": "shoes",
+      "itemId": "fruit-pineapple-shoes",
+      "z": 30,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-shoes.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-shoes.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-shoes.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-shoes.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-shoes.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-shoes.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-shoes.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-shoes.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-shoes.webp"
+        }
+      }
+    },
+    {
+      "id": "shirt",
+      "ownerSlot": "shirt",
+      "itemId": "fruit-pineapple-shirt",
+      "z": 40,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-shirt.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-shirt.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-shirt.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-shirt.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-shirt.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-shirt.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-shirt.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-shirt.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-shirt.webp"
+        }
+      }
+    },
+    {
+      "id": "jacket",
+      "ownerSlot": "jacket",
+      "itemId": "fruit-pineapple-jacket",
+      "z": 50,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-jacket.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-jacket.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-jacket.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-jacket.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-jacket.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-jacket.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-jacket.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-jacket.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-jacket.webp"
+        }
+      }
+    },
+    {
+      "id": "cape",
+      "ownerSlot": "cape",
+      "itemId": "fruit-pineapple-cape",
+      "z": 60,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-cape.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-cape.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-cape.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-cape.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-cape.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-cape.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-cape.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-cape.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-cape.webp"
+        }
+      }
+    },
+    {
+      "id": "accessory",
+      "ownerSlot": "accessory",
+      "itemId": "fruit-pineapple-accessory",
+      "z": 65,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-accessory.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-accessory.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-accessory.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-accessory.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-accessory.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-accessory.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-accessory.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-accessory.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-accessory.webp"
+        }
+      }
+    },
+    {
+      "id": "handheld",
+      "ownerSlot": "handheld",
+      "itemId": "fruit-pineapple-handheld",
+      "z": 70,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-handheld.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-handheld.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-handheld.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-handheld.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-handheld.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-handheld.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-handheld.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-handheld.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-handheld.webp"
+        }
+      }
+    },
+    {
+      "id": "hat",
+      "ownerSlot": "hat",
+      "itemId": "fruit-pineapple-hat",
+      "z": 80,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-hat.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-hat.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-hat.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-hat.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-hat.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-hat.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-hat.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-hat.webp"
+        }
+      }
+    },
+    {
+      "id": "body-front",
+      "ownerSlot": null,
+      "itemId": null,
+      "z": 90,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-body-front.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-body-front.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-body-front.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-body-front.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-body-front.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-body-front.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-body-front.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-body-front.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-body-front.webp"
+        }
+      }
+    },
+    {
+      "id": "berry-hat",
+      "ownerSlot": "hat",
+      "itemId": "fruit-berry-hat",
+      "z": 80,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/down-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/down-run-berry-hat.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/up-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/up-run-berry-hat.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/left-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/left-run-berry-hat.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/right-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/right-run-berry-hat.webp"
+        }
+      },
+      "compactImages": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-down-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-down-run-berry-hat.webp"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-up-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-up-run-berry-hat.webp"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-left-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-left-run-berry-hat.webp"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-v1/compact-right-actions-berry-hat.webp",
+          "run": "./assets/painted-avatar/professor-v1/compact-right-run-berry-hat.webp"
+        }
+      }
+    },
+    {
+      "id": "crossline-shirt",
+      "ownerSlot": "shirt",
+      "itemId": "style-fusion-academy-crossline-professor-common-shirt",
+      "z": 40,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-shirt-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-shirt-candidate-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-shirt-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-shirt-candidate-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-shirt-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-shirt-candidate-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-shirt-candidate-v2.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-shirt-candidate-v2.png"
+        }
+      }
+    },
+    {
+      "id": "crossline-pants",
+      "ownerSlot": "pants",
+      "itemId": "style-fusion-academy-crossline-professor-common-pants",
+      "z": 20,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-pants-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-pants-candidate-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-pants-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-pants-candidate-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-pants-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-pants-candidate-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-pants-candidate-v2.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-pants-candidate-v2.png"
+        }
+      }
+    },
+    {
+      "id": "crossline-shoes",
+      "ownerSlot": "shoes",
+      "itemId": "style-fusion-academy-crossline-professor-common-shoes",
+      "z": 30,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-shoes-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-shoes-candidate-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-shoes-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-shoes-candidate-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-shoes-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-shoes-candidate-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-shoes-candidate-v2.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-shoes-candidate-v2.png"
+        }
+      }
+    },
+    {
+      "id": "crossline-accessory",
+      "ownerSlot": "accessory",
+      "itemId": "style-fusion-academy-crossline-professor-common-accessory",
+      "z": 65,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-accessory-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-accessory-candidate-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-accessory-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-accessory-candidate-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-accessory-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-accessory-candidate-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-accessory-candidate-v2.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-accessory-candidate-v2.png"
+        }
+      }
+    },
+    {
+      "id": "crossline-handheld",
+      "ownerSlot": "handheld",
+      "itemId": "style-fusion-academy-crossline-professor-common-handheld",
+      "z": 70,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-handheld-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-handheld-candidate-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-handheld-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-handheld-candidate-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-handheld-candidate-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-handheld-candidate-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-handheld-candidate-v2.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-handheld-candidate-v2.png"
+        }
+      }
+    },
+    {
+      "id": "professor-jacket",
+      "ownerSlot": "jacket",
+      "itemId": "style-fusion-academy-crossline-professor-common-jacket",
+      "z": 50,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-jacket-clean-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-down-run-jacket-clean-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-jacket-clean-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-left-run-jacket-clean-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-jacket-clean-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-right-run-jacket-clean-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-jacket-clean-v1.png",
+          "run": "./assets/painted-avatar/professor-crossline-common-v1/professor-up-run-jacket-clean-v1.png"
+        }
+      }
+    },
+    {
+      "id": "river-jacket",
+      "ownerSlot": "jacket",
+      "itemId": "wish-river-coat",
+      "z": 50,
+      "images": {
+        "down": {
+          "actions": "./assets/painted-avatar/professor-river-coat-v1/professor-down-actions-river-jacket-v1.png",
+          "run": "./assets/painted-avatar/professor-river-coat-v1/professor-down-run-river-jacket-v1.png"
+        },
+        "left": {
+          "actions": "./assets/painted-avatar/professor-river-coat-v1/professor-left-actions-river-jacket-v1.png",
+          "run": "./assets/painted-avatar/professor-river-coat-v1/professor-left-run-river-jacket-v1.png"
+        },
+        "right": {
+          "actions": "./assets/painted-avatar/professor-river-coat-v1/professor-right-actions-river-jacket-v1.png",
+          "run": "./assets/painted-avatar/professor-river-coat-v1/professor-right-run-river-jacket-v1.png"
+        },
+        "up": {
+          "actions": "./assets/painted-avatar/professor-river-coat-v1/professor-up-actions-river-jacket-v1.png",
+          "run": "./assets/painted-avatar/professor-river-coat-v1/professor-up-run-river-jacket-v1.png"
+        }
+      }
+    }
+  ],
+  "provenance": {
+    "stage": "material-derived-motion-atlas",
+    "artAcceptance": "unreviewed",
+    "source": "professor-crossline-common-v1 jacket alpha and motion; wish-river-coat-v1 product concept",
+    "note": "Original character body, face, hair and hands retained. New river-blue fabric and fine waterline embroidery use the same fitted moving jacket cut; silhouette review pending."
+  },
+  "outfitOf": {
+    "id": "professor-v1",
+    "revision": "painted-7ded8142ec523e32",
+    "family": "river-study-professor",
+    "newItemIds": [
+      "wish-river-coat"
+    ]
+  },
+  "borrowedSources": [
+    "professor-v1",
+    "professor-crossline-common-v1"
+  ]
+}

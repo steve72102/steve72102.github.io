@@ -201,7 +201,7 @@
       const completeOutfit=manifest.status==='complete';
       if(!['pilot','complete'].includes(manifest.status)||manifest.extensionOf!==undefined||!ref||Array.isArray(ref)||!sameSet(Object.keys(ref),completeOutfit?['id','revision','family','newItemIds']:['id','revision','family'])||!identifier(ref.id)||!identifier(ref.revision)||!identifier(ref.family))throw Error('服裝系列必須明列封版底稿及系列識別。');
       if(!base||base.id!==ref.id||base.revision!==ref.revision||!['complete','pilot'].includes(base.status))throw Error('服裝系列缺少相符的封版底稿。');
-      const sources=new Set([base.id,...(frameManifests.get(manifest.character)||[]).map(record=>record.manifest.id)]);
+      const sources=new Set([base.id,...(frameManifests.get(manifest.character)||[]).map(record=>record.manifest.id),...(outfitManifests.get(manifest.character)||[]).map(record=>record.manifest.id)]);
       if((manifest.borrowedSources||[]).some(id=>!sources.has(id)))throw Error('服裝系列只能借用已登記的同角色原畫來源。');
       if(completeOutfit){
         if(!Array.isArray(ref.newItemIds)||!ref.newItemIds.length||ref.newItemIds.some(id=>!identifier(id)||SLOTS.some(slot=>base.items[slot].includes(id))||!SLOTS.some(slot=>manifest.items[slot].includes(id)))||new Set(ref.newItemIds).size!==ref.newItemIds.length)throw Error('完整服裝系列必須明列新裝備 ID。');
@@ -230,7 +230,7 @@
     // painted art, use the sealed professor pieces as a visual proxy only when
     // a Crossline item is present; never return the geometric avatar.
     function visualOutfitState(m,clean){
-      if(!m?.outfitOf||m.character!=='professor'||m.outfitOf.family!=='crossline-common-professor'||!clean||!m.outfitOf.newItemIds.some(id=>SLOTS.some(slot=>clean.rpg.loadout[slot]===id)))return clean;
+      if(!m?.outfitOf||m.character!=='professor'||!['crossline-common-professor','river-study-professor'].includes(m.outfitOf.family)||!clean||!m.outfitOf.newItemIds.some(id=>SLOTS.some(slot=>clean.rpg.loadout[slot]===id)))return clean;
       const loadout=Object.fromEntries(SLOTS.map(slot=>{
         const id=clean.rpg.loadout[slot];
         return [slot,id===null||m.items[slot].includes(id)?id:m.items[slot][0]??null];
@@ -240,7 +240,10 @@
     function availableProfile(state){
       const clean=publicState(state),m=clean&&manifests.get(clean.appearance.character)?.manifest;
       if(!m?.outfitOnly&&matchesLoadout(m,clean))return m;
-      return clean?(outfitManifests.get(clean.appearance.character)||[]).find(record=>matchesLoadout(record.manifest,visualOutfitState(record.manifest,clean)))?.manifest||null:null;
+      if(!clean)return null;
+      const candidates=(outfitManifests.get(clean.appearance.character)||[]).filter(record=>matchesLoadout(record.manifest,visualOutfitState(record.manifest,clean)));
+      const score=manifest=>SLOTS.reduce((sum,slot)=>sum+(clean.rpg.loadout[slot]&&manifest.items[slot].includes(clean.rpg.loadout[slot])?(slot==='jacket'?4:1):0),0);
+      return candidates.sort((a,b)=>score(b.manifest)-score(a.manifest))[0]?.manifest||null;
     }
     // The original API still means full 64-frame support. Pilot use is always
     // frame-aware and never changes movement to fit the one available picture.
