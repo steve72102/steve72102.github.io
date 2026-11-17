@@ -118,6 +118,23 @@ prism:{hem:180,cape:132,flare:21,collar:'angle'},solar:{hem:154,cape:143,flare:1
     }
     return a;
   }
+  function equipmentOnlyPreview(character,items,slots,options={}){
+    const wrap=document.createElement('div');
+    wrap.className='outfit-preview outfit-equipment-only';
+    wrap.setAttribute('role','img');
+    wrap.setAttribute('data-art-status','equipment-only');
+    wrap.setAttribute('data-character',character.id);
+    wrap.setAttribute('data-view',options.direction||'down');
+    const names=Object.entries(slots).filter(([slot])=>items[slot]).map(([slot,label])=>label+'：'+items[slot].name);
+    wrap.setAttribute('aria-label',character.name+'裝備資料：'+(names.join('；')||'尚未穿戴'));
+    const heading=document.createElement('strong');heading.textContent='裝備資料預覽';wrap.append(heading);
+    const list=document.createElement('div');list.className='outfit-equipment-list';
+    for(const name of names){const chip=document.createElement('span');chip.textContent=name;list.append(chip);}
+    if(!names.length){const empty=document.createElement('span');empty.textContent='尚未穿戴裝備';list.append(empty);}
+    wrap.append(list);
+    const note=document.createElement('small');note.textContent='此搭配尚無合格人物原畫';wrap.append(note);
+    return wrap;
+  }
   function preview(state,options={}){
     if(options.original!==false&&!Object.values(state.rpg?.loadout||{}).some(Boolean)){
       const character=window.MindAcademy.character(state.appearance?.character);
@@ -137,7 +154,7 @@ prism:{hem:180,cape:132,flare:21,collar:'angle'},solar:{hem:154,cape:143,flare:1
     if(bodyProfile){
       const layered=options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,bodyProfile,label:options.label||actualLabel,fallback:()=>preview(state,{...options,bodyProfile,painted:false,native:false,raster:false})});
       if(layered){
-        if(layered.dataset?.renderMethod==='vector-fallback')return layered;
+        if(layered.dataset?.renderMethod==='vector-fallback')return equipmentOnlyPreview(character,items,R.SLOTS,options);
         layered.setAttribute('data-body-profile',bodyProfile);layered.setAttribute('data-render-method','authored-parts-skeletal');layered.setAttribute('data-art-method','authored-parts-skeletal-preview');layered.setAttribute('data-loadout',JSON.stringify(loadout));
         return layered;
       }
@@ -148,6 +165,8 @@ prism:{hem:180,cape:132,flare:21,collar:'angle'},solar:{hem:154,cape:143,flare:1
     if(native)return native;
     const layered=!bodyProfile&&options.raster!==false&&window.MindLayeredAvatar?.preview(state,{...options,direction,fallback:()=>preview(state,{...options,painted:false,native:false,raster:false})});
     if(layered)return layered;
+    // Missing artwork must never expose the obsolete geometric person in UI.
+    if(options.allowVectorPreview!==true)return equipmentOnlyPreview(character,items,R.SLOTS,options);
     const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),set=(e,a)=>{for(const [k,v] of Object.entries(a))e.setAttribute(k,String(v));return e;};
     set(svg,{xmlns:ns,viewBox:'0 0 180 330',class:'outfit-preview','data-character':character.id,'data-view':direction,role:'img','aria-label':character.name+'八欄實際穿戴圖：'+Object.entries(R.SLOTS).map(([s,label])=>label+' '+(items[s]?.name||'未穿戴')).join('；')});
     if(bodyProfile)set(svg,{viewBox:'0 0 180 306',width:180,height:306,preserveAspectRatio:'xMidYMax meet','data-body-profile':bodyProfile,'data-render-method':'vector-fallback','data-art-method':'vector-fallback-preview','data-fallback-loadout':'actual-loadout','data-loadout':JSON.stringify(loadout),'data-foot-anchor':'90 275.625','data-occluded-slots':back?['accessory','handheld'].filter(s=>items[s]).join(' '):'','data-occluded-body-parts':back?'hands':''});
@@ -393,7 +412,8 @@ prism:{hem:180,cape:132,flare:21,collar:'angle'},solar:{hem:154,cape:143,flare:1
     const native=options.native!==false&&window.MindNativeAvatar?.itemPreview(state,item,{fallback:()=>itemPreview(state,item,{...options,painted:false,native:false})});if(native)return native;
     const bodyProfile=state.appearance?.character==='graduate'?GRADUATE_REFERENCE:null;
     const layered=options.raster!==false&&window.MindLayeredAvatar?.itemPreview(state,item,{bodyProfile,fallback:()=>itemPreview(state,item,{...options,painted:false,native:false,raster:false})});if(layered)return layered;
-    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile,original:false}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
+    if(options.allowVectorPreview!==true)return equipmentOnlyPreview(window.MindAcademy.character(state.appearance?.character),{[item.slot]:item},R.SLOTS,options);
+    const s={...state,rpg:{...state.rpg,loadout:{[item.slot]:item.id}}},full=preview(s,{painted:false,native:false,raster:false,bodyProfile,original:false,allowVectorPreview:true}),cut=CUTS[window.MindAcademy.character(state.appearance?.character).id]||CUTS.doctor;
     const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
     const boxes={jacket:[20,64,140,188],cape:[25,63,130,144],shirt:[25,64,130,112],pants:[34,136,112,161],shoes:[38,269,104,45],hat:[45,0,90,49],accessory:[90+cut.shoulder-18,99,28,28],handheld:[90+cut.shoulder,132,44,60]};
     svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('viewBox',(bodyProfile?[0,0,180,306]:boxes[item.slot]).join(' '));svg.setAttribute('role','img');svg.setAttribute('aria-label',item.name+'：遊戲實際穿戴版型');svg.setAttribute('data-gear-id',item.id);
