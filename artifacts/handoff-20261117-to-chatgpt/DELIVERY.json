@@ -1,0 +1,25 @@
+{
+  "schema": "pharmacy-game-handoff-delivery-v1",
+  "baseline_main_commit": "79e74084aca72f7bc914e126eed75eaf264a49c7",
+  "verified": "archives expanded successfully; all 36 recorded files matched original and expanded bytes, SHA256, and CRC32; docs integrity file matched",
+  "packages": [
+    {
+      "filename": "river-wearable-candidate.zip",
+      "bytes": 1145299,
+      "sha256": "387be104aa1715ee466ff976311446f7491e290f6ac4ac8b93acb0f8908080b8",
+      "crc32": "4B202BBC"
+    },
+    {
+      "filename": "river-wearable-source.zip",
+      "bytes": 1600337,
+      "sha256": "9336798b87211bdabc3db14e6814f98152d8de9db8cb9a9f065bf92d3e01cb1e",
+      "crc32": "1C5A1A00"
+    },
+    {
+      "filename": "river-wearable-docs.zip",
+      "bytes": 70701,
+      "sha256": "578319794e7be9c99a979d7ee5dd98a707f5e52663a5753e74903b7151eec343",
+      "crc32": "8271892B"
+    }
+  ]
+}
