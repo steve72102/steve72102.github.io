@@ -1,0 +1,704 @@
+{
+  "schema": 1,
+  "status": "pending-art-not-released",
+  "branchCommit": "5be61711579155e1fbb770ee4c3ce093dacac887",
+  "maxZipBytesExclusive": 1800000,
+  "packages": [
+    {
+      "kind": "code",
+      "file": "professor-code-01.zip",
+      "bytes": 66151,
+      "sha256": "4dd1ab1538b607699e5e3f99639a3acc05cf3fb022391b7130018345021c567f",
+      "crc32": "353b4aba",
+      "entries": [
+        {
+          "path": ".agents/skills/game-wearable-batch/SKILL.md",
+          "bytes": 4435,
+          "sha256": "b34bfe823ec3bfbdce1e443e1e0e43bab528b4a6ea6ab62f0c430bd9f43589aa",
+          "crc32": "807c9198"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/manifest.json",
+          "bytes": 36896,
+          "sha256": "17a8d78026a33c36d47465daca468c4598ab73a75bf35df73d0005b22e0c3a8f",
+          "crc32": "ba4c7f87"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/manifest.json",
+          "bytes": 36833,
+          "sha256": "7a72aa6019f6112e3f4140b8492648f2b34b5f6a00f40f99432889f3f92fd857",
+          "crc32": "5f4ad064"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/manifest.json",
+          "bytes": 28188,
+          "sha256": "efc9765b9d36636d377393c9f330879a626c13b78ee6f552a8e548f3b93b8284",
+          "crc32": "760bc129"
+        },
+        {
+          "path": "game/painted-avatar.js",
+          "bytes": 54082,
+          "sha256": "59650541901f46870be945c6f1e43a4a7d8d016f3ceec7ac760f70324e943818",
+          "crc32": "0b372afb"
+        },
+        {
+          "path": "game/painted-crossline-common.js",
+          "bytes": 2551,
+          "sha256": "442772e98cf003596a41158cb0617f3dcc5d784a1b5203af35f2628fd34d3d42",
+          "crc32": "a12145d2"
+        },
+        {
+          "path": "handoff/professor-pipeline-20261118/HANDOFF_TO_GPT.md",
+          "bytes": 4138,
+          "sha256": "0c71760711df561ea10982a3027d84e0c6824d5d613db971cc0b57ab35411e14",
+          "crc32": "5bfe0d85"
+        },
+        {
+          "path": "handoff/professor-pipeline-20261118/painted-avatar-exact-loadout.patch",
+          "bytes": 5179,
+          "sha256": "655388c42c1cd51e5e64690fdaf3015244d89f66a51607f8f7988665779fefe5",
+          "crc32": "567dca52"
+        },
+        {
+          "path": "handoff/professor-pipeline-20261118/QA_BEFORE.json",
+          "bytes": 359233,
+          "sha256": "607e9346b60710cd6de80044716d772a245fefbadd3510f707036840caa1b8d3",
+          "crc32": "a5068a98"
+        },
+        {
+          "path": "handoff/professor-pipeline-20261118/QA_CANDIDATE.json",
+          "bytes": 277136,
+          "sha256": "8e0c81843d9a6f6794f33a42755bde61fc477623778242a5b783d70fefcd8a5b",
+          "crc32": "4cbb3631"
+        },
+        {
+          "path": "tools/outfit-recipe/clean-professor-pants.py",
+          "bytes": 3200,
+          "sha256": "fc09f101bdb64d6b923d524d9f4ce2084c3b504d8d47155ac6ddcd1dacb5df76",
+          "crc32": "07d0031b"
+        },
+        {
+          "path": "tools/outfit-recipe/export-professor-qa-plans.cjs",
+          "bytes": 3363,
+          "sha256": "5e5c9187499485d9138e35b70266fe79eaf163e06bf9f9e4928877f0b1dd09cf",
+          "crc32": "1bbbdcd5"
+        },
+        {
+          "path": "tools/outfit-recipe/hash-professor-candidate.py",
+          "bytes": 1252,
+          "sha256": "0b954db655390b5f2d6a818a6f260c1e42aefe0eaae3e0a20caf1e0dc6bfbb21",
+          "crc32": "0896234f"
+        },
+        {
+          "path": "tools/outfit-recipe/package-professor-handoff.py",
+          "bytes": 5590,
+          "sha256": "26ef2ce658ea08062c5d308434045ca982dacde9aaa6e210f840fb9445304eba",
+          "crc32": "f0512780"
+        },
+        {
+          "path": "tools/outfit-recipe/professor-loadout.test.cjs",
+          "bytes": 2104,
+          "sha256": "0a184709ec1ac8cf308f6f46ffed5ca9d133c5aab8d8f5be65ca65c58d2afe22",
+          "crc32": "db7cb2fd"
+        },
+        {
+          "path": "tools/outfit-recipe/professor-river-game-seed.js",
+          "bytes": 2565,
+          "sha256": "a90f3e7c53455aec64ed4d58f880b491a5c3de68e0102b965762654293bba8f8",
+          "crc32": "52f75912"
+        },
+        {
+          "path": "tools/outfit-recipe/PROFESSOR_PIPELINE_STATUS.md",
+          "bytes": 2268,
+          "sha256": "5306afd9e61b6333fc3d24467d7ebe6ad7e0a1b42f8182a82c25f78d64218ba8",
+          "crc32": "7d5afa5c"
+        },
+        {
+          "path": "tools/outfit-recipe/QA_STATUS_20261118.md",
+          "bytes": 3014,
+          "sha256": "ae513c61248a4e88ae02eb5aa94e0c1356ea1cc271241d2f80f7692f73516fe5",
+          "crc32": "a90af088"
+        },
+        {
+          "path": "tools/outfit-recipe/render-professor-qa.py",
+          "bytes": 6387,
+          "sha256": "8b96f410d8f4e541828d3d5c4dd3c26e95bfe8745cab8ea450a643019d1457e0",
+          "crc32": "d0ddaf71"
+        },
+        {
+          "path": "tools/outfit-recipe/serve-professor-candidate.py",
+          "bytes": 3153,
+          "sha256": "573332b70e9b2f840315d8e56cd21f0389aaa1fb82c11e5811f52c38339a2979",
+          "crc32": "a3215167"
+        },
+        {
+          "path": "tools/outfit-recipe/stage-professor-shirt.py",
+          "bytes": 932,
+          "sha256": "b759d4cc85f5319947aa572e71f80c3f20caba9e5a54573ed36076d8c47fdffa",
+          "crc32": "fb5460f0"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-01.zip",
+      "bytes": 1455578,
+      "sha256": "c40fdc26181873d7494bd812a570e526fcdccd1d14e24c49d05785400d237adc",
+      "crc32": "fa6edc7a",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-jacket-clean-v1.png",
+          "bytes": 202983,
+          "sha256": "a4f4b09421d87e0caf550eac55b0946e646d88cffb5be56b0961da5ee743f274",
+          "crc32": "c7ce5e84"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-pants-candidate-v1.png",
+          "bytes": 211822,
+          "sha256": "7bb37f813d28675b004f5aac9818e2cfe0eee02bd2c5757de0185b6252cb5a77",
+          "crc32": "3f7f361e"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-actions-shirt-candidate-v1.png",
+          "bytes": 141014,
+          "sha256": "ee868bed26b5d4806aa7e3dd3770c6d9c5c1e7a343555faa7da6505d5ba0d09b",
+          "crc32": "665451f1"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-run-jacket-clean-v1.png",
+          "bytes": 197613,
+          "sha256": "192041e7bc4cf77fcca5cb826ec2cbca48590e996a85d427974135d8acd4f04b",
+          "crc32": "ad625ac4"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-run-pants-candidate-v1.png",
+          "bytes": 192163,
+          "sha256": "40f78c3df13a121987a1b4ebfd881162787731ae8237a12e199c4f1c3ac7908e",
+          "crc32": "5e95d617"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-down-run-shirt-candidate-v1.png",
+          "bytes": 161524,
+          "sha256": "326d487655dfc8f17f59330d1c6dcb878d4681bc860661fe6492be4769d494b2",
+          "crc32": "d6455b30"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-jacket-clean-v1.png",
+          "bytes": 186773,
+          "sha256": "e756c4d1322103e9b57db9a8fcd4edd73d442f3e109247d60764aa88e47bb00d",
+          "crc32": "268875bc"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-pants-candidate-v1.png",
+          "bytes": 189710,
+          "sha256": "35fe55cc1ec84619f6c3b9db0b821779d8dac3b618dea60928ec8da254144446",
+          "crc32": "78b07f9e"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-02.zip",
+      "bytes": 1451193,
+      "sha256": "cd778074e704ff290bdf88a63c087c67be872ee8fd4c5b88d5880bc8c31e6f4b",
+      "crc32": "cb389053",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-actions-shirt-candidate-v1.png",
+          "bytes": 102489,
+          "sha256": "9bd755a341b0d3c6f2ae9dc14d7caca57e045ea3950f51f5ad6d84e3b9905020",
+          "crc32": "49ae8958"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-run-jacket-clean-v1.png",
+          "bytes": 164713,
+          "sha256": "0ce23950dd6604c9669ac3b9fbd1936d62da76cbcc57dc20e83de051e2b48f86",
+          "crc32": "86b46e47"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-run-pants-candidate-v1.png",
+          "bytes": 201333,
+          "sha256": "46cd65dbc7c509b9714e3bf5fa0db4c3e5e286189ad749fa31d7091f73823206",
+          "crc32": "bc12c0cd"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-left-run-shirt-candidate-v1.png",
+          "bytes": 96326,
+          "sha256": "851e3f12b53b41e78d93e3242aa7ce5cd086fdbf522d478aa3e9487e94fde5d6",
+          "crc32": "e11bb7d3"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-jacket-clean-v1.png",
+          "bytes": 192108,
+          "sha256": "e1eaf7f4f24c1011fd04588f0abbbbcca5d9b7f665f06ad9ec9ac22081a5f4f3",
+          "crc32": "24023b5e"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-pants-candidate-v1.png",
+          "bytes": 194786,
+          "sha256": "0d88b62534dc21331da43d5fdb2985dfe93e19ff8cf5742ea53d5bfdf4e0a9bd",
+          "crc32": "86dbb5d4"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-actions-shirt-candidate-v1.png",
+          "bytes": 97386,
+          "sha256": "c02f9dd37a817f2624e418724e91c46a4fe19c1c71f8b7f69be1a3e6e1a56461",
+          "crc32": "0a7cd5a0"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-run-jacket-clean-v1.png",
+          "bytes": 179238,
+          "sha256": "53bbf2a8327e3546972779d7f80b37aee6bab6e956b47f586974a5a09dbe742b",
+          "crc32": "a2352d10"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-run-pants-candidate-v1.png",
+          "bytes": 256199,
+          "sha256": "85942b45f4874af9a6e2bfb882db01e2afec9b6e4afb12769c1f49e35355a17c",
+          "crc32": "bae81210"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-03.zip",
+      "bytes": 1256926,
+      "sha256": "69d189f8b77f97b6efb9e83eca83147bfde01c698596031e3906675d10065af5",
+      "crc32": "f737f455",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-right-run-shirt-candidate-v1.png",
+          "bytes": 96097,
+          "sha256": "32f66bcc46f6b17e2a40acafec51cb65a24abb2c591d65fb8ccffd76ee45e08c",
+          "crc32": "a5832a9d"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-jacket-clean-v1.png",
+          "bytes": 252334,
+          "sha256": "522eb4589b6430bb298da2f2819790738ab82ca64ed061171a31ea62358dddfe",
+          "crc32": "511860c5"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-pants-candidate-v2.png",
+          "bytes": 223009,
+          "sha256": "f484922f041f970cc23b40f13e7164c1919d2c4f099b13a613b070e7f45d0778",
+          "crc32": "e5c027db"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-actions-shirt-candidate-v2.png",
+          "bytes": 117735,
+          "sha256": "94f964f4c52b5d5e6b41919036d29c3c7e7ecb065e8c51182ad29a53cdf0ed1e",
+          "crc32": "1e654320"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-run-jacket-clean-v1.png",
+          "bytes": 246807,
+          "sha256": "e39ee190b7fad1222486b2077cc637d5ab40a568c5b28e1d8ae50594d3ca8ac0",
+          "crc32": "2f14cbd8"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-run-pants-candidate-v2.png",
+          "bytes": 209599,
+          "sha256": "bbb99201ca8e49b57df853d86edede4b5bff0e87c9dbf4fb1091cb24e14bf8de",
+          "crc32": "a6597c70"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-common-v1/professor-up-run-shirt-candidate-v2.png",
+          "bytes": 139559,
+          "sha256": "b979946b2debcea6ef7c046671e4d6e52c298a432db9571f617fb914ec601424",
+          "crc32": "169720ed"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-04.zip",
+      "bytes": 1147921,
+      "sha256": "41909ad6df4429699f99ba9c8f7da4cfb2bb774ce1229ca9abcfd6b12d39eb63",
+      "crc32": "5bb69801",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-down-actions-river-jacket-v1.png",
+          "bytes": 377713,
+          "sha256": "979cc51643cae36f92901e3d03fa30d804db4ffb60fcb4b2617f019f023b92d1",
+          "crc32": "bfb54f03"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-down-run-river-jacket-v1.png",
+          "bytes": 260381,
+          "sha256": "2a27d96020a3fff86f95d3eabc6bdf1fdadb442495f3eedeaa3ba1335fba341d",
+          "crc32": "5eb14628"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-left-actions-river-jacket-v1.png",
+          "bytes": 277153,
+          "sha256": "fe786114c81d527c6f5fd8dddd224625b39bf380b72c040ddcbb156ea4c0a28f",
+          "crc32": "a4278f34"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-left-run-river-jacket-v1.png",
+          "bytes": 247566,
+          "sha256": "4cd87123c6d1a1bcbd454b3ad1402409775dcc2c5f186c15ddc3aa3ded7f7d1c",
+          "crc32": "28df19d1"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-05.zip",
+      "bytes": 1487016,
+      "sha256": "b787bb470e9d149e397bcda8df3e28a23fafd8ca53c27f59c77689e7e7f13ab0",
+      "crc32": "53192656",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-right-actions-river-jacket-v1.png",
+          "bytes": 342869,
+          "sha256": "ccd3d36692a36079c9794009d5ea7a8117c45d382aa7d5f770d2813e044233b7",
+          "crc32": "e459a3ba"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-right-run-river-jacket-v1.png",
+          "bytes": 333169,
+          "sha256": "9e5e73d5b5a574bde1093380d4dc6da571d788c1e4370b67eac57bf8f9e8e66b",
+          "crc32": "eec08a34"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-up-actions-river-jacket-v1.png",
+          "bytes": 349282,
+          "sha256": "c63c15774635cd3f2e25d82afcb549c5a32b600fe1bd52bda53dcdfda691440a",
+          "crc32": "97ca546f"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-river-coat-v1/professor-up-run-river-jacket-v1.png",
+          "bytes": 384425,
+          "sha256": "a6471ffb35c77ae23890e1b47fb5b33ab8bb0bd14a42a3400071b76179bbc921",
+          "crc32": "12620673"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/down-actions-shirt.webp",
+          "bytes": 90132,
+          "sha256": "7e72e1d59f53ffd08579cf746c95acf18cc585078b18000f3b860f76c0e511b2",
+          "crc32": "1787b877"
+        }
+      ]
+    },
+    {
+      "kind": "original",
+      "file": "professor-original-06.zip",
+      "bytes": 492933,
+      "sha256": "ee2c397cb38d700acc935e760762ec89469c67e3957897b6cb5bd0e1f5a52800",
+      "crc32": "3058bcb3",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-v1/down-run-shirt.webp",
+          "bytes": 100556,
+          "sha256": "41a592b5eeb849a65ed242902b766ca8cfb88908e1dafc775856f1b51ef905ae",
+          "crc32": "a321ea32"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/left-actions-shirt.webp",
+          "bytes": 61548,
+          "sha256": "2814320713fb6a84e5279d51a29f0e18eb51fcf1542675d3404a6872c1476355",
+          "crc32": "c471e0bf"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/left-run-shirt.webp",
+          "bytes": 57538,
+          "sha256": "87d2251b0d39d96ca77dc75c33e52b265db52c1e02f1bde02e5d7fea63825cf9",
+          "crc32": "f4038571"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/right-actions-shirt.webp",
+          "bytes": 59452,
+          "sha256": "39198d05547a574edd1fe17fcb426f5b3bbd403816ed684654b550d2da97e3e1",
+          "crc32": "41c605e0"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/right-run-shirt.webp",
+          "bytes": 57912,
+          "sha256": "29c059a2551e448e4ce07d0f545bc5326e2bbdc757ee6fea688c104f9433a559",
+          "crc32": "72f33f2e"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/up-actions-shirt.webp",
+          "bytes": 72390,
+          "sha256": "3c5cafcff9fd0892058c8fc0ac5873da72f09722a519e5cc0e054d5e83f7c7f4",
+          "crc32": "91ee4279"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-v1/up-run-shirt.webp",
+          "bytes": 82490,
+          "sha256": "5c5840e081061abf1558efa345303aa8189318ee0c1fa4475fbc4f70fece5e57",
+          "crc32": "e3608e06"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "professor-candidate-01.zip",
+      "bytes": 1437112,
+      "sha256": "6aa2a510ebd170932148b198685eb5c5564d7be87f80534d99fa368cfadf0c46",
+      "crc32": "b1c63b7f",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/CANDIDATE_PROVENANCE.json",
+          "bytes": 13708,
+          "sha256": "345053f95dfb81cb8c65074bccf3110690f6e6f6e91b387f10c114ea5dbe8f78",
+          "crc32": "09e6dbdc"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-actions-pants-isolated-v2-mask.png",
+          "bytes": 18110,
+          "sha256": "e6144f7706003fb22b6f9e5103b4ae4e27b5a1dcb93115576a5ed6bfffd06c2e",
+          "crc32": "fcdd8703"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-actions-pants-isolated-v2.png",
+          "bytes": 182018,
+          "sha256": "db8b057e548212b135010043375b44eaeeb9f7665cb693ccf5afea51b2306d96",
+          "crc32": "e753941f"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-actions-shirt-isolated-v2-mask.png",
+          "bytes": 17852,
+          "sha256": "61fabb68ef69948a398eb27139c99efc07cb9b96bbea1f63b4404e887baa3544",
+          "crc32": "e8ffd4bd"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-actions-shirt-isolated-v2.png",
+          "bytes": 130353,
+          "sha256": "8194eb14b85af54ccc287bfa8ebe03a06f3905b6d00248700669208a02b1a918",
+          "crc32": "69f2a3b9"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-run-pants-isolated-v2-mask.png",
+          "bytes": 15947,
+          "sha256": "0ac62de15d99af0aa1bc312d913376379070212e93b371bd02de2d66930fa94a",
+          "crc32": "4036ff2d"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-run-pants-isolated-v2.png",
+          "bytes": 165019,
+          "sha256": "cd6e6aa812b334cbb673fee5f9bcfdabbea24c402d6a4fcdff701ff624664707",
+          "crc32": "df2fc027"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-run-shirt-isolated-v2-mask.png",
+          "bytes": 19678,
+          "sha256": "e09044390558662a3c34c449912fae7e19e0fdee065b70a335483223e6cca987",
+          "crc32": "cde2a108"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-down-run-shirt-isolated-v2.png",
+          "bytes": 145719,
+          "sha256": "7056f85fb1671846182d8b7298e7b2969a9e01b8c8b56ce98de33b8a985e0fa0",
+          "crc32": "e9ee2351"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-actions-pants-isolated-v2-mask.png",
+          "bytes": 17450,
+          "sha256": "8d51a470c9bc1479794d361be85f7a1e92818da127538f7e22128a20081597a1",
+          "crc32": "05d0210e"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-actions-pants-isolated-v2.png",
+          "bytes": 163017,
+          "sha256": "58c4a343221c37684f552323e71d21fe318c10ef4195cbbddecaad17e1e8d335",
+          "crc32": "d1320c36"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-actions-shirt-isolated-v2-mask.png",
+          "bytes": 12534,
+          "sha256": "fec5a42df3d963c74966b916f419705459c96eb68ecf01c88ad056956850fd0b",
+          "crc32": "9aad5cee"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-actions-shirt-isolated-v2.png",
+          "bytes": 94612,
+          "sha256": "0f139c9b8716a271fffadde7323d1d5093774473a6d9b4ea8167d2466443edaf",
+          "crc32": "02533f8f"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-run-pants-isolated-v2-mask.png",
+          "bytes": 20092,
+          "sha256": "1ed36154e94d1dc9a15759a2af0e6954411dd1caf2edf5b0aa9652004c34899d",
+          "crc32": "368efd37"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-run-pants-isolated-v2.png",
+          "bytes": 177891,
+          "sha256": "68a80bdc538bcb0f49fa65cff5918d67ddb2325abde752866508ae5838163850",
+          "crc32": "f20c7e7e"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-run-shirt-isolated-v2-mask.png",
+          "bytes": 11094,
+          "sha256": "3818ea3cc80ed282bf75d7798c0c97600a29a4106336d6cea98798698d07af12",
+          "crc32": "bd68d1fb"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-left-run-shirt-isolated-v2.png",
+          "bytes": 89466,
+          "sha256": "5c174cf4f7f04dfe819c236b5202ff1aa3c73d7fd1af5fda86ecba97af768ceb",
+          "crc32": "8b79bd34"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-actions-pants-isolated-v2-mask.png",
+          "bytes": 17707,
+          "sha256": "52777595c868b848b236a302c28defe4f73f311046a98ae860726e017fd868e3",
+          "crc32": "04e3f518"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-actions-pants-isolated-v2.png",
+          "bytes": 164922,
+          "sha256": "9b8aee5f057cdb8391a6a2b5b060125cc517434594f3f99e2d382514820f22fc",
+          "crc32": "5bd54110"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-actions-shirt-isolated-v2-mask.png",
+          "bytes": 11634,
+          "sha256": "be57f35d3e0b725dc1e33106ea8dff8f0038bb5ef9eff3f6581f06b78adb537c",
+          "crc32": "40ad6182"
+        }
+      ]
+    },
+    {
+      "kind": "candidate",
+      "file": "professor-candidate-02.zip",
+      "bytes": 1066880,
+      "sha256": "844a9842e3dbe3f7d5016f1f71dbee468db19bf2fceff7a9e6fa7f96bac9c024",
+      "crc32": "93f65e77",
+      "entries": [
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-actions-shirt-isolated-v2.png",
+          "bytes": 89860,
+          "sha256": "63ad997bf568354c4dfc1ecc508ec3180348cd993bdd026e638c1a34f0a1e983",
+          "crc32": "0de92352"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-run-pants-isolated-v2-mask.png",
+          "bytes": 23179,
+          "sha256": "160e14f24b1943a48813c2f06e9e755076caa499a0c8dbfa94cae7b317af2be6",
+          "crc32": "5f18eda0"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-run-pants-isolated-v2.png",
+          "bytes": 216497,
+          "sha256": "49cb6af909dab2d19af93435ea3b1ded9811c089889e42c673b6ae83d948b0e2",
+          "crc32": "d195074d"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-run-shirt-isolated-v2-mask.png",
+          "bytes": 10855,
+          "sha256": "bbb5772e2d941357f3879094bcc4d8e86ac13ea5500542a7bae2cbd7eff7bbb7",
+          "crc32": "adeb2f37"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-right-run-shirt-isolated-v2.png",
+          "bytes": 88173,
+          "sha256": "00cd37ca8deaa6ae5543ad07401217f0c45429393c78c053e7edb776baa16f1d",
+          "crc32": "0d55c9fa"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-actions-pants-isolated-v2-mask.png",
+          "bytes": 18993,
+          "sha256": "92a138039234fcf21187e537160963408c5efc79e4754c0226099bcb3e9d4141",
+          "crc32": "7ef273c2"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-actions-pants-isolated-v2.png",
+          "bytes": 186193,
+          "sha256": "f88277af359218ac8581091e5b7f49dc93a9b1e4142e475ef6633608ea68745d",
+          "crc32": "1ded7feb"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-actions-shirt-isolated-v2-mask.png",
+          "bytes": 14028,
+          "sha256": "78dd77c0b89a4c93c0e0f0a955eb3483c3e0302846af381adcb3143a652ddc39",
+          "crc32": "968ffe19"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-actions-shirt-isolated-v2.png",
+          "bytes": 110252,
+          "sha256": "5a3c479b92ccd2fc93f2a44c0347593fe67bca6cd68536b7baccfd56c57ca1d3",
+          "crc32": "357a957d"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-run-pants-isolated-v2-mask.png",
+          "bytes": 13250,
+          "sha256": "eff4f9cba7c064f56e1d463417f0c86986a598791fa60518cfc103dd970f12fd",
+          "crc32": "7e69a924"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-run-pants-isolated-v2.png",
+          "bytes": 180820,
+          "sha256": "081c5addb70056e990080b458ae883a0f92e3ba9c2a002f146bf3fdf423e70d1",
+          "crc32": "3da229bf"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-run-shirt-isolated-v2-mask.png",
+          "bytes": 17938,
+          "sha256": "1432adfc9539cf151615b8662e7f522c7644388970337fa4868a332e2fcb3585",
+          "crc32": "1c3187f2"
+        },
+        {
+          "path": "game/assets/painted-avatar/professor-crossline-pending-v2/professor-up-run-shirt-isolated-v2.png",
+          "bytes": 127053,
+          "sha256": "1a5640e196b7d62000f80122c6e52cfbdd01fea92e90814c0e20a1f3c749c994",
+          "crc32": "bb315062"
+        }
+      ]
+    },
+    {
+      "kind": "evidence",
+      "file": "professor-evidence-01.zip",
+      "bytes": 660975,
+      "sha256": "6b654e484c25deddb71e55653cb85a34cf1998a27fc65fb67b2339d4349b4067",
+      "crc32": "e3a2fc2b",
+      "entries": [
+        {
+          "path": "tools/outfit-recipe/qa-evidence-20261118/pants-slot-before.png",
+          "bytes": 379552,
+          "sha256": "42d9ea1b2428662405e1723a10143ee287a39167fde83f13722b3e5b4caaf7ca",
+          "crc32": "1abebc07"
+        },
+        {
+          "path": "tools/outfit-recipe/qa-evidence-20261118/pants-slot-candidate.png",
+          "bytes": 300576,
+          "sha256": "f65970ac7c6d4e8ad06149046cd3cc163225b4541de0835823f9953b724d4e16",
+          "crc32": "7eb49359"
+        }
+      ]
+    },
+    {
+      "kind": "evidence",
+      "file": "professor-evidence-02.zip",
+      "bytes": 1283817,
+      "sha256": "091862dace9bfa4a171b08ad19e4cc36ca0bcb4afbb976ed729136bd09198e17",
+      "crc32": "ef94f88b",
+      "entries": [
+        {
+          "path": "tools/outfit-recipe/qa-evidence-20261118/river-full-before.png",
+          "bytes": 1287366,
+          "sha256": "384c5af97d3300b7c8d7cbf6cabf398ae6f9cbca76c62d60493e417551fbef08",
+          "crc32": "a94054e4"
+        }
+      ]
+    },
+    {
+      "kind": "evidence",
+      "file": "professor-evidence-03.zip",
+      "bytes": 1272213,
+      "sha256": "3ea60d79abb4e7079aec1fdb278142287251db89d62495e728f44167cd0171f7",
+      "crc32": "019b72db",
+      "entries": [
+        {
+          "path": "tools/outfit-recipe/qa-evidence-20261118/river-full-candidate.png",
+          "bytes": 1275689,
+          "sha256": "80005ad3dbc2c0693caf43b38f2b37653ab6ee1352f8406b186a1dad96b83546",
+          "crc32": "63bf0658"
+        }
+      ]
+    }
+  ]
+}
